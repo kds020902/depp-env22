@@ -1,0 +1,141 @@
+features train: 160/480
+features train: 320/480
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/PIL/Image.py:1136: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
+  warnings.warn(
+features train: 480/480
+features val: 120/120
+{"epoch": 1, "train_loss": 0.7928091148535411, "train_accuracy": 0.725, "val_loss": 0.46111392974853516, "val_accuracy": 0.8333333134651184}
+{"epoch": 2, "train_loss": 0.19411092425386112, "train_accuracy": 0.9375, "val_loss": 0.4065788984298706, "val_accuracy": 0.8166666626930237}
+{"epoch": 3, "train_loss": 0.11553463799258074, "train_accuracy": 0.9791666666666666, "val_loss": 0.366994708776474, "val_accuracy": 0.8583333492279053}
+{"epoch": 4, "train_loss": 0.07630550445367892, "train_accuracy": 0.9833333333333333, "val_loss": 0.3638596832752228, "val_accuracy": 0.8666666746139526}
+{"epoch": 5, "train_loss": 0.0573014248162508, "train_accuracy": 0.9958333333333333, "val_loss": 0.43231090903282166, "val_accuracy": 0.8333333134651184}
+{"epoch": 6, "train_loss": 0.05548405510683854, "train_accuracy": 0.99375, "val_loss": 0.3977693021297455, "val_accuracy": 0.8583333492279053}
+{"epoch": 7, "train_loss": 0.03464666542907556, "train_accuracy": 0.9979166666666667, "val_loss": 0.37231001257896423, "val_accuracy": 0.8416666388511658}
+{"epoch": 8, "train_loss": 0.02975489483214915, "train_accuracy": 0.9979166666666667, "val_loss": 0.3733910322189331, "val_accuracy": 0.8333333134651184}
+{"epoch": 9, "train_loss": 0.020149556330094735, "train_accuracy": 1.0, "val_loss": 0.3811075985431671, "val_accuracy": 0.8500000238418579}
+{"epoch": 10, "train_loss": 0.01691857512729863, "train_accuracy": 1.0, "val_loss": 0.3903360068798065, "val_accuracy": 0.8500000238418579}
+{"epoch": 11, "train_loss": 0.015354335742692153, "train_accuracy": 1.0, "val_loss": 0.3878774046897888, "val_accuracy": 0.8500000238418579}
+{"epoch": 12, "train_loss": 0.01383170010522008, "train_accuracy": 1.0, "val_loss": 0.40631231665611267, "val_accuracy": 0.8666666746139526}
+{"epoch": 13, "train_loss": 0.01260524361083905, "train_accuracy": 1.0, "val_loss": 0.4001849591732025, "val_accuracy": 0.8500000238418579}
+{"epoch": 14, "train_loss": 0.011443133885040879, "train_accuracy": 1.0, "val_loss": 0.3994629681110382, "val_accuracy": 0.8416666388511658}
+{"epoch": 15, "train_loss": 0.009757161652669311, "train_accuracy": 1.0, "val_loss": 0.40316882729530334, "val_accuracy": 0.8416666388511658}
+{"epoch": 16, "train_loss": 0.009320799567891907, "train_accuracy": 1.0, "val_loss": 0.4004000723361969, "val_accuracy": 0.8500000238418579}
+{"epoch": 17, "train_loss": 0.008350937526362638, "train_accuracy": 1.0, "val_loss": 0.39830124378204346, "val_accuracy": 0.8583333492279053}
+{"epoch": 18, "train_loss": 0.007945580656329792, "train_accuracy": 1.0, "val_loss": 0.4165591299533844, "val_accuracy": 0.8500000238418579}
+{"epoch": 19, "train_loss": 0.0072235075756907465, "train_accuracy": 1.0, "val_loss": 0.4213886857032776, "val_accuracy": 0.8833333253860474}
+Early stopping at epoch 19; best epoch=4
+{
+  "saved_to": "/workspace/scratch/8bb740a087c7/vegetable_training/package",
+  "best_epoch": 4,
+  "metrics": {
+    "evaluation_split": "validation (also used for early stopping; not an independent test set)",
+    "sample_count": 120,
+    "loss": 0.3638596832752228,
+    "accuracy": 0.8666666746139526,
+    "macro_f1": 0.8669166716596336,
+    "balanced_accuracy": 0.8666666666666667,
+    "species_accuracy": 0.9666666388511658,
+    "condition_accuracy": 0.8999999761581421,
+    "species_condition_metric_method": "argmax of summed joint softmax probabilities",
+    "joint_prediction_species_accuracy": 0.9666666388511658,
+    "joint_prediction_condition_accuracy": 0.8999999761581421,
+    "class_names": [
+      "cucumber_fresh",
+      "cucumber_rotten",
+      "potato_fresh",
+      "potato_rotten",
+      "tomato_fresh",
+      "tomato_rotten"
+    ],
+    "confusion_matrix_orientation": "rows=true, columns=predicted",
+    "confusion_matrix": [
+      [
+        19,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        4,
+        15,
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        15,
+        5,
+        0,
+        0
+      ],
+      [
+        0,
+        2,
+        1,
+        17,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        0,
+        19,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        1,
+        19
+      ]
+    ],
+    "per_class": {
+      "cucumber_fresh": {
+        "precision": 0.7916666666666666,
+        "recall": 0.95,
+        "f1": 0.8636363636363635,
+        "support": 20
+      },
+      "cucumber_rotten": {
+        "precision": 0.8333333333333334,
+        "recall": 0.75,
+        "f1": 0.7894736842105262,
+        "support": 20
+      },
+      "potato_fresh": {
+        "precision": 0.9375,
+        "recall": 0.75,
+        "f1": 0.8333333333333334,
+        "support": 20
+      },
+      "potato_rotten": {
+        "precision": 0.7391304347826086,
+        "recall": 0.85,
+        "f1": 0.7906976744186046,
+        "support": 20
+      },
+      "tomato_fresh": {
+        "precision": 0.95,
+        "recall": 0.95,
+        "f1": 0.9500000000000001,
+        "support": 20
+      },
+      "tomato_rotten": {
+        "precision": 1.0,
+        "recall": 0.95,
+        "f1": 0.9743589743589743,
+        "support": 20
+      }
+    },
+    "scores_are_calibrated": false
+  }
+}

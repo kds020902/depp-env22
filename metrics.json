@@ -1,0 +1,210 @@
+{
+  "format_version": 1,
+  "architecture": "resnet18",
+  "training_method": "frozen ImageNet backbone with trained six-class linear head",
+  "class_names": [
+    "cucumber_fresh",
+    "cucumber_rotten",
+    "potato_fresh",
+    "potato_rotten",
+    "tomato_fresh",
+    "tomato_rotten"
+  ],
+  "species_names": [
+    "cucumber",
+    "potato",
+    "tomato"
+  ],
+  "condition_names": [
+    "fresh",
+    "rotten"
+  ],
+  "preprocess": {
+    "exif_transpose": true,
+    "color_mode": "RGB",
+    "resize": [
+      224,
+      224
+    ],
+    "interpolation": "bilinear",
+    "antialias": true,
+    "mean": [
+      0.485,
+      0.456,
+      0.406
+    ],
+    "std": [
+      0.229,
+      0.224,
+      0.225
+    ]
+  },
+  "seed": 42,
+  "best_epoch": 4,
+  "epochs_completed": 19,
+  "counts": {
+    "train": {
+      "cucumber_fresh": 80,
+      "cucumber_rotten": 80,
+      "potato_fresh": 80,
+      "potato_rotten": 80,
+      "tomato_fresh": 80,
+      "tomato_rotten": 80
+    },
+    "val": {
+      "cucumber_fresh": 20,
+      "cucumber_rotten": 20,
+      "potato_fresh": 20,
+      "potato_rotten": 20,
+      "tomato_fresh": 20,
+      "tomato_rotten": 20
+    }
+  },
+  "metrics": {
+    "evaluation_split": "validation (also used for early stopping; not an independent test set)",
+    "sample_count": 120,
+    "loss": 0.3638596832752228,
+    "accuracy": 0.8666666746139526,
+    "macro_f1": 0.8669166716596336,
+    "balanced_accuracy": 0.8666666666666667,
+    "species_accuracy": 0.9666666388511658,
+    "condition_accuracy": 0.8999999761581421,
+    "species_condition_metric_method": "argmax of summed joint softmax probabilities",
+    "joint_prediction_species_accuracy": 0.9666666388511658,
+    "joint_prediction_condition_accuracy": 0.8999999761581421,
+    "class_names": [
+      "cucumber_fresh",
+      "cucumber_rotten",
+      "potato_fresh",
+      "potato_rotten",
+      "tomato_fresh",
+      "tomato_rotten"
+    ],
+    "confusion_matrix_orientation": "rows=true, columns=predicted",
+    "confusion_matrix": [
+      [
+        19,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        4,
+        15,
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        15,
+        5,
+        0,
+        0
+      ],
+      [
+        0,
+        2,
+        1,
+        17,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        0,
+        19,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        1,
+        19
+      ]
+    ],
+    "per_class": {
+      "cucumber_fresh": {
+        "precision": 0.7916666666666666,
+        "recall": 0.95,
+        "f1": 0.8636363636363635,
+        "support": 20
+      },
+      "cucumber_rotten": {
+        "precision": 0.8333333333333334,
+        "recall": 0.75,
+        "f1": 0.7894736842105262,
+        "support": 20
+      },
+      "potato_fresh": {
+        "precision": 0.9375,
+        "recall": 0.75,
+        "f1": 0.8333333333333334,
+        "support": 20
+      },
+      "potato_rotten": {
+        "precision": 0.7391304347826086,
+        "recall": 0.85,
+        "f1": 0.7906976744186046,
+        "support": 20
+      },
+      "tomato_fresh": {
+        "precision": 0.95,
+        "recall": 0.95,
+        "f1": 0.9500000000000001,
+        "support": 20
+      },
+      "tomato_rotten": {
+        "precision": 1.0,
+        "recall": 0.95,
+        "f1": 0.9743589743589743,
+        "support": 20
+      }
+    },
+    "scores_are_calibrated": false
+  },
+  "training_verification": {
+    "classifier_parameter_delta_l2": 2.6925485134124756,
+    "classifier_parameter_delta_max_abs": 0.19964417815208435,
+    "classifier_changed": true,
+    "classifier_sha256_initial": "f2e3829eceb495228255c54397376c0fba6bd4a08819b9321a8171e6aa4290a1",
+    "classifier_sha256_final": "afa4d56f4e2b356270918dc8d938b0161a8280590822cf7e3c0c5caa53cd22b4",
+    "frozen_backbone_sha256_initial": "f5d134da30e02282b812f919c60132fd325ad294e08ddf3dbd12b38f07ff7ce8",
+    "frozen_backbone_sha256_final": "f5d134da30e02282b812f919c60132fd325ad294e08ddf3dbd12b38f07ff7ce8",
+    "frozen_backbone_unchanged": true,
+    "trainable_parameter_count": 3078
+  },
+  "hyperparameters": {
+    "optimizer": "Adam",
+    "lr": 0.005,
+    "weight_decay": 0.0001,
+    "batch_size": 16,
+    "max_epochs": 100,
+    "early_stopping_patience": 15,
+    "selection_metric": "validation_cross_entropy",
+    "threads": 6,
+    "device": "cpu",
+    "num_workers": 0,
+    "augmentation": "none; deterministic features extracted once"
+  },
+  "initial_validation": {
+    "loss": 2.048574924468994,
+    "accuracy": 0.1666666716337204
+  },
+  "pretrained_source": "/workspace/scratch/8bb740a087c7/vegetable_training/pretrained/resnet18-f37072fd.pth",
+  "runtime": {
+    "torch_version": "2.8.0+cpu"
+  },
+  "timing_seconds": {
+    "feature_extraction": 13.663051863999954,
+    "total": 13.969700686999886
+  }
+}

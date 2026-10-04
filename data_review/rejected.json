@@ -1,0 +1,807 @@
+[
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/FreshCucumber/freshCucumber (272).jpg",
+    "reason": "visual_review: 한 장에 오이와 레몬이 함께 크게 나타남. 한 종류 중심의 분류 평가를 위해 제외 권고."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/FreshCucumber/freshCucumber (280).JPG",
+    "reason": "visual_review: 종류 불확실: 긴 가시가 난 야생 박과 열매 사진. 일반 식용 오이 클래스에 적합한지 확인할 근거가 없어 제외 권고. 원본 확인."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/FreshCucumber/freshCucumber (489).jpg",
+    "reason": "identical_decoded_pixels",
+    "same_as": "Fruits_Vegetables_Dataset(12000)/Vegetables/FreshCucumber/freshCucumber (457).jpg"
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/FreshCucumber/freshCucumber (523).jpg",
+    "reason": "identical_decoded_pixels",
+    "same_as": "Fruits_Vegetables_Dataset(12000)/Vegetables/FreshCucumber/freshCucumber (460).jpg"
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/FreshPotato/freshPotato (18).jpg",
+    "reason": "visual_review: 조리·플레이팅된 감자로 보이며 생채소 정상 상태 학습 범위와 불일치; 원본 확인"
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/FreshPotato/freshPotato (21).jpg",
+    "reason": "visual_review: 분홍색 싹이 명확히 보임. RottenPotato/source_0300.jpg와 동일 사진으로 보이는 교차 상태 라벨 충돌; 정상에서 제외"
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/FreshPotato/freshPotato (40).jpg",
+    "reason": "visual_review: 조리·플레이팅된 감자로 보이며 생채소 정상 상태 학습 범위와 불일치; 원본 확인"
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/FreshPotato/freshPotato (566).jpg",
+    "reason": "identical_decoded_pixels",
+    "same_as": "Fruits_Vegetables_Dataset(12000)/Vegetables/FreshPotato/freshPotato (11).jpg"
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/FreshPotato/freshPotato (568).jpg",
+    "reason": "identical_decoded_pixels",
+    "same_as": "Fruits_Vegetables_Dataset(12000)/Vegetables/FreshPotato/freshPotato (13).jpg"
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/FreshPotato/freshPotato (575).jpg",
+    "reason": "visual_review: 고구마 등 다른 덩이뿌리와 혼동되는 형태로 감자 종류 라벨을 확신하기 어려움; 원본에서 재확인 필요"
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/FreshPotato/freshPotato (578).jpg",
+    "reason": "visual_review: 감자와 타 작물로 보이는 서로 다른 형태를 합성 비교한 이미지. 단일 감자 종류/정상 라벨 부적합"
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/FreshPotato/freshPotato (7).jpg",
+    "reason": "visual_review: 조리·플레이팅된 감자로 보이며 생채소 정상 상태 학습 범위와 불일치; 원본 확인"
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/FreshTomato/freshTomato (68).jpg",
+    "reason": "identical_decoded_pixels",
+    "same_as": "Fruits_Vegetables_Dataset(12000)/Vegetables/FreshTomato/freshTomato (150).jpg"
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/FreshTomato/freshTomato (70).jpg",
+    "reason": "visual_review: 정상 상태 라벨 오류: 원본에 속이 드러날 정도로 크게 갈라진 생장 중 토마토가 있음. 정상 전용 학습에서는 제외하고, 별도 재라벨링 시 손상/생장 토마토로 사용 가능."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (1).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (101).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (103).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (106).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (108).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (11).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (110).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (113).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (115).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (117).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (120).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (122).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (127).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (129).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (13).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (132).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (134).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (137).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (139).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (141).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (144).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (146).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (148).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (15).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (151).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (153).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (156).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (158).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (160).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (177).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (179).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (18).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (182).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (184).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (186).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (189).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (191).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (194).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (196).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (198).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (20).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (201).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (203).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (205).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (208).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (210).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (213).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (215).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (217).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (22).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (220).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (222).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (224).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (227).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (229).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (232).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (234).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (236).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (239).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (241).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (244).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (246).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (248).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (25).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (251).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (253).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (255).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (258).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (260).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (27).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (279).jpg",
+    "reason": "visual_review: 상태 라벨 불확실: 절단면 또는 온전한 녹색 오이는 보이나 명백한 부패 흔적을 확인할 수 없음. 썰림 자체를 부패로 보아서는 안 됨. 신선/부패 5:5 구성에서는 제외 권고."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (298).jpg",
+    "reason": "visual_review: 여러 상태 또는 처리조건의 오이가 한 장에 비교된 연구용 합성 패널. 한 가지 부패 라벨을 전체에 부여하기 모호하고 문자/패널 형식이 단서가 될 수 있음."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (3).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (30).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (305).jpg",
+    "reason": "visual_review: 상태 라벨 불확실: 절단면 또는 온전한 녹색 오이는 보이나 명백한 부패 흔적을 확인할 수 없음. 썰림 자체를 부패로 보아서는 안 됨. 신선/부패 5:5 구성에서는 제외 권고."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (310).jpg",
+    "reason": "visual_review: 여러 상태 또는 처리조건의 오이가 한 장에 비교된 연구용 합성 패널. 한 가지 부패 라벨을 전체에 부여하기 모호하고 문자/패널 형식이 단서가 될 수 있음."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (32).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (331).jpg",
+    "reason": "visual_review: 상태 라벨 불확실: 절단면 또는 온전한 녹색 오이는 보이나 명백한 부패 흔적을 확인할 수 없음. 썰림 자체를 부패로 보아서는 안 됨. 신선/부패 5:5 구성에서는 제외 권고."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (334).jpg",
+    "reason": "visual_review: 상태 라벨 불확실: 절단면 또는 온전한 녹색 오이는 보이나 명백한 부패 흔적을 확인할 수 없음. 썰림 자체를 부패로 보아서는 안 됨. 신선/부패 5:5 구성에서는 제외 권고."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (34).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (341).jpg",
+    "reason": "visual_review: 상태 라벨 불확실: 절단면 또는 온전한 녹색 오이는 보이나 명백한 부패 흔적을 확인할 수 없음. 썰림 자체를 부패로 보아서는 안 됨. 신선/부패 5:5 구성에서는 제외 권고."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (348).jpg",
+    "reason": "visual_review: 상태 라벨 불확실: 절단면 또는 온전한 녹색 오이는 보이나 명백한 부패 흔적을 확인할 수 없음. 썰림 자체를 부패로 보아서는 안 됨. 신선/부패 5:5 구성에서는 제외 권고."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (350).jpg",
+    "reason": "visual_review: 오이 위에 BAD라는 큰 메모가 있어 라벨 단서 누출 위험. 부패 부분은 보이지만 문자 shortcut 방지를 위해 제외 권고. 원본 확인."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (353).jpg",
+    "reason": "visual_review: 상태 라벨 불확실: 절단면 또는 온전한 녹색 오이는 보이나 명백한 부패 흔적을 확인할 수 없음. 썰림 자체를 부패로 보아서는 안 됨. 신선/부패 5:5 구성에서는 제외 권고."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (355).jpg",
+    "reason": "visual_review: 상태 라벨 불확실: 녹색·노란색 오이를 나열한 사진으로 과숙/품종차이와 부패를 구별할 수 없음."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (37).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (39).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (41).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (44).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (498).jpg",
+    "reason": "visual_review: 상태 라벨 불확실: 절단면 또는 온전한 녹색 오이는 보이나 명백한 부패 흔적을 확인할 수 없음. 썰림 자체를 부패로 보아서는 안 됨. 신선/부패 5:5 구성에서는 제외 권고."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (500).jpg",
+    "reason": "visual_review: 상태 라벨 불확실: 절단면 또는 온전한 녹색 오이는 보이나 명백한 부패 흔적을 확인할 수 없음. 썰림 자체를 부패로 보아서는 안 됨. 신선/부패 5:5 구성에서는 제외 권고."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (503).jpg",
+    "reason": "visual_review: 절인 오이/피클로 보이는 조각 사진. 부패 라벨의 근거가 불명확하여 제외 권고. 원본 확인."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (505).jpg",
+    "reason": "visual_review: 상태 라벨 불확실: 절단면 또는 온전한 녹색 오이는 보이나 명백한 부패 흔적을 확인할 수 없음. 썰림 자체를 부패로 보아서는 안 됨. 신선/부패 5:5 구성에서는 제외 권고."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (507).jpg",
+    "reason": "visual_review: 상태 라벨 불확실: 절단면 또는 온전한 녹색 오이는 보이나 명백한 부패 흔적을 확인할 수 없음. 썰림 자체를 부패로 보아서는 안 됨. 신선/부패 5:5 구성에서는 제외 권고."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (51).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (512).jpg",
+    "reason": "visual_review: 오이와 당근이 한 화면에 크게 섞여 있고 흰 흔적이 곰팡이인지 서리인지 사진만으로 확정하기 어려움. 원본 확인."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (519).jpg",
+    "reason": "visual_review: 상태 라벨 불확실: 절단면 또는 온전한 녹색 오이는 보이나 명백한 부패 흔적을 확인할 수 없음. 썰림 자체를 부패로 보아서는 안 됨. 신선/부패 5:5 구성에서는 제외 권고."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (522).jpg",
+    "reason": "visual_review: 상태 라벨 불확실: 절단면 또는 온전한 녹색 오이는 보이나 명백한 부패 흔적을 확인할 수 없음. 썰림 자체를 부패로 보아서는 안 됨. 신선/부패 5:5 구성에서는 제외 권고."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (524).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (526).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (529).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (53).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (531).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (534).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (536).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (538).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (541).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (543).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (545).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (548).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (550).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (553).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (555).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (557).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (56).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (560).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (562).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (564).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (567).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (569).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (572).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (574).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (576).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (579).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (58).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (581).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (583).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (586).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (588).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (591).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (593).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (6).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (60).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (63).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (65).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (68).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (70).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (72).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (75).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (77).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (79).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (8).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (82).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (84).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (87).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (89).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (91).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (94).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (96).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (98).jpg",
+    "reason": "visual_review: 상태 라벨 검증 필요: 흰 배경 갈색 꼬부랑 반복 객체군. 갈색·그물무늬 표면만으로 실제 부패와 과숙/품종차이를 확정할 수 없음. strict Fresh/Rotten 균형 세트의 제외 후보이며, 채소 종류 분류만을 위한 외형변화 자료로 보존할지는 별도 결정."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (123).jpg",
+    "reason": "visual_review: 문구·패널이 포함된 설명용 합성/비교 자료. 실제 촬영 단일 사진 분류와 형식 차이가 크므로 제외"
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (142).jpg",
+    "reason": "visual_review: 포장·봉지로 가린 감자 사진이며 비정상 상태를 명확히 확인하기 어려움; 원본 확인"
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (149).jpg",
+    "reason": "visual_review: 양파 껍질 등 여러 음식물 조각이 중심인 사진으로 감자 단독 종류/상태 식별이 어려움; 원본 확인"
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (156).jpg",
+    "reason": "visual_review: 비정상으로 판단할 뚜렷한 시각적 근거가 부족하거나 흙/껍질과 구분이 어려움. 정상이라고 단정하지 않고 상태 라벨 불확실로 제외; 원본 확인"
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (173).jpg",
+    "reason": "visual_review: 손에 든 작은 채소 부분의 형태만 보여 감자 종류 라벨을 확신하기 어려움; 원본 확인"
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (210).jpg",
+    "reason": "visual_review: 비정상으로 판단할 뚜렷한 시각적 근거가 부족하거나 흙/껍질과 구분이 어려움. 정상이라고 단정하지 않고 상태 라벨 불확실로 제외; 원본 확인"
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (212).jpg",
+    "reason": "visual_review: 비정상으로 판단할 뚜렷한 시각적 근거가 부족하거나 흙/껍질과 구분이 어려움. 정상이라고 단정하지 않고 상태 라벨 불확실로 제외; 원본 확인"
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (219).jpg",
+    "reason": "visual_review: 문구·패널이 포함된 설명용 합성/비교 자료. 실제 촬영 단일 사진 분류와 형식 차이가 크므로 제외"
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (231).jpg",
+    "reason": "visual_review: 비정상으로 판단할 뚜렷한 시각적 근거가 부족하거나 흙/껍질과 구분이 어려움. 정상이라고 단정하지 않고 상태 라벨 불확실로 제외; 원본 확인"
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (252).jpg",
+    "reason": "visual_review: 문구·패널이 포함된 설명용 합성/비교 자료. 실제 촬영 단일 사진 분류와 형식 차이가 크므로 제외"
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (259).jpg",
+    "reason": "visual_review: 문구·패널이 포함된 설명용 합성/비교 자료. 실제 촬영 단일 사진 분류와 형식 차이가 크므로 제외"
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (264).jpg",
+    "reason": "visual_review: 문구·패널이 포함된 설명용 합성/비교 자료. 실제 촬영 단일 사진 분류와 형식 차이가 크므로 제외"
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (269).jpg",
+    "reason": "visual_review: 문구·패널이 포함된 설명용 합성/비교 자료. 실제 촬영 단일 사진 분류와 형식 차이가 크므로 제외"
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (271).jpg",
+    "reason": "visual_review: 비정상으로 판단할 뚜렷한 시각적 근거가 부족하거나 흙/껍질과 구분이 어려움. 정상이라고 단정하지 않고 상태 라벨 불확실로 제외; 원본 확인"
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (290).jpg",
+    "reason": "visual_review: 문구·패널이 포함된 설명용 합성/비교 자료. 실제 촬영 단일 사진 분류와 형식 차이가 크므로 제외"
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (334).jpg",
+    "reason": "visual_review: 비정상으로 판단할 뚜렷한 시각적 근거가 부족하거나 흙/껍질과 구분이 어려움. 정상이라고 단정하지 않고 상태 라벨 불확실로 제외; 원본 확인"
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (341).jpg",
+    "reason": "visual_review: 비정상으로 판단할 뚜렷한 시각적 근거가 부족하거나 흙/껍질과 구분이 어려움. 정상이라고 단정하지 않고 상태 라벨 불확실로 제외; 원본 확인"
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (348).jpg",
+    "reason": "visual_review: 비정상으로 판단할 뚜렷한 시각적 근거가 부족하거나 흙/껍질과 구분이 어려움. 정상이라고 단정하지 않고 상태 라벨 불확실로 제외; 원본 확인"
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (377).jpg",
+    "reason": "visual_review: ROTTEN POTATO 문구와 인위적 배경을 합성한 그래픽. 문구 등 분류 지름길 위험으로 제외"
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (395).jpg",
+    "reason": "visual_review: 비정상으로 판단할 뚜렷한 시각적 근거가 부족하거나 흙/껍질과 구분이 어려움. 정상이라고 단정하지 않고 상태 라벨 불확실로 제외; 원본 확인"
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (398).jpg",
+    "reason": "visual_review: 버터를 얹은 조리된 감자 사진으로 생채소의 비정상 상태 라벨 부적합; 원본 확인"
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (400).jpg",
+    "reason": "visual_review: 포장·봉지로 가린 감자 사진이며 비정상 상태를 명확히 확인하기 어려움; 원본 확인"
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (442).jpg",
+    "reason": "visual_review: 비정상으로 판단할 뚜렷한 시각적 근거가 부족하거나 흙/껍질과 구분이 어려움. 정상이라고 단정하지 않고 상태 라벨 불확실로 제외; 원본 확인"
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (492).jpg",
+    "reason": "identical_decoded_pixels",
+    "same_as": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (416).jpg"
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (494).jpg",
+    "reason": "identical_decoded_pixels",
+    "same_as": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (391).jpg"
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (496).jpg",
+    "reason": "identical_decoded_pixels",
+    "same_as": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (393).jpg"
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (581).jpg",
+    "reason": "visual_review: 비정상으로 판단할 뚜렷한 시각적 근거가 부족하거나 흙/껍질과 구분이 어려움. 정상이라고 단정하지 않고 상태 라벨 불확실로 제외; 원본 확인"
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (67).jpg",
+    "reason": "visual_review: 문구·패널이 포함된 설명용 합성/비교 자료. 실제 촬영 단일 사진 분류와 형식 차이가 크므로 제외"
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenTomato/rottenTomato (118).jpg",
+    "reason": "visual_review: 종류 오류 의심이 매우 큼: 원본의 넓고 짧은 꽃받침과 네모난 여러 갈래 몸통이 쭈글해진 빨간 피망/파프리카에 해당. 토마토 학습 후보에서 제외 권고."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenTomato/rottenTomato (121).jpg",
+    "reason": "visual_review: 엄격한 라벨 기준 추가 제외: 원본이 매우 낮은 해상도의 주황색 부패 과실이라 토마토인지 다른 과실인지 확실하게 판독하기 어려움."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenTomato/rottenTomato (13).jpg",
+    "reason": "visual_review: 상태 라벨 모호: 검은색 품종 토마토로 보이고 표면에 뚜렷한 부패/물리적 손상이 보이지 않음. 색깔만으로 Rotten으로 분류하면 안 됨."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenTomato/rottenTomato (20).jpg",
+    "reason": "visual_review: 상태 혼합 비교 이미지: 정상 토마토와 부패 토마토가 나란히 있어 이미지 단위 Rotten 상태를 명확히 부여하기 어려움. 종류 분류 자체에는 사용 가능하나 상태별 실험/평가에서는 제외 권고."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenTomato/rottenTomato (264).jpg",
+    "reason": "identical_decoded_pixels",
+    "same_as": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenTomato/rottenTomato (262).jpg"
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenTomato/rottenTomato (52).jpg",
+    "reason": "visual_review: 상태 혼합 비교 이미지: 정상 토마토와 부패 토마토가 나란히 있어 이미지 단위 Rotten 상태를 명확히 부여하기 어려움. 종류 분류 자체에는 사용 가능하나 상태별 실험/평가에서는 제외 권고."
+  },
+  {
+    "archive_path": "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenTomato/rottenTomato (75).jpg",
+    "reason": "visual_review: 명백한 종류 오류: 원본은 긴 가는 줄기가 달린 노랑·붉은 체리 사진이며 토마토가 아님."
+  }
+]
