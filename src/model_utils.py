@@ -39,7 +39,7 @@ ARCHITECTURES = {
     "efficientnet_b0": (efficientnet_b0, EfficientNet_B0_Weights.IMAGENET1K_V1,
                         "efficientnet_b0_rwightman-7f5810bc.pth", ("classifier", "1")),
 }
-PRETRAINED_DIR = Path(__file__).resolve().parent / "pretrained"
+PRETRAINED_DIR = Path(__file__).resolve().parent.parent / "pretrained"  # <repo>/pretrained
 
 
 def set_seed(seed: int = 42, threads: int = 6) -> None:

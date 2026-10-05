@@ -4,8 +4,8 @@ Inputs
   --src1         folder holding "Fruits_Vegetables_Dataset(12000)" (Kaggle muhriddinmuxiddinov, v2)
   --src2         folder holding "dataset/Train|Test/<freshcucumber|rottencucumber>" (Kaggle swoyam2609, v1)
   --v1-manifest  the 1st-round manifest.csv  (git show 03db425:manifest.csv > v1_manifest.csv)
-  --review       data_review/v2_visual_review.json   (human visual-review decisions)
-  --removed      data_review/v2_removed_from_v1.json (label-recheck removals)
+  --review       dataset/review/v2_visual_review.json   (human visual-review decisions)
+  --removed      dataset/review/v2_removed_from_v1.json (label-recheck removals)
 
 Steps
   1. candidates = v1 photos (minus label-recheck removals) + photos that passed visual review
@@ -14,7 +14,7 @@ Steps
   3. photo-session groups (looser cosine); big sessions never go to val/test
   4. per class: val/test 30 each from small groups, train 140 trimmed from the largest sessions,
      the mixed fresh/rotten tomato session balanced in train
-  5. write images/ and manifest.csv to --out
+  5. write <train|valid|test>/<P_fresh|N_rotten>/ photos and manifest.csv to --out
 """
 
 from __future__ import annotations
@@ -43,6 +43,9 @@ SOURCES = {"muhriddinmuxiddinov": ("https://www.kaggle.com/datasets/muhriddinmux
            "swoyam2609": ("https://www.kaggle.com/datasets/swoyam2609/fresh-and-stale-classification", "1")}
 QUOTA = {"train": 140, "val": 30, "test": 30}
 T_DUP, T_SESSION, BIG_SESSION, EVAL_SESSION_CAP = 0.92, 0.90, 30, 10
+# Photo folders follow the Train/Valid/Test x P/N table (P = fresh, N = rotten); manifest split values stay train/val/test.
+SPLIT_DIRS = {"train": "train", "val": "valid", "test": "test"}
+CONDITION_DIRS = {"fresh": "P_fresh", "rotten": "N_rotten"}
 
 
 def load_rgb(path):
@@ -294,7 +297,7 @@ def write_dataset(nodes, split, dup, ses, out: Path):
         else:
             image_id, next_id = f"{c}_{next_id:04d}", next_id + 1
             ext = ".png" if n["source"] == "swoyam2609" else Path(n["archive_path"]).suffix.lower()
-        dst = out / "images" / c / f"{image_id}{ext}"
+        dst = out / SPLIT_DIRS[split[i]] / CONDITION_DIRS[c.split("_")[1]] / f"{image_id}{ext}"
         dst.parent.mkdir(parents=True, exist_ok=True)
         if n["source"] == "swoyam2609":
             n["image"].save(dst)
@@ -325,8 +328,8 @@ def main():
     parser.add_argument("--src1", type=Path, required=True)
     parser.add_argument("--src2", type=Path, required=True)
     parser.add_argument("--v1-manifest", type=Path, required=True)
-    parser.add_argument("--review", type=Path, default=Path("data_review/v2_visual_review.json"))
-    parser.add_argument("--removed", type=Path, default=Path("data_review/v2_removed_from_v1.json"))
+    parser.add_argument("--review", type=Path, default=Path("dataset/review/v2_visual_review.json"))
+    parser.add_argument("--removed", type=Path, default=Path("dataset/review/v2_removed_from_v1.json"))
     parser.add_argument("--out", type=Path, required=True)
     args = parser.parse_args()
     torch.set_num_threads(4)

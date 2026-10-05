@@ -2,6 +2,31 @@
 
 사진 한 장을 보고 채소 종류(오이·감자·토마토)와 상태(정상·비정상)를 함께 맞히는 6개 클래스 데이터셋이다. 모든 분할에서 정상:비정상은 5:5이고, 클래스마다 Train 140 / Valid 30 / Test 30장이다.
 
+## 폴더 구성
+
+사진은 아래 구성표와 같은 모양으로, 분할(Train·Valid·Test)과 상태(P 정상·N 비정상)별 폴더에 나눠 두었다.
+
+```
+dataset/
+├── train/
+│   ├── P_fresh/     정상 420장
+│   └── N_rotten/    비정상 420장
+├── valid/
+│   ├── P_fresh/     정상 90장
+│   └── N_rotten/    비정상 90장
+├── test/
+│   ├── P_fresh/     정상 90장
+│   └── N_rotten/    비정상 90장
+├── manifest.csv     사진마다 분할·클래스·그룹·출처·해시
+├── data_counts.csv, data_summary.json, source_metadata.json
+├── review/          눈 검수 기록
+└── tools/           두 Kaggle 원본으로 이 폴더를 다시 만드는 스크립트
+```
+
+- **채소 종류:** 파일 이름 앞부분에 있다(예: `tomato_rotten_1201.jpg`). 한 폴더 안에서 오이·감자·토마토 순으로 정렬된다.
+- **manifest.csv의 경로:** `image_path`는 이 `dataset/` 폴더 기준이다(예: `test/N_rotten/tomato_rotten_1201.jpg`).
+- **분할 이름:** manifest의 `split` 값은 `train`·`val`·`test`이고, Valid 폴더 이름만 `valid`다.
+
 ## 구성표
 
 | 구분 | Train | Valid | Test | 합계 |
@@ -41,7 +66,7 @@
 4. **중복·장면 그룹 만들기:** 같은 사진의 복사본(반전·회전·잘라내기·워터마크만 다른 것)은 한 그룹으로 묶어서 서로 다른 분할에 들어가지 않게 했다.
 5. **분할:** 클래스마다 Valid·Test 30장씩은 서로 다른 작은 그룹에서 뽑았다. 나머지에서 Train 140장을 채우되, 같은 촬영 세션 사진이 많으면 그 세션부터 줄였다.
 
-최종 1,200장 중 519장은 1차 데이터에서 그대로 왔고, 681장은 새로 추가했다. 1차 사진 중 81장이 빠졌는데, 라벨 오류 4장과 세션 과다 정리 77장이다. 사진별 사유는 `data_review/v2_removed_from_v1.json`에 있다.
+최종 1,200장 중 519장은 1차 데이터에서 그대로 왔고, 681장은 새로 추가했다. 1차 사진 중 81장이 빠졌는데, 라벨 오류 4장과 세션 과다 정리 77장이다. 사진별 사유는 `review/v2_removed_from_v1.json`에 있다. 이 파일의 `image_path`는 1차 때의 경로다.
 
 ## 검수 기준
 
@@ -49,7 +74,7 @@
 - **정상에서 제외:** 싹이 난 감자, 껍질이 초록색으로 변한 감자, 벌레 구멍이나 갈라짐이 있는 토마토
 - **비정상 통과 조건:** 곰팡이·무름·갈변·주름(시듦)·병반·싹(감자) 같은 흔적이 사진에서 분명히 보일 것. 단순히 노랗게 익은 오이, 피클 병, 썰어 놓은 정상 오이는 제외
 
-사진별 통과·제외 기록은 `data_review/v2_visual_review.json`에 있다.
+사진별 통과·제외 기록은 `review/v2_visual_review.json`에 있다.
 
 ## 같은 사진이 Train과 Test에 섞이지 않게 한 방법
 
@@ -77,4 +102,4 @@
 
 ## 다시 만들기
 
-`dataset_tools/build_dataset_v2.py`로 두 Kaggle 원본과 검수 기록에서 같은 데이터셋을 다시 만들 수 있다. 사용법은 `dataset_tools/README.md`에 있다.
+`tools/build_dataset_v2.py`로 두 Kaggle 원본과 검수 기록에서 같은 데이터셋을 같은 폴더 구성으로 다시 만들 수 있다. 사용법은 `tools/README.md`에 있다.
