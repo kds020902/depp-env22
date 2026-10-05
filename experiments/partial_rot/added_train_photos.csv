@@ -1,0 +1,133 @@
+class_name,source_dataset,source_archive_path,preprocessing
+tomato_rotten,swoyam2609,dataset/Train/rottentomato/t_r060.png,inscribed_crop+trim_padding
+tomato_rotten,swoyam2609,dataset/Train/rottentomato/t_r037.png,inscribed_crop+trim_padding
+tomato_rotten,swoyam2609,dataset/Train/rottentomato/t_r040.png,inscribed_crop+trim_padding
+tomato_rotten,swoyam2609,dataset/Train/rottentomato/Copy of IMG_20200802_134636.jpg_0_3112.jpg,inscribed_crop+trim_padding
+tomato_rotten,swoyam2609,dataset/Train/rottentomato/t_r348.png,inscribed_crop+trim_padding
+tomato_rotten,swoyam2609,dataset/Train/rottentomato/Copy of IMG_20200729_164157.jpg_0_1115.jpg,inscribed_crop+trim_padding
+tomato_rotten,swoyam2609,dataset/Train/rottentomato/t_r109.png,inscribed_crop+trim_padding
+tomato_rotten,swoyam2609,dataset/Train/rottentomato/DSCN4239.jpg_0_1314.jpg,inscribed_crop+trim_padding
+tomato_rotten,swoyam2609,dataset/Train/rottentomato/t_r361.png,inscribed_crop+trim_padding
+tomato_rotten,swoyam2609,dataset/Train/rottentomato/t_r011.png,inscribed_crop+trim_padding
+tomato_rotten,swoyam2609,dataset/Train/rottentomato/t_r338.png,inscribed_crop+trim_padding
+tomato_rotten,swoyam2609,dataset/Train/rottentomato/t_r422.png,inscribed_crop+trim_padding
+tomato_rotten,swoyam2609,dataset/Train/rottentomato/t_r234.png,inscribed_crop+trim_padding
+tomato_rotten,swoyam2609,dataset/Train/rottentomato/t_r357.png,inscribed_crop+trim_padding
+tomato_rotten,swoyam2609,dataset/Train/rottentomato/t_r341.png,inscribed_crop+trim_padding
+tomato_rotten,swoyam2609,dataset/Train/rottentomato/t_r080.png,inscribed_crop+trim_padding
+tomato_rotten,swoyam2609,dataset/Train/rottentomato/t_r433.png,inscribed_crop+trim_padding
+tomato_rotten,swoyam2609,dataset/Train/rottentomato/t_r146.png,inscribed_crop+trim_padding
+tomato_rotten,swoyam2609,dataset/Train/rottentomato/t_r003.png,inscribed_crop+trim_padding
+tomato_rotten,swoyam2609,dataset/Train/rottentomato/t_r023.png,inscribed_crop+trim_padding
+tomato_rotten,swoyam2609,dataset/Train/rottentomato/t_r467.png,inscribed_crop+trim_padding
+tomato_rotten,swoyam2609,dataset/Train/rottentomato/t_r450.png,inscribed_crop+trim_padding
+tomato_rotten,swoyam2609,dataset/Train/rottentomato/t_r441.png,inscribed_crop+trim_padding
+tomato_rotten,swoyam2609,dataset/Train/rottentomato/t_r185.png,inscribed_crop+trim_padding
+tomato_rotten,swoyam2609,dataset/Train/rottentomato/t_r047.png,inscribed_crop+trim_padding
+tomato_fresh,swoyam2609,dataset/Train/freshtomato/t_f461.png,inscribed_crop+trim_padding
+tomato_fresh,swoyam2609,dataset/Train/freshtomato/t_f195.png,inscribed_crop+trim_padding
+tomato_fresh,swoyam2609,dataset/Train/freshtomato/t_f771.png,inscribed_crop+trim_padding
+tomato_fresh,swoyam2609,dataset/Train/freshtomato/t_f236.png,inscribed_crop+trim_padding
+tomato_fresh,swoyam2609,dataset/Train/freshtomato/t_f385.png,inscribed_crop+trim_padding
+tomato_fresh,swoyam2609,dataset/Train/freshtomato/t_f430.png,inscribed_crop+trim_padding
+tomato_fresh,swoyam2609,dataset/Train/freshtomato/t_f528.png,inscribed_crop+trim_padding
+tomato_fresh,swoyam2609,dataset/Train/freshtomato/t_f031.png,inscribed_crop+trim_padding
+tomato_fresh,swoyam2609,dataset/Train/freshtomato/t_f281.png,inscribed_crop+trim_padding
+tomato_fresh,swoyam2609,dataset/Train/freshtomato/t_f312.png,inscribed_crop+trim_padding
+tomato_fresh,swoyam2609,dataset/Train/freshtomato/t_f328.png,inscribed_crop+trim_padding
+tomato_fresh,swoyam2609,dataset/Train/freshtomato/IMG_20200725_095424.jpg_0_3351.jpg,inscribed_crop+trim_padding
+tomato_fresh,swoyam2609,dataset/Train/freshtomato/t_f163.png,inscribed_crop+trim_padding
+tomato_fresh,swoyam2609,dataset/Train/freshtomato/t_f117.png,inscribed_crop+trim_padding
+tomato_fresh,swoyam2609,dataset/Train/freshtomato/t_f103.png,inscribed_crop+trim_padding
+tomato_fresh,swoyam2609,dataset/Train/freshtomato/t_f188.png,inscribed_crop+trim_padding
+tomato_fresh,swoyam2609,dataset/Train/freshtomato/t_f091.png,inscribed_crop+trim_padding
+tomato_fresh,swoyam2609,dataset/Train/freshtomato/t_f440.png,inscribed_crop+trim_padding
+tomato_fresh,swoyam2609,dataset/Train/freshtomato/t_f377.png,inscribed_crop+trim_padding
+tomato_fresh,swoyam2609,dataset/Train/freshtomato/t_f046.png,inscribed_crop+trim_padding
+tomato_fresh,swoyam2609,dataset/Train/freshtomato/t_f841.png,inscribed_crop+trim_padding
+tomato_fresh,swoyam2609,dataset/Train/freshtomato/t_f613.png,inscribed_crop+trim_padding
+tomato_fresh,swoyam2609,dataset/Train/freshtomato/t_f437.png,inscribed_crop+trim_padding
+tomato_fresh,swoyam2609,dataset/Train/freshtomato/t_f673.png,inscribed_crop+trim_padding
+tomato_fresh,swoyam2609,dataset/Train/freshtomato/t_f234.png,inscribed_crop+trim_padding
+cucumber_rotten,swoyam2609,dataset/Test/rottencucumber/c_r037.png,frame_cropped
+cucumber_rotten,swoyam2609,dataset/Train/rottencucumber/c_r029.png,frame_cropped
+cucumber_rotten,swoyam2609,dataset/Train/rottencucumber/c_r018.png,frame_cropped
+cucumber_rotten,swoyam2609,dataset/Train/rottencucumber/c_r086.png,frame_cropped
+cucumber_rotten,swoyam2609,dataset/Train/rottencucumber/c_r269.png,frame_cropped
+cucumber_rotten,swoyam2609,dataset/Train/rottencucumber/c_r327.png,frame_cropped
+cucumber_rotten,swoyam2609,dataset/Train/rottencucumber/c_r273.png,frame_cropped
+cucumber_rotten,swoyam2609,dataset/Train/rottencucumber/c_r355.png,frame_cropped
+cucumber_rotten,swoyam2609,dataset/Train/rottencucumber/c_r356.png,frame_cropped
+cucumber_rotten,swoyam2609,dataset/Train/rottencucumber/c_r325.png,frame_cropped
+cucumber_rotten,swoyam2609,dataset/Test/rottencucumber/c_r251.png,frame_cropped
+cucumber_rotten,swoyam2609,dataset/Train/rottencucumber/c_r353.png,frame_cropped
+cucumber_rotten,swoyam2609,dataset/Train/rottencucumber/c_r120.png,frame_cropped
+cucumber_rotten,swoyam2609,dataset/Train/rottencucumber/c_r363.png,frame_cropped
+cucumber_rotten,swoyam2609,dataset/Train/rottencucumber/c_r343.png,frame_cropped
+cucumber_rotten,swoyam2609,dataset/Train/rottencucumber/c_r364.png,frame_cropped
+cucumber_rotten,swoyam2609,dataset/Train/rottencucumber/c_r383.png,frame_cropped
+cucumber_fresh,swoyam2609,dataset/Train/freshcucumber/c_f146.png,frame_cropped
+cucumber_fresh,swoyam2609,dataset/Test/freshcucumber/c_f010.png,frame_cropped
+cucumber_fresh,swoyam2609,dataset/Test/freshcucumber/c_f126.png,frame_cropped
+cucumber_fresh,swoyam2609,dataset/Train/freshcucumber/c_f178.png,frame_cropped
+cucumber_fresh,swoyam2609,dataset/Train/freshcucumber/c_f123.png,frame_cropped
+cucumber_fresh,swoyam2609,dataset/Test/freshcucumber/c_f255.png,frame_cropped
+cucumber_fresh,swoyam2609,dataset/Test/freshcucumber/c_f014.png,frame_cropped
+cucumber_fresh,swoyam2609,dataset/Test/freshcucumber/c_f271.png,frame_cropped
+cucumber_fresh,swoyam2609,dataset/Test/freshcucumber/c_f028.png,frame_cropped
+cucumber_fresh,swoyam2609,dataset/Test/freshcucumber/c_f070.png,frame_cropped
+cucumber_fresh,swoyam2609,dataset/Test/freshcucumber/c_f269.png,frame_cropped
+cucumber_fresh,swoyam2609,dataset/Train/freshcucumber/c_f143.png,frame_cropped
+cucumber_fresh,swoyam2609,dataset/Train/freshcucumber/c_f208.png,frame_cropped
+cucumber_fresh,swoyam2609,dataset/Train/freshcucumber/c_f177.png,frame_cropped
+cucumber_fresh,swoyam2609,dataset/Test/freshcucumber/c_f144.png,frame_cropped
+cucumber_fresh,swoyam2609,dataset/Test/freshcucumber/c_f207.png,frame_cropped
+cucumber_fresh,swoyam2609,dataset/Train/freshcucumber/c_f179.png,frame_cropped
+potato_rotten,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (301).jpg,none
+potato_rotten,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (278).jpg,none
+potato_rotten,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (61).jpg,none
+potato_rotten,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (29).jpg,none
+potato_rotten,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (161).jpg,none
+potato_rotten,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (268).jpg,none
+potato_rotten,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (93).jpg,none
+potato_rotten,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (275).jpg,none
+potato_rotten,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (239).jpg,none
+potato_rotten,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (540).jpg,none
+potato_rotten,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (189).jpg,none
+potato_rotten,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (566).jpg,none
+potato_rotten,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (397).jpg,none
+potato_rotten,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (401).jpg,none
+potato_rotten,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (164).jpg,none
+potato_rotten,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (134).jpg,none
+potato_rotten,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (534).jpg,none
+potato_rotten,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (305).jpg,none
+potato_rotten,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (495).jpg,none
+potato_rotten,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (289).jpg,none
+potato_rotten,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (246).jpg,none
+potato_rotten,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (288).jpg,none
+potato_rotten,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (36).jpg,none
+potato_rotten,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (24).jpg,none
+potato_fresh,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/FreshPotato/freshPotato (116).jpg,none
+potato_fresh,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/FreshPotato/freshPotato (59).jpg,none
+potato_fresh,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/FreshPotato/freshPotato (8).jpg,none
+potato_fresh,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/FreshPotato/freshPotato (52).jpg,none
+potato_fresh,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/FreshPotato/freshPotato (19).jpg,none
+potato_fresh,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/FreshPotato/freshPotato (507).jpg,none
+potato_fresh,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/FreshPotato/freshPotato (212).jpg,none
+potato_fresh,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/FreshPotato/freshPotato (582).jpg,none
+potato_fresh,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/FreshPotato/freshPotato (2).jpg,none
+potato_fresh,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/FreshPotato/freshPotato (33).jpg,none
+potato_fresh,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/FreshPotato/freshPotato (56).jpg,none
+potato_fresh,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/FreshPotato/freshPotato (12).jpg,none
+potato_fresh,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/FreshPotato/freshPotato (441).jpg,none
+potato_fresh,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/FreshPotato/freshPotato (140).jpg,none
+potato_fresh,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/FreshPotato/freshPotato (576).jpg,none
+potato_fresh,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/FreshPotato/freshPotato (565).jpg,none
+potato_fresh,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/FreshPotato/freshPotato (113).jpg,none
+potato_fresh,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/FreshPotato/freshPotato (22).jpg,none
+potato_fresh,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/FreshPotato/freshPotato (605).jpg,none
+potato_fresh,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/FreshPotato/freshPotato (3).png,none
+potato_fresh,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/FreshPotato/freshPotato (583).jpg,none
+potato_fresh,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/FreshPotato/freshPotato (564).jpg,none
+potato_fresh,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/FreshPotato/freshPotato (254).jpg,none
+potato_fresh,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/FreshPotato/freshPotato (595).jpg,none

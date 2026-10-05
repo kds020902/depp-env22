@@ -1,0 +1,62 @@
+species,class_name,source_dataset,source_archive_path
+tomato,tomato_rotten,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenTomato/rottenTomato (313).jpg
+tomato,tomato_rotten,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenTomato/rottenTomato (551).jpg
+tomato,tomato_rotten,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenTomato/rottenTomato (576).jpg
+tomato,tomato_rotten,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenTomato/rottenTomato (144).jpg
+tomato,tomato_rotten,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenTomato/rottenTomato (550).jpg
+tomato,tomato_rotten,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenTomato/rottenTomato (421).jpg
+tomato,tomato_rotten,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenTomato/rottenTomato (301).jpg
+tomato,tomato_rotten,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenTomato/rottenTomato (196).jpg
+tomato,tomato_rotten,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenTomato/rottenTomato (295).jpg
+tomato,tomato_rotten,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenTomato/rottenTomato (299).jpg
+tomato,tomato_rotten,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenTomato/rottenTomato (194).jpg
+tomato,tomato_rotten,mendeley_s42kpg8h37,Rotten/IMG_20230410_020728.jpg
+tomato,tomato_rotten,mendeley_s42kpg8h37,Rotten/IMG_20230411_232839.jpg
+tomato,tomato_rotten,mendeley_s42kpg8h37,Rotten/IMG_20230405_014429.jpg
+tomato,tomato_rotten,mendeley_s42kpg8h37,Rotten/IMG_20230401_211036.jpg
+tomato,tomato_rotten,mendeley_s42kpg8h37,Rotten/IMG_20230331_015128.jpg
+tomato,tomato_rotten,mendeley_s42kpg8h37,Rotten/IMG_20230402_224507.jpg
+tomato,tomato_rotten,mendeley_s42kpg8h37,Rotten/IMG_20230329_225730.jpg
+tomato,tomato_rotten,mendeley_s42kpg8h37,Rotten/IMG_20230407_042226.jpg
+tomato,tomato_rotten,mendeley_s42kpg8h37,Rotten/IMG_20230411_040055.jpg
+tomato,tomato_rotten,mendeley_s42kpg8h37,Rotten/IMG_20230402_224009.jpg
+tomato,tomato_rotten,mendeley_s42kpg8h37,Rotten/IMG_20230408_042100.jpg
+tomato,tomato_rotten,mendeley_s42kpg8h37,Rotten/IMG_20230331_014759.jpg
+tomato,tomato_rotten,mendeley_s42kpg8h37,Rotten/IMG_20230405_014424.jpg
+tomato,tomato_rotten,mendeley_s42kpg8h37,Rotten/IMG_20230408_041441.jpg
+tomato,tomato_rotten,mendeley_s42kpg8h37,Rotten/IMG_20230327_023420.jpg
+tomato,tomato_rotten,mendeley_s42kpg8h37,Rotten/IMG_20230323_234314.jpg
+tomato,tomato_rotten,mendeley_s42kpg8h37,Rotten/IMG_20230323_235132.jpg
+potato,potato_rotten,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (472).jpg
+potato,potato_rotten,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (277).jpg
+potato,potato_rotten,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (204).jpg
+potato,potato_rotten,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (293).jpg
+potato,potato_rotten,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (505).jpg
+potato,potato_rotten,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (329).jpg
+potato,potato_rotten,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (360).jpg
+potato,potato_rotten,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (298).jpg
+potato,potato_rotten,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (129).jpg
+potato,potato_rotten,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (6).jpg
+potato,potato_rotten,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (459).jpg
+potato,potato_rotten,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (127).jpg
+potato,potato_rotten,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (4).jpg
+potato,potato_rotten,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (363).jpg
+cucumber,cucumber_rotten,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (307).jpg
+cucumber,cucumber_rotten,swoyam2609,dataset/Test/rottencucumber/c_r071.png
+cucumber,cucumber_rotten,swoyam2609,dataset/Train/rottencucumber/c_r267.png
+cucumber,cucumber_rotten,swoyam2609,dataset/Train/rottencucumber/c_r296.png
+cucumber,cucumber_rotten,swoyam2609,dataset/Train/rottencucumber/c_r263.png
+cucumber,cucumber_rotten,swoyam2609,dataset/Train/rottencucumber/c_r302.png
+cucumber,cucumber_rotten,swoyam2609,dataset/Test/rottencucumber/c_r223.png
+cucumber,cucumber_rotten,swoyam2609,dataset/Train/rottencucumber/c_r261.png
+cucumber,cucumber_rotten,swoyam2609,dataset/Train/rottencucumber/c_r315.png
+cucumber,cucumber_rotten,swoyam2609,dataset/Test/rottencucumber/c_r228.png
+cucumber,cucumber_rotten,swoyam2609,dataset/Train/rottencucumber/c_r262.png
+cucumber,cucumber_rotten,swoyam2609,dataset/Test/rottencucumber/c_r249.png
+cucumber,cucumber_rotten,swoyam2609,dataset/Train/rottencucumber/c_r293.png
+cucumber,cucumber_rotten,swoyam2609,dataset/Train/rottencucumber/c_r401.png
+cucumber,cucumber_rotten,swoyam2609,dataset/Train/rottencucumber/c_r070.png
+cucumber,cucumber_rotten,swoyam2609,dataset/Train/rottencucumber/c_r330.png
+cucumber,cucumber_rotten,swoyam2609,dataset/Train/rottencucumber/c_r183.png
+cucumber,cucumber_rotten,swoyam2609,dataset/Train/rottencucumber/c_r265.png
+cucumber,cucumber_rotten,swoyam2609,dataset/Test/rottencucumber/c_r208.png

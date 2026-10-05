@@ -109,6 +109,7 @@ python make_plots.py
 - 토마토 정상 Train 140장 중 83장이 두 촬영 세션에서 왔다.
 - 비정상의 세부 유형(부패·싹·상처)은 구분하지 않는다.
 - 꼭지 둘레만 곰팡이가 핀 토마토(몸통은 멀쩡함)를 정상으로 판단한다. 밭 토마토 사진 120장을 더해 다시 학습해 봤지만 이 유형은 고쳐지지 않았고, Test가 1장 떨어져 채택하지 않았다([experiments/field_tomato](experiments/field_tomato/README.md)).
+- 일부만 상한 채소를 더 잘 잡으려고 입력 크기, 풀링, 부분 부패 사진 추가 등 10가지 후보를 시험했다. 어느 것도 미리 정한 기준을 넘지 못해 채택하지 않았다([experiments/partial_rot](experiments/partial_rot/README.md)).
 
 ## 참고
 
