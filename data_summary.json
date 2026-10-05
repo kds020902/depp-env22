@@ -1,52 +1,61 @@
 {
-  "candidate_count": 1500,
-  "decodable_unique_pixel_count": 1301,
-  "rejected_count": 199,
-  "near_duplicate_pairs": 473,
-  "near_duplicate_rule": "pHash hamming<=6 AND dHash hamming<=8; plus visual repeated-scene groups",
-  "visual_review_exclusion_count": 190,
-  "visual_review_group_count": 107,
-  "cross_class_clusters_excluded": 0,
-  "available_after_filter_by_class": {
-    "cucumber_fresh": 246,
-    "cucumber_rotten": 100,
-    "potato_fresh": 242,
-    "potato_rotten": 222,
-    "tomato_fresh": 248,
-    "tomato_rotten": 243
+  "version": 2,
+  "total_images": 1200,
+  "split_counts": {
+    "train": 840,
+    "val": 180,
+    "test": 180
   },
-  "selected_count": 600,
-  "selected_per_class": 100,
-  "train_per_class": 80,
-  "val_per_class": 20,
-  "train_count": 480,
-  "val_count": 120,
-  "test_count": 0,
-  "counts": {
-    "cucumber_fresh|train": 80,
-    "cucumber_fresh|val": 20,
-    "cucumber_rotten|train": 80,
-    "cucumber_rotten|val": 20,
-    "potato_fresh|train": 80,
-    "potato_fresh|val": 20,
-    "potato_rotten|train": 80,
-    "potato_rotten|val": 20,
-    "tomato_fresh|train": 80,
-    "tomato_fresh|val": 20,
-    "tomato_rotten|train": 80,
-    "tomato_rotten|val": 20
+  "condition_by_split": {
+    "train": {
+      "fresh": 420,
+      "rotten": 420
+    },
+    "val": {
+      "fresh": 90,
+      "rotten": 90
+    },
+    "test": {
+      "fresh": 90,
+      "rotten": 90
+    }
   },
-  "group_counts": {
-    "cucumber_fresh": 56,
-    "cucumber_rotten": 51,
-    "potato_fresh": 59,
-    "potato_rotten": 165,
-    "tomato_fresh": 58,
-    "tomato_rotten": 78
+  "source_counts": {
+    "cucumber_fresh|muhriddinmuxiddinov": 170,
+    "cucumber_fresh|swoyam2609": 30,
+    "cucumber_rotten|muhriddinmuxiddinov": 170,
+    "cucumber_rotten|swoyam2609": 30,
+    "potato_fresh|muhriddinmuxiddinov": 200,
+    "potato_rotten|muhriddinmuxiddinov": 200,
+    "tomato_fresh|muhriddinmuxiddinov": 200,
+    "tomato_rotten|muhriddinmuxiddinov": 200
   },
-  "selected_group_counts": {
-    "train": 182,
-    "val": 120
+  "carried_over_from_v1": 519,
+  "new_in_v2": 681,
+  "v1_images_removed": 81,
+  "v1_removed_reasons": {
+    "label_recheck": 4,
+    "session_trim": 77
   },
-  "note": "All 1500 candidates reviewed in contact sheets; source condition labels retained except excluded ambiguous images. Original object IDs are unknown; hash/visual grouping reduces but cannot guarantee absence of object-level leakage."
+  "visual_review": {
+    "reviewed": 1053,
+    "passed": 867
+  },
+  "groups": {
+    "train": 329,
+    "val": 180,
+    "test": 180
+  },
+  "sessions": {
+    "train": 266,
+    "val": 175,
+    "test": 174
+  },
+  "duplicate_rule": "same group when any of: same v1 group; pHash<=6 and dHash<=8; flip/rotation-invariant ResNet18 cosine>=0.92; ORB+RANSAC inliers>=30 with cosine>=0.85 (or inliers>=80 within a species)",
+  "session_rule": "same session when the duplicate rule holds with cosine>=0.90 instead of 0.92; sessions with 30+ candidate photos are kept out of val/test; a val/test class takes at most 10 photos from one session",
+  "session_balance": "the fabric/notebook tomato session has equal fresh and rotten counts in train (42/42) so its background cannot signal the label",
+  "leakage_audit": {
+    "max_flip_rotation_invariant_cosine_val_test_to_train": 0.918,
+    "note": "pairs above 0.91 were inspected by eye: different photos"
+  }
 }

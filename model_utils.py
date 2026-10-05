@@ -1,4 +1,4 @@
-"""Shared offline-safe model loading, preprocessing and label definitions."""
+"""Shared model loading, preprocessing and label definitions."""
 
 from __future__ import annotations
 
@@ -12,7 +12,9 @@ from PIL import Image, ImageOps
 import torch
 from torch import nn
 from torchvision import transforms
-from torchvision.models import ResNet18_Weights, resnet18
+from torchvision.models import (
+    EfficientNet_B0_Weights, ResNet18_Weights, efficientnet_b0, resnet18,
+)
 
 
 CLASS_NAMES = [
@@ -31,6 +33,13 @@ PREPROCESS = {
     "mean": [0.485, 0.456, 0.406],
     "std": [0.229, 0.224, 0.225],
 }
+# name -> (builder, ImageNet weights, official weight file name, classifier attribute path)
+ARCHITECTURES = {
+    "resnet18": (resnet18, ResNet18_Weights.IMAGENET1K_V1, "resnet18-f37072fd.pth", ("fc",)),
+    "efficientnet_b0": (efficientnet_b0, EfficientNet_B0_Weights.IMAGENET1K_V1,
+                        "efficientnet_b0_rwightman-7f5810bc.pth", ("classifier", "1")),
+}
+PRETRAINED_DIR = Path(__file__).resolve().parent / "pretrained"
 
 
 def set_seed(seed: int = 42, threads: int = 6) -> None:
@@ -41,7 +50,8 @@ def set_seed(seed: int = 42, threads: int = 6) -> None:
     if torch.cuda.is_available():
         torch.cuda.manual_seed_all(seed)
     torch.set_num_threads(threads)
-    torch.use_deterministic_algorithms(True)
+    # warn_only: a few CUDA backward kernels have no deterministic version.
+    torch.use_deterministic_algorithms(True, warn_only=True)
     torch.backends.cudnn.benchmark = False
     torch.backends.cudnn.deterministic = True
 
@@ -53,6 +63,7 @@ def resolve_device(name: str) -> torch.device:
 
 
 def make_transform():
+    """Evaluation/prediction transform: the whole photo squeezed to 224x224."""
     return transforms.Compose([
         transforms.Resize(
             tuple(PREPROCESS["resize"]),
@@ -64,56 +75,92 @@ def make_transform():
     ])
 
 
-def read_image(path: str | Path, transform=None) -> torch.Tensor:
+def make_train_transform():
+    """Training augmentation: random crop/scale, flips, small rotation and colour change."""
+    return transforms.Compose([
+        transforms.RandomResizedCrop(
+            tuple(PREPROCESS["resize"]), scale=(0.6, 1.0), ratio=(3 / 4, 4 / 3), antialias=True,
+        ),
+        transforms.RandomHorizontalFlip(),
+        transforms.RandomVerticalFlip(),
+        transforms.RandomRotation(15, fill=(124, 116, 104)),
+        transforms.ColorJitter(brightness=0.2, contrast=0.2, saturation=0.2, hue=0.02),
+        transforms.ToTensor(),
+        transforms.Normalize(PREPROCESS["mean"], PREPROCESS["std"]),
+    ])
+
+
+def open_image(path: str | Path) -> Image.Image:
     with Image.open(path) as image:
-        image = ImageOps.exif_transpose(image).convert("RGB")
-        return (transform or make_transform())(image)
+        return ImageOps.exif_transpose(image).convert("RGB")
 
 
-def create_model(pretrained: str | Path | None = None) -> tuple[nn.Module, str]:
-    """Load ImageNet backbone; only a newly initialized six-way FC is trainable."""
-    if pretrained is None:
-        local = Path(__file__).resolve().parent.parent / "pretrained" / "resnet18-f37072fd.pth"
-        if local.is_file():
-            pretrained = local
+def read_image(path: str | Path, transform=None) -> torch.Tensor:
+    return (transform or make_transform())(open_image(path))
+
+
+def classifier_layer(model: nn.Module, arch: str) -> nn.Linear:
+    module = model
+    for name in ARCHITECTURES[arch][3]:
+        module = module[int(name)] if name.isdigit() else getattr(module, name)
+    return module
+
+
+def set_classifier_layer(model: nn.Module, arch: str, layer: nn.Module) -> None:
+    *parents, last = ARCHITECTURES[arch][3]
+    module = model
+    for name in parents:
+        module = module[int(name)] if name.isdigit() else getattr(module, name)
+    if last.isdigit():
+        module[int(last)] = layer
+    else:
+        setattr(module, last, layer)
+
+
+def create_model(arch: str = "resnet18", pretrained: str | Path | None = None) -> tuple[nn.Module, str]:
+    """ImageNet backbone with a newly initialised six-way classifier."""
+    if arch not in ARCHITECTURES:
+        raise ValueError(f"Unknown architecture {arch!r}; choose from {sorted(ARCHITECTURES)}")
+    builder, weights, file_name, _ = ARCHITECTURES[arch]
+    if pretrained is None and (PRETRAINED_DIR / file_name).is_file():
+        pretrained = PRETRAINED_DIR / file_name
     if pretrained is not None:
         path = Path(pretrained).expanduser().resolve()
         if not path.is_file():
             raise FileNotFoundError(f"Pretrained checkpoint not found: {path}")
-        model = resnet18(weights=None)
-        state = torch.load(path, map_location="cpu", weights_only=True)
-        model.load_state_dict(state, strict=True)
+        model = builder(weights=None)
+        model.load_state_dict(torch.load(path, map_location="cpu", weights_only=True), strict=True)
         source = str(path)
     else:
-        # Uses torchvision's cache; an initial download may be required.
-        model = resnet18(weights=ResNet18_Weights.IMAGENET1K_V1)
-        source = "torchvision.ResNet18_Weights.IMAGENET1K_V1"
-    for parameter in model.parameters():
-        parameter.requires_grad_(False)
-    model.fc = nn.Linear(model.fc.in_features, len(CLASS_NAMES))
-    model.eval()  # BatchNorm statistics remain frozen during feature extraction.
+        # Uses torchvision's cache; the first run downloads the official weights.
+        model = builder(weights=weights)
+        source = f"torchvision.{type(weights).__name__}.{weights.name}"
+    old = classifier_layer(model, arch)
+    set_classifier_layer(model, arch, nn.Linear(old.in_features, len(CLASS_NAMES)))
     return model, source
 
 
 def load_model(path: str | Path, device: torch.device) -> tuple[nn.Module, dict]:
     checkpoint = torch.load(path, map_location="cpu", weights_only=True)
-    if checkpoint.get("architecture") != "resnet18":
-        raise ValueError("Unsupported architecture in checkpoint.")
+    arch = checkpoint.get("architecture")
+    if arch not in ARCHITECTURES:
+        raise ValueError(f"Unsupported architecture in checkpoint: {arch!r}")
     if checkpoint.get("class_names") != CLASS_NAMES:
         raise ValueError("Checkpoint class order does not match this application.")
     if checkpoint.get("preprocess") != PREPROCESS:
         raise ValueError("Checkpoint preprocessing does not match this application.")
-    model = resnet18(weights=None)
-    model.fc = nn.Linear(model.fc.in_features, len(CLASS_NAMES))
+    model = ARCHITECTURES[arch][0](weights=None)
+    old = classifier_layer(model, arch)
+    set_classifier_layer(model, arch, nn.Linear(old.in_features, len(CLASS_NAMES)))
     model.load_state_dict(checkpoint["state_dict"], strict=True)
     model.to(device).eval()
     return model, checkpoint
 
 
-def state_checksum(state: dict[str, torch.Tensor], exclude_fc: bool = False) -> str:
+def state_checksum(state: dict[str, torch.Tensor], exclude_prefixes: tuple[str, ...] = ()) -> str:
     digest = hashlib.sha256()
     for name in sorted(state):
-        if exclude_fc and name.startswith("fc."):
+        if name.startswith(exclude_prefixes):
             continue
         tensor = state[name].detach().cpu().contiguous()
         digest.update(name.encode("utf-8"))

@@ -1,0 +1,329 @@
+{
+ "note": "1차(v1) 600장 중 2차(v2) 데이터셋에서 빠진 사진",
+ "removed": [
+  {
+   "image_path": "images/cucumber_fresh/cucumber_fresh_0000.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/cucumber_fresh/cucumber_fresh_0003.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/cucumber_fresh/cucumber_fresh_0005.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/cucumber_fresh/cucumber_fresh_0008.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/cucumber_fresh/cucumber_fresh_0009.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/cucumber_fresh/cucumber_fresh_0010.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/cucumber_fresh/cucumber_fresh_0016.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/cucumber_fresh/cucumber_fresh_0018.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/cucumber_fresh/cucumber_fresh_0019.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/cucumber_fresh/cucumber_fresh_0028.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/cucumber_fresh/cucumber_fresh_0030.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/cucumber_fresh/cucumber_fresh_0033.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/cucumber_fresh/cucumber_fresh_0041.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/cucumber_fresh/cucumber_fresh_0045.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/cucumber_fresh/cucumber_fresh_0060.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/cucumber_fresh/cucumber_fresh_0062.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/cucumber_fresh/cucumber_fresh_0066.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/cucumber_fresh/cucumber_fresh_0067.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/cucumber_fresh/cucumber_fresh_0069.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/cucumber_fresh/cucumber_fresh_0071.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/cucumber_fresh/cucumber_fresh_0073.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/cucumber_fresh/cucumber_fresh_0074.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/cucumber_fresh/cucumber_fresh_0076.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/cucumber_fresh/cucumber_fresh_0077.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/cucumber_fresh/cucumber_fresh_0081.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/cucumber_fresh/cucumber_fresh_0092.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/cucumber_fresh/cucumber_fresh_0095.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/cucumber_rotten/cucumber_rotten_0125.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/cucumber_rotten/cucumber_rotten_0161.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/cucumber_rotten/cucumber_rotten_0186.jpg",
+   "reason": "label_recheck: 정상 오이 더미에 작은 흰 점 하나뿐(정상/비정상 혼재)"
+  },
+  {
+   "image_path": "images/cucumber_rotten/cucumber_rotten_0189.jpg",
+   "reason": "label_recheck: 멀쩡해 보이는 오이 한 개"
+  },
+  {
+   "image_path": "images/cucumber_rotten/cucumber_rotten_0198.jpg",
+   "reason": "label_recheck: 오이 두 개가 멀쩡해 보임(부패 흔적 없음)"
+  },
+  {
+   "image_path": "images/potato_fresh/potato_fresh_0202.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/potato_fresh/potato_fresh_0205.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/potato_fresh/potato_fresh_0226.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/potato_fresh/potato_fresh_0228.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/potato_fresh/potato_fresh_0252.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/potato_rotten/potato_rotten_0304.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/potato_rotten/potato_rotten_0347.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/potato_rotten/potato_rotten_0388.jpg",
+   "reason": "label_recheck: 얼굴이 그려진 감자(부패 사진 아님)"
+  },
+  {
+   "image_path": "images/tomato_fresh/tomato_fresh_0403.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/tomato_fresh/tomato_fresh_0428.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/tomato_fresh/tomato_fresh_0430.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/tomato_fresh/tomato_fresh_0433.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/tomato_fresh/tomato_fresh_0434.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/tomato_fresh/tomato_fresh_0437.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/tomato_fresh/tomato_fresh_0439.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/tomato_fresh/tomato_fresh_0445.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/tomato_fresh/tomato_fresh_0461.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/tomato_fresh/tomato_fresh_0464.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/tomato_fresh/tomato_fresh_0467.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/tomato_rotten/tomato_rotten_0503.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/tomato_rotten/tomato_rotten_0505.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/tomato_rotten/tomato_rotten_0512.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/tomato_rotten/tomato_rotten_0513.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/tomato_rotten/tomato_rotten_0515.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/tomato_rotten/tomato_rotten_0516.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/tomato_rotten/tomato_rotten_0518.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/tomato_rotten/tomato_rotten_0532.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/tomato_rotten/tomato_rotten_0534.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/tomato_rotten/tomato_rotten_0536.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/tomato_rotten/tomato_rotten_0537.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/tomato_rotten/tomato_rotten_0542.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/tomato_rotten/tomato_rotten_0543.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/tomato_rotten/tomato_rotten_0546.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/tomato_rotten/tomato_rotten_0548.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/tomato_rotten/tomato_rotten_0553.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/tomato_rotten/tomato_rotten_0555.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/tomato_rotten/tomato_rotten_0557.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/tomato_rotten/tomato_rotten_0559.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/tomato_rotten/tomato_rotten_0561.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/tomato_rotten/tomato_rotten_0562.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/tomato_rotten/tomato_rotten_0563.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/tomato_rotten/tomato_rotten_0564.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/tomato_rotten/tomato_rotten_0566.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/tomato_rotten/tomato_rotten_0567.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/tomato_rotten/tomato_rotten_0569.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/tomato_rotten/tomato_rotten_0571.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/tomato_rotten/tomato_rotten_0576.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/tomato_rotten/tomato_rotten_0586.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  },
+  {
+   "image_path": "images/tomato_rotten/tomato_rotten_0589.jpg",
+   "reason": "session_trim: 같은 촬영 세션 사진이 너무 많아 다양성을 위해 제외(대부분 쟁반 회전 복사본·천/노트 배경 세션)"
+  }
+ ]
+}

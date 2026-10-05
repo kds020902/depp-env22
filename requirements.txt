@@ -2,3 +2,5 @@ torch==2.8.0
 torchvision==0.23.0
 Pillow>=10.0,<12.0
 numpy>=1.26,<3.0
+# 그래프(make_plots.py, 노트북)에만 필요
+matplotlib>=3.8

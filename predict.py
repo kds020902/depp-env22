@@ -31,6 +31,8 @@ def main():
     parser.add_argument("--output", type=Path, default=Path("results.csv"))
     parser.add_argument("--device", choices=["cpu", "cuda"], default="cpu")
     parser.add_argument("--threads", type=int, default=6)
+    parser.add_argument("--uncertain-below", type=float, default=0.5,
+                        help="Mark a photo as uncertain when the top class score is below this value.")
     args = parser.parse_args()
     if args.threads < 1:
         raise ValueError("threads must be positive.")
@@ -43,7 +45,7 @@ def main():
     transform = make_transform()
     probability_columns = [f"prob_{name}" for name in CLASS_NAMES]
     fields = [
-        "image", "predicted_class", "species", "condition", "joint_score_uncalibrated",
+        "image", "predicted_class", "species", "condition", "joint_score_uncalibrated", "uncertain",
         "species_marginal_prediction", "species_score_uncalibrated",
         "condition_marginal_prediction", "condition_score_uncalibrated", "error",
     ] + probability_columns
@@ -67,6 +69,7 @@ def main():
                     "species": SPECIES_NAMES[index // 2],
                     "condition": CONDITION_NAMES[index % 2],
                     "joint_score_uncalibrated": float(probabilities[0, index]),
+                    "uncertain": "yes" if float(probabilities[0, index]) < args.uncertain_below else "no",
                     "species_marginal_prediction": SPECIES_NAMES[species_index],
                     "species_score_uncalibrated": float(species_probs[0, species_index]),
                     "condition_marginal_prediction": CONDITION_NAMES[condition_index],
@@ -75,7 +78,8 @@ def main():
                 })
                 row.update({column: float(probabilities[0, i]) for i, column in enumerate(probability_columns)})
                 success += 1
-                print(f"{path.name}: {row['predicted_class']} (uncalibrated score {row['joint_score_uncalibrated']:.4f})")
+                flag = " [uncertain]" if row["uncertain"] == "yes" else ""
+                print(f"{path.name}: {row['predicted_class']} (uncalibrated score {row['joint_score_uncalibrated']:.4f}){flag}")
             except (OSError, ValueError, RuntimeError) as error:
                 row["error"] = f"{type(error).__name__}: {error}"
                 print(f"Could not classify {path}: {error}", file=sys.stderr)
