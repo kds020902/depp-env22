@@ -21,9 +21,9 @@ from torch import nn
 from torch.utils.data import DataLoader, Dataset, TensorDataset
 
 from model_utils import (
-    CLASS_NAMES, CONDITION_NAMES, PREPROCESS, SPECIES_NAMES,
+    CLASS_NAMES, CONDITION_NAMES, SPECIES_NAMES,
     classifier_layer, create_model, make_train_transform, make_transform,
-    marginal_probabilities, open_image, resolve_device, set_classifier_layer, set_seed,
+    marginal_probabilities, open_image, preprocess_for, resolve_device, set_classifier_layer, set_seed,
     state_checksum,
 )
 
@@ -67,18 +67,19 @@ def read_manifest(path: Path) -> dict[str, list[dict]]:
 class CachedImages(Dataset):
     """Decodes every photo once; training images are kept small and augmented on the fly."""
 
-    def __init__(self, rows: list[dict], root: Path, train: bool):
+    def __init__(self, rows: list[dict], root: Path, train: bool, size: int = 224, crop_scale_min: float = 0.6):
         self.labels = [int(r["class_id"]) for r in rows]
         self.train = train
         if train:
-            self.transform = make_train_transform()
+            self.transform = make_train_transform(size, crop_scale_min)
             self.images = []
+            keep = max(448, 2 * size)  # enough pixels for small random crops
             for r in rows:
                 image = open_image(root / r["image_path"])
-                image.thumbnail((448, 448))
+                image.thumbnail((keep, keep))
                 self.images.append(image)
         else:
-            transform = make_transform()
+            transform = make_transform(size)
             self.images = [transform(open_image(root / r["image_path"])) for r in rows]
 
     def __len__(self):
@@ -179,6 +180,11 @@ def parse_args():
     parser.add_argument("--weight-decay", type=float, default=1e-4)
     parser.add_argument("--label-smoothing", type=float, default=0.1)
     parser.add_argument("--no-augment", action="store_true", help="Train on plain resized photos.")
+    parser.add_argument("--image-size", type=int, default=224, help="Square input size in pixels.")
+    parser.add_argument("--pooling", choices=["avg", "avgmax"], default="avg",
+                        help="Global pooling before the classifier; avgmax keeps the strongest local evidence.")
+    parser.add_argument("--crop-scale-min", type=float, default=0.6,
+                        help="Smallest random crop, as a fraction of the photo area (augmentation).")
     parser.add_argument("--threads", type=int, default=6)
     parser.add_argument("--seed", type=int, default=42)
     return parser.parse_args()
@@ -195,7 +201,7 @@ def main():
     args.out.mkdir(parents=True, exist_ok=True)
     started = time.perf_counter()
 
-    model, pretrained_source = create_model(args.arch, args.pretrained)
+    model, pretrained_source = create_model(args.arch, args.pretrained, args.pooling)
     head = classifier_layer(model, args.arch)
     head_ids = {id(p) for p in head.parameters()}
     head_prefix = next(n for n, m in model.named_modules() if m is head) + "."
@@ -209,13 +215,13 @@ def main():
         p.requires_grad_(not linear or id(p) in head_ids)
 
     eval_loaders = {
-        s: DataLoader(CachedImages(splits[s], manifest.parent, train=False), batch_size=args.batch_size)
+        s: DataLoader(CachedImages(splits[s], manifest.parent, train=False, size=args.image_size), batch_size=args.batch_size)
         for s in ("val", "test") if splits[s]
     }
     if linear and not augment:
         # Frozen backbone without augmentation: extract the features once (the 1st-round method).
         set_classifier_layer(model, args.arch, nn.Identity())
-        feature_loader = DataLoader(CachedImages(splits["train"], manifest.parent, train=False),
+        feature_loader = DataLoader(CachedImages(splits["train"], manifest.parent, train=False, size=args.image_size),
                                     batch_size=args.batch_size)
         features, labels = predict_logits(model, feature_loader, device)
         set_classifier_layer(model, args.arch, head)
@@ -224,7 +230,8 @@ def main():
                                   generator=torch.Generator().manual_seed(args.seed))
         train_on_features = True
     else:
-        train_loader = DataLoader(CachedImages(splits["train"], manifest.parent, train=augment),
+        train_loader = DataLoader(CachedImages(splits["train"], manifest.parent, train=augment,
+                                                size=args.image_size, crop_scale_min=args.crop_scale_min),
                                   batch_size=args.batch_size, shuffle=True,
                                   generator=torch.Generator().manual_seed(args.seed))
         train_on_features = False
@@ -309,9 +316,9 @@ def main():
         raise RuntimeError("Linear mode must not change the frozen backbone.")
     counts = {s: {n: Counter(r["class_name"] for r in rows)[n] for n in CLASS_NAMES} for s, rows in splits.items()}
     metadata = {
-        "format_version": 2, "architecture": args.arch, "training_mode": args.mode,
+        "format_version": 2, "architecture": args.arch, "training_mode": args.mode, "pooling": args.pooling,
         "class_names": CLASS_NAMES, "species_names": SPECIES_NAMES, "condition_names": CONDITION_NAMES,
-        "preprocess": PREPROCESS, "seed": args.seed, "best_epoch": best_epoch,
+        "preprocess": preprocess_for(args.image_size), "seed": args.seed, "best_epoch": best_epoch,
         "epochs_completed": len(history), "counts": counts,
         "selection": "lowest validation cross-entropy; the test split is scored once after selection",
         "metrics": results, "training_verification": verification,
@@ -321,6 +328,7 @@ def main():
             "label_smoothing": args.label_smoothing, "batch_size": args.batch_size,
             "max_epochs": args.epochs, "early_stopping_patience": args.patience,
             "scheduler": None if linear else "cosine", "augmentation": augment,
+            "image_size": args.image_size, "crop_scale_min": args.crop_scale_min if augment else None,
             "device": args.device, "threads": args.threads,
         },
         "pretrained_source": pretrained_source,

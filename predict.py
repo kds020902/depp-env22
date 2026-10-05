@@ -11,7 +11,7 @@ import torch
 
 from model_utils import (
     CLASS_NAMES, CONDITION_NAMES, IMAGE_EXTENSIONS, SPECIES_NAMES,
-    load_model, make_transform, marginal_probabilities, read_image,
+    input_size, load_model, make_transform, marginal_probabilities, read_image,
     resolve_device,
 )
 
@@ -38,11 +38,11 @@ def main():
         raise ValueError("threads must be positive.")
     torch.set_num_threads(args.threads)
     device = resolve_device(args.device)
-    model, _ = load_model(args.model.expanduser().resolve(), device)
+    model, checkpoint = load_model(args.model.expanduser().resolve(), device)
     photos = find_images(args.input.expanduser().resolve())
     if not photos:
         raise ValueError("No supported image files were found.")
-    transform = make_transform()
+    transform = make_transform(input_size(checkpoint))
     probability_columns = [f"prob_{name}" for name in CLASS_NAMES]
     fields = [
         "image", "predicted_class", "species", "condition", "joint_score_uncalibrated", "uncertain",

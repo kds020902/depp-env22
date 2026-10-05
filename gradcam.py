@@ -12,7 +12,9 @@ import matplotlib.pyplot as plt  # noqa: E402
 import numpy as np  # noqa: E402
 import torch  # noqa: E402
 
-from model_utils import CLASS_NAMES, IMAGE_EXTENSIONS, PREPROCESS, load_model, open_image, read_image  # noqa: E402
+from model_utils import (  # noqa: E402
+    CLASS_NAMES, IMAGE_EXTENSIONS, input_size, load_model, make_transform, open_image, read_image,
+)
 
 TARGET_LAYERS = {"resnet18": "layer4", "efficientnet_b0": "features"}
 
@@ -48,8 +50,9 @@ def main():
         p for p in args.input.rglob("*") if p.suffix.lower() in IMAGE_EXTENSIONS)
     args.out.mkdir(parents=True, exist_ok=True)
     for path in photos:
-        cam, index, score = grad_cam(model, arch, read_image(path), None)
-        image = open_image(path).resize(tuple(PREPROCESS["resize"]))
+        size = input_size(checkpoint)
+        cam, index, score = grad_cam(model, arch, read_image(path, make_transform(size)), None)
+        image = open_image(path).resize((size, size))
         upsampled = torch.nn.functional.interpolate(torch.tensor(cam)[None, None], size=image.size[::-1],
                                                     mode="bilinear")[0, 0].numpy()
         heat = matplotlib.colormaps["inferno"](upsampled)[..., :3]

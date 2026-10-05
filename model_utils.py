@@ -62,11 +62,16 @@ def resolve_device(name: str) -> torch.device:
     return torch.device(name)
 
 
-def make_transform():
-    """Evaluation/prediction transform: the whole photo squeezed to 224x224."""
+def preprocess_for(size: int = 224) -> dict:
+    """PREPROCESS with a different square input size (224 = the original setting)."""
+    return {**PREPROCESS, "resize": [size, size]}
+
+
+def make_transform(size: int = 224):
+    """Evaluation/prediction transform: the whole photo squeezed to size x size."""
     return transforms.Compose([
         transforms.Resize(
-            tuple(PREPROCESS["resize"]),
+            (size, size),
             interpolation=transforms.InterpolationMode.BILINEAR,
             antialias=True,
         ),
@@ -75,11 +80,11 @@ def make_transform():
     ])
 
 
-def make_train_transform():
+def make_train_transform(size: int = 224, crop_scale_min: float = 0.6):
     """Training augmentation: random crop/scale, flips, small rotation and colour change."""
     return transforms.Compose([
         transforms.RandomResizedCrop(
-            tuple(PREPROCESS["resize"]), scale=(0.6, 1.0), ratio=(3 / 4, 4 / 3), antialias=True,
+            (size, size), scale=(crop_scale_min, 1.0), ratio=(3 / 4, 4 / 3), antialias=True,
         ),
         transforms.RandomHorizontalFlip(),
         transforms.RandomVerticalFlip(),
@@ -117,7 +122,26 @@ def set_classifier_layer(model: nn.Module, arch: str, layer: nn.Module) -> None:
         setattr(module, last, layer)
 
 
-def create_model(arch: str = "resnet18", pretrained: str | Path | None = None) -> tuple[nn.Module, str]:
+class AvgMaxPool(nn.Module):
+    """Average and max pooling side by side, so one small suspicious patch is not averaged away."""
+
+    def forward(self, x):
+        return torch.cat([x.mean((2, 3), keepdim=True), x.amax((2, 3), keepdim=True)], 1)
+
+
+def _apply_pooling(model: nn.Module, arch: str, pooling: str) -> None:
+    """Swap the global pooling before the classifier ("avg" = torchvision default)."""
+    if pooling == "avg":
+        return
+    if pooling != "avgmax":
+        raise ValueError(f"Unknown pooling {pooling!r}; choose 'avg' or 'avgmax'")
+    model.avgpool = AvgMaxPool()
+    old = classifier_layer(model, arch)
+    set_classifier_layer(model, arch, nn.Linear(old.in_features * 2, old.out_features))
+
+
+def create_model(arch: str = "resnet18", pretrained: str | Path | None = None,
+                 pooling: str = "avg") -> tuple[nn.Module, str]:
     """ImageNet backbone with a newly initialised six-way classifier."""
     if arch not in ARCHITECTURES:
         raise ValueError(f"Unknown architecture {arch!r}; choose from {sorted(ARCHITECTURES)}")
@@ -137,6 +161,7 @@ def create_model(arch: str = "resnet18", pretrained: str | Path | None = None) -
         source = f"torchvision.{type(weights).__name__}.{weights.name}"
     old = classifier_layer(model, arch)
     set_classifier_layer(model, arch, nn.Linear(old.in_features, len(CLASS_NAMES)))
+    _apply_pooling(model, arch, pooling)
     return model, source
 
 
@@ -147,14 +172,20 @@ def load_model(path: str | Path, device: torch.device) -> tuple[nn.Module, dict]
         raise ValueError(f"Unsupported architecture in checkpoint: {arch!r}")
     if checkpoint.get("class_names") != CLASS_NAMES:
         raise ValueError("Checkpoint class order does not match this application.")
-    if checkpoint.get("preprocess") != PREPROCESS:
+    if checkpoint.get("preprocess") != preprocess_for(input_size(checkpoint)):
         raise ValueError("Checkpoint preprocessing does not match this application.")
     model = ARCHITECTURES[arch][0](weights=None)
     old = classifier_layer(model, arch)
     set_classifier_layer(model, arch, nn.Linear(old.in_features, len(CLASS_NAMES)))
+    _apply_pooling(model, arch, checkpoint.get("pooling", "avg"))
     model.load_state_dict(checkpoint["state_dict"], strict=True)
     model.to(device).eval()
     return model, checkpoint
+
+
+def input_size(checkpoint: dict) -> int:
+    """Square input size a checkpoint was trained with (224 for older checkpoints)."""
+    return int(checkpoint.get("preprocess", PREPROCESS)["resize"][0])
 
 
 def state_checksum(state: dict[str, torch.Tensor], exclude_prefixes: tuple[str, ...] = ()) -> str:
