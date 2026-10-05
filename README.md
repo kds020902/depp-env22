@@ -1,68 +1,158 @@
-# 채소 이미지 분류 1차 학습 모델
+# 채소 종류·신선도 분류 (2차)
 
-**실제로 학습을 완료한 ResNet18 전이학습 모델**이다. 채소 종류와 공개 데이터의 상태 라벨을 조합한 6개 클래스를 예측한다.
+사진 한 장을 보고 채소 종류(오이·감자·토마토)와 상태(정상·비정상)를 함께 맞히는 6개 클래스 분류 모델이다. 2차에서는 데이터셋을 1,200장으로 늘려 Train/Valid/Test로 나눴고, 모델을 ResNet18에서 EfficientNet-B0으로 바꿨다.
 
-- 총 데이터 600장: 실제 가중치 학습 480장, 학습 중 검증 120장.
-- 채소별 정상:비정상 5:5. 정확한 출처·수량은 DATA_USED.md와 manifest.csv에 있다.
-- 생성일: 2026-09-27. 이번 1차 실행에는 Kaggle v2 자료만 사용했다.
-- 사전 학습: ImageNet으로 이미 학습된 ResNet18 가중치를 가져왔다. ImageNet 사진 자체를 이번 학습 데이터에 추가하지 않았다.
+최종 모델(EfficientNet-B0)은 따로 떼어 둔 Test 180장에서 6개 클래스 95.0%(171/180), 채소 종류 98.9%, 정상/비정상 96.7%를 맞혔다. 1차 방식으로 같은 데이터를 학습하면 87.2%이므로, 향상의 대부분은 본체까지 미세조정하고 데이터를 증강한 데서 나왔다.
 
-## 실제로 학습한 부분
+## 교수님 상담 반영
 
-합성곱 본체와 BatchNorm은 고정했다. 마지막 분류층을 512차원 입력에서 6개 출력으로 교체한 뒤, 교차엔트로피 손실과 Adam으로 이 층의 가중치를 학습했다. 학습된 파라미터는 3,078개다. 특징은 한 번 계산해 저장하지 않고 메모리에서 재사용했으며, 데이터 증강은 적용하지 않았다.
+### 2026.9.23
 
-학습 전후 분류층 가중치 차이 L2는 2.692549이고, 고정된 본체의 체크섬은 동일하다. 학습 여부 검증 결과는 metrics.json의 training_verification에 있다.
+- **dataset 수집 서두르기:** 완료.
+    - 1차 600장(Kaggle 1개)에서 2차 1,200장(Kaggle 2개)으로 늘렸다.
+    - 한 장씩 눈으로 검수했고, 같은 사진의 복사본이 여러 분할에 들어가지 않게 걸러냈다.
 
-총 19 epoch를 실행했고 검증 손실이 가장 낮은 4 epoch를 저장했다. 사전 학습 모델을 단순히 이름만 바꿔 저장한 파일이 아니다.
+### 2026.9.30
 
-## 검증 결과
+- **model 변경 필요:** ResNet18(마지막 층만 학습)에서 EfficientNet-B0(전체 미세조정 + 데이터 증강)으로 바꿨다. 같은 Test 180장에서 6개 클래스 정확도가 87.2%에서 95.0%로 올랐다.
+- 
+- **dataset 구성:** Train·Valid·Test로 나누고, 모든 분할에서 P(정상):N(비정상)을 5:5로 맞췄다. 사진 폴더도 이 표와 같은 모양으로 나눴다.
 
-| 항목 | 결과 |
-|---|---:|
-| 6개 조합 분류 정확도 | 86.67% |
-| 채소 종류 정확도 | 96.67% |
-| Fresh와 Rotten 상태 정확도 | 90.00% |
-| 6개 클래스 Macro F1 | 0.8669 |
+| | Train | Valid | Test | 합계 |
+|---|---:|---:|---:|---:|
+| **P** (정상, Fresh) | 420 | 90 | 90 | 600 |
+| **N** (비정상, Rotten) | 420 | 90 | 90 | 600 |
+| **합계** | **840** | **180** | **180** | **1,200** |
 
-종류·상태 정확도는 6개 출력 확률을 종류별·상태별로 합산한 뒤 가장 큰 값을 선택해 계산했다. predict.py의 기본 species/condition은 가장 높은 조합 클래스에 속한 값이며, 별도로 marginal_prediction 열도 제공한다.
+```
+dataset/
+├── train/   P_fresh/ 420장   N_rotten/ 420장
+├── valid/   P_fresh/  90장   N_rotten/  90장
+└── test/    P_fresh/  90장   N_rotten/  90장
+```
 
-**위 수치는 모델 선택에도 사용한 검증 세트 결과이며, 독립적인 최종 시험 정확도가 아니다.** 직접 찍은 사진에서의 성능은 아직 측정하지 않았다. 배경·촬영 환경 차이와 남아 있을 수 있는 유사 개체 때문에 실제 성능은 달라질 수 있다.
+- **Train:** 모델 가중치를 학습한다.
+- **Valid:** 학습 중 가장 좋은 epoch를 고른다.
+- **Test:** 모델을 다 고른 뒤 마지막에 한 번만 채점한다.
 
-## 파일 구성
+## 1차와 달라진 점
 
-- model.pth: 학습 완료 가중치와 클래스·전처리·학습 메타데이터. 추론할 때 별도 가중치 다운로드가 필요 없다.
-- predict.py / model_utils.py: 새 사진 또는 폴더를 분류하는 코드.
-- train.py: 같은 데이터로 다시 학습할 수 있는 코드.
-- 학습결과_확인.ipynb: 학습 수량·곡선·예측을 살펴보는 노트북.
-- images/: 실제 사용한 600장. manifest.csv가 학습/검증 구분과 원본 출처를 지정한다.
-- metrics.json / history.csv / training_log.txt: 실제 학습 기록.
-- val_predictions.csv / confusion_matrix.png: 검증 사진별 결과와 혼동행렬.
-- DATA_USED.md / data_counts.csv / data_review/: 사용 자료 및 선별·분할 기록.
+| 항목 | 1차 | 2차 |
+|---|---|---|
+| 데이터 | 600장 (Train 480 / Valid 120 / Test 0) | 1,200장 (Train 840 / Valid 180 / Test 180) |
+| 정상:비정상 | 5:5 | 모든 분할에서 5:5 |
+| 출처 | Kaggle 1개 | Kaggle 2개 (두 번째는 오이 60장) |
+| 중복 검사 | 해시 + 눈 검수 | 해시 + 반전·회전 불변 특징 + ORB 특징점 매칭 + 눈 검수 |
+| 모델 | ResNet18, 마지막 층만 학습 (3,078개 파라미터) | EfficientNet-B0, 전체 미세조정 (402만 개 파라미터) |
+| 데이터 증강 | 없음 | 무작위 자르기·반전·회전·색 변화 |
+| 성능 보고 | 모델 선택에 쓴 Valid 점수 | 따로 떼어 둔 Test 점수 (마지막에 한 번만 채점) |
 
-## 내 사진 넣고 실행하기
+## 데이터셋
 
-Python 3.12와 PyTorch 2.8.0, torchvision 0.23.0의 CPU 환경에서 검증했다. ZIP을 풀고 이 README가 있는 폴더에서 터미널을 연다.
+구성표는 위 [교수님 상담 반영](#교수님-상담-반영)에 있다. 채소마다 P·N 각각 Train 140 / Valid 30 / Test 30장이고, 채소 종류는 파일 이름 앞부분(예: `tomato_rotten_1201.jpg`)에 있다. 출처, 검수 기준, 같은 사진이 분할 사이에 섞이지 않게 한 방법은 [dataset/README.md](dataset/README.md)에 정리했다.
+
+## 결과
+
+같은 Test 180장으로 세 가지 학습 방식을 비교했다. 어느 epoch를 쓸지는 Valid로만 골랐고, Test는 마지막에 한 번만 채점했다.
+
+| 모델 | 학습 파라미터 | Valid 6클래스 | Test 6클래스 (95% 신뢰구간) | Test 채소 종류 | Test 정상/비정상 | 비정상 검출률 | 정상 정답률 |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| 1차 방식: ResNet18 마지막 층만 | 3,078 | 88.9% | 87.2% (81.6–91.3) | 96.1% | 90.6% | 85.6% | 95.6% |
+| ResNet18 미세조정 + 증강 | 1,118만 | 92.8% | 94.4% (90.1–97.0) | 98.3% | 95.0% | 92.2% | 97.8% |
+| **EfficientNet-B0 미세조정 + 증강 (최종)** | 402만 | 92.2% | **95.0% (90.8–97.3)** | 98.9% | 96.7% | 94.4% | 98.9% |
+
+- **비정상 검출률:** 비정상 사진 90장 중 비정상으로 맞힌 비율
+- **정상 정답률:** 정상 사진 90장 중 정상으로 맞힌 비율
+
+![모델 비교](results/model_comparison.png)
+
+- **미세조정 효과:** 미세조정한 두 모델은 1차 방식보다 확실히 낫다. 같은 Test 사진으로 McNemar 검정을 하면 p = 0.003(EfficientNet-B0), p = 0.007(ResNet18)이다.
+- **두 미세조정 모델의 차이:** EfficientNet-B0과 ResNet18의 차이는 Test 1장(171 대 170), Valid 1장으로 통계적으로 같다(p = 1.0).
+    - 최종 모델은 학습 전에 정한 계획대로 EfficientNet-B0로 했다. 파라미터가 ResNet18의 약 3분의 1이라 더 가볍다.
+    - "모델이 오래돼서 안 된다"는 문제는 구조보다 학습 방식(본체 고정, 증강 없음)의 영향이 컸다.
+- **워터마크 영향:** Test 정상 사진 90장에 가짜 스톡 사진 워터마크 띠를 붙여 봤다.
+    - 1차 방식은 비정상으로 잘못 본 사진이 4장에서 12장으로 늘었다.
+    - EfficientNet-B0은 1장에서 2장으로 거의 그대로였다.
+- **틀린 9장의 유형:**
+    - 덩굴에 달린 채 썩은 토마토, 작은 곰팡이 반점 토마토, 싹이 조금 난 감자처럼 이상이 작거나 초기인 사진
+    - 감자처럼 보이는 갈색 오이
+    - 이 중 3장은 점수가 0.5보다 낮아서 `predict.py`가 `uncertain`으로 표시한다. Test 전체에서 `uncertain`으로 표시되는 사진은 10장(오답 3, 정답 7)이다.
+- **Grad-CAM 예시:** `results/efficientnet_b0_finetune/gradcam_examples/`에 있다. 덩굴 토마토 오답에서는 모델이 썩은 토마토가 아니라 앞쪽의 멀쩡한 토마토를 보고 판단했다.
+- **학습 시간 (CPU 4코어):** 1차 방식 1.4분, ResNet18 미세조정 18분, EfficientNet-B0 미세조정 32분이다. EfficientNet-B0은 학습 중 다른 작업과 CPU를 함께 써서 실제보다 길게 나왔다.
+
+## 내 사진으로 예측하기
+
+Python 3.11~3.12, PyTorch 2.8.0 CPU 환경에서 확인했다.
 
 ```bash
 python -m pip install torch==2.8.0 torchvision==0.23.0 --index-url https://download.pytorch.org/whl/cpu
-python -m pip install "Pillow>=10.0,<12.0" "numpy>=1.26,<3.0"
-python predict.py --model model.pth --input my_photos --output results.csv
+python -m pip install "Pillow>=10.0,<12.0" "numpy>=1.26,<3.0" matplotlib
+python src/predict.py --model model.pth --input my_photos --output results.csv
 ```
 
-my_photos 폴더를 만들고 직접 찍은 JPG 또는 PNG 사진을 넣는다. 사진 한 장을 넣으려면 --input my_photos/example.jpg로 지정한다. 폴더에 넣기만 하면 자동 실행되는 방식은 아니며 위 명령을 실행해야 한다.
-
-결과의 cucumber=오이, potato=감자, tomato=토마토, fresh=원자료의 정상, rotten=원자료의 비정상 라벨이다. 점수는 보정되지 않은 softmax 값이며 정답 확률로 보장되지 않는다. 등록된 3종 밖의 물체도 6개 클래스 중 하나로 출력하므로, 이번 시험은 우선 3종에 한정한다.
+`my_photos` 폴더에 JPG·PNG 사진을 넣는다. 결과 CSV의 `predicted_class`가 예측이다.
+- `cucumber`=오이, `potato`=감자, `tomato`=토마토이고, `fresh`=정상, `rotten`=비정상이다.
+- 가장 높은 점수가 0.5보다 낮으면 `uncertain=yes`로 표시한다. 기준은 `--uncertain-below`로 바꿀 수 있다.
+- 점수는 보정되지 않은 softmax 값이라 정답 확률로 볼 수 없다.
+- 오이·감자·토마토가 아닌 사진도 6개 중 하나로 답한다.
 
 ## 다시 학습하기
 
 ```bash
-python train.py --manifest manifest.csv --out retrained --device cpu
+# 최종 모델 (EfficientNet-B0 미세조정)
+python src/train.py --manifest dataset/manifest.csv --out results/efficientnet_b0_finetune --arch efficientnet_b0 --mode finetune --epochs 30 --patience 8
+# 비교용: ResNet18 미세조정
+python src/train.py --manifest dataset/manifest.csv --out results/resnet18_finetune --arch resnet18 --mode finetune --epochs 30 --patience 8
+# 비교용: 1차 방식 (ResNet18 마지막 층만, 증강 없음)
+python src/train.py --manifest dataset/manifest.csv --out results/resnet18_linear --arch resnet18 --mode linear --no-augment --lr 0.005 --batch-size 16 --label-smoothing 0 --epochs 100 --patience 15
+# 그래프
+python src/make_plots.py
 ```
 
-처음 다시 학습할 때는 공식 ImageNet 사전 학습 가중치 다운로드가 필요할 수 있다. 실제 촬영 시험 사진을 보고 설정을 반복 수정하지 말고, 설정 조정은 검증 데이터로 한다. 이 실행에는 정상 사진만 학습한 대조군 비교나 이상 부위 검출 학습이 포함되지 않았다.
+명령은 모두 저장소 맨 위 폴더에서 실행한다. 처음 실행하면 ImageNet 사전학습 가중치를 내려받는다. GPU가 있으면 `--device cuda`를 붙인다. 설정은 Valid 결과만 보고 바꾸고, Test 결과를 보고 설정을 다시 고치지 않는다.
+
+## 파일 구성
+
+```
+depp-env22/
+├── README.md
+├── 학습결과_확인.ipynb      결과를 훑어보는 노트북
+├── model.pth                최종 모델 (EfficientNet-B0) 가중치와 클래스·전처리·성능 정보
+├── requirements.txt         필요한 파이썬 패키지
+├── dataset/                 사진 1,200장과 데이터셋 설명
+│   ├── train/ valid/ test/  각각 P_fresh/(정상), N_rotten/(비정상)
+│   ├── manifest.csv         사진마다 분할·클래스·그룹·출처·해시
+│   ├── README.md            출처, 검수 기준, 중복 검사 방법, 다시 만드는 방법
+│   ├── summary.json         클래스·분할별 수량과 출처 정보
+│   ├── review/              눈 검수 기록 (1차, 2차)
+│   └── tools/               두 Kaggle 원본으로 dataset/을 다시 만드는 스크립트
+├── src/
+│   ├── train.py             학습
+│   ├── predict.py           내 사진 예측
+│   ├── model_utils.py       공통 함수 (모델 불러오기, 전처리, 클래스 이름)
+│   ├── make_plots.py        학습 곡선, 혼동행렬, 모델 비교 그래프
+│   └── gradcam.py           모델이 사진의 어느 부분을 보고 판단했는지 보여주는 그림
+├── results/                 실험별 metrics.json, history.csv, val/test_predictions.csv, 그래프
+│   └── round1_v1_data/      1차 모델의 학습 기록 (1차 가중치는 커밋 03db425에 있음)
+└── experiments/             채택하지 않은 추가 실험 기록 (field_tomato, partial_rot)
+```
+
+가중치는 용량 때문에 최종 모델(`model.pth`)만 올렸다.
+
+## 한계
+
+- Test도 인터넷 사진이다. 직접 찍은 사진에서의 성능은 아직 측정하지 않았다.
+- Valid·Test가 각 180장이라 한 장이 0.56%p다. 95% 신뢰구간 폭이 약 ±3~4%p이므로 1~2%p 차이는 의미 있게 보기 어렵다.
+- 오이·감자·토마토가 아닌 사진도 6개 중 하나로 답한다.
+- 개체 ID가 없어서, 같은 채소를 다른 각도로 찍은 사진이 서로 다른 분할에 들어갔을 가능성은 남아 있다. 같은 사진의 복사본은 막았다.
+- 토마토 정상 Train 140장 중 83장이 두 촬영 세션에서 왔다.
+- 비정상의 세부 유형(부패·싹·상처)은 구분하지 않는다.
+- 꼭지 둘레만 곰팡이가 핀 토마토(몸통은 멀쩡함)를 정상으로 판단한다. 밭 토마토 사진 120장을 더해 다시 학습해 봤지만 이 유형은 고쳐지지 않았고, Test가 1장 떨어져 채택하지 않았다([experiments/field_tomato](experiments/field_tomato/README.md)).
+- 일부만 상한 채소를 더 잘 잡으려고 입력 크기, 풀링, 부분 부패 사진 추가 등 10가지 후보를 시험했다. 어느 것도 미리 정한 기준을 넘지 못해 채택하지 않았다([experiments/partial_rot](experiments/partial_rot/README.md)).
 
 ## 참고
 
-- [실제 사용 데이터](https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset)
+- [Fruits and Vegetables Dataset](https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset) (CC0)
+- [Fresh and Rotten Classification](https://www.kaggle.com/datasets/swoyam2609/fresh-and-stale-classification) (CDLA-Permissive 1.0)
 - [PyTorch 전이학습 공식 안내](https://docs.pytorch.org/tutorials/beginner/transfer_learning_tutorial.html)
-- [ImageNet 사전 학습 가중치](https://download.pytorch.org/models/resnet18-f37072fd.pth)
+- [torchvision 사전학습 모델 목록](https://docs.pytorch.org/vision/stable/models.html)

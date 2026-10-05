@@ -1,0 +1,11 @@
+run,description,valid_6class_of_180,valid_rotten_caught_of_90,valid_fresh_kept_of_90,partial_rot_caught_of_61,hard_rotten_caught_of_30,hard_fresh_kept_of_30,stem_mold_photo_p_rotten
+baseline,"current model.pth: 224px, average pooling, train 840",166,88,83,57,27,27,0.12
+320px_crop0.3,"input 320px, random crops down to 30% of the photo",167,88,84,53,26,30,0.08
+320px_crop0.3_avgmax,320px + average+max pooling,163,89,84,50,17,30,0.12
+224px_avgmax,224px + average+max pooling,164,85,84,53,23,25,0.4
+224px_avgmax_seed7,"same as 224px_avgmax, seed 7",166,88,81,52,21,30,0.25
+plus_tomato29,+29 partial-rot / +29 fresh tomatoes (2 later found to overlap Valid/Test),170,87,87,55,29,25,0.4
+plus_tomato29_avgmax,plus_tomato29 + average+max pooling,165,84,84,51,17,26,0.35
+plus_all_seed42,"+66 partial-rot / +66 fresh (tomato 25, cucumber 17, potato 24 each), train 972",172,88,87,55,27,26,0.21
+plus_all_seed7,"same as plus_all_seed42, seed 7",173,88,89,52,24,27,0.14
+plus_all_seed42+seed7,average of the two models above,173,88,88,54,27,26,0.18

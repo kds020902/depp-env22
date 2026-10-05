@@ -1,0 +1,7 @@
+__pycache__/
+.ipynb_checkpoints/
+# 실험별 가중치는 올리지 않음 (최종 모델만 맨 위 model.pth로 올림)
+results/*/model.pth
+pretrained/
+my_photos/
+results.csv
