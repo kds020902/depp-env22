@@ -118,12 +118,13 @@ depp-env22/
 ├── README.md
 ├── 학습결과_확인.ipynb      결과를 훑어보는 노트북
 ├── model.pth                최종 모델 (EfficientNet-B0) 가중치와 클래스·전처리·성능 정보
-├── requirements.txt
+├── requirements.txt         필요한 파이썬 패키지
 ├── dataset/                 사진 1,200장과 데이터셋 설명
 │   ├── train/ valid/ test/  각각 P_fresh/(정상), N_rotten/(비정상)
 │   ├── manifest.csv         사진마다 분할·클래스·그룹·출처·해시
-│   ├── README.md            출처, 검수 기준, 중복 검사 방법
-│   ├── review/              눈 검수 기록
+│   ├── README.md            출처, 검수 기준, 중복 검사 방법, 다시 만드는 방법
+│   ├── summary.json         클래스·분할별 수량과 출처 정보
+│   ├── review/              눈 검수 기록 (1차, 2차)
 │   └── tools/               두 Kaggle 원본으로 dataset/을 다시 만드는 스크립트
 ├── src/
 │   ├── train.py             학습
@@ -133,8 +134,7 @@ depp-env22/
 │   └── gradcam.py           모델이 사진의 어느 부분을 보고 판단했는지 보여주는 그림
 ├── results/                 실험별 metrics.json, history.csv, val/test_predictions.csv, 그래프
 │   └── round1_v1_data/      1차 모델의 학습 기록 (1차 가중치는 커밋 03db425에 있음)
-├── experiments/             채택하지 않은 추가 실험 기록 (field_tomato, partial_rot)
-└── FILE_HASHES.json         파일별 SHA-256
+└── experiments/             채택하지 않은 추가 실험 기록 (field_tomato, partial_rot)
 ```
 
 가중치는 용량 때문에 최종 모델(`model.pth`)만 올렸다.

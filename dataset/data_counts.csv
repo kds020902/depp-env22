@@ -1,7 +1,0 @@
-﻿class_name,train,validation,test,total
-cucumber_fresh,140,30,30,200
-cucumber_rotten,140,30,30,200
-potato_fresh,140,30,30,200
-potato_rotten,140,30,30,200
-tomato_fresh,140,30,30,200
-tomato_rotten,140,30,30,200

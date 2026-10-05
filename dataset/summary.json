@@ -1,0 +1,217 @@
+{
+  "version": 2,
+  "total_images": 1200,
+  "class_counts": {
+    "cucumber_fresh": {
+      "train": 140,
+      "val": 30,
+      "test": 30,
+      "total": 200
+    },
+    "cucumber_rotten": {
+      "train": 140,
+      "val": 30,
+      "test": 30,
+      "total": 200
+    },
+    "potato_fresh": {
+      "train": 140,
+      "val": 30,
+      "test": 30,
+      "total": 200
+    },
+    "potato_rotten": {
+      "train": 140,
+      "val": 30,
+      "test": 30,
+      "total": 200
+    },
+    "tomato_fresh": {
+      "train": 140,
+      "val": 30,
+      "test": 30,
+      "total": 200
+    },
+    "tomato_rotten": {
+      "train": 140,
+      "val": 30,
+      "test": 30,
+      "total": 200
+    }
+  },
+  "split_counts": {
+    "train": 840,
+    "val": 180,
+    "test": 180
+  },
+  "condition_by_split": {
+    "train": {
+      "fresh": 420,
+      "rotten": 420
+    },
+    "val": {
+      "fresh": 90,
+      "rotten": 90
+    },
+    "test": {
+      "fresh": 90,
+      "rotten": 90
+    }
+  },
+  "source_counts": {
+    "cucumber_fresh|muhriddinmuxiddinov": 170,
+    "cucumber_fresh|swoyam2609": 30,
+    "cucumber_rotten|muhriddinmuxiddinov": 170,
+    "cucumber_rotten|swoyam2609": 30,
+    "potato_fresh|muhriddinmuxiddinov": 200,
+    "potato_rotten|muhriddinmuxiddinov": 200,
+    "tomato_fresh|muhriddinmuxiddinov": 200,
+    "tomato_rotten|muhriddinmuxiddinov": 200
+  },
+  "carried_over_from_v1": 519,
+  "new_in_v2": 681,
+  "v1_images_removed": 81,
+  "v1_removed_reasons": {
+    "label_recheck": 4,
+    "session_trim": 77
+  },
+  "visual_review": {
+    "reviewed": 1053,
+    "passed": 867
+  },
+  "groups": {
+    "train": 329,
+    "val": 180,
+    "test": 180
+  },
+  "sessions": {
+    "train": 266,
+    "val": 175,
+    "test": 174
+  },
+  "duplicate_rule": "same group when any of: same v1 group; pHash<=6 and dHash<=8; flip/rotation-invariant ResNet18 cosine>=0.92; ORB+RANSAC inliers>=30 with cosine>=0.85 (or inliers>=80 within a species)",
+  "session_rule": "same session when the duplicate rule holds with cosine>=0.90 instead of 0.92; sessions with 30+ candidate photos are kept out of val/test; a val/test class takes at most 10 photos from one session",
+  "session_balance": "the fabric/notebook tomato session has equal fresh and rotten counts in train (42/42) so its background cannot signal the label",
+  "leakage_audit": {
+    "max_flip_rotation_invariant_cosine_val_test_to_train": 0.918,
+    "note": "pairs above 0.91 were inspected by eye: different photos"
+  },
+  "source_metadata": {
+    "note": "Kaggle muhriddinmuxiddinov/fruits-and-vegetables-dataset (1,140 of 1,200 photos); the other 60 cucumbers are from swoyam2609/fresh-and-stale-classification v1, see manifest.csv",
+    "dataset_url": "https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset",
+    "download_url": "https://www.kaggle.com/api/v1/datasets/download/muhriddinmuxiddinov/fruits-and-vegetables-dataset?datasetVersionNumber=2",
+    "api_metadata_url": "https://www.kaggle.com/api/v1/datasets/view/muhriddinmuxiddinov/fruits-and-vegetables-dataset",
+    "version": 2,
+    "license_name": "CC0: Public Domain",
+    "archive_bytes": 911969808,
+    "source_counts": {
+      "FreshApple": 612,
+      "FreshBanana": 624,
+      "FreshMango": 605,
+      "FreshOrange": 609,
+      "FreshStrawberry": 603,
+      "RottenApple": 588,
+      "RottenBanana": 576,
+      "RottenMango": 593,
+      "RottenOrange": 591,
+      "RottenStrawberry": 596,
+      "FreshBellpepper": 611,
+      "FreshCarrot": 620,
+      "FreshCucumber": 608,
+      "FreshPotato": 615,
+      "FreshTomato": 604,
+      "RottenBellpepper": 591,
+      "RottenCarrot": 580,
+      "RottenCucumber": 593,
+      "RottenPotato": 585,
+      "RottenTomato": 596
+    },
+    "retrieved_utc": "2026-09-27T11:27:36Z",
+    "kaggle_metadata": {
+      "subtitleNullable": "Determining freshness of fruits and vegetables",
+      "creatorNameNullable": "Mukhriddin Mukhiddinov",
+      "totalBytesNullable": 920890427,
+      "licenseNameNullable": "CC0: Public Domain",
+      "descriptionNullable": "# Context\n\nThis dataset contains images of the following fruits and vegetables items:\n\nFresh fruits- fresh banana, fresh apple, fresh orange, fresh mango and fresh strawberry.\nRotten fruits- rotten banana, rotten apple, rotten orange, rotten mango and rotten strawberry.\nFresh vegetables- fresh potato, fresh cucumber, fresh carrot, fresh tomato and fresh bell pepper.\nRotten vegetables- rotten potato, rotten cucumber, rotten carrot, rotten tomato and rotten bell pepper.\n\n# Content\n\nThis dataset contains two folders:\n\nFruits (5997 images for 10 classes)\nVegetables (6003 images for 10 classes)\neach of the above folders contains subfolders for different fruits and vegetables wherein the images for respective food items are present\n\nThis dataset gathered from different online sources, such as Google images, Bing images, Kaggle, Fruit360  and Sriram R.K.,\nwhich provided samples of the pure-fresh category and a single item with a white background, respectively.\n\n**Please cite the following research paper:**\nMukhiddinov, Mukhriddin, Azamjon Muminov, and Jinsoo Cho. 2022. \"Improved Classification Approach for Fruits and Vegetables Freshness Based on Deep Learning\" Sensors 22, no. 21: 8192. https://doi.org/10.3390/s22218192",
+      "ownerNameNullable": "Mukhriddin Mukhiddinov",
+      "ownerRefNullable": "muhriddinmuxiddinov",
+      "titleNullable": "Fruits and Vegetables dataset",
+      "currentVersionNumberNullable": 2,
+      "usabilityRatingNullable": 0.6875,
+      "thumbnailImageUrlNullable": "https://storage.googleapis.com/kaggle-datasets-images/2468468/4184322/4b6d04bdbd3aa03444b88584145e4641/dataset-thumbnail.png?t=2022-09-10-11-38-26",
+      "id": 2468468,
+      "ref": "muhriddinmuxiddinov/fruits-and-vegetables-dataset",
+      "subtitle": "Determining freshness of fruits and vegetables",
+      "hasSubtitle": true,
+      "creatorName": "Mukhriddin Mukhiddinov",
+      "hasCreatorName": true,
+      "creatorUrl": "",
+      "hasCreatorUrl": false,
+      "totalBytes": 920890427,
+      "hasTotalBytes": true,
+      "url": "",
+      "hasUrl": false,
+      "lastUpdated": "2022-12-21T01:55:19.33Z",
+      "downloadCount": 6610,
+      "isPrivate": false,
+      "isFeatured": false,
+      "licenseName": "CC0: Public Domain",
+      "hasLicenseName": true,
+      "description": "# Context\n\nThis dataset contains images of the following fruits and vegetables items:\n\nFresh fruits- fresh banana, fresh apple, fresh orange, fresh mango and fresh strawberry.\nRotten fruits- rotten banana, rotten apple, rotten orange, rotten mango and rotten strawberry.\nFresh vegetables- fresh potato, fresh cucumber, fresh carrot, fresh tomato and fresh bell pepper.\nRotten vegetables- rotten potato, rotten cucumber, rotten carrot, rotten tomato and rotten bell pepper.\n\n# Content\n\nThis dataset contains two folders:\n\nFruits (5997 images for 10 classes)\nVegetables (6003 images for 10 classes)\neach of the above folders contains subfolders for different fruits and vegetables wherein the images for respective food items are present\n\nThis dataset gathered from different online sources, such as Google images, Bing images, Kaggle, Fruit360  and Sriram R.K.,\nwhich provided samples of the pure-fresh category and a single item with a white background, respectively.\n\n**Please cite the following research paper:**\nMukhiddinov, Mukhriddin, Azamjon Muminov, and Jinsoo Cho. 2022. \"Improved Classification Approach for Fruits and Vegetables Freshness Based on Deep Learning\" Sensors 22, no. 21: 8192. https://doi.org/10.3390/s22218192",
+      "hasDescription": true,
+      "ownerName": "Mukhriddin Mukhiddinov",
+      "hasOwnerName": true,
+      "ownerRef": "muhriddinmuxiddinov",
+      "hasOwnerRef": true,
+      "kernelCount": 9,
+      "title": "Fruits and Vegetables dataset",
+      "hasTitle": true,
+      "topicCount": 1,
+      "viewCount": 33342,
+      "voteCount": 43,
+      "currentVersionNumber": 2,
+      "hasCurrentVersionNumber": true,
+      "usabilityRating": 0.6875,
+      "hasUsabilityRating": true,
+      "tags": [
+        {
+          "nameNullable": "food",
+          "descriptionNullable": "",
+          "fullPathNullable": "subject > health and fitness > food",
+          "ref": "food",
+          "name": "food",
+          "hasName": true,
+          "description": "",
+          "hasDescription": true,
+          "fullPath": "subject > health and fitness > food",
+          "hasFullPath": true,
+          "competitionCount": 15,
+          "datasetCount": 13396,
+          "scriptCount": 803,
+          "totalCount": 14214
+        }
+      ],
+      "files": [],
+      "versions": [
+        {
+          "creatorNameNullable": "Mukhriddin Mukhiddinov",
+          "creatorRefNullable": "fruits-and-vegetables-dataset",
+          "versionNotesNullable": "Data Update 2022/12/21",
+          "statusNullable": "Ready",
+          "versionNumber": 2,
+          "creationDate": "2022-12-21T01:55:19.33Z",
+          "creatorName": "Mukhriddin Mukhiddinov",
+          "hasCreatorName": true,
+          "creatorRef": "fruits-and-vegetables-dataset",
+          "hasCreatorRef": true,
+          "versionNotes": "Data Update 2022/12/21",
+          "hasVersionNotes": true,
+          "status": "Ready",
+          "hasStatus": true
+        }
+      ],
+      "thumbnailImageUrl": "https://storage.googleapis.com/kaggle-datasets-images/2468468/4184322/4b6d04bdbd3aa03444b88584145e4641/dataset-thumbnail.png?t=2022-09-10-11-38-26",
+      "hasThumbnailImageUrl": true
+    }
+  }
+}

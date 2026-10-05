@@ -18,9 +18,9 @@ dataset/
 │   ├── P_fresh/     정상 90장
 │   └── N_rotten/    비정상 90장
 ├── manifest.csv     사진마다 분할·클래스·그룹·출처·해시
-├── data_counts.csv, data_summary.json, source_metadata.json
-├── review/          눈 검수 기록
-└── tools/           두 Kaggle 원본으로 이 폴더를 다시 만드는 스크립트
+├── summary.json     클래스·분할별 수량, 출처 정보, 중복·세션 기준 요약
+├── review/          눈 검수 기록 (1차 round1_review.json, 2차 v2_*.json)
+└── tools/           두 Kaggle 원본으로 이 폴더를 다시 만드는 스크립트 (아래 "다시 만들기")
 ```
 
 - **채소 종류:** 파일 이름 앞부분에 있다(예: `tomato_rotten_1201.jpg`). 한 폴더 안에서 오이·감자·토마토 순으로 정렬된다.
@@ -45,7 +45,7 @@ dataset/
 - **Valid:** 학습 중 가장 좋은 epoch를 고르는 데만 쓴다.
 - **Test:** 모델을 다 고른 뒤 마지막에 한 번만 채점한다.
 
-사진별 분할·출처·해시는 `manifest.csv`, 클래스별 수량은 `data_counts.csv`, 요약 수치는 `data_summary.json`에 있다.
+사진별 분할·출처·해시는 `manifest.csv`, 클래스별 수량과 요약 수치는 `summary.json`에 있다.
 
 ## 출처
 
@@ -102,4 +102,29 @@ dataset/
 
 ## 다시 만들기
 
-`tools/build_dataset_v2.py`로 두 Kaggle 원본과 검수 기록에서 같은 데이터셋을 같은 폴더 구성으로 다시 만들 수 있다. 사용법은 `tools/README.md`에 있다.
+`tools/build_dataset_v2.py`는 두 Kaggle 원본과 검수 기록(`review/`)으로 이 데이터셋을 같은 폴더 구성으로 다시 만든다. 사람이 한 눈 검수 결과는 `review/v2_visual_review.json`에 저장돼 있어서 다시 검수할 필요는 없다. 명령은 저장소 맨 위 폴더에서 실행한다.
+
+```bash
+pip install -r requirements.txt
+
+# 1) 원본 내려받기 (Kaggle 로그인 없이 받을 수 있는 공개 데이터)
+curl -L -o fv.zip "https://www.kaggle.com/api/v1/datasets/download/muhriddinmuxiddinov/fruits-and-vegetables-dataset?datasetVersionNumber=2"
+curl -L -o fs.zip "https://www.kaggle.com/api/v1/datasets/download/swoyam2609/fresh-and-stale-classification"
+unzip -q fv.zip -d src1
+unzip -q fs.zip 'dataset/*/freshcucumber/*' 'dataset/*/rottencucumber/*' -d src2
+
+# 2) 1차 manifest 꺼내기
+git show 03db425:manifest.csv > v1_manifest.csv
+
+# 3) 다시 만들기 (CPU 4코어 기준 약 10~15분)
+python dataset/tools/build_dataset_v2.py --src1 src1 --src2 src2 --v1-manifest v1_manifest.csv --out rebuilt
+```
+
+결과는 이 폴더와 같은 구성(`rebuilt/train|valid|test/P_fresh|N_rotten/`, `rebuilt/manifest.csv`)으로 나온다. 순서는 다음과 같다.
+
+1. 1차 사진 중 라벨 재검수로 뺀 4장을 제외한다.
+2. 눈 검수를 통과한 사진을 더한다. 두 번째 출처 오이는 테두리를 잘라낸 뒤 정상·비정상 30장씩 고른다.
+3. 지각 해시, 반전·회전 불변 ResNet18 특징, ORB 특징점 매칭으로 같은 사진의 복사본을 한 그룹으로 묶는다.
+4. 클래스마다 Train 140 / Valid 30 / Test 30으로 나누고, 분할과 상태별 폴더에 저장한다.
+
+이렇게 다시 만든 결과는 저장소의 `manifest.csv`, 사진 1,200장과 바이트 단위로 같다.
