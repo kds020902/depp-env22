@@ -80,13 +80,14 @@ def confusion(run: Path, meta: dict, split: str = "test"):
 
 def comparison(runs: list[Path], metas: list[dict], out: Path, highlight: str):
     metrics = [("accuracy", "6 classes"), ("species_accuracy", "vegetable"), ("condition_accuracy", "fresh / rotten")]
-    fig, ax = plt.subplots(figsize=(9, 4))
+    order = ["resnet18_linear", "resnet18_finetune", "efficientnet_b0_finetune"]
+    idx = sorted(range(len(runs)), key=lambda k: order.index(runs[k].name) if runs[k].name in order else 99)
+    shades = {"resnet18_linear": "#d6d5d0", "resnet18_finetune": MUTED}
+    fig, ax = plt.subplots(figsize=(9, 4.4))
     style(ax)
     width = 0.8 / len(runs)
-    shades = [MUTED, "#c7c6c1", ACCENT]
-    order = sorted(range(len(runs)), key=lambda k: runs[k].name == highlight)
-    for slot, k in enumerate(order):
-        color = ACCENT if runs[k].name == highlight else shades[slot]
+    for slot, k in enumerate(idx):
+        color = ACCENT if runs[k].name == highlight else shades.get(runs[k].name, MUTED)
         values = [100 * metas[k]["metrics"]["test"][key] for key, _ in metrics]
         xs = [g + (slot - (len(runs) - 1) / 2) * width for g in range(len(metrics))]
         bars = ax.bar(xs, values, width * 0.92, color=color, label=LABELS.get(runs[k].name, runs[k].name))
@@ -95,10 +96,12 @@ def comparison(runs: list[Path], metas: list[dict], out: Path, highlight: str):
     ax.set_xticks(range(len(metrics)), [label for _, label in metrics], color=INK_2)
     ax.set_ylim(0, 105)
     ax.set_ylabel("test accuracy (%)", color=INK_2)
-    best = metas[[r.name for r in runs].index(highlight)]["metrics"]["test"]
-    ax.set_title(f"Same 180-photo test set: {LABELS.get(highlight, highlight).split(',')[0]} reaches "
-                 f"{100 * best['accuracy']:.1f}% on the 6 classes", color=INK, fontsize=11, loc="left")
-    ax.legend(frameon=False, fontsize=8, labelcolor=INK_2, loc="lower right")
+    acc = {r.name: 100 * m["metrics"]["test"]["accuracy"] for r, m in zip(runs, metas)}
+    tuned = [v for n, v in acc.items() if n.endswith("finetune")]
+    title = (f"Fine-tuning lifts 6-class test accuracy from {acc.get('resnet18_linear', 0):.1f}% "
+             f"to {min(tuned):.1f}-{max(tuned):.1f}%" if "resnet18_linear" in acc and tuned else "Test accuracy")
+    ax.set_title(title + "  (same 180 test photos)", color=INK, fontsize=11, loc="left")
+    ax.legend(frameon=False, fontsize=8, labelcolor=INK_2, loc="upper center", bbox_to_anchor=(0.5, -0.1), ncol=3)
     fig.tight_layout()
     fig.savefig(out, dpi=150, facecolor="white")
     plt.close(fig)
