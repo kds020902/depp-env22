@@ -50,10 +50,9 @@ def main():
     for path in photos:
         cam, index, score = grad_cam(model, arch, read_image(path), None)
         image = open_image(path).resize(tuple(PREPROCESS["resize"]))
-        heat = np.asarray(
-            matplotlib.colormaps["inferno"](np.array(
-                torch.nn.functional.interpolate(torch.tensor(cam)[None, None], size=image.size[::-1],
-                                                mode="bilinear")[0, 0])))[..., :3]
+        upsampled = torch.nn.functional.interpolate(torch.tensor(cam)[None, None], size=image.size[::-1],
+                                                    mode="bilinear")[0, 0].numpy()
+        heat = matplotlib.colormaps["inferno"](upsampled)[..., :3]
         fig, axes = plt.subplots(1, 2, figsize=(6, 3.2))
         axes[0].imshow(image)
         axes[1].imshow(np.asarray(image) / 255 * 0.5 + heat * 0.5)
