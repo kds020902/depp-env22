@@ -14,7 +14,7 @@ unzip -q fs.zip 'dataset/*/freshcucumber/*' 'dataset/*/rottencucumber/*' -d src2
 # 2) 1차 manifest 꺼내기
 git show 03db425:manifest.csv > v1_manifest.csv
 
-# 3) 다시 만들기 (CPU 4코어 기준 약 10분)
+# 3) 다시 만들기 (CPU 4코어 기준 약 10~15분)
 python dataset_tools/build_dataset_v2.py --src1 src1 --src2 src2 --v1-manifest v1_manifest.csv --out rebuilt
 ```
 
