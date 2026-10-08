@@ -88,8 +88,8 @@
 `added_train_photos.csv`의 사진을 원본 데이터셋에서 받아 `dataset/manifest.csv`의 Train에 더하고, Test 행은 지운 manifest를 `dataset/manifest_plus_partial.csv`로 저장해 학습한다. 기존 행의 `image_path`가 `dataset/` 기준이라 이 파일도 `dataset/`에 둔다.
 
 ```bash
-python src/train.py --manifest dataset/manifest_plus_partial.csv --out results/effb0_plus_partial_s42 --arch efficientnet_b0 --mode finetune --epochs 30 --patience 8 --seed 42
-python src/train.py --manifest dataset/manifest_plus_partial.csv --out results/effb0_plus_partial_s7 --arch efficientnet_b0 --mode finetune --epochs 30 --patience 8 --seed 7
+python src/train.py --manifest dataset/manifest_plus_partial.csv --num-classes 6 --out results/effb0_plus_partial_s42 --arch efficientnet_b0 --mode finetune --epochs 30 --patience 8 --seed 42
+python src/train.py --manifest dataset/manifest_plus_partial.csv --num-classes 6 --out results/effb0_plus_partial_s7 --arch efficientnet_b0 --mode finetune --epochs 30 --patience 8 --seed 7
 ```
 
 가중치는 채택하지 않아서 올리지 않았다.

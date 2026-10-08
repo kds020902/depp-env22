@@ -17,11 +17,13 @@ from torchvision.models import (
 )
 
 
+# Class id = 2 x species + condition. New species are appended, so older 6-class checkpoints keep their ids.
 CLASS_NAMES = [
     "cucumber_fresh", "cucumber_rotten", "potato_fresh",
     "potato_rotten", "tomato_fresh", "tomato_rotten",
+    "bellpepper_fresh", "bellpepper_rotten", "carrot_fresh", "carrot_rotten",
 ]
-SPECIES_NAMES = ["cucumber", "potato", "tomato"]
+SPECIES_NAMES = ["cucumber", "potato", "tomato", "bellpepper", "carrot"]
 CONDITION_NAMES = ["fresh", "rotten"]
 IMAGE_EXTENSIONS = {".jpg", ".jpeg", ".png", ".bmp", ".webp", ".tif", ".tiff"}
 PREPROCESS = {
@@ -141,8 +143,8 @@ def _apply_pooling(model: nn.Module, arch: str, pooling: str) -> None:
 
 
 def create_model(arch: str = "resnet18", pretrained: str | Path | None = None,
-                 pooling: str = "avg") -> tuple[nn.Module, str]:
-    """ImageNet backbone with a newly initialised six-way classifier."""
+                 pooling: str = "avg", num_classes: int = len(CLASS_NAMES)) -> tuple[nn.Module, str]:
+    """ImageNet backbone with a newly initialised classifier (one output per class)."""
     if arch not in ARCHITECTURES:
         raise ValueError(f"Unknown architecture {arch!r}; choose from {sorted(ARCHITECTURES)}")
     builder, weights, file_name, _ = ARCHITECTURES[arch]
@@ -160,7 +162,7 @@ def create_model(arch: str = "resnet18", pretrained: str | Path | None = None,
         model = builder(weights=weights)
         source = f"torchvision.{type(weights).__name__}.{weights.name}"
     old = classifier_layer(model, arch)
-    set_classifier_layer(model, arch, nn.Linear(old.in_features, len(CLASS_NAMES)))
+    set_classifier_layer(model, arch, nn.Linear(old.in_features, num_classes))
     _apply_pooling(model, arch, pooling)
     return model, source
 
@@ -170,13 +172,14 @@ def load_model(path: str | Path, device: torch.device) -> tuple[nn.Module, dict]
     arch = checkpoint.get("architecture")
     if arch not in ARCHITECTURES:
         raise ValueError(f"Unsupported architecture in checkpoint: {arch!r}")
-    if checkpoint.get("class_names") != CLASS_NAMES:
+    names = checkpoint.get("class_names") or []
+    if len(names) < 2 or names != CLASS_NAMES[:len(names)]:  # a 6-class checkpoint is a prefix of the 10
         raise ValueError("Checkpoint class order does not match this application.")
     if checkpoint.get("preprocess") != preprocess_for(input_size(checkpoint)):
         raise ValueError("Checkpoint preprocessing does not match this application.")
     model = ARCHITECTURES[arch][0](weights=None)
     old = classifier_layer(model, arch)
-    set_classifier_layer(model, arch, nn.Linear(old.in_features, len(CLASS_NAMES)))
+    set_classifier_layer(model, arch, nn.Linear(old.in_features, len(names)))
     _apply_pooling(model, arch, checkpoint.get("pooling", "avg"))
     model.load_state_dict(checkpoint["state_dict"], strict=True)
     model.to(device).eval()
@@ -202,6 +205,6 @@ def state_checksum(state: dict[str, torch.Tensor], exclude_prefixes: tuple[str, 
 
 
 def marginal_probabilities(probabilities: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor]:
-    """Sum the six joint probabilities, rather than reusing joint argmax labels."""
-    joint = probabilities.reshape(-1, len(SPECIES_NAMES), len(CONDITION_NAMES))
+    """Sum the joint (species x condition) probabilities, rather than reusing joint argmax labels."""
+    joint = probabilities.reshape(-1, probabilities.shape[1] // len(CONDITION_NAMES), len(CONDITION_NAMES))
     return joint.sum(dim=2), joint.sum(dim=1)

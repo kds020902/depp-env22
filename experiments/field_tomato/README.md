@@ -50,7 +50,7 @@
 `added_train_photos.csv`의 120장을 Mendeley에서 받은 원본 경로로 `dataset/manifest.csv`의 Train에 더해 `dataset/manifest_plus_field.csv`로 저장한 뒤, 같은 명령으로 학습한다. 기존 행의 `image_path`가 `dataset/` 기준이라 이 파일도 `dataset/`에 둔다.
 
 ```bash
-python src/train.py --manifest dataset/manifest_plus_field.csv --out results/effb0_plus_field --arch efficientnet_b0 --mode finetune --epochs 30 --patience 8
+python src/train.py --manifest dataset/manifest_plus_field.csv --num-classes 6 --out results/effb0_plus_field --arch efficientnet_b0 --mode finetune --epochs 30 --patience 8
 ```
 
 이 폴더의 `metrics.json`, `history.csv`, `*_predictions.csv`가 그 실행 결과다. 가중치는 채택하지 않아서 올리지 않았다.

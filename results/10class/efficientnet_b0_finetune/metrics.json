@@ -1,0 +1,545 @@
+{
+  "format_version": 2,
+  "architecture": "efficientnet_b0",
+  "training_mode": "finetune",
+  "pooling": "avg",
+  "class_names": [
+    "cucumber_fresh",
+    "cucumber_rotten",
+    "potato_fresh",
+    "potato_rotten",
+    "tomato_fresh",
+    "tomato_rotten",
+    "bellpepper_fresh",
+    "bellpepper_rotten",
+    "carrot_fresh",
+    "carrot_rotten"
+  ],
+  "species_names": [
+    "cucumber",
+    "potato",
+    "tomato",
+    "bellpepper",
+    "carrot"
+  ],
+  "condition_names": [
+    "fresh",
+    "rotten"
+  ],
+  "preprocess": {
+    "exif_transpose": true,
+    "color_mode": "RGB",
+    "resize": [
+      224,
+      224
+    ],
+    "interpolation": "bilinear",
+    "antialias": true,
+    "mean": [
+      0.485,
+      0.456,
+      0.406
+    ],
+    "std": [
+      0.229,
+      0.224,
+      0.225
+    ]
+  },
+  "seed": 42,
+  "best_epoch": 16,
+  "epochs_completed": 24,
+  "counts": {
+    "train": {
+      "cucumber_fresh": 140,
+      "cucumber_rotten": 140,
+      "potato_fresh": 140,
+      "potato_rotten": 140,
+      "tomato_fresh": 140,
+      "tomato_rotten": 140,
+      "bellpepper_fresh": 106,
+      "bellpepper_rotten": 106,
+      "carrot_fresh": 104,
+      "carrot_rotten": 104
+    },
+    "val": {
+      "cucumber_fresh": 30,
+      "cucumber_rotten": 30,
+      "potato_fresh": 30,
+      "potato_rotten": 30,
+      "tomato_fresh": 30,
+      "tomato_rotten": 30,
+      "bellpepper_fresh": 30,
+      "bellpepper_rotten": 30,
+      "carrot_fresh": 30,
+      "carrot_rotten": 30
+    },
+    "test": {
+      "cucumber_fresh": 30,
+      "cucumber_rotten": 30,
+      "potato_fresh": 30,
+      "potato_rotten": 30,
+      "tomato_fresh": 30,
+      "tomato_rotten": 30,
+      "bellpepper_fresh": 30,
+      "bellpepper_rotten": 30,
+      "carrot_fresh": 30,
+      "carrot_rotten": 30
+    }
+  },
+  "selection": "lowest validation cross-entropy; the test split is scored once after selection",
+  "metrics": {
+    "val": {
+      "split": "val",
+      "sample_count": 300,
+      "loss": 0.3300418555736542,
+      "accuracy": 0.9366666674613953,
+      "macro_f1": 0.9375605238740065,
+      "species_accuracy": 0.9700000286102295,
+      "condition_accuracy": 0.9700000286102295,
+      "rotten_recall": 0.9866666793823242,
+      "fresh_recall": 0.95333331823349,
+      "species_condition_metric_method": "argmax of summed joint softmax probabilities",
+      "class_names": [
+        "cucumber_fresh",
+        "cucumber_rotten",
+        "potato_fresh",
+        "potato_rotten",
+        "tomato_fresh",
+        "tomato_rotten",
+        "bellpepper_fresh",
+        "bellpepper_rotten",
+        "carrot_fresh",
+        "carrot_rotten"
+      ],
+      "confusion_matrix_orientation": "rows=true, columns=predicted",
+      "confusion_matrix": [
+        [
+          30,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          26,
+          0,
+          2,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          26,
+          4,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          28,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          29,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          1,
+          29,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          2,
+          0,
+          26,
+          2,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          28,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          30,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          29
+        ]
+      ],
+      "per_class": {
+        "cucumber_fresh": {
+          "precision": 0.967741935483871,
+          "recall": 1.0,
+          "f1": 0.9836065573770492,
+          "support": 30
+        },
+        "cucumber_rotten": {
+          "precision": 1.0,
+          "recall": 0.8666666666666667,
+          "f1": 0.9285714285714286,
+          "support": 30
+        },
+        "potato_fresh": {
+          "precision": 0.9629629629629629,
+          "recall": 0.8666666666666667,
+          "f1": 0.912280701754386,
+          "support": 30
+        },
+        "potato_rotten": {
+          "precision": 0.7777777777777778,
+          "recall": 0.9333333333333333,
+          "f1": 0.8484848484848485,
+          "support": 30
+        },
+        "tomato_fresh": {
+          "precision": 0.90625,
+          "recall": 0.9666666666666667,
+          "f1": 0.9354838709677419,
+          "support": 30
+        },
+        "tomato_rotten": {
+          "precision": 0.9666666666666667,
+          "recall": 0.9666666666666667,
+          "f1": 0.9666666666666667,
+          "support": 30
+        },
+        "bellpepper_fresh": {
+          "precision": 1.0,
+          "recall": 0.8666666666666667,
+          "f1": 0.9285714285714286,
+          "support": 30
+        },
+        "bellpepper_rotten": {
+          "precision": 0.8484848484848485,
+          "recall": 0.9333333333333333,
+          "f1": 0.888888888888889,
+          "support": 30
+        },
+        "carrot_fresh": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 30
+        },
+        "carrot_rotten": {
+          "precision": 1.0,
+          "recall": 0.9666666666666667,
+          "f1": 0.983050847457627,
+          "support": 30
+        }
+      },
+      "scores_are_calibrated": false
+    },
+    "test": {
+      "split": "test",
+      "sample_count": 300,
+      "loss": 0.3780887722969055,
+      "accuracy": 0.9166666865348816,
+      "macro_f1": 0.9166804813081256,
+      "species_accuracy": 0.9599999785423279,
+      "condition_accuracy": 0.95333331823349,
+      "rotten_recall": 0.95333331823349,
+      "fresh_recall": 0.95333331823349,
+      "species_condition_metric_method": "argmax of summed joint softmax probabilities",
+      "class_names": [
+        "cucumber_fresh",
+        "cucumber_rotten",
+        "potato_fresh",
+        "potato_rotten",
+        "tomato_fresh",
+        "tomato_rotten",
+        "bellpepper_fresh",
+        "bellpepper_rotten",
+        "carrot_fresh",
+        "carrot_rotten"
+      ],
+      "confusion_matrix_orientation": "rows=true, columns=predicted",
+      "confusion_matrix": [
+        [
+          29,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          27,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          28,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          2,
+          28,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          29,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          2,
+          24,
+          0,
+          4,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          25,
+          3,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          27,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          30,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          28
+        ]
+      ],
+      "per_class": {
+        "cucumber_fresh": {
+          "precision": 0.9354838709677419,
+          "recall": 0.9666666666666667,
+          "f1": 0.9508196721311476,
+          "support": 30
+        },
+        "cucumber_rotten": {
+          "precision": 0.9642857142857143,
+          "recall": 0.9,
+          "f1": 0.9310344827586207,
+          "support": 30
+        },
+        "potato_fresh": {
+          "precision": 0.9333333333333333,
+          "recall": 0.9333333333333333,
+          "f1": 0.9333333333333333,
+          "support": 30
+        },
+        "potato_rotten": {
+          "precision": 0.8484848484848485,
+          "recall": 0.9333333333333333,
+          "f1": 0.888888888888889,
+          "support": 30
+        },
+        "tomato_fresh": {
+          "precision": 0.8787878787878788,
+          "recall": 0.9666666666666667,
+          "f1": 0.9206349206349207,
+          "support": 30
+        },
+        "tomato_rotten": {
+          "precision": 0.96,
+          "recall": 0.8,
+          "f1": 0.8727272727272728,
+          "support": 30
+        },
+        "bellpepper_fresh": {
+          "precision": 0.9615384615384616,
+          "recall": 0.8333333333333334,
+          "f1": 0.8928571428571429,
+          "support": 30
+        },
+        "bellpepper_rotten": {
+          "precision": 0.7941176470588235,
+          "recall": 0.9,
+          "f1": 0.84375,
+          "support": 30
+        },
+        "carrot_fresh": {
+          "precision": 0.967741935483871,
+          "recall": 1.0,
+          "f1": 0.9836065573770492,
+          "support": 30
+        },
+        "carrot_rotten": {
+          "precision": 0.9655172413793104,
+          "recall": 0.9333333333333333,
+          "f1": 0.9491525423728815,
+          "support": 30
+        }
+      },
+      "scores_are_calibrated": false
+    }
+  },
+  "training_verification": {
+    "classifier_parameter_delta_l2": 1.9584883451461792,
+    "backbone_sha256_initial": "600d3c545d3b2858ea17345be990c7b832c24066784c22a392ea7d6a461d8848",
+    "backbone_sha256_final": "5083088f3956cf2deea3021600d7b28c594da9e682c8ca73b7fd936297f9af5b",
+    "trainable_parameter_count": 4020358,
+    "total_parameter_count": 4020358,
+    "backbone_changed": true
+  },
+  "hyperparameters": {
+    "optimizer": "AdamW",
+    "lr": 0.001,
+    "backbone_lr": 0.0002,
+    "weight_decay": 0.0001,
+    "label_smoothing": 0.1,
+    "batch_size": 32,
+    "max_epochs": 30,
+    "early_stopping_patience": 8,
+    "scheduler": "cosine",
+    "augmentation": true,
+    "image_size": 224,
+    "crop_scale_min": 0.6,
+    "device": "cpu",
+    "threads": 4
+  },
+  "pretrained_source": "torchvision.EfficientNet_B0_Weights.IMAGENET1K_V1",
+  "runtime": {
+    "torch_version": "2.8.0+cpu"
+  },
+  "timing_seconds": {
+    "setup": 22.9,
+    "total": 1796.2
+  }
+}

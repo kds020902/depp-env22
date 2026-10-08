@@ -13,7 +13,7 @@ import numpy as np  # noqa: E402
 import torch  # noqa: E402
 
 from model_utils import (  # noqa: E402
-    CLASS_NAMES, IMAGE_EXTENSIONS, input_size, load_model, make_transform, open_image, read_image,
+    IMAGE_EXTENSIONS, input_size, load_model, make_transform, open_image, read_image,
 )
 
 TARGET_LAYERS = {"resnet18": "layer4", "efficientnet_b0": "features"}
@@ -45,7 +45,7 @@ def main():
     parser.add_argument("--out", type=Path, default=Path("gradcam"))
     args = parser.parse_args()
     model, checkpoint = load_model(args.model, torch.device("cpu"))
-    arch = checkpoint["architecture"]
+    arch, class_names = checkpoint["architecture"], checkpoint["class_names"]
     photos = [args.input] if args.input.is_file() else sorted(
         p for p in args.input.rglob("*") if p.suffix.lower() in IMAGE_EXTENSIONS)
     args.out.mkdir(parents=True, exist_ok=True)
@@ -61,11 +61,11 @@ def main():
         axes[1].imshow(np.asarray(image) / 255 * 0.5 + heat * 0.5)
         for ax in axes:
             ax.axis("off")
-        fig.suptitle(f"{path.name}: {CLASS_NAMES[index]} ({score:.2f})", fontsize=9)
+        fig.suptitle(f"{path.name}: {class_names[index]} ({score:.2f})", fontsize=9)
         fig.tight_layout()
         fig.savefig(args.out / f"{path.stem}_gradcam.png", dpi=120)
         plt.close(fig)
-        print(f"{path.name}: {CLASS_NAMES[index]} ({score:.2f})")
+        print(f"{path.name}: {class_names[index]} ({score:.2f})")
     print(f"Saved {len(photos)} images to {args.out.resolve()}")
 
 

@@ -1,0 +1,221 @@
+{
+ "note": "Pairs judged by eye to be the same photo (resized/cropped stock copy) or the same object from the same stock series. The automatic rules missed them because one side is a ~100 px thumbnail. Each pair is joined into one near-duplicate group.",
+ "pairs": [
+  [
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (325).jpg",
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (349).jpg"
+  ],
+  [
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (573).jpg",
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (313).jpg"
+  ],
+  [
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (260).jpg",
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (562).jpg"
+  ],
+  [
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (425).jpg",
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (433).jpg"
+  ],
+  [
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (398).jpg",
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (547).jpg"
+  ],
+  [
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (325).jpg",
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (201).jpg"
+  ],
+  [
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (425).jpg",
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (492).jpg"
+  ],
+  [
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenBellpepper/rottenPepper (308).jpg",
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenBellpepper/rottenPepper (215).jpg"
+  ],
+  [
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (425).jpg",
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (547).jpg"
+  ],
+  [
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (413).jpg",
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (433).jpg"
+  ],
+  [
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (78).jpg",
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (218).jpg"
+  ],
+  [
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (292).jpg",
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (296).jpg"
+  ],
+  [
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenBellpepper/rottenPepper (252).jpg",
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenBellpepper/rottenPepper (180).jpg"
+  ],
+  [
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (378).jpg",
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (320).jpg"
+  ],
+  [
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenBellpepper/rottenPepper (247).jpg",
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenBellpepper/rottenPepper (322).jpg"
+  ],
+  [
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (425).jpg",
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (320).jpg"
+  ],
+  [
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (466).jpg",
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (470).jpg"
+  ],
+  [
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (466).jpg",
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (42).jpg"
+  ],
+  [
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (464).jpg",
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (474).jpg"
+  ],
+  [
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenBellpepper/rottenPepper (252).jpg",
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenBellpepper/rottenPepper (634).jpg"
+  ],
+  [
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (425).jpg",
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (382).jpg"
+  ],
+  [
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenBellpepper/rottenPepper (370).jpg",
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenBellpepper/rottenPepper (377).jpg"
+  ],
+  [
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (425).jpg",
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (115).jpg"
+  ],
+  [
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (413).jpg",
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (547).jpg"
+  ],
+  [
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/FreshCarrot/freshCarrot (548).jpg",
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (42).jpg"
+  ],
+  [
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenBellpepper/rottenPepper (211).jpg",
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenBellpepper/rottenPepper (215).jpg"
+  ],
+  [
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenBellpepper/rottenPepper (106).jpg",
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenBellpepper/rottenPepper (322).jpg"
+  ],
+  [
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (250).jpg",
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (56).jpg"
+  ],
+  [
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (13).jpg",
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (33).jpg"
+  ],
+  [
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (6).jpg",
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (462).jpg"
+  ],
+  [
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenBellpepper/rottenPepper (635).jpg",
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenBellpepper/rottenPepper (169).jpg"
+  ],
+  [
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (398).jpg",
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (470).jpg"
+  ],
+  [
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenBellpepper/rottenPepper (618).jpg",
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenBellpepper/rottenPepper (193).jpg"
+  ],
+  [
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (263).jpg",
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (296).jpg"
+  ],
+  [
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (398).jpg",
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (433).jpg"
+  ],
+  [
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (150).jpg",
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (42).jpg"
+  ],
+  [
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenBellpepper/rottenPepper (264).jpg",
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenBellpepper/rottenPepper (376).jpg"
+  ],
+  [
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (304).jpg",
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (115).jpg"
+  ],
+  [
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (389).jpg",
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (461).jpg"
+  ],
+  [
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (38).jpg",
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (292).jpg"
+  ],
+  [
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (389).jpg",
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (378).jpg"
+  ],
+  [
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (389).jpg",
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (516).jpg"
+  ],
+  [
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (389).jpg",
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (413).jpg"
+  ],
+  [
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (67).jpg",
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (1).jpeg"
+  ],
+  [
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (389).jpg",
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (169).jpg"
+  ],
+  [
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenBellpepper/rottenPepper (426).jpg",
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenBellpepper/rottenPepper (308).jpg"
+  ],
+  [
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (34).jpg",
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (344).jpg"
+  ],
+  [
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenBellpepper/rottenPepper (469).jpg",
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenBellpepper/rottenPepper (120).jpg"
+  ],
+  [
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (44).jpg",
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (574).jpg"
+  ],
+  [
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenBellpepper/rottenPepper (426).jpg",
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenBellpepper/rottenPepper (215).jpg"
+  ],
+  [
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (190).jpg",
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (495).jpg"
+  ],
+  [
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (173).jpg",
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (156).jpg"
+  ],
+  [
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/FreshCarrot/freshCarrot (2).png",
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/FreshCarrot/freshCarrot (5).png"
+  ],
+  [
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (160).jpg",
+   "Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCarrot/rottenCarrot (173).jpg"
+  ]
+ ]
+}
