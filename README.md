@@ -109,6 +109,7 @@ Test에서 클래스별로 맞힌 수는 다음과 같다.
     - 나머지: 이상이 작거나 초기인 사진(싹이 조금 난 감자, 작은 반점), 감자처럼 보이는 갈색 오이 등
 - **학습 시간:** CPU 4코어에서 약 30분 걸렸다.
 - **추가 학습 시도:** 시드 변경, 썸네일 크기 증강, 더 긴 학습을 Valid로 비교했지만 미리 정한 기준을 넘지 못해 채택하지 않았다. 시드만 바꿔도 Valid가 2.3%p 달라졌다([experiments/10class_tuning](experiments/10class_tuning/README.md)).
+- **피망 웹 사진 추가 시도:** 다른 Kaggle 데이터에서 정상·상한 피망 웹 사진을 34장씩 검수해 Train에 더했다(피망 Train 106→140장). 두 시드에서 Valid 정상 피망 오답은 9장에서 1장으로 줄었지만, 상한 피망과 다른 채소가 조금씩 나빠져 전체 Valid가 미리 정한 기준을 넘지 못해 채택하지 않았다([experiments/pepper_web](experiments/pepper_web/README.md)).
 
 ### 확률 보정과 "학습된 데이터가 아닙니다"
 
@@ -194,7 +195,7 @@ depp-env22/
 │   ├── 10class/             현재 10개 클래스 모델의 기록 (calibration_unknown/: 확률 보정·거르기 평가)
 │   ├── (그 밖의 폴더)       6개 클래스 때의 모델 비교 (같은 Test 180장, 6개 클래스 가중치는 커밋 9dc8749의 model.pth)
 │   └── round1_v1_data/      1차 모델의 학습 기록 (1차 가중치는 커밋 03db425에 있음)
-└── experiments/             채택하지 않은 추가 실험 기록 (field_tomato, partial_rot, 10class_tuning)
+└── experiments/             채택하지 않은 추가 실험 기록 (field_tomato, partial_rot, 10class_tuning, pepper_web)
 ```
 
 가중치는 용량 때문에 최종 모델(`model.pth`)만 올렸다.
