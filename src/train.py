@@ -1,10 +1,11 @@
-"""Train a six-class vegetable freshness model and evaluate it once on the test split.
+"""Train the vegetable species x freshness model and evaluate it once on the test split.
 
 Two modes:
   linear   - frozen ImageNet backbone, only the new classifier is trained (the 1st-round method)
   finetune - the whole network is trained with augmentation (backbone at a lower learning rate)
 Model selection (early stopping) uses the validation split only; the test split is scored
-once with the selected weights at the very end.
+once with the selected weights at the very end. --num-classes 6 keeps only cucumber/potato/tomato
+(the 6-class runs in results/).
 """
 
 from __future__ import annotations
@@ -30,17 +31,17 @@ from model_utils import (
 SPLITS = ("train", "val", "test")
 
 
-def read_manifest(path: Path) -> dict[str, list[dict]]:
+def read_manifest(path: Path, class_names: list[str]) -> dict[str, list[dict]]:
     with path.open(newline="", encoding="utf-8-sig") as handle:
         reader = csv.DictReader(handle)
         required = {"image_id", "image_path", "class_name", "class_id", "split", "group_id", "sha256"}
         if not required.issubset(reader.fieldnames or []):
             raise ValueError(f"Manifest must contain: {sorted(required)}")
-        rows = list(reader)
+        rows = [r for r in reader if int(r["class_id"]) < len(class_names)]
     image_ids = set()
     for row in rows:
         label = int(row["class_id"])
-        if not 0 <= label < len(CLASS_NAMES) or CLASS_NAMES[label] != row["class_name"]:
+        if not 0 <= label < len(class_names) or class_names[label] != row["class_name"]:
             raise ValueError(f"Invalid class mapping for image {row['image_id']}")
         if row["split"] not in SPLITS:
             raise ValueError(f"Unsupported split: {row['split']}")
@@ -51,8 +52,8 @@ def read_manifest(path: Path) -> dict[str, list[dict]]:
             raise FileNotFoundError(path.parent / row["image_path"])
     splits = {s: [r for r in rows if r["split"] == s] for s in SPLITS}
     for s in ("train", "val"):
-        if {int(r["class_id"]) for r in splits[s]} != set(range(len(CLASS_NAMES))):
-            raise ValueError(f"All six classes must be represented in the {s} split.")
+        if {int(r["class_id"]) for r in splits[s]} != set(range(len(class_names))):
+            raise ValueError(f"All {len(class_names)} classes must be represented in the {s} split.")
     # The same photo or near-duplicate group must never sit in two splits.
     for field in ("image_path", "group_id", "sha256"):
         for a in SPLITS:
@@ -100,13 +101,13 @@ def predict_logits(model, loader, device):
     return torch.cat(logits), torch.cat(labels)
 
 
-def classification_metrics(labels, logits, split_name):
+def classification_metrics(labels, logits, split_name, class_names):
     probabilities = logits.softmax(1)
     predictions = probabilities.argmax(1)
-    k = len(CLASS_NAMES)
+    k = len(class_names)
     confusion = torch.bincount(labels * k + predictions, minlength=k * k).reshape(k, k)
     per_class = {}
-    for index, name in enumerate(CLASS_NAMES):
+    for index, name in enumerate(class_names):
         tp = int(confusion[index, index])
         support = int(confusion[index].sum())
         predicted = int(confusion[:, index].sum())
@@ -128,7 +129,7 @@ def classification_metrics(labels, logits, split_name):
         "rotten_recall": condition_pred[rotten].eq(1).float().mean().item(),
         "fresh_recall": condition_pred[~rotten].eq(0).float().mean().item(),
         "species_condition_metric_method": "argmax of summed joint softmax probabilities",
-        "class_names": CLASS_NAMES,
+        "class_names": class_names,
         "confusion_matrix_orientation": "rows=true, columns=predicted",
         "confusion_matrix": confusion.tolist(),
         "per_class": per_class,
@@ -136,10 +137,10 @@ def classification_metrics(labels, logits, split_name):
     }
 
 
-def write_predictions(path, rows, logits):
+def write_predictions(path, rows, logits, class_names):
     probabilities = logits.softmax(1)
     species_probs, condition_probs = marginal_probabilities(probabilities)
-    probability_columns = [f"prob_{name}" for name in CLASS_NAMES]
+    probability_columns = [f"prob_{name}" for name in class_names]
     fields = [
         "image_id", "image_path", "true_class", "predicted_class", "correct", "joint_score_uncalibrated",
         "predicted_species", "predicted_condition",
@@ -152,8 +153,8 @@ def write_predictions(path, rows, logits):
             predicted = int(probabilities[i].argmax())
             output = {
                 "image_id": row["image_id"], "image_path": row["image_path"],
-                "true_class": row["class_name"], "predicted_class": CLASS_NAMES[predicted],
-                "correct": CLASS_NAMES[predicted] == row["class_name"],
+                "true_class": row["class_name"], "predicted_class": class_names[predicted],
+                "correct": class_names[predicted] == row["class_name"],
                 "joint_score_uncalibrated": round(float(probabilities[i, predicted]), 6),
                 "predicted_species": SPECIES_NAMES[predicted // 2],
                 "predicted_condition": CONDITION_NAMES[predicted % 2],
@@ -185,6 +186,8 @@ def parse_args():
                         help="Global pooling before the classifier; avgmax keeps the strongest local evidence.")
     parser.add_argument("--crop-scale-min", type=float, default=0.6,
                         help="Smallest random crop, as a fraction of the photo area (augmentation).")
+    parser.add_argument("--num-classes", type=int, choices=[6, len(CLASS_NAMES)], default=len(CLASS_NAMES),
+                        help="6 = cucumber/potato/tomato only (the earlier runs), 10 = all five vegetables.")
     parser.add_argument("--threads", type=int, default=6)
     parser.add_argument("--seed", type=int, default=42)
     return parser.parse_args()
@@ -197,11 +200,13 @@ def main():
     set_seed(args.seed, args.threads)
     device = resolve_device(args.device)
     manifest = args.manifest.expanduser().resolve()
-    splits = read_manifest(manifest)
+    class_names = CLASS_NAMES[:args.num_classes]
+    species_names = SPECIES_NAMES[:args.num_classes // len(CONDITION_NAMES)]
+    splits = read_manifest(manifest, class_names)
     args.out.mkdir(parents=True, exist_ok=True)
     started = time.perf_counter()
 
-    model, pretrained_source = create_model(args.arch, args.pretrained, args.pooling)
+    model, pretrained_source = create_model(args.arch, args.pretrained, args.pooling, len(class_names))
     head = classifier_layer(model, args.arch)
     head_ids = {id(p) for p in head.parameters()}
     head_prefix = next(n for n, m in model.named_modules() if m is head) + "."
@@ -276,7 +281,7 @@ def main():
             if scheduler:
                 scheduler.step()
             val_logits, val_labels = predict_logits(model, eval_loaders["val"], device)
-            val = classification_metrics(val_labels, val_logits, "val")
+            val = classification_metrics(val_labels, val_logits, "val", class_names)
             entry = {
                 "epoch": epoch, "train_loss": running_loss / seen, "train_accuracy": running_correct / seen,
                 "val_loss": val["loss"], "val_accuracy": val["accuracy"], "val_macro_f1": val["macro_f1"],
@@ -300,7 +305,7 @@ def main():
     for split_name, loader in eval_loaders.items():
         logits, labels = predict_logits(model, loader, device)
         logits_by_split[split_name] = logits
-        results[split_name] = classification_metrics(labels, logits, split_name)
+        results[split_name] = classification_metrics(labels, logits, split_name, class_names)
     final_state = {k: v.detach().cpu().clone() for k, v in model.state_dict().items()}
     head_final = classifier_layer(model, args.arch).state_dict()
     verification = {
@@ -314,10 +319,10 @@ def main():
     verification["backbone_changed"] = verification["backbone_sha256_initial"] != verification["backbone_sha256_final"]
     if linear and verification["backbone_changed"]:
         raise RuntimeError("Linear mode must not change the frozen backbone.")
-    counts = {s: {n: Counter(r["class_name"] for r in rows)[n] for n in CLASS_NAMES} for s, rows in splits.items()}
+    counts = {s: {n: Counter(r["class_name"] for r in rows)[n] for n in class_names} for s, rows in splits.items()}
     metadata = {
         "format_version": 2, "architecture": args.arch, "training_mode": args.mode, "pooling": args.pooling,
-        "class_names": CLASS_NAMES, "species_names": SPECIES_NAMES, "condition_names": CONDITION_NAMES,
+        "class_names": class_names, "species_names": species_names, "condition_names": CONDITION_NAMES,
         "preprocess": preprocess_for(args.image_size), "seed": args.seed, "best_epoch": best_epoch,
         "epochs_completed": len(history), "counts": counts,
         "selection": "lowest validation cross-entropy; the test split is scored once after selection",
@@ -339,7 +344,7 @@ def main():
     with (args.out / "metrics.json").open("w", encoding="utf-8") as handle:
         json.dump(metadata, handle, indent=2, ensure_ascii=False, allow_nan=False)
     for split_name, logits in logits_by_split.items():
-        write_predictions(args.out / f"{split_name}_predictions.csv", splits[split_name], logits)
+        write_predictions(args.out / f"{split_name}_predictions.csv", splits[split_name], logits, class_names)
     summary = {s: {k: round(v[k], 4) for k in ("accuracy", "macro_f1", "species_accuracy", "condition_accuracy")}
                for s, v in results.items()}
     print(json.dumps({"saved_to": str(args.out.resolve()), "best_epoch": best_epoch, "summary": summary}, indent=2))

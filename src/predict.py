@@ -1,4 +1,4 @@
-"""Classify a photo or a directory using the trained six-class checkpoint."""
+"""Classify a photo or a directory using a trained checkpoint (vegetable species x fresh/rotten)."""
 
 from __future__ import annotations
 
@@ -10,7 +10,7 @@ import sys
 import torch
 
 from model_utils import (
-    CLASS_NAMES, CONDITION_NAMES, IMAGE_EXTENSIONS, SPECIES_NAMES,
+    CONDITION_NAMES, IMAGE_EXTENSIONS, SPECIES_NAMES,
     input_size, load_model, make_transform, marginal_probabilities, read_image,
     resolve_device,
 )
@@ -43,7 +43,8 @@ def main():
     if not photos:
         raise ValueError("No supported image files were found.")
     transform = make_transform(input_size(checkpoint))
-    probability_columns = [f"prob_{name}" for name in CLASS_NAMES]
+    class_names = checkpoint["class_names"]
+    probability_columns = [f"prob_{name}" for name in class_names]
     fields = [
         "image", "predicted_class", "species", "condition", "joint_score_uncalibrated", "uncertain",
         "species_marginal_prediction", "species_score_uncalibrated",
@@ -65,7 +66,7 @@ def main():
                 species_index = int(species_probs[0].argmax())
                 condition_index = int(condition_probs[0].argmax())
                 row.update({
-                    "predicted_class": CLASS_NAMES[index],
+                    "predicted_class": class_names[index],
                     "species": SPECIES_NAMES[index // 2],
                     "condition": CONDITION_NAMES[index % 2],
                     "joint_score_uncalibrated": float(probabilities[0, index]),

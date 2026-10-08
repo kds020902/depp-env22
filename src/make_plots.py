@@ -56,7 +56,7 @@ def confusion(run: Path, meta: dict, split: str = "test"):
     m = meta["metrics"][split]
     matrix, names = m["confusion_matrix"], [n.replace("_", "\n") for n in m["class_names"]]
     peak = max(max(r) for r in matrix)
-    fig, ax = plt.subplots(figsize=(6.2, 5.4))
+    fig, ax = plt.subplots(figsize=(6.2, 5.4) if len(names) <= 6 else (8.6, 7.4))
     cmap = matplotlib.colors.LinearSegmentedColormap.from_list("blues", BLUES)
     ax.imshow(matrix, cmap=cmap, vmin=0, vmax=peak)
     for i, row in enumerate(matrix):
@@ -79,7 +79,9 @@ def confusion(run: Path, meta: dict, split: str = "test"):
 
 
 def comparison(runs: list[Path], metas: list[dict], out: Path, highlight: str):
-    metrics = [("accuracy", "6 classes"), ("species_accuracy", "vegetable"), ("condition_accuracy", "fresh / rotten")]
+    n_classes = len(metas[0]["class_names"])
+    metrics = [("accuracy", f"{n_classes} classes"), ("species_accuracy", "vegetable"),
+               ("condition_accuracy", "fresh / rotten")]
     order = ["resnet18_linear", "resnet18_finetune", "efficientnet_b0_finetune"]
     idx = sorted(range(len(runs)), key=lambda k: order.index(runs[k].name) if runs[k].name in order else 99)
     shades = {"resnet18_linear": "#d6d5d0", "resnet18_finetune": MUTED}
@@ -98,9 +100,10 @@ def comparison(runs: list[Path], metas: list[dict], out: Path, highlight: str):
     ax.set_ylabel("test accuracy (%)", color=INK_2)
     acc = {r.name: 100 * m["metrics"]["test"]["accuracy"] for r, m in zip(runs, metas)}
     tuned = [v for n, v in acc.items() if n.endswith("finetune")]
-    title = (f"Fine-tuning lifts 6-class test accuracy from {acc.get('resnet18_linear', 0):.1f}% "
+    title = (f"Fine-tuning lifts {n_classes}-class test accuracy from {acc.get('resnet18_linear', 0):.1f}% "
              f"to {min(tuned):.1f}-{max(tuned):.1f}%" if "resnet18_linear" in acc and tuned else "Test accuracy")
-    ax.set_title(title + "  (same 180 test photos)", color=INK, fontsize=11, loc="left")
+    n_test = metas[0]["metrics"]["test"]["sample_count"]
+    ax.set_title(title + f"  (same {n_test} test photos)", color=INK, fontsize=11, loc="left")
     ax.legend(frameon=False, fontsize=8, labelcolor=INK_2, loc="upper center", bbox_to_anchor=(0.5, -0.1), ncol=3)
     fig.tight_layout()
     fig.savefig(out, dpi=150, facecolor="white")
@@ -122,7 +125,8 @@ def main():
     for run, meta in zip(runs, metas):
         learning_curves(run, meta)
         confusion(run, meta, "test")
-    comparison(runs, metas, args.out, args.highlight)
+    if len(runs) > 1:  # a single run has nothing to compare
+        comparison(runs, metas, args.out, args.highlight)
     print("plots written for", [r.name for r in runs])
 
 
