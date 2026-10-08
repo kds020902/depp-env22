@@ -1,0 +1,113 @@
+{
+ "temperature": 0.5283,
+ "val": {
+  "accuracy": 0.9367,
+  "ece_before": 0.146,
+  "ece_after": 0.0401,
+  "nll_before": 0.33,
+  "nll_after": 0.2001,
+  "mean_confidence_before": 0.7906,
+  "mean_confidence_after": 0.9382,
+  "reliability_after": [
+   {
+    "probability": "0%-50%",
+    "photos": 3,
+    "accuracy": 0.667
+   },
+   {
+    "probability": "50%-70%",
+    "photos": 20,
+    "accuracy": 0.8
+   },
+   {
+    "probability": "70%-90%",
+    "photos": 28,
+    "accuracy": 0.714
+   },
+   {
+    "probability": "90%-97%",
+    "photos": 31,
+    "accuracy": 0.839
+   },
+   {
+    "probability": "97%-100%",
+    "photos": 218,
+    "accuracy": 0.995
+   }
+  ]
+ },
+ "test": {
+  "accuracy": 0.9167,
+  "ece_before": 0.1317,
+  "ece_after": 0.0384,
+  "nll_before": 0.3781,
+  "nll_after": 0.2835,
+  "mean_confidence_before": 0.785,
+  "mean_confidence_after": 0.9341,
+  "reliability_after": [
+   {
+    "probability": "0%-50%",
+    "photos": 3,
+    "accuracy": 0.333
+   },
+   {
+    "probability": "50%-70%",
+    "photos": 23,
+    "accuracy": 0.652
+   },
+   {
+    "probability": "70%-90%",
+    "photos": 29,
+    "accuracy": 0.793
+   },
+   {
+    "probability": "90%-97%",
+    "photos": 37,
+    "accuracy": 0.919
+   },
+   {
+    "probability": "97%-100%",
+    "photos": 208,
+    "accuracy": 0.971
+   }
+  ]
+ },
+ "dev_auroc": {
+  "msp": 0.905,
+  "energy": 0.9499,
+  "knn1": 0.944,
+  "knn5": 0.9363,
+  "knn10": 0.9366,
+  "maha": 0.9276
+ },
+ "chosen": "energy",
+ "threshold": -2.2832140922546387,
+ "threshold_in_model_pth": -2.283214569091797,
+ "fruits_dev_rejected": "112/200",
+ "fruits_test_rejected": "112/200",
+ "coco_dev_rejected": "194/200",
+ "coco_test_rejected": "192/200",
+ "fruits_test_passed_by_kind": {
+  "FreshApple": "17/22",
+  "FreshBanana": "3/21",
+  "FreshMango": "9/19",
+  "FreshOrange": "15/17",
+  "FreshStrawberry": "6/23",
+  "RottenApple": "10/19",
+  "RottenBanana": "5/21",
+  "RottenMango": "10/21",
+  "RottenOrange": "5/20",
+  "RottenStrawberry": "8/17"
+ },
+ "test_rejected": "10/300",
+ "test_rejected_right": 7,
+ "test_rejected_wrong": 3,
+ "test_rejected_by_class": {
+  "cucumber_rotten": 2,
+  "potato_rotten": 2,
+  "tomato_fresh": 2,
+  "bellpepper_rotten": 4
+ },
+ "test_accuracy_all": 0.9167,
+ "test_accuracy_accepted": 0.9241
+}

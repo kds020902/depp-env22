@@ -23,7 +23,7 @@ from torch.utils.data import DataLoader, Dataset, TensorDataset
 
 from model_utils import (
     CLASS_NAMES, CONDITION_NAMES, SPECIES_NAMES,
-    classifier_layer, create_model, make_train_transform, make_transform,
+    calibration_extras, classifier_layer, create_model, make_train_transform, make_transform,
     marginal_probabilities, open_image, preprocess_for, resolve_device, set_classifier_layer, set_seed,
     state_checksum,
 )
@@ -330,6 +330,7 @@ def main():
         "preprocess": preprocess_for(args.image_size), "seed": args.seed, "best_epoch": best_epoch,
         "epochs_completed": len(history), "counts": counts,
         "selection": "lowest validation cross-entropy; the test split is scored once after selection",
+        **calibration_extras(logits_by_split["val"], torch.tensor([int(r["class_id"]) for r in splits["val"]])),
         "metrics": results, "training_verification": verification,
         "hyperparameters": {
             "optimizer": "Adam" if linear else "AdamW", "lr": args.lr,

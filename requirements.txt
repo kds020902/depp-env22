@@ -7,3 +7,5 @@ matplotlib>=3.8
 # 데이터셋 다시 만들기(dataset/tools)에만 필요
 ImageHash>=4.3
 opencv-python-headless>=4.9
+# 확률 보정·거르기 평가(results/10class/calibration_unknown/evaluate.py)에만 필요
+scikit-learn>=1.3

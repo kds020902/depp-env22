@@ -1,0 +1,801 @@
+set,file,half,label,source
+fruits,FreshApple__freshApple_(147).jpg,dev,FreshApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshApple/freshApple (147).jpg
+fruits,FreshApple__freshApple_(174).jpg,test,FreshApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshApple/freshApple (174).jpg
+fruits,FreshApple__freshApple_(196).jpg,dev,FreshApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshApple/freshApple (196).jpg
+fruits,FreshApple__freshApple_(208).jpg,test,FreshApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshApple/freshApple (208).jpg
+fruits,FreshApple__freshApple_(228).jpg,test,FreshApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshApple/freshApple (228).jpg
+fruits,FreshApple__freshApple_(230).jpg,dev,FreshApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshApple/freshApple (230).jpg
+fruits,FreshApple__freshApple_(234).jpg,dev,FreshApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshApple/freshApple (234).jpg
+fruits,FreshApple__freshApple_(236).jpg,test,FreshApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshApple/freshApple (236).jpg
+fruits,FreshApple__freshApple_(275).jpg,dev,FreshApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshApple/freshApple (275).jpg
+fruits,FreshApple__freshApple_(276).jpg,test,FreshApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshApple/freshApple (276).jpg
+fruits,FreshApple__freshApple_(283).jpg,dev,FreshApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshApple/freshApple (283).jpg
+fruits,FreshApple__freshApple_(448).png,test,FreshApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshApple/freshApple (448).png
+fruits,FreshApple__freshApple_(462).png,dev,FreshApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshApple/freshApple (462).png
+fruits,FreshApple__freshApple_(495).png,dev,FreshApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshApple/freshApple (495).png
+fruits,FreshApple__freshApple_(504).png,test,FreshApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshApple/freshApple (504).png
+fruits,FreshApple__freshApple_(505).png,test,FreshApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshApple/freshApple (505).png
+fruits,FreshApple__freshApple_(527).png,test,FreshApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshApple/freshApple (527).png
+fruits,FreshApple__freshApple_(549).png,dev,FreshApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshApple/freshApple (549).png
+fruits,FreshApple__freshApple_(556).png,dev,FreshApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshApple/freshApple (556).png
+fruits,FreshApple__freshApple_(562).png,dev,FreshApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshApple/freshApple (562).png
+fruits,FreshApple__freshApple_(577).png,test,FreshApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshApple/freshApple (577).png
+fruits,FreshApple__freshApple_(601).png,test,FreshApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshApple/freshApple (601).png
+fruits,FreshApple__freshApple_(605).png,test,FreshApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshApple/freshApple (605).png
+fruits,FreshApple__freshApple_(633).png,test,FreshApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshApple/freshApple (633).png
+fruits,FreshApple__freshApple_(647).png,test,FreshApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshApple/freshApple (647).png
+fruits,FreshApple__freshApple_(653).png,dev,FreshApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshApple/freshApple (653).png
+fruits,FreshApple__freshApple_(669).png,dev,FreshApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshApple/freshApple (669).png
+fruits,FreshApple__freshApple_(683).png,test,FreshApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshApple/freshApple (683).png
+fruits,FreshApple__freshApple_(692).png,test,FreshApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshApple/freshApple (692).png
+fruits,FreshApple__freshApple_(722).png,test,FreshApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshApple/freshApple (722).png
+fruits,FreshApple__freshApple_(727).png,test,FreshApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshApple/freshApple (727).png
+fruits,FreshApple__freshApple_(736).png,dev,FreshApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshApple/freshApple (736).png
+fruits,FreshApple__freshApple_(755).png,test,FreshApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshApple/freshApple (755).png
+fruits,FreshApple__freshApple_(762).png,dev,FreshApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshApple/freshApple (762).png
+fruits,FreshApple__freshApple_(772).png,test,FreshApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshApple/freshApple (772).png
+fruits,FreshApple__freshApple_(784).png,test,FreshApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshApple/freshApple (784).png
+fruits,FreshApple__freshApple_(800).png,dev,FreshApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshApple/freshApple (800).png
+fruits,FreshApple__freshApple_(804).png,test,FreshApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshApple/freshApple (804).png
+fruits,FreshApple__freshApple_(812).png,dev,FreshApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshApple/freshApple (812).png
+fruits,FreshApple__freshApple_(836).png,dev,FreshApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshApple/freshApple (836).png
+fruits,FreshBanana__freshBanana_(1).jpg,test,FreshBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshBanana/freshBanana (1).jpg
+fruits,FreshBanana__freshBanana_(127).png,dev,FreshBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshBanana/freshBanana (127).png
+fruits,FreshBanana__freshBanana_(135).png,dev,FreshBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshBanana/freshBanana (135).png
+fruits,FreshBanana__freshBanana_(140).jpg,dev,FreshBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshBanana/freshBanana (140).jpg
+fruits,FreshBanana__freshBanana_(149).jpg,dev,FreshBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshBanana/freshBanana (149).jpg
+fruits,FreshBanana__freshBanana_(156).jpg,dev,FreshBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshBanana/freshBanana (156).jpg
+fruits,FreshBanana__freshBanana_(164).jpg,test,FreshBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshBanana/freshBanana (164).jpg
+fruits,FreshBanana__freshBanana_(183).png,dev,FreshBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshBanana/freshBanana (183).png
+fruits,FreshBanana__freshBanana_(186).jpg,test,FreshBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshBanana/freshBanana (186).jpg
+fruits,FreshBanana__freshBanana_(188).jpg,test,FreshBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshBanana/freshBanana (188).jpg
+fruits,FreshBanana__freshBanana_(19).jpg,test,FreshBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshBanana/freshBanana (19).jpg
+fruits,FreshBanana__freshBanana_(2).png,test,FreshBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshBanana/freshBanana (2).png
+fruits,FreshBanana__freshBanana_(214).jpg,test,FreshBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshBanana/freshBanana (214).jpg
+fruits,FreshBanana__freshBanana_(229).jpg,dev,FreshBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshBanana/freshBanana (229).jpg
+fruits,FreshBanana__freshBanana_(230).jpg,dev,FreshBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshBanana/freshBanana (230).jpg
+fruits,FreshBanana__freshBanana_(232).jpg,dev,FreshBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshBanana/freshBanana (232).jpg
+fruits,FreshBanana__freshBanana_(27).png,test,FreshBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshBanana/freshBanana (27).png
+fruits,FreshBanana__freshBanana_(272).jpg,test,FreshBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshBanana/freshBanana (272).jpg
+fruits,FreshBanana__freshBanana_(273).jpg,test,FreshBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshBanana/freshBanana (273).jpg
+fruits,FreshBanana__freshBanana_(281).jpg,test,FreshBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshBanana/freshBanana (281).jpg
+fruits,FreshBanana__freshBanana_(295).jpg,test,FreshBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshBanana/freshBanana (295).jpg
+fruits,FreshBanana__freshBanana_(298).jpg,dev,FreshBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshBanana/freshBanana (298).jpg
+fruits,FreshBanana__freshBanana_(30).png,test,FreshBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshBanana/freshBanana (30).png
+fruits,FreshBanana__freshBanana_(306).jpg,dev,FreshBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshBanana/freshBanana (306).jpg
+fruits,FreshBanana__freshBanana_(307).jpg,dev,FreshBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshBanana/freshBanana (307).jpg
+fruits,FreshBanana__freshBanana_(350).jpg,dev,FreshBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshBanana/freshBanana (350).jpg
+fruits,FreshBanana__freshBanana_(40).png,test,FreshBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshBanana/freshBanana (40).png
+fruits,FreshBanana__freshBanana_(402).jpg,test,FreshBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshBanana/freshBanana (402).jpg
+fruits,FreshBanana__freshBanana_(439).JPG,dev,FreshBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshBanana/freshBanana (439).JPG
+fruits,FreshBanana__freshBanana_(45).jpg,test,FreshBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshBanana/freshBanana (45).jpg
+fruits,FreshBanana__freshBanana_(51).png,dev,FreshBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshBanana/freshBanana (51).png
+fruits,FreshBanana__freshBanana_(67).jpg,dev,FreshBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshBanana/freshBanana (67).jpg
+fruits,FreshBanana__freshBanana_(68).png,dev,FreshBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshBanana/freshBanana (68).png
+fruits,FreshBanana__freshBanana_(7).png,test,FreshBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshBanana/freshBanana (7).png
+fruits,FreshBanana__freshBanana_(71).png,dev,FreshBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshBanana/freshBanana (71).png
+fruits,FreshBanana__freshBanana_(8).jpg,dev,FreshBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshBanana/freshBanana (8).jpg
+fruits,FreshBanana__freshBanana_(83).jpg,test,FreshBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshBanana/freshBanana (83).jpg
+fruits,FreshBanana__freshBanana_(89).jpg,test,FreshBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshBanana/freshBanana (89).jpg
+fruits,FreshBanana__freshBanana_(93).jpg,test,FreshBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshBanana/freshBanana (93).jpg
+fruits,FreshBanana__freshBanana_(96).png,test,FreshBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshBanana/freshBanana (96).png
+fruits,FreshMango__freshMango_(106).jpg,test,FreshMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshMango/freshMango (106).jpg
+fruits,FreshMango__freshMango_(113).png,test,FreshMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshMango/freshMango (113).png
+fruits,FreshMango__freshMango_(116).png,test,FreshMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshMango/freshMango (116).png
+fruits,FreshMango__freshMango_(127).png,dev,FreshMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshMango/freshMango (127).png
+fruits,FreshMango__freshMango_(130).jpg,dev,FreshMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshMango/freshMango (130).jpg
+fruits,FreshMango__freshMango_(136).jpg,dev,FreshMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshMango/freshMango (136).jpg
+fruits,FreshMango__freshMango_(137).jpg,test,FreshMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshMango/freshMango (137).jpg
+fruits,FreshMango__freshMango_(14).png,test,FreshMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshMango/freshMango (14).png
+fruits,FreshMango__freshMango_(152).jpg,dev,FreshMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshMango/freshMango (152).jpg
+fruits,FreshMango__freshMango_(152).png,dev,FreshMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshMango/freshMango (152).png
+fruits,FreshMango__freshMango_(159).png,dev,FreshMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshMango/freshMango (159).png
+fruits,FreshMango__freshMango_(168).png,test,FreshMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshMango/freshMango (168).png
+fruits,FreshMango__freshMango_(178).jpg,dev,FreshMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshMango/freshMango (178).jpg
+fruits,FreshMango__freshMango_(187).jpg,dev,FreshMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshMango/freshMango (187).jpg
+fruits,FreshMango__freshMango_(199).jpg,dev,FreshMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshMango/freshMango (199).jpg
+fruits,FreshMango__freshMango_(20).png,test,FreshMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshMango/freshMango (20).png
+fruits,FreshMango__freshMango_(207).png,test,FreshMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshMango/freshMango (207).png
+fruits,FreshMango__freshMango_(210).jpg,dev,FreshMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshMango/freshMango (210).jpg
+fruits,FreshMango__freshMango_(22).png,dev,FreshMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshMango/freshMango (22).png
+fruits,FreshMango__freshMango_(23).jpg,test,FreshMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshMango/freshMango (23).jpg
+fruits,FreshMango__freshMango_(232).jpg,test,FreshMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshMango/freshMango (232).jpg
+fruits,FreshMango__freshMango_(233).jpg,test,FreshMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshMango/freshMango (233).jpg
+fruits,FreshMango__freshMango_(275).jpg,test,FreshMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshMango/freshMango (275).jpg
+fruits,FreshMango__freshMango_(281).jpg,dev,FreshMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshMango/freshMango (281).jpg
+fruits,FreshMango__freshMango_(284).jpg,test,FreshMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshMango/freshMango (284).jpg
+fruits,FreshMango__freshMango_(300).jpg,test,FreshMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshMango/freshMango (300).jpg
+fruits,FreshMango__freshMango_(313).jpg,dev,FreshMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshMango/freshMango (313).jpg
+fruits,FreshMango__freshMango_(33).png,dev,FreshMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshMango/freshMango (33).png
+fruits,FreshMango__freshMango_(354).jpg,test,FreshMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshMango/freshMango (354).jpg
+fruits,FreshMango__freshMango_(36).png,dev,FreshMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshMango/freshMango (36).png
+fruits,FreshMango__freshMango_(380).jpg,test,FreshMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshMango/freshMango (380).jpg
+fruits,FreshMango__freshMango_(46).jpg,dev,FreshMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshMango/freshMango (46).jpg
+fruits,FreshMango__freshMango_(50).png,test,FreshMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshMango/freshMango (50).png
+fruits,FreshMango__freshMango_(53).png,test,FreshMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshMango/freshMango (53).png
+fruits,FreshMango__freshMango_(67).png,dev,FreshMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshMango/freshMango (67).png
+fruits,FreshMango__freshMango_(69).jpg,test,FreshMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshMango/freshMango (69).jpg
+fruits,FreshMango__freshMango_(76).jpg,dev,FreshMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshMango/freshMango (76).jpg
+fruits,FreshMango__freshMango_(94).jpg,dev,FreshMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshMango/freshMango (94).jpg
+fruits,FreshMango__freshMango_(98).jpg,dev,FreshMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshMango/freshMango (98).jpg
+fruits,FreshMango__freshMango_(99).jpg,dev,FreshMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshMango/freshMango (99).jpg
+fruits,FreshOrange__freshOrange_(109).jpg,test,FreshOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshOrange/freshOrange (109).jpg
+fruits,FreshOrange__freshOrange_(109).png,dev,FreshOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshOrange/freshOrange (109).png
+fruits,FreshOrange__freshOrange_(110).png,test,FreshOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshOrange/freshOrange (110).png
+fruits,FreshOrange__freshOrange_(115).png,dev,FreshOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshOrange/freshOrange (115).png
+fruits,FreshOrange__freshOrange_(117).jpg,dev,FreshOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshOrange/freshOrange (117).jpg
+fruits,FreshOrange__freshOrange_(12).jpg,test,FreshOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshOrange/freshOrange (12).jpg
+fruits,FreshOrange__freshOrange_(127).jpg,dev,FreshOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshOrange/freshOrange (127).jpg
+fruits,FreshOrange__freshOrange_(130).png,test,FreshOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshOrange/freshOrange (130).png
+fruits,FreshOrange__freshOrange_(131).png,dev,FreshOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshOrange/freshOrange (131).png
+fruits,FreshOrange__freshOrange_(132).png,test,FreshOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshOrange/freshOrange (132).png
+fruits,FreshOrange__freshOrange_(140).png,dev,FreshOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshOrange/freshOrange (140).png
+fruits,FreshOrange__freshOrange_(145).png,test,FreshOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshOrange/freshOrange (145).png
+fruits,FreshOrange__freshOrange_(152).jpg,dev,FreshOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshOrange/freshOrange (152).jpg
+fruits,FreshOrange__freshOrange_(154).jpg,dev,FreshOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshOrange/freshOrange (154).jpg
+fruits,FreshOrange__freshOrange_(156).jpg,test,FreshOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshOrange/freshOrange (156).jpg
+fruits,FreshOrange__freshOrange_(156).png,test,FreshOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshOrange/freshOrange (156).png
+fruits,FreshOrange__freshOrange_(166).png,dev,FreshOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshOrange/freshOrange (166).png
+fruits,FreshOrange__freshOrange_(182).jpg,dev,FreshOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshOrange/freshOrange (182).jpg
+fruits,FreshOrange__freshOrange_(184).png,test,FreshOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshOrange/freshOrange (184).png
+fruits,FreshOrange__freshOrange_(186).png,test,FreshOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshOrange/freshOrange (186).png
+fruits,FreshOrange__freshOrange_(189).png,dev,FreshOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshOrange/freshOrange (189).png
+fruits,FreshOrange__freshOrange_(191).jpg,dev,FreshOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshOrange/freshOrange (191).jpg
+fruits,FreshOrange__freshOrange_(196).png,dev,FreshOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshOrange/freshOrange (196).png
+fruits,FreshOrange__freshOrange_(20).jpg,test,FreshOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshOrange/freshOrange (20).jpg
+fruits,FreshOrange__freshOrange_(200).jpg,dev,FreshOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshOrange/freshOrange (200).jpg
+fruits,FreshOrange__freshOrange_(219).jpg,dev,FreshOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshOrange/freshOrange (219).jpg
+fruits,FreshOrange__freshOrange_(238).jpg,test,FreshOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshOrange/freshOrange (238).jpg
+fruits,FreshOrange__freshOrange_(260).jpg,dev,FreshOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshOrange/freshOrange (260).jpg
+fruits,FreshOrange__freshOrange_(264).png,dev,FreshOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshOrange/freshOrange (264).png
+fruits,FreshOrange__freshOrange_(27).png,test,FreshOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshOrange/freshOrange (27).png
+fruits,FreshOrange__freshOrange_(28).jpg,dev,FreshOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshOrange/freshOrange (28).jpg
+fruits,FreshOrange__freshOrange_(296).png,test,FreshOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshOrange/freshOrange (296).png
+fruits,FreshOrange__freshOrange_(300).jpg,test,FreshOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshOrange/freshOrange (300).jpg
+fruits,FreshOrange__freshOrange_(4).png,dev,FreshOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshOrange/freshOrange (4).png
+fruits,FreshOrange__freshOrange_(45).png,test,FreshOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshOrange/freshOrange (45).png
+fruits,FreshOrange__freshOrange_(57).jpg,dev,FreshOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshOrange/freshOrange (57).jpg
+fruits,FreshOrange__freshOrange_(71).jpg,test,FreshOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshOrange/freshOrange (71).jpg
+fruits,FreshOrange__freshOrange_(76).jpg,dev,FreshOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshOrange/freshOrange (76).jpg
+fruits,FreshOrange__freshOrange_(9).jpg,dev,FreshOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshOrange/freshOrange (9).jpg
+fruits,FreshOrange__freshOrange_(90).jpg,dev,FreshOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshOrange/freshOrange (90).jpg
+fruits,FreshStrawberry__freshStrawberry_(11).jpg,dev,FreshStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshStrawberry/freshStrawberry (11).jpg
+fruits,FreshStrawberry__freshStrawberry_(110).jpg,dev,FreshStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshStrawberry/freshStrawberry (110).jpg
+fruits,FreshStrawberry__freshStrawberry_(140).jpg,dev,FreshStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshStrawberry/freshStrawberry (140).jpg
+fruits,FreshStrawberry__freshStrawberry_(152).jpg,test,FreshStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshStrawberry/freshStrawberry (152).jpg
+fruits,FreshStrawberry__freshStrawberry_(171).jpg,dev,FreshStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshStrawberry/freshStrawberry (171).jpg
+fruits,FreshStrawberry__freshStrawberry_(173).jpg,test,FreshStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshStrawberry/freshStrawberry (173).jpg
+fruits,FreshStrawberry__freshStrawberry_(207).jpg,dev,FreshStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshStrawberry/freshStrawberry (207).jpg
+fruits,FreshStrawberry__freshStrawberry_(220).jpg,dev,FreshStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshStrawberry/freshStrawberry (220).jpg
+fruits,FreshStrawberry__freshStrawberry_(223).jpg,test,FreshStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshStrawberry/freshStrawberry (223).jpg
+fruits,FreshStrawberry__freshStrawberry_(240).jpg,test,FreshStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshStrawberry/freshStrawberry (240).jpg
+fruits,FreshStrawberry__freshStrawberry_(245).jpg,test,FreshStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshStrawberry/freshStrawberry (245).jpg
+fruits,FreshStrawberry__freshStrawberry_(248).jpg,test,FreshStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshStrawberry/freshStrawberry (248).jpg
+fruits,FreshStrawberry__freshStrawberry_(255).jpg,test,FreshStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshStrawberry/freshStrawberry (255).jpg
+fruits,FreshStrawberry__freshStrawberry_(260).jpg,dev,FreshStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshStrawberry/freshStrawberry (260).jpg
+fruits,FreshStrawberry__freshStrawberry_(287).jpg,test,FreshStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshStrawberry/freshStrawberry (287).jpg
+fruits,FreshStrawberry__freshStrawberry_(32).jpg,test,FreshStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshStrawberry/freshStrawberry (32).jpg
+fruits,FreshStrawberry__freshStrawberry_(33).jpg,test,FreshStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshStrawberry/freshStrawberry (33).jpg
+fruits,FreshStrawberry__freshStrawberry_(358).jpg,test,FreshStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshStrawberry/freshStrawberry (358).jpg
+fruits,FreshStrawberry__freshStrawberry_(364).jpg,dev,FreshStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshStrawberry/freshStrawberry (364).jpg
+fruits,FreshStrawberry__freshStrawberry_(385).jpg,test,FreshStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshStrawberry/freshStrawberry (385).jpg
+fruits,FreshStrawberry__freshStrawberry_(386).jpg,test,FreshStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshStrawberry/freshStrawberry (386).jpg
+fruits,FreshStrawberry__freshStrawberry_(408).jpg,dev,FreshStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshStrawberry/freshStrawberry (408).jpg
+fruits,FreshStrawberry__freshStrawberry_(414).jpg,dev,FreshStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshStrawberry/freshStrawberry (414).jpg
+fruits,FreshStrawberry__freshStrawberry_(423).jpg,test,FreshStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshStrawberry/freshStrawberry (423).jpg
+fruits,FreshStrawberry__freshStrawberry_(428).jpg,test,FreshStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshStrawberry/freshStrawberry (428).jpg
+fruits,FreshStrawberry__freshStrawberry_(43).jpg,test,FreshStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshStrawberry/freshStrawberry (43).jpg
+fruits,FreshStrawberry__freshStrawberry_(457).jpg,dev,FreshStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshStrawberry/freshStrawberry (457).jpg
+fruits,FreshStrawberry__freshStrawberry_(477).jpg,test,FreshStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshStrawberry/freshStrawberry (477).jpg
+fruits,FreshStrawberry__freshStrawberry_(481).jpg,test,FreshStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshStrawberry/freshStrawberry (481).jpg
+fruits,FreshStrawberry__freshStrawberry_(506).jpg,dev,FreshStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshStrawberry/freshStrawberry (506).jpg
+fruits,FreshStrawberry__freshStrawberry_(520).jpg,dev,FreshStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshStrawberry/freshStrawberry (520).jpg
+fruits,FreshStrawberry__freshStrawberry_(532).jpg,test,FreshStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshStrawberry/freshStrawberry (532).jpg
+fruits,FreshStrawberry__freshStrawberry_(533).jpg,test,FreshStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshStrawberry/freshStrawberry (533).jpg
+fruits,FreshStrawberry__freshStrawberry_(543).jpg,test,FreshStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshStrawberry/freshStrawberry (543).jpg
+fruits,FreshStrawberry__freshStrawberry_(568).jpg,test,FreshStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshStrawberry/freshStrawberry (568).jpg
+fruits,FreshStrawberry__freshStrawberry_(588).jpg,dev,FreshStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshStrawberry/freshStrawberry (588).jpg
+fruits,FreshStrawberry__freshStrawberry_(600).jpg,dev,FreshStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshStrawberry/freshStrawberry (600).jpg
+fruits,FreshStrawberry__freshStrawberry_(73).jpg,test,FreshStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshStrawberry/freshStrawberry (73).jpg
+fruits,FreshStrawberry__freshStrawberry_(80).jpg,dev,FreshStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshStrawberry/freshStrawberry (80).jpg
+fruits,FreshStrawberry__freshStrawberry_(81).jpg,dev,FreshStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/FreshStrawberry/freshStrawberry (81).jpg
+fruits,RottenApple__rottenApple_(1).jpeg,dev,RottenApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenApple/rottenApple (1).jpeg
+fruits,RottenApple__rottenApple_(1).jpg,dev,RottenApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenApple/rottenApple (1).jpg
+fruits,RottenApple__rottenApple_(1).webp,dev,RottenApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenApple/rottenApple (1).webp
+fruits,RottenApple__rottenApple_(11).jpg,dev,RottenApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenApple/rottenApple (11).jpg
+fruits,RottenApple__rottenApple_(125).jpg,dev,RottenApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenApple/rottenApple (125).jpg
+fruits,RottenApple__rottenApple_(131).jpg,test,RottenApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenApple/rottenApple (131).jpg
+fruits,RottenApple__rottenApple_(139).jpg,dev,RottenApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenApple/rottenApple (139).jpg
+fruits,RottenApple__rottenApple_(142).jpg,test,RottenApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenApple/rottenApple (142).jpg
+fruits,RottenApple__rottenApple_(155).jpg,dev,RottenApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenApple/rottenApple (155).jpg
+fruits,RottenApple__rottenApple_(173).jpg,test,RottenApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenApple/rottenApple (173).jpg
+fruits,RottenApple__rottenApple_(214).jpg,dev,RottenApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenApple/rottenApple (214).jpg
+fruits,RottenApple__rottenApple_(24).jpg,test,RottenApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenApple/rottenApple (24).jpg
+fruits,RottenApple__rottenApple_(241).jpg,test,RottenApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenApple/rottenApple (241).jpg
+fruits,RottenApple__rottenApple_(247).jpg,dev,RottenApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenApple/rottenApple (247).jpg
+fruits,RottenApple__rottenApple_(268).jpg,dev,RottenApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenApple/rottenApple (268).jpg
+fruits,RottenApple__rottenApple_(271).jpg,test,RottenApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenApple/rottenApple (271).jpg
+fruits,RottenApple__rottenApple_(291).jpg,test,RottenApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenApple/rottenApple (291).jpg
+fruits,RottenApple__rottenApple_(3).webp,test,RottenApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenApple/rottenApple (3).webp
+fruits,RottenApple__rottenApple_(314).jpg,test,RottenApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenApple/rottenApple (314).jpg
+fruits,RottenApple__rottenApple_(332).jpg,test,RottenApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenApple/rottenApple (332).jpg
+fruits,RottenApple__rottenApple_(381).jpg,dev,RottenApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenApple/rottenApple (381).jpg
+fruits,RottenApple__rottenApple_(385).jpg,dev,RottenApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenApple/rottenApple (385).jpg
+fruits,RottenApple__rottenApple_(394).jpg,dev,RottenApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenApple/rottenApple (394).jpg
+fruits,RottenApple__rottenApple_(400).jpg,dev,RottenApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenApple/rottenApple (400).jpg
+fruits,RottenApple__rottenApple_(441).jpg,test,RottenApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenApple/rottenApple (441).jpg
+fruits,RottenApple__rottenApple_(463).JPG,dev,RottenApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenApple/rottenApple (463).JPG
+fruits,RottenApple__rottenApple_(475).jpg,test,RottenApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenApple/rottenApple (475).jpg
+fruits,RottenApple__rottenApple_(476).jpg,dev,RottenApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenApple/rottenApple (476).jpg
+fruits,RottenApple__rottenApple_(478).jpg,test,RottenApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenApple/rottenApple (478).jpg
+fruits,RottenApple__rottenApple_(479).jpg,dev,RottenApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenApple/rottenApple (479).jpg
+fruits,RottenApple__rottenApple_(502).jpg,dev,RottenApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenApple/rottenApple (502).jpg
+fruits,RottenApple__rottenApple_(503).jpg,test,RottenApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenApple/rottenApple (503).jpg
+fruits,RottenApple__rottenApple_(504).jpg,dev,RottenApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenApple/rottenApple (504).jpg
+fruits,RottenApple__rottenApple_(522).jpg,test,RottenApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenApple/rottenApple (522).jpg
+fruits,RottenApple__rottenApple_(540).jpg,dev,RottenApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenApple/rottenApple (540).jpg
+fruits,RottenApple__rottenApple_(548).jpg,test,RottenApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenApple/rottenApple (548).jpg
+fruits,RottenApple__rottenApple_(579).jpg,dev,RottenApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenApple/rottenApple (579).jpg
+fruits,RottenApple__rottenApple_(75).jpg,test,RottenApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenApple/rottenApple (75).jpg
+fruits,RottenApple__rottenApple_(87).jpg,test,RottenApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenApple/rottenApple (87).jpg
+fruits,RottenApple__rottenApple_(93).jpg,test,RottenApple,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenApple/rottenApple (93).jpg
+fruits,RottenBanana__rottenBanana_(10).jpg,test,RottenBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenBanana/rottenBanana (10).jpg
+fruits,RottenBanana__rottenBanana_(110).jpg,test,RottenBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenBanana/rottenBanana (110).jpg
+fruits,RottenBanana__rottenBanana_(115).jpg,dev,RottenBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenBanana/rottenBanana (115).jpg
+fruits,RottenBanana__rottenBanana_(118).jpg,test,RottenBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenBanana/rottenBanana (118).jpg
+fruits,RottenBanana__rottenBanana_(135).jpg,dev,RottenBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenBanana/rottenBanana (135).jpg
+fruits,RottenBanana__rottenBanana_(137).jpg,test,RottenBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenBanana/rottenBanana (137).jpg
+fruits,RottenBanana__rottenBanana_(173).jpg,dev,RottenBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenBanana/rottenBanana (173).jpg
+fruits,RottenBanana__rottenBanana_(189).jpg,test,RottenBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenBanana/rottenBanana (189).jpg
+fruits,RottenBanana__rottenBanana_(190).jpg,dev,RottenBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenBanana/rottenBanana (190).jpg
+fruits,RottenBanana__rottenBanana_(202).jpg,test,RottenBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenBanana/rottenBanana (202).jpg
+fruits,RottenBanana__rottenBanana_(203).jpg,dev,RottenBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenBanana/rottenBanana (203).jpg
+fruits,RottenBanana__rottenBanana_(206).jpg,dev,RottenBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenBanana/rottenBanana (206).jpg
+fruits,RottenBanana__rottenBanana_(22).jpg,dev,RottenBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenBanana/rottenBanana (22).jpg
+fruits,RottenBanana__rottenBanana_(24).jpg,dev,RottenBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenBanana/rottenBanana (24).jpg
+fruits,RottenBanana__rottenBanana_(261).jpg,test,RottenBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenBanana/rottenBanana (261).jpg
+fruits,RottenBanana__rottenBanana_(265).jpg,dev,RottenBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenBanana/rottenBanana (265).jpg
+fruits,RottenBanana__rottenBanana_(273).jpg,dev,RottenBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenBanana/rottenBanana (273).jpg
+fruits,RottenBanana__rottenBanana_(280).jpg,test,RottenBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenBanana/rottenBanana (280).jpg
+fruits,RottenBanana__rottenBanana_(287).jpg,test,RottenBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenBanana/rottenBanana (287).jpg
+fruits,RottenBanana__rottenBanana_(289).jpg,dev,RottenBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenBanana/rottenBanana (289).jpg
+fruits,RottenBanana__rottenBanana_(332).jpg,test,RottenBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenBanana/rottenBanana (332).jpg
+fruits,RottenBanana__rottenBanana_(335).jpg,dev,RottenBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenBanana/rottenBanana (335).jpg
+fruits,RottenBanana__rottenBanana_(35).jpg,dev,RottenBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenBanana/rottenBanana (35).jpg
+fruits,RottenBanana__rottenBanana_(353).jpg,test,RottenBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenBanana/rottenBanana (353).jpg
+fruits,RottenBanana__rottenBanana_(354).jpg,test,RottenBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenBanana/rottenBanana (354).jpg
+fruits,RottenBanana__rottenBanana_(375).jpg,test,RottenBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenBanana/rottenBanana (375).jpg
+fruits,RottenBanana__rottenBanana_(387).jpg,dev,RottenBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenBanana/rottenBanana (387).jpg
+fruits,RottenBanana__rottenBanana_(416).jpg,test,RottenBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenBanana/rottenBanana (416).jpg
+fruits,RottenBanana__rottenBanana_(434).jpg,test,RottenBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenBanana/rottenBanana (434).jpg
+fruits,RottenBanana__rottenBanana_(44).jpg,dev,RottenBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenBanana/rottenBanana (44).jpg
+fruits,RottenBanana__rottenBanana_(462).jpg,test,RottenBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenBanana/rottenBanana (462).jpg
+fruits,RottenBanana__rottenBanana_(498).jpg,dev,RottenBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenBanana/rottenBanana (498).jpg
+fruits,RottenBanana__rottenBanana_(513).jpg,dev,RottenBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenBanana/rottenBanana (513).jpg
+fruits,RottenBanana__rottenBanana_(519).jpg,dev,RottenBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenBanana/rottenBanana (519).jpg
+fruits,RottenBanana__rottenBanana_(535).jpg,test,RottenBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenBanana/rottenBanana (535).jpg
+fruits,RottenBanana__rottenBanana_(552).jpg,test,RottenBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenBanana/rottenBanana (552).jpg
+fruits,RottenBanana__rottenBanana_(60).jpg,test,RottenBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenBanana/rottenBanana (60).jpg
+fruits,RottenBanana__rottenBanana_(68).jpg,dev,RottenBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenBanana/rottenBanana (68).jpg
+fruits,RottenBanana__rottenBanana_(76).jpg,test,RottenBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenBanana/rottenBanana (76).jpg
+fruits,RottenBanana__rottenBanana_(95).jpg,test,RottenBanana,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenBanana/rottenBanana (95).jpg
+fruits,RottenMango__rottenMango_(105).jpg,test,RottenMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenMango/rottenMango (105).jpg
+fruits,RottenMango__rottenMango_(128).jpg,test,RottenMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenMango/rottenMango (128).jpg
+fruits,RottenMango__rottenMango_(132).jpg,test,RottenMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenMango/rottenMango (132).jpg
+fruits,RottenMango__rottenMango_(139).jpg,test,RottenMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenMango/rottenMango (139).jpg
+fruits,RottenMango__rottenMango_(159).jpg,dev,RottenMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenMango/rottenMango (159).jpg
+fruits,RottenMango__rottenMango_(18).jpg,dev,RottenMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenMango/rottenMango (18).jpg
+fruits,RottenMango__rottenMango_(185).jpg,dev,RottenMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenMango/rottenMango (185).jpg
+fruits,RottenMango__rottenMango_(194).jpg,test,RottenMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenMango/rottenMango (194).jpg
+fruits,RottenMango__rottenMango_(2).jpeg,test,RottenMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenMango/rottenMango (2).jpeg
+fruits,RottenMango__rottenMango_(211).jpg,test,RottenMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenMango/rottenMango (211).jpg
+fruits,RottenMango__rottenMango_(22).jpg,dev,RottenMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenMango/rottenMango (22).jpg
+fruits,RottenMango__rottenMango_(230).jpg,test,RottenMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenMango/rottenMango (230).jpg
+fruits,RottenMango__rottenMango_(231).jpg,dev,RottenMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenMango/rottenMango (231).jpg
+fruits,RottenMango__rottenMango_(243).jpg,dev,RottenMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenMango/rottenMango (243).jpg
+fruits,RottenMango__rottenMango_(258).jpg,test,RottenMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenMango/rottenMango (258).jpg
+fruits,RottenMango__rottenMango_(312).jpg,dev,RottenMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenMango/rottenMango (312).jpg
+fruits,RottenMango__rottenMango_(340).jpg,dev,RottenMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenMango/rottenMango (340).jpg
+fruits,RottenMango__rottenMango_(341).jpg,test,RottenMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenMango/rottenMango (341).jpg
+fruits,RottenMango__rottenMango_(359).jpg,dev,RottenMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenMango/rottenMango (359).jpg
+fruits,RottenMango__rottenMango_(360).jpg,dev,RottenMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenMango/rottenMango (360).jpg
+fruits,RottenMango__rottenMango_(362).jpg,dev,RottenMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenMango/rottenMango (362).jpg
+fruits,RottenMango__rottenMango_(368).jpg,test,RottenMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenMango/rottenMango (368).jpg
+fruits,RottenMango__rottenMango_(370).jpg,test,RottenMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenMango/rottenMango (370).jpg
+fruits,RottenMango__rottenMango_(376).jpg,dev,RottenMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenMango/rottenMango (376).jpg
+fruits,RottenMango__rottenMango_(395).jpg,test,RottenMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenMango/rottenMango (395).jpg
+fruits,RottenMango__rottenMango_(4).jpeg,dev,RottenMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenMango/rottenMango (4).jpeg
+fruits,RottenMango__rottenMango_(401).jpg,dev,RottenMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenMango/rottenMango (401).jpg
+fruits,RottenMango__rottenMango_(402).jpg,test,RottenMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenMango/rottenMango (402).jpg
+fruits,RottenMango__rottenMango_(423).jpg,dev,RottenMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenMango/rottenMango (423).jpg
+fruits,RottenMango__rottenMango_(43).jpg,dev,RottenMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenMango/rottenMango (43).jpg
+fruits,RottenMango__rottenMango_(437).jpg,dev,RottenMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenMango/rottenMango (437).jpg
+fruits,RottenMango__rottenMango_(455).jpg,dev,RottenMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenMango/rottenMango (455).jpg
+fruits,RottenMango__rottenMango_(462).jpg,test,RottenMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenMango/rottenMango (462).jpg
+fruits,RottenMango__rottenMango_(473).jpg,dev,RottenMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenMango/rottenMango (473).jpg
+fruits,RottenMango__rottenMango_(527).jpg,test,RottenMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenMango/rottenMango (527).jpg
+fruits,RottenMango__rottenMango_(530).jpg,test,RottenMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenMango/rottenMango (530).jpg
+fruits,RottenMango__rottenMango_(533).jpg,test,RottenMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenMango/rottenMango (533).jpg
+fruits,RottenMango__rottenMango_(572).jpg,test,RottenMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenMango/rottenMango (572).jpg
+fruits,RottenMango__rottenMango_(72).jpg,test,RottenMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenMango/rottenMango (72).jpg
+fruits,RottenMango__rottenMango_(83).jpg,test,RottenMango,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenMango/rottenMango (83).jpg
+fruits,RottenOrange__rottenOrange_(106).jpg,dev,RottenOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenOrange/rottenOrange (106).jpg
+fruits,RottenOrange__rottenOrange_(133).jpg,dev,RottenOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenOrange/rottenOrange (133).jpg
+fruits,RottenOrange__rottenOrange_(155).jpg,test,RottenOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenOrange/rottenOrange (155).jpg
+fruits,RottenOrange__rottenOrange_(158).jpg,test,RottenOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenOrange/rottenOrange (158).jpg
+fruits,RottenOrange__rottenOrange_(16).jpg,dev,RottenOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenOrange/rottenOrange (16).jpg
+fruits,RottenOrange__rottenOrange_(176).jpg,dev,RottenOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenOrange/rottenOrange (176).jpg
+fruits,RottenOrange__rottenOrange_(177).jpg,dev,RottenOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenOrange/rottenOrange (177).jpg
+fruits,RottenOrange__rottenOrange_(18).jpg,test,RottenOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenOrange/rottenOrange (18).jpg
+fruits,RottenOrange__rottenOrange_(19).jpg,dev,RottenOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenOrange/rottenOrange (19).jpg
+fruits,RottenOrange__rottenOrange_(204).jpg,dev,RottenOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenOrange/rottenOrange (204).jpg
+fruits,RottenOrange__rottenOrange_(205).jpg,test,RottenOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenOrange/rottenOrange (205).jpg
+fruits,RottenOrange__rottenOrange_(213).jpg,test,RottenOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenOrange/rottenOrange (213).jpg
+fruits,RottenOrange__rottenOrange_(242).jpg,test,RottenOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenOrange/rottenOrange (242).jpg
+fruits,RottenOrange__rottenOrange_(252).jpg,test,RottenOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenOrange/rottenOrange (252).jpg
+fruits,RottenOrange__rottenOrange_(276).jpg,test,RottenOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenOrange/rottenOrange (276).jpg
+fruits,RottenOrange__rottenOrange_(281).jpg,test,RottenOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenOrange/rottenOrange (281).jpg
+fruits,RottenOrange__rottenOrange_(3).jpg,test,RottenOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenOrange/rottenOrange (3).jpg
+fruits,RottenOrange__rottenOrange_(301).jpg,test,RottenOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenOrange/rottenOrange (301).jpg
+fruits,RottenOrange__rottenOrange_(302).jpg,test,RottenOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenOrange/rottenOrange (302).jpg
+fruits,RottenOrange__rottenOrange_(34).jpg,dev,RottenOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenOrange/rottenOrange (34).jpg
+fruits,RottenOrange__rottenOrange_(366).jpg,dev,RottenOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenOrange/rottenOrange (366).jpg
+fruits,RottenOrange__rottenOrange_(378).jpg,test,RottenOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenOrange/rottenOrange (378).jpg
+fruits,RottenOrange__rottenOrange_(408).jpg,test,RottenOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenOrange/rottenOrange (408).jpg
+fruits,RottenOrange__rottenOrange_(41).jpg,dev,RottenOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenOrange/rottenOrange (41).jpg
+fruits,RottenOrange__rottenOrange_(415).jpg,dev,RottenOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenOrange/rottenOrange (415).jpg
+fruits,RottenOrange__rottenOrange_(43).jpg,dev,RottenOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenOrange/rottenOrange (43).jpg
+fruits,RottenOrange__rottenOrange_(439).jpg,test,RottenOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenOrange/rottenOrange (439).jpg
+fruits,RottenOrange__rottenOrange_(445).jpg,dev,RottenOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenOrange/rottenOrange (445).jpg
+fruits,RottenOrange__rottenOrange_(454).jpg,dev,RottenOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenOrange/rottenOrange (454).jpg
+fruits,RottenOrange__rottenOrange_(462).jpg,dev,RottenOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenOrange/rottenOrange (462).jpg
+fruits,RottenOrange__rottenOrange_(49).jpg,dev,RottenOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenOrange/rottenOrange (49).jpg
+fruits,RottenOrange__rottenOrange_(492).jpg,test,RottenOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenOrange/rottenOrange (492).jpg
+fruits,RottenOrange__rottenOrange_(497).jpg,test,RottenOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenOrange/rottenOrange (497).jpg
+fruits,RottenOrange__rottenOrange_(512).jpg,test,RottenOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenOrange/rottenOrange (512).jpg
+fruits,RottenOrange__rottenOrange_(540).jpg,dev,RottenOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenOrange/rottenOrange (540).jpg
+fruits,RottenOrange__rottenOrange_(55).jpg,dev,RottenOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenOrange/rottenOrange (55).jpg
+fruits,RottenOrange__rottenOrange_(558).jpg,dev,RottenOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenOrange/rottenOrange (558).jpg
+fruits,RottenOrange__rottenOrange_(578).jpg,test,RottenOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenOrange/rottenOrange (578).jpg
+fruits,RottenOrange__rottenOrange_(8).jpg,test,RottenOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenOrange/rottenOrange (8).jpg
+fruits,RottenOrange__rottenOrange_(88).jpg,dev,RottenOrange,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenOrange/rottenOrange (88).jpg
+fruits,RottenStrawberry__rottenStrawberry_(104).jpg,dev,RottenStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenStrawberry/rottenStrawberry (104).jpg
+fruits,RottenStrawberry__rottenStrawberry_(12).jpg,dev,RottenStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenStrawberry/rottenStrawberry (12).jpg
+fruits,RottenStrawberry__rottenStrawberry_(127).jpg,test,RottenStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenStrawberry/rottenStrawberry (127).jpg
+fruits,RottenStrawberry__rottenStrawberry_(132).jpg,dev,RottenStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenStrawberry/rottenStrawberry (132).jpg
+fruits,RottenStrawberry__rottenStrawberry_(186).jpg,test,RottenStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenStrawberry/rottenStrawberry (186).jpg
+fruits,RottenStrawberry__rottenStrawberry_(198).jpg,dev,RottenStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenStrawberry/rottenStrawberry (198).jpg
+fruits,RottenStrawberry__rottenStrawberry_(22).jpeg,test,RottenStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenStrawberry/rottenStrawberry (22).jpeg
+fruits,RottenStrawberry__rottenStrawberry_(220).jpg,test,RottenStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenStrawberry/rottenStrawberry (220).jpg
+fruits,RottenStrawberry__rottenStrawberry_(223).jpg,dev,RottenStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenStrawberry/rottenStrawberry (223).jpg
+fruits,RottenStrawberry__rottenStrawberry_(228).jpg,test,RottenStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenStrawberry/rottenStrawberry (228).jpg
+fruits,RottenStrawberry__rottenStrawberry_(264).jpg,dev,RottenStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenStrawberry/rottenStrawberry (264).jpg
+fruits,RottenStrawberry__rottenStrawberry_(268).jpg,test,RottenStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenStrawberry/rottenStrawberry (268).jpg
+fruits,RottenStrawberry__rottenStrawberry_(273).jpg,dev,RottenStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenStrawberry/rottenStrawberry (273).jpg
+fruits,RottenStrawberry__rottenStrawberry_(281).jpg,dev,RottenStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenStrawberry/rottenStrawberry (281).jpg
+fruits,RottenStrawberry__rottenStrawberry_(284).jpg,dev,RottenStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenStrawberry/rottenStrawberry (284).jpg
+fruits,RottenStrawberry__rottenStrawberry_(317).jpg,test,RottenStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenStrawberry/rottenStrawberry (317).jpg
+fruits,RottenStrawberry__rottenStrawberry_(318).jpg,dev,RottenStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenStrawberry/rottenStrawberry (318).jpg
+fruits,RottenStrawberry__rottenStrawberry_(352).jpg,test,RottenStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenStrawberry/rottenStrawberry (352).jpg
+fruits,RottenStrawberry__rottenStrawberry_(374).jpg,dev,RottenStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenStrawberry/rottenStrawberry (374).jpg
+fruits,RottenStrawberry__rottenStrawberry_(378).jpg,test,RottenStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenStrawberry/rottenStrawberry (378).jpg
+fruits,RottenStrawberry__rottenStrawberry_(379).jpg,dev,RottenStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenStrawberry/rottenStrawberry (379).jpg
+fruits,RottenStrawberry__rottenStrawberry_(395).jpg,dev,RottenStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenStrawberry/rottenStrawberry (395).jpg
+fruits,RottenStrawberry__rottenStrawberry_(413).jpg,dev,RottenStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenStrawberry/rottenStrawberry (413).jpg
+fruits,RottenStrawberry__rottenStrawberry_(429).jpg,test,RottenStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenStrawberry/rottenStrawberry (429).jpg
+fruits,RottenStrawberry__rottenStrawberry_(43).jpg,dev,RottenStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenStrawberry/rottenStrawberry (43).jpg
+fruits,RottenStrawberry__rottenStrawberry_(447).jpg,dev,RottenStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenStrawberry/rottenStrawberry (447).jpg
+fruits,RottenStrawberry__rottenStrawberry_(454).jpg,test,RottenStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenStrawberry/rottenStrawberry (454).jpg
+fruits,RottenStrawberry__rottenStrawberry_(470).jpg,dev,RottenStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenStrawberry/rottenStrawberry (470).jpg
+fruits,RottenStrawberry__rottenStrawberry_(497).jpg,dev,RottenStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenStrawberry/rottenStrawberry (497).jpg
+fruits,RottenStrawberry__rottenStrawberry_(501).jpg,dev,RottenStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenStrawberry/rottenStrawberry (501).jpg
+fruits,RottenStrawberry__rottenStrawberry_(529).jpg,test,RottenStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenStrawberry/rottenStrawberry (529).jpg
+fruits,RottenStrawberry__rottenStrawberry_(536).jpg,test,RottenStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenStrawberry/rottenStrawberry (536).jpg
+fruits,RottenStrawberry__rottenStrawberry_(538).jpg,test,RottenStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenStrawberry/rottenStrawberry (538).jpg
+fruits,RottenStrawberry__rottenStrawberry_(539).jpg,dev,RottenStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenStrawberry/rottenStrawberry (539).jpg
+fruits,RottenStrawberry__rottenStrawberry_(56).jpg,dev,RottenStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenStrawberry/rottenStrawberry (56).jpg
+fruits,RottenStrawberry__rottenStrawberry_(563).jpg,dev,RottenStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenStrawberry/rottenStrawberry (563).jpg
+fruits,RottenStrawberry__rottenStrawberry_(564).jpg,test,RottenStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenStrawberry/rottenStrawberry (564).jpg
+fruits,RottenStrawberry__rottenStrawberry_(65).jpg,test,RottenStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenStrawberry/rottenStrawberry (65).jpg
+fruits,RottenStrawberry__rottenStrawberry_(69).jpg,dev,RottenStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenStrawberry/rottenStrawberry (69).jpg
+fruits,RottenStrawberry__rottenStrawberry_(83).jpg,test,RottenStrawberry,kaggle:muhriddinmuxiddinov/fruits-and-vegetables-dataset v2 :: Fruits_Vegetables_Dataset(12000)/Fruits/RottenStrawberry/rottenStrawberry (83).jpg
+coco,000000000724.jpg,test,car stop sign truck,http://images.cocodataset.org/val2017/000000000724.jpg
+coco,000000000785.jpg,dev,person skis,http://images.cocodataset.org/val2017/000000000785.jpg
+coco,000000000885.jpg,dev,person tennis racket,http://images.cocodataset.org/val2017/000000000885.jpg
+coco,000000001490.jpg,test,person surfboard,http://images.cocodataset.org/val2017/000000001490.jpg
+coco,000000001532.jpg,dev,car truck,http://images.cocodataset.org/val2017/000000001532.jpg
+coco,000000001584.jpg,dev,bus person,http://images.cocodataset.org/val2017/000000001584.jpg
+coco,000000001675.jpg,test,cat keyboard,http://images.cocodataset.org/val2017/000000001675.jpg
+coco,000000004395.jpg,dev,person tie,http://images.cocodataset.org/val2017/000000004395.jpg
+coco,000000006471.jpg,dev,baseball bat baseball glove bench bottle person,http://images.cocodataset.org/val2017/000000006471.jpg
+coco,000000006818.jpg,test,toilet,http://images.cocodataset.org/val2017/000000006818.jpg
+coco,000000007386.jpg,test,bicycle dog motorcycle truck,http://images.cocodataset.org/val2017/000000007386.jpg
+coco,000000007977.jpg,test,person skateboard,http://images.cocodataset.org/val2017/000000007977.jpg
+coco,000000008762.jpg,dev,car traffic light,http://images.cocodataset.org/val2017/000000008762.jpg
+coco,000000009400.jpg,dev,cup keyboard laptop mouse person,http://images.cocodataset.org/val2017/000000009400.jpg
+coco,000000011051.jpg,dev,person tie,http://images.cocodataset.org/val2017/000000011051.jpg
+coco,000000011149.jpg,dev,bicycle motorcycle person,http://images.cocodataset.org/val2017/000000011149.jpg
+coco,000000014831.jpg,dev,bed cat,http://images.cocodataset.org/val2017/000000014831.jpg
+coco,000000015338.jpg,test,bus car truck,http://images.cocodataset.org/val2017/000000015338.jpg
+coco,000000015660.jpg,test,kite person surfboard,http://images.cocodataset.org/val2017/000000015660.jpg
+coco,000000017379.jpg,dev,person sink tv,http://images.cocodataset.org/val2017/000000017379.jpg
+coco,000000018519.jpg,test,person,http://images.cocodataset.org/val2017/000000018519.jpg
+coco,000000018737.jpg,test,motorcycle,http://images.cocodataset.org/val2017/000000018737.jpg
+coco,000000018833.jpg,test,cat,http://images.cocodataset.org/val2017/000000018833.jpg
+coco,000000025057.jpg,dev,bottle frisbee person,http://images.cocodataset.org/val2017/000000025057.jpg
+coco,000000025228.jpg,test,person surfboard,http://images.cocodataset.org/val2017/000000025228.jpg
+coco,000000028449.jpg,dev,elephant,http://images.cocodataset.org/val2017/000000028449.jpg
+coco,000000028993.jpg,dev,fire hydrant person traffic light,http://images.cocodataset.org/val2017/000000028993.jpg
+coco,000000031217.jpg,test,person sports ball tennis racket,http://images.cocodataset.org/val2017/000000031217.jpg
+coco,000000032887.jpg,dev,backpack cell phone person,http://images.cocodataset.org/val2017/000000032887.jpg
+coco,000000035326.jpg,test,bottle knife oven,http://images.cocodataset.org/val2017/000000035326.jpg
+coco,000000037740.jpg,test,book chair couch keyboard laptop mouse potted plant tv,http://images.cocodataset.org/val2017/000000037740.jpg
+coco,000000037751.jpg,test,backpack motorcycle person,http://images.cocodataset.org/val2017/000000037751.jpg
+coco,000000038048.jpg,test,car fire hydrant handbag person,http://images.cocodataset.org/val2017/000000038048.jpg
+coco,000000042889.jpg,test,keyboard teddy bear,http://images.cocodataset.org/val2017/000000042889.jpg
+coco,000000046252.jpg,test,baseball bat baseball glove person,http://images.cocodataset.org/val2017/000000046252.jpg
+coco,000000046378.jpg,test,bird cat,http://images.cocodataset.org/val2017/000000046378.jpg
+coco,000000046872.jpg,dev,car person truck,http://images.cocodataset.org/val2017/000000046872.jpg
+coco,000000047571.jpg,test,horse person,http://images.cocodataset.org/val2017/000000047571.jpg
+coco,000000049810.jpg,test,bench cat,http://images.cocodataset.org/val2017/000000049810.jpg
+coco,000000050145.jpg,test,backpack bicycle person umbrella,http://images.cocodataset.org/val2017/000000050145.jpg
+coco,000000050844.jpg,dev,teddy bear,http://images.cocodataset.org/val2017/000000050844.jpg
+coco,000000051309.jpg,dev,horse,http://images.cocodataset.org/val2017/000000051309.jpg
+coco,000000051961.jpg,test,parking meter,http://images.cocodataset.org/val2017/000000051961.jpg
+coco,000000052462.jpg,test,zebra,http://images.cocodataset.org/val2017/000000052462.jpg
+coco,000000053624.jpg,test,elephant person,http://images.cocodataset.org/val2017/000000053624.jpg
+coco,000000054654.jpg,dev,oven person,http://images.cocodataset.org/val2017/000000054654.jpg
+coco,000000055950.jpg,dev,person sports ball tennis racket,http://images.cocodataset.org/val2017/000000055950.jpg
+coco,000000057150.jpg,test,backpack person teddy bear,http://images.cocodataset.org/val2017/000000057150.jpg
+coco,000000058655.jpg,dev,clock,http://images.cocodataset.org/val2017/000000058655.jpg
+coco,000000059044.jpg,dev,person remote,http://images.cocodataset.org/val2017/000000059044.jpg
+coco,000000060770.jpg,test,zebra,http://images.cocodataset.org/val2017/000000060770.jpg
+coco,000000065485.jpg,dev,car dog,http://images.cocodataset.org/val2017/000000065485.jpg
+coco,000000067315.jpg,test,person tie,http://images.cocodataset.org/val2017/000000067315.jpg
+coco,000000068628.jpg,dev,person skateboard,http://images.cocodataset.org/val2017/000000068628.jpg
+coco,000000072281.jpg,test,person skateboard,http://images.cocodataset.org/val2017/000000072281.jpg
+coco,000000074200.jpg,dev,person surfboard,http://images.cocodataset.org/val2017/000000074200.jpg
+coco,000000078404.jpg,dev,bench handbag person,http://images.cocodataset.org/val2017/000000078404.jpg
+coco,000000080022.jpg,dev,person sports ball tennis racket,http://images.cocodataset.org/val2017/000000080022.jpg
+coco,000000080666.jpg,dev,bench cat,http://images.cocodataset.org/val2017/000000080666.jpg
+coco,000000082986.jpg,test,frisbee handbag person,http://images.cocodataset.org/val2017/000000082986.jpg
+coco,000000087476.jpg,test,person skateboard surfboard,http://images.cocodataset.org/val2017/000000087476.jpg
+coco,000000093154.jpg,test,car traffic light,http://images.cocodataset.org/val2017/000000093154.jpg
+coco,000000094852.jpg,dev,elephant,http://images.cocodataset.org/val2017/000000094852.jpg
+coco,000000096427.jpg,dev,person tennis racket,http://images.cocodataset.org/val2017/000000096427.jpg
+coco,000000099242.jpg,dev,person skis,http://images.cocodataset.org/val2017/000000099242.jpg
+coco,000000099428.jpg,test,cell phone laptop remote,http://images.cocodataset.org/val2017/000000099428.jpg
+coco,000000100428.jpg,test,person tie,http://images.cocodataset.org/val2017/000000100428.jpg
+coco,000000101884.jpg,test,clock truck,http://images.cocodataset.org/val2017/000000101884.jpg
+coco,000000102805.jpg,dev,backpack boat car frisbee person truck,http://images.cocodataset.org/val2017/000000102805.jpg
+coco,000000106048.jpg,dev,bus,http://images.cocodataset.org/val2017/000000106048.jpg
+coco,000000109313.jpg,test,book couch cup person remote,http://images.cocodataset.org/val2017/000000109313.jpg
+coco,000000109441.jpg,test,car fire hydrant traffic light,http://images.cocodataset.org/val2017/000000109441.jpg
+coco,000000110449.jpg,test,laptop person remote,http://images.cocodataset.org/val2017/000000110449.jpg
+coco,000000112110.jpg,dev,person suitcase,http://images.cocodataset.org/val2017/000000112110.jpg
+coco,000000113051.jpg,dev,boat,http://images.cocodataset.org/val2017/000000113051.jpg
+coco,000000116825.jpg,test,bed cat knife,http://images.cocodataset.org/val2017/000000116825.jpg
+coco,000000117197.jpg,test,cell phone person,http://images.cocodataset.org/val2017/000000117197.jpg
+coco,000000121031.jpg,test,horse person,http://images.cocodataset.org/val2017/000000121031.jpg
+coco,000000122672.jpg,dev,person surfboard,http://images.cocodataset.org/val2017/000000122672.jpg
+coco,000000127270.jpg,test,bench chair handbag person tennis racket,http://images.cocodataset.org/val2017/000000127270.jpg
+coco,000000127530.jpg,test,person sports ball tennis racket,http://images.cocodataset.org/val2017/000000127530.jpg
+coco,000000127955.jpg,dev,bear,http://images.cocodataset.org/val2017/000000127955.jpg
+coco,000000129756.jpg,dev,dog person sheep,http://images.cocodataset.org/val2017/000000129756.jpg
+coco,000000132703.jpg,test,person skateboard,http://images.cocodataset.org/val2017/000000132703.jpg
+coco,000000135890.jpg,dev,clock person,http://images.cocodataset.org/val2017/000000135890.jpg
+coco,000000135902.jpg,test,person train,http://images.cocodataset.org/val2017/000000135902.jpg
+coco,000000136466.jpg,test,clock oven,http://images.cocodataset.org/val2017/000000136466.jpg
+coco,000000142324.jpg,test,bicycle handbag motorcycle person truck,http://images.cocodataset.org/val2017/000000142324.jpg
+coco,000000144984.jpg,test,couch person remote,http://images.cocodataset.org/val2017/000000144984.jpg
+coco,000000146825.jpg,dev,clock handbag person train,http://images.cocodataset.org/val2017/000000146825.jpg
+coco,000000147415.jpg,test,book bottle chair cup keyboard laptop person remote,http://images.cocodataset.org/val2017/000000147415.jpg
+coco,000000147729.jpg,test,cell phone person,http://images.cocodataset.org/val2017/000000147729.jpg
+coco,000000150265.jpg,dev,fire hydrant handbag person,http://images.cocodataset.org/val2017/000000150265.jpg
+coco,000000150930.jpg,dev,clock,http://images.cocodataset.org/val2017/000000150930.jpg
+coco,000000151480.jpg,dev,backpack baseball glove person,http://images.cocodataset.org/val2017/000000151480.jpg
+coco,000000151657.jpg,dev,person tie,http://images.cocodataset.org/val2017/000000151657.jpg
+coco,000000151857.jpg,test,train,http://images.cocodataset.org/val2017/000000151857.jpg
+coco,000000152870.jpg,dev,giraffe,http://images.cocodataset.org/val2017/000000152870.jpg
+coco,000000153343.jpg,dev,teddy bear,http://images.cocodataset.org/val2017/000000153343.jpg
+coco,000000153527.jpg,test,bicycle bottle chair couch knife person,http://images.cocodataset.org/val2017/000000153527.jpg
+coco,000000153529.jpg,dev,backpack handbag person suitcase,http://images.cocodataset.org/val2017/000000153529.jpg
+coco,000000154004.jpg,dev,person surfboard,http://images.cocodataset.org/val2017/000000154004.jpg
+coco,000000155291.jpg,test,cat,http://images.cocodataset.org/val2017/000000155291.jpg
+coco,000000155571.jpg,dev,elephant,http://images.cocodataset.org/val2017/000000155571.jpg
+coco,000000156292.jpg,test,clock handbag person,http://images.cocodataset.org/val2017/000000156292.jpg
+coco,000000156924.jpg,dev,chair person remote,http://images.cocodataset.org/val2017/000000156924.jpg
+coco,000000157124.jpg,test,sink,http://images.cocodataset.org/val2017/000000157124.jpg
+coco,000000157756.jpg,test,bicycle car clock handbag person traffic light truck,http://images.cocodataset.org/val2017/000000157756.jpg
+coco,000000158548.jpg,test,car motorcycle person sheep truck,http://images.cocodataset.org/val2017/000000158548.jpg
+coco,000000158744.jpg,dev,car chair couch fire hydrant person suitcase,http://images.cocodataset.org/val2017/000000158744.jpg
+coco,000000161008.jpg,test,scissors,http://images.cocodataset.org/val2017/000000161008.jpg
+coco,000000164885.jpg,dev,person skis,http://images.cocodataset.org/val2017/000000164885.jpg
+coco,000000166277.jpg,dev,cat cup,http://images.cocodataset.org/val2017/000000166277.jpg
+coco,000000166287.jpg,test,bird cow,http://images.cocodataset.org/val2017/000000166287.jpg
+coco,000000168330.jpg,dev,car clock fire hydrant,http://images.cocodataset.org/val2017/000000168330.jpg
+coco,000000170545.jpg,dev,car traffic light,http://images.cocodataset.org/val2017/000000170545.jpg
+coco,000000171050.jpg,test,fire hydrant,http://images.cocodataset.org/val2017/000000171050.jpg
+coco,000000171757.jpg,dev,bed chair couch person remote,http://images.cocodataset.org/val2017/000000171757.jpg
+coco,000000172330.jpg,dev,car cat,http://images.cocodataset.org/val2017/000000172330.jpg
+coco,000000172649.jpg,dev,person skateboard,http://images.cocodataset.org/val2017/000000172649.jpg
+coco,000000177539.jpg,dev,person surfboard,http://images.cocodataset.org/val2017/000000177539.jpg
+coco,000000178028.jpg,dev,bottle cup hair drier sink wine glass,http://images.cocodataset.org/val2017/000000178028.jpg
+coco,000000179392.jpg,test,book cat dog keyboard tv,http://images.cocodataset.org/val2017/000000179392.jpg
+coco,000000180798.jpg,test,cell phone,http://images.cocodataset.org/val2017/000000180798.jpg
+coco,000000183675.jpg,test,horse person,http://images.cocodataset.org/val2017/000000183675.jpg
+coco,000000186296.jpg,dev,cat,http://images.cocodataset.org/val2017/000000186296.jpg
+coco,000000186632.jpg,dev,bottle sink tv vase,http://images.cocodataset.org/val2017/000000186632.jpg
+coco,000000187243.jpg,test,person sink toilet,http://images.cocodataset.org/val2017/000000187243.jpg
+coco,000000187362.jpg,test,person surfboard,http://images.cocodataset.org/val2017/000000187362.jpg
+coco,000000187585.jpg,test,person skateboard,http://images.cocodataset.org/val2017/000000187585.jpg
+coco,000000189310.jpg,dev,chair,http://images.cocodataset.org/val2017/000000189310.jpg
+coco,000000190756.jpg,test,motorcycle person,http://images.cocodataset.org/val2017/000000190756.jpg
+coco,000000192699.jpg,test,backpack motorcycle person,http://images.cocodataset.org/val2017/000000192699.jpg
+coco,000000194506.jpg,test,bear,http://images.cocodataset.org/val2017/000000194506.jpg
+coco,000000198641.jpg,test,cat clock keyboard laptop tv,http://images.cocodataset.org/val2017/000000198641.jpg
+coco,000000198805.jpg,test,car truck,http://images.cocodataset.org/val2017/000000198805.jpg
+coco,000000199310.jpg,test,person tennis racket,http://images.cocodataset.org/val2017/000000199310.jpg
+coco,000000200162.jpg,test,traffic light train,http://images.cocodataset.org/val2017/000000200162.jpg
+coco,000000200252.jpg,test,bed book,http://images.cocodataset.org/val2017/000000200252.jpg
+coco,000000201418.jpg,test,handbag person suitcase tv,http://images.cocodataset.org/val2017/000000201418.jpg
+coco,000000201646.jpg,dev,chair couch person remote,http://images.cocodataset.org/val2017/000000201646.jpg
+coco,000000205542.jpg,dev,teddy bear,http://images.cocodataset.org/val2017/000000205542.jpg
+coco,000000206271.jpg,dev,toilet,http://images.cocodataset.org/val2017/000000206271.jpg
+coco,000000206411.jpg,test,person toilet,http://images.cocodataset.org/val2017/000000206411.jpg
+coco,000000207844.jpg,dev,book chair cup person umbrella,http://images.cocodataset.org/val2017/000000207844.jpg
+coco,000000208208.jpg,dev,airplane,http://images.cocodataset.org/val2017/000000208208.jpg
+coco,000000209613.jpg,dev,dog sheep,http://images.cocodataset.org/val2017/000000209613.jpg
+coco,000000211674.jpg,dev,bus car person potted plant,http://images.cocodataset.org/val2017/000000211674.jpg
+coco,000000212573.jpg,test,car person traffic light umbrella,http://images.cocodataset.org/val2017/000000212573.jpg
+coco,000000215723.jpg,dev,car person traffic light truck umbrella,http://images.cocodataset.org/val2017/000000215723.jpg
+coco,000000216516.jpg,dev,person skis,http://images.cocodataset.org/val2017/000000216516.jpg
+coco,000000216739.jpg,test,bird giraffe,http://images.cocodataset.org/val2017/000000216739.jpg
+coco,000000218091.jpg,test,bed chair couch remote tv,http://images.cocodataset.org/val2017/000000218091.jpg
+coco,000000218424.jpg,dev,zebra,http://images.cocodataset.org/val2017/000000218424.jpg
+coco,000000222118.jpg,dev,cell phone handbag person,http://images.cocodataset.org/val2017/000000222118.jpg
+coco,000000224093.jpg,test,cow,http://images.cocodataset.org/val2017/000000224093.jpg
+coco,000000224200.jpg,dev,dog fire hydrant,http://images.cocodataset.org/val2017/000000224200.jpg
+coco,000000225670.jpg,test,bench dog frisbee,http://images.cocodataset.org/val2017/000000225670.jpg
+coco,000000227511.jpg,dev,car fire hydrant,http://images.cocodataset.org/val2017/000000227511.jpg
+coco,000000229216.jpg,dev,cell phone person,http://images.cocodataset.org/val2017/000000229216.jpg
+coco,000000230450.jpg,dev,car motorcycle parking meter traffic light,http://images.cocodataset.org/val2017/000000230450.jpg
+coco,000000232646.jpg,dev,stop sign,http://images.cocodataset.org/val2017/000000232646.jpg
+coco,000000234526.jpg,dev,giraffe person,http://images.cocodataset.org/val2017/000000234526.jpg
+coco,000000234807.jpg,dev,horse,http://images.cocodataset.org/val2017/000000234807.jpg
+coco,000000236845.jpg,dev,car,http://images.cocodataset.org/val2017/000000236845.jpg
+coco,000000239041.jpg,dev,bottle hair drier sink tv,http://images.cocodataset.org/val2017/000000239041.jpg
+coco,000000240049.jpg,test,giraffe person,http://images.cocodataset.org/val2017/000000240049.jpg
+coco,000000242678.jpg,test,horse person,http://images.cocodataset.org/val2017/000000242678.jpg
+coco,000000243075.jpg,dev,bear,http://images.cocodataset.org/val2017/000000243075.jpg
+coco,000000244379.jpg,test,car traffic light,http://images.cocodataset.org/val2017/000000244379.jpg
+coco,000000245102.jpg,test,traffic light,http://images.cocodataset.org/val2017/000000245102.jpg
+coco,000000245173.jpg,dev,bicycle clock,http://images.cocodataset.org/val2017/000000245173.jpg
+coco,000000248334.jpg,test,boat person,http://images.cocodataset.org/val2017/000000248334.jpg
+coco,000000250205.jpg,dev,bird,http://images.cocodataset.org/val2017/000000250205.jpg
+coco,000000251065.jpg,dev,toilet,http://images.cocodataset.org/val2017/000000251065.jpg
+coco,000000251140.jpg,test,bicycle book person,http://images.cocodataset.org/val2017/000000251140.jpg
+coco,000000252219.jpg,dev,cup handbag person traffic light umbrella,http://images.cocodataset.org/val2017/000000252219.jpg
+coco,000000253386.jpg,test,dog person,http://images.cocodataset.org/val2017/000000253386.jpg
+coco,000000253695.jpg,test,baseball glove person,http://images.cocodataset.org/val2017/000000253695.jpg
+coco,000000254814.jpg,test,bicycle bus car motorcycle person traffic light truck,http://images.cocodataset.org/val2017/000000254814.jpg
+coco,000000255536.jpg,test,chair motorcycle person umbrella,http://images.cocodataset.org/val2017/000000255536.jpg
+coco,000000257865.jpg,dev,person tennis racket,http://images.cocodataset.org/val2017/000000257865.jpg
+coco,000000259854.jpg,test,person,http://images.cocodataset.org/val2017/000000259854.jpg
+coco,000000261097.jpg,dev,bench chair person tennis racket,http://images.cocodataset.org/val2017/000000261097.jpg
+coco,000000261161.jpg,test,bench dog,http://images.cocodataset.org/val2017/000000261161.jpg
+coco,000000264441.jpg,test,cat chair,http://images.cocodataset.org/val2017/000000264441.jpg
+coco,000000265108.jpg,test,suitcase umbrella,http://images.cocodataset.org/val2017/000000265108.jpg
+coco,000000265816.jpg,test,horse person potted plant,http://images.cocodataset.org/val2017/000000265816.jpg
+coco,000000266409.jpg,dev,person skis,http://images.cocodataset.org/val2017/000000266409.jpg
+coco,000000269121.jpg,test,person tennis racket,http://images.cocodataset.org/val2017/000000269121.jpg
+coco,000000270244.jpg,test,zebra,http://images.cocodataset.org/val2017/000000270244.jpg
+coco,000000272136.jpg,test,airplane person,http://images.cocodataset.org/val2017/000000272136.jpg
+coco,000000273551.jpg,dev,motorcycle,http://images.cocodataset.org/val2017/000000273551.jpg
+coco,000000280325.jpg,dev,parking meter,http://images.cocodataset.org/val2017/000000280325.jpg
+coco,000000286907.jpg,dev,toilet,http://images.cocodataset.org/val2017/000000286907.jpg
+coco,000000287527.jpg,dev,person tie,http://images.cocodataset.org/val2017/000000287527.jpg
+coco,000000287714.jpg,dev,bottle cup sink,http://images.cocodataset.org/val2017/000000287714.jpg
+coco,000000289960.jpg,dev,kite person,http://images.cocodataset.org/val2017/000000289960.jpg
+coco,000000291791.jpg,dev,backpack handbag motorcycle person,http://images.cocodataset.org/val2017/000000291791.jpg
+coco,000000293324.jpg,test,airplane bus truck,http://images.cocodataset.org/val2017/000000293324.jpg
+coco,000000293804.jpg,test,chair couch potted plant vase,http://images.cocodataset.org/val2017/000000293804.jpg
+coco,000000295231.jpg,dev,sheep,http://images.cocodataset.org/val2017/000000295231.jpg
+coco,000000297595.jpg,test,person surfboard,http://images.cocodataset.org/val2017/000000297595.jpg
+coco,000000300155.jpg,dev,bird,http://images.cocodataset.org/val2017/000000300155.jpg
+coco,000000300842.jpg,test,skateboard,http://images.cocodataset.org/val2017/000000300842.jpg
+coco,000000301563.jpg,test,backpack person skis,http://images.cocodataset.org/val2017/000000301563.jpg
+coco,000000303499.jpg,dev,horse person,http://images.cocodataset.org/val2017/000000303499.jpg
+coco,000000305309.jpg,test,baseball bat person,http://images.cocodataset.org/val2017/000000305309.jpg
+coco,000000309391.jpg,dev,bicycle bus car person traffic light,http://images.cocodataset.org/val2017/000000309391.jpg
+coco,000000309452.jpg,dev,bird,http://images.cocodataset.org/val2017/000000309452.jpg
+coco,000000311392.jpg,dev,cow person,http://images.cocodataset.org/val2017/000000311392.jpg
+coco,000000311928.jpg,test,baseball bat person sports ball,http://images.cocodataset.org/val2017/000000311928.jpg
+coco,000000312340.jpg,dev,cat,http://images.cocodataset.org/val2017/000000312340.jpg
+coco,000000314914.jpg,dev,truck,http://images.cocodataset.org/val2017/000000314914.jpg
+coco,000000317024.jpg,test,zebra,http://images.cocodataset.org/val2017/000000317024.jpg
+coco,000000320232.jpg,test,car person traffic light umbrella,http://images.cocodataset.org/val2017/000000320232.jpg
+coco,000000320425.jpg,test,giraffe,http://images.cocodataset.org/val2017/000000320425.jpg
+coco,000000320554.jpg,test,bench cat,http://images.cocodataset.org/val2017/000000320554.jpg
+coco,000000321887.jpg,dev,sheep,http://images.cocodataset.org/val2017/000000321887.jpg
+coco,000000322968.jpg,test,clock,http://images.cocodataset.org/val2017/000000322968.jpg
+coco,000000324715.jpg,dev,laptop scissors,http://images.cocodataset.org/val2017/000000324715.jpg
+coco,000000327701.jpg,dev,cup person sports ball tennis racket,http://images.cocodataset.org/val2017/000000327701.jpg
+coco,000000328238.jpg,dev,backpack bench chair frisbee person,http://images.cocodataset.org/val2017/000000328238.jpg
+coco,000000331280.jpg,dev,horse person,http://images.cocodataset.org/val2017/000000331280.jpg
+coco,000000331569.jpg,dev,cup,http://images.cocodataset.org/val2017/000000331569.jpg
+coco,000000333402.jpg,test,bus cell phone person,http://images.cocodataset.org/val2017/000000333402.jpg
+coco,000000334530.jpg,dev,person surfboard,http://images.cocodataset.org/val2017/000000334530.jpg
+coco,000000334719.jpg,dev,bottle frisbee person,http://images.cocodataset.org/val2017/000000334719.jpg
+coco,000000335177.jpg,test,car stop sign truck,http://images.cocodataset.org/val2017/000000335177.jpg
+coco,000000336209.jpg,test,bench person skateboard,http://images.cocodataset.org/val2017/000000336209.jpg
+coco,000000336232.jpg,dev,bus car motorcycle person truck,http://images.cocodataset.org/val2017/000000336232.jpg
+coco,000000336309.jpg,test,airplane,http://images.cocodataset.org/val2017/000000336309.jpg
+coco,000000338532.jpg,test,giraffe person,http://images.cocodataset.org/val2017/000000338532.jpg
+coco,000000339823.jpg,test,person umbrella,http://images.cocodataset.org/val2017/000000339823.jpg
+coco,000000343149.jpg,dev,cell phone clock person,http://images.cocodataset.org/val2017/000000343149.jpg
+coco,000000343524.jpg,dev,person sports ball tennis racket,http://images.cocodataset.org/val2017/000000343524.jpg
+coco,000000343706.jpg,dev,cell phone person,http://images.cocodataset.org/val2017/000000343706.jpg
+coco,000000345385.jpg,dev,bed person,http://images.cocodataset.org/val2017/000000345385.jpg
+coco,000000345941.jpg,dev,person spoon,http://images.cocodataset.org/val2017/000000345941.jpg
+coco,000000346968.jpg,dev,book cell phone chair person,http://images.cocodataset.org/val2017/000000346968.jpg
+coco,000000347664.jpg,test,cow,http://images.cocodataset.org/val2017/000000347664.jpg
+coco,000000349678.jpg,dev,clock,http://images.cocodataset.org/val2017/000000349678.jpg
+coco,000000350122.jpg,dev,backpack bicycle bus handbag person train,http://images.cocodataset.org/val2017/000000350122.jpg
+coco,000000355905.jpg,dev,dog,http://images.cocodataset.org/val2017/000000355905.jpg
+coco,000000356432.jpg,test,couch cup keyboard,http://images.cocodataset.org/val2017/000000356432.jpg
+coco,000000356968.jpg,dev,horse,http://images.cocodataset.org/val2017/000000356968.jpg
+coco,000000357081.jpg,dev,cow,http://images.cocodataset.org/val2017/000000357081.jpg
+coco,000000358195.jpg,test,person skateboard,http://images.cocodataset.org/val2017/000000358195.jpg
+coco,000000360564.jpg,test,sink toilet,http://images.cocodataset.org/val2017/000000360564.jpg
+coco,000000360661.jpg,dev,horse person,http://images.cocodataset.org/val2017/000000360661.jpg
+coco,000000360960.jpg,test,person umbrella,http://images.cocodataset.org/val2017/000000360960.jpg
+coco,000000361506.jpg,test,car person skateboard stop sign,http://images.cocodataset.org/val2017/000000361506.jpg
+coco,000000363784.jpg,test,sink toilet,http://images.cocodataset.org/val2017/000000363784.jpg
+coco,000000365207.jpg,dev,bench car dog,http://images.cocodataset.org/val2017/000000365207.jpg
+coco,000000368038.jpg,test,train,http://images.cocodataset.org/val2017/000000368038.jpg
+coco,000000368212.jpg,dev,person toilet toothbrush,http://images.cocodataset.org/val2017/000000368212.jpg
+coco,000000368335.jpg,test,car horse truck,http://images.cocodataset.org/val2017/000000368335.jpg
+coco,000000369751.jpg,test,car parking meter stop sign,http://images.cocodataset.org/val2017/000000369751.jpg
+coco,000000372317.jpg,test,bus parking meter,http://images.cocodataset.org/val2017/000000372317.jpg
+coco,000000374551.jpg,test,bird,http://images.cocodataset.org/val2017/000000374551.jpg
+coco,000000377000.jpg,dev,cat,http://images.cocodataset.org/val2017/000000377000.jpg
+coco,000000378453.jpg,dev,zebra,http://images.cocodataset.org/val2017/000000378453.jpg
+coco,000000378673.jpg,test,car person skateboard,http://images.cocodataset.org/val2017/000000378673.jpg
+coco,000000379453.jpg,test,airplane,http://images.cocodataset.org/val2017/000000379453.jpg
+coco,000000380711.jpg,dev,person surfboard,http://images.cocodataset.org/val2017/000000380711.jpg
+coco,000000383289.jpg,test,car cell phone person,http://images.cocodataset.org/val2017/000000383289.jpg
+coco,000000383443.jpg,test,remote sink tv,http://images.cocodataset.org/val2017/000000383443.jpg
+coco,000000383921.jpg,dev,elephant,http://images.cocodataset.org/val2017/000000383921.jpg
+coco,000000384949.jpg,dev,bird boat clock,http://images.cocodataset.org/val2017/000000384949.jpg
+coco,000000388846.jpg,dev,backpack chair person umbrella,http://images.cocodataset.org/val2017/000000388846.jpg
+coco,000000389316.jpg,test,elephant person,http://images.cocodataset.org/val2017/000000389316.jpg
+coco,000000389566.jpg,test,car sheep,http://images.cocodataset.org/val2017/000000389566.jpg
+coco,000000390902.jpg,test,person tennis racket,http://images.cocodataset.org/val2017/000000390902.jpg
+coco,000000392818.jpg,dev,dog,http://images.cocodataset.org/val2017/000000392818.jpg
+coco,000000394677.jpg,dev,cell phone couch handbag person,http://images.cocodataset.org/val2017/000000394677.jpg
+coco,000000398377.jpg,test,book cell phone couch handbag person,http://images.cocodataset.org/val2017/000000398377.jpg
+coco,000000398742.jpg,test,car person sports ball,http://images.cocodataset.org/val2017/000000398742.jpg
+coco,000000401991.jpg,test,bed cat dog,http://images.cocodataset.org/val2017/000000401991.jpg
+coco,000000402473.jpg,dev,cat,http://images.cocodataset.org/val2017/000000402473.jpg
+coco,000000402519.jpg,dev,bird,http://images.cocodataset.org/val2017/000000402519.jpg
+coco,000000405970.jpg,test,book chair couch cup potted plant tv,http://images.cocodataset.org/val2017/000000405970.jpg
+coco,000000407002.jpg,test,person skis,http://images.cocodataset.org/val2017/000000407002.jpg
+coco,000000412286.jpg,dev,person sports ball tennis racket,http://images.cocodataset.org/val2017/000000412286.jpg
+coco,000000415741.jpg,dev,bed book chair,http://images.cocodataset.org/val2017/000000415741.jpg
+coco,000000417465.jpg,test,bear,http://images.cocodataset.org/val2017/000000417465.jpg
+coco,000000421060.jpg,dev,person skis,http://images.cocodataset.org/val2017/000000421060.jpg
+coco,000000421455.jpg,test,car cell phone dog person truck,http://images.cocodataset.org/val2017/000000421455.jpg
+coco,000000423971.jpg,dev,toilet,http://images.cocodataset.org/val2017/000000423971.jpg
+coco,000000424545.jpg,test,cat,http://images.cocodataset.org/val2017/000000424545.jpg
+coco,000000426166.jpg,dev,bicycle,http://images.cocodataset.org/val2017/000000426166.jpg
+coco,000000426795.jpg,dev,chair person,http://images.cocodataset.org/val2017/000000426795.jpg
+coco,000000426836.jpg,test,kite person,http://images.cocodataset.org/val2017/000000426836.jpg
+coco,000000427034.jpg,dev,clock dog laptop person,http://images.cocodataset.org/val2017/000000427034.jpg
+coco,000000427055.jpg,test,car clock stop sign,http://images.cocodataset.org/val2017/000000427055.jpg
+coco,000000427655.jpg,test,book bus car horse person,http://images.cocodataset.org/val2017/000000427655.jpg
+coco,000000429530.jpg,test,vase,http://images.cocodataset.org/val2017/000000429530.jpg
+coco,000000429718.jpg,test,person train,http://images.cocodataset.org/val2017/000000429718.jpg
+coco,000000430048.jpg,test,car clock,http://images.cocodataset.org/val2017/000000430048.jpg
+coco,000000433243.jpg,dev,giraffe zebra,http://images.cocodataset.org/val2017/000000433243.jpg
+coco,000000433980.jpg,test,cell phone person,http://images.cocodataset.org/val2017/000000433980.jpg
+coco,000000436738.jpg,test,book bus car person traffic light truck,http://images.cocodataset.org/val2017/000000436738.jpg
+coco,000000437898.jpg,test,cup knife oven refrigerator sink spoon,http://images.cocodataset.org/val2017/000000437898.jpg
+coco,000000439715.jpg,dev,horse person umbrella,http://images.cocodataset.org/val2017/000000439715.jpg
+coco,000000441553.jpg,dev,handbag person traffic light train,http://images.cocodataset.org/val2017/000000441553.jpg
+coco,000000442306.jpg,dev,person umbrella,http://images.cocodataset.org/val2017/000000442306.jpg
+coco,000000442822.jpg,test,boat,http://images.cocodataset.org/val2017/000000442822.jpg
+coco,000000444142.jpg,dev,chair person tennis racket,http://images.cocodataset.org/val2017/000000444142.jpg
+coco,000000444275.jpg,dev,microwave,http://images.cocodataset.org/val2017/000000444275.jpg
+coco,000000445602.jpg,test,person skis,http://images.cocodataset.org/val2017/000000445602.jpg
+coco,000000445722.jpg,test,backpack boat person suitcase,http://images.cocodataset.org/val2017/000000445722.jpg
+coco,000000449603.jpg,test,person surfboard,http://images.cocodataset.org/val2017/000000449603.jpg
+coco,000000449996.jpg,test,airplane truck,http://images.cocodataset.org/val2017/000000449996.jpg
+coco,000000451144.jpg,test,backpack person skis,http://images.cocodataset.org/val2017/000000451144.jpg
+coco,000000453341.jpg,test,cell phone couch keyboard mouse teddy bear tv,http://images.cocodataset.org/val2017/000000453341.jpg
+coco,000000453981.jpg,test,bear,http://images.cocodataset.org/val2017/000000453981.jpg
+coco,000000456292.jpg,dev,bottle cat,http://images.cocodataset.org/val2017/000000456292.jpg
+coco,000000458045.jpg,test,baseball bat baseball glove person,http://images.cocodataset.org/val2017/000000458045.jpg
+coco,000000458054.jpg,test,toilet,http://images.cocodataset.org/val2017/000000458054.jpg
+coco,000000463199.jpg,test,backpack bus cell phone handbag person,http://images.cocodataset.org/val2017/000000463199.jpg
+coco,000000463522.jpg,test,backpack bicycle dog horse person,http://images.cocodataset.org/val2017/000000463522.jpg
+coco,000000469246.jpg,test,person suitcase train,http://images.cocodataset.org/val2017/000000469246.jpg
+coco,000000473219.jpg,dev,book chair person potted plant tie,http://images.cocodataset.org/val2017/000000473219.jpg
+coco,000000474170.jpg,dev,elephant,http://images.cocodataset.org/val2017/000000474170.jpg
+coco,000000474881.jpg,test,sheep,http://images.cocodataset.org/val2017/000000474881.jpg
+coco,000000475678.jpg,dev,suitcase,http://images.cocodataset.org/val2017/000000475678.jpg
+coco,000000476514.jpg,dev,handbag person tie umbrella,http://images.cocodataset.org/val2017/000000476514.jpg
+coco,000000477623.jpg,test,train,http://images.cocodataset.org/val2017/000000477623.jpg
+coco,000000477689.jpg,dev,person tie,http://images.cocodataset.org/val2017/000000477689.jpg
+coco,000000481567.jpg,dev,motorcycle person,http://images.cocodataset.org/val2017/000000481567.jpg
+coco,000000481582.jpg,dev,horse person,http://images.cocodataset.org/val2017/000000481582.jpg
+coco,000000486479.jpg,dev,bed dog,http://images.cocodataset.org/val2017/000000486479.jpg
+coco,000000488270.jpg,test,airplane,http://images.cocodataset.org/val2017/000000488270.jpg
+coco,000000490470.jpg,test,boat,http://images.cocodataset.org/val2017/000000490470.jpg
+coco,000000491366.jpg,dev,clock couch keyboard person remote tv,http://images.cocodataset.org/val2017/000000491366.jpg
+coco,000000493864.jpg,dev,person surfboard,http://images.cocodataset.org/val2017/000000493864.jpg
+coco,000000493905.jpg,dev,chair person sports ball tennis racket,http://images.cocodataset.org/val2017/000000493905.jpg
+coco,000000495732.jpg,dev,couch person remote,http://images.cocodataset.org/val2017/000000495732.jpg
+coco,000000497568.jpg,test,airplane person truck,http://images.cocodataset.org/val2017/000000497568.jpg
+coco,000000497599.jpg,test,chair laptop person,http://images.cocodataset.org/val2017/000000497599.jpg
+coco,000000497628.jpg,test,bed couch,http://images.cocodataset.org/val2017/000000497628.jpg
+coco,000000501523.jpg,test,bottle cat cup sink,http://images.cocodataset.org/val2017/000000501523.jpg
+coco,000000503841.jpg,dev,traffic light,http://images.cocodataset.org/val2017/000000503841.jpg
+coco,000000503855.jpg,test,backpack person umbrella,http://images.cocodataset.org/val2017/000000503855.jpg
+coco,000000507042.jpg,test,giraffe,http://images.cocodataset.org/val2017/000000507042.jpg
+coco,000000507797.jpg,dev,bus car handbag person,http://images.cocodataset.org/val2017/000000507797.jpg
+coco,000000507975.jpg,test,car horse person,http://images.cocodataset.org/val2017/000000507975.jpg
+coco,000000508482.jpg,test,train,http://images.cocodataset.org/val2017/000000508482.jpg
+coco,000000509260.jpg,dev,book tv,http://images.cocodataset.org/val2017/000000509260.jpg
+coco,000000509403.jpg,test,dog frisbee person,http://images.cocodataset.org/val2017/000000509403.jpg
+coco,000000509699.jpg,dev,book chair clock tv,http://images.cocodataset.org/val2017/000000509699.jpg
+coco,000000512836.jpg,dev,dog handbag person umbrella,http://images.cocodataset.org/val2017/000000512836.jpg
+coco,000000512985.jpg,test,person surfboard,http://images.cocodataset.org/val2017/000000512985.jpg
+coco,000000514376.jpg,dev,bench bus car traffic light,http://images.cocodataset.org/val2017/000000514376.jpg
+coco,000000515266.jpg,dev,bench car truck,http://images.cocodataset.org/val2017/000000515266.jpg
+coco,000000515350.jpg,test,person surfboard,http://images.cocodataset.org/val2017/000000515350.jpg
+coco,000000515445.jpg,dev,person surfboard,http://images.cocodataset.org/val2017/000000515445.jpg
+coco,000000516804.jpg,dev,bus,http://images.cocodataset.org/val2017/000000516804.jpg
+coco,000000518326.jpg,dev,bed person,http://images.cocodataset.org/val2017/000000518326.jpg
+coco,000000518770.jpg,dev,chair handbag person remote,http://images.cocodataset.org/val2017/000000518770.jpg
+coco,000000519208.jpg,test,elephant person,http://images.cocodataset.org/val2017/000000519208.jpg
+coco,000000520077.jpg,dev,book bottle mouse tv,http://images.cocodataset.org/val2017/000000520077.jpg
+coco,000000520910.jpg,test,person sink toilet,http://images.cocodataset.org/val2017/000000520910.jpg
+coco,000000525322.jpg,test,airplane,http://images.cocodataset.org/val2017/000000525322.jpg
+coco,000000526392.jpg,test,car traffic light,http://images.cocodataset.org/val2017/000000526392.jpg
+coco,000000528314.jpg,dev,person skis,http://images.cocodataset.org/val2017/000000528314.jpg
+coco,000000528524.jpg,test,sheep,http://images.cocodataset.org/val2017/000000528524.jpg
+coco,000000528980.jpg,test,car stop sign umbrella,http://images.cocodataset.org/val2017/000000528980.jpg
+coco,000000530099.jpg,dev,car cat,http://images.cocodataset.org/val2017/000000530099.jpg
+coco,000000531134.jpg,test,bicycle handbag person traffic light,http://images.cocodataset.org/val2017/000000531134.jpg
+coco,000000532071.jpg,dev,bear,http://images.cocodataset.org/val2017/000000532071.jpg
+coco,000000534270.jpg,dev,boat dog person umbrella,http://images.cocodataset.org/val2017/000000534270.jpg
+coco,000000534394.jpg,dev,car sheep,http://images.cocodataset.org/val2017/000000534394.jpg
+coco,000000540932.jpg,test,person surfboard,http://images.cocodataset.org/val2017/000000540932.jpg
+coco,000000541952.jpg,dev,clock,http://images.cocodataset.org/val2017/000000541952.jpg
+coco,000000542089.jpg,test,sink,http://images.cocodataset.org/val2017/000000542089.jpg
+coco,000000544444.jpg,dev,person skis,http://images.cocodataset.org/val2017/000000544444.jpg
+coco,000000546829.jpg,test,bench dog,http://images.cocodataset.org/val2017/000000546829.jpg
+coco,000000549930.jpg,test,person umbrella,http://images.cocodataset.org/val2017/000000549930.jpg
+coco,000000550349.jpg,dev,bus handbag person traffic light umbrella,http://images.cocodataset.org/val2017/000000550349.jpg
+coco,000000551794.jpg,dev,backpack motorcycle person,http://images.cocodataset.org/val2017/000000551794.jpg
+coco,000000552612.jpg,test,sheep,http://images.cocodataset.org/val2017/000000552612.jpg
+coco,000000553339.jpg,dev,car traffic light,http://images.cocodataset.org/val2017/000000553339.jpg
+coco,000000554595.jpg,test,person surfboard,http://images.cocodataset.org/val2017/000000554595.jpg
+coco,000000556158.jpg,test,person skis,http://images.cocodataset.org/val2017/000000556158.jpg
+coco,000000561223.jpg,dev,person surfboard,http://images.cocodataset.org/val2017/000000561223.jpg
+coco,000000561256.jpg,dev,person sink,http://images.cocodataset.org/val2017/000000561256.jpg
+coco,000000561958.jpg,dev,person skis snowboard,http://images.cocodataset.org/val2017/000000561958.jpg
+coco,000000562448.jpg,dev,bus person,http://images.cocodataset.org/val2017/000000562448.jpg
+coco,000000563758.jpg,dev,teddy bear,http://images.cocodataset.org/val2017/000000563758.jpg
+coco,000000565607.jpg,dev,fire hydrant potted plant,http://images.cocodataset.org/val2017/000000565607.jpg
+coco,000000565853.jpg,dev,backpack bottle handbag person potted plant remote tv,http://images.cocodataset.org/val2017/000000565853.jpg
+coco,000000566436.jpg,dev,bench person,http://images.cocodataset.org/val2017/000000566436.jpg
+coco,000000569565.jpg,test,truck,http://images.cocodataset.org/val2017/000000569565.jpg
+coco,000000570688.jpg,dev,car kite person,http://images.cocodataset.org/val2017/000000570688.jpg
+coco,000000570834.jpg,dev,bicycle person,http://images.cocodataset.org/val2017/000000570834.jpg
+coco,000000572462.jpg,test,backpack bench bottle person tie train,http://images.cocodataset.org/val2017/000000572462.jpg
+coco,000000574315.jpg,dev,cat couch keyboard laptop person,http://images.cocodataset.org/val2017/000000574315.jpg
+coco,000000574823.jpg,test,baseball glove person sports ball,http://images.cocodataset.org/val2017/000000574823.jpg
+coco,000000575243.jpg,dev,car person traffic light umbrella,http://images.cocodataset.org/val2017/000000575243.jpg
+coco,000000577182.jpg,test,bench bird,http://images.cocodataset.org/val2017/000000577182.jpg

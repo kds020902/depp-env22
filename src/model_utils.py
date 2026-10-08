@@ -227,3 +227,55 @@ def marginal_probabilities(probabilities: torch.Tensor) -> tuple[torch.Tensor, t
     """Sum the joint (species x condition) probabilities, rather than reusing joint argmax labels."""
     joint = probabilities.reshape(-1, probabilities.shape[1] // len(CONDITION_NAMES), len(CONDITION_NAMES))
     return joint.sum(dim=2), joint.sum(dim=1)
+
+
+# ---------- calibrated probability and the "not a trained vegetable" check ----------
+UNKNOWN_MESSAGE = "학습된 데이터가 아닙니다"
+
+
+def fit_temperature(logits: torch.Tensor, labels: torch.Tensor) -> float:
+    """Temperature scaling: one number T so that softmax(logits / T) matches how often the model is right
+    (fitted on the validation split by minimising cross-entropy)."""
+    log_t = torch.zeros(1, requires_grad=True)
+    optimizer = torch.optim.LBFGS([log_t], lr=0.1, max_iter=200)
+
+    def closure():
+        optimizer.zero_grad()
+        loss = nn.functional.cross_entropy(logits / log_t.exp(), labels)
+        loss.backward()
+        return loss
+    optimizer.step(closure)
+    return float(log_t.detach().exp())
+
+
+def unknown_score(logits: torch.Tensor) -> torch.Tensor:
+    """Energy score, -logsumexp(logits): high when no trained class fits the photo well."""
+    return -torch.logsumexp(logits, dim=1)
+
+
+def fit_unknown_threshold(val_logits: torch.Tensor, accept_rate: float = 0.95) -> float:
+    """Threshold that still accepts accept_rate of the validation photos (all real vegetables)."""
+    return float(torch.quantile(unknown_score(val_logits), accept_rate))
+
+
+def calibrated_probabilities(logits: torch.Tensor, checkpoint: dict) -> torch.Tensor:
+    temperature = checkpoint.get("calibration", {}).get("temperature", 1.0)
+    return (logits / temperature).softmax(1)
+
+
+def is_unknown(logits: torch.Tensor, checkpoint: dict) -> torch.Tensor:
+    threshold = checkpoint.get("unknown_check", {}).get("threshold")
+    if threshold is None:  # older checkpoints have no check
+        return torch.zeros(len(logits), dtype=torch.bool)
+    return unknown_score(logits) > threshold
+
+
+def calibration_extras(val_logits: torch.Tensor, val_labels: torch.Tensor, accept_rate: float = 0.95) -> dict:
+    """The checkpoint entries for calibrated probabilities and the unknown-photo check, fitted on Valid only."""
+    return {
+        "calibration": {"method": "temperature scaling", "temperature": fit_temperature(val_logits, val_labels),
+                        "fitted_on": "val"},
+        "unknown_check": {"method": "energy score -logsumexp(logits)",
+                          "threshold": fit_unknown_threshold(val_logits, accept_rate),
+                          "valid_accept_rate": accept_rate, "fitted_on": "val", "message": UNKNOWN_MESSAGE},
+    }
