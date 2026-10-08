@@ -82,9 +82,28 @@ def make_transform(size: int = 224):
     ])
 
 
-def make_train_transform(size: int = 224, crop_scale_min: float = 0.6):
-    """Training augmentation: random crop/scale, flips, small rotation and colour change."""
-    return transforms.Compose([
+class RandomLowRes:
+    """With probability p, shrink the photo so its short side is low..high px, like a small web thumbnail.
+    The random crop that follows enlarges it again, so the model also learns from blurry, small photos."""
+
+    def __init__(self, p: float, low: int = 48, high: int = 112):
+        self.p, self.low, self.high = p, low, high
+
+    def __call__(self, image: Image.Image) -> Image.Image:
+        if float(torch.rand(1)) >= self.p:
+            return image
+        scale = int(torch.randint(self.low, self.high + 1, (1,))) / min(image.size)
+        if scale >= 1:
+            return image
+        return image.resize((max(1, round(image.width * scale)), max(1, round(image.height * scale))),
+                            Image.BILINEAR)
+
+
+def make_train_transform(size: int = 224, crop_scale_min: float = 0.6, lowres_prob: float = 0.0):
+    """Training augmentation: random crop/scale, flips, small rotation and colour change
+    (optionally first a random shrink to thumbnail size)."""
+    lowres = [RandomLowRes(lowres_prob)] if lowres_prob > 0 else []
+    return transforms.Compose(lowres + [
         transforms.RandomResizedCrop(
             (size, size), scale=(crop_scale_min, 1.0), ratio=(3 / 4, 4 / 3), antialias=True,
         ),

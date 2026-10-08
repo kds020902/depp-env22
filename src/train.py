@@ -68,11 +68,12 @@ def read_manifest(path: Path, class_names: list[str]) -> dict[str, list[dict]]:
 class CachedImages(Dataset):
     """Decodes every photo once; training images are kept small and augmented on the fly."""
 
-    def __init__(self, rows: list[dict], root: Path, train: bool, size: int = 224, crop_scale_min: float = 0.6):
+    def __init__(self, rows: list[dict], root: Path, train: bool, size: int = 224, crop_scale_min: float = 0.6,
+                 lowres_prob: float = 0.0):
         self.labels = [int(r["class_id"]) for r in rows]
         self.train = train
         if train:
-            self.transform = make_train_transform(size, crop_scale_min)
+            self.transform = make_train_transform(size, crop_scale_min, lowres_prob)
             self.images = []
             keep = max(448, 2 * size)  # enough pixels for small random crops
             for r in rows:
@@ -186,6 +187,8 @@ def parse_args():
                         help="Global pooling before the classifier; avgmax keeps the strongest local evidence.")
     parser.add_argument("--crop-scale-min", type=float, default=0.6,
                         help="Smallest random crop, as a fraction of the photo area (augmentation).")
+    parser.add_argument("--lowres-prob", type=float, default=0.0,
+                        help="Augmentation: chance of first shrinking a training photo to thumbnail size (48-112 px).")
     parser.add_argument("--num-classes", type=int, choices=[6, len(CLASS_NAMES)], default=len(CLASS_NAMES),
                         help="6 = cucumber/potato/tomato only (the earlier runs), 10 = all five vegetables.")
     parser.add_argument("--threads", type=int, default=6)
@@ -236,7 +239,8 @@ def main():
         train_on_features = True
     else:
         train_loader = DataLoader(CachedImages(splits["train"], manifest.parent, train=augment,
-                                                size=args.image_size, crop_scale_min=args.crop_scale_min),
+                                                size=args.image_size, crop_scale_min=args.crop_scale_min,
+                                                lowres_prob=args.lowres_prob),
                                   batch_size=args.batch_size, shuffle=True,
                                   generator=torch.Generator().manual_seed(args.seed))
         train_on_features = False
@@ -334,6 +338,7 @@ def main():
             "max_epochs": args.epochs, "early_stopping_patience": args.patience,
             "scheduler": None if linear else "cosine", "augmentation": augment,
             "image_size": args.image_size, "crop_scale_min": args.crop_scale_min if augment else None,
+            "lowres_prob": args.lowres_prob if augment else None,
             "device": args.device, "threads": args.threads,
         },
         "pretrained_source": pretrained_source,
