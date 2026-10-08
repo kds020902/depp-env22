@@ -108,6 +108,7 @@ Test에서 클래스별로 맞힌 수는 다음과 같다.
     - 나머지: 이상이 작거나 초기인 사진(싹이 조금 난 감자, 작은 반점), 감자처럼 보이는 갈색 오이 등
     - 점수가 0.5보다 낮아 `predict.py`가 `uncertain`으로 표시하는 사진은 Test 28장(오답 11, 정답 17)이다.
 - **학습 시간:** CPU 4코어에서 약 30분 걸렸다.
+- **추가 학습 시도:** 시드 변경, 썸네일 크기 증강, 더 긴 학습을 Valid로 비교했지만 미리 정한 기준을 넘지 못해 채택하지 않았다. 시드만 바꿔도 Valid가 2.3%p 달라졌다([experiments/10class_tuning](experiments/10class_tuning/README.md)).
 
 ## 내 사진으로 예측하기
 
@@ -166,7 +167,7 @@ depp-env22/
 │   ├── 10class/             현재 10개 클래스 모델의 기록
 │   ├── (그 밖의 폴더)       6개 클래스 때의 모델 비교 (같은 Test 180장, 6개 클래스 가중치는 커밋 9dc8749의 model.pth)
 │   └── round1_v1_data/      1차 모델의 학습 기록 (1차 가중치는 커밋 03db425에 있음)
-└── experiments/             채택하지 않은 추가 실험 기록 (field_tomato, partial_rot)
+└── experiments/             채택하지 않은 추가 실험 기록 (field_tomato, partial_rot, 10class_tuning)
 ```
 
 가중치는 용량 때문에 최종 모델(`model.pth`)만 올렸다.

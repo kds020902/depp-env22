@@ -1,0 +1,5 @@
+run,setting,valid_accuracy,valid_correct,valid_loss,best_epoch,epochs_completed
+B (현재 model.pth),"기본 설정, 시드 42",0.9367,281,0.33,16,24
+S7,"기본 설정, 시드 7",0.9133,274,0.3369,17,25
+R,"저해상도 증강 --lowres-prob 0.3, 시드 42",0.9133,274,0.3408,22,30
+L,"--epochs 50 --patience 12, 시드 42",0.9367,281,0.3208,16,28
