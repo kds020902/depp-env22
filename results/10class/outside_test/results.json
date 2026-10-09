@@ -1,0 +1,61 @@
+{
+ "model": "model.pth",
+ "photos": 221,
+ "correct": 167,
+ "species_correct": 198,
+ "condition_correct": 186,
+ "per_class": {
+  "cucumber_fresh": "12/12",
+  "cucumber_rotten": "2/2",
+  "potato_fresh": "12/16",
+  "potato_rotten": "32/42",
+  "tomato_fresh": "47/49",
+  "tomato_rotten": "17/45",
+  "bellpepper_fresh": "15/22",
+  "bellpepper_rotten": "2/2",
+  "carrot_fresh": "25/28",
+  "carrot_rotten": "3/3"
+ },
+ "most_common_errors": [
+  [
+   "tomato_rotten",
+   "tomato_fresh",
+   17
+  ],
+  [
+   "potato_rotten",
+   "potato_fresh",
+   6
+  ],
+  [
+   "tomato_rotten",
+   "potato_rotten",
+   6
+  ],
+  [
+   "bellpepper_fresh",
+   "tomato_fresh",
+   6
+  ],
+  [
+   "potato_fresh",
+   "potato_rotten",
+   4
+  ],
+  [
+   "carrot_fresh",
+   "carrot_rotten",
+   3
+  ],
+  [
+   "potato_rotten",
+   "cucumber_rotten",
+   2
+  ],
+  [
+   "tomato_rotten",
+   "bellpepper_fresh",
+   2
+  ]
+ ]
+}

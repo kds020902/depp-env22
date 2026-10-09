@@ -1,0 +1,34 @@
+{
+ "cucumber_fresh": {
+  "reviewed": 60,
+  "passed": 60
+ },
+ "cucumber_rotten": {
+  "reviewed": 66,
+  "passed": 60
+ },
+ "potato_fresh": {
+  "reviewed": 60,
+  "passed": 60
+ },
+ "potato_rotten": {
+  "reviewed": 92,
+  "passed": 60
+ },
+ "tomato_fresh": {
+  "reviewed": 60,
+  "passed": 60
+ },
+ "tomato_rotten": {
+  "reviewed": 67,
+  "passed": 60
+ },
+ "carrot_fresh": {
+  "reviewed": 61,
+  "passed": 60
+ },
+ "carrot_rotten": {
+  "reviewed": 93,
+  "passed": 60
+ }
+}

@@ -1,0 +1,5 @@
+run,train_data,seed,valid_correct,valid_accuracy,valid_loss,best_epoch,epochs_completed,outside_correct_of_221,outside_species,outside_condition
+B (현재 model.pth),3차 Train 1260,42,281,0.9367,0.3300,16,24,167,198,186
+S7,3차 Train 1260,7,274,0.9133,0.3369,17,25,162,193,186
+R42,3차 Train + 휴대폰 사진 480 = 1740,42,276,0.9200,0.3143,29,30,166,193,185
+R7,3차 Train + 휴대폰 사진 480 = 1740,7,279,0.9300,0.2937,23,30,167,196,183
