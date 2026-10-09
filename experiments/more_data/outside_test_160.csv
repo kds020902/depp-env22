@@ -1,0 +1,161 @@
+id,class_name,dataset,url,license,file
+h000,cucumber_fresh,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Fresh Cucumber(1-6)/IMG_20260114_010329.jpg
+h001,cucumber_fresh,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Fresh Cucumber(1-6)/IMG_20260114_005454.jpg
+h002,cucumber_fresh,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Fresh Cucumber(1-6)/IMG_20260114_010252.jpg
+h003,cucumber_fresh,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Fresh Cucumber(1-6)/IMG_20260204_152116.jpg
+h004,cucumber_fresh,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Fresh Cucumber(1-6)/IMG_20260114_005517.jpg
+h005,cucumber_fresh,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Fresh Cucumber(1-6)/IMG_20260114_010345.jpg
+h006,cucumber_fresh,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Fresh Cucumber(1-6)/IMG_20260114_005458.jpg
+h007,cucumber_fresh,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Fresh Cucumber(1-6)/IMG_20251025_121720.jpg
+h008,cucumber_fresh,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Fresh Cucumber(1-6)/IMG_20251029_095858.jpg
+h009,cucumber_fresh,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Fresh Cucumber(1-6)/IMG_20260114_005443.jpg
+h010,cucumber_fresh,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Fresh Cucumber(1-6)/IMG_20251027_171625.jpg
+h011,cucumber_fresh,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Fresh Cucumber(1-6)/IMG_20260114_010337.jpg
+h012,cucumber_fresh,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Fresh Cucumber(1-6)/IMG_20260114_010153.jpg
+h013,cucumber_fresh,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Fresh Cucumber(1-6)/IMG_20251029_095851.jpg
+h014,cucumber_fresh,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Fresh Cucumber(1-6)/IMG_20260204_152211.jpg
+h015,cucumber_fresh,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Fresh Cucumber(1-6)/IMG_20251025_121739.jpg
+h016,cucumber_fresh,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Fresh Cucumber(1-6)/IMG_20251031_164947.jpg
+h017,cucumber_fresh,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Fresh Cucumber(1-6)/IMG_20260204_152022.jpg
+h018,cucumber_fresh,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Fresh Cucumber(1-6)/IMG_20260204_151937.jpg
+h019,cucumber_fresh,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Fresh Cucumber(1-6)/IMG_20251027_171547.jpg
+h020,cucumber_rotten,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Rotten Cucumber(12-20)/IMG_20260122_003107.jpg
+h021,cucumber_rotten,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Rotten Cucumber(12-20)/IMG_20260202_032554.jpg
+h022,cucumber_rotten,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Rotten Cucumber(12-20)/IMG_20260122_003115.jpg
+h023,cucumber_rotten,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Rotten Cucumber(12-20)/IMG_20260122_003111.jpg
+h024,cucumber_rotten,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Rotten Cucumber(12-20)/IMG_20260202_032653.jpg
+h025,cucumber_rotten,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Rotten Cucumber(12-20)/IMG_20260209_011500.jpg
+h026,cucumber_rotten,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Rotten Cucumber(12-20)/IMG_20260202_032559_1.jpg
+h027,cucumber_rotten,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Rotten Cucumber(12-20)/IMG_20260123_013840.jpg
+h028,cucumber_rotten,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Rotten Cucumber(12-20)/IMG_20260209_011504.jpg
+h029,cucumber_rotten,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Rotten Cucumber(12-20)/IMG_20260202_032700.jpg
+h030,tomato_fresh,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Fresh Tomato(1-10)/IMG_20251121_145011066_HDR_AE.jpg
+h031,tomato_fresh,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Fresh Tomato(1-10)/IMG_20251107_114124177_HDR_AE.jpg
+h032,tomato_fresh,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Fresh Tomato(1-10)/IMG_20251122_210412254_HDR.jpg
+h033,tomato_fresh,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Fresh Tomato(1-10)/IMG_20251121_145259388_HDR_AE.jpg
+h034,tomato_fresh,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Fresh Tomato(1-10)/IMG_20251118_170151247_HDR.jpg
+h035,tomato_fresh,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Fresh Tomato(1-10)/IMG_20251124_192225207_HDR.jpg
+h036,tomato_fresh,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Fresh Tomato(1-10)/IMG_20251110_093842048_HDR_AE.jpg
+h037,tomato_fresh,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Fresh Tomato(1-10)/IMG_20251118_165658912_HDR.jpg
+h038,tomato_fresh,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Fresh Tomato(1-10)/IMG_20251122_210644016_HDR.jpg
+h039,tomato_fresh,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Fresh Tomato(1-10)/IMG_20251109_112854543_HDR_AE.jpg
+h040,tomato_fresh,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Fresh Tomato(1-10)/IMG_20251123_223118142_HDR.jpg
+h041,tomato_fresh,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Fresh Tomato(1-10)/IMG_20251118_170156986_HDR.jpg
+h042,tomato_fresh,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Fresh Tomato(1-10)/IMG_20251126_192750771_HDR.jpg
+h043,tomato_fresh,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Fresh Tomato(1-10)/IMG_20251105_102748778_HDR_AE.jpg
+h044,tomato_fresh,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Fresh Tomato(1-10)/IMG_20251110_093925722_HDR_AE.jpg
+h045,tomato_fresh,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Fresh Tomato(1-10)/IMG_20251118_165840681_HDR.jpg
+h046,tomato_fresh,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Fresh Tomato(1-10)/IMG_20251122_210657660_HDR.jpg
+h047,tomato_fresh,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Fresh Tomato(1-10)/IMG_20251125_211644686_HDR.jpg
+h048,tomato_fresh,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Fresh Tomato(1-10)/IMG_20251108_121613853_HDR_AE.jpg
+h049,tomato_fresh,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Fresh Tomato(1-10)/IMG_20251108_121415109_HDR_AE.jpg
+h050,tomato_rotten,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Rotten Tomato(24-35)/IMG_20251204_101504935_HDR_AE.jpg
+h051,tomato_rotten,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Rotten Tomato(24-35)/IMG_20260128_095353335_HDR_AE.jpg
+h052,tomato_rotten,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Rotten Tomato(24-35)/IMG_20260126_223652603_HDR.jpg
+h053,tomato_rotten,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Rotten Tomato(24-35)/IMG_20260126_223524935_HDR.jpg
+h054,tomato_rotten,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Rotten Tomato(24-35)/IMG_20260128_095315407_HDR_AE.jpg
+h055,tomato_rotten,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Rotten Tomato(24-35)/IMG_20260128_095444188_HDR_AE.jpg
+h056,tomato_rotten,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Rotten Tomato(24-35)/IMG_20251204_101555231_HDR_AE.jpg
+h057,tomato_rotten,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Rotten Tomato(24-35)/IMG_20251203_101125761_HDR.jpg
+h058,tomato_rotten,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Rotten Tomato(24-35)/IMG_20260126_223542623_HDR.jpg
+h059,tomato_rotten,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Rotten Tomato(24-35)/IMG_20260126_223711438_HDR.jpg
+h060,tomato_rotten,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Rotten Tomato(24-35)/IMG_20260124_112811855_HDR_AE.jpg
+h061,tomato_rotten,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Rotten Tomato(24-35)/IMG_20251204_101540585_HDR_AE.jpg
+h062,tomato_rotten,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Rotten Tomato(24-35)/IMG_20251117_140547019_HDR_AE.jpg
+h063,tomato_rotten,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Rotten Tomato(24-35)/IMG_20260128_095506452_HDR_AE.jpg
+h064,tomato_rotten,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Rotten Tomato(24-35)/IMG_20260124_112906214_HDR_AE.jpg
+h065,tomato_rotten,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Rotten Tomato(24-35)/IMG_20260124_112852459_HDR_AE.jpg
+h066,tomato_rotten,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Rotten Tomato(24-35)/IMG_20260124_112856824_HDR_AE.jpg
+h067,tomato_rotten,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Rotten Tomato(24-35)/IMG_20260128_095429758_HDR_AE.jpg
+h068,tomato_rotten,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Rotten Tomato(24-35)/IMG_20260128_095341192_HDR_AE.jpg
+h069,tomato_rotten,AgriFreshNET,https://data.mendeley.com/datasets/42m5tb7yv9,CC BY 4.0,Processed Data/Processed Data/Rotten Tomato(24-35)/IMG_20260124_112759186_HDR_AE.jpg
+h070,bellpepper_fresh,VegNet,https://www.kaggle.com/datasets/iamdatascientist99/vegnet-vegetable-dataset-with-quality-of-vegetables,CC BY 4.0,VegNet Dataset/VegNet Dataset/Train/Bell Pepper_Ripe/IMG_20220603_084826.jpg
+h071,bellpepper_fresh,VegNet,https://www.kaggle.com/datasets/iamdatascientist99/vegnet-vegetable-dataset-with-quality-of-vegetables,CC BY 4.0,VegNet Dataset/VegNet Dataset/Train/Bell Pepper_Ripe/IMG_20220604_093936.jpg
+h072,bellpepper_fresh,VegNet,https://www.kaggle.com/datasets/iamdatascientist99/vegnet-vegetable-dataset-with-quality-of-vegetables,CC BY 4.0,VegNet Dataset/VegNet Dataset/Train/Bell Pepper_Ripe/IMG_20220604_094001.jpg
+h073,bellpepper_fresh,VegNet,https://www.kaggle.com/datasets/iamdatascientist99/vegnet-vegetable-dataset-with-quality-of-vegetables,CC BY 4.0,VegNet Dataset/VegNet Dataset/Train/Bell Pepper_Ripe/IMG_20220604_093823.jpg
+h074,bellpepper_fresh,VegNet,https://www.kaggle.com/datasets/iamdatascientist99/vegnet-vegetable-dataset-with-quality-of-vegetables,CC BY 4.0,VegNet Dataset/VegNet Dataset/Train/Bell Pepper_Ripe/IMG_20220530_085200.jpg
+h075,bellpepper_fresh,VegNet,https://www.kaggle.com/datasets/iamdatascientist99/vegnet-vegetable-dataset-with-quality-of-vegetables,CC BY 4.0,VegNet Dataset/VegNet Dataset/Train/Bell Pepper_Ripe/IMG_20220604_093817.jpg
+h076,bellpepper_fresh,VegNet,https://www.kaggle.com/datasets/iamdatascientist99/vegnet-vegetable-dataset-with-quality-of-vegetables,CC BY 4.0,VegNet Dataset/VegNet Dataset/Train/Bell Pepper_Ripe/IMG_20220530_085235.jpg
+h077,bellpepper_fresh,VegNet,https://www.kaggle.com/datasets/iamdatascientist99/vegnet-vegetable-dataset-with-quality-of-vegetables,CC BY 4.0,VegNet Dataset/VegNet Dataset/Train/Bell Pepper_Ripe/IMG_20220603_084857.jpg
+h078,bellpepper_fresh,VegNet,https://www.kaggle.com/datasets/iamdatascientist99/vegnet-vegetable-dataset-with-quality-of-vegetables,CC BY 4.0,VegNet Dataset/VegNet Dataset/Train/Bell Pepper_Ripe/IMG_20220530_085253.jpg
+h079,bellpepper_fresh,VegNet,https://www.kaggle.com/datasets/iamdatascientist99/vegnet-vegetable-dataset-with-quality-of-vegetables,CC BY 4.0,VegNet Dataset/VegNet Dataset/Train/Bell Pepper_Ripe/IMG_20220603_084814.jpg
+h080,bellpepper_fresh,VegNet,https://www.kaggle.com/datasets/iamdatascientist99/vegnet-vegetable-dataset-with-quality-of-vegetables,CC BY 4.0,VegNet Dataset/VegNet Dataset/Train/Bell Pepper_Ripe/IMG_20220602_085056.jpg
+h081,bellpepper_fresh,VegNet,https://www.kaggle.com/datasets/iamdatascientist99/vegnet-vegetable-dataset-with-quality-of-vegetables,CC BY 4.0,VegNet Dataset/VegNet Dataset/Test/Bell Pepper_Ripe/IMG_20220606_095153.jpg
+h082,bellpepper_fresh,VegNet,https://www.kaggle.com/datasets/iamdatascientist99/vegnet-vegetable-dataset-with-quality-of-vegetables,CC BY 4.0,VegNet Dataset/VegNet Dataset/Train/Bell Pepper_Ripe/IMG_20220603_084914.jpg
+h083,bellpepper_fresh,VegNet,https://www.kaggle.com/datasets/iamdatascientist99/vegnet-vegetable-dataset-with-quality-of-vegetables,CC BY 4.0,VegNet Dataset/VegNet Dataset/Test/Bell Pepper_Ripe/IMG_20220606_095119.jpg
+h084,bellpepper_fresh,VegNet,https://www.kaggle.com/datasets/iamdatascientist99/vegnet-vegetable-dataset-with-quality-of-vegetables,CC BY 4.0,VegNet Dataset/VegNet Dataset/Train/Bell Pepper_Ripe/IMG_20220602_085047.jpg
+h085,bellpepper_fresh,VegNet,https://www.kaggle.com/datasets/iamdatascientist99/vegnet-vegetable-dataset-with-quality-of-vegetables,CC BY 4.0,VegNet Dataset/VegNet Dataset/Train/Bell Pepper_Ripe/IMG_20220603_084718.jpg
+h086,bellpepper_fresh,VegNet,https://www.kaggle.com/datasets/iamdatascientist99/vegnet-vegetable-dataset-with-quality-of-vegetables,CC BY 4.0,VegNet Dataset/VegNet Dataset/Train/Bell Pepper_Ripe/IMG_20220602_085041.jpg
+h087,bellpepper_fresh,VegNet,https://www.kaggle.com/datasets/iamdatascientist99/vegnet-vegetable-dataset-with-quality-of-vegetables,CC BY 4.0,VegNet Dataset/VegNet Dataset/Train/Bell Pepper_Ripe/IMG_20220602_085105.jpg
+h088,bellpepper_rotten,VegNet,https://www.kaggle.com/datasets/iamdatascientist99/vegnet-vegetable-dataset-with-quality-of-vegetables,CC BY 4.0,VegNet Dataset/VegNet Dataset/Train/Bell Pepper_Damaged/IMG_20220609_091146.jpg
+h089,bellpepper_rotten,VegNet,https://www.kaggle.com/datasets/iamdatascientist99/vegnet-vegetable-dataset-with-quality-of-vegetables,CC BY 4.0,VegNet Dataset/VegNet Dataset/Train/Bell Pepper_Damaged/IMG_20220609_091135.jpg
+h090,bellpepper_rotten,VegNet,https://www.kaggle.com/datasets/iamdatascientist99/vegnet-vegetable-dataset-with-quality-of-vegetables,CC BY 4.0,VegNet Dataset/VegNet Dataset/Train/Bell Pepper_Damaged/IMG_20220609_091056.jpg
+h091,bellpepper_rotten,VegNet,https://www.kaggle.com/datasets/iamdatascientist99/vegnet-vegetable-dataset-with-quality-of-vegetables,CC BY 4.0,VegNet Dataset/VegNet Dataset/Test/Bell Pepper_Damaged/IMG_20220609_091214.jpg
+h092,bellpepper_rotten,VegNet,https://www.kaggle.com/datasets/iamdatascientist99/vegnet-vegetable-dataset-with-quality-of-vegetables,CC BY 4.0,VegNet Dataset/VegNet Dataset/Test/Bell Pepper_Damaged/IMG_20220609_091209.jpg
+h093,bellpepper_rotten,VegNet,https://www.kaggle.com/datasets/iamdatascientist99/vegnet-vegetable-dataset-with-quality-of-vegetables,CC BY 4.0,VegNet Dataset/VegNet Dataset/Train/Bell Pepper_Damaged/IMG_20220609_091107.jpg
+h094,bellpepper_rotten,VegNet,https://www.kaggle.com/datasets/iamdatascientist99/vegnet-vegetable-dataset-with-quality-of-vegetables,CC BY 4.0,VegNet Dataset/VegNet Dataset/Test/Bell Pepper_Damaged/IMG_20220609_091221.jpg
+h095,bellpepper_rotten,VegNet,https://www.kaggle.com/datasets/iamdatascientist99/vegnet-vegetable-dataset-with-quality-of-vegetables,CC BY 4.0,VegNet Dataset/VegNet Dataset/Test/Bell Pepper_Damaged/IMG_20220609_091208.jpg
+h096,bellpepper_rotten,VegNet,https://www.kaggle.com/datasets/iamdatascientist99/vegnet-vegetable-dataset-with-quality-of-vegetables,CC BY 4.0,VegNet Dataset/VegNet Dataset/Train/Bell Pepper_Damaged/IMG_20220609_091118.jpg
+h097,bellpepper_rotten,VegNet,https://www.kaggle.com/datasets/iamdatascientist99/vegnet-vegetable-dataset-with-quality-of-vegetables,CC BY 4.0,VegNet Dataset/VegNet Dataset/Test/Bell Pepper_Damaged/IMG_20220609_091148.jpg
+h098,carrot_fresh,Good and bad classification of Fresh CARROT,https://data.mendeley.com/datasets/ww83r63rtr,CC BY 4.0,CARROT/GOOD/IMG-20250215-WA0047 (1) (1) (1)-CVtap7.jpg
+h099,carrot_fresh,Good and bad classification of Fresh CARROT,https://data.mendeley.com/datasets/ww83r63rtr,CC BY 4.0,CARROT/GOOD/IMG-20250215-WA0064 (1) (1) (1)-312WKn.jpg
+h100,carrot_fresh,Good and bad classification of Fresh CARROT,https://data.mendeley.com/datasets/ww83r63rtr,CC BY 4.0,CARROT/GOOD/IMG-20250215-WA0066 (1) (1) (1)-OFSqZp.jpg
+h101,carrot_fresh,Good and bad classification of Fresh CARROT,https://data.mendeley.com/datasets/ww83r63rtr,CC BY 4.0,CARROT/GOOD/IMG-20250215-WA0067 (1) (1).jpg
+h102,carrot_fresh,Good and bad classification of Fresh CARROT,https://data.mendeley.com/datasets/ww83r63rtr,CC BY 4.0,CARROT/GOOD/IMG-20250215-WA0050 (1) (1) (1)-3MVVyg.jpg
+h103,carrot_fresh,Good and bad classification of Fresh CARROT,https://data.mendeley.com/datasets/ww83r63rtr,CC BY 4.0,CARROT/GOOD/IMG-20250215-WA0040 (1) (1) (1) (1).jpg
+h104,carrot_fresh,Good and bad classification of Fresh CARROT,https://data.mendeley.com/datasets/ww83r63rtr,CC BY 4.0,CARROT/GOOD/IMG-20250215-WA0045 (1) (1) (1)-ugD5e2.jpg
+h105,carrot_fresh,Good and bad classification of Fresh CARROT,https://data.mendeley.com/datasets/ww83r63rtr,CC BY 4.0,CARROT/GOOD/IMG-20250215-WA0076 (1) (1) (1).jpg
+h106,carrot_fresh,Good and bad classification of Fresh CARROT,https://data.mendeley.com/datasets/ww83r63rtr,CC BY 4.0,CARROT/GOOD/IMG-20250215-WA0053 (1) (1) (1)-ZWBhUN.jpg
+h107,carrot_fresh,Good and bad classification of Fresh CARROT,https://data.mendeley.com/datasets/ww83r63rtr,CC BY 4.0,CARROT/GOOD/IMG-20250215-WA0042 (1) (1) (1)-PDLjJl.jpg
+h108,carrot_fresh,Good and bad classification of Fresh CARROT,https://data.mendeley.com/datasets/ww83r63rtr,CC BY 4.0,CARROT/GOOD/IMG-20250215-WA0057 (1) (1) (1)-5P93Mf.jpg
+h109,carrot_fresh,Good and bad classification of Fresh CARROT,https://data.mendeley.com/datasets/ww83r63rtr,CC BY 4.0,CARROT/GOOD/IMG-20250215-WA0075 (1) (1) (1)-8Ert1C.jpg
+h110,carrot_fresh,Good and bad classification of Fresh CARROT,https://data.mendeley.com/datasets/ww83r63rtr,CC BY 4.0,CARROT/GOOD/IMG-20250215-WA0063 (1) (1) (1).jpg
+h111,carrot_fresh,Good and bad classification of Fresh CARROT,https://data.mendeley.com/datasets/ww83r63rtr,CC BY 4.0,CARROT/GOOD/IMG-20250215-WA0077 (1) (1) (1).jpg
+h112,carrot_fresh,Good and bad classification of Fresh CARROT,https://data.mendeley.com/datasets/ww83r63rtr,CC BY 4.0,CARROT/GOOD/IMG-20250215-WA0060 (1) (1) (1)-U8VrJj.jpg
+h113,carrot_fresh,Good and bad classification of Fresh CARROT,https://data.mendeley.com/datasets/ww83r63rtr,CC BY 4.0,CARROT/GOOD/IMG-20250215-WA0043 (1) (1) (1)-bPeVId.jpg
+h114,carrot_fresh,Good and bad classification of Fresh CARROT,https://data.mendeley.com/datasets/ww83r63rtr,CC BY 4.0,CARROT/GOOD/IMG-20250215-WA0065 (1) (1) (1)-j72Vz6.jpg
+h115,carrot_fresh,Good and bad classification of Fresh CARROT,https://data.mendeley.com/datasets/ww83r63rtr,CC BY 4.0,CARROT/GOOD/IMG-20250215-WA0078 (1) (1) (1).jpg
+h116,carrot_fresh,Good and bad classification of Fresh CARROT,https://data.mendeley.com/datasets/ww83r63rtr,CC BY 4.0,CARROT/GOOD/IMG-20250215-WA0044 (1) (1) (1)-nwwa0M.jpg
+h117,carrot_fresh,Good and bad classification of Fresh CARROT,https://data.mendeley.com/datasets/ww83r63rtr,CC BY 4.0,CARROT/GOOD/IMG-20250215-WA0074 (1) (1) (1)-tQBVsx.jpg
+h118,potato_fresh,VegQual (box crop),https://doi.org/10.6084/m9.figshare.30596084,CC BY 4.0,VegMining/test/images/IMG20251004174645_jpg.rf.1755c0c8035a24ec6ad08e365114e8a7.jpg
+h119,potato_fresh,VegQual (box crop),https://doi.org/10.6084/m9.figshare.30596084,CC BY 4.0,VegMining/train/images/IMG_20251004_172450_jpg.rf.1897dcfd3a2a3c6c84737ae430f528b2.jpg
+h120,potato_fresh,VegQual (box crop),https://doi.org/10.6084/m9.figshare.30596084,CC BY 4.0,VegMining/train/images/IMG_20251004_174748_jpg.rf.02f2f0450f84b82aa9d0e54f6f62c82b.jpg
+h121,potato_fresh,VegQual (box crop),https://doi.org/10.6084/m9.figshare.30596084,CC BY 4.0,VegMining/train/images/IMG_20251004_172807_jpg.rf.00415cff6ceb0497a70a9c0b30986037.jpg
+h122,potato_fresh,VegQual (box crop),https://doi.org/10.6084/m9.figshare.30596084,CC BY 4.0,VegMining/valid/images/IMG20251004174633_jpg.rf.aa6a83875a7f3eb2b804057c60533028.jpg
+h123,potato_fresh,VegQual (box crop),https://doi.org/10.6084/m9.figshare.30596084,CC BY 4.0,VegMining/train/images/IMG_20251004_174807_jpg.rf.1dec8a26e12f8febfcc276f891fe703a.jpg
+h124,potato_fresh,VegQual (box crop),https://doi.org/10.6084/m9.figshare.30596084,CC BY 4.0,VegMining/train/images/IMG_20251004_174810_jpg.rf.27113a7ca7b81c8672d6c83e826ea0f9.jpg
+h125,potato_fresh,VegQual (box crop),https://doi.org/10.6084/m9.figshare.30596084,CC BY 4.0,VegMining/train/images/IMG_20251004_172746_jpg.rf.3bb14f37176213869562fb3e9f7274f8.jpg
+h126,potato_fresh,VegQual (box crop),https://doi.org/10.6084/m9.figshare.30596084,CC BY 4.0,VegMining/train/images/IMG_20251004_172820_jpg.rf.171599c40d5a5257727d7376bc51bf6f.jpg
+h127,potato_fresh,VegQual (box crop),https://doi.org/10.6084/m9.figshare.30596084,CC BY 4.0,VegMining/valid/images/IMG_20251004_174352_jpg.rf.2167030727135ce18bd380f7c5a24118.jpg
+h128,potato_fresh,VegQual (box crop),https://doi.org/10.6084/m9.figshare.30596084,CC BY 4.0,VegMining/train/images/IMG_20251004_172638_jpg.rf.1ed81058136ab19768fed353366fc87d.jpg
+h129,potato_fresh,VegQual (box crop),https://doi.org/10.6084/m9.figshare.30596084,CC BY 4.0,VegMining/train/images/IMG20251004174328_jpg.rf.1cd5c1587daaaf9a4ee8d00afb3b4caa.jpg
+h130,potato_fresh,VegQual (box crop),https://doi.org/10.6084/m9.figshare.30596084,CC BY 4.0,VegMining/train/images/IMG_20251004_174633_jpg.rf.396c77498bc1f82b68a20576be319242.jpg
+h131,potato_fresh,VegQual (box crop),https://doi.org/10.6084/m9.figshare.30596084,CC BY 4.0,VegMining/train/images/IMG_20251004_174439_jpg.rf.09934e50476c70ce85e564cca3ba58d3.jpg
+h132,potato_fresh,VegQual (box crop),https://doi.org/10.6084/m9.figshare.30596084,CC BY 4.0,VegMining/train/images/IMG_20251004_174630_jpg.rf.600524f2b369b0a176a5960847557153.jpg
+h133,potato_fresh,VegQual (box crop),https://doi.org/10.6084/m9.figshare.30596084,CC BY 4.0,VegMining/train/images/IMG_20251004_174658_jpg.rf.07c0b6f3f6cce1a340e9c9fc6ff6680a.jpg
+h134,potato_fresh,VegQual (box crop),https://doi.org/10.6084/m9.figshare.30596084,CC BY 4.0,VegMining/valid/images/IMG_20251004_174612_jpg.rf.132e0ae17a1cb75b3d247f6d483ffa3f.jpg
+h135,potato_fresh,VegQual (box crop),https://doi.org/10.6084/m9.figshare.30596084,CC BY 4.0,VegMining/train/images/IMG20251004174622_jpg.rf.168d3cbea74865d2d225d692d3879e2f.jpg
+h136,potato_fresh,VegQual (box crop),https://doi.org/10.6084/m9.figshare.30596084,CC BY 4.0,VegMining/valid/images/IMG_20251004_172738_jpg.rf.157475f260202a65691a6e7dc3cc7b8a.jpg
+h137,potato_fresh,VegQual (box crop),https://doi.org/10.6084/m9.figshare.30596084,CC BY 4.0,VegMining/train/images/IMG_20251004_174659_jpg.rf.16b9469ec32d833febc22538f8f2480b.jpg
+h138,carrot_rotten,TriModal Ripeness 6,https://doi.org/10.6084/m9.figshare.30783827,CC BY 4.0,Classified/Carrot/Spoiled (capture 20250730_090446)
+h139,carrot_rotten,TriModal Ripeness 6,https://doi.org/10.6084/m9.figshare.30783827,CC BY 4.0,Classified/Carrot/Spoiled (capture 20250730_132242)
+h140,carrot_rotten,TriModal Ripeness 6,https://doi.org/10.6084/m9.figshare.30783827,CC BY 4.0,Classified/Carrot/Spoiled (capture 20250731_130922)
+h141,carrot_rotten,TriModal Ripeness 6,https://doi.org/10.6084/m9.figshare.30783827,CC BY 4.0,Classified/Carrot/Spoiled (capture 20250801_084456)
+h142,carrot_rotten,TriModal Ripeness 6,https://doi.org/10.6084/m9.figshare.30783827,CC BY 4.0,Classified/Carrot/Spoiled (capture 20250801_132501)
+h143,carrot_rotten,TriModal Ripeness 6,https://doi.org/10.6084/m9.figshare.30783827,CC BY 4.0,Classified/Carrot/Spoiled (capture 20250801_170640)
+h144,carrot_rotten,TriModal Ripeness 6,https://doi.org/10.6084/m9.figshare.30783827,CC BY 4.0,Classified/Carrot/Spoiled (capture 20250802_084306)
+h145,carrot_rotten,TriModal Ripeness 6,https://doi.org/10.6084/m9.figshare.30783827,CC BY 4.0,Classified/Carrot/Spoiled (capture 20250804_090448)
+h146,carrot_rotten,TriModal Ripeness 6,https://doi.org/10.6084/m9.figshare.30783827,CC BY 4.0,Classified/Carrot/Spoiled (capture 20250804_130541)
+h147,carrot_rotten,TriModal Ripeness 6,https://doi.org/10.6084/m9.figshare.30783827,CC BY 4.0,Classified/Carrot/Spoiled (capture 20250804_164756)
+h148,potato_rotten,Potato Disease Recognition,https://www.kaggle.com/datasets/sujaykapadnis/potato-disease-recognition-dataset,CC BY 4.0,Potato Dry Rot Disease/Dry Rot Disease (179).jpg
+h149,potato_rotten,Potato Disease Recognition,https://www.kaggle.com/datasets/sujaykapadnis/potato-disease-recognition-dataset,CC BY 4.0,Potato Soft Rot Disease/Soft Rot Disease (56).jpg
+h150,potato_rotten,Potato Disease Recognition,https://www.kaggle.com/datasets/sujaykapadnis/potato-disease-recognition-dataset,CC BY 4.0,Potato Dry Rot Disease/Dry Rot Disease (80).jpg
+h151,potato_rotten,Potato Disease Recognition,https://www.kaggle.com/datasets/sujaykapadnis/potato-disease-recognition-dataset,CC BY 4.0,Potato Dry Rot Disease/Dry Rot Disease (147).jpg
+h152,potato_rotten,Potato Disease Recognition,https://www.kaggle.com/datasets/sujaykapadnis/potato-disease-recognition-dataset,CC BY 4.0,Potato Dry Rot Disease/Dry Rot Disease (88).jpg
+h153,potato_rotten,Potato Disease Recognition,https://www.kaggle.com/datasets/sujaykapadnis/potato-disease-recognition-dataset,CC BY 4.0,Potato Dry Rot Disease/Dry Rot Disease (137).jpg
+h154,potato_rotten,Potato Disease Recognition,https://www.kaggle.com/datasets/sujaykapadnis/potato-disease-recognition-dataset,CC BY 4.0,Potato Soft Rot Disease/Soft Rot Disease (14).jpg
+h155,potato_rotten,Potato Disease Recognition,https://www.kaggle.com/datasets/sujaykapadnis/potato-disease-recognition-dataset,CC BY 4.0,Potato Soft Rot Disease/Soft Rot Disease (32).jpg
+h156,potato_rotten,Potato Disease Recognition,https://www.kaggle.com/datasets/sujaykapadnis/potato-disease-recognition-dataset,CC BY 4.0,Potato Dry Rot Disease/Dry Rot Disease (40).jpg
+h157,potato_rotten,Potato Disease Recognition,https://www.kaggle.com/datasets/sujaykapadnis/potato-disease-recognition-dataset,CC BY 4.0,Potato Dry Rot Disease/Dry Rot Disease (180).jpg
+h158,potato_rotten,VegQual (box crop),https://doi.org/10.6084/m9.figshare.30596084,CC BY 4.0,VegMining/train/images/IMG_20251004_172226_jpg.rf.8b5c7d192ffe4267c77212f78d7e066e.jpg
+h159,potato_rotten,VegQual (box crop),https://doi.org/10.6084/m9.figshare.30596084,CC BY 4.0,VegMining/train/images/IMG_20251004_172812_jpg.rf.84243bc80741c3c9651761d2f8b4a1bb.jpg

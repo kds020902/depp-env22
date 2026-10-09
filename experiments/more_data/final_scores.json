@@ -1,0 +1,56 @@
+{
+ "outside_test_B": {
+  "correct": 148,
+  "n": 160,
+  "species": 150,
+  "condition": 158,
+  "per_class": {
+   "cucumber_fresh": "20/20",
+   "cucumber_rotten": "2/10",
+   "tomato_fresh": "18/20",
+   "tomato_rotten": "20/20",
+   "bellpepper_fresh": "18/18",
+   "bellpepper_rotten": "10/10",
+   "carrot_fresh": "20/20",
+   "potato_fresh": "20/20",
+   "carrot_rotten": "9/10",
+   "potato_rotten": "11/12"
+  }
+ },
+ "outside_test_G42": {
+  "correct": 138,
+  "n": 160,
+  "species": 151,
+  "condition": 147,
+  "per_class": {
+   "cucumber_fresh": "20/20",
+   "cucumber_rotten": "1/10",
+   "tomato_fresh": "20/20",
+   "tomato_rotten": "20/20",
+   "bellpepper_fresh": "16/18",
+   "bellpepper_rotten": "10/10",
+   "carrot_fresh": "9/20",
+   "potato_fresh": "20/20",
+   "carrot_rotten": "10/10",
+   "potato_rotten": "12/12"
+  }
+ },
+ "test_G42": {
+  "correct": 268,
+  "n": 300,
+  "species": 283,
+  "condition": 282,
+  "per_class": {
+   "cucumber_fresh": "28/30",
+   "cucumber_rotten": "25/30",
+   "potato_fresh": "29/30",
+   "potato_rotten": "26/30",
+   "tomato_fresh": "30/30",
+   "tomato_rotten": "22/30",
+   "bellpepper_fresh": "26/30",
+   "bellpepper_rotten": "24/30",
+   "carrot_fresh": "30/30",
+   "carrot_rotten": "28/30"
+  }
+ }
+}

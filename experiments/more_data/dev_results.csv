@@ -1,0 +1,5 @@
+run,train_data,seed,valid_correct,best_epoch,epochs_completed,outside_dev_correct_of_221,outside_dev_species,outside_dev_condition,outside_dev_tomato_rotten_of_45
+B (현재 model.pth),3차 Train 1260,42,281,16,24,167,198,186,17
+S7,3차 Train 1260,7,274,17,25,162,193,186,16
+G42,3차 Train + 886 = 2146,42,280,13,21,178,207,189,30
+G7,3차 Train + 886 = 2146,7,273,26,30,179,204,189,32
