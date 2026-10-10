@@ -1,0 +1,4 @@
+run,gate_threshold,internet_fruit_rejected_of_374,untrained_kinds_rejected_of_62,kaggle_fruit_rejected_of_400,coco_rejected_of_400,demo_fruit_rejected_of_5,valid_kept_correct_of_300,valid_turned_away_by_gate,outside_dev_kept_correct_of_221,outside_dev_turned_away_by_gate,set160_kept_correct,set160_turned_away_by_gate,asian_check_kept_correct_of_37,asian_check_turned_away_by_gate
+B_alone,,233,30,224,386,3,271,0,138,0,142,0,28,0
+G42,0.7953,296,41,358,390,4,268,3,132,11,142,0,23,5
+G7,0.8529,278,38,314,387,3,268,3,134,7,142,0,27,1

@@ -1,0 +1,313 @@
+species,reference
+bellpepper,train/bell pepper/Image_1.*
+bellpepper,train/bell pepper/Image_12.*
+bellpepper,train/bell pepper/Image_13.*
+bellpepper,train/bell pepper/Image_14.*
+bellpepper,train/bell pepper/Image_15.*
+bellpepper,train/bell pepper/Image_16.*
+bellpepper,train/bell pepper/Image_19.*
+bellpepper,train/bell pepper/Image_20.*
+bellpepper,train/bell pepper/Image_22.*
+bellpepper,train/bell pepper/Image_26.*
+bellpepper,train/bell pepper/Image_27.*
+bellpepper,train/bell pepper/Image_30.*
+bellpepper,train/bell pepper/Image_31.*
+bellpepper,train/bell pepper/Image_36.*
+bellpepper,train/bell pepper/Image_38.*
+bellpepper,train/bell pepper/Image_40.*
+bellpepper,train/bell pepper/Image_41.*
+bellpepper,train/bell pepper/Image_42.*
+bellpepper,train/bell pepper/Image_43.*
+bellpepper,train/bell pepper/Image_44.*
+bellpepper,train/bell pepper/Image_45.*
+bellpepper,train/bell pepper/Image_47.*
+bellpepper,train/bell pepper/Image_48.*
+bellpepper,train/bell pepper/Image_49.*
+bellpepper,train/bell pepper/Image_5.*
+bellpepper,train/bell pepper/Image_52.*
+bellpepper,train/bell pepper/Image_53.*
+bellpepper,train/bell pepper/Image_55.*
+bellpepper,train/bell pepper/Image_56.*
+bellpepper,train/bell pepper/Image_6.*
+bellpepper,train/bell pepper/Image_60.*
+bellpepper,train/bell pepper/Image_61.*
+bellpepper,train/bell pepper/Image_64.*
+bellpepper,train/bell pepper/Image_68.*
+bellpepper,train/bell pepper/Image_69.*
+bellpepper,train/bell pepper/Image_7.*
+bellpepper,train/bell pepper/Image_70.*
+bellpepper,train/bell pepper/Image_72.*
+bellpepper,train/bell pepper/Image_74.*
+bellpepper,train/bell pepper/Image_77.*
+bellpepper,train/bell pepper/Image_79.*
+bellpepper,train/bell pepper/Image_83.*
+bellpepper,train/bell pepper/Image_84.*
+bellpepper,train/bell pepper/Image_86.*
+bellpepper,train/bell pepper/Image_88.*
+bellpepper,train/bell pepper/Image_89.*
+bellpepper,train/bell pepper/Image_9.*
+bellpepper,train/bell pepper/Image_90.*
+bellpepper,train/bell pepper/Image_94.*
+bellpepper,train/bell pepper/Image_97.*
+bellpepper,train/capsicum/Image_1.*
+bellpepper,train/capsicum/Image_10.*
+bellpepper,train/capsicum/Image_100.*
+bellpepper,train/capsicum/Image_11.*
+bellpepper,train/capsicum/Image_13.*
+bellpepper,train/capsicum/Image_15.*
+bellpepper,train/capsicum/Image_16.*
+bellpepper,train/capsicum/Image_18.*
+bellpepper,train/capsicum/Image_19.*
+bellpepper,train/capsicum/Image_20.*
+bellpepper,train/capsicum/Image_21.*
+bellpepper,train/capsicum/Image_22.*
+bellpepper,train/capsicum/Image_23.*
+bellpepper,train/capsicum/Image_25.*
+bellpepper,train/capsicum/Image_26.*
+bellpepper,train/capsicum/Image_28.*
+bellpepper,train/capsicum/Image_29.*
+bellpepper,train/capsicum/Image_3.*
+bellpepper,train/capsicum/Image_30.*
+bellpepper,train/capsicum/Image_32.*
+bellpepper,train/capsicum/Image_33.*
+bellpepper,train/capsicum/Image_34.*
+bellpepper,train/capsicum/Image_35.*
+bellpepper,train/capsicum/Image_36.*
+bellpepper,train/capsicum/Image_37.*
+bellpepper,train/capsicum/Image_38.*
+bellpepper,train/capsicum/Image_39.*
+bellpepper,train/capsicum/Image_4.*
+bellpepper,train/capsicum/Image_40.*
+bellpepper,train/capsicum/Image_41.*
+bellpepper,train/capsicum/Image_42.*
+bellpepper,train/capsicum/Image_43.*
+bellpepper,train/capsicum/Image_46.*
+bellpepper,train/capsicum/Image_47.*
+bellpepper,train/capsicum/Image_50.*
+bellpepper,train/capsicum/Image_51.*
+bellpepper,train/capsicum/Image_53.*
+bellpepper,train/capsicum/Image_54.*
+bellpepper,train/capsicum/Image_62.*
+bellpepper,train/capsicum/Image_64.*
+bellpepper,train/capsicum/Image_66.*
+bellpepper,train/capsicum/Image_68.*
+bellpepper,train/capsicum/Image_7.*
+bellpepper,train/capsicum/Image_70.*
+bellpepper,train/capsicum/Image_71.*
+bellpepper,train/capsicum/Image_75.*
+bellpepper,train/capsicum/Image_76.*
+bellpepper,train/capsicum/Image_79.*
+bellpepper,train/capsicum/Image_8.*
+bellpepper,train/capsicum/Image_81.*
+bellpepper,train/capsicum/Image_84.*
+bellpepper,train/capsicum/Image_85.*
+bellpepper,train/capsicum/Image_87.*
+bellpepper,train/capsicum/Image_88.*
+bellpepper,train/capsicum/Image_9.*
+bellpepper,train/capsicum/Image_90.*
+bellpepper,train/capsicum/Image_92.*
+bellpepper,train/capsicum/Image_93.*
+bellpepper,train/capsicum/Image_95.*
+bellpepper,train/capsicum/Image_96.*
+bellpepper,train/capsicum/Image_97.*
+bellpepper,train/capsicum/Image_98.*
+carrot,train/carrot/Image_1.*
+carrot,train/carrot/Image_11.*
+carrot,train/carrot/Image_12.*
+carrot,train/carrot/Image_15.*
+carrot,train/carrot/Image_17.*
+carrot,train/carrot/Image_2.*
+carrot,train/carrot/Image_24.*
+carrot,train/carrot/Image_25.*
+carrot,train/carrot/Image_26.*
+carrot,train/carrot/Image_27.*
+carrot,train/carrot/Image_28.*
+carrot,train/carrot/Image_29.*
+carrot,train/carrot/Image_3.*
+carrot,train/carrot/Image_32.*
+carrot,train/carrot/Image_34.*
+carrot,train/carrot/Image_36.*
+carrot,train/carrot/Image_41.*
+carrot,train/carrot/Image_42.*
+carrot,train/carrot/Image_46.*
+carrot,train/carrot/Image_5.*
+carrot,train/carrot/Image_50.*
+carrot,train/carrot/Image_51.*
+carrot,train/carrot/Image_53.*
+carrot,train/carrot/Image_56.*
+carrot,train/carrot/Image_57.*
+carrot,train/carrot/Image_58.*
+carrot,train/carrot/Image_59.*
+carrot,train/carrot/Image_6.*
+carrot,train/carrot/Image_60.*
+carrot,train/carrot/Image_62.*
+carrot,train/carrot/Image_64.*
+carrot,train/carrot/Image_66.*
+carrot,train/carrot/Image_67.*
+carrot,train/carrot/Image_68.*
+carrot,train/carrot/Image_69.*
+carrot,train/carrot/Image_70.*
+carrot,train/carrot/Image_72.*
+carrot,train/carrot/Image_73.*
+carrot,train/carrot/Image_78.*
+carrot,train/carrot/Image_79.*
+carrot,train/carrot/Image_83.*
+carrot,train/carrot/Image_84.*
+carrot,train/carrot/Image_86.*
+carrot,train/carrot/Image_89.*
+carrot,train/carrot/Image_9.*
+carrot,train/carrot/Image_94.*
+carrot,train/carrot/Image_96.*
+carrot,train/carrot/Image_98.*
+carrot,train/carrot/Image_99.*
+cucumber,train/cucumber/Image_100.*
+cucumber,train/cucumber/Image_11.*
+cucumber,train/cucumber/Image_12.*
+cucumber,train/cucumber/Image_15.*
+cucumber,train/cucumber/Image_16.*
+cucumber,train/cucumber/Image_18.*
+cucumber,train/cucumber/Image_2.*
+cucumber,train/cucumber/Image_21.*
+cucumber,train/cucumber/Image_23.*
+cucumber,train/cucumber/Image_24.*
+cucumber,train/cucumber/Image_28.*
+cucumber,train/cucumber/Image_29.*
+cucumber,train/cucumber/Image_3.*
+cucumber,train/cucumber/Image_30.*
+cucumber,train/cucumber/Image_31.*
+cucumber,train/cucumber/Image_37.*
+cucumber,train/cucumber/Image_38.*
+cucumber,train/cucumber/Image_41.*
+cucumber,train/cucumber/Image_44.*
+cucumber,train/cucumber/Image_45.*
+cucumber,train/cucumber/Image_46.*
+cucumber,train/cucumber/Image_5.*
+cucumber,train/cucumber/Image_54.*
+cucumber,train/cucumber/Image_55.*
+cucumber,train/cucumber/Image_58.*
+cucumber,train/cucumber/Image_59.*
+cucumber,train/cucumber/Image_61.*
+cucumber,train/cucumber/Image_63.*
+cucumber,train/cucumber/Image_66.*
+cucumber,train/cucumber/Image_68.*
+cucumber,train/cucumber/Image_69.*
+cucumber,train/cucumber/Image_7.*
+cucumber,train/cucumber/Image_70.*
+cucumber,train/cucumber/Image_71.*
+cucumber,train/cucumber/Image_73.*
+cucumber,train/cucumber/Image_77.*
+cucumber,train/cucumber/Image_8.*
+cucumber,train/cucumber/Image_81.*
+cucumber,train/cucumber/Image_82.*
+cucumber,train/cucumber/Image_83.*
+cucumber,train/cucumber/Image_84.*
+cucumber,train/cucumber/Image_87.*
+cucumber,train/cucumber/Image_88.*
+cucumber,train/cucumber/Image_90.*
+cucumber,train/cucumber/Image_91.*
+cucumber,train/cucumber/Image_92.*
+cucumber,train/cucumber/Image_94.*
+cucumber,train/cucumber/Image_95.*
+cucumber,train/cucumber/Image_97.*
+cucumber,train/cucumber/Image_99.*
+potato,train/potato/Image_10.*
+potato,train/potato/Image_12.*
+potato,train/potato/Image_13.*
+potato,train/potato/Image_14.*
+potato,train/potato/Image_15.*
+potato,train/potato/Image_16.*
+potato,train/potato/Image_20.*
+potato,train/potato/Image_22.*
+potato,train/potato/Image_23.*
+potato,train/potato/Image_28.*
+potato,train/potato/Image_29.*
+potato,train/potato/Image_3.*
+potato,train/potato/Image_30.*
+potato,train/potato/Image_31.*
+potato,train/potato/Image_32.*
+potato,train/potato/Image_33.*
+potato,train/potato/Image_34.*
+potato,train/potato/Image_38.*
+potato,train/potato/Image_4.*
+potato,train/potato/Image_43.*
+potato,train/potato/Image_44.*
+potato,train/potato/Image_45.*
+potato,train/potato/Image_47.*
+potato,train/potato/Image_49.*
+potato,train/potato/Image_52.*
+potato,train/potato/Image_53.*
+potato,train/potato/Image_55.*
+potato,train/potato/Image_57.*
+potato,train/potato/Image_58.*
+potato,train/potato/Image_60.*
+potato,train/potato/Image_61.*
+potato,train/potato/Image_62.*
+potato,train/potato/Image_63.*
+potato,train/potato/Image_64.*
+potato,train/potato/Image_66.*
+potato,train/potato/Image_7.*
+potato,train/potato/Image_72.*
+potato,train/potato/Image_73.*
+potato,train/potato/Image_74.*
+potato,train/potato/Image_77.*
+potato,train/potato/Image_78.*
+potato,train/potato/Image_79.*
+potato,train/potato/Image_8.*
+potato,train/potato/Image_80.*
+potato,train/potato/Image_82.*
+potato,train/potato/Image_84.*
+potato,train/potato/Image_85.*
+potato,train/potato/Image_86.*
+potato,train/potato/Image_88.*
+potato,train/potato/Image_89.*
+potato,train/potato/Image_91.*
+potato,train/potato/Image_94.*
+potato,train/potato/Image_97.*
+potato,train/potato/Image_98.*
+tomato,train/tomato/Image_1.*
+tomato,train/tomato/Image_10.*
+tomato,train/tomato/Image_100.*
+tomato,train/tomato/Image_12.*
+tomato,train/tomato/Image_14.*
+tomato,train/tomato/Image_17.*
+tomato,train/tomato/Image_19.*
+tomato,train/tomato/Image_2.*
+tomato,train/tomato/Image_21.*
+tomato,train/tomato/Image_25.*
+tomato,train/tomato/Image_26.*
+tomato,train/tomato/Image_28.*
+tomato,train/tomato/Image_3.*
+tomato,train/tomato/Image_31.*
+tomato,train/tomato/Image_32.*
+tomato,train/tomato/Image_33.*
+tomato,train/tomato/Image_37.*
+tomato,train/tomato/Image_38.*
+tomato,train/tomato/Image_39.*
+tomato,train/tomato/Image_4.*
+tomato,train/tomato/Image_40.*
+tomato,train/tomato/Image_43.*
+tomato,train/tomato/Image_45.*
+tomato,train/tomato/Image_46.*
+tomato,train/tomato/Image_48.*
+tomato,train/tomato/Image_50.*
+tomato,train/tomato/Image_53.*
+tomato,train/tomato/Image_55.*
+tomato,train/tomato/Image_57.*
+tomato,train/tomato/Image_60.*
+tomato,train/tomato/Image_61.*
+tomato,train/tomato/Image_62.*
+tomato,train/tomato/Image_63.*
+tomato,train/tomato/Image_65.*
+tomato,train/tomato/Image_66.*
+tomato,train/tomato/Image_67.*
+tomato,train/tomato/Image_69.*
+tomato,train/tomato/Image_70.*
+tomato,train/tomato/Image_71.*
+tomato,train/tomato/Image_80.*
+tomato,train/tomato/Image_83.*
+tomato,train/tomato/Image_87.*
+tomato,train/tomato/Image_89.*
+tomato,train/tomato/Image_90.*
+tomato,train/tomato/Image_93.*
+tomato,train/tomato/Image_97.*
+tomato,train/tomato/Image_99.*
