@@ -1,0 +1,146 @@
+--- a/src/model_utils.py	2026-10-08 13:40:30.738496818 +0000
++++ b/src/model_utils.py	2026-10-10 11:49:32.636861527 +0000
+@@ -24,6 +24,9 @@
+     "bellpepper_fresh", "bellpepper_rotten", "carrot_fresh", "carrot_rotten",
+ ]
+ SPECIES_NAMES = ["cucumber", "potato", "tomato", "bellpepper", "carrot"]
++# Optional 11th class: anything that is not one of the five vegetables (trained on fruit photos).
++OTHER_CLASS = "other"
++ALL_CLASS_NAMES = CLASS_NAMES + [OTHER_CLASS]
+ CONDITION_NAMES = ["fresh", "rotten"]
+ IMAGE_EXTENSIONS = {".jpg", ".jpeg", ".png", ".bmp", ".webp", ".tif", ".tiff"}
+ PREPROCESS = {
+@@ -192,7 +195,7 @@
+     if arch not in ARCHITECTURES:
+         raise ValueError(f"Unsupported architecture in checkpoint: {arch!r}")
+     names = checkpoint.get("class_names") or []
+-    if len(names) < 2 or names != CLASS_NAMES[:len(names)]:  # a 6-class checkpoint is a prefix of the 10
++    if len(names) < 2 or names != ALL_CLASS_NAMES[:len(names)]:  # 6- and 10-class checkpoints are prefixes of the 11
+         raise ValueError("Checkpoint class order does not match this application.")
+     if checkpoint.get("preprocess") != preprocess_for(input_size(checkpoint)):
+         raise ValueError("Checkpoint preprocessing does not match this application.")
+@@ -224,9 +227,11 @@
+ 
+ 
+ def marginal_probabilities(probabilities: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor]:
+-    """Sum the joint (species x condition) probabilities, rather than reusing joint argmax labels."""
+-    joint = probabilities.reshape(-1, probabilities.shape[1] // len(CONDITION_NAMES), len(CONDITION_NAMES))
+-    return joint.sum(dim=2), joint.sum(dim=1)
++    """Sum the joint (species x condition) probabilities, rather than reusing joint argmax labels.
++    With an "other" class (odd column count) it becomes one more species column; condition sums vegetables only."""
++    k = probabilities.shape[1] // len(CONDITION_NAMES) * len(CONDITION_NAMES)
++    joint = probabilities[:, :k].reshape(-1, k // len(CONDITION_NAMES), len(CONDITION_NAMES))
++    return torch.cat([joint.sum(dim=2), probabilities[:, k:]], dim=1), joint.sum(dim=1)
+ 
+ 
+ # ---------- calibrated probability and the "not a trained vegetable" check ----------
+@@ -264,10 +269,12 @@
+ 
+ 
+ def is_unknown(logits: torch.Tensor, checkpoint: dict) -> torch.Tensor:
++    names = checkpoint.get("class_names", [])
++    other = logits.argmax(1).eq(names.index(OTHER_CLASS)) if OTHER_CLASS in names else torch.zeros(len(logits), dtype=torch.bool)
+     threshold = checkpoint.get("unknown_check", {}).get("threshold")
+     if threshold is None:  # older checkpoints have no check
+-        return torch.zeros(len(logits), dtype=torch.bool)
+-    return unknown_score(logits) > threshold
++        return other
++    return other | (unknown_score(logits) > threshold)
+ 
+ 
+ def calibration_extras(val_logits: torch.Tensor, val_labels: torch.Tensor, accept_rate: float = 0.95) -> dict:
+--- a/src/train.py	2026-10-08 13:40:30.769632162 +0000
++++ b/src/train.py	2026-10-10 11:49:32.636167564 +0000
+@@ -22,8 +22,8 @@
+ from torch.utils.data import DataLoader, Dataset, TensorDataset
+ 
+ from model_utils import (
+-    CLASS_NAMES, CONDITION_NAMES, SPECIES_NAMES,
+-    calibration_extras, classifier_layer, create_model, make_train_transform, make_transform,
++    ALL_CLASS_NAMES, CLASS_NAMES, CONDITION_NAMES, OTHER_CLASS, SPECIES_NAMES,
++    calibration_extras, classifier_layer, fit_unknown_threshold, create_model, make_train_transform, make_transform,
+     marginal_probabilities, open_image, preprocess_for, resolve_device, set_classifier_layer, set_seed,
+     state_checksum,
+ )
+@@ -118,7 +118,8 @@
+         per_class[name] = {"precision": precision, "recall": recall, "f1": f1, "support": support}
+     species_probs, condition_probs = marginal_probabilities(probabilities)
+     condition_pred = condition_probs.argmax(1)
+-    rotten = labels % 2 == 1
++    veg = labels < k // 2 * 2  # condition metrics count vegetable photos only
++    rotten = (labels % 2 == 1) & veg
+     return {
+         "split": split_name,
+         "sample_count": len(labels),
+@@ -126,9 +127,9 @@
+         "accuracy": predictions.eq(labels).float().mean().item(),
+         "macro_f1": sum(v["f1"] for v in per_class.values()) / k,
+         "species_accuracy": species_probs.argmax(1).eq(labels // 2).float().mean().item(),
+-        "condition_accuracy": condition_pred.eq(labels % 2).float().mean().item(),
++        "condition_accuracy": condition_pred[veg].eq(labels[veg] % 2).float().mean().item(),
+         "rotten_recall": condition_pred[rotten].eq(1).float().mean().item(),
+-        "fresh_recall": condition_pred[~rotten].eq(0).float().mean().item(),
++        "fresh_recall": condition_pred[veg & ~rotten].eq(0).float().mean().item(),
+         "species_condition_metric_method": "argmax of summed joint softmax probabilities",
+         "class_names": class_names,
+         "confusion_matrix_orientation": "rows=true, columns=predicted",
+@@ -157,15 +158,25 @@
+                 "true_class": row["class_name"], "predicted_class": class_names[predicted],
+                 "correct": class_names[predicted] == row["class_name"],
+                 "joint_score_uncalibrated": round(float(probabilities[i, predicted]), 6),
+-                "predicted_species": SPECIES_NAMES[predicted // 2],
+-                "predicted_condition": CONDITION_NAMES[predicted % 2],
+-                "species_marginal_prediction": SPECIES_NAMES[int(species_probs[i].argmax())],
++                "predicted_species": (SPECIES_NAMES + [OTHER_CLASS])[predicted // 2],
++                "predicted_condition": "" if class_names[predicted] == OTHER_CLASS else CONDITION_NAMES[predicted % 2],
++                "species_marginal_prediction": (SPECIES_NAMES + [OTHER_CLASS])[int(species_probs[i].argmax())],
+                 "condition_marginal_prediction": CONDITION_NAMES[int(condition_probs[i].argmax())],
+             }
+             output.update({c: round(float(probabilities[i, j]), 6) for j, c in enumerate(probability_columns)})
+             writer.writerow(output)
+ 
+ 
++def other_aware_calibration(val_logits, val_labels, class_names):
++    """Temperature from all Valid photos; the unknown-photo threshold from the Valid vegetable photos only."""
++    extras = calibration_extras(val_logits, val_labels)
++    if OTHER_CLASS in class_names:
++        veg = val_labels != class_names.index(OTHER_CLASS)
++        extras["unknown_check"]["threshold"] = fit_unknown_threshold(val_logits[veg])
++        extras["unknown_check"]["method"] += f'; also unknown when the top class is "{OTHER_CLASS}"'
++    return extras
++
++
+ def parse_args():
+     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+     parser.add_argument("--manifest", type=Path, required=True)
+@@ -189,8 +200,8 @@
+                         help="Smallest random crop, as a fraction of the photo area (augmentation).")
+     parser.add_argument("--lowres-prob", type=float, default=0.0,
+                         help="Augmentation: chance of first shrinking a training photo to thumbnail size (48-112 px).")
+-    parser.add_argument("--num-classes", type=int, choices=[6, len(CLASS_NAMES)], default=len(CLASS_NAMES),
+-                        help="6 = cucumber/potato/tomato only (the earlier runs), 10 = all five vegetables.")
++    parser.add_argument("--num-classes", type=int, choices=[6, len(CLASS_NAMES), len(ALL_CLASS_NAMES)], default=len(CLASS_NAMES),
++                        help="6 = cucumber/potato/tomato only (the earlier runs), 10 = all five vegetables, 11 = plus \"other\" (fruit).")
+     parser.add_argument("--threads", type=int, default=6)
+     parser.add_argument("--seed", type=int, default=42)
+     return parser.parse_args()
+@@ -203,8 +214,8 @@
+     set_seed(args.seed, args.threads)
+     device = resolve_device(args.device)
+     manifest = args.manifest.expanduser().resolve()
+-    class_names = CLASS_NAMES[:args.num_classes]
+-    species_names = SPECIES_NAMES[:args.num_classes // len(CONDITION_NAMES)]
++    class_names = ALL_CLASS_NAMES[:args.num_classes]
++    species_names = SPECIES_NAMES[:args.num_classes // len(CONDITION_NAMES)] + ([OTHER_CLASS] if args.num_classes % 2 else [])
+     splits = read_manifest(manifest, class_names)
+     args.out.mkdir(parents=True, exist_ok=True)
+     started = time.perf_counter()
+@@ -330,7 +341,7 @@
+         "preprocess": preprocess_for(args.image_size), "seed": args.seed, "best_epoch": best_epoch,
+         "epochs_completed": len(history), "counts": counts,
+         "selection": "lowest validation cross-entropy; the test split is scored once after selection",
+-        **calibration_extras(logits_by_split["val"], torch.tensor([int(r["class_id"]) for r in splits["val"]])),
++        **other_aware_calibration(logits_by_split["val"], torch.tensor([int(r["class_id"]) for r in splits["val"]]), class_names),
+         "metrics": results, "training_verification": verification,
+         "hyperparameters": {
+             "optimizer": "Adam" if linear else "AdamW", "lr": args.lr,

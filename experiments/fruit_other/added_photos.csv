@@ -1,0 +1,318 @@
+split,source,fruit,reference,dataset
+train,fruits262,apple,Fruit-262/apple/1098.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,apple,Fruit-262/apple/1172.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,apple,Fruit-262/apple/1183.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,avocado,Fruit-262/avocado/1006.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,avocado,Fruit-262/avocado/1011.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,avocado,Fruit-262/avocado/1017.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,banana,Fruit-262/banana/1104.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,banana,Fruit-262/banana/1161.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,banana,Fruit-262/banana/186.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,blueberry,Fruit-262/blueberry/153.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,blueberry,Fruit-262/blueberry/234.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,blueberry,Fruit-262/blueberry/521.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,cantaloupe,Fruit-262/cantaloupe/170.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,cantaloupe,Fruit-262/cantaloupe/185.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,cantaloupe,Fruit-262/cantaloupe/190.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,clementine,Fruit-262/clementine/138.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,clementine,Fruit-262/clementine/183.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,clementine,Fruit-262/clementine/360.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,coconut,Fruit-262/coconut/171.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,coconut,Fruit-262/coconut/195.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,coconut,Fruit-262/coconut/221.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,dragonfruit,Fruit-262/dragonfruit/1029.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,dragonfruit,Fruit-262/dragonfruit/16.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,dragonfruit,Fruit-262/dragonfruit/184.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,fig,Fruit-262/fig/242.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,fig,Fruit-262/fig/276.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,fig,Fruit-262/fig/388.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,grape,Fruit-262/grape/1026.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,grape,Fruit-262/grape/210.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,grape,Fruit-262/grape/345.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,grapefruit,Fruit-262/grapefruit/159.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,grapefruit,Fruit-262/grapefruit/165.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,grapefruit,Fruit-262/grapefruit/231.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,guava,Fruit-262/guava/4.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,guava,Fruit-262/guava/423.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,guava,Fruit-262/guava/487.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,jujube,Fruit-262/jujube/1034.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,jujube,Fruit-262/jujube/1177.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,jujube,Fruit-262/jujube/249.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,kiwi,Fruit-262/kiwi/167.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,kiwi,Fruit-262/kiwi/203.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,kiwi,Fruit-262/kiwi/300.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,kumquat,Fruit-262/kumquat/1010.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,kumquat,Fruit-262/kumquat/104.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,kumquat,Fruit-262/kumquat/176.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,lemon,Fruit-262/lemon/266.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,lemon,Fruit-262/lemon/330.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,lemon,Fruit-262/lemon/358.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,lime,Fruit-262/lime/156.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,lime,Fruit-262/lime/181.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,lime,Fruit-262/lime/243.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,loquat,Fruit-262/loquat/1008.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,loquat,Fruit-262/loquat/161.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,loquat,Fruit-262/loquat/227.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,lychee,Fruit-262/lychee/163.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,lychee,Fruit-262/lychee/237.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,lychee,Fruit-262/lychee/268.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,mandarine,Fruit-262/mandarine/105.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,mandarine,Fruit-262/mandarine/155.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,mandarine,Fruit-262/mandarine/392.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,mango,Fruit-262/mango/446.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,mango,Fruit-262/mango/469.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,mango,Fruit-262/mango/475.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,orange,Fruit-262/orange/0.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,orange,Fruit-262/orange/264.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,orange,Fruit-262/orange/290.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,papaya,Fruit-262/papaya/337.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,papaya,Fruit-262/papaya/371.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,papaya,Fruit-262/papaya/506.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,pear,Fruit-262/pear/276.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,pear,Fruit-262/pear/32.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,pear,Fruit-262/pear/326.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,persimmon,Fruit-262/persimmon/124.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,persimmon,Fruit-262/persimmon/242.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,persimmon,Fruit-262/persimmon/374.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,pineapple,Fruit-262/pineapple/220.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,pineapple,Fruit-262/pineapple/246.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,pineapple,Fruit-262/pineapple/374.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,pomegranate,Fruit-262/pomegranate/226.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,pomegranate,Fruit-262/pomegranate/251.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,pomegranate,Fruit-262/pomegranate/284.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,quince,Fruit-262/quince/1006.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,quince,Fruit-262/quince/137.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,quince,Fruit-262/quince/243.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,raspberry,Fruit-262/raspberry/161.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,raspberry,Fruit-262/raspberry/198.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,raspberry,Fruit-262/raspberry/247.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,strawberry,Fruit-262/strawberry/104.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,strawberry,Fruit-262/strawberry/168.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,strawberry,Fruit-262/strawberry/271.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,tangelo,Fruit-262/tangelo/132.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,tangelo,Fruit-262/tangelo/211.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,tangelo,Fruit-262/tangelo/293.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,watermelon,Fruit-262/watermelon/113.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,watermelon,Fruit-262/watermelon/293.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,watermelon,Fruit-262/watermelon/468.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,yuzu,Fruit-262/yuzu/137.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,yuzu,Fruit-262/yuzu/181.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,fruits262,yuzu,Fruit-262/yuzu/219.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+train,kritikseth,apple,train/apple/Image_61.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,apple,train/apple/Image_9.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,apple,train/apple/Image_57.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,apple,train/apple/Image_44.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,apple,train/apple/Image_55.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,apple,train/apple/Image_51.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,apple,train/apple/Image_7.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,apple,train/apple/Image_65.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,banana,train/banana/Image_77.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,banana,train/banana/Image_56.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,banana,train/banana/Image_5.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,banana,train/banana/Image_68.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,banana,train/banana/Image_52.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,banana,train/banana/Image_71.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,banana,train/banana/Image_45.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,banana,train/banana/Image_61.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,grapes,train/grapes/Image_37.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,grapes,train/grapes/Image_59.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,grapes,train/grapes/Image_10.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,grapes,train/grapes/Image_81.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,grapes,train/grapes/Image_78.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,grapes,train/grapes/Image_26.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,grapes,train/grapes/Image_99.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,grapes,train/grapes/Image_84.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,kiwi,train/kiwi/Image_19.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,kiwi,train/kiwi/Image_77.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,kiwi,train/kiwi/Image_23.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,kiwi,train/kiwi/Image_53.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,kiwi,train/kiwi/Image_25.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,kiwi,train/kiwi/Image_79.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,kiwi,train/kiwi/Image_59.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,kiwi,train/kiwi/Image_10.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,lemon,train/lemon/Image_29.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,lemon,train/lemon/Image_93.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,lemon,train/lemon/Image_70.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,lemon,train/lemon/Image_94.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,lemon,train/lemon/Image_52.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,lemon,train/lemon/Image_1.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,lemon,train/lemon/Image_35.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,lemon,train/lemon/Image_14.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,mango,train/mango/Image_59.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,mango,train/mango/Image_73.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,mango,train/mango/Image_13.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,mango,train/mango/Image_79.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,mango,train/mango/Image_29.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,mango,train/mango/Image_19.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,mango,train/mango/Image_25.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,mango,train/mango/Image_5.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,orange,train/orange/Image_32.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,orange,train/orange/Image_68.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,orange,train/orange/Image_39.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,orange,train/orange/Image_65.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,orange,train/orange/Image_24.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,orange,train/orange/Image_11.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,orange,train/orange/Image_5.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,orange,train/orange/Image_14.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,pear,train/pear/Image_18.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,pear,train/pear/Image_58.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,pear,train/pear/Image_61.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,pear,train/pear/Image_68.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,pear,train/pear/Image_89.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,pear,train/pear/Image_33.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,pear,train/pear/Image_69.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,pear,train/pear/Image_8.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,pineapple,train/pineapple/Image_43.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,pineapple,train/pineapple/Image_67.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,pineapple,train/pineapple/Image_41.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,pineapple,train/pineapple/Image_57.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,pineapple,train/pineapple/Image_52.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,pineapple,train/pineapple/Image_58.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,pineapple,train/pineapple/Image_60.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,pineapple,train/pineapple/Image_99.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,pomegranate,train/pomegranate/Image_43.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,pomegranate,train/pomegranate/Image_14.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,pomegranate,train/pomegranate/Image_18.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,pomegranate,train/pomegranate/Image_50.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,pomegranate,train/pomegranate/Image_100.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,pomegranate,train/pomegranate/Image_57.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,pomegranate,train/pomegranate/Image_97.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,pomegranate,train/pomegranate/Image_71.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,watermelon,train/watermelon/Image_16.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,watermelon,train/watermelon/Image_63.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,watermelon,train/watermelon/Image_69.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,watermelon,train/watermelon/Image_66.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,watermelon,train/watermelon/Image_24.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,watermelon,train/watermelon/Image_78.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,watermelon,train/watermelon/Image_97.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,kritikseth,watermelon,train/watermelon/Image_31.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+train,muhriddin,FreshApple,Fruits_Vegetables_Dataset(12000)/Fruits/FreshApple/freshApple (798).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,FreshApple,Fruits_Vegetables_Dataset(12000)/Fruits/FreshApple/freshApple (720).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,FreshApple,Fruits_Vegetables_Dataset(12000)/Fruits/FreshApple/freshApple (270).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,FreshApple,Fruits_Vegetables_Dataset(12000)/Fruits/FreshApple/freshApple (629).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,FreshApple,Fruits_Vegetables_Dataset(12000)/Fruits/FreshApple/freshApple (433).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,FreshApple,Fruits_Vegetables_Dataset(12000)/Fruits/FreshApple/freshApple (700).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,FreshApple,Fruits_Vegetables_Dataset(12000)/Fruits/FreshApple/freshApple (491).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,FreshApple,Fruits_Vegetables_Dataset(12000)/Fruits/FreshApple/freshApple (427).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,FreshApple,Fruits_Vegetables_Dataset(12000)/Fruits/FreshApple/freshApple (688).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,FreshApple,Fruits_Vegetables_Dataset(12000)/Fruits/FreshApple/freshApple (679).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,FreshBanana,Fruits_Vegetables_Dataset(12000)/Fruits/FreshBanana/freshBanana (409).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,FreshBanana,Fruits_Vegetables_Dataset(12000)/Fruits/FreshBanana/freshBanana (97).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,FreshBanana,Fruits_Vegetables_Dataset(12000)/Fruits/FreshBanana/freshBanana (249).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,FreshBanana,Fruits_Vegetables_Dataset(12000)/Fruits/FreshBanana/freshBanana (174).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,FreshBanana,Fruits_Vegetables_Dataset(12000)/Fruits/FreshBanana/freshBanana (363).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,FreshBanana,Fruits_Vegetables_Dataset(12000)/Fruits/FreshBanana/freshBanana (173).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,FreshBanana,Fruits_Vegetables_Dataset(12000)/Fruits/FreshBanana/freshBanana (80).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,FreshBanana,Fruits_Vegetables_Dataset(12000)/Fruits/FreshBanana/freshBanana (25).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,FreshBanana,Fruits_Vegetables_Dataset(12000)/Fruits/FreshBanana/freshBanana (243).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,FreshBanana,Fruits_Vegetables_Dataset(12000)/Fruits/FreshBanana/freshBanana (49).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,FreshMango,Fruits_Vegetables_Dataset(12000)/Fruits/FreshMango/freshMango (277).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,FreshMango,Fruits_Vegetables_Dataset(12000)/Fruits/FreshMango/freshMango (170).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,FreshMango,Fruits_Vegetables_Dataset(12000)/Fruits/FreshMango/freshMango (78).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,FreshMango,Fruits_Vegetables_Dataset(12000)/Fruits/FreshMango/freshMango (183).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,FreshMango,Fruits_Vegetables_Dataset(12000)/Fruits/FreshMango/freshMango (286).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,FreshMango,Fruits_Vegetables_Dataset(12000)/Fruits/FreshMango/freshMango (267).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,FreshMango,Fruits_Vegetables_Dataset(12000)/Fruits/FreshMango/freshMango (369).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,FreshMango,Fruits_Vegetables_Dataset(12000)/Fruits/FreshMango/freshMango (307).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,FreshMango,Fruits_Vegetables_Dataset(12000)/Fruits/FreshMango/freshMango (175).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,FreshMango,Fruits_Vegetables_Dataset(12000)/Fruits/FreshMango/freshMango (322).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,FreshOrange,Fruits_Vegetables_Dataset(12000)/Fruits/FreshOrange/freshOrange (19).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,FreshOrange,Fruits_Vegetables_Dataset(12000)/Fruits/FreshOrange/freshOrange (214).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,FreshOrange,Fruits_Vegetables_Dataset(12000)/Fruits/FreshOrange/freshOrange (208).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,FreshOrange,Fruits_Vegetables_Dataset(12000)/Fruits/FreshOrange/freshOrange (159).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,FreshOrange,Fruits_Vegetables_Dataset(12000)/Fruits/FreshOrange/freshOrange (257).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,FreshOrange,Fruits_Vegetables_Dataset(12000)/Fruits/FreshOrange/freshOrange (69).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,FreshOrange,Fruits_Vegetables_Dataset(12000)/Fruits/FreshOrange/freshOrange (286).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,FreshOrange,Fruits_Vegetables_Dataset(12000)/Fruits/FreshOrange/freshOrange (11).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,FreshOrange,Fruits_Vegetables_Dataset(12000)/Fruits/FreshOrange/freshOrange (119).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,FreshOrange,Fruits_Vegetables_Dataset(12000)/Fruits/FreshOrange/freshOrange (183).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,FreshStrawberry,Fruits_Vegetables_Dataset(12000)/Fruits/FreshStrawberry/freshStrawberry (441).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,FreshStrawberry,Fruits_Vegetables_Dataset(12000)/Fruits/FreshStrawberry/freshStrawberry (351).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,FreshStrawberry,Fruits_Vegetables_Dataset(12000)/Fruits/FreshStrawberry/freshStrawberry (76).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,FreshStrawberry,Fruits_Vegetables_Dataset(12000)/Fruits/FreshStrawberry/freshStrawberry (31).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,FreshStrawberry,Fruits_Vegetables_Dataset(12000)/Fruits/FreshStrawberry/freshStrawberry (29).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,FreshStrawberry,Fruits_Vegetables_Dataset(12000)/Fruits/FreshStrawberry/freshStrawberry (132).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,FreshStrawberry,Fruits_Vegetables_Dataset(12000)/Fruits/FreshStrawberry/freshStrawberry (205).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,FreshStrawberry,Fruits_Vegetables_Dataset(12000)/Fruits/FreshStrawberry/freshStrawberry (569).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,FreshStrawberry,Fruits_Vegetables_Dataset(12000)/Fruits/FreshStrawberry/freshStrawberry (15).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,FreshStrawberry,Fruits_Vegetables_Dataset(12000)/Fruits/FreshStrawberry/freshStrawberry (439).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,RottenApple,Fruits_Vegetables_Dataset(12000)/Fruits/RottenApple/rottenApple (50).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,RottenApple,Fruits_Vegetables_Dataset(12000)/Fruits/RottenApple/rottenApple (266).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,RottenApple,Fruits_Vegetables_Dataset(12000)/Fruits/RottenApple/rottenApple (414).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,RottenApple,Fruits_Vegetables_Dataset(12000)/Fruits/RottenApple/rottenApple (445).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,RottenApple,Fruits_Vegetables_Dataset(12000)/Fruits/RottenApple/rottenApple (239).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,RottenApple,Fruits_Vegetables_Dataset(12000)/Fruits/RottenApple/rottenApple (391).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,RottenApple,Fruits_Vegetables_Dataset(12000)/Fruits/RottenApple/rottenApple (48).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,RottenApple,Fruits_Vegetables_Dataset(12000)/Fruits/RottenApple/rottenApple (69).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,RottenApple,Fruits_Vegetables_Dataset(12000)/Fruits/RottenApple/rottenApple (140).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,RottenApple,Fruits_Vegetables_Dataset(12000)/Fruits/RottenApple/rottenApple (531).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,RottenBanana,Fruits_Vegetables_Dataset(12000)/Fruits/RottenBanana/rottenBanana (422).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,RottenBanana,Fruits_Vegetables_Dataset(12000)/Fruits/RottenBanana/rottenBanana (502).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,RottenBanana,Fruits_Vegetables_Dataset(12000)/Fruits/RottenBanana/rottenBanana (370).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,RottenBanana,Fruits_Vegetables_Dataset(12000)/Fruits/RottenBanana/rottenBanana (145).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,RottenBanana,Fruits_Vegetables_Dataset(12000)/Fruits/RottenBanana/rottenBanana (108).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,RottenBanana,Fruits_Vegetables_Dataset(12000)/Fruits/RottenBanana/rottenBanana (376).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,RottenBanana,Fruits_Vegetables_Dataset(12000)/Fruits/RottenBanana/rottenBanana (377).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,RottenBanana,Fruits_Vegetables_Dataset(12000)/Fruits/RottenBanana/rottenBanana (184).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,RottenBanana,Fruits_Vegetables_Dataset(12000)/Fruits/RottenBanana/rottenBanana (7).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,RottenBanana,Fruits_Vegetables_Dataset(12000)/Fruits/RottenBanana/rottenBanana (91).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,RottenMango,Fruits_Vegetables_Dataset(12000)/Fruits/RottenMango/rottenMango (8).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,RottenMango,Fruits_Vegetables_Dataset(12000)/Fruits/RottenMango/rottenMango (199).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,RottenMango,Fruits_Vegetables_Dataset(12000)/Fruits/RottenMango/rottenMango (11).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,RottenMango,Fruits_Vegetables_Dataset(12000)/Fruits/RottenMango/rottenMango (378).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,RottenMango,Fruits_Vegetables_Dataset(12000)/Fruits/RottenMango/rottenMango (306).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,RottenMango,Fruits_Vegetables_Dataset(12000)/Fruits/RottenMango/rottenMango (413).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,RottenMango,Fruits_Vegetables_Dataset(12000)/Fruits/RottenMango/rottenMango (372).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,RottenMango,Fruits_Vegetables_Dataset(12000)/Fruits/RottenMango/rottenMango (192).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,RottenMango,Fruits_Vegetables_Dataset(12000)/Fruits/RottenMango/rottenMango (502).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,RottenMango,Fruits_Vegetables_Dataset(12000)/Fruits/RottenMango/rottenMango (391).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,RottenOrange,Fruits_Vegetables_Dataset(12000)/Fruits/RottenOrange/rottenOrange (475).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,RottenOrange,Fruits_Vegetables_Dataset(12000)/Fruits/RottenOrange/rottenOrange (369).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,RottenOrange,Fruits_Vegetables_Dataset(12000)/Fruits/RottenOrange/rottenOrange (243).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,RottenOrange,Fruits_Vegetables_Dataset(12000)/Fruits/RottenOrange/rottenOrange (156).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,RottenOrange,Fruits_Vegetables_Dataset(12000)/Fruits/RottenOrange/rottenOrange (278).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,RottenOrange,Fruits_Vegetables_Dataset(12000)/Fruits/RottenOrange/rottenOrange (488).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,RottenOrange,Fruits_Vegetables_Dataset(12000)/Fruits/RottenOrange/rottenOrange (430).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,RottenOrange,Fruits_Vegetables_Dataset(12000)/Fruits/RottenOrange/rottenOrange (464).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,RottenOrange,Fruits_Vegetables_Dataset(12000)/Fruits/RottenOrange/rottenOrange (338).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,RottenOrange,Fruits_Vegetables_Dataset(12000)/Fruits/RottenOrange/rottenOrange (210).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,RottenStrawberry,Fruits_Vegetables_Dataset(12000)/Fruits/RottenStrawberry/rottenStrawberry (155).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,RottenStrawberry,Fruits_Vegetables_Dataset(12000)/Fruits/RottenStrawberry/rottenStrawberry (23).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,RottenStrawberry,Fruits_Vegetables_Dataset(12000)/Fruits/RottenStrawberry/rottenStrawberry (113).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,RottenStrawberry,Fruits_Vegetables_Dataset(12000)/Fruits/RottenStrawberry/rottenStrawberry (552).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,RottenStrawberry,Fruits_Vegetables_Dataset(12000)/Fruits/RottenStrawberry/rottenStrawberry (168).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,RottenStrawberry,Fruits_Vegetables_Dataset(12000)/Fruits/RottenStrawberry/rottenStrawberry (410).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,RottenStrawberry,Fruits_Vegetables_Dataset(12000)/Fruits/RottenStrawberry/rottenStrawberry (285).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,RottenStrawberry,Fruits_Vegetables_Dataset(12000)/Fruits/RottenStrawberry/rottenStrawberry (51).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,RottenStrawberry,Fruits_Vegetables_Dataset(12000)/Fruits/RottenStrawberry/rottenStrawberry (259).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+train,muhriddin,RottenStrawberry,Fruits_Vegetables_Dataset(12000)/Fruits/RottenStrawberry/rottenStrawberry (462).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+val,fruits262,apple,Fruit-262/apple/1093.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+val,fruits262,clementine,Fruit-262/clementine/133.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+val,fruits262,dragonfruit,Fruit-262/dragonfruit/1013.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+val,fruits262,grapefruit,Fruit-262/grapefruit/158.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+val,fruits262,kiwi,Fruit-262/kiwi/1007.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+val,fruits262,mango,Fruit-262/mango/429.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+val,fruits262,papaya,Fruit-262/papaya/114.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+val,fruits262,pear,Fruit-262/pear/181.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+val,fruits262,tangelo,Fruit-262/tangelo/123.jpg,https://www.kaggle.com/datasets/aelchimminut/fruits262
+val,kritikseth,apple,train/apple/Image_43.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+val,kritikseth,banana,train/banana/Image_69.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+val,kritikseth,grapes,train/grapes/Image_5.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+val,kritikseth,kiwi,train/kiwi/Image_87.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+val,kritikseth,lemon,train/lemon/Image_22.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+val,kritikseth,mango,train/mango/Image_36.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+val,kritikseth,orange,train/orange/Image_27.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+val,kritikseth,pear,train/pear/Image_9.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+val,kritikseth,pineapple,train/pineapple/Image_34.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+val,kritikseth,pomegranate,train/pomegranate/Image_45.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+val,kritikseth,watermelon,train/watermelon/Image_15.*,https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition
+val,muhriddin,FreshApple,Fruits_Vegetables_Dataset(12000)/Fruits/FreshApple/freshApple (808).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+val,muhriddin,FreshBanana,Fruits_Vegetables_Dataset(12000)/Fruits/FreshBanana/freshBanana (355).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+val,muhriddin,FreshMango,Fruits_Vegetables_Dataset(12000)/Fruits/FreshMango/freshMango (264).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+val,muhriddin,FreshOrange,Fruits_Vegetables_Dataset(12000)/Fruits/FreshOrange/freshOrange (251).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+val,muhriddin,FreshStrawberry,Fruits_Vegetables_Dataset(12000)/Fruits/FreshStrawberry/freshStrawberry (62).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+val,muhriddin,RottenApple,Fruits_Vegetables_Dataset(12000)/Fruits/RottenApple/rottenApple (434).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+val,muhriddin,RottenBanana,Fruits_Vegetables_Dataset(12000)/Fruits/RottenBanana/rottenBanana (562).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+val,muhriddin,RottenMango,Fruits_Vegetables_Dataset(12000)/Fruits/RottenMango/rottenMango (342).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+val,muhriddin,RottenOrange,Fruits_Vegetables_Dataset(12000)/Fruits/RottenOrange/rottenOrange (73).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset
+val,muhriddin,RottenStrawberry,Fruits_Vegetables_Dataset(12000)/Fruits/RottenStrawberry/rottenStrawberry (251).*,https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset

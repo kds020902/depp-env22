@@ -1,0 +1,5 @@
+run,seed,internet_fruit_rejected_of_374,untrained_kinds_rejected_of_62,kaggle_fruit_rejected_of_400,coco_rejected_of_400,demo_fruit_rejected_of_5,valid_accuracy_of_300,valid_kept_correct,valid_called_other,outside_dev_accuracy_of_221,outside_dev_kept_correct,outside_dev_called_other,set160_accuracy,set160_kept_correct,set160_called_other,asian_check_accuracy_of_37,asian_check_kept_correct
+B,42,233,30,224,386,3,281,271,0,167,138,0,148,142,0,30,28
+S7,7,226,33,195,380,2,274,264,0,162,140,0,146,145,0,32,29
+O42,42,335,57,387,386,5,262,254,11,149,140,32,129,129,9,31,29
+O7,7,322,54,381,384,4,272,264,5,146,135,22,130,128,3,29,25
