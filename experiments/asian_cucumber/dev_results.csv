@@ -1,0 +1,5 @@
+run,train,seed,valid_of_300,outside_dev_of_221,set160_of_160,asian_check_of_37,asian_check_species_of_37,carrot_check_of_27,brown_cucumber_species_of_10
+B,"3차 1,260 (현재 model.pth)",42,281,167,148,30,34,23,2
+S7,"3차 1,260",7,274,162,146,32,35,23,0
+J42,"3차 1,260 + 아시아 오이 60 + 검은 배경 상한 오이 52",42,275,167,139,35,35,23,1
+J7,"3차 1,260 + 아시아 오이 60 + 검은 배경 상한 오이 52",7,282,166,146,30,34,23,2
