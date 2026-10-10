@@ -4,6 +4,7 @@
     python results/10class/outside_test/evaluate.py run --photos outside_photos [--model model.pth]
 
 The labels in outside_test.csv were set by eye before any model was run on these photos.
+--csv scores another photo list in the same format (for example experiments/asian_cucumber/asian_check.csv).
 """
 
 from __future__ import annotations
@@ -28,14 +29,14 @@ from model_utils import input_size, load_model, make_transform, open_image  # no
 USER_AGENT = {"User-Agent": "depp-env22-student-project (university coursework)"}
 
 
-def rows():
-    with (HERE / "outside_test.csv").open(encoding="utf-8") as handle:
+def rows(path=HERE / "outside_test.csv"):
+    with Path(path).open(encoding="utf-8") as handle:
         return list(csv.DictReader(handle))
 
 
 def fetch(args):
     args.photos.mkdir(parents=True, exist_ok=True)
-    for r in rows():
+    for r in rows(args.csv):
         out = args.photos / f"{r['id']}.jpg"
         if out.exists():
             continue
@@ -53,7 +54,7 @@ def run(args):
     torch.set_num_threads(args.threads)
     model, checkpoint = load_model(args.model, torch.device("cpu"))
     transform, names = make_transform(input_size(checkpoint)), checkpoint["class_names"]
-    items = [r for r in rows() if (args.photos / f"{r['id']}.jpg").exists()]
+    items = [r for r in rows(args.csv) if (args.photos / f"{r['id']}.jpg").exists()]
     preds = []
     with torch.inference_mode():
         for k in range(0, len(items), 32):
@@ -83,8 +84,10 @@ def main():
     sub = parser.add_subparsers(dest="command", required=True)
     f = sub.add_parser("fetch")
     f.add_argument("--photos", type=Path, default=Path("outside_photos"))
+    f.add_argument("--csv", type=Path, default=HERE / "outside_test.csv")
     r = sub.add_parser("run")
     r.add_argument("--photos", type=Path, default=Path("outside_photos"))
+    r.add_argument("--csv", type=Path, default=HERE / "outside_test.csv")
     r.add_argument("--model", type=Path, default=REPO / "model.pth")
     r.add_argument("--threads", type=int, default=4)
     r.add_argument("--save", action="store_true", help="write results.json next to this script")
