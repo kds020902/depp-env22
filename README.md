@@ -5,7 +5,7 @@
 3. **모델:** "모델 변경 필요" 의견에 따라 EfficientNet-B0 전체 미세조정과 데이터 증강으로 바꿨다.
 4. **현재:** 오이·감자·토마토·피망·당근 × 정상·비정상 10개 클래스를, 학습에 쓰지 않은 Test 300장에서 91.7%(275/300) 맞힌다(6개 클래스 때는 Test 180장에서 95.0%). 일부만 상한 채소를 더 잘 잡으려는 추가 실험은 기준을 넘지 못해 채택하지 않았다.
 5. **인터넷에 올라온 사진:** 사람들이 Flickr·Wikimedia에 올린 사진 221장에서는 75.6%(167장)를 맞힌다. 특히 밭에 달린 채 썩은 토마토를 잘 못 맞힌다.
-6. **확률과 학습하지 않은 사진:** 예측마다 보정된 확률을 함께 내고, 다섯 채소가 아닌 것 같은 사진에는 "학습된 데이터가 아닙니다"라고 답한다. 일상 사진은 96%를 거르지만 과일 사진은 56%만 거른다.
+6. **확률과 학습하지 않은 사진:** 예측마다 보정된 확률을 함께 내고, 다섯 채소가 아닌 것 같은 사진에는 "학습된 데이터가 아닙니다"라고 답한다. 거르기 기준은 실제로 찍은 채소를 덜 놓치도록 실제 장면 채소 사진으로 다시 맞췄다(Test에서 잘못 거른 채소 10장 → 5장). 대신 일상 사진은 78%, 과일 사진은 27%만 거른다.
 
 ## 교수님 상담 반영
 
@@ -110,6 +110,7 @@ Test에서 클래스별로 맞힌 수는 다음과 같다.
     - 나머지: 이상이 작거나 초기인 사진(싹이 조금 난 감자, 작은 반점), 감자처럼 보이는 갈색 오이 등
 - **학습 시간:** CPU 4코어에서 약 30분 걸렸다.
 - **추가 학습 시도:** 시드 변경, 썸네일 크기 증강, 더 긴 학습을 Valid로 비교했지만 미리 정한 기준을 넘지 못해 채택하지 않았다. 시드만 바꿔도 Valid가 2.3%p 달라졌다([experiments/10class_tuning](experiments/10class_tuning/README.md)).
+- **채소 놓치지 않기 (채택):** 거르기 기준을 실제 장면 채소 사진으로 다시 맞췄다. Test에서 잘못 거른 채소가 10장에서 5장으로 줄었고, 인터넷 채소 맞게 남긴 수는 138장에서 158장으로 늘었다. 대신 인터넷 과일 거른 수는 233장에서 101장으로 줄었다([experiments/real_scene_threshold](experiments/real_scene_threshold/README.md)).
 - **논문 방법을 재학습 없이 적용:** 가중치 평균(model soup), ViM·KNN 같은 특징 공간 점수, 실제 장면 사진으로 맞춘 거르기 기준을 묶어 적용했다. 인터넷 채소 맞게 남긴 수는 138장에서 149장으로 늘었지만, 인터넷 과일 거른 수가 233장에서 106장으로 줄어 채택하지 않았다. 대부분 "채소 남기기"와 "과일 거르기" 사이에서 저울을 옮긴 것이었고, KNN 점수만 양쪽을 함께 조금 나아지게 했다([experiments/posthoc_literature](experiments/posthoc_literature/README.md)).
 - **과일 판별 모델을 앞에 따로 두기 시도:** 채소 모델은 그대로 두고, 앞에 "과일인지 채소인지"만 가리는 작은 모델(MobileNetV3-Small)을 두었다. 160장 시험지 점수는 그대로였고, 인터넷 과일 거른 수는 233장에서 278·296장(74~79%)으로 늘었다. 하지만 미리 정한 80%에 못 미쳤고, 인터넷 채소 7~11장을 과일로 봐서 채택하지 않았다. 2차로 과일 학습 사진을 671장에서 2,667장으로 늘리자 인터넷 과일을 85% 걸렀지만(감 23장 중 14~16장), 인터넷 채소 맞게 남긴 수가 기준에 3장 모자라 이번에도 채택하지 않았다. 3차로 실제 장면(부엌·시장) 채소·과일 사진을 더해도 결과는 같았다. 마지막으로 Test를 한 번 채점해 보니 문지기가 Test 채소 300장 중 11장을 과일로 봐서(맞게 남긴 수 268 → 261), 쓰지 않기로 했다([experiments/fruit_gate](experiments/fruit_gate/README.md)).
 - **과일 거르기 시도 ("기타" 클래스):** 과일 사진 287장을 11번째 클래스로 학습시키자, 인터넷 과일 사진 374장 중 거른 수가 233장에서 322·335장으로 크게 늘었다(학습에 없는 과일도 포함). 하지만 둥글고 매끈한 토마토·감자를 과일로 보는 실수가 생겨 Valid와 160장 시험지가 기준에 못 미쳐 채택하지 않았다. 감은 여전히 절반 이상 통과했다([experiments/fruit_other](experiments/fruit_other/README.md)).
@@ -129,7 +130,7 @@ Test는 학습 데이터와 같은 Kaggle 데이터에서 나눈 사진이다. �
 
 ### 확률 보정과 "학습된 데이터가 아닙니다"
 
-`predict.py`와 데모 페이지는 모델 출력에 두 가지를 더 한다. 둘 다 Valid 300장만 보고 정했고, Test와 바깥 사진은 정한 뒤 한 번만 채점했다. 자세한 기록은 [results/10class/calibration_unknown](results/10class/calibration_unknown/README.md)에 있다.
+`predict.py`와 데모 페이지는 모델 출력에 두 가지를 더 한다. 처음에는 둘 다 Valid 300장만 보고 정했고, Test와 바깥 사진은 정한 뒤 한 번만 채점했다. 자세한 기록은 [results/10class/calibration_unknown](results/10class/calibration_unknown/README.md)에 있다. 그 뒤 거르기 기준만 실제 장면 채소 사진으로 다시 맞췄다(아래 "기준 변경").
 
 - **확률 보정:** 원래 softmax 점수는 실제보다 낮게 나왔다(Test 평균 78.5%, 실제 정답률 91.7%). 학습 때 쓴 label smoothing 때문이다. 점수를 온도 T=0.53으로 나눈 뒤 softmax를 하는 온도 보정(temperature scaling)을 Valid에 맞췄다.
     - Test에서 확률과 실제 정답률의 차이(ECE)가 0.132에서 0.038로 줄었다.
@@ -150,6 +151,23 @@ Test는 학습 데이터와 같은 Kaggle 데이터에서 나눈 사진이다. �
 - Test에서 거른 10장 중 3장은 원래 틀리게 답한 사진이었다. 거르지 않은 290장의 정확도는 92.4%다.
 - 과일은 채소와 같은 사람이 같은 분위기로 찍은 사진이라 거의 절반이 통과한다. 특히 정상 사과·오렌지가 잘 통과한다.
 
+**기준 변경: 채소 놓치지 않기 (2026.10.11, 현재 `model.pth`)**
+
+- 위 기준은 실제로 찍은 채소를 많이 걸렀다. 인터넷 채소 221장 중 23%, 부엌·시장에서 찍은 채소 192장 중 30%를 "학습된 데이터가 아닙니다"로 답했다.
+- 그래서 Valid 300장에 실제 장면 채소 192장(LVIS)을 더해, 이 492장 중 95%가 통과하는 값으로 기준을 다시 정했다. −2.283에서 −1.962로 바뀌었다. 모델 가중치와 확률 보정은 그대로다.
+- 채소를 덜 놓치는 대신 과일과 일상 사진을 덜 거른다. 사용자가 "채소 놓치지 않기"를 먼저 하기로 결정해 적용했다.
+
+| | 예전 기준 | 새 기준 |
+|---|---:|---:|
+| Test 채소 300장 중 잘못 거른 수 | 10 | **5** |
+| Test 맞게 남긴 수 (거르지 않고 종류·상태까지 맞힘) | 268 | **272** |
+| 인터넷 채소 221장 맞게 남긴 수 | 138 | **158** |
+| 인터넷 과일 374장 중 거른 수 | 233 (62%) | 101 (27%) |
+| 일상 사진(COCO) 400장 중 거른 수 | 386 (97%) | 311 (78%) |
+
+- Test는 기준을 바꾸기로 정하고 사전 등록한 뒤 한 번만 채점했다. 나머지 숫자는 결정 전에 이미 본 숫자다.
+- 자세한 기록은 [experiments/real_scene_threshold](experiments/real_scene_threshold/README.md)에 있다.
+
 ## 내 사진으로 예측하기
 
 Python 3.11~3.12, PyTorch 2.8.0 CPU 환경에서 확인했다.
@@ -166,8 +184,8 @@ python src/predict.py --model model.pth --input my_photos --output results.csv
 - `probability`: 예측한 클래스의 보정된 확률(0~1)이다. `prob_*` 열은 10개 클래스 각각의 확률이다.
 - `species_probability`, `condition_probability`: 채소 종류만, 정상/비정상만 따로 본 확률이다(10개 확률을 더한 값).
 - `uncertain`: 확률이 0.5보다 낮으면 `yes`다. 기준은 `--uncertain-below`로 바꿀 수 있다.
-- `unknown_score`: 학습하지 않은 사진을 가르는 점수다. `model.pth`에 저장된 기준(−2.28)보다 크면 거른다.
-- 보정 정보는 `model.pth` 안에 있다. 새로 학습하면 `train.py`가 Valid로 자동으로 계산해 넣는다. 보정 정보가 없는 예전 가중치는 `python src/calibrate.py --model 가중치.pth`로 붙인다.
+- `unknown_score`: 학습하지 않은 사진을 가르는 점수다. `model.pth`에 저장된 기준(−1.96)보다 크면 거른다.
+- 보정 정보는 `model.pth` 안에 있다. 새로 학습하면 `train.py`가 Valid로 자동으로 계산해 넣는다. 보정 정보가 없는 예전 가중치는 `python src/calibrate.py --model 가중치.pth`로 붙인다. 이렇게 하면 기준은 Valid만으로 정해진다. 지금 `model.pth`처럼 실제 장면 채소 사진도 함께 쓰려면 `--extra-photos 사진폴더`를 더한다([방법](experiments/real_scene_threshold/README.md#다시-돌리기)).
 
 ## 다시 학습하기
 
@@ -203,7 +221,7 @@ depp-env22/
 ├── src/
 │   ├── train.py             학습
 │   ├── predict.py           내 사진 예측 (보정된 확률, "학습된 데이터가 아닙니다")
-│   ├── calibrate.py         예전 가중치에 확률 보정·거르기 기준을 붙이는 스크립트
+│   ├── calibrate.py         가중치에 확률 보정·거르기 기준을 붙이는 스크립트 (--extra-photos: 실제 장면 채소도 함께 사용)
 │   ├── model_utils.py       공통 함수 (모델 불러오기, 전처리, 클래스 이름)
 │   ├── make_plots.py        학습 곡선, 혼동행렬, 모델 비교 그래프
 │   └── gradcam.py           모델이 사진의 어느 부분을 보고 판단했는지 보여주는 그림
@@ -211,7 +229,7 @@ depp-env22/
 │   ├── 10class/             현재 10개 클래스 모델의 기록 (calibration_unknown/: 확률 보정·거르기 평가, outside_test/: 인터넷 사진 평가)
 │   ├── (그 밖의 폴더)       6개 클래스 때의 모델 비교 (같은 Test 180장, 6개 클래스 가중치는 커밋 9dc8749의 model.pth)
 │   └── round1_v1_data/      1차 모델의 학습 기록 (1차 가중치는 커밋 03db425에 있음)
-└── experiments/             채택하지 않은 추가 실험 기록 (field_tomato, partial_rot, 10class_tuning, pepper_web, rotten_phone, more_data, fix_carrot_cucumber, asian_cucumber, fruit_other, fruit_gate, posthoc_literature)
+└── experiments/             추가 실험 기록 (채택: real_scene_threshold / 채택 안 함: field_tomato, partial_rot, 10class_tuning, pepper_web, rotten_phone, more_data, fix_carrot_cucumber, asian_cucumber, fruit_other, fruit_gate, posthoc_literature)
 ```
 
 가중치는 용량 때문에 최종 모델(`model.pth`)만 올렸다.

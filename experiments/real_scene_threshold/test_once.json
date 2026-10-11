@@ -1,0 +1,87 @@
+{
+ "test_photos": 300,
+ "test_correct": 275,
+ "old": {
+  "threshold": -2.283214569091797,
+  "rejected": 10,
+  "rejected_but_right": 7,
+  "kept_correct": 268,
+  "kept_accuracy": 0.9241
+ },
+ "new": {
+  "threshold": -1.9618260860443115,
+  "rejected": 5,
+  "rejected_but_right": 3,
+  "kept_correct": 272,
+  "kept_accuracy": 0.922
+ },
+ "newly_kept": {
+  "count": 5,
+  "right": 4,
+  "wrong": 1,
+  "photos": [
+   {
+    "image_id": "potato_rotten_0380",
+    "true": "potato_rotten",
+    "predicted": "potato_rotten",
+    "energy": -2.203
+   },
+   {
+    "image_id": "potato_rotten_0998",
+    "true": "potato_rotten",
+    "predicted": "potato_rotten",
+    "energy": -2.179
+   },
+   {
+    "image_id": "tomato_fresh_1054",
+    "true": "tomato_fresh",
+    "predicted": "tomato_fresh",
+    "energy": -2.218
+   },
+   {
+    "image_id": "bellpepper_rotten_0113",
+    "true": "bellpepper_rotten",
+    "predicted": "bellpepper_rotten",
+    "energy": -2.133
+   },
+   {
+    "image_id": "bellpepper_rotten_0141",
+    "true": "bellpepper_rotten",
+    "predicted": "tomato_fresh",
+    "energy": -2.111
+   }
+  ]
+ },
+ "still_rejected": [
+  {
+   "image_id": "cucumber_rotten_0180",
+   "true": "cucumber_rotten",
+   "predicted": "potato_rotten",
+   "energy": -1.933
+  },
+  {
+   "image_id": "cucumber_rotten_0824",
+   "true": "cucumber_rotten",
+   "predicted": "cucumber_fresh",
+   "energy": -1.741
+  },
+  {
+   "image_id": "tomato_fresh_1119",
+   "true": "tomato_fresh",
+   "predicted": "tomato_fresh",
+   "energy": -1.404
+  },
+  {
+   "image_id": "bellpepper_rotten_0033",
+   "true": "bellpepper_rotten",
+   "predicted": "bellpepper_rotten",
+   "energy": -1.567
+  },
+  {
+   "image_id": "bellpepper_rotten_0118",
+   "true": "bellpepper_rotten",
+   "predicted": "bellpepper_rotten",
+   "energy": -1.384
+  }
+ ]
+}

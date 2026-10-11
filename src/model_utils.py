@@ -253,9 +253,12 @@ def unknown_score(logits: torch.Tensor) -> torch.Tensor:
     return -torch.logsumexp(logits, dim=1)
 
 
-def fit_unknown_threshold(val_logits: torch.Tensor, accept_rate: float = 0.95) -> float:
-    """Threshold that still accepts accept_rate of the validation photos (all real vegetables)."""
-    return float(torch.quantile(unknown_score(val_logits), accept_rate))
+def fit_unknown_threshold(val_logits: torch.Tensor, accept_rate: float = 0.95,
+                          extra_logits: torch.Tensor | None = None) -> float:
+    """Threshold that still accepts accept_rate of the validation photos (all real vegetables),
+    pooled with extra_logits: unlabeled real-world vegetable photos, when given."""
+    logits = val_logits if extra_logits is None else torch.cat([val_logits, extra_logits])
+    return float(torch.quantile(unknown_score(logits), accept_rate))
 
 
 def calibrated_probabilities(logits: torch.Tensor, checkpoint: dict) -> torch.Tensor:
@@ -270,12 +273,19 @@ def is_unknown(logits: torch.Tensor, checkpoint: dict) -> torch.Tensor:
     return unknown_score(logits) > threshold
 
 
-def calibration_extras(val_logits: torch.Tensor, val_labels: torch.Tensor, accept_rate: float = 0.95) -> dict:
-    """The checkpoint entries for calibrated probabilities and the unknown-photo check, fitted on Valid only."""
+def calibration_extras(val_logits: torch.Tensor, val_labels: torch.Tensor, accept_rate: float = 0.95,
+                       extra_logits: torch.Tensor | None = None, extra_name: str = "") -> dict:
+    """The checkpoint entries for calibrated probabilities and the unknown-photo check.
+    The temperature is fitted on Valid only; the threshold on Valid, or on Valid pooled with extra real-world vegetable
+    photos (extra_logits, no labels needed)."""
+    threshold = fit_unknown_threshold(val_logits, accept_rate, extra_logits)
+    check = {"method": "energy score -logsumexp(logits)", "threshold": threshold,
+             "valid_accept_rate": accept_rate, "fitted_on": "val", "message": UNKNOWN_MESSAGE}
+    if extra_logits is not None:
+        check.update({"accept_rate": accept_rate, "fitted_on": f"val + {len(extra_logits)} {extra_name}".strip(),
+                      "valid_accept_rate": float((unknown_score(val_logits) <= threshold).float().mean())})
     return {
         "calibration": {"method": "temperature scaling", "temperature": fit_temperature(val_logits, val_labels),
                         "fitted_on": "val"},
-        "unknown_check": {"method": "energy score -logsumexp(logits)",
-                          "threshold": fit_unknown_threshold(val_logits, accept_rate),
-                          "valid_accept_rate": accept_rate, "fitted_on": "val", "message": UNKNOWN_MESSAGE},
+        "unknown_check": check,
     }

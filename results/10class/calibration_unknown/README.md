@@ -1,6 +1,8 @@
 # 확률 보정과 학습하지 않은 사진 거르기
 
-`model.pth`에 들어 있는 확률 보정(`calibration`)과 "학습된 데이터가 아닙니다" 판정 기준(`unknown_check`)을 어떻게 정하고 채점했는지 적은 기록이다. 값을 만드는 코드는 `src/model_utils.py`의 `calibration_extras`이고, 이 폴더의 `evaluate.py`로 아래 숫자를 다시 낼 수 있다(`results.json`).
+`model.pth`에 들어 있는 확률 보정(`calibration`)과 "학습된 데이터가 아닙니다" 판정 기준(`unknown_check`)을 어떻게 정하고 채점했는지 적은 기록이다.
+
+> **기준 변경 (2026.10.11):** 이 문서의 거르기 숫자는 처음 기준(Valid만, −2.283)의 결과다. 지금 `model.pth`는 실제 장면 채소 192장을 더해 다시 맞춘 기준(−1.962)을 쓴다. Test에서 잘못 거른 채소는 10장에서 5장으로 줄었고, 채점용 절반에서 거른 수는 일상 사진 192 → 160장, 과일 112 → 60장이 되었다. 자세한 내용은 [experiments/real_scene_threshold](../../../experiments/real_scene_threshold/README.md)에 있다. 확률 보정(T=0.528)은 바뀌지 않았다. 값을 만드는 코드는 `src/model_utils.py`의 `calibration_extras`이고, 이 폴더의 `evaluate.py`로 아래 숫자를 다시 낼 수 있다(`results.json`).
 
 ## 순서
 
