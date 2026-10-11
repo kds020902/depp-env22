@@ -1,0 +1,67 @@
+{
+ "gate": "gate2/runs/H42",
+ "threshold": 0.6542642712593079,
+ "test_photos": 300,
+ "test_accuracy": 275,
+ "kept_correct_B_alone": 268,
+ "kept_correct_with_gate": 261,
+ "gate_rejected": 11,
+ "gate_rejected_ids": [
+  [
+   "cucumber_fresh_0627",
+   "cucumber_fresh",
+   0.867
+  ],
+  [
+   "cucumber_fresh_0714",
+   "cucumber_fresh",
+   0.752
+  ],
+  [
+   "cucumber_rotten_0180",
+   "cucumber_rotten",
+   0.68
+  ],
+  [
+   "cucumber_rotten_0798",
+   "cucumber_rotten",
+   0.778
+  ],
+  [
+   "cucumber_rotten_0824",
+   "cucumber_rotten",
+   0.742
+  ],
+  [
+   "potato_fresh_0206",
+   "potato_fresh",
+   0.856
+  ],
+  [
+   "potato_fresh_0227",
+   "potato_fresh",
+   0.958
+  ],
+  [
+   "potato_fresh_0231",
+   "potato_fresh",
+   0.658
+  ],
+  [
+   "potato_rotten_0997",
+   "potato_rotten",
+   0.667
+  ],
+  [
+   "potato_rotten_1018",
+   "potato_rotten",
+   0.679
+  ],
+  [
+   "bellpepper_fresh_0067",
+   "bellpepper_fresh",
+   0.828
+  ]
+ ],
+ "rejected_total_with_gate": 19
+}
