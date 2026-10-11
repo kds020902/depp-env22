@@ -1,0 +1,13 @@
+clf,score,calib,valid,odev,o160,asian37,fruit374,coco400
+B,energy,valid,271,138,142,28,233,386
+B,energy,valid+lvis,278,158,146,29,101,311
+B,vim,valid,268,123,143,27,229,377
+B,vim,valid+lvis,275,157,148,30,99,257
+B,knn10,valid,271,139,139,27,256,390
+B,knn10,valid+lvis,276,154,146,29,185,363
+soup,energy,valid,271,150,146,32,162,368
+soup,energy,valid+lvis,276,159,146,33,72,301
+soup,vim,valid,270,141,146,32,149,374
+soup,vim,valid+lvis,272,149,146,32,106,349
+soup,knn10,valid,269,148,144,31,181,387
+soup,knn10,valid+lvis,272,154,145,32,155,367
