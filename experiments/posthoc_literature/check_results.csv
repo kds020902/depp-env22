@@ -1,0 +1,8 @@
+set,B_kept_correct_or_rejected,package_kept_correct_or_rejected,measure
+valid,271,272,kept correct
+odev,138,149,kept correct
+o160,142,146,kept correct
+asian37,28,32,kept correct
+fruit374,233,106,rejected
+mu400,224,142,rejected
+coco400,386,349,rejected

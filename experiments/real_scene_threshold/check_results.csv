@@ -1,0 +1,14 @@
+photos,count,measure,valid_only_threshold,valid_plus_lvis_threshold,looked_at_before_decision
+Test vegetables,300,kept correct (not rejected and right class),268,272,no (scored once after PREREG)
+Test vegetables,300,rejected,10,5,no
+Valid vegetables,300,kept correct,271,278,yes
+LVIS real-scene vegetables (used for the threshold),192,rejected,57,22,yes
+internet vegetables (outside_test),221,kept correct,138,158,yes
+160 set,160,kept correct,142,146,yes
+Asian cucumbers,37,kept correct,28,29,yes
+internet fruit (fruit_check.csv),374,rejected,233,101,yes
+Kaggle fruit (calibration_unknown),400,rejected,224,107,yes
+Kaggle fruit scoring half,200,rejected,112,60,yes
+everyday photos COCO (calibration_unknown),400,rejected,386,311,yes
+everyday photos COCO scoring half,200,rejected,192,160,yes
+demo fruit samples 16-20,5,rejected,3,0,no
