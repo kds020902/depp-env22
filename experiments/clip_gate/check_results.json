@@ -1,0 +1,316 @@
+{
+ "chosen": "datacomp_xl_s13b_b90k/Z",
+ "gate_threshold": 0.005768541246652603,
+ "energy_threshold": -1.9618260860443115,
+ "valid": {
+  "n": 300,
+  "kept_correct_now": 278,
+  "kept_correct_gate": 277,
+  "gate_rejected": 2,
+  "gate_rejected_right_and_kept_before": 1,
+  "gate_rejected_photos": [
+   "cucumber_fresh_0637.jpg cucumber_fresh",
+   "bellpepper_rotten_0005.jpg bellpepper_rotten"
+  ]
+ },
+ "odev": {
+  "n": 221,
+  "kept_correct_now": 158,
+  "kept_correct_gate": 155,
+  "gate_rejected": 8,
+  "gate_rejected_right_and_kept_before": 3,
+  "gate_rejected_photos": [
+   "13ed824b-40f6-4680-8bf8-8989345ce105.jpg potato_rotten",
+   "wm21415989.jpg potato_rotten",
+   "2b7bab71-52f7-4655-b871-aeacecd8a6a2.jpg tomato_rotten",
+   "43e88144-ea27-4543-a494-2b534eb764b5.jpg tomato_rotten",
+   "86354844-ac5d-4ad7-9f9c-ab1ace1ff4a9.jpg tomato_rotten",
+   "d25f748f-28d4-4506-af3f-f2ab01bc04a2.jpg tomato_rotten",
+   "d7219dc6-5cde-46c4-954f-dee1216bc259.jpg tomato_rotten",
+   "5b91cd01-53c7-4386-a820-61a45a1d27e5.jpg carrot_rotten"
+  ]
+ },
+ "o160": {
+  "n": 160,
+  "kept_correct_now": 146,
+  "kept_correct_gate": 141,
+  "gate_rejected": 5,
+  "gate_rejected_right_and_kept_before": 5,
+  "gate_rejected_photos": [
+   "h038.jpg tomato_fresh",
+   "h052.jpg tomato_rotten",
+   "h057.jpg tomato_rotten",
+   "h059.jpg tomato_rotten",
+   "h060.jpg tomato_rotten"
+  ]
+ },
+ "asian37": {
+  "n": 37,
+  "kept_correct_now": 29,
+  "kept_correct_gate": 29,
+  "gate_rejected": 0,
+  "gate_rejected_right_and_kept_before": 0,
+  "gate_rejected_photos": []
+ },
+ "fruit374": {
+  "n": 374,
+  "rejected_now": 101,
+  "rejected_gate": 353,
+  "gate_alone": 345,
+  "by_fruit_n_now_gate": {
+   "apple": [
+    45,
+    9,
+    36
+   ],
+   "apricot": [
+    9,
+    3,
+    9
+   ],
+   "banana": [
+    32,
+    13,
+    30
+   ],
+   "cherry": [
+    9,
+    4,
+    9
+   ],
+   "grape": [
+    13,
+    3,
+    13
+   ],
+   "jujube": [
+    7,
+    1,
+    6
+   ],
+   "kiwi": [
+    22,
+    4,
+    22
+   ],
+   "korean_melon": [
+    13,
+    2,
+    13
+   ],
+   "lemon": [
+    38,
+    13,
+    33
+   ],
+   "mango": [
+    12,
+    2,
+    11
+   ],
+   "orange": [
+    17,
+    4,
+    16
+   ],
+   "peach": [
+    19,
+    5,
+    19
+   ],
+   "pear": [
+    31,
+    3,
+    31
+   ],
+   "persimmon": [
+    23,
+    3,
+    21
+   ],
+   "plum": [
+    12,
+    0,
+    12
+   ],
+   "pomegranate": [
+    9,
+    2,
+    9
+   ],
+   "strawberry": [
+    31,
+    18,
+    31
+   ],
+   "tangerine": [
+    24,
+    10,
+    24
+   ],
+   "watermelon": [
+    8,
+    2,
+    8
+   ]
+  }
+ },
+ "mu400": {
+  "n": 400,
+  "rejected_now": 107,
+  "rejected_gate": 328,
+  "gate_alone": 316,
+  "test_half_now": 60,
+  "test_half_gate": 167
+ },
+ "coco400": {
+  "n": 400,
+  "rejected_now": 311,
+  "rejected_gate": 392,
+  "gate_alone": 371,
+  "test_half_now": 160,
+  "test_half_gate": 195
+ },
+ "demo": [
+  {
+   "photo": "bellpepper_fresh_0001.jpeg",
+   "B": "bellpepper_fresh",
+   "energy_reject": false,
+   "gate_p_veg": 0.9994,
+   "gate_reject": false
+  },
+  {
+   "photo": "bellpepper_fresh_0067.jpg",
+   "B": "bellpepper_rotten",
+   "energy_reject": false,
+   "gate_p_veg": 0.3136,
+   "gate_reject": false
+  },
+  {
+   "photo": "bellpepper_rotten_0065.jpg",
+   "B": "bellpepper_rotten",
+   "energy_reject": false,
+   "gate_p_veg": 0.1826,
+   "gate_reject": false
+  },
+  {
+   "photo": "carrot_fresh_0044.jpg",
+   "B": "carrot_fresh",
+   "energy_reject": false,
+   "gate_p_veg": 0.9999,
+   "gate_reject": false
+  },
+  {
+   "photo": "carrot_rotten_0093.jpg",
+   "B": "carrot_rotten",
+   "energy_reject": false,
+   "gate_p_veg": 0.9625,
+   "gate_reject": false
+  },
+  {
+   "photo": "cucumber_fresh_0642.jpg",
+   "B": "cucumber_fresh",
+   "energy_reject": false,
+   "gate_p_veg": 0.9808,
+   "gate_reject": false
+  },
+  {
+   "photo": "cucumber_partial_01.jpg",
+   "B": "cucumber_fresh",
+   "energy_reject": false,
+   "gate_p_veg": 0.9133,
+   "gate_reject": false
+  },
+  {
+   "photo": "cucumber_rotten_0798.jpg",
+   "B": "cucumber_rotten",
+   "energy_reject": false,
+   "gate_p_veg": 0.3472,
+   "gate_reject": false
+  },
+  {
+   "photo": "fruit_apple_green.jpg",
+   "B": "tomato_fresh",
+   "energy_reject": false,
+   "gate_p_veg": 0.0,
+   "gate_reject": true
+  },
+  {
+   "photo": "fruit_apple_rotten.jpeg",
+   "B": "tomato_rotten",
+   "energy_reject": false,
+   "gate_p_veg": 0.0001,
+   "gate_reject": true
+  },
+  {
+   "photo": "fruit_banana.jpg",
+   "B": "bellpepper_fresh",
+   "energy_reject": false,
+   "gate_p_veg": 0.0,
+   "gate_reject": true
+  },
+  {
+   "photo": "fruit_orange.jpg",
+   "B": "tomato_fresh",
+   "energy_reject": false,
+   "gate_p_veg": 0.0344,
+   "gate_reject": false
+  },
+  {
+   "photo": "fruit_strawberry.jpg",
+   "B": "bellpepper_rotten",
+   "energy_reject": false,
+   "gate_p_veg": 0.0,
+   "gate_reject": true
+  },
+  {
+   "photo": "potato_fresh_0884.jpg",
+   "B": "potato_fresh",
+   "energy_reject": false,
+   "gate_p_veg": 0.9984,
+   "gate_reject": false
+  },
+  {
+   "photo": "potato_fresh_0926.jpg",
+   "B": "potato_fresh",
+   "energy_reject": false,
+   "gate_p_veg": 0.9827,
+   "gate_reject": false
+  },
+  {
+   "photo": "potato_rotten_0398.jpg",
+   "B": "potato_rotten",
+   "energy_reject": false,
+   "gate_p_veg": 0.9952,
+   "gate_reject": false
+  },
+  {
+   "photo": "tomato_fresh_1047.jpg",
+   "B": "tomato_fresh",
+   "energy_reject": false,
+   "gate_p_veg": 0.9998,
+   "gate_reject": false
+  },
+  {
+   "photo": "tomato_partial_01.jpg",
+   "B": "tomato_fresh",
+   "energy_reject": false,
+   "gate_p_veg": 0.0014,
+   "gate_reject": true
+  },
+  {
+   "photo": "tomato_rotten_1201.jpg",
+   "B": "tomato_rotten",
+   "energy_reject": false,
+   "gate_p_veg": 0.0206,
+   "gate_reject": false
+  },
+  {
+   "photo": "tomato_rotten_1248.jpg",
+   "B": "bellpepper_rotten",
+   "energy_reject": false,
+   "gate_p_veg": 0.3116,
+   "gate_reject": false
+  }
+ ]
+}

@@ -1,0 +1,49 @@
+{
+ "candidates": {
+  "openai/Z": {
+   "threshold": 0.004100980702787638,
+   "lvis_fruit_rejected": 138,
+   "lvis_fruit": 192,
+   "valid_fruit_rejected": 24,
+   "mu_dev_rejected": 130,
+   "coco_dev_rejected": 73,
+   "valid_rejected": 5,
+   "lvis_veg_rejected": 0,
+   "dev_auroc": 0.9887296266327592
+  },
+  "openai/P": {
+   "threshold": 0.2886015474796295,
+   "lvis_fruit_rejected": 156,
+   "lvis_fruit": 192,
+   "valid_fruit_rejected": 24,
+   "mu_dev_rejected": 106,
+   "coco_dev_rejected": 39,
+   "valid_rejected": 4,
+   "lvis_veg_rejected": 1,
+   "dev_auroc": 0.9782973066697491
+  },
+  "datacomp_xl_s13b_b90k/Z": {
+   "threshold": 0.005768541246652603,
+   "lvis_fruit_rejected": 163,
+   "lvis_fruit": 192,
+   "valid_fruit_rejected": 26,
+   "mu_dev_rejected": 158,
+   "coco_dev_rejected": 189,
+   "valid_rejected": 2,
+   "lvis_veg_rejected": 3,
+   "dev_auroc": 0.9804357877702
+  },
+  "datacomp_xl_s13b_b90k/P": {
+   "threshold": 0.46597611904144287,
+   "lvis_fruit_rejected": 162,
+   "lvis_fruit": 192,
+   "valid_fruit_rejected": 29,
+   "mu_dev_rejected": 151,
+   "coco_dev_rejected": 104,
+   "valid_rejected": 2,
+   "lvis_veg_rejected": 3,
+   "dev_auroc": 0.9868993950603013
+  }
+ },
+ "chosen": "datacomp_xl_s13b_b90k/Z"
+}
