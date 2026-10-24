@@ -5,7 +5,7 @@
 3. **모델:** "모델 변경 필요" 의견에 따라 EfficientNet-B0 전체 미세조정과 데이터 증강으로 바꿨다.
 4. **현재:** 오이·감자·토마토·피망·당근 × 정상·비정상 10개 클래스를, 학습에 쓰지 않은 Test 300장에서 91.7%(275/300) 맞힌다(6개 클래스 때는 Test 180장에서 95.0%). 일부만 상한 채소를 더 잘 잡으려는 추가 실험은 기준을 넘지 못해 채택하지 않았다.
 5. **인터넷에 올라온 사진:** 사람들이 Flickr·Wikimedia에 올린 사진 221장에서는 75.6%(167장)를 맞힌다. 특히 밭에 달린 채 썩은 토마토를 잘 못 맞힌다.
-6. **확률과 학습하지 않은 사진:** 예측마다 보정된 확률을 함께 내고, 다섯 채소가 아닌 것 같은 사진에는 "학습된 데이터가 아닙니다"라고 답한다. 거르기 기준은 실제로 찍은 채소를 덜 놓치도록 실제 장면 채소 사진으로 다시 맞췄다(Test에서 잘못 거른 채소 10장 → 5장). 대신 일상 사진은 78%, 과일 사진은 27%만 거른다.
+6. **확률과 학습하지 않은 사진:** 예측마다 보정된 확률을 함께 내고, 다섯 채소가 아닌 것 같은 사진에는 "학습된 데이터가 아닙니다"라고 답한다. 거르기 기준은 실제로 찍은 채소를 덜 놓치도록 실제 장면 채소 사진으로 다시 맞췄다(Test에서 잘못 거른 채소 10장 → 5장). 대신 일상 사진은 78%, 과일 사진은 27%만 거른다. 모델이 상했다고 본 부분을 사진 위에 빨갛게 표시하고, 확신이 낮으면 다시 찍기를 권한다([추가 기능](results/10class/extra_features/README.md)).
 
 ## 교수님 상담 반영
 
@@ -185,6 +185,9 @@ python src/predict.py --model model.pth --input my_photos --output results.csv
 - `probability`: 예측한 클래스의 보정된 확률(0~1)이다. `prob_*` 열은 10개 클래스 각각의 확률이다.
 - `species_probability`, `condition_probability`: 채소 종류만, 정상/비정상만 따로 본 확률이다(10개 확률을 더한 값).
 - `uncertain`: 확률이 0.5보다 낮으면 `yes`다. 기준은 `--uncertain-below`로 바꿀 수 있다.
+- `retake`: 이 판정의 확률이 90% 미만이거나 "학습된 데이터가 아닙니다"로 거른 사진이면 `yes`이고, `message`에 다시 찍기 안내가 들어간다. Valid에서 90% 이상은 97.6%, 미만은 73%를 맞혔다. 기준은 `--retake-below`로 바꿀 수 있다.
+- `rot_evidence`, `heatmap`: 모델이 상했다고 본 정도(1이면 Valid 비정상 사진의 중간 수준)와 히트맵 파일이다. `--heatmap 폴더`를 주면 사진마다 원본과, 상했다고 본 부분을 빨갛게 칠한 사진을 나란히 저장한다.
+- `closest_guess`: `--clip-hint`를 주면, 거른 사진이 무엇과 가장 비슷한지(예: 사과) CLIP으로 알려 준다. `pip install open_clip_torch`가 필요하고, 처음에 약 600MB를 내려받는다.
 - `unknown_score`: 학습하지 않은 사진을 가르는 점수다. `model.pth`에 저장된 기준(−1.96)보다 크면 거른다.
 - 보정 정보는 `model.pth` 안에 있다. 새로 학습하면 `train.py`가 Valid로 자동으로 계산해 넣는다. 보정 정보가 없는 예전 가중치는 `python src/calibrate.py --model 가중치.pth`로 붙인다. 이렇게 하면 기준은 Valid만으로 정해진다. 지금 `model.pth`처럼 실제 장면 채소 사진도 함께 쓰려면 `--extra-photos 사진폴더`를 더한다([방법](experiments/real_scene_threshold/README.md#다시-돌리기)).
 
@@ -222,12 +225,13 @@ depp-env22/
 ├── src/
 │   ├── train.py             학습
 │   ├── predict.py           내 사진 예측 (보정된 확률, "학습된 데이터가 아닙니다")
+│   ├── clip_hint.py         거른 사진에 "가장 가까운 것"을 알려 주는 선택 기능 (CLIP)
 │   ├── calibrate.py         가중치에 확률 보정·거르기 기준을 붙이는 스크립트 (--extra-photos: 실제 장면 채소도 함께 사용)
 │   ├── model_utils.py       공통 함수 (모델 불러오기, 전처리, 클래스 이름)
 │   ├── make_plots.py        학습 곡선, 혼동행렬, 모델 비교 그래프
 │   └── gradcam.py           모델이 사진의 어느 부분을 보고 판단했는지 보여주는 그림
 ├── results/                 실험별 metrics.json, history.csv, val/test_predictions.csv, 그래프
-│   ├── 10class/             현재 10개 클래스 모델의 기록 (calibration_unknown/: 확률 보정·거르기 평가, outside_test/: 인터넷 사진 평가)
+│   ├── 10class/             현재 10개 클래스 모델의 기록 (calibration_unknown/: 확률 보정·거르기 평가, outside_test/: 인터넷 사진 평가, extra_features/: 히트맵·다시 찍기 안내·가장 가까운 것)
 │   ├── (그 밖의 폴더)       6개 클래스 때의 모델 비교 (같은 Test 180장, 6개 클래스 가중치는 커밋 9dc8749의 model.pth)
 │   └── round1_v1_data/      1차 모델의 학습 기록 (1차 가중치는 커밋 03db425에 있음)
 └── experiments/             추가 실험 기록 (채택: real_scene_threshold / 채택 안 함: field_tomato, partial_rot, 10class_tuning, pepper_web, rotten_phone, more_data, fix_carrot_cucumber, asian_cucumber, fruit_other, fruit_gate, posthoc_literature, clip_gate)

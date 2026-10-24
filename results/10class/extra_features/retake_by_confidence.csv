@@ -1,0 +1,7 @@
+set,top_probability,photos_not_turned_away,right
+valid_300,below 90%,48,35
+valid_300,90% or more,249,243
+outside_test_221,below 90%,68,40
+outside_test_221,90% or more,134,118
+more_data_outside_test_160,below 90%,26,20
+more_data_outside_test_160,90% or more,132,126

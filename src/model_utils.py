@@ -289,3 +289,47 @@ def calibration_extras(val_logits: torch.Tensor, val_labels: torch.Tensor, accep
                         "fitted_on": "val"},
         "unknown_check": check,
     }
+
+
+# ---------- where the model sees rot (heatmap) ----------
+HEATMAP_LAYERS = {"resnet18": "layer4", "efficientnet_b0": "features"}
+
+
+def forward_with_rot_map(model: nn.Module, checkpoint: dict, images: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor]:
+    """Logits plus a 7x7 "rot map" per photo: how much each part of the photo pushed the model toward "rotten" rather
+    than "fresh" for the vegetable it predicted.
+
+    The classifier sits on top of average pooling, so the rotten-minus-fresh logit is exactly the mean over locations of
+    (w_rotten - w_fresh) . feature(location); each location's term is its share (class activation map, Zhou et al. 2016).
+    Only the positive part (evidence for rotten) is kept. For avg+max pooling only the average half is used.
+    """
+    arch = checkpoint["architecture"]
+    store = {}
+    hook = dict(model.named_modules())[HEATMAP_LAYERS[arch]].register_forward_hook(
+        lambda module, inputs, output: store.update(features=output))
+    try:
+        logits = model(images)
+    finally:
+        hook.remove()
+    features = store["features"]
+    weight = classifier_layer(model, arch).weight[:, :features.shape[1]]
+    species = logits.argmax(1) // len(CONDITION_NAMES)
+    rotten, fresh = CONDITION_NAMES.index("rotten"), CONDITION_NAMES.index("fresh")
+    direction = weight[species * len(CONDITION_NAMES) + rotten] - weight[species * len(CONDITION_NAMES) + fresh]
+    return logits, torch.relu(torch.einsum("nc,nchw->nhw", direction, features))
+
+
+def rot_map_overlay(image: Image.Image, rot_map: torch.Tensor, scale: float, size: int = 480) -> Image.Image:
+    """The plain photo next to a copy with the rot map laid over it in red (stronger red = stronger rot evidence).
+    The map is divided by a fixed scale (not by its own maximum), so a fresh-looking photo stays almost uncoloured."""
+    image = image.copy()
+    image.thumbnail((size, size))
+    level = torch.nn.functional.interpolate((rot_map / scale).clamp(0, 1)[None, None], size=image.size[::-1],
+                                            mode="bilinear", align_corners=False)[0, 0].numpy()[..., None]
+    color = np.array([230.0, 20.0, 20.0])
+    alpha = 0.7 * level
+    overlay = Image.fromarray((np.asarray(image) * (1 - alpha) + color * alpha).astype(np.uint8))
+    canvas = Image.new("RGB", (image.width * 2 + 8, image.height), "white")
+    canvas.paste(image, (0, 0))
+    canvas.paste(overlay, (image.width + 8, 0))
+    return canvas

@@ -9,3 +9,5 @@ ImageHash>=4.3
 opencv-python-headless>=4.9
 # 확률 보정·거르기 평가(results/10class/calibration_unknown/evaluate.py)에만 필요
 scikit-learn>=1.3
+# 거른 사진에 "가장 가까운 것" 알려주기(predict.py --clip-hint)에만 필요
+open_clip_torch>=2.24

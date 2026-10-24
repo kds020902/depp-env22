@@ -1,0 +1,62 @@
+photo,species,source_dataset,source_archive_path,rot_cells_marked_by_eye,diffuse,predicted_class,rot_map_peak,rot_map_hit,class_map_peak,class_map_hit,centre_D4_hit
+P00,tomato,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenTomato/rottenTomato (313).jpg,C4 D4 C5 D5,False,tomato_rotten,D4,True,C4,True,True
+P01,tomato,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenTomato/rottenTomato (551).jpg,D3 E3 D4,False,tomato_rotten,F4,False,F4,False,True
+P02,tomato,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenTomato/rottenTomato (576).jpg,D5 E4 E5,False,tomato_fresh,D6,False,E5,True,False
+P03,tomato,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenTomato/rottenTomato (144).jpg,C2 D2 E2 B3 C3 D3 E3 F3 C4 D4 E4 F4 D5 E5,False,tomato_rotten,D4,True,D4,True,True
+P04,tomato,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenTomato/rottenTomato (550).jpg,C3 D3 C4 D4,False,tomato_rotten,D4,True,D4,True,True
+P05,tomato,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenTomato/rottenTomato (421).jpg,C3 D3,False,tomato_rotten,D4,False,D4,False,False
+P06,tomato,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenTomato/rottenTomato (301).jpg,C3 D3 E3 F3 B4 C4 D4 E4 F4 B5 C5,False,tomato_rotten,C5,True,D6,False,True
+P07,tomato,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenTomato/rottenTomato (196).jpg,C2 D2 D3 E3 D4 E4 E5 D5,False,tomato_rotten,E3,True,C2,True,True
+P08,tomato,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenTomato/rottenTomato (295).jpg,D2 E2 C6 D6 F4,False,tomato_rotten,F4,True,F4,True,False
+P09,tomato,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenTomato/rottenTomato (299).jpg,D2 E2 C3 D3 B4 C4 B5 C5,False,tomato_rotten,D3,True,D3,True,False
+P10,tomato,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenTomato/rottenTomato (194).jpg,B3 E3 F3 B4 C4 F4,False,tomato_rotten,E3,True,E3,True,False
+P11,tomato,mendeley_s42kpg8h37,Rotten/IMG_20230410_020728.jpg,C4 D4 E4 C5 D5 E5,False,bellpepper_rotten,D4,True,D4,True,True
+P12,tomato,mendeley_s42kpg8h37,Rotten/IMG_20230411_232839.jpg,C3 D3 C4,False,tomato_fresh,B4,False,D4,False,False
+P13,tomato,mendeley_s42kpg8h37,Rotten/IMG_20230405_014429.jpg,D2 D3,False,tomato_rotten,D3,True,D4,False,False
+P14,tomato,mendeley_s42kpg8h37,Rotten/IMG_20230401_211036.jpg,C4 D4 C5 D5,False,tomato_rotten,D4,True,D4,True,True
+P15,tomato,mendeley_s42kpg8h37,Rotten/IMG_20230331_015128.jpg,C3 D3 C4 D4 E4,False,tomato_rotten,D4,True,D4,True,True
+P16,tomato,mendeley_s42kpg8h37,Rotten/IMG_20230402_224507.jpg,C4 D4 C5 D5 C6,False,tomato_rotten,D4,True,D4,True,True
+P17,tomato,mendeley_s42kpg8h37,Rotten/IMG_20230329_225730.jpg,D3 E3 D4 E4,False,tomato_rotten,D4,True,D4,True,True
+P18,tomato,mendeley_s42kpg8h37,Rotten/IMG_20230407_042226.jpg,C3 D3,False,tomato_fresh,D2,False,D3,True,False
+P19,tomato,mendeley_s42kpg8h37,Rotten/IMG_20230411_040055.jpg,D3 E3 D4 E4,False,tomato_rotten,D4,True,E4,True,True
+P20,tomato,mendeley_s42kpg8h37,Rotten/IMG_20230402_224009.jpg,B4 C3 C4 C5,False,tomato_rotten,D4,False,D4,False,False
+P21,tomato,mendeley_s42kpg8h37,Rotten/IMG_20230408_042100.jpg,C5 C6,False,tomato_rotten,C5,True,D4,False,False
+P22,tomato,mendeley_s42kpg8h37,Rotten/IMG_20230331_014759.jpg,C4 D4 C5 D5,False,tomato_rotten,E4,False,D4,True,True
+P23,tomato,mendeley_s42kpg8h37,Rotten/IMG_20230405_014424.jpg,D3 D4 E4 D5 E5 F5 E6,False,tomato_rotten,E4,True,D4,True,True
+P24,tomato,mendeley_s42kpg8h37,Rotten/IMG_20230408_041441.jpg,C3 D3 C4 D4 C5 D5,False,tomato_rotten,D4,True,D4,True,True
+P25,tomato,mendeley_s42kpg8h37,Rotten/IMG_20230327_023420.jpg,D4,False,tomato_fresh,D5,False,C3,False,True
+P26,tomato,mendeley_s42kpg8h37,Rotten/IMG_20230323_234314.jpg,D3 D4 C5,False,tomato_rotten,D5,False,D5,False,True
+P27,tomato,mendeley_s42kpg8h37,Rotten/IMG_20230323_235132.jpg,C4 D4 E3 E4 C5 D5,False,tomato_rotten,D4,True,D4,True,True
+P28,potato,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (472).jpg,B2 C2 D2 B3 C3 A5 B5,False,potato_rotten,C3,True,D5,False,False
+P29,potato,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (277).jpg,B2 C2 D2 E2 F2 B3 C3 D3 E3 F3 B4 C4 D4 E4 F4 B5 C5 D5 E5 F5 B6 C6 D6 E6 F6,True,potato_rotten,C3,True,C3,True,True
+P30,potato,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (204).jpg,C3 D3 E4 B5 C6,False,potato_rotten,B5,True,C5,False,False
+P31,potato,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (293).jpg,B3 C3 C4 E2 F2 E3 F3,False,potato_rotten,F3,True,E3,True,False
+P32,potato,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (505).jpg,C2 D2 D3 B5 B6 C6,False,potato_rotten,C3,False,C3,False,False
+P33,potato,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (329).jpg,C3 C4,False,potato_rotten,D3,False,D3,False,False
+P34,potato,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (360).jpg,D3 E3 F3 C4 D4 E4 F4 G4 E5 F5,False,potato_rotten,E4,True,C5,False,True
+P35,potato,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (298).jpg,C1 D1 C2 B5 C5 B6 C6 E5 F5 F6,False,potato_rotten,F5,True,F5,True,False
+P36,potato,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (129).jpg,C3 D3 E3 F2 B4 B5 C5 B6,False,potato_rotten,C5,True,D5,False,False
+P37,potato,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (6).jpg,D3 C4 E5 E7,False,potato_rotten,B2,False,B6,False,False
+P38,potato,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (459).jpg,A4 B4 C4 B5 C5 B6 C6 F3 F4,False,potato_rotten,D3,False,D3,False,False
+P39,potato,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (127).jpg,C1 D1 C2 D2 A3 B3 C3 B4 F4 G4 F5 G5 A6 B6 F6,False,potato_rotten,E4,False,E4,False,False
+P40,potato,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (4).jpg,B3 C3 B4 C4 A5 B5 C5,False,potato_rotten,C5,True,C5,True,False
+P41,potato,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenPotato/rottenPotato (363).jpg,C3 D3 E3 B4 C4 D4 E4 B5 C5 D5 E5 C6 D6 E6,False,potato_rotten,C5,True,C5,True,True
+P42,cucumber,muhriddinmuxiddinov,Fruits_Vegetables_Dataset(12000)/Vegetables/RottenCucumber/rottenCucumber (307).jpg,C4 D4 E4 C5 D5 E5,False,cucumber_rotten,C5,True,C5,True,True
+P43,cucumber,swoyam2609,dataset/Test/rottencucumber/c_r071.png,B3 C3 D3 E3 F3 G3 B4 C4 D4 E4 F4 G4 B5 C5 D5 E5 F5 G5 B6 C6 D6,True,cucumber_rotten,F4,True,F4,True,True
+P44,cucumber,swoyam2609,dataset/Train/rottencucumber/c_r267.png,E3 F3 B4 C4 D4 E4 F4 C5 D5 E5,False,cucumber_rotten,E4,True,E4,True,True
+P45,cucumber,swoyam2609,dataset/Train/rottencucumber/c_r296.png,E2 F2 G2 E3 F3 A5 B5 A6,False,cucumber_rotten,F3,True,F3,True,False
+P46,cucumber,swoyam2609,dataset/Train/rottencucumber/c_r263.png,C3 C4 D4 E4 C5 D5 E5 C6 D6 E6 D7,False,cucumber_rotten,E2,False,E2,False,True
+P47,cucumber,swoyam2609,dataset/Train/rottencucumber/c_r302.png,E4 F4 D5 E5 F5 G5,False,cucumber_rotten,E5,True,E3,False,False
+P48,cucumber,swoyam2609,dataset/Test/rottencucumber/c_r223.png,F3 E4 F4 G4 D5 E5 D6 E6,False,cucumber_rotten,E5,True,E5,True,False
+P49,cucumber,swoyam2609,dataset/Train/rottencucumber/c_r261.png,C2 B3 C3 D3 B4 C4 D4 B5 C5 D5 B6 C6 D6,False,cucumber_rotten,D6,True,D6,True,True
+P50,cucumber,swoyam2609,dataset/Train/rottencucumber/c_r315.png,B3 C3 D3 E3 F3 A4 B4 C4 D4 E4 F4 G4 D5 E5 F5 G5,True,carrot_rotten,D5,True,F2,False,True
+P51,cucumber,swoyam2609,dataset/Test/rottencucumber/c_r228.png,D3 E3 B4 C4 D4 E4 F4 B5 C5 D5,False,cucumber_rotten,E4,True,E3,True,True
+P52,cucumber,swoyam2609,dataset/Train/rottencucumber/c_r262.png,E3 E4 F4 D5 E5 F5 D6 E6 E7,False,cucumber_rotten,F5,True,F5,True,False
+P53,cucumber,swoyam2609,dataset/Test/rottencucumber/c_r249.png,B3 C3 B4 C4 G6,False,cucumber_rotten,B1,False,B3,True,False
+P54,cucumber,swoyam2609,dataset/Train/rottencucumber/c_r293.png,C3 D3 E3 C4 D4 E4 C5 D5 E5 D6,False,potato_rotten,D4,True,E5,True,True
+P55,cucumber,swoyam2609,dataset/Train/rottencucumber/c_r401.png,E4 D5 E5 F5 E6,False,cucumber_rotten,E5,True,E5,True,False
+P56,cucumber,swoyam2609,dataset/Train/rottencucumber/c_r070.png,B3 B4 C4 B5 C5 B6,False,cucumber_fresh,B1,False,C4,True,False
+P57,cucumber,swoyam2609,dataset/Train/rottencucumber/c_r330.png,D2 D3 E3 F3 B5 C5,False,cucumber_fresh,B7,False,D3,True,False
+P58,cucumber,swoyam2609,dataset/Train/rottencucumber/c_r183.png,D5 E5 D6 E6 D7 E7,False,cucumber_rotten,E6,True,E6,True,False
+P59,cucumber,swoyam2609,dataset/Train/rottencucumber/c_r265.png,A3 B3 C3 A4 B4 C4 D4 B5 C5 D5 C6,False,cucumber_rotten,B4,True,B4,True,True
+P60,cucumber,swoyam2609,dataset/Test/rottencucumber/c_r208.png,F1 E2 F2 C3 D3 E3 B4 C4 D4 A5 B5 C5 A6 B6,True,cucumber_rotten,C5,True,C5,True,True
