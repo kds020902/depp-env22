@@ -74,7 +74,10 @@ def main():
     hint = None
     if args.clip_hint:
         from clip_hint import ClipHint
-        hint = ClipHint(args.device)
+        try:
+            hint = ClipHint(args.device)
+        except ImportError:
+            raise SystemExit("--clip-hint needs open_clip: python -m pip install open_clip_torch") from None
     success = 0
     with args.output.open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, fieldnames=fields)
