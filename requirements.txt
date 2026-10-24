@@ -2,12 +2,12 @@ torch==2.8.0
 torchvision==0.23.0
 Pillow>=10.0,<12.0
 numpy>=1.26,<3.0
+# 최종 판정에 쓰는 CLIP (predict.py --no-clip이면 필요 없음)
+open_clip_torch>=2.24
 # 그래프(make_plots.py, 노트북)에만 필요
 matplotlib>=3.8
 # 데이터셋 다시 만들기(dataset/tools)에만 필요
 ImageHash>=4.3
 opencv-python-headless>=4.9
-# 확률 보정·거르기 평가(results/10class/calibration_unknown/evaluate.py)에만 필요
+# 확률 보정·거르기 평가(results/10class/calibration_unknown/evaluate.py)와 CLIP 분류기 학습(train_clip_head.py)에만 필요
 scikit-learn>=1.3
-# 거른 사진에 "가장 가까운 것" 알려주기(predict.py --clip-hint)에만 필요
-open_clip_torch>=2.24

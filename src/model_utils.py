@@ -295,13 +295,14 @@ def calibration_extras(val_logits: torch.Tensor, val_labels: torch.Tensor, accep
 HEATMAP_LAYERS = {"resnet18": "layer4", "efficientnet_b0": "features"}
 
 
-def forward_with_rot_map(model: nn.Module, checkpoint: dict, images: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor]:
-    """Logits plus a 7x7 "rot map" per photo: how much each part of the photo pushed the model toward "rotten" rather
-    than "fresh" for the vegetable it predicted.
+def forward_with_rot_maps(model: nn.Module, checkpoint: dict, images: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor]:
+    """Logits plus a 7x7 "rot map" per photo and vegetable, shape (photos, vegetables, h, w): how much each part of the
+    photo pushes that vegetable's "rotten" logit above its "fresh" logit.
 
     The classifier sits on top of average pooling, so the rotten-minus-fresh logit is exactly the mean over locations of
     (w_rotten - w_fresh) . feature(location); each location's term is its share (class activation map, Zhou et al. 2016).
     Only the positive part (evidence for rotten) is kept. For avg+max pooling only the average half is used.
+    Pick the map of the vegetable that was finally predicted.
     """
     arch = checkpoint["architecture"]
     store = {}
@@ -313,10 +314,9 @@ def forward_with_rot_map(model: nn.Module, checkpoint: dict, images: torch.Tenso
         hook.remove()
     features = store["features"]
     weight = classifier_layer(model, arch).weight[:, :features.shape[1]]
-    species = logits.argmax(1) // len(CONDITION_NAMES)
-    rotten, fresh = CONDITION_NAMES.index("rotten"), CONDITION_NAMES.index("fresh")
-    direction = weight[species * len(CONDITION_NAMES) + rotten] - weight[species * len(CONDITION_NAMES) + fresh]
-    return logits, torch.relu(torch.einsum("nc,nchw->nhw", direction, features))
+    weight = weight.reshape(-1, len(CONDITION_NAMES), features.shape[1])
+    direction = weight[:, CONDITION_NAMES.index("rotten")] - weight[:, CONDITION_NAMES.index("fresh")]
+    return logits, torch.relu(torch.einsum("sc,nchw->nshw", direction, features))
 
 
 def rot_map_overlay(image: Image.Image, rot_map: torch.Tensor, scale: float, size: int = 480) -> Image.Image:
@@ -333,3 +333,25 @@ def rot_map_overlay(image: Image.Image, rot_map: torch.Tensor, scale: float, siz
     canvas.paste(image, (0, 0))
     canvas.paste(overlay, (image.width + 8, 0))
     return canvas
+
+
+# ---------- CLIP classifier head combined with the vegetable model (experiments/clip_classifier) ----------
+def clip_head_logits(features: torch.Tensor, checkpoint: dict) -> torch.Tensor:
+    """Logits of the CLIP classifier head (multinomial logistic regression on L2-normalised CLIP image features)."""
+    head = checkpoint["clip_head"]
+    return features.float() @ head["coef"].T.to(features.device) + head["intercept"].to(features.device)
+
+
+def combined_logits(logits: torch.Tensor, clip_logits: torch.Tensor, checkpoint: dict) -> torch.Tensor:
+    """Sum of the two models' log-probabilities (the vegetable model at its own temperature)."""
+    temperature = checkpoint.get("calibration", {}).get("temperature", 1.0)
+    return torch.log_softmax(logits / temperature, 1) + torch.log_softmax(clip_logits, 1)
+
+
+def combined_probabilities(combined: torch.Tensor, checkpoint: dict) -> torch.Tensor:
+    return (combined / checkpoint["clip_head"]["temperature"]).softmax(1)
+
+
+def is_unknown_combined(logits: torch.Tensor, clip_logits: torch.Tensor, checkpoint: dict) -> torch.Tensor:
+    """Turned away when either model's own check says the photo is not one of the trained vegetables."""
+    return is_unknown(logits, checkpoint) | (unknown_score(clip_logits) > checkpoint["clip_head"]["unknown_threshold"])

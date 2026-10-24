@@ -1,0 +1,29 @@
+{
+ "test_accuracy_B": 275,
+ "test_accuracy_new": 284,
+ "kept_correct_now": 272,
+ "kept_correct_new": 280,
+ "rejected_now": 5,
+ "rejected_new": 7,
+ "species_accuracy_B": 287,
+ "species_accuracy_new": 291,
+ "condition_accuracy_B": 285,
+ "condition_accuracy_new": 291,
+ "fixed": [
+  "cucumber_fresh_0705",
+  "cucumber_rotten_0802",
+  "potato_fresh_0931",
+  "potato_rotten_0957",
+  "tomato_fresh_1063",
+  "tomato_rotten_1167",
+  "bellpepper_fresh_0019",
+  "bellpepper_fresh_0032",
+  "bellpepper_fresh_0043",
+  "carrot_rotten_0145"
+ ],
+ "broken": [
+  "bellpepper_rotten_0002 -> tomato_rotten"
+ ],
+ "adopt_rule": "kept_correct_new >= 272",
+ "adopt": true
+}

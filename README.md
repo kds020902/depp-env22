@@ -3,9 +3,9 @@
 1. **1차:** 사진 한 장으로 채소 종류(오이·감자·토마토)와 정상/비정상을 맞히는 6개 클래스 모델을, Kaggle 사진 600장(Test 없음)과 ResNet18(마지막 층만 학습)으로 만들었다.
 2. **데이터:** 교수님 상담에 따라 Kaggle 데이터 2개에서 1,200장으로 늘렸고, "채소 종류를 더 늘리라"는 의견에 따라 피망·당근을 더해 1,860장(Train 1,260 / Valid 300 / Test 300)으로 만들었다. 모든 분할에서 정상:비정상은 5:5다.
 3. **모델:** "모델 변경 필요" 의견에 따라 EfficientNet-B0 전체 미세조정과 데이터 증강으로 바꿨다.
-4. **현재:** 오이·감자·토마토·피망·당근 × 정상·비정상 10개 클래스를, 학습에 쓰지 않은 Test 300장에서 91.7%(275/300) 맞힌다(6개 클래스 때는 Test 180장에서 95.0%). 일부만 상한 채소를 더 잘 잡으려는 추가 실험은 기준을 넘지 못해 채택하지 않았다.
-5. **인터넷에 올라온 사진:** 사람들이 Flickr·Wikimedia에 올린 사진 221장에서는 75.6%(167장)를 맞힌다. 특히 밭에 달린 채 썩은 토마토를 잘 못 맞힌다.
-6. **확률과 학습하지 않은 사진:** 예측마다 보정된 확률을 함께 내고, 다섯 채소가 아닌 것 같은 사진에는 "학습된 데이터가 아닙니다"라고 답한다. 거르기 기준은 실제로 찍은 채소를 덜 놓치도록 실제 장면 채소 사진으로 다시 맞췄다(Test에서 잘못 거른 채소 10장 → 5장). 대신 일상 사진은 78%, 과일 사진은 27%만 거른다. 모델이 상했다고 본 부분을 사진 위에 빨갛게 표시하고, 확신이 낮으면 다시 찍기를 권한다([추가 기능](results/10class/extra_features/README.md)).
+4. **현재:** 오이·감자·토마토·피망·당근 × 정상·비정상 10개 클래스를, 학습에 쓰지 않은 Test 300장에서 **94.7%(284/300)** 맞힌다. 채소 모델(EfficientNet-B0)과 CLIP으로 만든 분류기를 함께 쓴다. 채소 모델만 쓰면 91.7%(275/300)다(6개 클래스 때는 Test 180장에서 95.0%).
+5. **인터넷에 올라온 사진:** 사람들이 Flickr·Wikimedia에 올린 사진 221장에서는 86.0%(190장)를 맞힌다. 채소 모델만 쓰면 75.6%(167장)다. 특히 밭에 달린 채 썩은 토마토가 어렵다.
+6. **확률과 학습하지 않은 사진:** 예측마다 보정된 확률을 함께 내고, 다섯 채소가 아닌 것 같은 사진에는 "학습된 데이터가 아닙니다"라고 답한다. 두 모델 중 하나라도 학습한 채소가 아니라고 보면 거른다. 일상 사진은 97%, 과일 사진은 65%를 거르고, 진짜 채소는 Test에서 7장(2.3%)을 잘못 거른다. 모델이 상했다고 본 부분을 사진 위에 빨갛게 표시하고, 확신이 낮으면 다시 찍기를 권한다([추가 기능](results/10class/extra_features/README.md)).
 
 ## 교수님 상담 반영
 
@@ -47,6 +47,13 @@ dataset/
     - 기존 1,200장의 분할은 그대로 두었다. 그래서 기존 Test 180장은 새 Test 300장 안에 그대로 들어 있다.
     - 작은 썸네일 복사본은 자동 검사가 놓쳐서, Valid·Test와 닮은 Train 사진 320쌍을 눈으로 보고, 같은 사진이거나 같은 채소를 다시 찍은 스톡 사진인 54쌍을 한 그룹으로 묶었다.
 
+### 2026.10 (외부 모델 사용 문의)
+
+- **"외부 모델이든 무엇이든 개선만 되면 된다":** CLIP(인터넷 사진 수억 장으로 학습한 공개 모델)의 특징 위에 우리 10개 클래스 분류기를 학습시켜, 채소 모델과 함께 쓰게 했다.
+    - Test 10개 클래스 정확도가 91.7%에서 94.7%로 올랐다.
+    - 인터넷 사진 정확도는 75.6%에서 86.0%로 올랐다.
+    - 과일 사진을 거르는 비율도 27%에서 65%로 올랐다([experiments/clip_classifier](experiments/clip_classifier/README.md)).
+
 ## 1차와 달라진 점
 
 | 항목 | 1차 | 현재 |
@@ -74,7 +81,23 @@ dataset/
 
 ## 결과 (현재 모델)
 
-현재 모델은 `model.pth`(EfficientNet-B0 전체 미세조정, 10개 클래스)다. 24 epoch까지 학습했고, Valid 점수로 16번째 epoch를 골랐다. Test는 마지막에 한 번만 채점했다.
+`model.pth`에는 채소 모델(EfficientNet-B0 전체 미세조정)과, CLIP 특징 위에서 학습한 분류기(`clip_head`)가 함께 들어 있다. `predict.py`는 두 모델의 판단을 합친다.
+
+| Test 300장 | 채소 모델 + CLIP (최종) | 채소 모델만 |
+|---|---:|---:|
+| 10개 클래스 | **94.7% (284)** | 91.7% (275) |
+| 채소 종류 (5종) | 97.0% (291) | 96.0% (288) |
+| 정상/비정상 | 97.0% (291) | 95.3% (286) |
+| 비정상 검출률 | 96.0% (144/150) | 95.3% (143/150) |
+| 정상 정답률 | 98.0% (147/150) | 95.3% (143/150) |
+| 인터넷 사진 221장 (10개 클래스) | **86.0% (190)** | 75.6% (167) |
+
+- CLIP 분류기를 함께 쓰는 방법은 결과를 보기 전에 규칙을 정해 두고 시험했다. 자세한 과정과 한계는 [experiments/clip_classifier](experiments/clip_classifier/README.md)에 있다.
+- 아래는 채소 모델만의 결과다.
+
+### 채소 모델(EfficientNet-B0)만
+
+채소 모델은 24 epoch까지 학습했고, Valid 점수로 16번째 epoch를 골랐다. Test는 마지막에 한 번만 채점했다.
 
 | 항목 | Valid 300장 | Test 300장 |
 |---|---:|---:|
@@ -110,6 +133,7 @@ Test에서 클래스별로 맞힌 수는 다음과 같다.
     - 나머지: 이상이 작거나 초기인 사진(싹이 조금 난 감자, 작은 반점), 감자처럼 보이는 갈색 오이 등
 - **학습 시간:** CPU 4코어에서 약 30분 걸렸다.
 - **추가 학습 시도:** 시드 변경, 썸네일 크기 증강, 더 긴 학습을 Valid로 비교했지만 미리 정한 기준을 넘지 못해 채택하지 않았다. 시드만 바꿔도 Valid가 2.3%p 달라졌다([experiments/10class_tuning](experiments/10class_tuning/README.md)).
+- **CLIP 분류기 함께 쓰기 (채택):** CLIP 특징 위에 10개 클래스 분류기를 학습시켜 채소 모델과 합쳤다. Test 91.7% → 94.7%, 인터넷 사진 75.6% → 86.0%다. CLIP 분류기만 쓰면 정상 토마토·피망을 비정상으로 보는 경우가 많아, 정상·상함 구분에 강한 채소 모델과 합쳤다([experiments/clip_classifier](experiments/clip_classifier/README.md)).
 - **채소 놓치지 않기 (채택):** 거르기 기준을 실제 장면 채소 사진으로 다시 맞췄다. Test에서 잘못 거른 채소가 10장에서 5장으로 줄었고, 인터넷 채소 맞게 남긴 수는 138장에서 158장으로 늘었다. 대신 인터넷 과일 거른 수는 233장에서 101장으로 줄었다([experiments/real_scene_threshold](experiments/real_scene_threshold/README.md)).
 - **CLIP 문지기 (채택 안 함):** 채소 모델 앞에 CLIP을 두고 "다섯 채소 중 하나인가?"만 물었다. 인터넷 과일 거른 수가 101장에서 353장(94%)으로, 일상 사진은 311장에서 392장(98%)으로 늘었고, 인터넷 채소 맞게 남긴 수는 158장에서 155장으로 조금 줄었다. 하지만 상한 토마토를 감·대추로 봐서 160장 시험지가 기준에 1장 모자랐다(141 < 142). 교수님 답변 후 Test를 한 번 채점해 보니, 맞게 남긴 수가 272장에서 266장으로 줄어 마지막 기준(269장)도 넘지 못했다. 거른 6장이 모두 상한 채소(오이·감자·토마토)였다([experiments/clip_gate](experiments/clip_gate/README.md)).
 - **논문 방법을 재학습 없이 적용:** 가중치 평균(model soup), ViM·KNN 같은 특징 공간 점수, 실제 장면 사진으로 맞춘 거르기 기준을 묶어 적용했다. 인터넷 채소 맞게 남긴 수는 138장에서 149장으로 늘었지만, 인터넷 과일 거른 수가 233장에서 106장으로 줄어 채택하지 않았다. 대부분 "채소 남기기"와 "과일 거르기" 사이에서 저울을 옮긴 것이었고, KNN 점수만 양쪽을 함께 조금 나아지게 했다([experiments/posthoc_literature](experiments/posthoc_literature/README.md)).
@@ -125,8 +149,8 @@ Test에서 클래스별로 맞힌 수는 다음과 같다.
 
 Test는 학습 데이터와 같은 Kaggle 데이터에서 나눈 사진이다. 처음 보는 출처에서도 맞히는지 보려고, 사람들이 Flickr와 Wikimedia Commons에 올린 사진 221장을 모아 정답을 먼저 정한 뒤 한 번 채점했다. 자세한 내용은 [results/10class/outside_test](results/10class/outside_test/README.md)에 있다.
 
-- **10개 클래스:** 75.6%(167/221)다. Test(91.7%)보다 16%p 낮다. 채소 종류만 보면 89.6%, 정상·상함만 보면 84.2%다.
-- **가장 큰 약점은 상한 토마토다(45장 중 17장).** 밭에 달린 채 아랫부분이 검게 썩은 토마토, 덜 익은 초록 토마토를 정상으로 보는 경우가 많다.
+- **10개 클래스:** 채소 모델과 CLIP을 함께 쓰면 86.0%(190/221)다. 채소 모델만 쓰면 75.6%(167/221)로 Test(91.7%)보다 16%p 낮았다(채소 종류만 89.6%, 정상·상함만 84.2%).
+- **가장 큰 약점은 상한 토마토다(채소 모델만: 45장 중 17장).** 밭에 달린 채 아랫부분이 검게 썩은 토마토, 덜 익은 초록 토마토를 정상으로 보는 경우가 많다.
 - 상한 오이·피망·당근은 공개 사진이 2~3장뿐이라 판단할 수 없다.
 
 ### 확률 보정과 "학습된 데이터가 아닙니다"
@@ -175,9 +199,11 @@ Python 3.11~3.12, PyTorch 2.8.0 CPU 환경에서 확인했다.
 
 ```bash
 python -m pip install torch==2.8.0 torchvision==0.23.0 --index-url https://download.pytorch.org/whl/cpu
-python -m pip install "Pillow>=10.0,<12.0" "numpy>=1.26,<3.0" matplotlib
+python -m pip install "Pillow>=10.0,<12.0" "numpy>=1.26,<3.0" matplotlib open_clip_torch
 python src/predict.py --model model.pth --input my_photos --output results.csv
 ```
+
+처음 실행하면 CLIP(약 600MB)을 내려받는다. 사진 1장에 CPU로 약 0.3초 걸린다. `--no-clip`을 붙이면 채소 모델만 쓴다(더 빠르지만 Test 91.7%).
 
 `my_photos` 폴더에 JPG·PNG 사진을 넣는다. 화면에는 사진마다 `bellpepper_rotten (피망 비정상, probability 99.8%)`처럼 나오고, 다섯 채소가 아닌 것 같은 사진은 `학습된 데이터가 아닙니다`라고 나온다. 결과 CSV의 열은 다음과 같다.
 - `predicted_class`: 예측이다. `cucumber`=오이, `potato`=감자, `tomato`=토마토, `bellpepper`=피망, `carrot`=당근이고, `fresh`=정상, `rotten`=비정상이다.
@@ -185,10 +211,10 @@ python src/predict.py --model model.pth --input my_photos --output results.csv
 - `probability`: 예측한 클래스의 보정된 확률(0~1)이다. `prob_*` 열은 10개 클래스 각각의 확률이다.
 - `species_probability`, `condition_probability`: 채소 종류만, 정상/비정상만 따로 본 확률이다(10개 확률을 더한 값).
 - `uncertain`: 확률이 0.5보다 낮으면 `yes`다. 기준은 `--uncertain-below`로 바꿀 수 있다.
-- `retake`: 이 판정의 확률이 90% 미만이거나 "학습된 데이터가 아닙니다"로 거른 사진이면 `yes`이고, `message`에 다시 찍기 안내가 들어간다. Valid에서 90% 이상은 97.6%, 미만은 73%를 맞혔다. 기준은 `--retake-below`로 바꿀 수 있다.
+- `retake`: 이 판정의 확률이 90% 미만이거나 "학습된 데이터가 아닙니다"로 거른 사진이면 `yes`이고, `message`에 다시 찍기 안내가 들어간다. 두 모델을 합친 확률로 Valid에서 90% 이상은 98.9%, 미만은 68%를 맞혔다. 기준은 `--retake-below`로 바꿀 수 있다.
 - `rot_evidence`, `heatmap`: 모델이 상했다고 본 정도(1이면 Valid 비정상 사진의 중간 수준)와 히트맵 파일이다. `--heatmap 폴더`를 주면 사진마다 원본과, 상했다고 본 부분을 빨갛게 칠한 사진을 나란히 저장한다.
-- `closest_guess`: `--clip-hint`를 주면, 거른 사진이 무엇과 가장 비슷한지(예: 사과) CLIP으로 알려 준다. `pip install open_clip_torch`가 필요하고, 처음에 약 600MB를 내려받는다.
-- `unknown_score`: 학습하지 않은 사진을 가르는 점수다. `model.pth`에 저장된 기준(−1.96)보다 크면 거른다.
+- `closest_guess`: 거른 사진이 무엇과 가장 비슷한지(예: 사과) CLIP으로 알려 준다. `message`에도 "(사과로 보입니다.)"처럼 붙는다.
+- `unknown_score`, `clip_unknown_score`: 채소 모델과 CLIP 분류기가 각각 학습하지 않은 사진을 가르는 점수다. `model.pth`에 저장된 기준(채소 모델 −1.96, CLIP 분류기 −3.44) 중 하나라도 넘으면 거른다.
 - 보정 정보는 `model.pth` 안에 있다. 새로 학습하면 `train.py`가 Valid로 자동으로 계산해 넣는다. 보정 정보가 없는 예전 가중치는 `python src/calibrate.py --model 가중치.pth`로 붙인다. 이렇게 하면 기준은 Valid만으로 정해진다. 지금 `model.pth`처럼 실제 장면 채소 사진도 함께 쓰려면 `--extra-photos 사진폴더`를 더한다([방법](experiments/real_scene_threshold/README.md#다시-돌리기)).
 
 ## 다시 학습하기
@@ -197,6 +223,8 @@ python src/predict.py --model model.pth --input my_photos --output results.csv
 # 최종 모델 (10개 클래스, EfficientNet-B0 미세조정)
 python src/train.py --manifest dataset/manifest.csv --out results/10class/efficientnet_b0_finetune --arch efficientnet_b0 --mode finetune --epochs 30 --patience 8
 python src/make_plots.py --runs results/10class
+# 채소 모델과 함께 쓰는 CLIP 분류기 (experiments/real_scene_threshold의 실제 장면 채소 192장이 필요)
+python src/train_clip_head.py --model model.pth --extra-photos lvis_vegetables
 
 # 6개 클래스 때의 모델 비교 (오이·감자·토마토만, 같은 Test 180장)
 python src/train.py --manifest dataset/manifest.csv --num-classes 6 --out results/efficientnet_b0_finetune --arch efficientnet_b0 --mode finetune --epochs 30 --patience 8
@@ -213,7 +241,7 @@ python src/make_plots.py
 depp-env22/
 ├── README.md
 ├── 학습결과_확인.ipynb      결과를 훑어보는 노트북
-├── model.pth                최종 모델 (EfficientNet-B0, 10개 클래스) 가중치와 클래스·전처리·성능 정보
+├── model.pth                최종 모델 (EfficientNet-B0 가중치 + CLIP 분류기, 10개 클래스)와 클래스·전처리·성능 정보
 ├── requirements.txt         필요한 파이썬 패키지
 ├── dataset/                 사진 1,860장과 데이터셋 설명
 │   ├── train/ valid/ test/  각각 P_fresh/(정상), N_rotten/(비정상)
@@ -225,7 +253,8 @@ depp-env22/
 ├── src/
 │   ├── train.py             학습
 │   ├── predict.py           내 사진 예측 (보정된 확률, "학습된 데이터가 아닙니다")
-│   ├── clip_hint.py         거른 사진에 "가장 가까운 것"을 알려 주는 선택 기능 (CLIP)
+│   ├── clip_model.py        CLIP 특징 계산, 거른 사진에 "가장 가까운 것" 알려주기
+│   ├── train_clip_head.py   CLIP 특징 위의 10개 클래스 분류기를 학습해 model.pth에 넣는 스크립트
 │   ├── calibrate.py         가중치에 확률 보정·거르기 기준을 붙이는 스크립트 (--extra-photos: 실제 장면 채소도 함께 사용)
 │   ├── model_utils.py       공통 함수 (모델 불러오기, 전처리, 클래스 이름)
 │   ├── make_plots.py        학습 곡선, 혼동행렬, 모델 비교 그래프
@@ -234,16 +263,17 @@ depp-env22/
 │   ├── 10class/             현재 10개 클래스 모델의 기록 (calibration_unknown/: 확률 보정·거르기 평가, outside_test/: 인터넷 사진 평가, extra_features/: 히트맵·다시 찍기 안내·가장 가까운 것)
 │   ├── (그 밖의 폴더)       6개 클래스 때의 모델 비교 (같은 Test 180장, 6개 클래스 가중치는 커밋 9dc8749의 model.pth)
 │   └── round1_v1_data/      1차 모델의 학습 기록 (1차 가중치는 커밋 03db425에 있음)
-└── experiments/             추가 실험 기록 (채택: real_scene_threshold / 채택 안 함: field_tomato, partial_rot, 10class_tuning, pepper_web, rotten_phone, more_data, fix_carrot_cucumber, asian_cucumber, fruit_other, fruit_gate, posthoc_literature, clip_gate)
+└── experiments/             추가 실험 기록 (채택: real_scene_threshold, clip_classifier / 채택 안 함: field_tomato, partial_rot, 10class_tuning, pepper_web, rotten_phone, more_data, fix_carrot_cucumber, asian_cucumber, fruit_other, fruit_gate, posthoc_literature, clip_gate)
 ```
 
 가중치는 용량 때문에 최종 모델(`model.pth`)만 올렸다.
 
 ## 한계
 
-- Test도 인터넷 사진이다. 다른 출처의 인터넷 사진 221장에서는 75.6%로 떨어진다. 직접 찍은 사진에서의 성능은 아직 측정하지 않았다.
+- Test도 인터넷 사진이다. 다른 출처의 인터넷 사진 221장에서는 86.0%로 떨어진다(채소 모델만 쓰면 75.6%). 직접 찍은 사진에서의 성능은 아직 측정하지 않았다.
+- 최종 판정은 CLIP(약 600MB)을 함께 돌려야 한다. 브라우저 데모는 크기 때문에 채소 모델만 쓴다.
 - Valid·Test가 각 300장이라 한 장이 0.33%p다. 95% 신뢰구간 폭이 약 ±3%p이므로 1~2%p 차이는 의미 있게 보기 어렵다.
-- 학습하지 않은 사진 거르기는 완벽하지 않다. 과일 사진은 44%가 그대로 10개 중 하나로 답하고, 진짜 채소 사진도 3%쯤 거른다. 걸러야 할 사진을 학습에 넣지 않고 출력 점수만 보는 방법이라, 채소와 비슷하게 찍힌 사진에 약하다.
+- 학습하지 않은 사진 거르기는 완벽하지 않다. 인터넷 과일 사진은 35%가 그대로 10개 중 하나로 답하고, 진짜 채소 사진도 Test에서 2.3% 거른다. 걸러야 할 사진을 학습에 넣지 않고 출력 점수만 보는 방법이라, 채소와 비슷하게 찍힌 사진에 약하다.
 - 피망·당근은 상한 사진이 부족해 Train이 클래스마다 106장·104장으로 다른 채소(140장)보다 적다.
 - 정상 피망 Train 106장 중 89장, 정상 당근 Train 104장 중 48장은 데이터 제공자가 직접 찍은 시장 사진이고, 상한 피망·당근은 모두 웹 사진이다. Valid·Test는 모두 웹 사진이라 점수가 부풀지는 않지만, 정상 피망 웹 사진에서 오답이 많다(Test 25/30).
 - 개체 ID가 없어서, 같은 채소를 다른 각도로 찍은 사진이 서로 다른 분할에 들어갔을 가능성은 남아 있다. 같은 사진의 복사본은 막았다.

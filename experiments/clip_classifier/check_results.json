@@ -1,0 +1,112 @@
+{
+ "note": "kept_correct = not turned away and the right class; current = B with threshold -1.962",
+ "current_B": {
+  "valid": {
+   "accuracy": 281,
+   "kept_correct": 278
+  },
+  "odev": {
+   "accuracy": 167,
+   "kept_correct": 158
+  },
+  "o160": {
+   "accuracy": 148,
+   "kept_correct": 146
+  },
+  "asian": {
+   "accuracy": 30,
+   "kept_correct": 29
+  },
+  "fruit_rejected": 101,
+  "coco_rejected": 311
+ },
+ "P_pre_registered_choice": {
+  "chosen": "P",
+  "temperature": 0.4957536458969116,
+  "valid_nll": {
+   "P": [
+    0.4957536458969116,
+    0.09534178672088664
+   ],
+   "BP": [
+    1.3571181297302246,
+    0.10361644119141455
+   ]
+  },
+  "unknown_threshold": -3.437262773513794,
+  "valid": {
+   "n": 300,
+   "accuracy": 288,
+   "kept_correct": 288,
+   "rejected": 0
+  },
+  "odev": {
+   "n": 221,
+   "accuracy": 203,
+   "kept_correct": 194,
+   "rejected": 10
+  },
+  "o160": {
+   "n": 160,
+   "accuracy": 129,
+   "kept_correct": 128,
+   "rejected": 6
+  },
+  "asian": {
+   "n": 37,
+   "accuracy": 36,
+   "kept_correct": 35,
+   "rejected": 1
+  },
+  "fruit": {
+   "n": 374,
+   "rejected": 210
+  },
+  "coco": {
+   "n": 400,
+   "rejected": 371
+  },
+  "checks_pass": false
+ },
+ "BP_exploratory": {
+  "unknown_threshold": 1.7003,
+  "valid": {
+   "accuracy": 288,
+   "kept_correct": 287
+  },
+  "odev": {
+   "accuracy": 190,
+   "kept_correct": 182
+  },
+  "o160": {
+   "accuracy": 150,
+   "kept_correct": 143
+  },
+  "asian": {
+   "accuracy": 32,
+   "kept_correct": 32
+  },
+  "fruit_rejected": 161,
+  "coco_rejected": 245
+ },
+ "BP_reject_if_either_adopted": {
+  "valid": {
+   "accuracy": 288,
+   "kept_correct": 285
+  },
+  "odev": {
+   "accuracy": 190,
+   "kept_correct": 173
+  },
+  "o160": {
+   "accuracy": 150,
+   "kept_correct": 145
+  },
+  "asian": {
+   "accuracy": 32,
+   "kept_correct": 31
+  },
+  "fruit_rejected": 244,
+  "coco_rejected": 389
+ }
+}

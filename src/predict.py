@@ -1,4 +1,9 @@
-"""Classify a photo or a directory using a trained checkpoint (vegetable species x fresh/rotten)."""
+"""Classify a photo or a directory using a trained checkpoint (vegetable species x fresh/rotten).
+
+When the checkpoint has a CLIP head (model.pth does), the vegetable model and the CLIP classifier are combined and a photo
+is turned away when either says it is not one of the trained vegetables (experiments/clip_classifier). This needs
+`pip install open_clip_torch` and downloads CLIP (about 600 MB) on first use; --no-clip uses the vegetable model alone.
+"""
 
 from __future__ import annotations
 
@@ -11,8 +16,9 @@ import torch
 
 from model_utils import (
     CONDITION_NAMES, IMAGE_EXTENSIONS, SPECIES_NAMES, UNKNOWN_MESSAGE,
-    calibrated_probabilities, forward_with_rot_map, input_size, is_unknown, load_model, make_transform,
-    marginal_probabilities, open_image, resolve_device, rot_map_overlay, unknown_score,
+    calibrated_probabilities, clip_head_logits, combined_logits, combined_probabilities, forward_with_rot_maps,
+    input_size, is_unknown, is_unknown_combined, load_model, make_transform, marginal_probabilities, open_image,
+    resolve_device, rot_map_overlay, unknown_score,
 )
 RETAKE_MESSAGE = "확신이 낮습니다. 채소 하나만, 밝은 곳에서, 상한 부분이 보이게 가까이 다시 찍어 보세요."
 KOREAN = {"cucumber": "오이", "potato": "감자", "tomato": "토마토", "bellpepper": "피망", "carrot": "당근",
@@ -38,10 +44,10 @@ def main():
                         help="Mark a photo as uncertain when the top class probability is below this value.")
     parser.add_argument("--retake-below", type=float, default=0.9,
                         help="Suggest taking the photo again when the top class probability is below this value "
-                             "(on Valid, 97.6%% of photos at 90%% or more were right, 73%% of those below).")
-    parser.add_argument("--clip-hint", action="store_true",
-                        help="For photos turned away, also name the closest thing with CLIP (needs open_clip_torch; "
-                             "downloads about 600 MB on first use). It does not change which photos are turned away.")
+                             "(combined model on Valid: 98.9%% of photos at 90%% or more were right, 68%% of those below).")
+    parser.add_argument("--no-clip", action="store_true",
+                        help="Use the vegetable model alone, without CLIP (faster, no 600 MB download; Test 91.7%% "
+                             "instead of 94.7%%, and no closest-thing hint for photos turned away).")
     parser.add_argument("--heatmap", type=Path,
                         help="Folder for heatmaps: each photo next to a copy where the parts the model saw as rotten "
                              "are coloured red (stronger red = stronger evidence).")
@@ -62,7 +68,8 @@ def main():
         "image", "known", "message", "closest_guess", "retake", "predicted_class", "species", "condition",
         "probability", "uncertain",
         "species_marginal_prediction", "species_probability",
-        "condition_marginal_prediction", "condition_probability", "unknown_score", "rot_evidence", "heatmap", "error",
+        "condition_marginal_prediction", "condition_probability", "unknown_score", "clip_unknown_score",
+        "rot_evidence", "heatmap", "error",
     ] + probability_columns
     if not calibrated:
         print("Note: this checkpoint has no calibration; run src/calibrate.py to get calibrated probabilities.",
@@ -71,13 +78,14 @@ def main():
     rot_scale = checkpoint.get("rot_map", {}).get("scale")
     if args.heatmap:
         args.heatmap.mkdir(parents=True, exist_ok=True)
-    hint = None
-    if args.clip_hint:
-        from clip_hint import ClipHint
+    clip = None
+    if "clip_head" in checkpoint and not args.no_clip:
+        from clip_model import ClipModel
         try:
-            hint = ClipHint(args.device)
+            clip = ClipModel(args.device, **checkpoint["clip_head"]["clip"])
         except ImportError:
-            raise SystemExit("--clip-hint needs open_clip: python -m pip install open_clip_torch") from None
+            raise SystemExit("This model also uses CLIP: python -m pip install open_clip_torch "
+                             "(or add --no-clip to use the vegetable model alone)") from None
     success = 0
     with args.output.open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, fieldnames=fields)
@@ -87,20 +95,28 @@ def main():
             try:
                 photo = open_image(path)
                 with torch.inference_mode():
-                    logits, rot_map = forward_with_rot_map(model, checkpoint, transform(photo).unsqueeze(0).to(device))
-                logits, rot_map = logits.cpu(), rot_map[0].cpu()
-                scale = rot_scale or float(rot_map.max()) or 1.0
-                probabilities = calibrated_probabilities(logits, checkpoint)
+                    logits, rot_maps = forward_with_rot_maps(model, checkpoint, transform(photo).unsqueeze(0).to(device))
+                logits, rot_maps = logits.cpu(), rot_maps[0].cpu()
+                clip_logits = None
+                if clip is not None:
+                    features = clip.image_features([photo]).cpu()
+                    clip_logits = clip_head_logits(features, checkpoint)
+                    probabilities = combined_probabilities(combined_logits(logits, clip_logits, checkpoint), checkpoint)
+                    unknown = bool(is_unknown_combined(logits, clip_logits, checkpoint)[0])
+                else:
+                    probabilities = calibrated_probabilities(logits, checkpoint)
+                    unknown = bool(is_unknown(logits, checkpoint)[0])
                 index = int(probabilities[0].argmax())
+                rot_map = rot_maps[index // len(CONDITION_NAMES)]
+                scale = rot_scale or float(rot_map.max()) or 1.0
                 species_probs, condition_probs = marginal_probabilities(probabilities)
                 species_index = int(species_probs[0].argmax())
                 condition_index = int(condition_probs[0].argmax())
-                unknown = bool(is_unknown(logits, checkpoint)[0])
                 retake = unknown or float(probabilities[0, index]) < args.retake_below
                 message = UNKNOWN_MESSAGE if unknown else ""
                 closest = ""
-                if unknown and hint is not None:
-                    closest, sentence = hint.message(photo)
+                if unknown and clip is not None:
+                    closest, sentence = clip.message(features[0])
                     message = f"{UNKNOWN_MESSAGE} ({sentence})"
                 elif retake:
                     message = RETAKE_MESSAGE
@@ -119,6 +135,7 @@ def main():
                     "condition_marginal_prediction": CONDITION_NAMES[condition_index],
                     "condition_probability": round(float(condition_probs[0, condition_index]), 4),
                     "unknown_score": round(float(unknown_score(logits)[0]), 4),
+                    "clip_unknown_score": "" if clip_logits is None else round(float(unknown_score(clip_logits)[0]), 4),
                     "rot_evidence": "" if unknown else round(float(rot_map.max()) / scale, 3),
                     "heatmap": "",
                     "error": "",

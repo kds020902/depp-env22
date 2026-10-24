@@ -1,8 +1,10 @@
-"""Closest-thing hint for photos turned away as "학습된 데이터가 아닙니다" (optional; needs `pip install open_clip_torch`).
+"""CLIP (open_clip ViT-B-16, DataComp-XL weights, about 600 MB, downloaded on first use; `pip install open_clip_torch`).
 
-CLIP (open_clip ViT-B-16, DataComp-XL weights, about 600 MB, downloaded on first use) compares the photo with 90 words:
-the five vegetables, 40 fruits, 26 other vegetables and 19 other things, and names the closest one. It only adds a hint;
-which photos are turned away is still decided by the vegetable model. The word list is the one of experiments/clip_gate.
+Two uses:
+- image features for the CLIP classifier head stored in model.pth (`clip_head`, made by train_clip_head.py), which is
+  combined with the vegetable model (experiments/clip_classifier);
+- a closest-thing hint for photos turned away as "학습된 데이터가 아닙니다": the photo is compared with 90 words (the five
+  vegetables, 40 fruits, 26 other vegetables, 19 other things; the word list of experiments/clip_gate).
 """
 
 from __future__ import annotations
@@ -58,13 +60,13 @@ def _with_ro(word: str) -> str:
     return word + ("(으)로" if final is None else "로" if final in (0, 8) else "으로")
 
 
-class ClipHint:
-    def __init__(self, device: str = "cpu"):
-        import open_clip  # optional dependency
+class ClipModel:
+    def __init__(self, device: str = "cpu", arch: str = ARCH, pretrained: str = PRETRAINED):
+        import open_clip  # needs open_clip_torch
         self.device = device
-        self.model, _, self.preprocess = open_clip.create_model_and_transforms(ARCH, pretrained=PRETRAINED, device=device)
+        self.model, _, self.preprocess = open_clip.create_model_and_transforms(arch, pretrained=pretrained, device=device)
         self.model.eval()
-        tokenizer = open_clip.get_tokenizer(ARCH)
+        tokenizer = open_clip.get_tokenizer(arch)
         with torch.inference_mode():
             def encode(texts):
                 return torch.nn.functional.normalize(self.model.encode_text(tokenizer(texts).to(device)), dim=-1)
@@ -74,16 +76,19 @@ class ClipHint:
         self.text = torch.stack(rows)
 
     @torch.inference_mode()
-    def closest(self, image) -> tuple[str, float]:
-        """The closest of the 90 words (English) and its share of the softmax."""
-        x = self.preprocess(image).unsqueeze(0).to(self.device)
-        features = torch.nn.functional.normalize(self.model.encode_image(x), dim=-1)
-        p = (100 * features @ self.text.T).softmax(1)[0]
+    def image_features(self, images) -> torch.Tensor:
+        """L2-normalised image features, one row per PIL image."""
+        x = torch.stack([self.preprocess(image) for image in images]).to(self.device)
+        return torch.nn.functional.normalize(self.model.encode_image(x), dim=-1)
+
+    def closest(self, features: torch.Tensor) -> tuple[str, float]:
+        """The closest of the 90 words (English) to one photo's features, and its share of the softmax."""
+        p = (100 * features.reshape(1, -1) @ self.text.T).softmax(1)[0]
         return NAMES[int(p.argmax())], float(p.max())
 
-    def message(self, image) -> tuple[str, str]:
-        """(closest word in Korean, hint sentence) for a photo the vegetable model turned away."""
-        name, _ = self.closest(image)
+    def message(self, features: torch.Tensor) -> tuple[str, str]:
+        """(closest word in Korean, hint sentence) for a photo that was turned away."""
+        name, _ = self.closest(features)
         korean = KOREAN[name]
         if name in TRAINED:
             return korean, f"{_with_wa(korean)} 가장 비슷하지만 모델이 확신하지 못했습니다. 채소 하나만 가까이에서 다시 찍어 보세요."
