@@ -1,0 +1,68 @@
+{
+ "gate_threshold": 0.005768541246652603,
+ "energy_threshold": -1.9618260860443115,
+ "test_correct": 275,
+ "kept_correct_now": 272,
+ "kept_correct_gate": 266,
+ "rejected_now": 5,
+ "rejected_gate_pipeline": 11,
+ "gate_rejected": 6,
+ "gate_rejected_photos": [
+  {
+   "image_id": "cucumber_rotten_0142",
+   "true": "cucumber_rotten",
+   "B_predicted": "cucumber_rotten",
+   "B_right": true,
+   "energy_rejected": false,
+   "clip_closest": "papaya",
+   "clip_vegetable_score": 0.0018
+  },
+  {
+   "image_id": "cucumber_rotten_0781",
+   "true": "cucumber_rotten",
+   "B_predicted": "cucumber_rotten",
+   "B_right": true,
+   "energy_rejected": false,
+   "clip_closest": "jujube",
+   "clip_vegetable_score": 0.0014
+  },
+  {
+   "image_id": "cucumber_rotten_0782",
+   "true": "cucumber_rotten",
+   "B_predicted": "cucumber_rotten",
+   "B_right": true,
+   "energy_rejected": false,
+   "clip_closest": "okra",
+   "clip_vegetable_score": 0.0054
+  },
+  {
+   "image_id": "potato_rotten_0399",
+   "true": "potato_rotten",
+   "B_predicted": "potato_rotten",
+   "B_right": true,
+   "energy_rejected": false,
+   "clip_closest": "peach",
+   "clip_vegetable_score": 0.0001
+  },
+  {
+   "image_id": "potato_rotten_0998",
+   "true": "potato_rotten",
+   "B_predicted": "potato_rotten",
+   "B_right": true,
+   "energy_rejected": false,
+   "clip_closest": "beet",
+   "clip_vegetable_score": 0.0026
+  },
+  {
+   "image_id": "tomato_rotten_0517",
+   "true": "tomato_rotten",
+   "B_predicted": "tomato_rotten",
+   "B_right": true,
+   "energy_rejected": false,
+   "clip_closest": "tangerine",
+   "clip_vegetable_score": 0.0017
+  }
+ ],
+ "adopt_rule": "kept_correct_gate >= 269",
+ "adopt": false
+}
