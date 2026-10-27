@@ -1,0 +1,76 @@
+{
+ "baseline_current_system": {
+  "valid": {
+   "accuracy": 288,
+   "kept_correct": 285,
+   "rejected": 3,
+   "n": 300
+  },
+  "lvis": {
+   "rejected": 38,
+   "n": 192
+  },
+  "odev": {
+   "accuracy": 190,
+   "kept_correct": 173,
+   "rejected": 26,
+   "n": 221
+  },
+  "o160": {
+   "accuracy": 150,
+   "kept_correct": 145,
+   "rejected": 7,
+   "n": 160
+  },
+  "asian": {
+   "accuracy": 32,
+   "kept_correct": 31,
+   "rejected": 2,
+   "n": 37
+  },
+  "fruit": {
+   "rejected": 244,
+   "n": 374
+  },
+  "coco": {
+   "rejected": 389,
+   "n": 400
+  }
+ },
+ "head_with_extra_photos": {
+  "pool_used": 1168,
+  "clip_threshold": -3.7047135829925537,
+  "combined_temperature": 1.3638509511947632,
+  "valid": {
+   "accuracy": 290,
+   "kept_correct": 287,
+   "rejected": 3
+  },
+  "lvis": {
+   "rejected": 38
+  },
+  "odev": {
+   "accuracy": 196,
+   "kept_correct": 177,
+   "rejected": 23
+  },
+  "o160": {
+   "accuracy": 150,
+   "kept_correct": 145,
+   "rejected": 5
+  },
+  "asian": {
+   "accuracy": 34,
+   "kept_correct": 33,
+   "rejected": 3
+  },
+  "fruit": {
+   "rejected": 233
+  },
+  "coco": {
+   "rejected": 380
+  },
+  "kept_correct_sum": 642,
+  "checks_pass": false
+ }
+}
