@@ -20,6 +20,8 @@ from model_utils import (
     input_size, is_unknown, is_unknown_combined, load_model, make_transform, marginal_probabilities, open_image,
     resolve_device, rot_map_overlay, unknown_score,
 )
+from report import image_data_uri, write_report
+
 RETAKE_MESSAGE = "확신이 낮습니다. 채소 하나만, 밝은 곳에서, 상한 부분이 보이게 가까이 다시 찍어 보세요."
 KOREAN = {"cucumber": "오이", "potato": "감자", "tomato": "토마토", "bellpepper": "피망", "carrot": "당근",
           "fresh": "정상", "rotten": "비정상"}
@@ -48,6 +50,9 @@ def main():
     parser.add_argument("--no-clip", action="store_true",
                         help="Use the vegetable model alone, without CLIP (faster, no 600 MB download; Test 91.7%% "
                              "instead of 94.7%%, and no closest-thing hint for photos turned away).")
+    parser.add_argument("--report", type=Path,
+                        help="Also write one HTML report (photos embedded, opens offline): counts, a table by vegetable, "
+                             "filters and one card per photo with its heatmap.")
     parser.add_argument("--heatmap", type=Path,
                         help="Folder for heatmaps: each photo next to a copy where the parts the model saw as rotten "
                              "are coloured red (stronger red = stronger evidence).")
@@ -86,6 +91,7 @@ def main():
         except ImportError:
             raise SystemExit("This model also uses CLIP: python -m pip install open_clip_torch "
                              "(or add --no-clip to use the vegetable model alone)") from None
+    entries = []
     success = 0
     with args.output.open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, fieldnames=fields)
@@ -145,6 +151,16 @@ def main():
                     rot_map_overlay(photo, rot_map, scale).save(heatmap_path, quality=90)
                     row["heatmap"] = str(heatmap_path)
                 row.update({column: round(float(probabilities[0, i]), 4) for i, column in enumerate(probability_columns)})
+                if args.report:
+                    entries.append({
+                        "name": path.name, "verdict": "unknown" if unknown else CONDITION_NAMES[index % 2],
+                        "species": KOREAN[SPECIES_NAMES[index // 2]], "condition": KOREAN[CONDITION_NAMES[index % 2]],
+                        "probability": float(probabilities[0, index]), "retake": retake, "retake_message": RETAKE_MESSAGE,
+                        "closest": closest, "hint": message[len(UNKNOWN_MESSAGE):].strip(" ()") if unknown else "",
+                        "rot": None if unknown else float(row["rot_evidence"]), "photo_uri": image_data_uri(photo),
+                        "heat_uri": "" if unknown else image_data_uri(
+                            rot_map_overlay(photo, rot_map, scale, size=360, side_by_side=False)),
+                    })
                 success += 1
                 if unknown:
                     print(f"{path.name}: {message}")
@@ -156,9 +172,24 @@ def main():
                           f"{KOREAN[CONDITION_NAMES[index % 2]]}, {word} {100 * row['probability']:.1f}%){flag}{advice}")
             except (OSError, ValueError, RuntimeError) as error:
                 row["error"] = f"{type(error).__name__}: {error}"
+                if args.report:
+                    entries.append({"name": path.name, "verdict": "error", "error": row["error"]})
                 print(f"Could not classify {path}: {error}", file=sys.stderr)
             writer.writerow(row)
     print(f"Saved {success}/{len(photos)} successful predictions to {args.output.resolve()}")
+    if args.report:
+        write_report(args.report, entries, {
+            "model": "채소 모델 + CLIP 분류기 (Test 94.7%)" if clip is not None else "채소 모델만 (Test 91.7%)",
+            "source": f"입력 폴더: {args.input.expanduser().resolve().name}",
+            "notes": [
+                "확률은 Valid 사진으로 보정한 값입니다. 이 판정의 확률이 90% 미만이면 다시 찍기를 권합니다.",
+                "상한 흔적은 모델이 '비정상' 쪽으로 본 정도입니다. 1이면 Valid 비정상 사진의 중간 수준입니다.",
+                "'상한 곳 보기'의 빨간 부분은 모델이 상했다고 본 곳입니다. 7×7칸 단위라 대략적인 위치입니다.",
+                "'학습된 데이터가 아닙니다'는 오이·감자·토마토·피망·당근 사진이 아닌 것 같다는 뜻입니다.",
+                "인터넷 사진으로 학습해서, 직접 찍은 사진에서는 정확도가 다를 수 있습니다.",
+            ],
+        })
+        print(f"Saved the report to {args.report.resolve()}")
     if not success:
         raise SystemExit(1)
 

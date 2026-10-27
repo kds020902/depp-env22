@@ -319,8 +319,10 @@ def forward_with_rot_maps(model: nn.Module, checkpoint: dict, images: torch.Tens
     return logits, torch.relu(torch.einsum("sc,nchw->nshw", direction, features))
 
 
-def rot_map_overlay(image: Image.Image, rot_map: torch.Tensor, scale: float, size: int = 480) -> Image.Image:
-    """The plain photo next to a copy with the rot map laid over it in red (stronger red = stronger rot evidence).
+def rot_map_overlay(image: Image.Image, rot_map: torch.Tensor, scale: float, size: int = 480,
+                    side_by_side: bool = True) -> Image.Image:
+    """The plain photo next to a copy with the rot map laid over it in red (stronger red = stronger rot evidence);
+    side_by_side=False returns the coloured copy only.
     The map is divided by a fixed scale (not by its own maximum), so a fresh-looking photo stays almost uncoloured."""
     image = image.copy()
     image.thumbnail((size, size))
@@ -329,6 +331,8 @@ def rot_map_overlay(image: Image.Image, rot_map: torch.Tensor, scale: float, siz
     color = np.array([230.0, 20.0, 20.0])
     alpha = 0.7 * level
     overlay = Image.fromarray((np.asarray(image) * (1 - alpha) + color * alpha).astype(np.uint8))
+    if not side_by_side:
+        return overlay
     canvas = Image.new("RGB", (image.width * 2 + 8, image.height), "white")
     canvas.paste(image, (0, 0))
     canvas.paste(overlay, (image.width + 8, 0))
