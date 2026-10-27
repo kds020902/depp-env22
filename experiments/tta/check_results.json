@@ -1,0 +1,81 @@
+{
+ "baseline_current_system": {
+  "valid": {
+   "accuracy": 288,
+   "kept_correct": 285,
+   "rejected": 3,
+   "n": 300
+  },
+  "lvis": {
+   "rejected": 38,
+   "n": 192
+  },
+  "odev": {
+   "accuracy": 190,
+   "kept_correct": 173,
+   "rejected": 26,
+   "n": 221
+  },
+  "o160": {
+   "accuracy": 150,
+   "kept_correct": 145,
+   "rejected": 7,
+   "n": 160
+  },
+  "asian": {
+   "accuracy": 32,
+   "kept_correct": 31,
+   "rejected": 2,
+   "n": 37
+  },
+  "fruit": {
+   "rejected": 244,
+   "n": 374
+  },
+  "coco": {
+   "rejected": 389,
+   "n": 400
+  }
+ },
+ "tta": {
+  "chosen": "T1",
+  "fit": {
+   "b_temperature": 0.5095965266227722,
+   "b_threshold": -1.891576886177063,
+   "clip_threshold": -3.4372637271881104,
+   "combined_temperature": 1.3500956296920776,
+   "valid_nll": 0.098930723965168
+  },
+  "valid": {
+   "accuracy": 289,
+   "kept_correct": 285,
+   "rejected": 4
+  },
+  "lvis": {
+   "rejected": 39
+  },
+  "odev": {
+   "accuracy": 185,
+   "kept_correct": 168,
+   "rejected": 28
+  },
+  "o160": {
+   "accuracy": 150,
+   "kept_correct": 146,
+   "rejected": 6
+  },
+  "asian": {
+   "accuracy": 33,
+   "kept_correct": 32,
+   "rejected": 2
+  },
+  "fruit": {
+   "rejected": 239
+  },
+  "coco": {
+   "rejected": 387
+  },
+  "kept_correct_sum": 631,
+  "checks_pass": false
+ }
+}
