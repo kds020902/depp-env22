@@ -1,6 +1,11 @@
 """Fit the CLIP classifier head and store it in a checkpoint (experiments/clip_classifier).
 
     python src/train_clip_head.py --model model.pth --extra-photos lvis_vegetables
+    python src/train_clip_head.py --model model.pth --extra-photos lvis_vegetables --extra-train extra_train.csv
+
+--extra-train adds photos to the head's training set (CSV with columns path, class_name). class_name "not_five" photos
+(fruit, everyday photos, other vegetables) become an 11th class, and the head's "not a trained vegetable" score becomes
+that class's log-odds against all vegetable classes (experiments/not_five_class).
 
 1. CLIP image features (open_clip ViT-B-16, DataComp-XL weights) for the Train and Valid photos of the manifest.
 2. Multinomial logistic regression (C=10) on the Train photos only.
@@ -14,6 +19,7 @@ Needs scikit-learn and open_clip_torch.
 from __future__ import annotations
 
 import argparse
+import csv
 from pathlib import Path
 
 import torch
@@ -22,8 +28,10 @@ from torch.utils.data import DataLoader
 
 from clip_model import ARCH, PRETRAINED, ClipModel
 from model_utils import (
-    CLASS_NAMES, IMAGE_EXTENSIONS, combined_logits, fit_temperature, input_size, load_model, open_image, unknown_score,
+    CLASS_NAMES, IMAGE_EXTENSIONS, clip_unknown_score, combined_logits, fit_temperature, input_size, load_model, open_image,
 )
+
+NOT_FIVE = "not_five"
 from train import CachedImages, predict_logits, read_manifest
 
 
@@ -39,6 +47,8 @@ def main():
     parser.add_argument("--extra-photos", type=Path, required=True,
                         help="Folder of real-world vegetable photos pooled with Valid for the CLIP head's threshold "
                              "(experiments/real_scene_threshold/crop_lvis.py makes the 192 used for model.pth).")
+    parser.add_argument("--extra-train", type=Path, help="CSV (path, class_name) of extra training photos for the head; "
+                        "class_name may be a vegetable class or not_five.")
     parser.add_argument("--c", type=float, default=10.0, help="Inverse regularisation strength of the head.")
     parser.add_argument("--accept-rate", type=float, default=0.95)
     parser.add_argument("--threads", type=int, default=4)
@@ -49,12 +59,22 @@ def main():
     splits = read_manifest(manifest, CLASS_NAMES[:len(checkpoint["class_names"])])
     clip = ClipModel("cpu")
 
-    train_x = clip_features(clip, [manifest.parent / r["image_path"] for r in splits["train"]])
+    class_names = list(checkpoint["class_names"])
+    train_paths = [manifest.parent / r["image_path"] for r in splits["train"]]
     train_y = [int(r["class_id"]) for r in splits["train"]]
+    n_extra = 0
+    if args.extra_train:
+        with args.extra_train.open(encoding="utf-8") as handle:
+            for r in csv.DictReader(handle):
+                train_paths.append(Path(r["path"]))
+                train_y.append(len(class_names) if r["class_name"] == NOT_FIVE else class_names.index(r["class_name"]))
+                n_extra += 1
+    other_class = len(class_names) in train_y
+    train_x = clip_features(clip, train_paths)
     head = LogisticRegression(C=args.c, max_iter=5000).fit(train_x.numpy(), train_y)
     clip_head = {"clip": {"arch": ARCH, "pretrained": PRETRAINED},
                  "coef": torch.tensor(head.coef_, dtype=torch.float32),
-                 "intercept": torch.tensor(head.intercept_, dtype=torch.float32)}
+                 "intercept": torch.tensor(head.intercept_, dtype=torch.float32), "other_class": other_class}
     with_head = {**checkpoint, "clip_head": clip_head}
 
     val = splits["val"]
@@ -62,23 +82,25 @@ def main():
     with torch.no_grad():
         val_logits, val_y = predict_logits(model, loader, torch.device("cpu"))
     val_clip = clip_features(clip, [manifest.parent / r["image_path"] for r in val]) @ clip_head["coef"].T + clip_head["intercept"]
-    temperature = fit_temperature(combined_logits(val_logits, val_clip, checkpoint), val_y)
+    temperature = fit_temperature(combined_logits(val_logits, val_clip, with_head), val_y)
 
     extra = sorted(p for p in args.extra_photos.iterdir() if p.suffix.lower() in IMAGE_EXTENSIONS)
     extra_clip = clip_features(clip, extra) @ clip_head["coef"].T + clip_head["intercept"]
-    threshold = float(torch.quantile(unknown_score(torch.cat([val_clip, extra_clip])), args.accept_rate))
+    threshold = float(torch.quantile(clip_unknown_score(torch.cat([val_clip, extra_clip]), with_head), args.accept_rate))
 
-    clip_head.update({"head": f"multinomial logistic regression, C={args.c}, on {len(train_y)} Train photos",
+    n_other = sum(y == len(class_names) for y in train_y)
+    clip_head.update({"head": f"multinomial logistic regression, C={args.c}, on {len(train_y) - n_extra} Train photos"
+                              + (f" + {n_extra} extra photos ({n_other} not_five)" if n_extra else ""),
                       "temperature": temperature, "temperature_fitted_on": "val (combined model)",
                       "unknown_threshold": threshold, "accept_rate": args.accept_rate,
                       "unknown_fitted_on": f"val + {len(extra)} extra real-world vegetable photos",
-                      "notes": "experiments/clip_classifier"})
+                      "notes": "experiments/not_five_class" if other_class else "experiments/clip_classifier"})
     raw = torch.load(args.model, map_location="cpu", weights_only=True)
     raw["clip_head"] = clip_head
     torch.save(raw, args.model)
     combined = combined_logits(val_logits, val_clip, with_head)
     print({"train_photos": len(train_y), "valid_accuracy_combined": int((combined.argmax(1) == val_y).sum()),
-           "valid_accuracy_clip_head": int((val_clip.argmax(1) == val_y).sum()), "temperature": round(temperature, 4),
+           "valid_accuracy_clip_head": int((val_clip[:, :len(class_names)].argmax(1) == val_y).sum()), "temperature": round(temperature, 4),
            "clip_unknown_threshold": round(threshold, 4)})
 
 

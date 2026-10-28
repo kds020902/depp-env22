@@ -1,0 +1,56 @@
+{
+ "vegetable_model_B": {
+  "Train 1,260": 100.0,
+  "Valid 300": 93.7,
+  "Test 300": 91.7,
+  "internet 221": 75.6,
+  "160 exam": 92.5
+ },
+ "clip_head_N3_alone": {
+  "Train 1,260": 99.9,
+  "Valid 300": 96.3,
+  "Test 300": 95.3,
+  "internet 221": 93.7,
+  "160 exam": 77.5
+ },
+ "combined_system": {
+  "Train 1,260": 100.0,
+  "Valid 300": 97.0,
+  "Test 300": 96.0,
+  "internet 221": 90.0,
+  "160 exam": 93.8
+ },
+ "clip_head_N3_own_training_photos_11_classes": 99.7,
+ "clip_head_C_sweep": {
+  "C=0.01": {
+   "train_acc_11": 48.5,
+   "valid_acc_head": 28.3,
+   "valid_nll_head": 2.02,
+   "internet221_acc_head": 44.3
+  },
+  "C=0.1": {
+   "train_acc_11": 92.1,
+   "valid_acc_head": 90.3,
+   "valid_nll_head": 0.922,
+   "internet221_acc_head": 88.7
+  },
+  "C=1": {
+   "train_acc_11": 98.5,
+   "valid_acc_head": 96.0,
+   "valid_nll_head": 0.301,
+   "internet221_acc_head": 94.1
+  },
+  "C=10": {
+   "train_acc_11": 99.7,
+   "valid_acc_head": 96.3,
+   "valid_nll_head": 0.137,
+   "internet221_acc_head": 93.7
+  },
+  "C=100": {
+   "train_acc_11": 100.0,
+   "valid_acc_head": 96.7,
+   "valid_nll_head": 0.102,
+   "internet221_acc_head": 92.8
+  }
+ }
+}

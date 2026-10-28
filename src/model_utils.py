@@ -341,15 +341,29 @@ def rot_map_overlay(image: Image.Image, rot_map: torch.Tensor, scale: float, siz
 
 # ---------- CLIP classifier head combined with the vegetable model (experiments/clip_classifier) ----------
 def clip_head_logits(features: torch.Tensor, checkpoint: dict) -> torch.Tensor:
-    """Logits of the CLIP classifier head (multinomial logistic regression on L2-normalised CLIP image features)."""
+    """Logits of the CLIP classifier head (multinomial logistic regression on L2-normalised CLIP image features).
+    With "other_class" the last column is "not one of the five vegetables" (experiments/not_five_class)."""
     head = checkpoint["clip_head"]
     return features.float() @ head["coef"].T.to(features.device) + head["intercept"].to(features.device)
+
+
+def clip_class_logits(clip_logits: torch.Tensor, checkpoint: dict) -> torch.Tensor:
+    """The CLIP head's logits for the trained vegetable classes only."""
+    return clip_logits[:, :-1] if checkpoint["clip_head"].get("other_class") else clip_logits
+
+
+def clip_unknown_score(clip_logits: torch.Tensor, checkpoint: dict) -> torch.Tensor:
+    """Higher = less like a trained vegetable. With an "other" class: its log-odds against all vegetable classes;
+    otherwise the energy of the head's logits, as for the vegetable model."""
+    if checkpoint["clip_head"].get("other_class"):
+        return clip_logits[:, -1] - torch.logsumexp(clip_logits[:, :-1], 1)
+    return unknown_score(clip_logits)
 
 
 def combined_logits(logits: torch.Tensor, clip_logits: torch.Tensor, checkpoint: dict) -> torch.Tensor:
     """Sum of the two models' log-probabilities (the vegetable model at its own temperature)."""
     temperature = checkpoint.get("calibration", {}).get("temperature", 1.0)
-    return torch.log_softmax(logits / temperature, 1) + torch.log_softmax(clip_logits, 1)
+    return torch.log_softmax(logits / temperature, 1) + torch.log_softmax(clip_class_logits(clip_logits, checkpoint), 1)
 
 
 def combined_probabilities(combined: torch.Tensor, checkpoint: dict) -> torch.Tensor:
@@ -358,4 +372,4 @@ def combined_probabilities(combined: torch.Tensor, checkpoint: dict) -> torch.Te
 
 def is_unknown_combined(logits: torch.Tensor, clip_logits: torch.Tensor, checkpoint: dict) -> torch.Tensor:
     """Turned away when either model's own check says the photo is not one of the trained vegetables."""
-    return is_unknown(logits, checkpoint) | (unknown_score(clip_logits) > checkpoint["clip_head"]["unknown_threshold"])
+    return is_unknown(logits, checkpoint) | (clip_unknown_score(clip_logits, checkpoint) > checkpoint["clip_head"]["unknown_threshold"])

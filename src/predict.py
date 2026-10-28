@@ -16,7 +16,7 @@ import torch
 
 from model_utils import (
     CONDITION_NAMES, IMAGE_EXTENSIONS, SPECIES_NAMES, UNKNOWN_MESSAGE,
-    calibrated_probabilities, clip_head_logits, combined_logits, combined_probabilities, forward_with_rot_maps,
+    calibrated_probabilities, clip_head_logits, clip_unknown_score, combined_logits, combined_probabilities, forward_with_rot_maps,
     input_size, is_unknown, is_unknown_combined, load_model, make_transform, marginal_probabilities, open_image,
     resolve_device, rot_map_overlay, unknown_score,
 )
@@ -141,7 +141,7 @@ def main():
                     "condition_marginal_prediction": CONDITION_NAMES[condition_index],
                     "condition_probability": round(float(condition_probs[0, condition_index]), 4),
                     "unknown_score": round(float(unknown_score(logits)[0]), 4),
-                    "clip_unknown_score": "" if clip_logits is None else round(float(unknown_score(clip_logits)[0]), 4),
+                    "clip_unknown_score": "" if clip_logits is None else round(float(clip_unknown_score(clip_logits, checkpoint)[0]), 4),
                     "rot_evidence": "" if unknown else round(float(rot_map.max()) / scale, 3),
                     "heatmap": "",
                     "error": "",

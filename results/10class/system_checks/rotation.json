@@ -1,0 +1,116 @@
+{
+ "valid": {
+  "n": 300,
+  "original": {
+   "accuracy": 291,
+   "kept_correct": 284,
+   "rejected": 7,
+   "same_answer_as_original": 300
+  },
+  "rotate 90": {
+   "accuracy": 287,
+   "kept_correct": 273,
+   "rejected": 15,
+   "same_answer_as_original": 292
+  },
+  "rotate 180": {
+   "accuracy": 288,
+   "kept_correct": 273,
+   "rejected": 15,
+   "same_answer_as_original": 293
+  },
+  "rotate 270": {
+   "accuracy": 289,
+   "kept_correct": 279,
+   "rejected": 11,
+   "same_answer_as_original": 290
+  },
+  "tilt +15": {
+   "accuracy": 287,
+   "kept_correct": 277,
+   "rejected": 12,
+   "same_answer_as_original": 284
+  },
+  "tilt -15": {
+   "accuracy": 282,
+   "kept_correct": 269,
+   "rejected": 13,
+   "same_answer_as_original": 285
+  },
+  "tilt +30": {
+   "accuracy": 276,
+   "kept_correct": 261,
+   "rejected": 19,
+   "same_answer_as_original": 277
+  },
+  "flip left-right": {
+   "accuracy": 291,
+   "kept_correct": 282,
+   "rejected": 10,
+   "same_answer_as_original": 298
+  },
+  "flip up-down": {
+   "accuracy": 287,
+   "kept_correct": 278,
+   "rejected": 9,
+   "same_answer_as_original": 294
+  }
+ },
+ "odev": {
+  "n": 221,
+  "original": {
+   "accuracy": 199,
+   "kept_correct": 175,
+   "rejected": 28,
+   "same_answer_as_original": 221
+  },
+  "rotate 90": {
+   "accuracy": 191,
+   "kept_correct": 164,
+   "rejected": 36,
+   "same_answer_as_original": 207
+  },
+  "rotate 180": {
+   "accuracy": 187,
+   "kept_correct": 164,
+   "rejected": 34,
+   "same_answer_as_original": 205
+  },
+  "rotate 270": {
+   "accuracy": 194,
+   "kept_correct": 166,
+   "rejected": 37,
+   "same_answer_as_original": 208
+  },
+  "tilt +15": {
+   "accuracy": 190,
+   "kept_correct": 169,
+   "rejected": 25,
+   "same_answer_as_original": 204
+  },
+  "tilt -15": {
+   "accuracy": 190,
+   "kept_correct": 173,
+   "rejected": 23,
+   "same_answer_as_original": 206
+  },
+  "tilt +30": {
+   "accuracy": 188,
+   "kept_correct": 168,
+   "rejected": 24,
+   "same_answer_as_original": 202
+  },
+  "flip left-right": {
+   "accuracy": 200,
+   "kept_correct": 176,
+   "rejected": 26,
+   "same_answer_as_original": 218
+  },
+  "flip up-down": {
+   "accuracy": 188,
+   "kept_correct": 159,
+   "rejected": 40,
+   "same_answer_as_original": 210
+  }
+ }
+}

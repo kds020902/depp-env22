@@ -1,0 +1,91 @@
+{
+ "new_test_241": {
+  "current": {
+   "accuracy": 191,
+   "kept_correct": 165,
+   "rejected": 46,
+   "by_class": {
+    "cucumber_fresh": "22/24 (kept 21)",
+    "cucumber_rotten": "2/2 (kept 2)",
+    "potato_fresh": "12/16 (kept 12)",
+    "potato_rotten": "14/17 (kept 11)",
+    "tomato_fresh": "40/41 (kept 38)",
+    "tomato_rotten": "44/74 (kept 29)",
+    "bellpepper_fresh": "19/22 (kept 19)",
+    "bellpepper_rotten": "1/7 (kept 1)",
+    "carrot_fresh": "36/37 (kept 31)",
+    "carrot_rotten": "1/1 (kept 1)"
+   }
+  },
+  "N3": {
+   "accuracy": 203,
+   "kept_correct": 169,
+   "rejected": 49,
+   "by_class": {
+    "cucumber_fresh": "22/24 (kept 19)",
+    "cucumber_rotten": "2/2 (kept 2)",
+    "potato_fresh": "12/16 (kept 12)",
+    "potato_rotten": "15/17 (kept 10)",
+    "tomato_fresh": "40/41 (kept 37)",
+    "tomato_rotten": "55/74 (kept 39)",
+    "bellpepper_fresh": "20/22 (kept 20)",
+    "bellpepper_rotten": "2/7 (kept 2)",
+    "carrot_fresh": "34/37 (kept 27)",
+    "carrot_rotten": "1/1 (kept 1)"
+   }
+  },
+  "fixed": 14,
+  "broken": 2
+ },
+ "new_test_by_source": {
+  "openverse": {
+   "current": 131,
+   "N3": 133,
+   "n": 146
+  },
+  "inaturalist": {
+   "current": 60,
+   "N3": 70,
+   "n": 95
+  }
+ },
+ "test_300": {
+  "current": {
+   "accuracy": 284,
+   "kept_correct": 280,
+   "rejected": 7,
+   "by_class": {
+    "cucumber_fresh": "30/30 (kept 30)",
+    "cucumber_rotten": "28/30 (kept 28)",
+    "potato_fresh": "29/30 (kept 29)",
+    "potato_rotten": "29/30 (kept 28)",
+    "tomato_fresh": "30/30 (kept 29)",
+    "tomato_rotten": "25/30 (kept 25)",
+    "bellpepper_fresh": "28/30 (kept 28)",
+    "bellpepper_rotten": "26/30 (kept 24)",
+    "carrot_fresh": "30/30 (kept 30)",
+    "carrot_rotten": "29/30 (kept 29)"
+   }
+  },
+  "N3": {
+   "accuracy": 288,
+   "kept_correct": 282,
+   "rejected": 9,
+   "by_class": {
+    "cucumber_fresh": "30/30 (kept 28)",
+    "cucumber_rotten": "27/30 (kept 27)",
+    "potato_fresh": "29/30 (kept 29)",
+    "potato_rotten": "29/30 (kept 28)",
+    "tomato_fresh": "30/30 (kept 29)",
+    "tomato_rotten": "27/30 (kept 27)",
+    "bellpepper_fresh": "29/30 (kept 29)",
+    "bellpepper_rotten": "28/30 (kept 26)",
+    "carrot_fresh": "30/30 (kept 30)",
+    "carrot_rotten": "29/30 (kept 29)"
+   }
+  },
+  "fixed": 5,
+  "broken": 1
+ },
+ "adopt": true
+}

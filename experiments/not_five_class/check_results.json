@@ -1,0 +1,153 @@
+{
+ "N1": {
+  "train_photos": {
+   "vegetable": 1260,
+   "not_five": 2850
+  },
+  "clip_threshold": 0.09597064554691315,
+  "combined_temperature": 1.3548694849014282,
+  "valid": {
+   "accuracy": 288,
+   "kept_correct": 281,
+   "rejected": 7
+  },
+  "lvis": {
+   "rejected": 39
+  },
+  "odev": {
+   "accuracy": 190,
+   "kept_correct": 152,
+   "rejected": 51
+  },
+  "odev_by_class": {
+   "cucumber_fresh": "12/12",
+   "cucumber_rotten": "2/2",
+   "potato_fresh": "13/16",
+   "potato_rotten": "37/42",
+   "tomato_fresh": "48/49",
+   "tomato_rotten": "24/45",
+   "bellpepper_fresh": "22/22",
+   "bellpepper_rotten": "2/2",
+   "carrot_fresh": "27/28",
+   "carrot_rotten": "3/3"
+  },
+  "o160": {
+   "accuracy": 150,
+   "kept_correct": 147,
+   "rejected": 3
+  },
+  "asian": {
+   "accuracy": 32,
+   "kept_correct": 25,
+   "rejected": 9
+  },
+  "fruit": {
+   "rejected": 359
+  },
+  "coco": {
+   "rejected": 400
+  },
+  "checks_pass": false
+ },
+ "N2": {
+  "train_photos": {
+   "vegetable": 2893,
+   "not_five": 2850
+  },
+  "clip_threshold": -0.6083178520202637,
+  "combined_temperature": 1.3567084074020386,
+  "valid": {
+   "accuracy": 291,
+   "kept_correct": 284,
+   "rejected": 7
+  },
+  "lvis": {
+   "rejected": 37
+  },
+  "odev": {
+   "accuracy": 199,
+   "kept_correct": 175,
+   "rejected": 28
+  },
+  "odev_by_class": {
+   "cucumber_fresh": "12/12",
+   "cucumber_rotten": "2/2",
+   "potato_fresh": "15/16",
+   "potato_rotten": "37/42",
+   "tomato_fresh": "48/49",
+   "tomato_rotten": "32/45",
+   "bellpepper_fresh": "22/22",
+   "bellpepper_rotten": "2/2",
+   "carrot_fresh": "26/28",
+   "carrot_rotten": "3/3"
+  },
+  "o160": {
+   "accuracy": 150,
+   "kept_correct": 148,
+   "rejected": 2
+  },
+  "asian": {
+   "accuracy": 34,
+   "kept_correct": 28,
+   "rejected": 7
+  },
+  "fruit": {
+   "rejected": 346
+  },
+  "coco": {
+   "rejected": 400
+  },
+  "checks_pass": false
+ },
+ "chosen": "N3",
+ "N3": {
+  "train_photos": {
+   "vegetable": 3033,
+   "not_five": 2850
+  },
+  "clip_threshold": -0.6041626334190369,
+  "combined_temperature": 1.367048978805542,
+  "valid": {
+   "accuracy": 291,
+   "kept_correct": 284,
+   "rejected": 7
+  },
+  "lvis": {
+   "rejected": 37
+  },
+  "odev": {
+   "accuracy": 199,
+   "kept_correct": 175,
+   "rejected": 28
+  },
+  "odev_by_class": {
+   "cucumber_fresh": "12/12",
+   "cucumber_rotten": "2/2",
+   "potato_fresh": "15/16",
+   "potato_rotten": "37/42",
+   "tomato_fresh": "48/49",
+   "tomato_rotten": "32/45",
+   "bellpepper_fresh": "22/22",
+   "bellpepper_rotten": "2/2",
+   "carrot_fresh": "26/28",
+   "carrot_rotten": "3/3"
+  },
+  "o160": {
+   "accuracy": 150,
+   "kept_correct": 148,
+   "rejected": 2
+  },
+  "asian": {
+   "accuracy": 34,
+   "kept_correct": 30,
+   "rejected": 5
+  },
+  "fruit": {
+   "rejected": 347
+  },
+  "coco": {
+   "rejected": 400
+  },
+  "checks_pass": true
+ }
+}
