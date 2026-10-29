@@ -371,5 +371,9 @@ def combined_probabilities(combined: torch.Tensor, checkpoint: dict) -> torch.Te
 
 
 def is_unknown_combined(logits: torch.Tensor, clip_logits: torch.Tensor, checkpoint: dict) -> torch.Tensor:
-    """Turned away when either model's own check says the photo is not one of the trained vegetables."""
-    return is_unknown(logits, checkpoint) | (clip_unknown_score(clip_logits, checkpoint) > checkpoint["clip_head"]["unknown_threshold"])
+    """Turned away when the CLIP head's check says the photo is not one of the trained vegetables, and also when the
+    vegetable model's own check does, unless the head turns that off ("vegetable_model_check": False, experiments/clip_only_reject)."""
+    clip_says = clip_unknown_score(clip_logits, checkpoint) > checkpoint["clip_head"]["unknown_threshold"]
+    if not checkpoint["clip_head"].get("vegetable_model_check", True):
+        return clip_says
+    return is_unknown(logits, checkpoint) | clip_says

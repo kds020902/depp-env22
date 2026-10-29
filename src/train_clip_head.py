@@ -1,7 +1,7 @@
 """Fit the CLIP classifier head and store it in a checkpoint (experiments/clip_classifier).
 
     python src/train_clip_head.py --model model.pth --extra-photos lvis_vegetables
-    python src/train_clip_head.py --model model.pth --extra-photos lvis_vegetables --extra-train extra_train.csv
+    python src/train_clip_head.py --model model.pth --extra-photos lvis_vegetables --extra-train extra_train.csv --clip-check-only
 
 --extra-train adds photos to the head's training set (CSV with columns path, class_name). class_name "not_five" photos
 (fruit, everyday photos, other vegetables) become an 11th class, and the head's "not a trained vegetable" score becomes
@@ -49,6 +49,9 @@ def main():
                              "(experiments/real_scene_threshold/crop_lvis.py makes the 192 used for model.pth).")
     parser.add_argument("--extra-train", type=Path, help="CSV (path, class_name) of extra training photos for the head; "
                         "class_name may be a vegetable class or not_five.")
+    parser.add_argument("--clip-check-only", action="store_true",
+                        help="Turn photos away by the head's own check only, not also by the vegetable model's energy check "
+                             "(experiments/clip_only_reject; meant for a head with the not_five class).")
     parser.add_argument("--c", type=float, default=10.0, help="Inverse regularisation strength of the head.")
     parser.add_argument("--accept-rate", type=float, default=0.95)
     parser.add_argument("--threads", type=int, default=4)
@@ -94,6 +97,7 @@ def main():
                       "temperature": temperature, "temperature_fitted_on": "val (combined model)",
                       "unknown_threshold": threshold, "accept_rate": args.accept_rate,
                       "unknown_fitted_on": f"val + {len(extra)} extra real-world vegetable photos",
+                      "vegetable_model_check": not args.clip_check_only,
                       "notes": "experiments/not_five_class" if other_class else "experiments/clip_classifier"})
     raw = torch.load(args.model, map_location="cpu", weights_only=True)
     raw["clip_head"] = clip_head

@@ -1,0 +1,79 @@
+{
+ "new_test_241": {
+  "N3": {
+   "accuracy": 203,
+   "kept_correct": 169,
+   "rejected": 49,
+   "kept_wrong": 23,
+   "rejected_by_class": {
+    "cucumber_fresh": 4,
+    "cucumber_rotten": 0,
+    "potato_fresh": 3,
+    "potato_rotten": 5,
+    "tomato_fresh": 3,
+    "tomato_rotten": 22,
+    "bellpepper_fresh": 2,
+    "bellpepper_rotten": 1,
+    "carrot_fresh": 9,
+    "carrot_rotten": 0
+   }
+  },
+  "R1": {
+   "accuracy": 203,
+   "kept_correct": 193,
+   "rejected": 14,
+   "kept_wrong": 34,
+   "rejected_by_class": {
+    "cucumber_fresh": 3,
+    "cucumber_rotten": 0,
+    "potato_fresh": 2,
+    "potato_rotten": 1,
+    "tomato_fresh": 2,
+    "tomato_rotten": 1,
+    "bellpepper_fresh": 1,
+    "bellpepper_rotten": 0,
+    "carrot_fresh": 4,
+    "carrot_rotten": 0
+   }
+  }
+ },
+ "test_300": {
+  "N3": {
+   "accuracy": 288,
+   "kept_correct": 282,
+   "rejected": 9,
+   "kept_wrong": 9,
+   "rejected_by_class": {
+    "cucumber_fresh": 2,
+    "cucumber_rotten": 2,
+    "potato_fresh": 0,
+    "potato_rotten": 1,
+    "tomato_fresh": 1,
+    "tomato_rotten": 0,
+    "bellpepper_fresh": 1,
+    "bellpepper_rotten": 2,
+    "carrot_fresh": 0,
+    "carrot_rotten": 0
+   }
+  },
+  "R1": {
+   "accuracy": 288,
+   "kept_correct": 285,
+   "rejected": 4,
+   "kept_wrong": 11,
+   "rejected_by_class": {
+    "cucumber_fresh": 2,
+    "cucumber_rotten": 0,
+    "potato_fresh": 0,
+    "potato_rotten": 1,
+    "tomato_fresh": 0,
+    "tomato_rotten": 0,
+    "bellpepper_fresh": 1,
+    "bellpepper_rotten": 0,
+    "carrot_fresh": 0,
+    "carrot_rotten": 0
+   }
+  }
+ },
+ "adopt": true
+}
