@@ -1,0 +1,4196 @@
+{
+ "chosen": "F1",
+ "new_test_241": {
+  "now": {
+   "accuracy": 203,
+   "kept_correct": 193,
+   "rejected": 14,
+   "kept_wrong": 34,
+   "by_class": {
+    "cucumber_fresh": "22/24",
+    "cucumber_rotten": "2/2",
+    "potato_fresh": "12/16",
+    "potato_rotten": "15/17",
+    "tomato_fresh": "40/41",
+    "tomato_rotten": "55/74",
+    "bellpepper_fresh": "20/22",
+    "bellpepper_rotten": "2/7",
+    "carrot_fresh": "34/37",
+    "carrot_rotten": "1/1"
+   }
+  },
+  "F1": {
+   "accuracy": 203,
+   "kept_correct": 187,
+   "rejected": 20,
+   "kept_wrong": 34,
+   "by_class": {
+    "cucumber_fresh": "22/24",
+    "cucumber_rotten": "2/2",
+    "potato_fresh": "12/16",
+    "potato_rotten": "16/17",
+    "tomato_fresh": "41/41",
+    "tomato_rotten": "54/74",
+    "bellpepper_fresh": "19/22",
+    "bellpepper_rotten": "2/7",
+    "carrot_fresh": "34/37",
+    "carrot_rotten": "1/1"
+   }
+  }
+ },
+ "test_300": {
+  "now": {
+   "accuracy": 288,
+   "kept_correct": 285,
+   "rejected": 4,
+   "kept_wrong": 11,
+   "by_class": {
+    "cucumber_fresh": "30/30",
+    "cucumber_rotten": "27/30",
+    "potato_fresh": "29/30",
+    "potato_rotten": "29/30",
+    "tomato_fresh": "30/30",
+    "tomato_rotten": "27/30",
+    "bellpepper_fresh": "29/30",
+    "bellpepper_rotten": "28/30",
+    "carrot_fresh": "30/30",
+    "carrot_rotten": "29/30"
+   }
+  },
+  "F1": {
+   "accuracy": 288,
+   "kept_correct": 285,
+   "rejected": 4,
+   "kept_wrong": 11,
+   "by_class": {
+    "cucumber_fresh": "29/30",
+    "cucumber_rotten": "27/30",
+    "potato_fresh": "29/30",
+    "potato_rotten": "29/30",
+    "tomato_fresh": "30/30",
+    "tomato_rotten": "27/30",
+    "bellpepper_fresh": "29/30",
+    "bellpepper_rotten": "29/30",
+    "carrot_fresh": "30/30",
+    "carrot_rotten": "29/30"
+   }
+  }
+ },
+ "any_photo": {
+  "now": {
+   "good": 210,
+   "of": 255,
+   "by_category": {
+    "rotten_fruit": "24/50",
+    "fresh_fruit": "28/30",
+    "other_veg": "44/50",
+    "food": "25/25",
+    "drawing_toy": "14/16",
+    "everyday": "30/30",
+    "cut_five": "13/19",
+    "several": "12/13",
+    "five_daily": "20/22"
+   },
+   "answers": [
+    {
+     "id": "inat-358783347",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": false,
+     "good": false
+    },
+    {
+     "id": "inat-341191209",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "tomato_rotten",
+     "rejected": false,
+     "good": false
+    },
+    {
+     "id": "inat-395412009",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": false,
+     "good": false
+    },
+    {
+     "id": "inat-404936729",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": false,
+     "good": false
+    },
+    {
+     "id": "inat-363734263",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "cucumber_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "inat-403118850",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "tomato_rotten",
+     "rejected": false,
+     "good": false
+    },
+    {
+     "id": "inat-358208633",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "tomato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "0a40e543-779d-4e23-a6ef-38103b7a921a",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "tomato_rotten",
+     "rejected": false,
+     "good": false
+    },
+    {
+     "id": "inat-358986297",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "carrot_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "cebec519-90c6-490e-981c-4feacba3e3a3",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "inat-411782799",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "inat-296058910",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "cucumber_rotten",
+     "rejected": false,
+     "good": false
+    },
+    {
+     "id": "inat-147011700",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "inat-405473565",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "tomato_rotten",
+     "rejected": false,
+     "good": false
+    },
+    {
+     "id": "inat-377341803",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "tomato_rotten",
+     "rejected": false,
+     "good": false
+    },
+    {
+     "id": "inat-404984811",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": false,
+     "good": false
+    },
+    {
+     "id": "584a1dd8-fc9d-4b91-b1eb-9190d73617ea",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "tomato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "inat-404943634",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": false,
+     "good": false
+    },
+    {
+     "id": "inat-58366480",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "tomato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "inat-197109015",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "inat-398064012",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "inat-356983077",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": false,
+     "good": false
+    },
+    {
+     "id": "inat-388183744",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "cucumber_rotten",
+     "rejected": false,
+     "good": false
+    },
+    {
+     "id": "inat-398239512",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "inat-379746934",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": false,
+     "good": false
+    },
+    {
+     "id": "inat-410188283",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "inat-27172999",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "inat-295446652",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": false,
+     "good": false
+    },
+    {
+     "id": "inat-363775286",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": false,
+     "good": false
+    },
+    {
+     "id": "inat-402976764",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "inat-88437638",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "inat-165151403",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "tomato_rotten",
+     "rejected": false,
+     "good": false
+    },
+    {
+     "id": "inat-341191264",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "tomato_rotten",
+     "rejected": false,
+     "good": false
+    },
+    {
+     "id": "inat-35051375",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "potato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "inat-397171902",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": false,
+     "good": false
+    },
+    {
+     "id": "inat-27352912",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "cucumber_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "inat-165838552",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "cucumber_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "inat-401777553",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "inat-405257369",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": false,
+     "good": false
+    },
+    {
+     "id": "inat-40193550",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "inat-103044646",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": false,
+     "good": false
+    },
+    {
+     "id": "266a6aa9-b88a-4bd0-befe-b046268fdf91",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "bellpepper_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "68825e6e-35ec-49b8-8db0-9ab19ec1247f",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "tomato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "1397b7cb-a727-460c-be53-deda33111ef9",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "tomato_rotten",
+     "rejected": false,
+     "good": false
+    },
+    {
+     "id": "inat-407562331",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": false,
+     "good": false
+    },
+    {
+     "id": "56e67d49-d50a-46c5-966e-5cbe7d158247",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "inat-397714942",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": false,
+     "good": false
+    },
+    {
+     "id": "inat-405226836",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": false,
+     "good": false
+    },
+    {
+     "id": "inat-401117140",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "cucumber_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "58a3f67f-9696-48a2-b53e-5b3c1ac25633",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": false,
+     "good": false
+    },
+    {
+     "id": "4596abe5-6b64-4a49-8f93-02a35c05c53b",
+     "category": "fresh_fruit",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "127bf186-e3fa-4732-b798-29da0972f077",
+     "category": "fresh_fruit",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "dec00e8f-c360-4dd5-8153-18f5f3837aba",
+     "category": "fresh_fruit",
+     "label": "",
+     "pred": "potato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "325dfdd2-95cf-423c-b3af-6891d2822f7d",
+     "category": "fresh_fruit",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "726caea1-de56-4d5c-bf1d-097a3b785e06",
+     "category": "fresh_fruit",
+     "label": "",
+     "pred": "tomato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "6a70c7bb-c7af-4195-86e2-d62c7dab68c2",
+     "category": "fresh_fruit",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "e700b2e1-f13e-468d-85b7-d29b8fb6ddc9",
+     "category": "fresh_fruit",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "01e1f734-0e91-4c04-a4bc-29b9e99a1527",
+     "category": "fresh_fruit",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": false,
+     "good": false
+    },
+    {
+     "id": "7bf6a6e2-fe4f-4d6a-b6df-cef23933a91a",
+     "category": "fresh_fruit",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "feab6508-6c36-484b-8514-ac300b70850b",
+     "category": "fresh_fruit",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "f326e80b-2ea8-4d13-b31d-9c790e22e606",
+     "category": "fresh_fruit",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "aa77e43d-9ee1-4bdc-a941-f9fda5e98619",
+     "category": "fresh_fruit",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "57c5cb63-00f8-4149-a67c-0c337daaa86a",
+     "category": "fresh_fruit",
+     "label": "",
+     "pred": "potato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "00e8d566-6b4e-424b-9056-c9085988b13d",
+     "category": "fresh_fruit",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "b29708de-8352-4a2c-8989-9d93451927ea",
+     "category": "fresh_fruit",
+     "label": "",
+     "pred": "tomato_rotten",
+     "rejected": false,
+     "good": false
+    },
+    {
+     "id": "01db8746-917b-491f-a33c-2f22e7959cb7",
+     "category": "fresh_fruit",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "a3f8463d-5eff-4366-ae9e-d22abd1a81fa",
+     "category": "fresh_fruit",
+     "label": "",
+     "pred": "cucumber_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "ae9def31-39f4-4056-8df3-135b19a2ddc7",
+     "category": "fresh_fruit",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "a4ea264e-ca8a-49a5-b3ef-876ebe37c1d6",
+     "category": "fresh_fruit",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "7f351c1f-a033-4647-b902-a98366ed2820",
+     "category": "fresh_fruit",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "c4939b4c-aa73-4256-bb52-9b25962562d9",
+     "category": "fresh_fruit",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "3cf69185-6b2e-4a80-9c92-f8981c9eb4a3",
+     "category": "fresh_fruit",
+     "label": "",
+     "pred": "bellpepper_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "f2bd902a-4aee-44bf-a5b7-fbd13f44251f",
+     "category": "fresh_fruit",
+     "label": "",
+     "pred": "carrot_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "67d64457-75de-4452-b97f-caffc6edc0fc",
+     "category": "fresh_fruit",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "408bb155-062a-4a33-9d97-982f54954de9",
+     "category": "fresh_fruit",
+     "label": "",
+     "pred": "tomato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "7bbbca2b-361b-4093-b886-8caacf881e6a",
+     "category": "fresh_fruit",
+     "label": "",
+     "pred": "tomato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "2cf68da0-8660-4502-98d5-fbb6ba4647a8",
+     "category": "fresh_fruit",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "ac02fd3d-2b3f-4e18-be4b-e5c2ef3015c0",
+     "category": "fresh_fruit",
+     "label": "",
+     "pred": "tomato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "7bf9ea71-a064-4159-8fe3-89f595ad9295",
+     "category": "fresh_fruit",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "aaf68c6c-275e-411f-97a1-21745ab33409",
+     "category": "fresh_fruit",
+     "label": "",
+     "pred": "potato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "be810de9-bda5-45ca-bc76-cb28dbfe3bc1",
+     "category": "other_veg",
+     "label": "",
+     "pred": "carrot_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "27a10c89-4e0f-45f6-ad45-59508a2e37f3",
+     "category": "other_veg",
+     "label": "",
+     "pred": "tomato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "06638beb-c5cb-49da-9b85-219803dd78fa",
+     "category": "other_veg",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "e674de50-73f7-4e49-9194-f4f1e24ef6a9",
+     "category": "other_veg",
+     "label": "",
+     "pred": "tomato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "a94c9748-eaa4-4e71-868a-422f9b6cd575",
+     "category": "other_veg",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": false,
+     "good": false
+    },
+    {
+     "id": "b94bb89a-4d59-4500-a2d1-b94b37ab63d7",
+     "category": "other_veg",
+     "label": "",
+     "pred": "potato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "8f1d6ef2-19ba-43ba-b78b-dce8dad39f1f",
+     "category": "other_veg",
+     "label": "",
+     "pred": "carrot_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "afd9a879-4879-446c-ad39-6d407136e8df",
+     "category": "other_veg",
+     "label": "",
+     "pred": "carrot_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "943f3bbd-7cb4-4b71-b1ae-1a87397c5f78",
+     "category": "other_veg",
+     "label": "",
+     "pred": "carrot_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "a06259da-1cf2-4875-a45e-a5805521346d",
+     "category": "other_veg",
+     "label": "",
+     "pred": "cucumber_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "595048e0-c2a3-469d-ac9c-6e2e4037f31f",
+     "category": "other_veg",
+     "label": "",
+     "pred": "carrot_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "949c672e-b8cf-4ac0-bddf-f2712b48da84",
+     "category": "other_veg",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "1f492981-a4e1-4d43-852d-799d3b08dfe5",
+     "category": "other_veg",
+     "label": "",
+     "pred": "bellpepper_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "9f9c0b9a-88fd-4848-941b-14f4e012f178",
+     "category": "other_veg",
+     "label": "",
+     "pred": "carrot_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "4ffd6877-4020-456b-83fb-61d904354d37",
+     "category": "other_veg",
+     "label": "",
+     "pred": "bellpepper_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "f8da9902-26d4-498a-bed2-a347222d77bb",
+     "category": "other_veg",
+     "label": "",
+     "pred": "carrot_fresh",
+     "rejected": false,
+     "good": false
+    },
+    {
+     "id": "10e6d54d-4c24-455f-a93a-07739d782a77",
+     "category": "other_veg",
+     "label": "",
+     "pred": "carrot_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "795fdc72-2b21-4ef7-abb4-507cfb502cec",
+     "category": "other_veg",
+     "label": "",
+     "pred": "potato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "81ba9f85-b733-4d49-8267-d87d917295dd",
+     "category": "other_veg",
+     "label": "",
+     "pred": "cucumber_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "81f34106-e81f-47df-b646-589d09dcb2ac",
+     "category": "other_veg",
+     "label": "",
+     "pred": "carrot_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "cda71e78-9838-4cf5-b535-21c15ee37050",
+     "category": "other_veg",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": false,
+     "good": false
+    },
+    {
+     "id": "0f9247f7-d4ac-4484-8b69-456cca16d7ab",
+     "category": "other_veg",
+     "label": "",
+     "pred": "cucumber_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "4ef703ab-2247-4d25-938b-14eb86171b14",
+     "category": "other_veg",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "904c9cd7-10e7-42d7-83b9-632dead76152",
+     "category": "other_veg",
+     "label": "",
+     "pred": "carrot_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "1b09860f-9dec-40ae-a994-cac568b8148c",
+     "category": "other_veg",
+     "label": "",
+     "pred": "potato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "36737bc0-97bc-42bd-9727-4c1324b9e249",
+     "category": "other_veg",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "2d411be6-ff1d-401f-bb7e-7f90b5f10df9",
+     "category": "other_veg",
+     "label": "",
+     "pred": "carrot_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "10c46955-2c59-4602-8e37-15881a9d873f",
+     "category": "other_veg",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "d0491888-e0b9-4c56-91b5-d3193ee96e17",
+     "category": "other_veg",
+     "label": "",
+     "pred": "cucumber_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "b3d0b6b7-0bc1-4e2d-a219-82ddf8b31994",
+     "category": "other_veg",
+     "label": "",
+     "pred": "bellpepper_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "e0a1c56e-9f5b-44bb-bfef-eff97b7cc88c",
+     "category": "other_veg",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "806383f7-a4ad-4ec2-b9f4-466b38573841",
+     "category": "other_veg",
+     "label": "",
+     "pred": "cucumber_fresh",
+     "rejected": false,
+     "good": false
+    },
+    {
+     "id": "1a14dbfb-8b22-446a-b03d-3540e7203b07",
+     "category": "other_veg",
+     "label": "",
+     "pred": "cucumber_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "762f9565-e489-4a5a-9d99-32478f8a0ed2",
+     "category": "other_veg",
+     "label": "",
+     "pred": "tomato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "bab3283f-0e72-4388-90ff-f8d27964b685",
+     "category": "other_veg",
+     "label": "",
+     "pred": "potato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "0eefc03c-1e32-4fbd-9f08-386b0c9feedb",
+     "category": "other_veg",
+     "label": "",
+     "pred": "bellpepper_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "40594f5b-d609-45ec-8a5e-1a913fec6381",
+     "category": "other_veg",
+     "label": "",
+     "pred": "potato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "ee7f99bb-d9c7-4f1c-bc87-606521d0bad4",
+     "category": "other_veg",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "8df11cfa-e90f-4969-8de1-4fa8d6efe2ea",
+     "category": "other_veg",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": false,
+     "good": false
+    },
+    {
+     "id": "7d9c005f-1578-487d-a002-cfcf7138dffa",
+     "category": "other_veg",
+     "label": "",
+     "pred": "tomato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "b4b7799c-107f-48c0-8f1a-a5e649625c5b",
+     "category": "other_veg",
+     "label": "",
+     "pred": "carrot_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "196391b5-27c7-424d-b41f-9b729dd6f0d2",
+     "category": "other_veg",
+     "label": "",
+     "pred": "carrot_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "ce4a514b-acb2-420f-b876-5a09f6f85bd0",
+     "category": "other_veg",
+     "label": "",
+     "pred": "carrot_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "ed54f82c-05fe-461b-9ebd-516806103498",
+     "category": "other_veg",
+     "label": "",
+     "pred": "carrot_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "d047d98d-b138-49ac-82b5-1926afe4f687",
+     "category": "other_veg",
+     "label": "",
+     "pred": "cucumber_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "79c103d2-ead3-4ff0-91fd-799de7c48bd0",
+     "category": "other_veg",
+     "label": "",
+     "pred": "cucumber_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "4503499f-e1b2-47b6-8ada-f504e3b84bfc",
+     "category": "other_veg",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "b8a67e46-cc72-4cbe-a801-7663e330a8c4",
+     "category": "other_veg",
+     "label": "",
+     "pred": "bellpepper_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "fd5ddcc4-2276-4533-8637-66fd52fe0376",
+     "category": "other_veg",
+     "label": "",
+     "pred": "cucumber_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "753cf621-e0fb-4b76-9239-4ea4c87ba678",
+     "category": "other_veg",
+     "label": "",
+     "pred": "potato_fresh",
+     "rejected": false,
+     "good": false
+    },
+    {
+     "id": "a9bf89cd-4aa7-4a2c-ae80-cadd4a0526cc",
+     "category": "food",
+     "label": "",
+     "pred": "tomato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "7a65cabf-7ac7-448a-9595-c874e789c36a",
+     "category": "food",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "268e9337-0e00-4910-8326-edec63495fa3",
+     "category": "food",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "bcda3a3a-1f2f-40ac-9b8f-0fbf694d2128",
+     "category": "food",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "61b69f4a-f5f4-4147-a985-a91f0c65348c",
+     "category": "food",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "9497b2e4-1a05-45d2-b471-1cbea1b747e4",
+     "category": "food",
+     "label": "",
+     "pred": "tomato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "ae682ffb-7078-4021-ad3a-c87e41939bb2",
+     "category": "food",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "e3c2c553-72ab-4951-b6c5-648d8f8e0226",
+     "category": "food",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "e281d086-415e-4cd6-9155-f6e4d34ea8c1",
+     "category": "food",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "e00f2594-755d-4cd3-88b9-0494b82d06b3",
+     "category": "food",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "c8a443ca-d605-4d26-b888-8a929031c91e",
+     "category": "food",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "7728d336-8dcd-4421-b42b-ace8097cab77",
+     "category": "food",
+     "label": "",
+     "pred": "tomato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "8ae33e18-3b37-410b-8b45-98547a0fafbb",
+     "category": "food",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "3b057a1f-9f41-4827-80d2-d536b362a707",
+     "category": "food",
+     "label": "",
+     "pred": "bellpepper_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "44afb152-476a-4729-8076-c282c6f7eed7",
+     "category": "food",
+     "label": "",
+     "pred": "carrot_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "5ae1f45b-b1e6-4922-a9f3-99d564f0d59d",
+     "category": "food",
+     "label": "",
+     "pred": "carrot_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "4d68e513-87ad-4c35-b7d5-5965c83f9e99",
+     "category": "food",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "a454ef19-bcc8-481e-9cfe-fe4a2b56e302",
+     "category": "food",
+     "label": "",
+     "pred": "carrot_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "17ca7ae4-9da9-4886-a6fa-d154afb1f0bf",
+     "category": "food",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "c0c631bd-7d9d-4bdd-bced-fa80d422607b",
+     "category": "food",
+     "label": "",
+     "pred": "carrot_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "c897efff-7e42-4f4d-8725-5ccb2ce34c42",
+     "category": "food",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "72119d2d-28a6-4bdd-9811-34c97f33bfe3",
+     "category": "food",
+     "label": "",
+     "pred": "cucumber_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "ccba6ee9-f0e7-4cc3-be9c-7017feb8626b",
+     "category": "food",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "31ead821-0ee1-4d74-9f08-ac6c6bf9f001",
+     "category": "food",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "3f2a6270-3afc-4036-98e8-b9e01c47c855",
+     "category": "food",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "6386a53f-a966-433c-baf1-fdc9a39131ae",
+     "category": "drawing_toy",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "0781dd7d-587e-45ac-88ab-8342acfba9c0",
+     "category": "drawing_toy",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "798f5485-78af-4930-ae67-f0d01d4ac437",
+     "category": "drawing_toy",
+     "label": "",
+     "pred": "bellpepper_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "3878ca1b-c9c9-497f-ada3-c3405c43b30f",
+     "category": "drawing_toy",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": false,
+     "good": false
+    },
+    {
+     "id": "654e6035-9969-474a-a353-387c99877f43",
+     "category": "drawing_toy",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "58a8c30f-4e4c-445c-8936-9e38c298da44",
+     "category": "drawing_toy",
+     "label": "",
+     "pred": "bellpepper_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "9445a9fe-c3f8-49b0-b0c7-4e46db752057",
+     "category": "drawing_toy",
+     "label": "",
+     "pred": "cucumber_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "2ef6f487-ab6a-4fb3-af0f-2d5e5adb4bea",
+     "category": "drawing_toy",
+     "label": "",
+     "pred": "tomato_rotten",
+     "rejected": false,
+     "good": false
+    },
+    {
+     "id": "4a2995d6-0406-4672-8b4f-5af181371d8c",
+     "category": "drawing_toy",
+     "label": "",
+     "pred": "carrot_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "71915d33-12df-4dd6-8270-023a0832c7a4",
+     "category": "drawing_toy",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "c25be84f-3c62-4f84-aedd-da341181a069",
+     "category": "drawing_toy",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "0f3253ce-fc27-46be-95fe-a1a8677dea94",
+     "category": "drawing_toy",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "401017c8-8cd2-4d33-987b-3789db08fb46",
+     "category": "drawing_toy",
+     "label": "",
+     "pred": "carrot_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "a962f704-3c61-4e0b-b093-e2725036cffb",
+     "category": "drawing_toy",
+     "label": "",
+     "pred": "tomato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "c6d659bc-618c-4582-88b5-ab30690a5e99",
+     "category": "drawing_toy",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "1ce50d65-7498-4874-adb5-18879ecb2d67",
+     "category": "drawing_toy",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "a3a2cf94-e65f-4af5-8121-39ff9e46af4f",
+     "category": "everyday",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "a3565050-50dc-4a57-8986-dc6bc3d8af48",
+     "category": "everyday",
+     "label": "",
+     "pred": "carrot_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "bb77c452-04ba-402e-a01b-327558399f46",
+     "category": "everyday",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "e85becb1-3d47-44d6-b62b-e88bdcb1c1f2",
+     "category": "everyday",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "181a8f11-9988-442a-b1d0-62e782d23ba4",
+     "category": "everyday",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "71533543-f4f3-4391-aacb-137586407b1b",
+     "category": "everyday",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "9fb7b396-48ac-4628-99db-c85e01cfa581",
+     "category": "everyday",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "9ee77a50-70ba-4d4e-9972-16981b460f64",
+     "category": "everyday",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "330f9fcd-748f-4a59-99e3-5bab181909b5",
+     "category": "everyday",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "06027c69-473c-4804-84cc-283e44ed70eb",
+     "category": "everyday",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "e951ae78-9035-46ff-84ac-c20d4a7681e8",
+     "category": "everyday",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "7f826244-314d-4401-8dd8-a51bb064517d",
+     "category": "everyday",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "45766a8f-ab95-4fff-8d69-18fa7459c806",
+     "category": "everyday",
+     "label": "",
+     "pred": "potato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "0edac4e5-7e64-4e4b-9727-733a783b8045",
+     "category": "everyday",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "5e2893a7-753c-4016-8536-dd31fa0e459c",
+     "category": "everyday",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "e8ea2e02-4297-4961-bee5-3217b975eadd",
+     "category": "everyday",
+     "label": "",
+     "pred": "carrot_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "da6bbe3d-bc3a-4cbb-ab2a-50560c1acb62",
+     "category": "everyday",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "2dadce9f-6567-45ab-9b96-10eb9eeb5a1c",
+     "category": "everyday",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "8f562c74-432f-47d0-bb68-fff2fdb07a16",
+     "category": "everyday",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "a9496c47-9e3f-4880-ae44-31ed9e19b59d",
+     "category": "everyday",
+     "label": "",
+     "pred": "carrot_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "ef05cce8-2425-45af-a2cb-37746b9dba22",
+     "category": "everyday",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "f38f41d5-3ba9-494c-8e00-ca01608340e8",
+     "category": "everyday",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "8aaa3071-fac1-4388-8091-e5ded8aa7901",
+     "category": "everyday",
+     "label": "",
+     "pred": "carrot_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "f4d51c62-c34a-4a98-bed6-087884651948",
+     "category": "everyday",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "c6bc5413-be19-4e88-adac-0e5048154b61",
+     "category": "everyday",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "033e39a1-a5a0-4f3c-8810-2109ded70bb1",
+     "category": "everyday",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "a6dd2414-7695-4f03-9723-a9dc6852e2b3",
+     "category": "everyday",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "1a8ccf32-b2ac-4441-8844-76a1435047c1",
+     "category": "everyday",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "5a2922a6-9052-4224-a79b-01a8aeac84a7",
+     "category": "everyday",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "12ee006e-42ec-4433-9352-d2b47772cad8",
+     "category": "everyday",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "ecea5710-52dc-4d05-810f-a99a85d34dd5",
+     "category": "cut_five",
+     "label": "carrot_fresh",
+     "pred": "carrot_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "fbc7a464-46d0-4ce6-9518-2e93f9a46f1b",
+     "category": "cut_five",
+     "label": "cucumber_fresh",
+     "pred": "cucumber_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "c29d1a6e-6520-4602-b6c9-8d540bab55a1",
+     "category": "cut_five",
+     "label": "tomato_fresh",
+     "pred": "tomato_rotten",
+     "rejected": false,
+     "good": false
+    },
+    {
+     "id": "f87b68c2-8a19-4f2e-b850-b2d7b8f5c999",
+     "category": "cut_five",
+     "label": "carrot_fresh",
+     "pred": "carrot_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "2e33ef0a-c2f5-4aad-b262-2c48b691acb6",
+     "category": "cut_five",
+     "label": "carrot_fresh",
+     "pred": "carrot_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "acd7b07c-e89f-4875-b04d-3da9032d0d5d",
+     "category": "cut_five",
+     "label": "tomato_fresh",
+     "pred": "tomato_rotten",
+     "rejected": false,
+     "good": false
+    },
+    {
+     "id": "767fad65-6bba-43f4-8c66-4035a57362f6",
+     "category": "cut_five",
+     "label": "cucumber_fresh",
+     "pred": "cucumber_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "959ed9a6-af11-4c17-a98c-6e0a734dad3b",
+     "category": "cut_five",
+     "label": "tomato_fresh",
+     "pred": "tomato_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "dfc02db0-5ce8-4170-8e1d-ea6b5ab985a8",
+     "category": "cut_five",
+     "label": "potato_fresh",
+     "pred": "potato_rotten",
+     "rejected": false,
+     "good": false
+    },
+    {
+     "id": "fd3c0670-c3c4-4a5c-a301-f9f359efa3e9",
+     "category": "cut_five",
+     "label": "tomato_fresh",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "40dd94f6-3b13-42c5-984e-0396774bb30e",
+     "category": "cut_five",
+     "label": "potato_fresh",
+     "pred": "potato_rotten",
+     "rejected": false,
+     "good": false
+    },
+    {
+     "id": "3fa8d8e8-4e69-4777-89b1-789f544234d4",
+     "category": "cut_five",
+     "label": "carrot_fresh",
+     "pred": "carrot_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "62946efa-47ff-4aa6-99cd-68943b0a206e",
+     "category": "cut_five",
+     "label": "tomato_fresh",
+     "pred": "tomato_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "f573ded4-7c1c-4aaf-9d49-32dd4c19a3b8",
+     "category": "cut_five",
+     "label": "tomato_fresh",
+     "pred": "tomato_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "5bf9d456-b9b4-45e9-a8d1-d1608c3af4ad",
+     "category": "cut_five",
+     "label": "carrot_fresh",
+     "pred": "carrot_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "1236a75a-5724-4f4c-a1be-57e878233ba4",
+     "category": "cut_five",
+     "label": "cucumber_fresh",
+     "pred": "cucumber_rotten",
+     "rejected": false,
+     "good": false
+    },
+    {
+     "id": "33ede580-b248-477b-810d-9687352c686d",
+     "category": "cut_five",
+     "label": "tomato_fresh",
+     "pred": "tomato_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "596ab653-fdfd-4575-a7cc-a678395a4315",
+     "category": "cut_five",
+     "label": "cucumber_fresh",
+     "pred": "cucumber_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "0a658e8f-f592-4d28-8c3b-1d08d494b0d6",
+     "category": "cut_five",
+     "label": "tomato_fresh",
+     "pred": "tomato_rotten",
+     "rejected": false,
+     "good": false
+    },
+    {
+     "id": "4b6847df-f94c-4506-99a7-d7bcddfed0bc",
+     "category": "several",
+     "label": "tomato_fresh|bellpepper_fresh|carrot_fresh",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "8a52e0ab-6c9d-4acb-8ead-880f0be548b1",
+     "category": "several",
+     "label": "tomato_fresh|cucumber_fresh|bellpepper_fresh",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "94b96d7e-c896-4603-a0ce-2e09b55d23a8",
+     "category": "several",
+     "label": "carrot_fresh|potato_fresh|cucumber_fresh",
+     "pred": "carrot_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "14359321-56db-4de9-9f89-5920ee377fd8",
+     "category": "several",
+     "label": "tomato_fresh|bellpepper_fresh|cucumber_fresh",
+     "pred": "cucumber_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "d3b50dc2-038d-49c5-81cb-bfcefd4e8818",
+     "category": "several",
+     "label": "bellpepper_fresh",
+     "pred": "bellpepper_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "e86fd1ec-d130-4dbe-8cea-8c00c91f4702",
+     "category": "several",
+     "label": "tomato_fresh",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "96d332ed-95b6-4e7e-97e9-8151e63cb6ad",
+     "category": "several",
+     "label": "tomato_fresh|bellpepper_fresh",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "2cbee775-9aee-405b-bc4f-ecdd86eb4dca",
+     "category": "several",
+     "label": "tomato_fresh|bellpepper_fresh",
+     "pred": "tomato_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "728cc91f-e586-4dd3-a59a-f537986d2569",
+     "category": "several",
+     "label": "tomato_fresh",
+     "pred": "tomato_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "624ecf96-ec27-42cd-949e-b1487eb19968",
+     "category": "several",
+     "label": "bellpepper_fresh",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "a871849f-bb92-47d1-a819-5876b557eea7",
+     "category": "several",
+     "label": "bellpepper_fresh",
+     "pred": "cucumber_fresh",
+     "rejected": false,
+     "good": false
+    },
+    {
+     "id": "4b50c137-9aed-4548-99a7-3c6f7efd9d98",
+     "category": "several",
+     "label": "tomato_fresh|bellpepper_fresh",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "4c3efe1f-cabb-45d9-a3d4-e9ce5526fc33",
+     "category": "several",
+     "label": "bellpepper_fresh",
+     "pred": "bellpepper_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "03c62cdc-bfd9-4155-886e-a13ef5bc1313",
+     "category": "five_daily",
+     "label": "tomato_fresh",
+     "pred": "tomato_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "e6c2c466-e021-405b-8f17-c71cfaef07c6",
+     "category": "five_daily",
+     "label": "bellpepper_fresh",
+     "pred": "bellpepper_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "39d00cd6-507e-4c77-8c4a-cf84ed8da179",
+     "category": "five_daily",
+     "label": "carrot_fresh",
+     "pred": "carrot_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "006241cc-652f-4fda-929b-4b7cb0567808",
+     "category": "five_daily",
+     "label": "tomato_fresh",
+     "pred": "tomato_rotten",
+     "rejected": true,
+     "good": false
+    },
+    {
+     "id": "81f031dd-46a3-4fe1-a766-e2d756f13871",
+     "category": "five_daily",
+     "label": "tomato_fresh",
+     "pred": "tomato_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "a70b0dbc-3c18-48cb-83d0-5a55532f24f6",
+     "category": "five_daily",
+     "label": "tomato_fresh",
+     "pred": "tomato_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "5cf2e0b1-acbe-4d97-acb6-ca5d3e175af3",
+     "category": "five_daily",
+     "label": "bellpepper_fresh",
+     "pred": "bellpepper_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "143dac2d-47e9-4791-b473-4754217bde6d",
+     "category": "five_daily",
+     "label": "tomato_fresh",
+     "pred": "tomato_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "551717a4-611f-413a-a56b-a669a63bf14e",
+     "category": "five_daily",
+     "label": "carrot_fresh",
+     "pred": "carrot_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "852cca12-4aaf-49c4-83d2-5c09d69a18ea",
+     "category": "five_daily",
+     "label": "tomato_fresh",
+     "pred": "tomato_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "85af5849-255e-4004-a16a-a6218202420f",
+     "category": "five_daily",
+     "label": "carrot_fresh",
+     "pred": "carrot_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "45a1e348-a583-4c28-901c-71bef8c3342c",
+     "category": "five_daily",
+     "label": "carrot_fresh",
+     "pred": "carrot_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "d86f3a40-ad4e-4db6-8bc5-b18d74ab1fd2",
+     "category": "five_daily",
+     "label": "potato_fresh",
+     "pred": "potato_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "1a9b6c3b-272c-4a28-988d-749db57b8ed1",
+     "category": "five_daily",
+     "label": "tomato_fresh",
+     "pred": "tomato_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "a2e2a831-7061-4865-ab6c-066b17a75d15",
+     "category": "five_daily",
+     "label": "tomato_fresh",
+     "pred": "tomato_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "03d847db-6f8d-4354-b7f4-0f2a1abb7018",
+     "category": "five_daily",
+     "label": "tomato_fresh",
+     "pred": "tomato_rotten",
+     "rejected": false,
+     "good": false
+    },
+    {
+     "id": "34d7f0b8-0ecd-487c-9150-aaa4dc69830f",
+     "category": "five_daily",
+     "label": "tomato_fresh",
+     "pred": "tomato_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "758735b6-7ee5-4cca-80af-8c379da64358",
+     "category": "five_daily",
+     "label": "bellpepper_fresh",
+     "pred": "bellpepper_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "85b77a09-ed0f-4459-af95-68cc0c7ecbbd",
+     "category": "five_daily",
+     "label": "bellpepper_fresh",
+     "pred": "bellpepper_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "6461487a-5aa1-421e-9020-11bc7bbdd468",
+     "category": "five_daily",
+     "label": "bellpepper_fresh",
+     "pred": "bellpepper_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "04ef3a4c-a8bd-4f58-9f9d-e86a785ebeae",
+     "category": "five_daily",
+     "label": "carrot_fresh",
+     "pred": "carrot_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "c04d33f9-a0b0-4771-88e8-983e3fa95167",
+     "category": "five_daily",
+     "label": "tomato_fresh",
+     "pred": "tomato_fresh",
+     "rejected": false,
+     "good": true
+    }
+   ]
+  },
+  "F1": {
+   "good": 237,
+   "of": 255,
+   "by_category": {
+    "rotten_fruit": "48/50",
+    "fresh_fruit": "30/30",
+    "other_veg": "42/50",
+    "food": "25/25",
+    "drawing_toy": "15/16",
+    "everyday": "30/30",
+    "cut_five": "14/19",
+    "several": "12/13",
+    "five_daily": "21/22"
+   },
+   "answers": [
+    {
+     "id": "inat-358783347",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "inat-341191209",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "tomato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "inat-395412009",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "inat-404936729",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "inat-363734263",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "cucumber_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "inat-403118850",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "inat-358208633",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "tomato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "0a40e543-779d-4e23-a6ef-38103b7a921a",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "tomato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "inat-358986297",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "carrot_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "cebec519-90c6-490e-981c-4feacba3e3a3",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "inat-411782799",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "inat-296058910",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "cucumber_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "inat-147011700",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "inat-405473565",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "tomato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "inat-377341803",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "tomato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "inat-404984811",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "584a1dd8-fc9d-4b91-b1eb-9190d73617ea",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "tomato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "inat-404943634",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "inat-58366480",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "tomato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "inat-197109015",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "tomato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "inat-398064012",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "inat-356983077",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "inat-388183744",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "cucumber_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "inat-398239512",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "inat-379746934",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "inat-410188283",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "inat-27172999",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "inat-295446652",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "tomato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "inat-363775286",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "inat-402976764",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "inat-88437638",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "inat-165151403",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "tomato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "inat-341191264",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "tomato_rotten",
+     "rejected": false,
+     "good": false
+    },
+    {
+     "id": "inat-35051375",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "potato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "inat-397171902",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "inat-27352912",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "cucumber_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "inat-165838552",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "cucumber_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "inat-401777553",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "inat-405257369",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "inat-40193550",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "inat-103044646",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "266a6aa9-b88a-4bd0-befe-b046268fdf91",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "bellpepper_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "68825e6e-35ec-49b8-8db0-9ab19ec1247f",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "tomato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "1397b7cb-a727-460c-be53-deda33111ef9",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "tomato_rotten",
+     "rejected": false,
+     "good": false
+    },
+    {
+     "id": "inat-407562331",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "56e67d49-d50a-46c5-966e-5cbe7d158247",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "inat-397714942",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "inat-405226836",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "inat-401117140",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "cucumber_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "58a3f67f-9696-48a2-b53e-5b3c1ac25633",
+     "category": "rotten_fruit",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "4596abe5-6b64-4a49-8f93-02a35c05c53b",
+     "category": "fresh_fruit",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "127bf186-e3fa-4732-b798-29da0972f077",
+     "category": "fresh_fruit",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "dec00e8f-c360-4dd5-8153-18f5f3837aba",
+     "category": "fresh_fruit",
+     "label": "",
+     "pred": "potato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "325dfdd2-95cf-423c-b3af-6891d2822f7d",
+     "category": "fresh_fruit",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "726caea1-de56-4d5c-bf1d-097a3b785e06",
+     "category": "fresh_fruit",
+     "label": "",
+     "pred": "tomato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "6a70c7bb-c7af-4195-86e2-d62c7dab68c2",
+     "category": "fresh_fruit",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "e700b2e1-f13e-468d-85b7-d29b8fb6ddc9",
+     "category": "fresh_fruit",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "01e1f734-0e91-4c04-a4bc-29b9e99a1527",
+     "category": "fresh_fruit",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "7bf6a6e2-fe4f-4d6a-b6df-cef23933a91a",
+     "category": "fresh_fruit",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "feab6508-6c36-484b-8514-ac300b70850b",
+     "category": "fresh_fruit",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "f326e80b-2ea8-4d13-b31d-9c790e22e606",
+     "category": "fresh_fruit",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "aa77e43d-9ee1-4bdc-a941-f9fda5e98619",
+     "category": "fresh_fruit",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "57c5cb63-00f8-4149-a67c-0c337daaa86a",
+     "category": "fresh_fruit",
+     "label": "",
+     "pred": "potato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "00e8d566-6b4e-424b-9056-c9085988b13d",
+     "category": "fresh_fruit",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "b29708de-8352-4a2c-8989-9d93451927ea",
+     "category": "fresh_fruit",
+     "label": "",
+     "pred": "tomato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "01db8746-917b-491f-a33c-2f22e7959cb7",
+     "category": "fresh_fruit",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "a3f8463d-5eff-4366-ae9e-d22abd1a81fa",
+     "category": "fresh_fruit",
+     "label": "",
+     "pred": "cucumber_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "ae9def31-39f4-4056-8df3-135b19a2ddc7",
+     "category": "fresh_fruit",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "a4ea264e-ca8a-49a5-b3ef-876ebe37c1d6",
+     "category": "fresh_fruit",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "7f351c1f-a033-4647-b902-a98366ed2820",
+     "category": "fresh_fruit",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "c4939b4c-aa73-4256-bb52-9b25962562d9",
+     "category": "fresh_fruit",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "3cf69185-6b2e-4a80-9c92-f8981c9eb4a3",
+     "category": "fresh_fruit",
+     "label": "",
+     "pred": "bellpepper_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "f2bd902a-4aee-44bf-a5b7-fbd13f44251f",
+     "category": "fresh_fruit",
+     "label": "",
+     "pred": "carrot_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "67d64457-75de-4452-b97f-caffc6edc0fc",
+     "category": "fresh_fruit",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "408bb155-062a-4a33-9d97-982f54954de9",
+     "category": "fresh_fruit",
+     "label": "",
+     "pred": "tomato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "7bbbca2b-361b-4093-b886-8caacf881e6a",
+     "category": "fresh_fruit",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "2cf68da0-8660-4502-98d5-fbb6ba4647a8",
+     "category": "fresh_fruit",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "ac02fd3d-2b3f-4e18-be4b-e5c2ef3015c0",
+     "category": "fresh_fruit",
+     "label": "",
+     "pred": "tomato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "7bf9ea71-a064-4159-8fe3-89f595ad9295",
+     "category": "fresh_fruit",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "aaf68c6c-275e-411f-97a1-21745ab33409",
+     "category": "fresh_fruit",
+     "label": "",
+     "pred": "potato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "be810de9-bda5-45ca-bc76-cb28dbfe3bc1",
+     "category": "other_veg",
+     "label": "",
+     "pred": "carrot_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "27a10c89-4e0f-45f6-ad45-59508a2e37f3",
+     "category": "other_veg",
+     "label": "",
+     "pred": "tomato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "06638beb-c5cb-49da-9b85-219803dd78fa",
+     "category": "other_veg",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "e674de50-73f7-4e49-9194-f4f1e24ef6a9",
+     "category": "other_veg",
+     "label": "",
+     "pred": "tomato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "a94c9748-eaa4-4e71-868a-422f9b6cd575",
+     "category": "other_veg",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": false,
+     "good": false
+    },
+    {
+     "id": "b94bb89a-4d59-4500-a2d1-b94b37ab63d7",
+     "category": "other_veg",
+     "label": "",
+     "pred": "potato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "8f1d6ef2-19ba-43ba-b78b-dce8dad39f1f",
+     "category": "other_veg",
+     "label": "",
+     "pred": "carrot_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "afd9a879-4879-446c-ad39-6d407136e8df",
+     "category": "other_veg",
+     "label": "",
+     "pred": "carrot_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "943f3bbd-7cb4-4b71-b1ae-1a87397c5f78",
+     "category": "other_veg",
+     "label": "",
+     "pred": "carrot_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "a06259da-1cf2-4875-a45e-a5805521346d",
+     "category": "other_veg",
+     "label": "",
+     "pred": "cucumber_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "595048e0-c2a3-469d-ac9c-6e2e4037f31f",
+     "category": "other_veg",
+     "label": "",
+     "pred": "carrot_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "949c672e-b8cf-4ac0-bddf-f2712b48da84",
+     "category": "other_veg",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "1f492981-a4e1-4d43-852d-799d3b08dfe5",
+     "category": "other_veg",
+     "label": "",
+     "pred": "bellpepper_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "9f9c0b9a-88fd-4848-941b-14f4e012f178",
+     "category": "other_veg",
+     "label": "",
+     "pred": "carrot_fresh",
+     "rejected": false,
+     "good": false
+    },
+    {
+     "id": "4ffd6877-4020-456b-83fb-61d904354d37",
+     "category": "other_veg",
+     "label": "",
+     "pred": "bellpepper_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "f8da9902-26d4-498a-bed2-a347222d77bb",
+     "category": "other_veg",
+     "label": "",
+     "pred": "carrot_fresh",
+     "rejected": false,
+     "good": false
+    },
+    {
+     "id": "10e6d54d-4c24-455f-a93a-07739d782a77",
+     "category": "other_veg",
+     "label": "",
+     "pred": "carrot_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "795fdc72-2b21-4ef7-abb4-507cfb502cec",
+     "category": "other_veg",
+     "label": "",
+     "pred": "potato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "81ba9f85-b733-4d49-8267-d87d917295dd",
+     "category": "other_veg",
+     "label": "",
+     "pred": "cucumber_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "81f34106-e81f-47df-b646-589d09dcb2ac",
+     "category": "other_veg",
+     "label": "",
+     "pred": "carrot_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "cda71e78-9838-4cf5-b535-21c15ee37050",
+     "category": "other_veg",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "0f9247f7-d4ac-4484-8b69-456cca16d7ab",
+     "category": "other_veg",
+     "label": "",
+     "pred": "cucumber_fresh",
+     "rejected": false,
+     "good": false
+    },
+    {
+     "id": "4ef703ab-2247-4d25-938b-14eb86171b14",
+     "category": "other_veg",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "904c9cd7-10e7-42d7-83b9-632dead76152",
+     "category": "other_veg",
+     "label": "",
+     "pred": "carrot_fresh",
+     "rejected": false,
+     "good": false
+    },
+    {
+     "id": "1b09860f-9dec-40ae-a994-cac568b8148c",
+     "category": "other_veg",
+     "label": "",
+     "pred": "potato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "36737bc0-97bc-42bd-9727-4c1324b9e249",
+     "category": "other_veg",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "2d411be6-ff1d-401f-bb7e-7f90b5f10df9",
+     "category": "other_veg",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "10c46955-2c59-4602-8e37-15881a9d873f",
+     "category": "other_veg",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "d0491888-e0b9-4c56-91b5-d3193ee96e17",
+     "category": "other_veg",
+     "label": "",
+     "pred": "cucumber_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "b3d0b6b7-0bc1-4e2d-a219-82ddf8b31994",
+     "category": "other_veg",
+     "label": "",
+     "pred": "bellpepper_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "e0a1c56e-9f5b-44bb-bfef-eff97b7cc88c",
+     "category": "other_veg",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "806383f7-a4ad-4ec2-b9f4-466b38573841",
+     "category": "other_veg",
+     "label": "",
+     "pred": "cucumber_fresh",
+     "rejected": false,
+     "good": false
+    },
+    {
+     "id": "1a14dbfb-8b22-446a-b03d-3540e7203b07",
+     "category": "other_veg",
+     "label": "",
+     "pred": "cucumber_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "762f9565-e489-4a5a-9d99-32478f8a0ed2",
+     "category": "other_veg",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "bab3283f-0e72-4388-90ff-f8d27964b685",
+     "category": "other_veg",
+     "label": "",
+     "pred": "potato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "0eefc03c-1e32-4fbd-9f08-386b0c9feedb",
+     "category": "other_veg",
+     "label": "",
+     "pred": "bellpepper_rotten",
+     "rejected": false,
+     "good": false
+    },
+    {
+     "id": "40594f5b-d609-45ec-8a5e-1a913fec6381",
+     "category": "other_veg",
+     "label": "",
+     "pred": "potato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "ee7f99bb-d9c7-4f1c-bc87-606521d0bad4",
+     "category": "other_veg",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "8df11cfa-e90f-4969-8de1-4fa8d6efe2ea",
+     "category": "other_veg",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "7d9c005f-1578-487d-a002-cfcf7138dffa",
+     "category": "other_veg",
+     "label": "",
+     "pred": "tomato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "b4b7799c-107f-48c0-8f1a-a5e649625c5b",
+     "category": "other_veg",
+     "label": "",
+     "pred": "carrot_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "196391b5-27c7-424d-b41f-9b729dd6f0d2",
+     "category": "other_veg",
+     "label": "",
+     "pred": "carrot_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "ce4a514b-acb2-420f-b876-5a09f6f85bd0",
+     "category": "other_veg",
+     "label": "",
+     "pred": "carrot_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "ed54f82c-05fe-461b-9ebd-516806103498",
+     "category": "other_veg",
+     "label": "",
+     "pred": "carrot_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "d047d98d-b138-49ac-82b5-1926afe4f687",
+     "category": "other_veg",
+     "label": "",
+     "pred": "cucumber_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "79c103d2-ead3-4ff0-91fd-799de7c48bd0",
+     "category": "other_veg",
+     "label": "",
+     "pred": "cucumber_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "4503499f-e1b2-47b6-8ada-f504e3b84bfc",
+     "category": "other_veg",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "b8a67e46-cc72-4cbe-a801-7663e330a8c4",
+     "category": "other_veg",
+     "label": "",
+     "pred": "bellpepper_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "fd5ddcc4-2276-4533-8637-66fd52fe0376",
+     "category": "other_veg",
+     "label": "",
+     "pred": "cucumber_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "753cf621-e0fb-4b76-9239-4ea4c87ba678",
+     "category": "other_veg",
+     "label": "",
+     "pred": "potato_fresh",
+     "rejected": false,
+     "good": false
+    },
+    {
+     "id": "a9bf89cd-4aa7-4a2c-ae80-cadd4a0526cc",
+     "category": "food",
+     "label": "",
+     "pred": "tomato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "7a65cabf-7ac7-448a-9595-c874e789c36a",
+     "category": "food",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "268e9337-0e00-4910-8326-edec63495fa3",
+     "category": "food",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "bcda3a3a-1f2f-40ac-9b8f-0fbf694d2128",
+     "category": "food",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "61b69f4a-f5f4-4147-a985-a91f0c65348c",
+     "category": "food",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "9497b2e4-1a05-45d2-b471-1cbea1b747e4",
+     "category": "food",
+     "label": "",
+     "pred": "tomato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "ae682ffb-7078-4021-ad3a-c87e41939bb2",
+     "category": "food",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "e3c2c553-72ab-4951-b6c5-648d8f8e0226",
+     "category": "food",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "e281d086-415e-4cd6-9155-f6e4d34ea8c1",
+     "category": "food",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "e00f2594-755d-4cd3-88b9-0494b82d06b3",
+     "category": "food",
+     "label": "",
+     "pred": "cucumber_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "c8a443ca-d605-4d26-b888-8a929031c91e",
+     "category": "food",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "7728d336-8dcd-4421-b42b-ace8097cab77",
+     "category": "food",
+     "label": "",
+     "pred": "tomato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "8ae33e18-3b37-410b-8b45-98547a0fafbb",
+     "category": "food",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "3b057a1f-9f41-4827-80d2-d536b362a707",
+     "category": "food",
+     "label": "",
+     "pred": "bellpepper_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "44afb152-476a-4729-8076-c282c6f7eed7",
+     "category": "food",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "5ae1f45b-b1e6-4922-a9f3-99d564f0d59d",
+     "category": "food",
+     "label": "",
+     "pred": "carrot_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "4d68e513-87ad-4c35-b7d5-5965c83f9e99",
+     "category": "food",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "a454ef19-bcc8-481e-9cfe-fe4a2b56e302",
+     "category": "food",
+     "label": "",
+     "pred": "carrot_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "17ca7ae4-9da9-4886-a6fa-d154afb1f0bf",
+     "category": "food",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "c0c631bd-7d9d-4bdd-bced-fa80d422607b",
+     "category": "food",
+     "label": "",
+     "pred": "carrot_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "c897efff-7e42-4f4d-8725-5ccb2ce34c42",
+     "category": "food",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "72119d2d-28a6-4bdd-9811-34c97f33bfe3",
+     "category": "food",
+     "label": "",
+     "pred": "cucumber_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "ccba6ee9-f0e7-4cc3-be9c-7017feb8626b",
+     "category": "food",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "31ead821-0ee1-4d74-9f08-ac6c6bf9f001",
+     "category": "food",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "3f2a6270-3afc-4036-98e8-b9e01c47c855",
+     "category": "food",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "6386a53f-a966-433c-baf1-fdc9a39131ae",
+     "category": "drawing_toy",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "0781dd7d-587e-45ac-88ab-8342acfba9c0",
+     "category": "drawing_toy",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "798f5485-78af-4930-ae67-f0d01d4ac437",
+     "category": "drawing_toy",
+     "label": "",
+     "pred": "bellpepper_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "3878ca1b-c9c9-497f-ada3-c3405c43b30f",
+     "category": "drawing_toy",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": false,
+     "good": false
+    },
+    {
+     "id": "654e6035-9969-474a-a353-387c99877f43",
+     "category": "drawing_toy",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "58a8c30f-4e4c-445c-8936-9e38c298da44",
+     "category": "drawing_toy",
+     "label": "",
+     "pred": "bellpepper_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "9445a9fe-c3f8-49b0-b0c7-4e46db752057",
+     "category": "drawing_toy",
+     "label": "",
+     "pred": "cucumber_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "2ef6f487-ab6a-4fb3-af0f-2d5e5adb4bea",
+     "category": "drawing_toy",
+     "label": "",
+     "pred": "tomato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "4a2995d6-0406-4672-8b4f-5af181371d8c",
+     "category": "drawing_toy",
+     "label": "",
+     "pred": "carrot_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "71915d33-12df-4dd6-8270-023a0832c7a4",
+     "category": "drawing_toy",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "c25be84f-3c62-4f84-aedd-da341181a069",
+     "category": "drawing_toy",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "0f3253ce-fc27-46be-95fe-a1a8677dea94",
+     "category": "drawing_toy",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "401017c8-8cd2-4d33-987b-3789db08fb46",
+     "category": "drawing_toy",
+     "label": "",
+     "pred": "carrot_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "a962f704-3c61-4e0b-b093-e2725036cffb",
+     "category": "drawing_toy",
+     "label": "",
+     "pred": "tomato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "c6d659bc-618c-4582-88b5-ab30690a5e99",
+     "category": "drawing_toy",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "1ce50d65-7498-4874-adb5-18879ecb2d67",
+     "category": "drawing_toy",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "a3a2cf94-e65f-4af5-8121-39ff9e46af4f",
+     "category": "everyday",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "a3565050-50dc-4a57-8986-dc6bc3d8af48",
+     "category": "everyday",
+     "label": "",
+     "pred": "carrot_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "bb77c452-04ba-402e-a01b-327558399f46",
+     "category": "everyday",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "e85becb1-3d47-44d6-b62b-e88bdcb1c1f2",
+     "category": "everyday",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "181a8f11-9988-442a-b1d0-62e782d23ba4",
+     "category": "everyday",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "71533543-f4f3-4391-aacb-137586407b1b",
+     "category": "everyday",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "9fb7b396-48ac-4628-99db-c85e01cfa581",
+     "category": "everyday",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "9ee77a50-70ba-4d4e-9972-16981b460f64",
+     "category": "everyday",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "330f9fcd-748f-4a59-99e3-5bab181909b5",
+     "category": "everyday",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "06027c69-473c-4804-84cc-283e44ed70eb",
+     "category": "everyday",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "e951ae78-9035-46ff-84ac-c20d4a7681e8",
+     "category": "everyday",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "7f826244-314d-4401-8dd8-a51bb064517d",
+     "category": "everyday",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "45766a8f-ab95-4fff-8d69-18fa7459c806",
+     "category": "everyday",
+     "label": "",
+     "pred": "potato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "0edac4e5-7e64-4e4b-9727-733a783b8045",
+     "category": "everyday",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "5e2893a7-753c-4016-8536-dd31fa0e459c",
+     "category": "everyday",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "e8ea2e02-4297-4961-bee5-3217b975eadd",
+     "category": "everyday",
+     "label": "",
+     "pred": "carrot_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "da6bbe3d-bc3a-4cbb-ab2a-50560c1acb62",
+     "category": "everyday",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "2dadce9f-6567-45ab-9b96-10eb9eeb5a1c",
+     "category": "everyday",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "8f562c74-432f-47d0-bb68-fff2fdb07a16",
+     "category": "everyday",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "a9496c47-9e3f-4880-ae44-31ed9e19b59d",
+     "category": "everyday",
+     "label": "",
+     "pred": "carrot_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "ef05cce8-2425-45af-a2cb-37746b9dba22",
+     "category": "everyday",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "f38f41d5-3ba9-494c-8e00-ca01608340e8",
+     "category": "everyday",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "8aaa3071-fac1-4388-8091-e5ded8aa7901",
+     "category": "everyday",
+     "label": "",
+     "pred": "carrot_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "f4d51c62-c34a-4a98-bed6-087884651948",
+     "category": "everyday",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "c6bc5413-be19-4e88-adac-0e5048154b61",
+     "category": "everyday",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "033e39a1-a5a0-4f3c-8810-2109ded70bb1",
+     "category": "everyday",
+     "label": "",
+     "pred": "carrot_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "a6dd2414-7695-4f03-9723-a9dc6852e2b3",
+     "category": "everyday",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "1a8ccf32-b2ac-4441-8844-76a1435047c1",
+     "category": "everyday",
+     "label": "",
+     "pred": "potato_rotten",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "5a2922a6-9052-4224-a79b-01a8aeac84a7",
+     "category": "everyday",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "12ee006e-42ec-4433-9352-d2b47772cad8",
+     "category": "everyday",
+     "label": "",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "ecea5710-52dc-4d05-810f-a99a85d34dd5",
+     "category": "cut_five",
+     "label": "carrot_fresh",
+     "pred": "carrot_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "fbc7a464-46d0-4ce6-9518-2e93f9a46f1b",
+     "category": "cut_five",
+     "label": "cucumber_fresh",
+     "pred": "cucumber_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "c29d1a6e-6520-4602-b6c9-8d540bab55a1",
+     "category": "cut_five",
+     "label": "tomato_fresh",
+     "pred": "tomato_rotten",
+     "rejected": false,
+     "good": false
+    },
+    {
+     "id": "f87b68c2-8a19-4f2e-b850-b2d7b8f5c999",
+     "category": "cut_five",
+     "label": "carrot_fresh",
+     "pred": "carrot_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "2e33ef0a-c2f5-4aad-b262-2c48b691acb6",
+     "category": "cut_five",
+     "label": "carrot_fresh",
+     "pred": "carrot_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "acd7b07c-e89f-4875-b04d-3da9032d0d5d",
+     "category": "cut_five",
+     "label": "tomato_fresh",
+     "pred": "tomato_rotten",
+     "rejected": false,
+     "good": false
+    },
+    {
+     "id": "767fad65-6bba-43f4-8c66-4035a57362f6",
+     "category": "cut_five",
+     "label": "cucumber_fresh",
+     "pred": "cucumber_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "959ed9a6-af11-4c17-a98c-6e0a734dad3b",
+     "category": "cut_five",
+     "label": "tomato_fresh",
+     "pred": "tomato_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "dfc02db0-5ce8-4170-8e1d-ea6b5ab985a8",
+     "category": "cut_five",
+     "label": "potato_fresh",
+     "pred": "potato_rotten",
+     "rejected": false,
+     "good": false
+    },
+    {
+     "id": "fd3c0670-c3c4-4a5c-a301-f9f359efa3e9",
+     "category": "cut_five",
+     "label": "tomato_fresh",
+     "pred": "tomato_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "40dd94f6-3b13-42c5-984e-0396774bb30e",
+     "category": "cut_five",
+     "label": "potato_fresh",
+     "pred": "potato_rotten",
+     "rejected": false,
+     "good": false
+    },
+    {
+     "id": "3fa8d8e8-4e69-4777-89b1-789f544234d4",
+     "category": "cut_five",
+     "label": "carrot_fresh",
+     "pred": "carrot_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "62946efa-47ff-4aa6-99cd-68943b0a206e",
+     "category": "cut_five",
+     "label": "tomato_fresh",
+     "pred": "tomato_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "f573ded4-7c1c-4aaf-9d49-32dd4c19a3b8",
+     "category": "cut_five",
+     "label": "tomato_fresh",
+     "pred": "tomato_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "5bf9d456-b9b4-45e9-a8d1-d1608c3af4ad",
+     "category": "cut_five",
+     "label": "carrot_fresh",
+     "pred": "carrot_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "1236a75a-5724-4f4c-a1be-57e878233ba4",
+     "category": "cut_five",
+     "label": "cucumber_fresh",
+     "pred": "cucumber_rotten",
+     "rejected": false,
+     "good": false
+    },
+    {
+     "id": "33ede580-b248-477b-810d-9687352c686d",
+     "category": "cut_five",
+     "label": "tomato_fresh",
+     "pred": "tomato_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "596ab653-fdfd-4575-a7cc-a678395a4315",
+     "category": "cut_five",
+     "label": "cucumber_fresh",
+     "pred": "cucumber_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "0a658e8f-f592-4d28-8c3b-1d08d494b0d6",
+     "category": "cut_five",
+     "label": "tomato_fresh",
+     "pred": "tomato_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "4b6847df-f94c-4506-99a7-d7bcddfed0bc",
+     "category": "several",
+     "label": "tomato_fresh|bellpepper_fresh|carrot_fresh",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "8a52e0ab-6c9d-4acb-8ead-880f0be548b1",
+     "category": "several",
+     "label": "tomato_fresh|cucumber_fresh|bellpepper_fresh",
+     "pred": "tomato_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "94b96d7e-c896-4603-a0ce-2e09b55d23a8",
+     "category": "several",
+     "label": "carrot_fresh|potato_fresh|cucumber_fresh",
+     "pred": "carrot_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "14359321-56db-4de9-9f89-5920ee377fd8",
+     "category": "several",
+     "label": "tomato_fresh|bellpepper_fresh|cucumber_fresh",
+     "pred": "cucumber_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "d3b50dc2-038d-49c5-81cb-bfcefd4e8818",
+     "category": "several",
+     "label": "bellpepper_fresh",
+     "pred": "bellpepper_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "e86fd1ec-d130-4dbe-8cea-8c00c91f4702",
+     "category": "several",
+     "label": "tomato_fresh",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "96d332ed-95b6-4e7e-97e9-8151e63cb6ad",
+     "category": "several",
+     "label": "tomato_fresh|bellpepper_fresh",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "2cbee775-9aee-405b-bc4f-ecdd86eb4dca",
+     "category": "several",
+     "label": "tomato_fresh|bellpepper_fresh",
+     "pred": "tomato_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "728cc91f-e586-4dd3-a59a-f537986d2569",
+     "category": "several",
+     "label": "tomato_fresh",
+     "pred": "tomato_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "624ecf96-ec27-42cd-949e-b1487eb19968",
+     "category": "several",
+     "label": "bellpepper_fresh",
+     "pred": "tomato_fresh",
+     "rejected": true,
+     "good": true
+    },
+    {
+     "id": "a871849f-bb92-47d1-a819-5876b557eea7",
+     "category": "several",
+     "label": "bellpepper_fresh",
+     "pred": "cucumber_fresh",
+     "rejected": false,
+     "good": false
+    },
+    {
+     "id": "4b50c137-9aed-4548-99a7-3c6f7efd9d98",
+     "category": "several",
+     "label": "tomato_fresh|bellpepper_fresh",
+     "pred": "tomato_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "4c3efe1f-cabb-45d9-a3d4-e9ce5526fc33",
+     "category": "several",
+     "label": "bellpepper_fresh",
+     "pred": "bellpepper_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "03c62cdc-bfd9-4155-886e-a13ef5bc1313",
+     "category": "five_daily",
+     "label": "tomato_fresh",
+     "pred": "tomato_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "e6c2c466-e021-405b-8f17-c71cfaef07c6",
+     "category": "five_daily",
+     "label": "bellpepper_fresh",
+     "pred": "bellpepper_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "39d00cd6-507e-4c77-8c4a-cf84ed8da179",
+     "category": "five_daily",
+     "label": "carrot_fresh",
+     "pred": "carrot_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "006241cc-652f-4fda-929b-4b7cb0567808",
+     "category": "five_daily",
+     "label": "tomato_fresh",
+     "pred": "tomato_rotten",
+     "rejected": true,
+     "good": false
+    },
+    {
+     "id": "81f031dd-46a3-4fe1-a766-e2d756f13871",
+     "category": "five_daily",
+     "label": "tomato_fresh",
+     "pred": "tomato_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "a70b0dbc-3c18-48cb-83d0-5a55532f24f6",
+     "category": "five_daily",
+     "label": "tomato_fresh",
+     "pred": "tomato_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "5cf2e0b1-acbe-4d97-acb6-ca5d3e175af3",
+     "category": "five_daily",
+     "label": "bellpepper_fresh",
+     "pred": "bellpepper_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "143dac2d-47e9-4791-b473-4754217bde6d",
+     "category": "five_daily",
+     "label": "tomato_fresh",
+     "pred": "tomato_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "551717a4-611f-413a-a56b-a669a63bf14e",
+     "category": "five_daily",
+     "label": "carrot_fresh",
+     "pred": "carrot_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "852cca12-4aaf-49c4-83d2-5c09d69a18ea",
+     "category": "five_daily",
+     "label": "tomato_fresh",
+     "pred": "tomato_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "85af5849-255e-4004-a16a-a6218202420f",
+     "category": "five_daily",
+     "label": "carrot_fresh",
+     "pred": "carrot_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "45a1e348-a583-4c28-901c-71bef8c3342c",
+     "category": "five_daily",
+     "label": "carrot_fresh",
+     "pred": "carrot_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "d86f3a40-ad4e-4db6-8bc5-b18d74ab1fd2",
+     "category": "five_daily",
+     "label": "potato_fresh",
+     "pred": "potato_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "1a9b6c3b-272c-4a28-988d-749db57b8ed1",
+     "category": "five_daily",
+     "label": "tomato_fresh",
+     "pred": "tomato_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "a2e2a831-7061-4865-ab6c-066b17a75d15",
+     "category": "five_daily",
+     "label": "tomato_fresh",
+     "pred": "tomato_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "03d847db-6f8d-4354-b7f4-0f2a1abb7018",
+     "category": "five_daily",
+     "label": "tomato_fresh",
+     "pred": "tomato_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "34d7f0b8-0ecd-487c-9150-aaa4dc69830f",
+     "category": "five_daily",
+     "label": "tomato_fresh",
+     "pred": "tomato_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "758735b6-7ee5-4cca-80af-8c379da64358",
+     "category": "five_daily",
+     "label": "bellpepper_fresh",
+     "pred": "bellpepper_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "85b77a09-ed0f-4459-af95-68cc0c7ecbbd",
+     "category": "five_daily",
+     "label": "bellpepper_fresh",
+     "pred": "bellpepper_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "6461487a-5aa1-421e-9020-11bc7bbdd468",
+     "category": "five_daily",
+     "label": "bellpepper_fresh",
+     "pred": "bellpepper_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "04ef3a4c-a8bd-4f58-9f9d-e86a785ebeae",
+     "category": "five_daily",
+     "label": "carrot_fresh",
+     "pred": "carrot_fresh",
+     "rejected": false,
+     "good": true
+    },
+    {
+     "id": "c04d33f9-a0b0-4771-88e8-983e3fa95167",
+     "category": "five_daily",
+     "label": "tomato_fresh",
+     "pred": "tomato_fresh",
+     "rejected": false,
+     "good": true
+    }
+   ]
+  }
+ },
+ "adopt": false
+}

@@ -1,0 +1,307 @@
+{
+ "initial": {
+  "test": {
+   "accuracy": 260,
+   "kept_correct": 260,
+   "rejected": 0,
+   "n": 300,
+   "species": 282,
+   "condition": 276,
+   "tomato_rotten": "23/30"
+  },
+  "new": {
+   "accuracy": 149,
+   "kept_correct": 149,
+   "rejected": 0,
+   "n": 241,
+   "species": 185,
+   "condition": 190,
+   "tomato_rotten": "22/74"
+  },
+  "odev": {
+   "accuracy": 155,
+   "kept_correct": 155,
+   "rejected": 0,
+   "n": 221,
+   "species": 193,
+   "condition": 167,
+   "tomato_rotten": "10/45"
+  },
+  "o160": {
+   "accuracy": 121,
+   "kept_correct": 121,
+   "rejected": 0,
+   "n": 160,
+   "species": 144,
+   "condition": 136,
+   "tomato_rotten": "20/20"
+  },
+  "fruit374": {
+   "rejected": 0,
+   "n": 374
+  },
+  "coco400": {
+   "rejected": 0,
+   "n": 400
+  },
+  "any": {
+   "good": 36,
+   "n": 255,
+   "by_category": {
+    "rotten_fruit": "0/50",
+    "fresh_fruit": "0/30",
+    "other_veg": "0/50",
+    "food": "0/25",
+    "drawing_toy": "0/16",
+    "everyday": "0/30",
+    "cut_five": "8/19",
+    "several": "9/13",
+    "five_daily": "19/22"
+   }
+  }
+ },
+ "improved1": {
+  "test": {
+   "accuracy": 275,
+   "kept_correct": 272,
+   "rejected": 5,
+   "n": 300,
+   "species": 287,
+   "condition": 285,
+   "tomato_rotten": "24/30"
+  },
+  "new": {
+   "accuracy": 171,
+   "kept_correct": 157,
+   "rejected": 38,
+   "n": 241,
+   "species": 207,
+   "condition": 198,
+   "tomato_rotten": "37/74"
+  },
+  "odev": {
+   "accuracy": 167,
+   "kept_correct": 158,
+   "rejected": 19,
+   "n": 221,
+   "species": 198,
+   "condition": 186,
+   "tomato_rotten": "17/45"
+  },
+  "o160": {
+   "accuracy": 148,
+   "kept_correct": 146,
+   "rejected": 2,
+   "n": 160,
+   "species": 150,
+   "condition": 158,
+   "tomato_rotten": "20/20"
+  },
+  "fruit374": {
+   "rejected": 101,
+   "n": 374
+  },
+  "coco400": {
+   "rejected": 311,
+   "n": 400
+  },
+  "any": {
+   "good": 115,
+   "n": 255,
+   "by_category": {
+    "rotten_fruit": "17/50",
+    "fresh_fruit": "8/30",
+    "other_veg": "17/50",
+    "food": "12/25",
+    "drawing_toy": "6/16",
+    "everyday": "15/30",
+    "cut_five": "14/19",
+    "several": "11/13",
+    "five_daily": "15/22"
+   }
+  }
+ },
+ "improved2": {
+  "test": {
+   "accuracy": 284,
+   "kept_correct": 280,
+   "rejected": 7,
+   "n": 300,
+   "species": 291,
+   "condition": 291,
+   "tomato_rotten": "25/30"
+  },
+  "new": {
+   "accuracy": 191,
+   "kept_correct": 165,
+   "rejected": 46,
+   "n": 241,
+   "species": 225,
+   "condition": 207,
+   "tomato_rotten": "44/74"
+  },
+  "odev": {
+   "accuracy": 190,
+   "kept_correct": 173,
+   "rejected": 26,
+   "n": 221,
+   "species": 216,
+   "condition": 195,
+   "tomato_rotten": "24/45"
+  },
+  "o160": {
+   "accuracy": 150,
+   "kept_correct": 145,
+   "rejected": 7,
+   "n": 160,
+   "species": 151,
+   "condition": 159,
+   "tomato_rotten": "20/20"
+  },
+  "fruit374": {
+   "rejected": 244,
+   "n": 374
+  },
+  "coco400": {
+   "rejected": 389,
+   "n": 400
+  },
+  "any": {
+   "good": 201,
+   "n": 255,
+   "by_category": {
+    "rotten_fruit": "34/50",
+    "fresh_fruit": "15/30",
+    "other_veg": "40/50",
+    "food": "24/25",
+    "drawing_toy": "11/16",
+    "everyday": "30/30",
+    "cut_five": "17/19",
+    "several": "12/13",
+    "five_daily": "18/22"
+   }
+  }
+ },
+ "current": {
+  "test": {
+   "accuracy": 288,
+   "kept_correct": 285,
+   "rejected": 4,
+   "n": 300,
+   "species": 294,
+   "condition": 293,
+   "tomato_rotten": "27/30"
+  },
+  "new": {
+   "accuracy": 203,
+   "kept_correct": 193,
+   "rejected": 14,
+   "n": 241,
+   "species": 229,
+   "condition": 215,
+   "tomato_rotten": "55/74"
+  },
+  "odev": {
+   "accuracy": 199,
+   "kept_correct": 190,
+   "rejected": 11,
+   "n": 221,
+   "species": 218,
+   "condition": 202,
+   "tomato_rotten": "32/45"
+  },
+  "o160": {
+   "accuracy": 150,
+   "kept_correct": 150,
+   "rejected": 0,
+   "n": 160,
+   "species": 151,
+   "condition": 159,
+   "tomato_rotten": "20/20"
+  },
+  "fruit374": {
+   "rejected": 337,
+   "n": 374
+  },
+  "coco400": {
+   "rejected": 400,
+   "n": 400
+  },
+  "any": {
+   "good": 210,
+   "n": 255,
+   "by_category": {
+    "rotten_fruit": "24/50",
+    "fresh_fruit": "28/30",
+    "other_veg": "44/50",
+    "food": "25/25",
+    "drawing_toy": "14/16",
+    "everyday": "30/30",
+    "cut_five": "13/19",
+    "several": "12/13",
+    "five_daily": "20/22"
+   }
+  }
+ },
+ "F1": {
+  "test": {
+   "accuracy": 288,
+   "kept_correct": 285,
+   "rejected": 4,
+   "n": 300,
+   "species": 295,
+   "condition": 292,
+   "tomato_rotten": "27/30"
+  },
+  "new": {
+   "accuracy": 203,
+   "kept_correct": 187,
+   "rejected": 20,
+   "n": 241,
+   "species": 230,
+   "condition": 213,
+   "tomato_rotten": "54/74"
+  },
+  "odev": {
+   "accuracy": 198,
+   "kept_correct": 184,
+   "rejected": 15,
+   "n": 221,
+   "species": 218,
+   "condition": 201,
+   "tomato_rotten": "31/45"
+  },
+  "o160": {
+   "accuracy": 150,
+   "kept_correct": 150,
+   "rejected": 2,
+   "n": 160,
+   "species": 151,
+   "condition": 159,
+   "tomato_rotten": "20/20"
+  },
+  "fruit374": {
+   "rejected": 359,
+   "n": 374
+  },
+  "coco400": {
+   "rejected": 400,
+   "n": 400
+  },
+  "any": {
+   "good": 237,
+   "n": 255,
+   "by_category": {
+    "rotten_fruit": "48/50",
+    "fresh_fruit": "30/30",
+    "other_veg": "42/50",
+    "food": "25/25",
+    "drawing_toy": "15/16",
+    "everyday": "30/30",
+    "cut_five": "14/19",
+    "several": "12/13",
+    "five_daily": "21/22"
+   }
+  }
+ }
+}

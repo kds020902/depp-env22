@@ -60,6 +60,31 @@ dataset/
     - 자세한 내용은 [experiments/not_five_class](experiments/not_five_class/README.md)에 있고, 과대·과소적합·회전·전처리 점검은 [results/10class/system_checks](results/10class/system_checks/README.md)에 있다.
 - **이어서 (2026.10.29):** 점검에서 진짜 채소를 거르는 일이 주로 채소 모델의 거르기 기준 때문으로 나와서, CLIP 분류기 기준 하나로만 거르게 했다(R1). 새 인터넷 시험지에서 거른 진짜 채소가 49장(20%)에서 14장(5.8%)으로 줄고, 맞게 남긴 수가 169장에서 193장으로 늘었다([experiments/clip_only_reject](experiments/clip_only_reject/README.md)).
 
+### 2026.10.31
+
+- **진행 계속 + 시험 사진 정보도 보여 주기:** 시험 사진을 역할별로 정리했다. 봉인한 시험지는 학습과 조정에 쓰지 않고, 개선안을 다 만든 뒤 마지막 평가에만 한 번 쓰는 시험지다.
+
+| 시험 사진 | 장 수 | 출처 | 쓰임 | 지금 결과 |
+|---|---:|---|---|---:|
+| Valid | 300 | 학습과 같은 Kaggle | 학습 중 조정 | 97.0% |
+| Test | 300 | 학습과 같은 Kaggle | 마지막 평가 (지금까지 8번) | 96.0% |
+| 160장 시험지 | 160 | 연구용 데이터셋 6곳 (휴대폰·밭 사진) | 개발용 | 93.8% |
+| 첫 인터넷 시험지 | 221 | Flickr·Wikimedia | 개발용 (여러 번 봄) | 90.0% |
+| 새 인터넷 시험지 (봉인) | 241 | Flickr·iNaturalist, 상한 사진 42% | 마지막 평가 (지금까지 3번) | 84.2% |
+| "아무 사진" 시험지 (봉인) | 255 | Flickr·iNaturalist, 과일·음식·일상 사진·다섯 채소 | 마지막 평가 (지금까지 1번) | 좋은 답 82% |
+| 인터넷 과일 / 일상 사진 | 374 / 400 | Flickr·Wikimedia / COCO | 거르기 확인 (개발용) | 90% / 100% 거름 |
+
+- **아무 사진이나 넣어도 결과가 잘 나와야 함:**
+    - 데모 페이지가 처음에 채소 모델만으로 답하던 것을, 최종 판정(채소 모델 + CLIP)으로 바로 답하게 바꿨다.
+    - 과일·음식·그림·일상 사진·다른 채소와 다섯 채소를 섞은 ["아무 사진" 시험지 255장](results/10class/anyphoto_test/README.md)을 만들었다. 지금 시스템은 82%에 알맞게 답한다(초기 모델 14%).
+    - 상한 과일을 가르친 후보 F1은 93%까지 올랐지만, 진짜 상한 채소도 더 걸러 미리 정한 기준에 못 미쳐 채택하지 않았다([fruit_farm_tomato](experiments/fruit_farm_tomato/README.md)).
+- **상한 토마토:** 두 모델을 합치는 비중을 바꿔 봤지만, CLIP 분류기가 덜 익은 정상 토마토를 상했다고 봐서 채택하지 않았다([fusion_weight](experiments/fusion_weight/README.md)).
+- **초기 모델부터 지금까지 비교:** [model_comparison](results/10class/model_comparison/README.md)에 있다. 같은 출처 Test는 86.7% → 96.0%, 처음 보는 인터넷 사진은 61.8% → 84.2%, 아무 사진은 14% → 82%다.
+- **피지컬 AI 활용:** 수확 로봇이나 선별 컨베이어의 "눈"으로 쓰는 방안을 정리했다.
+    - 지금 갖춘 것: 종류·상태 판별(보정된 확률), 상한 곳 대략 표시(7×7칸 히트맵), 모르면 멈추기(거르기, 다시 찍기 안내)
+    - 더 필요한 것: 사진 속 채소 하나하나 찾기, 밭 사진 학습, 상한 부위 경계
+    - 속도: 4코어 CPU에서 사진 한 장에 약 0.18초
+
 ## 1차와 달라진 점
 
 | 항목 | 1차 | 현재 |
@@ -89,7 +114,7 @@ dataset/
 
 `model.pth`에는 채소 모델(EfficientNet-B0 전체 미세조정)과, CLIP 특징 위에서 학습한 분류기(`clip_head`)가 함께 들어 있다. `predict.py`는 두 모델의 판단을 합친다.
 
-| Test 300장 | 채소 모델 + CLIP (최종, N3) | 이전 (CLIP 10클래스) | 채소 모델만 |
+| Test 300장 | 채소 모델 + CLIP (최종, N3 + R1) | 이전 (CLIP 10클래스) | 채소 모델만 |
 |---|---:|---:|---:|
 | 10개 클래스 | **96.0% (288)** | 94.7% (284) | 91.7% (275) |
 | 채소 종류 (5종) | 98.0% (294) | 97.0% (291) | 96.0% (288) |
@@ -155,6 +180,8 @@ Test에서 클래스별로 맞힌 수는 다음과 같다.
 - **약점 사진으로 CLIP 분류기 다시 학습 시도:** 밭에서 아래가 썩은 토마토 등 434장을 CLIP 분류기 학습에 더했다. 인터넷 사진은 190장에서 194·199장으로 올랐지만, 과일·일상 사진을 덜 걸러 채택하지 않았다. 이 문제를 "다섯 채소가 아님" 클래스로 풀었다([experiments/weak_spots](experiments/weak_spots/README.md)).
 - **휴대폰 사진 추가 시도:** 다른 Kaggle 데이터 두 곳에서 직접 찍은 오이·감자·토마토·당근 정상·상함 사진 480장을 검수해 Train에 더했다. 인터넷 사진 점수가 그대로여서(두 시드 166·167장, 현재 모델 167장) 채택하지 않았다([experiments/rotten_phone](experiments/rotten_phone/README.md)).
 - **피망 웹 사진 추가 시도:** 다른 Kaggle 데이터에서 정상·상한 피망 웹 사진을 34장씩 검수해 Train에 더했다(피망 Train 106→140장). 두 시드에서 Valid 정상 피망 오답은 9장에서 1장으로 줄었지만, 상한 피망과 다른 채소가 조금씩 나빠져 전체 Valid가 미리 정한 기준을 넘지 못해 채택하지 않았다([experiments/pepper_web](experiments/pepper_web/README.md)).
+- **두 모델을 합치는 비중 다시 정하기 (채택 안 함):** 상한 토마토를 위해 채소 모델의 비중을 낮췄다. 인터넷 상한 토마토는 45장 중 32장에서 40장으로 좋아졌지만, CLIP 분류기가 천 위의 덜 익은 정상 토마토를 상했다고 봐서 160장 시험지가 150장에서 130장으로 떨어졌다([experiments/fusion_weight](experiments/fusion_weight/README.md)).
+- **CLIP 분류기에 농가 토마토와 상한 과일 가르치기 (채택 안 함):** "아무 사진" 시험지의 좋은 답이 210장에서 237장(93%)으로 늘고 상한 과일을 거의 다 걸렀다. 하지만 진짜 상한 채소도 더 걸러 새 인터넷 시험지의 맞게 남긴 수가 193장에서 187장으로 줄어, 미리 정한 기준(191장)에 못 미쳤다([experiments/fruit_farm_tomato](experiments/fruit_farm_tomato/README.md)).
 
 ### 인터넷에 올라온 사진
 
@@ -275,10 +302,10 @@ depp-env22/
 │   ├── make_plots.py        학습 곡선, 혼동행렬, 모델 비교 그래프
 │   └── gradcam.py           모델이 사진의 어느 부분을 보고 판단했는지 보여주는 그림
 ├── results/                 실험별 metrics.json, history.csv, val/test_predictions.csv, 그래프
-│   ├── 10class/             현재 10개 클래스 모델의 기록 (calibration_unknown/: 확률 보정·거르기 평가, outside_test/: 인터넷 사진 평가, outside_test2/: 봉인한 새 인터넷 시험지 241장, system_checks/: 과대·과소적합·회전·전처리 점검, extra_features/: 히트맵·다시 찍기 안내·가장 가까운 것)
+│   ├── 10class/             현재 10개 클래스 모델의 기록 (calibration_unknown/: 확률 보정·거르기 평가, outside_test/: 인터넷 사진 평가, outside_test2/: 봉인한 새 인터넷 시험지 241장, anyphoto_test/: "아무 사진" 시험지 255장, model_comparison/: 초기 모델부터 지금까지 같은 사진으로 비교, system_checks/: 과대·과소적합·회전·전처리 점검, extra_features/: 히트맵·다시 찍기 안내·가장 가까운 것)
 │   ├── (그 밖의 폴더)       6개 클래스 때의 모델 비교 (같은 Test 180장, 6개 클래스 가중치는 커밋 9dc8749의 model.pth)
 │   └── round1_v1_data/      1차 모델의 학습 기록 (1차 가중치는 커밋 03db425에 있음)
-└── experiments/             추가 실험 기록 (채택: real_scene_threshold, clip_classifier, not_five_class, clip_only_reject / 채택 안 함: field_tomato, partial_rot, 10class_tuning, pepper_web, rotten_phone, more_data, fix_carrot_cucumber, asian_cucumber, fruit_other, fruit_gate, posthoc_literature, clip_gate, tta, clip_head_more_data, weak_spots)
+└── experiments/             추가 실험 기록 (채택: real_scene_threshold, clip_classifier, not_five_class, clip_only_reject / 채택 안 함: field_tomato, partial_rot, 10class_tuning, pepper_web, rotten_phone, more_data, fix_carrot_cucumber, asian_cucumber, fruit_other, fruit_gate, posthoc_literature, clip_gate, tta, clip_head_more_data, weak_spots, fusion_weight, fruit_farm_tomato)
 ```
 
 가중치는 용량 때문에 최종 모델(`model.pth`)만 올렸다.
@@ -286,7 +313,8 @@ depp-env22/
 ## 한계
 
 - Test도 인터넷 사진이다. 다른 출처의 봉인한 새 인터넷 시험지 241장에서는 84.2%로 떨어진다(첫 인터넷 사진 221장은 90.0%, 채소 모델만 쓰면 75.6%). 직접 찍은 사진에서의 성능은 아직 측정하지 않았다.
-- 최종 판정은 CLIP(약 600MB)을 함께 돌려야 한다. 브라우저 데모는 크기 때문에 채소 모델만 쓴다.
+- 최종 판정은 CLIP(약 600MB)을 함께 돌려야 한다. 브라우저 데모는 CLIP의 사진 부분을 8비트로 줄여(약 88MB) 최종 판정을 기본으로 돌린다. 처음 한 번 내려받는 데 시간이 걸린다.
+- 상한 과일은 아직 잘 거르지 못한다. "아무 사진" 시험지의 상한 과일 50장 중 26장에 채소 이름을 붙였다(대부분 "상한 감자"·"상한 토마토"). 닮은 다른 채소(파스닙→당근, 여주·애호박→오이)도 일부 착각한다([anyphoto_test](results/10class/anyphoto_test/README.md)).
 - Valid·Test가 각 300장이라 한 장이 0.33%p다. 95% 신뢰구간 폭이 약 ±3%p이므로 1~2%p 차이는 의미 있게 보기 어렵다.
 - 학습하지 않은 사진 거르기는 완벽하지 않다. 인터넷 과일 사진은 10%가 그대로 10개 중 하나로 답하고, 진짜 채소 사진도 Test에서 1.3%, 새 인터넷 시험지에서 5.8%(14/241)를 거른다. 거르는 사진을 줄인 대신, 거르지 않고 틀린 답을 보여 주는 사진은 새 시험지에서 23장에서 34장으로 늘었다. 채소를 돌리거나 거꾸로 놓은 사진은 더 많이 거른다([system_checks](results/10class/system_checks/README.md)).
 - 피망·당근은 상한 사진이 부족해 Train이 클래스마다 106장·104장으로 다른 채소(140장)보다 적다.
