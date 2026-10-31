@@ -1,0 +1,296 @@
+{
+ "fit": {
+  "current": {
+   "train": {
+    "n": 1260,
+    "accuracy": 1260,
+    "kept_correct": 1259,
+    "loss": 0.0,
+    "ece": 0.0
+   },
+   "valid": {
+    "n": 300,
+    "accuracy": 291,
+    "kept_correct": 287,
+    "loss": 0.084,
+    "ece": 0.015
+   },
+   "o160": {
+    "n": 160,
+    "accuracy": 150,
+    "kept_correct": 150,
+    "loss": 0.247,
+    "ece": 0.037
+   },
+   "odev": {
+    "n": 221,
+    "accuracy": 199,
+    "kept_correct": 190,
+    "loss": 0.423,
+    "ece": 0.074
+   }
+  },
+  "F1": {
+   "train": {
+    "n": 1260,
+    "accuracy": 1260,
+    "kept_correct": 1260,
+    "loss": 0.0,
+    "ece": 0.0
+   },
+   "valid": {
+    "n": 300,
+    "accuracy": 290,
+    "kept_correct": 285,
+    "loss": 0.086,
+    "ece": 0.014
+   },
+   "o160": {
+    "n": 160,
+    "accuracy": 150,
+    "kept_correct": 150,
+    "loss": 0.232,
+    "ece": 0.031
+   },
+   "odev": {
+    "n": 221,
+    "accuracy": 198,
+    "kept_correct": 184,
+    "loss": 0.441,
+    "ece": 0.072
+   }
+  }
+ },
+ "rotation": {
+  "valid": {
+   "n": 300,
+   "current": {
+    "original": {
+     "accuracy": 291,
+     "kept_correct": 287,
+     "rejected": 4,
+     "same_answer_as_original": 300
+    },
+    "rotate 90": {
+     "accuracy": 287,
+     "kept_correct": 279,
+     "rejected": 9,
+     "same_answer_as_original": 292
+    },
+    "rotate 180": {
+     "accuracy": 288,
+     "kept_correct": 279,
+     "rejected": 9,
+     "same_answer_as_original": 293
+    },
+    "rotate 270": {
+     "accuracy": 289,
+     "kept_correct": 284,
+     "rejected": 5,
+     "same_answer_as_original": 290
+    },
+    "tilt +15": {
+     "accuracy": 287,
+     "kept_correct": 282,
+     "rejected": 6,
+     "same_answer_as_original": 284
+    },
+    "tilt -15": {
+     "accuracy": 282,
+     "kept_correct": 275,
+     "rejected": 7,
+     "same_answer_as_original": 285
+    },
+    "tilt +30": {
+     "accuracy": 276,
+     "kept_correct": 269,
+     "rejected": 10,
+     "same_answer_as_original": 277
+    },
+    "flip left-right": {
+     "accuracy": 291,
+     "kept_correct": 286,
+     "rejected": 6,
+     "same_answer_as_original": 298
+    },
+    "flip up-down": {
+     "accuracy": 287,
+     "kept_correct": 281,
+     "rejected": 6,
+     "same_answer_as_original": 294
+    }
+   },
+   "F1": {
+    "original": {
+     "accuracy": 290,
+     "kept_correct": 285,
+     "rejected": 6,
+     "same_answer_as_original": 300
+    },
+    "rotate 90": {
+     "accuracy": 286,
+     "kept_correct": 280,
+     "rejected": 7,
+     "same_answer_as_original": 292
+    },
+    "rotate 180": {
+     "accuracy": 288,
+     "kept_correct": 280,
+     "rejected": 9,
+     "same_answer_as_original": 294
+    },
+    "rotate 270": {
+     "accuracy": 287,
+     "kept_correct": 282,
+     "rejected": 5,
+     "same_answer_as_original": 293
+    },
+    "tilt +15": {
+     "accuracy": 286,
+     "kept_correct": 268,
+     "rejected": 20,
+     "same_answer_as_original": 284
+    },
+    "tilt -15": {
+     "accuracy": 282,
+     "kept_correct": 263,
+     "rejected": 23,
+     "same_answer_as_original": 286
+    },
+    "tilt +30": {
+     "accuracy": 278,
+     "kept_correct": 244,
+     "rejected": 36,
+     "same_answer_as_original": 280
+    },
+    "flip left-right": {
+     "accuracy": 290,
+     "kept_correct": 284,
+     "rejected": 7,
+     "same_answer_as_original": 298
+    },
+    "flip up-down": {
+     "accuracy": 287,
+     "kept_correct": 281,
+     "rejected": 7,
+     "same_answer_as_original": 295
+    }
+   }
+  },
+  "odev": {
+   "n": 221,
+   "current": {
+    "original": {
+     "accuracy": 199,
+     "kept_correct": 190,
+     "rejected": 11,
+     "same_answer_as_original": 221
+    },
+    "rotate 90": {
+     "accuracy": 191,
+     "kept_correct": 182,
+     "rejected": 14,
+     "same_answer_as_original": 207
+    },
+    "rotate 180": {
+     "accuracy": 187,
+     "kept_correct": 178,
+     "rejected": 12,
+     "same_answer_as_original": 205
+    },
+    "rotate 270": {
+     "accuracy": 194,
+     "kept_correct": 187,
+     "rejected": 11,
+     "same_answer_as_original": 208
+    },
+    "tilt +15": {
+     "accuracy": 190,
+     "kept_correct": 187,
+     "rejected": 6,
+     "same_answer_as_original": 204
+    },
+    "tilt -15": {
+     "accuracy": 190,
+     "kept_correct": 185,
+     "rejected": 8,
+     "same_answer_as_original": 206
+    },
+    "tilt +30": {
+     "accuracy": 188,
+     "kept_correct": 184,
+     "rejected": 5,
+     "same_answer_as_original": 202
+    },
+    "flip left-right": {
+     "accuracy": 200,
+     "kept_correct": 190,
+     "rejected": 12,
+     "same_answer_as_original": 218
+    },
+    "flip up-down": {
+     "accuracy": 188,
+     "kept_correct": 179,
+     "rejected": 12,
+     "same_answer_as_original": 210
+    }
+   },
+   "F1": {
+    "original": {
+     "accuracy": 198,
+     "kept_correct": 184,
+     "rejected": 15,
+     "same_answer_as_original": 221
+    },
+    "rotate 90": {
+     "accuracy": 189,
+     "kept_correct": 175,
+     "rejected": 16,
+     "same_answer_as_original": 206
+    },
+    "rotate 180": {
+     "accuracy": 187,
+     "kept_correct": 168,
+     "rejected": 20,
+     "same_answer_as_original": 204
+    },
+    "rotate 270": {
+     "accuracy": 190,
+     "kept_correct": 179,
+     "rejected": 13,
+     "same_answer_as_original": 207
+    },
+    "tilt +15": {
+     "accuracy": 189,
+     "kept_correct": 173,
+     "rejected": 20,
+     "same_answer_as_original": 203
+    },
+    "tilt -15": {
+     "accuracy": 190,
+     "kept_correct": 178,
+     "rejected": 16,
+     "same_answer_as_original": 207
+    },
+    "tilt +30": {
+     "accuracy": 187,
+     "kept_correct": 168,
+     "rejected": 23,
+     "same_answer_as_original": 200
+    },
+    "flip left-right": {
+     "accuracy": 196,
+     "kept_correct": 181,
+     "rejected": 16,
+     "same_answer_as_original": 217
+    },
+    "flip up-down": {
+     "accuracy": 187,
+     "kept_correct": 170,
+     "rejected": 20,
+     "same_answer_as_original": 206
+    }
+   }
+  }
+ }
+}
