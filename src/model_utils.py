@@ -382,3 +382,36 @@ def is_unknown_combined(logits: torch.Tensor, clip_logits: torch.Tensor, checkpo
     if not checkpoint["clip_head"].get("vegetable_model_check", True):
         return clip_says
     return is_unknown(logits, checkpoint) | clip_says
+
+
+# ---------- onion, sweet potato, green onion: a second CLIP head (experiments/new_vegetables, V6-H) ----------
+def new_vegetable_decision(probabilities: torch.Tensor, unknown: torch.Tensor, features: torch.Tensor,
+                           checkpoint: dict) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor]:
+    """The five-vegetable system answers first; the second CLIP head (16 classes + "not one of the eight vegetables")
+    may change the answer to onion, sweet potato or green onion:
+    - a photo the five-vegetable system turned away, when the head does not turn it away and its most likely kind
+      (sum of the fresh and rotten probabilities) is a new vegetable;
+    - a photo the five-vegetable system answered, only when the head gives the new vegetables together at least
+      `switch_probability` and its most likely kind is a new vegetable.
+    Returns probabilities over the head's 16 classes (the head's, at its display temperature, for switched photos;
+    otherwise the five-vegetable probabilities padded with zeros), the chosen class per photo (for a switched photo the
+    head's most likely kind, then its more likely condition), the new unknown flags and which photos were switched."""
+    head = checkpoint["new_vegetable_head"]
+    z = features.float() @ head["coef"].T.to(features.device) + head["intercept"].to(features.device)
+    k = z.shape[1] - 1                                    # last column: not one of the eight vegetables
+    p = z[:, :k].softmax(1)
+    n, n_species = len(z), k // len(CONDITION_NAMES)
+    species = p.reshape(n, n_species, len(CONDITION_NAMES)).sum(2).argmax(1)
+    within = z[:, :k].reshape(n, n_species, len(CONDITION_NAMES))[torch.arange(n), species].argmax(1)
+    head_index = species * len(CONDITION_NAMES) + within
+    head_unknown = z[:, k] - torch.logsumexp(z[:, :k], 1) > head["unknown_threshold"]
+    first_new = head["first_new_species"]
+    is_new = species >= first_new
+    new_share = p[:, first_new * len(CONDITION_NAMES):].sum(1)
+    switch = (unknown & ~head_unknown & is_new) | (~unknown & (new_share >= head["switch_probability"]) & is_new)
+    padded = torch.zeros(n, k, dtype=probabilities.dtype)
+    padded[:, :probabilities.shape[1]] = probabilities
+    head_probabilities = (z[:, :k] / head["temperature"]).softmax(1).to(padded.dtype)
+    output = torch.where(switch[:, None], head_probabilities, padded)
+    index = torch.where(switch, head_index, padded.argmax(1))
+    return output, index, unknown & ~switch, switch

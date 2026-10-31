@@ -1,8 +1,11 @@
 """Classify a photo or a directory using a trained checkpoint (vegetable species x fresh/rotten).
 
-When the checkpoint has a CLIP head (model.pth does), the vegetable model and the CLIP classifier are combined and a photo
-is turned away when either says it is not one of the trained vegetables (experiments/clip_classifier). This needs
-`pip install open_clip_torch` and downloads CLIP (about 600 MB) on first use; --no-clip uses the vegetable model alone.
+When the checkpoint has a CLIP head (model.pth does), the vegetable model and the CLIP classifier are combined, and a photo
+is turned away when the CLIP head says it is not one of the five vegetables (experiments/not_five_class, clip_only_reject).
+With a second CLIP head for onion, sweet potato and green onion ("new_vegetable_head", experiments/new_vegetables), that head
+may then change the answer to one of the three (see model_utils.new_vegetable_decision); --five-only skips it.
+This needs `pip install open_clip_torch` and downloads CLIP (about 600 MB) on first use; --no-clip uses the vegetable model
+alone (five vegetables only).
 """
 
 from __future__ import annotations
@@ -17,7 +20,7 @@ import torch
 from model_utils import (
     CONDITION_NAMES, IMAGE_EXTENSIONS, NO_CONDITION_SPECIES, SPECIES_NAMES, UNKNOWN_MESSAGE,
     calibrated_probabilities, clip_head_logits, clip_unknown_score, combined_logits, combined_probabilities, forward_with_rot_maps,
-    input_size, is_unknown, is_unknown_combined, load_model, make_transform, marginal_probabilities, open_image,
+    input_size, is_unknown, is_unknown_combined, load_model, make_transform, marginal_probabilities, new_vegetable_decision, open_image,
     resolve_device, rot_map_overlay, unknown_score,
 )
 from report import image_data_uri, write_report
@@ -55,7 +58,9 @@ def main():
                              "(combined model on Valid: 98.9%% of photos at 90%% or more were right, 68%% of those below).")
     parser.add_argument("--no-clip", action="store_true",
                         help="Use the vegetable model alone, without CLIP (faster, no 600 MB download; Test 91.7%% "
-                             "instead of 94.7%%, and no closest-thing hint for photos turned away).")
+                             "instead of 96.0%%, five vegetables only, and no closest-thing hint for photos turned away).")
+    parser.add_argument("--five-only", action="store_true",
+                        help="Do not use the onion / sweet potato / green onion head (answers are one of the five vegetables).")
     parser.add_argument("--report", type=Path,
                         help="Also write one HTML report (photos embedded, opens offline): counts, a table by vegetable, "
                              "filters and one card per photo with its heatmap.")
@@ -72,7 +77,8 @@ def main():
     if not photos:
         raise ValueError("No supported image files were found.")
     transform = make_transform(input_size(checkpoint))
-    class_names = checkpoint["class_names"]
+    use_new = "new_vegetable_head" in checkpoint and "clip_head" in checkpoint and not args.no_clip and not args.five_only
+    class_names = checkpoint["new_vegetable_head"]["class_names"] if use_new else checkpoint["class_names"]
     probability_columns = [f"prob_{name}" for name in class_names]
     calibrated = "calibration" in checkpoint
     fields = [
@@ -119,13 +125,19 @@ def main():
                     probabilities = calibrated_probabilities(logits, checkpoint)
                     unknown = bool(is_unknown(logits, checkpoint)[0])
                 index = int(probabilities[0].argmax())
-                rot_map = rot_maps[index // len(CONDITION_NAMES)]
+                if use_new:
+                    probabilities, chosen, still_unknown, _ = new_vegetable_decision(
+                        probabilities, torch.tensor([unknown]), features, checkpoint)
+                    index, unknown = int(chosen[0]), bool(still_unknown[0])
+                # the vegetable model's rot maps cover its own (five) vegetables only
+                has_map = index // len(CONDITION_NAMES) < rot_maps.shape[0]
+                rot_map = rot_maps[min(index // len(CONDITION_NAMES), rot_maps.shape[0] - 1)]
                 scale = rot_scale or float(rot_map.max()) or 1.0
                 species_probs, condition_probs = marginal_probabilities(probabilities)
                 species_index = int(species_probs[0].argmax())
                 condition_index = int(condition_probs[0].argmax())
                 retake = unknown or float(probabilities[0, index]) < args.retake_below
-                no_map = unknown or condition_of(index) == "not_judged"  # no rot map where the condition is not judged
+                no_map = unknown or not has_map or condition_of(index) == "not_judged"  # no rot map there
                 message = UNKNOWN_MESSAGE if unknown else ""
                 closest = ""
                 if unknown and clip is not None:
@@ -186,15 +198,19 @@ def main():
     print(f"Saved {success}/{len(photos)} successful predictions to {args.output.resolve()}")
     if args.report:
         write_report(args.report, entries, {
-            "model": "채소 모델 + CLIP 분류기 (Test 94.7%)" if clip is not None else "채소 모델만 (Test 91.7%)",
+            "model": ("채소 모델 + CLIP 분류기 2개 (8종: 다섯 채소 + 양파·고구마·대파)" if use_new else
+                      "채소 모델 + CLIP 분류기 (다섯 채소, Test 96.0%)" if clip is not None else "채소 모델만 (다섯 채소, Test 91.7%)"),
             "source": f"입력 폴더: {args.input.expanduser().resolve().name}",
             "notes": [
                 "확률은 Valid 사진으로 보정한 값입니다. 이 판정의 확률이 90% 미만이면 다시 찍기를 권합니다.",
                 "상한 흔적은 모델이 '비정상' 쪽으로 본 정도입니다. 1이면 Valid 비정상 사진의 중간 수준입니다.",
                 "'상한 곳 보기'의 빨간 부분은 모델이 상했다고 본 곳입니다. 7×7칸 단위라 대략적인 위치입니다.",
-                "'학습된 데이터가 아닙니다'는 오이·감자·토마토·피망·당근 사진이 아닌 것 같다는 뜻입니다.",
+                ("'학습된 데이터가 아닙니다'는 오이·감자·토마토·피망·당근·양파·고구마·대파 사진이 아닌 것 같다는 뜻입니다. "
+                 "대파는 종류만 알아보고 상태는 판정하지 않습니다." if use_new else
+                 "'학습된 데이터가 아닙니다'는 오이·감자·토마토·피망·당근 사진이 아닌 것 같다는 뜻입니다."),
                 "인터넷 사진으로 학습해서, 직접 찍은 사진에서는 정확도가 다를 수 있습니다.",
-            ],
+            ] + (["'상한 곳 보기'는 다섯 채소에만 있습니다. 양파·고구마·대파는 CLIP 분류기가 답해서 상한 곳 지도가 없습니다."]
+                 if use_new else []),
         })
         print(f"Saved the report to {args.report.resolve()}")
     if not success:

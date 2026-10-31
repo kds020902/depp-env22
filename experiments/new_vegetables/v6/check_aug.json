@@ -1,0 +1,253 @@
+{
+ "mode": "aug",
+ "new_class_train": {
+  "onion_fresh": 104,
+  "onion_rotten": 60,
+  "sweetpotato_fresh": 73,
+  "sweetpotato_rotten": 32,
+  "greenonion_fresh": 79
+ },
+ "average": 70,
+ "augmented": {
+  "onion_rotten": 10,
+  "sweetpotato_rotten": 38
+ },
+ "EC_new": -1.061005426766344,
+ "tau_grid_moved": {
+  "0.5": 12,
+  "0.7": 2,
+  "0.8": 1,
+  "0.9": 0,
+  "0.95": 0
+ },
+ "tau": 0.8,
+ "now": {
+  "valid": {
+   "accuracy": 291,
+   "kept_correct": 287,
+   "rejected": 4,
+   "answered_new_species": 0,
+   "of": 300
+  },
+  "newval": {
+   "kind_right_kept": 0,
+   "of": 73,
+   "by_class": {
+    "onion_fresh": "0/29",
+    "onion_rotten": "0/5",
+    "sweetpotato_fresh": "0/17",
+    "sweetpotato_rotten": "0/6",
+    "greenonion_fresh": "0/16"
+   },
+   "misses": [
+    [
+     "onion_fresh->REJ",
+     28
+    ],
+    [
+     "greenonion_fresh->REJ",
+     14
+    ],
+    [
+     "sweetpotato_fresh->REJ",
+     6
+    ],
+    [
+     "sweetpotato_fresh->potato_fresh",
+     5
+    ],
+    [
+     "sweetpotato_fresh->potato_rotten",
+     3
+    ],
+    [
+     "onion_rotten->REJ",
+     2
+    ],
+    [
+     "sweetpotato_rotten->potato_rotten",
+     2
+    ],
+    [
+     "sweetpotato_fresh->carrot_fresh",
+     2
+    ],
+    [
+     "sweetpotato_rotten->potato_fresh",
+     1
+    ],
+    [
+     "sweetpotato_rotten->REJ",
+     1
+    ],
+    [
+     "sweetpotato_rotten->tomato_rotten",
+     1
+    ],
+    [
+     "onion_rotten->potato_rotten",
+     1
+    ],
+    [
+     "onion_rotten->tomato_rotten",
+     1
+    ],
+    [
+     "greenonion_fresh->cucumber_fresh",
+     1
+    ],
+    [
+     "onion_fresh->tomato_fresh",
+     1
+    ],
+    [
+     "sweetpotato_fresh->carrot_rotten",
+     1
+    ],
+    [
+     "sweetpotato_rotten->carrot_fresh",
+     1
+    ],
+    [
+     "onion_rotten->cucumber_rotten",
+     1
+    ],
+    [
+     "greenonion_fresh->carrot_fresh",
+     1
+    ]
+   ]
+  },
+  "odev": {
+   "accuracy": 199,
+   "kept_correct": 190,
+   "rejected": 11,
+   "answered_new_species": 0,
+   "of": 221
+  },
+  "o160": {
+   "accuracy": 150,
+   "kept_correct": 150,
+   "rejected": 0,
+   "answered_new_species": 0,
+   "of": 160
+  },
+  "asian37": {
+   "accuracy": 34,
+   "kept_correct": 30,
+   "rejected": 5,
+   "answered_new_species": 0,
+   "of": 37
+  },
+  "fruit374": {
+   "rejected": 337,
+   "of": 374,
+   "answered_new_species": 0
+  },
+  "coco400": {
+   "rejected": 400,
+   "of": 400,
+   "answered_new_species": 0
+  },
+  "lvis": {
+   "rejected": 21,
+   "of": 192,
+   "answered_new_species": 0
+  }
+ },
+ "V6-H": {
+  "valid": {
+   "accuracy": 291,
+   "kept_correct": 287,
+   "rejected": 4,
+   "answered_new_species": 0,
+   "of": 300
+  },
+  "newval": {
+   "kind_right_kept": 58,
+   "of": 73,
+   "by_class": {
+    "onion_fresh": "23/29",
+    "onion_rotten": "5/5",
+    "sweetpotato_fresh": "15/17",
+    "sweetpotato_rotten": "4/6",
+    "greenonion_fresh": "11/16"
+   },
+   "misses": [
+    [
+     "onion_fresh->REJ",
+     5
+    ],
+    [
+     "greenonion_fresh->onion_fresh",
+     3
+    ],
+    [
+     "sweetpotato_rotten->REJ",
+     1
+    ],
+    [
+     "sweetpotato_rotten->potato_rotten",
+     1
+    ],
+    [
+     "greenonion_fresh->REJ",
+     1
+    ],
+    [
+     "greenonion_fresh->cucumber_fresh",
+     1
+    ],
+    [
+     "onion_fresh->tomato_fresh",
+     1
+    ],
+    [
+     "sweetpotato_fresh->carrot_fresh",
+     1
+    ],
+    [
+     "sweetpotato_fresh->REJ",
+     1
+    ]
+   ]
+  },
+  "odev": {
+   "accuracy": 197,
+   "kept_correct": 190,
+   "rejected": 9,
+   "answered_new_species": 2,
+   "of": 221
+  },
+  "o160": {
+   "accuracy": 150,
+   "kept_correct": 150,
+   "rejected": 0,
+   "answered_new_species": 0,
+   "of": 160
+  },
+  "asian37": {
+   "accuracy": 34,
+   "kept_correct": 30,
+   "rejected": 4,
+   "answered_new_species": 1,
+   "of": 37
+  },
+  "fruit374": {
+   "rejected": 334,
+   "of": 374,
+   "answered_new_species": 3
+  },
+  "coco400": {
+   "rejected": 400,
+   "of": 400,
+   "answered_new_species": 0
+  },
+  "lvis": {
+   "rejected": 20,
+   "of": 192,
+   "answered_new_species": 2
+  }
+ },
+ "checks_pass": true
+}

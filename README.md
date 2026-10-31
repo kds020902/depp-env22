@@ -6,6 +6,10 @@
 4. **현재:** 오이·감자·토마토·피망·당근 × 정상·비정상 10개 클래스를, 학습에 쓰지 않은 Test 300장에서 **96.0%(288/300)** 맞힌다. 채소 모델(EfficientNet-B0)과 CLIP으로 만든 분류기를 함께 쓴다. CLIP 분류기는 "다섯 채소가 아님"(과일·일상 사진·다른 채소)도 배웠다. 채소 모델만 쓰면 91.7%(275/300)다(6개 클래스 때는 Test 180장에서 95.0%).
 5. **인터넷에 올라온 사진:** 정답을 먼저 정해 봉인한 새 인터넷 시험지 241장(Flickr·iNaturalist)에서는 **84.2%(203장)**를 맞힌다(이전 시스템 79.3%). 여러 번 본 첫 인터넷 사진 221장에서는 90.0%(199장)이고, 채소 모델만 쓰면 75.6%(167장)다. 특히 상한 토마토가 어렵다.
 6. **확률과 학습하지 않은 사진:** 예측마다 보정된 확률을 함께 내고, 다섯 채소가 아닌 것 같은 사진에는 "학습된 데이터가 아닙니다"라고 답한다. CLIP 분류기가 "다섯 채소가 아님"으로 보면 거른다. 일상 사진은 100%, 과일 사진은 90%를 거르고, 진짜 채소는 Test에서 4장(1.3%), 새 인터넷 시험지에서 14장(5.8%)을 잘못 거른다. 모델이 상했다고 본 부분을 사진 위에 빨갛게 표시하고, 확신이 낮으면 다시 찍기를 권한다([추가 기능](results/10class/extra_features/README.md)).
+7. **양파·고구마·대파 추가 (8종):** 인터넷 공개 사진을 검수해 세 채소를 더했다. 비정상에는 싹 난 것도 넣었고, 대파는 종류만 알아본다.
+    - 다섯 채소 시스템이 먼저 답하고, 두 번째 CLIP 분류기가 양파·고구마·대파일 때만 답을 바꾼다.
+    - 봉인한 새 채소 시험지 172장에서 **83%(142장)**의 종류를 맞힌다.
+    - 기존 다섯 채소는 Test 288장 그대로이고, 새 인터넷 시험지는 203장에서 199장(82.6%)으로 4장 줄었다. 감자를 고구마로 답하는 경우가 생겼기 때문이다([experiments/new_vegetables](experiments/new_vegetables/README.md)).
 
 ## 교수님 상담 반영
 
@@ -67,18 +71,29 @@ dataset/
 | 시험 사진 | 장 수 | 출처 | 쓰임 | 지금 결과 |
 |---|---:|---|---|---:|
 | Valid | 300 | 학습과 같은 Kaggle | 학습 중 조정 | 97.0% |
-| Test | 300 | 학습과 같은 Kaggle | 마지막 평가 (지금까지 8번) | 96.0% |
+| Test | 300 | 학습과 같은 Kaggle | 마지막 평가 (지금까지 11번) | 96.0% |
 | 160장 시험지 | 160 | 연구용 데이터셋 6곳 (휴대폰·밭 사진) | 개발용 | 93.8% |
-| 첫 인터넷 시험지 | 221 | Flickr·Wikimedia | 개발용 (여러 번 봄) | 90.0% |
-| 새 인터넷 시험지 (봉인) | 241 | Flickr·iNaturalist, 상한 사진 42% | 마지막 평가 (지금까지 3번) | 84.2% |
-| "아무 사진" 시험지 (봉인) | 255 | Flickr·iNaturalist, 과일·음식·일상 사진·다섯 채소 | 마지막 평가 (지금까지 1번) | 좋은 답 82% |
-| 인터넷 과일 / 일상 사진 | 374 / 400 | Flickr·Wikimedia / COCO | 거르기 확인 (개발용) | 90% / 100% 거름 |
+| 첫 인터넷 시험지 | 221 | Flickr·Wikimedia | 개발용 (여러 번 봄) | 89.1% |
+| 새 인터넷 시험지 (봉인) | 241 | Flickr·iNaturalist, 상한 사진 42% | 마지막 평가 (지금까지 6번) | 82.6% |
+| "아무 사진" 시험지 (봉인) | 255 | Flickr·iNaturalist, 과일·음식·일상 사진·다섯 채소 | 마지막 평가 (8종용 v2 포함 4번) | 좋은 답 81% |
+| 인터넷 과일 / 일상 사진 | 374 / 400 | Flickr·Wikimedia / COCO | 거르기 확인 (개발용) | 89% / 100% 거름 |
+| 새 채소 Valid | 73 | iNaturalist·Openverse·Wikimedia·Kaggle·LVIS | 개발용 (양파·고구마·대파) | 종류 82% |
+| 새 채소 시험지 1·2·3 (봉인) | 97 / 54 / 21 | 위와 같음, 올린 사람 단위로 분리 | 마지막 평가 (3번 / 2번 / 1번) | 종류 83% |
+
+- 지금 결과는 8종 시스템(V6-H) 기준이다. 다섯 채소만 쓰면(`--five-only`) 첫 인터넷 시험지 90.0%, 새 인터넷 시험지 84.2%, 아무 사진 82%다.
 
 - **아무 사진이나 넣어도 결과가 잘 나와야 함:**
     - 데모 페이지가 처음에 채소 모델만으로 답하던 것을, 최종 판정(채소 모델 + CLIP)으로 바로 답하게 바꿨다.
     - 과일·음식·그림·일상 사진·다른 채소와 다섯 채소를 섞은 ["아무 사진" 시험지 255장](results/10class/anyphoto_test/README.md)을 만들었다. 지금 시스템은 82%에 알맞게 답한다(초기 모델 14%).
     - 상한 과일을 가르친 후보 F1은 93%까지 올랐지만, 진짜 상한 채소도 더 걸러 미리 정한 기준에 못 미쳐 채택하지 않았다([fruit_farm_tomato](experiments/fruit_farm_tomato/README.md)).
 - **상한 토마토:** 두 모델을 합치는 비중을 바꿔 봤지만, CLIP 분류기가 덜 익은 정상 토마토를 상했다고 봐서 채택하지 않았다([fusion_weight](experiments/fusion_weight/README.md)).
+- **채소 종류 추가 (양파·고구마·대파):** 직접 찍기 어려워 인터넷 공개 사진 605장을 모아 하나씩 검수했다. 다섯 번의 후보 중 V6-H를 채택했다([experiments/new_vegetables](experiments/new_vegetables/README.md)).
+    - **실패한 방식:**
+        - 채소 모델을 16칸으로 다시 학습하면 기존 채소가 떨어졌다(V4).
+        - 새 분류기가 종류를 먼저 고르게 하면 상한 토마토·감자를 양파·고구마로 보냈다(V4-R).
+    - **채택한 방식:** 다섯 채소 시스템이 먼저 답하고, 새 CLIP 분류기는 거른 사진이거나 새 채소일 확률이 70% 이상일 때만 답을 바꾼다.
+    - **결과:** 새 채소 시험지 172장 중 142장(83%)의 종류를 맞힌다. 대파 22/33, 상한 고구마 7/16이 약점이다.
+    - **사진 수:** 약점이던 대파·상한 양파·상한 고구마 사진을 평균에 가깝게 더 모았다. 상한 고구마는 공개 사진이 부족해 32장에 그쳤고, 증강으로 평균을 채운 판은 개발용 사진에서 나아지지 않아 쓰지 않았다.
 - **초기 모델부터 지금까지 비교:** [model_comparison](results/10class/model_comparison/README.md)에 있다. 같은 출처 Test는 86.7% → 96.0%, 처음 보는 인터넷 사진은 61.8% → 84.2%, 아무 사진은 14% → 82%다.
 - **피지컬 AI 활용:** 수확 로봇이나 선별 컨베이어의 "눈"으로 쓰는 방안을 정리했다.
     - 지금 갖춘 것: 종류·상태 판별(보정된 확률), 상한 곳 대략 표시(7×7칸 히트맵), 모르면 멈추기(거르기, 다시 찍기 안내)
@@ -126,6 +141,16 @@ dataset/
 
 - CLIP 분류기를 함께 쓰는 방법과 "다섯 채소가 아님" 클래스는 결과를 보기 전에 규칙을 정해 두고 시험했다. 자세한 과정과 한계는 [experiments/clip_classifier](experiments/clip_classifier/README.md), [experiments/not_five_class](experiments/not_five_class/README.md), [experiments/clip_only_reject](experiments/clip_only_reject/README.md)에 있다.
 - 거르지 않고 맞게 답한 수(맞게 남긴 수)는 Test 285장, 새 인터넷 시험지 193장이다. 거르기는 CLIP 분류기 기준 하나로만 한다.
+- **양파·고구마·대파 (8종, 채택 V6-H):** `model.pth`의 `new_vegetable_head`(두 번째 CLIP 분류기)가 다섯 채소 시스템의 답을 양파·고구마·대파로 바꿀 수 있다.
+
+| | 다섯 채소만 (위 표) | 8종 (V6-H) |
+|---|---:|---:|
+| Test 300장 (정확도 / 맞게 남긴 수) | 288 / 285 | 288 / 285 |
+| 새 인터넷 시험지 241장 | 203 / 193 | 199 / 189 |
+| 새 채소 시험지 172장 (종류 맞고 안 거름) | 0 | **142 (83%)** |
+| ↳ 양파 정상 56 / 비정상 28 | – | 51 / 26 |
+| ↳ 고구마 정상 39 / 비정상 16 | – | 36 / 7 |
+| ↳ 대파 33 | – | 22 |
 - 아래는 채소 모델만의 결과다.
 
 ### 채소 모델(EfficientNet-B0)만
@@ -241,12 +266,12 @@ python -m pip install "Pillow>=10.0,<12.0" "numpy>=1.26,<3.0" matplotlib open_cl
 python src/predict.py --model model.pth --input my_photos --output results.csv
 ```
 
-처음 실행하면 CLIP(약 600MB)을 내려받는다. 사진 1장에 CPU로 약 0.3초 걸린다. `--no-clip`을 붙이면 채소 모델만 쓴다(더 빠르지만 Test 91.7%).
+처음 실행하면 CLIP(약 600MB)을 내려받는다. 사진 1장에 CPU로 약 0.3초 걸린다. `--no-clip`을 붙이면 채소 모델만 쓴다(더 빠르지만 Test 91.7%, 다섯 채소만). `--five-only`를 붙이면 양파·고구마·대파 판정을 빼고 다섯 채소만 답한다.
 
 `my_photos` 폴더에 JPG·PNG 사진을 넣는다. 화면에는 사진마다 `bellpepper_rotten (피망 비정상, probability 99.8%)`처럼 나오고, 다섯 채소가 아닌 것 같은 사진은 `학습된 데이터가 아닙니다`라고 나온다. 결과 CSV의 열은 다음과 같다.
-- `predicted_class`: 예측이다. `cucumber`=오이, `potato`=감자, `tomato`=토마토, `bellpepper`=피망, `carrot`=당근이고, `fresh`=정상, `rotten`=비정상이다.
+- `predicted_class`: 예측이다. `cucumber`=오이, `potato`=감자, `tomato`=토마토, `bellpepper`=피망, `carrot`=당근, `onion`=양파, `sweetpotato`=고구마, `greenonion`=대파이고, `fresh`=정상, `rotten`=비정상이다. 대파는 `condition=not_judged`(상태 판정 안 함)이다. 양파·고구마·대파에는 히트맵이 없다.
 - `known`, `message`: 학습하지 않은 사진으로 보면 `known=no`, `message=학습된 데이터가 아닙니다`, `predicted_class=unknown`이다.
-- `probability`: 예측한 클래스의 보정된 확률(0~1)이다. `prob_*` 열은 10개 클래스 각각의 확률이다.
+- `probability`: 예측한 클래스의 보정된 확률(0~1)이다. `prob_*` 열은 16개 클래스 각각의 확률이다. 양파·고구마·대파로 답한 사진은 두 번째 CLIP 분류기의 확률이고, 나머지는 다섯 채소 확률이다(새 채소 칸은 0). `--five-only`면 10개 클래스다.
 - `species_probability`, `condition_probability`: 채소 종류만, 정상/비정상만 따로 본 확률이다(10개 확률을 더한 값).
 - `uncertain`: 확률이 0.5보다 낮으면 `yes`다. 기준은 `--uncertain-below`로 바꿀 수 있다.
 - `retake`: 이 판정의 확률이 90% 미만이거나 "학습된 데이터가 아닙니다"로 거른 사진이면 `yes`이고, `message`에 다시 찍기 안내가 들어간다. 두 모델을 합친 확률로 Valid에서 90% 이상은 98.9%, 미만은 68%를 맞혔다. 기준은 `--retake-below`로 바꿀 수 있다.
@@ -282,7 +307,7 @@ python src/make_plots.py
 depp-env22/
 ├── README.md
 ├── 학습결과_확인.ipynb      결과를 훑어보는 노트북
-├── model.pth                최종 모델 (EfficientNet-B0 가중치 + CLIP 분류기, 10개 클래스)와 클래스·전처리·성능 정보
+├── model.pth                최종 모델 (EfficientNet-B0 가중치 + CLIP 분류기 + 양파·고구마·대파용 두 번째 CLIP 분류기)와 클래스·전처리·성능 정보
 ├── requirements.txt         필요한 파이썬 패키지
 ├── dataset/                 사진 1,860장과 데이터셋 설명
 │   ├── train/ valid/ test/  각각 P_fresh/(정상), N_rotten/(비정상)
@@ -302,17 +327,24 @@ depp-env22/
 │   ├── make_plots.py        학습 곡선, 혼동행렬, 모델 비교 그래프
 │   └── gradcam.py           모델이 사진의 어느 부분을 보고 판단했는지 보여주는 그림
 ├── results/                 실험별 metrics.json, history.csv, val/test_predictions.csv, 그래프
+│   ├── 16class/new_veg_test/  봉인한 새 채소 시험지 1·2·3 (양파·고구마·대파 172장) 목록
 │   ├── 10class/             현재 10개 클래스 모델의 기록 (calibration_unknown/: 확률 보정·거르기 평가, outside_test/: 인터넷 사진 평가, outside_test2/: 봉인한 새 인터넷 시험지 241장, anyphoto_test/: "아무 사진" 시험지 255장, model_comparison/: 초기 모델부터 지금까지 같은 사진으로 비교, system_checks/: 과대·과소적합·회전·전처리 점검, extra_features/: 히트맵·다시 찍기 안내·가장 가까운 것)
 │   ├── (그 밖의 폴더)       6개 클래스 때의 모델 비교 (같은 Test 180장, 6개 클래스 가중치는 커밋 9dc8749의 model.pth)
 │   └── round1_v1_data/      1차 모델의 학습 기록 (1차 가중치는 커밋 03db425에 있음)
-└── experiments/             추가 실험 기록 (채택: real_scene_threshold, clip_classifier, not_five_class, clip_only_reject / 채택 안 함: field_tomato, partial_rot, 10class_tuning, pepper_web, rotten_phone, more_data, fix_carrot_cucumber, asian_cucumber, fruit_other, fruit_gate, posthoc_literature, clip_gate, tta, clip_head_more_data, weak_spots, fusion_weight, fruit_farm_tomato)
+└── experiments/             추가 실험 기록 (채택: real_scene_threshold, clip_classifier, not_five_class, clip_only_reject, new_vegetables / 채택 안 함: field_tomato, partial_rot, 10class_tuning, pepper_web, rotten_phone, more_data, fix_carrot_cucumber, asian_cucumber, fruit_other, fruit_gate, posthoc_literature, clip_gate, tta, clip_head_more_data, weak_spots, fusion_weight, fruit_farm_tomato)
 ```
 
 가중치는 용량 때문에 최종 모델(`model.pth`)만 올렸다.
 
 ## 한계
 
-- Test도 인터넷 사진이다. 다른 출처의 봉인한 새 인터넷 시험지 241장에서는 84.2%로 떨어진다(첫 인터넷 사진 221장은 90.0%, 채소 모델만 쓰면 75.6%). 직접 찍은 사진에서의 성능은 아직 측정하지 않았다.
+- Test도 인터넷 사진이다. 다른 출처의 봉인한 새 인터넷 시험지 241장에서는 84.2%(8종 시스템은 82.6%)로 떨어진다(첫 인터넷 사진 221장은 90.0%, 채소 모델만 쓰면 75.6%). 직접 찍은 사진에서의 성능은 아직 측정하지 않았다.
+- Test는 11번, 새 인터넷 시험지는 6번 채점했다. 후보를 고르는 데 쓰지는 않았지만, 기존 채소 실력은 새 봉인 시험지로 다시 재는 것이 좋다.
+- 양파·고구마·대파는 인터넷 공개 사진만으로 배웠다(학습 348장).
+    - 상한 고구마(16장 중 7장)와 대파(33장 중 22장)가 약하다.
+    - 감자를 고구마로 답하는 경우가 있다(새 인터넷 시험지 4장).
+    - 대파 사진에는 리크(서양 대파)도 들어 있다.
+    - 새 채소의 정상/비정상은 CLIP 분류기 혼자 판정하고, 상한 곳 히트맵이 없다.
 - 최종 판정은 CLIP(약 600MB)을 함께 돌려야 한다. 브라우저 데모는 CLIP의 사진 부분을 8비트로 줄여(약 88MB) 최종 판정을 기본으로 돌린다. 처음 한 번 내려받는 데 시간이 걸린다.
 - 상한 과일은 아직 잘 거르지 못한다. "아무 사진" 시험지의 상한 과일 50장 중 26장에 채소 이름을 붙였다(대부분 "상한 감자"·"상한 토마토"). 닮은 다른 채소(파스닙→당근, 여주·애호박→오이)도 일부 착각한다([anyphoto_test](results/10class/anyphoto_test/README.md)).
 - Valid·Test가 각 300장이라 한 장이 0.33%p다. 95% 신뢰구간 폭이 약 ±3%p이므로 1~2%p 차이는 의미 있게 보기 어렵다.

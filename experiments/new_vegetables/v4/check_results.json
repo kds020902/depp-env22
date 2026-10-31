@@ -1,0 +1,104 @@
+{
+ "train_photos": {
+  "clip_vegetable": 3216,
+  "not_five": 2825,
+  "new_vegetables_train": 183
+ },
+ "clip_threshold": -0.9106629496881936,
+ "temperature": 1.4157285690307617,
+ "vegetable_model": {
+  "best_epoch": 28
+ },
+ "valid": {
+  "old300": {
+   "accuracy": 286,
+   "kept_correct": 282
+  },
+  "new35": {
+   "species_kept": 25,
+   "class_right": 31,
+   "of": 35,
+   "answers": [
+    [
+     "onion_fresh->onion_fresh",
+     8
+    ],
+    [
+     "sweetpotato_fresh->sweetpotato_fresh",
+     6
+    ],
+    [
+     "greenonion_fresh->greenonion_fresh",
+     6
+    ],
+    [
+     "onion_fresh->REJ",
+     5
+    ],
+    [
+     "onion_rotten->onion_rotten",
+     3
+    ],
+    [
+     "greenonion_fresh->REJ",
+     2
+    ],
+    [
+     "sweetpotato_rotten->sweetpotato_fresh",
+     1
+    ],
+    [
+     "sweetpotato_rotten->REJ",
+     1
+    ],
+    [
+     "sweetpotato_rotten->sweetpotato_rotten",
+     1
+    ],
+    [
+     "sweetpotato_rotten->potato_rotten",
+     1
+    ],
+    [
+     "sweetpotato_fresh->REJ",
+     1
+    ]
+   ]
+  },
+  "old300_new_species_answers": 0
+ },
+ "odev": {
+  "accuracy": 189,
+  "kept_correct": 182,
+  "rejected": 10,
+  "of": 221,
+  "answered_new_species": 4
+ },
+ "o160": {
+  "accuracy": 146,
+  "kept_correct": 145,
+  "rejected": 1,
+  "of": 160,
+  "answered_new_species": 0
+ },
+ "asian37": {
+  "accuracy": 33,
+  "kept_correct": 31,
+  "rejected": 4,
+  "of": 37,
+  "answered_new_species": 4
+ },
+ "fruit374": {
+  "rejected": 339,
+  "of": 374
+ },
+ "coco400": {
+  "rejected": 400,
+  "of": 400
+ },
+ "lvis": {
+  "rejected": 14,
+  "of": 192
+ },
+ "checks_pass": false
+}

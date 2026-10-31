@@ -1,0 +1,216 @@
+{
+ "vegetable_model": "/tmp/claude-0/-home-user-depp-env22/a974ab14-e897-5da8-89f1-d4ea639bb37e/scratchpad/v4/model_v4.pth",
+ "test_300": {
+  "now": {
+   "accuracy": 288,
+   "kept_correct": 285,
+   "rejected": 4,
+   "kept_wrong": 11,
+   "answered_new_species": 0,
+   "by_class": {
+    "cucumber_fresh": "30/30",
+    "cucumber_rotten": "27/30",
+    "potato_fresh": "29/30",
+    "potato_rotten": "29/30",
+    "tomato_fresh": "30/30",
+    "tomato_rotten": "27/30",
+    "bellpepper_fresh": "29/30",
+    "bellpepper_rotten": "28/30",
+    "carrot_fresh": "30/30",
+    "carrot_rotten": "29/30"
+   }
+  },
+  "v4": {
+   "accuracy": 288,
+   "kept_correct": 285,
+   "rejected": 4,
+   "kept_wrong": 11,
+   "answered_new_species": 0,
+   "by_class": {
+    "cucumber_fresh": "30/30",
+    "cucumber_rotten": "27/30",
+    "potato_fresh": "29/30",
+    "potato_rotten": "29/30",
+    "tomato_fresh": "30/30",
+    "tomato_rotten": "27/30",
+    "bellpepper_fresh": "29/30",
+    "bellpepper_rotten": "28/30",
+    "carrot_fresh": "30/30",
+    "carrot_rotten": "29/30"
+   }
+  }
+ },
+ "new_test_241": {
+  "now": {
+   "accuracy": 203,
+   "kept_correct": 193,
+   "rejected": 14,
+   "kept_wrong": 34,
+   "answered_new_species": 0,
+   "by_class": {
+    "cucumber_fresh": "22/24",
+    "cucumber_rotten": "2/2",
+    "potato_fresh": "12/16",
+    "potato_rotten": "15/17",
+    "tomato_fresh": "40/41",
+    "tomato_rotten": "55/74",
+    "bellpepper_fresh": "20/22",
+    "bellpepper_rotten": "2/7",
+    "carrot_fresh": "34/37",
+    "carrot_rotten": "1/1"
+   }
+  },
+  "v4": {
+   "accuracy": 195,
+   "kept_correct": 185,
+   "rejected": 13,
+   "kept_wrong": 43,
+   "answered_new_species": 11,
+   "by_class": {
+    "cucumber_fresh": "22/24",
+    "cucumber_rotten": "2/2",
+    "potato_fresh": "11/16",
+    "potato_rotten": "13/17",
+    "tomato_fresh": "40/41",
+    "tomato_rotten": "51/74",
+    "bellpepper_fresh": "20/22",
+    "bellpepper_rotten": "2/7",
+    "carrot_fresh": "33/37",
+    "carrot_rotten": "1/1"
+   }
+  }
+ },
+ "any_photo_v2": {
+  "now": {
+   "good_old_categories": 205,
+   "of_old": 247,
+   "good_new_veg": 0,
+   "of_new_veg": 6,
+   "by_category": {
+    "rotten_fruit": "24/50",
+    "fresh_fruit": "28/30",
+    "other_veg": "39/42",
+    "new_veg": "0/6",
+    "food": "25/25",
+    "drawing_toy": "14/16",
+    "everyday": "30/30",
+    "cut_five": "13/19",
+    "several": "12/13",
+    "five_daily": "20/22"
+   }
+  },
+  "v4": {
+   "good_old_categories": 203,
+   "of_old": 247,
+   "good_new_veg": 5,
+   "of_new_veg": 6,
+   "by_category": {
+    "rotten_fruit": "24/50",
+    "fresh_fruit": "29/30",
+    "other_veg": "38/42",
+    "new_veg": "5/6",
+    "food": "24/25",
+    "drawing_toy": "14/16",
+    "everyday": "29/30",
+    "cut_five": "13/19",
+    "several": "12/13",
+    "five_daily": "20/22"
+   }
+  }
+ },
+ "new_veg_test": {
+  "n": 97,
+  "kind_right_and_kept": 80,
+  "rejected": 10,
+  "by_class": {
+   "onion_fresh": {
+    "n": 33,
+    "kind_kept": 30,
+    "class_right_kept": 30
+   },
+   "onion_rotten": {
+    "n": 18,
+    "kind_kept": 17,
+    "class_right_kept": 14
+   },
+   "sweetpotato_fresh": {
+    "n": 20,
+    "kind_kept": 17,
+    "class_right_kept": 17
+   },
+   "sweetpotato_rotten": {
+    "n": 6,
+    "kind_kept": 2,
+    "class_right_kept": 1
+   },
+   "greenonion_fresh": {
+    "n": 20,
+    "kind_kept": 14,
+    "class_right_kept": 14
+   }
+  },
+  "answers": [
+   [
+    "onion_fresh->onion_fresh",
+    30
+   ],
+   [
+    "sweetpotato_fresh->sweetpotato_fresh",
+    17
+   ],
+   [
+    "onion_rotten->onion_rotten",
+    14
+   ],
+   [
+    "greenonion_fresh->greenonion_fresh",
+    14
+   ],
+   [
+    "greenonion_fresh->REJ",
+    5
+   ],
+   [
+    "onion_rotten->onion_fresh",
+    3
+   ],
+   [
+    "sweetpotato_rotten->potato_rotten",
+    3
+   ],
+   [
+    "onion_fresh->REJ",
+    3
+   ],
+   [
+    "sweetpotato_fresh->potato_fresh",
+    2
+   ],
+   [
+    "sweetpotato_rotten->sweetpotato_rotten",
+    1
+   ],
+   [
+    "sweetpotato_rotten->REJ",
+    1
+   ],
+   [
+    "sweetpotato_rotten->sweetpotato_fresh",
+    1
+   ],
+   [
+    "greenonion_fresh->onion_fresh",
+    1
+   ],
+   [
+    "onion_rotten->tomato_rotten",
+    1
+   ],
+   [
+    "sweetpotato_fresh->REJ",
+    1
+   ]
+  ]
+ },
+ "adopt": false
+}
