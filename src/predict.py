@@ -15,7 +15,7 @@ import sys
 import torch
 
 from model_utils import (
-    CONDITION_NAMES, IMAGE_EXTENSIONS, SPECIES_NAMES, UNKNOWN_MESSAGE,
+    CONDITION_NAMES, IMAGE_EXTENSIONS, NO_CONDITION_SPECIES, SPECIES_NAMES, UNKNOWN_MESSAGE,
     calibrated_probabilities, clip_head_logits, clip_unknown_score, combined_logits, combined_probabilities, forward_with_rot_maps,
     input_size, is_unknown, is_unknown_combined, load_model, make_transform, marginal_probabilities, open_image,
     resolve_device, rot_map_overlay, unknown_score,
@@ -24,7 +24,13 @@ from report import image_data_uri, write_report
 
 RETAKE_MESSAGE = "확신이 낮습니다. 채소 하나만, 밝은 곳에서, 상한 부분이 보이게 가까이 다시 찍어 보세요."
 KOREAN = {"cucumber": "오이", "potato": "감자", "tomato": "토마토", "bellpepper": "피망", "carrot": "당근",
-          "fresh": "정상", "rotten": "비정상"}
+          "onion": "양파", "sweetpotato": "고구마", "greenonion": "대파",
+          "fresh": "정상", "rotten": "비정상", "not_judged": "상태 판정 안 함"}
+
+
+def condition_of(index: int) -> str:
+    """fresh / rotten for a class id; not_judged for a vegetable whose condition the model was not trained to judge."""
+    return "not_judged" if SPECIES_NAMES[index // 2] in NO_CONDITION_SPECIES else CONDITION_NAMES[index % 2]
 
 
 def find_images(path: Path) -> list[Path]:
@@ -87,7 +93,7 @@ def main():
     if "clip_head" in checkpoint and not args.no_clip:
         from clip_model import ClipModel
         try:
-            clip = ClipModel(args.device, **checkpoint["clip_head"]["clip"])
+            clip = ClipModel(args.device, **checkpoint["clip_head"]["clip"], species=SPECIES_NAMES[:len(class_names) // 2])
         except ImportError:
             raise SystemExit("This model also uses CLIP: python -m pip install open_clip_torch "
                              "(or add --no-clip to use the vegetable model alone)") from None
@@ -119,6 +125,7 @@ def main():
                 species_index = int(species_probs[0].argmax())
                 condition_index = int(condition_probs[0].argmax())
                 retake = unknown or float(probabilities[0, index]) < args.retake_below
+                no_map = unknown or condition_of(index) == "not_judged"  # no rot map where the condition is not judged
                 message = UNKNOWN_MESSAGE if unknown else ""
                 closest = ""
                 if unknown and clip is not None:
@@ -133,7 +140,7 @@ def main():
                     "retake": "yes" if retake else "no",
                     "predicted_class": "unknown" if unknown else class_names[index],
                     "species": "" if unknown else SPECIES_NAMES[index // 2],
-                    "condition": "" if unknown else CONDITION_NAMES[index % 2],
+                    "condition": "" if unknown else condition_of(index),
                     "probability": round(float(probabilities[0, index]), 4),
                     "uncertain": "yes" if float(probabilities[0, index]) < args.uncertain_below else "no",
                     "species_marginal_prediction": SPECIES_NAMES[species_index],
@@ -142,23 +149,23 @@ def main():
                     "condition_probability": round(float(condition_probs[0, condition_index]), 4),
                     "unknown_score": round(float(unknown_score(logits)[0]), 4),
                     "clip_unknown_score": "" if clip_logits is None else round(float(clip_unknown_score(clip_logits, checkpoint)[0]), 4),
-                    "rot_evidence": "" if unknown else round(float(rot_map.max()) / scale, 3),
+                    "rot_evidence": "" if no_map else round(float(rot_map.max()) / scale, 3),
                     "heatmap": "",
                     "error": "",
                 })
-                if args.heatmap and not unknown:
+                if args.heatmap and not no_map:
                     heatmap_path = args.heatmap / f"{path.stem}_heatmap.jpg"
                     rot_map_overlay(photo, rot_map, scale).save(heatmap_path, quality=90)
                     row["heatmap"] = str(heatmap_path)
                 row.update({column: round(float(probabilities[0, i]), 4) for i, column in enumerate(probability_columns)})
                 if args.report:
                     entries.append({
-                        "name": path.name, "verdict": "unknown" if unknown else CONDITION_NAMES[index % 2],
-                        "species": KOREAN[SPECIES_NAMES[index // 2]], "condition": KOREAN[CONDITION_NAMES[index % 2]],
+                        "name": path.name, "verdict": "unknown" if unknown else condition_of(index),
+                        "species": KOREAN[SPECIES_NAMES[index // 2]], "condition": KOREAN[condition_of(index)],
                         "probability": float(probabilities[0, index]), "retake": retake, "retake_message": RETAKE_MESSAGE,
                         "closest": closest, "hint": message[len(UNKNOWN_MESSAGE):].strip(" ()") if unknown else "",
-                        "rot": None if unknown else float(row["rot_evidence"]), "photo_uri": image_data_uri(photo),
-                        "heat_uri": "" if unknown else image_data_uri(
+                        "rot": None if no_map else float(row["rot_evidence"]), "photo_uri": image_data_uri(photo),
+                        "heat_uri": "" if no_map else image_data_uri(
                             rot_map_overlay(photo, rot_map, scale, size=360, side_by_side=False)),
                     })
                 success += 1
@@ -169,7 +176,7 @@ def main():
                     word = "probability" if calibrated else "uncalibrated score"
                     advice = f" - {RETAKE_MESSAGE}" if retake else ""
                     print(f"{path.name}: {class_names[index]} ({KOREAN[SPECIES_NAMES[index // 2]]} "
-                          f"{KOREAN[CONDITION_NAMES[index % 2]]}, {word} {100 * row['probability']:.1f}%){flag}{advice}")
+                          f"{KOREAN[condition_of(index)]}, {word} {100 * row['probability']:.1f}%){flag}{advice}")
             except (OSError, ValueError, RuntimeError) as error:
                 row["error"] = f"{type(error).__name__}: {error}"
                 if args.report:

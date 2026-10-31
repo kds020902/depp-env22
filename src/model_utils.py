@@ -22,8 +22,13 @@ CLASS_NAMES = [
     "cucumber_fresh", "cucumber_rotten", "potato_fresh",
     "potato_rotten", "tomato_fresh", "tomato_rotten",
     "bellpepper_fresh", "bellpepper_rotten", "carrot_fresh", "carrot_rotten",
+    "onion_fresh", "onion_rotten", "sweetpotato_fresh", "sweetpotato_rotten", "greenonion_fresh", "greenonion_rotten",
 ]
-SPECIES_NAMES = ["cucumber", "potato", "tomato", "bellpepper", "carrot"]
+SPECIES_NAMES = ["cucumber", "potato", "tomato", "bellpepper", "carrot", "onion", "sweetpotato", "greenonion"]
+# No public photos of rotten green onions were found: the slot keeps class ids aligned but has no training photos,
+# so green onions are recognised by kind only and their condition is not judged.
+UNTRAINED_CLASSES = {"greenonion_rotten"}
+NO_CONDITION_SPECIES = {"greenonion"}
 CONDITION_NAMES = ["fresh", "rotten"]
 IMAGE_EXTENSIONS = {".jpg", ".jpeg", ".png", ".bmp", ".webp", ".tif", ".tiff"}
 PREPROCESS = {
@@ -192,7 +197,7 @@ def load_model(path: str | Path, device: torch.device) -> tuple[nn.Module, dict]
     if arch not in ARCHITECTURES:
         raise ValueError(f"Unsupported architecture in checkpoint: {arch!r}")
     names = checkpoint.get("class_names") or []
-    if len(names) < 2 or names != CLASS_NAMES[:len(names)]:  # a 6-class checkpoint is a prefix of the 10
+    if len(names) < 2 or names != CLASS_NAMES[:len(names)]:  # 6- and 10-class checkpoints are prefixes of the 16
         raise ValueError("Checkpoint class order does not match this application.")
     if checkpoint.get("preprocess") != preprocess_for(input_size(checkpoint)):
         raise ValueError("Checkpoint preprocessing does not match this application.")

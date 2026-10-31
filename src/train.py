@@ -22,7 +22,7 @@ from torch import nn
 from torch.utils.data import DataLoader, Dataset, TensorDataset
 
 from model_utils import (
-    CLASS_NAMES, CONDITION_NAMES, SPECIES_NAMES,
+    CLASS_NAMES, CONDITION_NAMES, SPECIES_NAMES, UNTRAINED_CLASSES,
     calibration_extras, classifier_layer, create_model, make_train_transform, make_transform,
     marginal_probabilities, open_image, preprocess_for, resolve_device, set_classifier_layer, set_seed,
     state_checksum,
@@ -51,9 +51,10 @@ def read_manifest(path: Path, class_names: list[str]) -> dict[str, list[dict]]:
         if not (path.parent / row["image_path"]).is_file():
             raise FileNotFoundError(path.parent / row["image_path"])
     splits = {s: [r for r in rows if r["split"] == s] for s in SPLITS}
+    trained = {i for i, name in enumerate(class_names) if name not in UNTRAINED_CLASSES}
     for s in ("train", "val"):
-        if {int(r["class_id"]) for r in splits[s]} != set(range(len(class_names))):
-            raise ValueError(f"All {len(class_names)} classes must be represented in the {s} split.")
+        if {int(r["class_id"]) for r in splits[s]} != trained:
+            raise ValueError(f"All {len(trained)} trained classes (and no untrained one) must be in the {s} split.")
     # The same photo or near-duplicate group must never sit in two splits.
     for field in ("image_path", "group_id", "sha256"):
         for a in SPLITS:
@@ -124,7 +125,7 @@ def classification_metrics(labels, logits, split_name, class_names):
         "sample_count": len(labels),
         "loss": nn.functional.cross_entropy(logits, labels).item(),
         "accuracy": predictions.eq(labels).float().mean().item(),
-        "macro_f1": sum(v["f1"] for v in per_class.values()) / k,
+        "macro_f1": sum(v["f1"] for n, v in per_class.items() if n not in UNTRAINED_CLASSES) / len([n for n in class_names if n not in UNTRAINED_CLASSES]),
         "species_accuracy": species_probs.argmax(1).eq(labels // 2).float().mean().item(),
         "condition_accuracy": condition_pred.eq(labels % 2).float().mean().item(),
         "rotten_recall": condition_pred[rotten].eq(1).float().mean().item(),
@@ -189,7 +190,7 @@ def parse_args():
                         help="Smallest random crop, as a fraction of the photo area (augmentation).")
     parser.add_argument("--lowres-prob", type=float, default=0.0,
                         help="Augmentation: chance of first shrinking a training photo to thumbnail size (48-112 px).")
-    parser.add_argument("--num-classes", type=int, choices=[6, len(CLASS_NAMES)], default=len(CLASS_NAMES),
+    parser.add_argument("--num-classes", type=int, choices=[6, 10, len(CLASS_NAMES)], default=len(CLASS_NAMES),
                         help="6 = cucumber/potato/tomato only (the earlier runs), 10 = all five vegetables.")
     parser.add_argument("--threads", type=int, default=6)
     parser.add_argument("--seed", type=int, default=42)

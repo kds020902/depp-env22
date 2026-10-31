@@ -14,7 +14,7 @@ from pathlib import Path
 
 from PIL import Image
 
-SPECIES_ORDER = ["오이", "감자", "토마토", "피망", "당근"]
+SPECIES_ORDER = ["오이", "감자", "토마토", "피망", "당근", "양파", "고구마", "대파"]
 
 
 def image_data_uri(image: Image.Image, size: int = 360, quality: int = 80) -> str:
@@ -29,14 +29,14 @@ def _pct(value: float) -> str:
     return "99% 이상" if value >= 0.995 else "1% 미만" if value < 0.005 else f"{round(value * 100)}%"
 
 
-ATTENTION = {"rotten": 0, "unknown": 2, "error": 3, "fresh": 4}
+ATTENTION = {"rotten": 0, "unknown": 2, "error": 3, "fresh": 4, "not_judged": 4}
 
 
 def _card(entry: dict) -> str:
     e = {k: html.escape(str(v)) if isinstance(v, str) else v for k, v in entry.items()}
     verdict = entry["verdict"]
-    retake = entry.get("retake") and verdict in ("fresh", "rotten")
-    if verdict in ("fresh", "rotten"):
+    retake = entry.get("retake") and verdict in ("fresh", "rotten", "not_judged")
+    if verdict in ("fresh", "rotten", "not_judged"):
         head = (f'<div class="verdict"><span class="veg">{e["species"]}</span>'
                 f'<span class="chip {verdict}">{e["condition"]}</span></div>'
                 f'<p class="prob">이 판정의 확률 <b>{_pct(entry["probability"])}</b></p>')
@@ -69,7 +69,7 @@ def _card(entry: dict) -> str:
 
 
 def write_report(path: Path, entries: list[dict], meta: dict) -> None:
-    """entries: dicts with name, verdict (fresh/rotten/unknown/error), species, condition (Korean), probability,
+    """entries: dicts with name, verdict (fresh/rotten/not_judged/unknown/error), species, condition (Korean), probability,
     retake, retake_message, closest, hint, rot, photo_uri, heat_uri, error. meta: model, source, notes."""
     counts = {v: sum(e["verdict"] == v for e in entries) for v in ("fresh", "rotten", "unknown", "error")}
     retakes = sum(bool(e.get("retake")) and e["verdict"] in ("fresh", "rotten") for e in entries)

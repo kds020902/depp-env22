@@ -75,9 +75,12 @@ def main():
     other_class = len(class_names) in train_y
     train_x = clip_features(clip, train_paths)
     head = LogisticRegression(C=args.c, max_iter=5000).fit(train_x.numpy(), train_y)
-    clip_head = {"clip": {"arch": ARCH, "pretrained": PRETRAINED},
-                 "coef": torch.tensor(head.coef_, dtype=torch.float32),
-                 "intercept": torch.tensor(head.intercept_, dtype=torch.float32), "other_class": other_class}
+    # A class with no training photos (UNTRAINED_CLASSES) gets a zero row and a very low intercept, so it is never chosen.
+    n_out = len(class_names) + int(other_class)
+    coef = torch.zeros(n_out, train_x.shape[1]); intercept = torch.full((n_out,), float(head.intercept_.min()) - 50.0)
+    coef[torch.tensor(head.classes_)] = torch.tensor(head.coef_, dtype=torch.float32)
+    intercept[torch.tensor(head.classes_)] = torch.tensor(head.intercept_, dtype=torch.float32)
+    clip_head = {"clip": {"arch": ARCH, "pretrained": PRETRAINED}, "coef": coef, "intercept": intercept, "other_class": other_class}
     with_head = {**checkpoint, "clip_head": clip_head}
 
     val = splits["val"]

@@ -3,8 +3,8 @@
 Two uses:
 - image features for the CLIP classifier head stored in model.pth (`clip_head`, made by train_clip_head.py), which is
   combined with the vegetable model (experiments/clip_classifier);
-- a closest-thing hint for photos turned away as "학습된 데이터가 아닙니다": the photo is compared with 90 words (the five
-  vegetables, 40 fruits, 26 other vegetables, 19 other things; the word list of experiments/clip_gate).
+- a closest-thing hint for photos turned away as "학습된 데이터가 아닙니다": the photo is compared with 91 words (the five
+  vegetables, 40 fruits, 27 other vegetables, 19 other things; the word list of experiments/clip_gate plus "green onion").
 """
 
 from __future__ import annotations
@@ -15,6 +15,9 @@ ARCH, PRETRAINED = "ViT-B-16", "datacomp_xl_s13b_b90k"
 TEMPLATES = ["a photo of a {}.", "a close-up photo of a {}.", "a photo of a fresh {}.", "a photo of a rotten {}.",
              "a photo of {}s."]
 TRAINED = {"cucumber": "오이", "potato": "감자", "tomato": "토마토", "bell pepper": "피망", "carrot": "당근"}
+# words for vegetables added later (model_utils.SPECIES_NAMES -> word in the lists below)
+SPECIES_WORDS = {"cucumber": ["cucumber"], "potato": ["potato"], "tomato": ["tomato"], "bellpepper": ["bell pepper"],
+                 "carrot": ["carrot"], "onion": ["onion"], "sweetpotato": ["sweet potato"], "greenonion": ["leek", "green onion"]}
 FRUITS = {
     "apple": "사과", "pear": "서양배", "Asian pear": "배", "orange": "오렌지", "mandarin": "귤", "tangerine": "귤",
     "lemon": "레몬", "lime": "라임", "grapefruit": "자몽", "yuzu": "유자", "persimmon": "감", "peach": "복숭아",
@@ -30,7 +33,7 @@ OTHER_VEGETABLES = {
     "cauliflower": "콜리플라워", "eggplant": "가지", "zucchini": "애호박", "pumpkin": "호박", "squash": "호박",
     "sweet potato": "고구마", "radish": "무", "daikon": "무", "beet": "비트", "turnip": "순무", "ginger": "생강",
     "mushroom": "버섯", "corn": "옥수수", "green beans": "껍질콩", "peas": "완두콩", "spinach": "시금치",
-    "celery": "셀러리", "leek": "대파", "chili pepper": "고추", "okra": "오크라", "asparagus": "아스파라거스",
+    "celery": "셀러리", "leek": "대파", "green onion": "대파", "chili pepper": "고추", "okra": "오크라", "asparagus": "아스파라거스",
 }
 OTHER_THINGS = {
     "a person": "사람", "an animal": "동물", "a vehicle": "탈것", "a building": "건물", "a room": "실내",
@@ -61,7 +64,7 @@ def _with_ro(word: str) -> str:
 
 
 class ClipModel:
-    def __init__(self, device: str = "cpu", arch: str = ARCH, pretrained: str = PRETRAINED):
+    def __init__(self, device: str = "cpu", arch: str = ARCH, pretrained: str = PRETRAINED, species=tuple(SPECIES_WORDS)[:5]):
         import open_clip  # needs open_clip_torch
         self.device = device
         self.model, _, self.preprocess = open_clip.create_model_and_transforms(arch, pretrained=pretrained, device=device)
@@ -74,6 +77,7 @@ class ClipModel:
                     for n in PRODUCE]
             rows += list(encode([f"a photo of {n}." for n in OTHER_THINGS]))
         self.text = torch.stack(rows)
+        self.trained = {w for sp in species for w in SPECIES_WORDS[sp]}  # the checkpoint's vegetables
 
     @torch.inference_mode()
     def image_features(self, images) -> torch.Tensor:
@@ -82,7 +86,7 @@ class ClipModel:
         return torch.nn.functional.normalize(self.model.encode_image(x), dim=-1)
 
     def closest(self, features: torch.Tensor) -> tuple[str, float]:
-        """The closest of the 90 words (English) to one photo's features, and its share of the softmax."""
+        """The closest of the 91 words (English) to one photo's features, and its share of the softmax."""
         p = (100 * features.reshape(1, -1) @ self.text.T).softmax(1)[0]
         return NAMES[int(p.argmax())], float(p.max())
 
@@ -90,6 +94,6 @@ class ClipModel:
         """(closest word in Korean, hint sentence) for a photo that was turned away."""
         name, _ = self.closest(features)
         korean = KOREAN[name]
-        if name in TRAINED:
+        if name in self.trained:
             return korean, f"{_with_wa(korean)} 가장 비슷하지만 모델이 확신하지 못했습니다. 채소 하나만 가까이에서 다시 찍어 보세요."
         return korean, f"{_with_ro(korean)} 보입니다."
