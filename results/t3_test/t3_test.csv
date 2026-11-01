@@ -1,0 +1,248 @@
+id,class_name,source,page,license,attribution,user,taxon_or_query,review_order,max_cos_earlier
+inat-131287783,carrot_fresh,inaturalist,https://www.inaturalist.org/observations/80119462,cc-by-nc,"(c) official_dababy, some rights reserved (CC BY-NC)",official_dababy,Daucus carota sativus,5,0.794
+inat-128216588,carrot_fresh,inaturalist,https://www.inaturalist.org/observations/78351713,cc-by-nc,"(c) rachelmay13, some rights reserved (CC BY-NC)",rachelmay13,Daucus carota sativus,8,0.8
+inat-116943934,carrot_fresh,inaturalist,https://www.inaturalist.org/observations/71793565,cc-by-nc,"(c) alfdacoolguy, some rights reserved (CC BY-NC)",alfdacoolguy,Daucus carota sativus,11,0.755
+inat-547090696,carrot_fresh,inaturalist,https://www.inaturalist.org/observations/303526479,cc-by-nc,"(c) Scott McNeir, some rights reserved (CC BY-NC)",scottmcneir,Daucus carota sativus,12,0.793
+inat-144158021,carrot_fresh,inaturalist,https://www.inaturalist.org/observations/87436147,cc-by-nc,"(c) maryandfrogs, some rights reserved (CC BY-NC)",maryandfrogs,Daucus carota sativus,13,0.778
+inat-273457832,carrot_fresh,inaturalist,https://www.inaturalist.org/observations/158223568,cc-by-nc,"(c) j_pm, some rights reserved (CC BY-NC)",j_pm,Daucus carota sativus,15,0.826
+inat-732760139,carrot_fresh,inaturalist,https://www.inaturalist.org/observations/399394194,cc-by-nc,"(c) suburban_sanctuary3, some rights reserved (CC BY-NC)",suburban_sanctuary3,Daucus carota sativus,19,0.943
+inat-263381495,carrot_fresh,inaturalist,https://www.inaturalist.org/observations/152562318,cc-by-nc,"(c) miako123, some rights reserved (CC BY-NC)",miako123,Daucus carota sativus,21,0.907
+inat-749688928,carrot_fresh,inaturalist,https://www.inaturalist.org/observations/407902403,cc-by-nc,"(c) Ava Flaim, some rights reserved (CC BY-NC)",ava1716,Daucus carota sativus,23,0.767
+inat-435651972,carrot_fresh,inaturalist,https://www.inaturalist.org/observations/244240257,cc-by-nc,"(c) Arias Chuy, some rights reserved (CC BY-NC)",a_chuy,Daucus carota sativus,25,0.931
+inat-497875767,carrot_fresh,inaturalist,https://www.inaturalist.org/observations/277269283,cc-by-nc,"(c) thomfo, some rights reserved (CC BY-NC)",thomfo,Daucus carota sativus,27,0.924
+inat-432833278,carrot_fresh,inaturalist,https://www.inaturalist.org/observations/242775850,cc-by-nc,"(c) acadienne, some rights reserved (CC BY-NC)",acadienne,Daucus carota sativus,29,0.737
+inat-183072679,carrot_fresh,inaturalist,https://www.inaturalist.org/observations/108703888,cc-by-nc,"(c) Barbara L. Wilson, some rights reserved (CC BY-NC)",sedgequeen,Daucus carota sativus,30,0.874
+inat-463933472,carrot_fresh,inaturalist,https://www.inaturalist.org/observations/258560805,cc-by-nc,"(c) sasha1995, some rights reserved (CC BY-NC)",sasha1995,Daucus carota sativus,32,0.776
+inat-557086923,carrot_fresh,inaturalist,https://www.inaturalist.org/observations/308764334,cc-by-nc,"(c) winkler_j_9a, some rights reserved (CC BY-NC)",winkler_j_9a,Daucus carota sativus,33,0.734
+inat-190865406,carrot_fresh,inaturalist,https://www.inaturalist.org/observations/112970936,cc-by-nc,"(c) rickyf_6, some rights reserved (CC BY-NC)",rickyf_6,Daucus carota sativus,36,0.88
+inat-581734232,carrot_fresh,inaturalist,https://www.inaturalist.org/observations/321651328,cc-by,"(c) Bob, some rights reserved (CC BY)",bobglen,Daucus carota sativus,37,0.853
+inat-675184631,carrot_fresh,inaturalist,https://www.inaturalist.org/observations/369622553,cc-by-nc,"(c) Filip Hofbauer, some rights reserved (CC BY-NC)",filip_hofbauer,Daucus carota sativus,40,0.817
+inat-102889129,carrot_fresh,inaturalist,https://www.inaturalist.org/observations/64041388,cc-by-nc,"(c) armandoyangelica, some rights reserved (CC BY-NC)",armandoyangelica,Daucus carota sativus,41,0.848
+inat-148902291,carrot_fresh,inaturalist,https://www.inaturalist.org/observations/90119102,cc-by-nc,"(c) Bibi, some rights reserved (CC BY-NC)",malenami,Daucus carota sativus,43,0.865
+inat-752384762,tomato_fresh,inaturalist,https://www.inaturalist.org/observations/409226369,cc-by-nc,"(c) gracii08, some rights reserved (CC BY-NC)",gracii08,Solanum lycopersicum,70,0.897
+inat-755970927,tomato_fresh,inaturalist,https://www.inaturalist.org/observations/410983396,cc-by-nc,"(c) Notmeok, some rights reserved (CC BY-NC)",notmeok,Solanum lycopersicum,73,0.899
+inat-756381175,tomato_fresh,inaturalist,https://www.inaturalist.org/observations/411184915,cc-by-nc,"(c) gummidek, some rights reserved (CC BY-NC)",gummidek,Solanum lycopersicum,84,0.754
+inat-676202765,rotten_fruit,inaturalist,https://www.inaturalist.org/observations/370158833,cc-by-nc,"(c) g_leiva, some rights reserved (CC BY-NC)",g_leiva,Botrytis cinerea,98,0.808
+inat-739964743,other_veg,inaturalist,https://www.inaturalist.org/observations/403045406,cc-by-nc,"(c) Vanessa Gibson, some rights reserved (CC BY-NC)",vanessa_gibson,Penicillium,107,0.759
+inat-724095493,rotten_fruit,inaturalist,https://www.inaturalist.org/observations/394937747,cc-by-nc,"(c) ice_cube79, some rights reserved (CC BY-NC)",ice_cube79,Botrytis cinerea,116,0.775
+inat-714285325,rotten_fruit,inaturalist,https://www.inaturalist.org/observations/389918247,cc-by-nc,"(c) tropotop, some rights reserved (CC BY-NC)",tropotop,Monilinia fructigena,120,0.792
+inat-582210262,rotten_fruit,inaturalist,https://www.inaturalist.org/observations/321894483,cc-by,"(c) Jean-Luc Ferrière, some rights reserved (CC BY)",gomphide,Monilinia fructigena,121,0.827
+inat-613312826,rotten_fruit,inaturalist,https://www.inaturalist.org/observations/337386995,cc-by,"(c) lazarus, some rights reserved (CC BY)",lazarus,Penicillium digitatum,122,0.829
+inat-581329322,rotten_fruit,inaturalist,https://www.inaturalist.org/observations/321236953,cc-by-nc,"(c) esther_gastiny, some rights reserved (CC BY-NC)",esther_gastiny,Monilinia fructigena,123,0.817
+inat-646333567,rotten_fruit,inaturalist,https://www.inaturalist.org/observations/354285412,cc-by-nc,"(c) Helen, some rights reserved (CC BY-NC)",ahelen,Monilinia fructigena,124,0.726
+inat-707309796,rotten_fruit,inaturalist,https://www.inaturalist.org/observations/386313485,cc-by-nc,"(c) Finn Harrigan, some rights reserved (CC BY-NC)",finnharrigan,Monilinia fructigena,126,0.847
+inat-603972837,rotten_fruit,inaturalist,https://www.inaturalist.org/observations/332761559,cc-by-nc,"(c) Juan Rodríguez, some rights reserved (CC BY-NC)",juanrodriguez01,Penicillium digitatum,127,0.734
+inat-590598853,rotten_fruit,inaturalist,https://www.inaturalist.org/observations/326126445,cc-by,"(c) RT, some rights reserved (CC BY)",harrowhark,Penicillium digitatum,128,0.827
+inat-628127642,rotten_fruit,inaturalist,https://www.inaturalist.org/observations/344717008,cc-by-nc,"(c) Dakota Parish, some rights reserved (CC BY-NC)",safron,Penicillium digitatum,129,0.712
+inat-570944789,rotten_fruit,inaturalist,https://www.inaturalist.org/observations/316023643,cc-by-nc,"(c) n8schatten77, some rights reserved (CC BY-NC)",n8schatten77,Monilinia fructigena,131,0.846
+inat-569157419,rotten_fruit,inaturalist,https://www.inaturalist.org/observations/315082202,cc-by-nc,"(c) Paris, some rights reserved (CC BY-NC)",trojan_bull,Monilinia fructigena,132,0.759
+inat-705865809,rotten_fruit,inaturalist,https://www.inaturalist.org/observations/385559928,cc-by-nc,"(c) myxomaniac, some rights reserved (CC BY-NC)",myxomaniac,Monilinia fructigena,135,0.854
+inat-667845018,rotten_fruit,inaturalist,https://www.inaturalist.org/observations/365776616,cc-by-nc,"(c) Vincent, some rights reserved (CC BY-NC)",vincent_2025,Monilinia fructigena,136,0.86
+inat-634304399,rotten_fruit,inaturalist,https://www.inaturalist.org/observations/347848243,cc-by-nc,"(c) Hubert Szczygieł, some rights reserved (CC BY-NC)",hubertszcz,Penicillium digitatum,137,0.868
+inat-609372938,rotten_fruit,inaturalist,https://www.inaturalist.org/observations/335438582,cc-by,"(c) Needgrace247, some rights reserved (CC BY)",needgrace247,Penicillium digitatum,139,0.844
+inat-718443737,rotten_fruit,inaturalist,https://www.inaturalist.org/observations/392055486,cc-by-nc,"(c) Ema, some rights reserved (CC BY-NC)",emagarb,Monilinia fructigena,140,0.769
+inat-715409306,rotten_fruit,inaturalist,https://www.inaturalist.org/observations/390491654,cc-by-nc,"(c) Puzankov Aleksei, some rights reserved (CC BY-NC)",alexey_p,Monilinia fructigena,142,0.836
+inat-646001385,rotten_fruit,inaturalist,https://www.inaturalist.org/observations/354084747,cc-by-nc,"(c) 林騰鈞, some rights reserved (CC BY-NC)",lamtengkuan,Penicillium digitatum,143,0.83
+inat-722666518,rotten_fruit,inaturalist,https://www.inaturalist.org/observations/394214811,cc-by,"(c) David Rankin, some rights reserved (CC BY)",david99,Monilinia fructigena,144,0.837
+inat-575051343,rotten_fruit,inaturalist,https://www.inaturalist.org/observations/318192134,cc-by-nc,"(c) Miriam Haidle, some rights reserved (CC BY-NC)",miriam36654,Monilinia fructigena,145,0.854
+inat-595012300,rotten_fruit,inaturalist,https://www.inaturalist.org/observations/328369816,cc-by-nc,"(c) Algis Kvaraciejus, some rights reserved (CC BY-NC)",algisquartz,Penicillium digitatum,146,0.784
+inat-580999435,rotten_fruit,inaturalist,https://www.inaturalist.org/observations/321273323,cc-by-nc,"(c) ksubela, some rights reserved (CC BY-NC)",ksubela,Monilinia fructigena,148,0.778
+inat-583900783,rotten_fruit,inaturalist,https://www.inaturalist.org/observations/322740937,cc-by-nc,"(c) Turo Tuomikoski, some rights reserved (CC BY-NC)",turo,Monilinia fructigena,149,0.833
+inat-709533254,rotten_fruit,inaturalist,https://www.inaturalist.org/observations/387472643,cc-by-nc,"(c) daria13112020, some rights reserved (CC BY-NC)",daria13112020,Monilinia fructigena,152,0.803
+inat-600975119,rotten_fruit,inaturalist,https://www.inaturalist.org/observations/331298310,cc-by-nc,"(c) Rémy Vannier, some rights reserved (CC BY-NC)",quercus53,Monilinia fructigena,153,0.827
+inat-717915960,rotten_fruit,inaturalist,https://www.inaturalist.org/observations/391370728,cc-by-nc,"(c) Elena Kasandina, some rights reserved (CC BY-NC)",elenakasandina,Monilinia fructigena,154,0.839
+inat-720736112,rotten_fruit,inaturalist,https://www.inaturalist.org/observations/393228544,cc-by,"(c) Andy Jordan, some rights reserved (CC BY)",andyjordan,Monilinia fructigena,155,0.847
+inat-580133120,rotten_fruit,inaturalist,https://www.inaturalist.org/observations/320829482,cc-by-nc,"(c) Helen Armstrong, some rights reserved (CC BY-NC)",helenarmstrong,Monilinia fructigena,156,0.78
+inat-746447248,fresh_fruit,inaturalist,https://www.inaturalist.org/observations/406297225,cc-by-nc,"(c) americanboy90, some rights reserved (CC BY-NC)",americanboy90,Citrus × latifolia,180,0.842
+inat-653774673,fresh_fruit,inaturalist,https://www.inaturalist.org/observations/358384777,cc-by-nc,"(c) Liam Ragan, some rights reserved (CC BY-NC)",liamragan,Citrus × aurantium,188,0.75
+inat-750428958,fresh_fruit,inaturalist,https://www.inaturalist.org/observations/408260454,cc-by-nc,"(c) Rosita Rašinskaitė, some rights reserved (CC BY-NC)",rosita007,Diospyros kaki,194,0.78
+inat-722765583,other_veg,inaturalist,https://www.inaturalist.org/observations/394261216,cc-by-nc,"(c) Palo G., some rights reserved (CC BY-NC)",caladiumhex,Solanum melongena,214,0.82
+inat-757396667,other_veg,inaturalist,https://www.inaturalist.org/observations/411688134,cc-by-nc,"(c) jenmn, some rights reserved (CC BY-NC)",jenmn,Momordica charantia,226,0.758
+inat-752377578,other_veg,inaturalist,https://www.inaturalist.org/observations/409222817,cc-by-nc,"(c) Jody Willman, some rights reserved (CC BY-NC)",jody_willman,Momordica charantia,237,0.702
+inat-755195629,other_veg,inaturalist,https://www.inaturalist.org/observations/410604007,cc-by-nc,"(c) rurumalge, some rights reserved (CC BY-NC)",rurumalge,Cucurbita pepo,241,0.745
+inat-751860769,other_veg,inaturalist,https://www.inaturalist.org/observations/408969619,cc-by-nc,"(c) oopiegoopie, some rights reserved (CC BY-NC)",oopiegoopie,Momordica charantia,242,0.767
+inat-735023006,other_veg,inaturalist,https://www.inaturalist.org/observations/400531995,cc-by-nc,"(c) rebrodfuhrer, some rights reserved (CC BY-NC)",rebrodfuhrer,Capsicum chinense,252,0.753
+inat-754579993,other_veg,inaturalist,https://www.inaturalist.org/observations/410293560,cc-by-nc,"(c) dharmasahney, some rights reserved (CC BY-NC)",dharmasahney,Cucurbita pepo,254,0.8
+inat-597963104,other_veg,inaturalist,https://www.inaturalist.org/observations/329832390,cc-by-nc,"(c) Porter D. Crane, some rights reserved (CC BY-NC)",porterrrc,Raphanus raphanistrum sativus,257,0.737
+inat-751619957,other_veg,inaturalist,https://www.inaturalist.org/observations/408848531,cc-by-nc,"(c) Brittney Workman, some rights reserved (CC BY-NC)",gamesonyourphone,Cucurbita pepo,258,0.813
+inat-755214688,other_veg,inaturalist,https://www.inaturalist.org/observations/410613631,cc-by-nc,"(c) ernerntobkes, some rights reserved (CC BY-NC)",ernerntobkes,Cucurbita pepo,259,0.817
+inat-751090622,other_veg,inaturalist,https://www.inaturalist.org/observations/408585154,cc-by-nc,"(c) Kezya Oliveira Moreira, some rights reserved (CC BY-NC)",kezya1,Capsicum baccatum,266,0.802
+inat-741019274,other_veg,inaturalist,https://www.inaturalist.org/observations/403581832,cc-by-nc,"(c) gavingoodwan, some rights reserved (CC BY-NC)",gavingoodwan,Solanum melongena,273,0.759
+inat-750025961,other_veg,inaturalist,https://www.inaturalist.org/observations/408068272,cc-by-nc,"(c) coffeee, some rights reserved (CC BY-NC)",coffeee,Momordica charantia,277,0.754
+inat-751390935,other_veg,inaturalist,https://www.inaturalist.org/observations/408736790,cc-by-nc,"(c) Naomi Tulman, some rights reserved (CC BY-NC)",d26naomit,Momordica charantia,280,0.739
+inat-755048401,other_veg,inaturalist,https://www.inaturalist.org/observations/410531256,cc-by-nc,"(c) gobtheblob, some rights reserved (CC BY-NC)",gobtheblob,Cucurbita pepo,287,0.814
+inat-755595248,other_veg,inaturalist,https://www.inaturalist.org/observations/410798756,cc-by-nc,"(c) Linnybobinny, some rights reserved (CC BY-NC)",linnybobinny,Dioscorea bulbifera,290,0.728
+inat-755788080,other_veg,inaturalist,https://www.inaturalist.org/observations/409245564,cc-by-nc,"(c) unwindingamoeba, some rights reserved (CC BY-NC)",unwindingamoeba,Cucurbita pepo,299,0.798
+inat-711901055,other_veg,inaturalist,https://www.inaturalist.org/observations/388684013,cc-by-nc,"(c) udangkejhu, some rights reserved (CC BY-NC)",udangkejhu,Capsicum frutescens,309,0.816
+inat-748420216,other_veg,inaturalist,https://www.inaturalist.org/observations/407281907,cc-by-nc,"(c) momhiker, some rights reserved (CC BY-NC)",momhiker,Cucurbita melopepo,310,0.832
+inat-623682015,other_veg,inaturalist,https://www.inaturalist.org/observations/342479616,cc-by-nc,"(c) hannaha56, some rights reserved (CC BY-NC)",hannaha56,Zingiber officinale,321,0.707
+inat-751449295,other_veg,inaturalist,https://www.inaturalist.org/observations/408765276,cc-by-nc,"(c) Sky, some rights reserved (CC BY-NC)",skylar5232,Cucurbita pepo,325,0.854
+inat-753466246,other_veg,inaturalist,https://www.inaturalist.org/observations/409752246,cc-by-nc,"(c) fallrisk911, some rights reserved (CC BY-NC)",fallrisk911,Cucurbita pepo,327,0.821
+inat-734627024,fresh_fruit,inaturalist,https://www.inaturalist.org/observations/400338854,cc-by-nc,"(c) Rica C. Beltran, some rights reserved (CC BY-NC)",rica4caya_b,Citrus × limon,335,0.843
+inat-755099560,fresh_fruit,inaturalist,https://www.inaturalist.org/observations/410556302,cc-by-nc,"(c) Esperanza, some rights reserved (CC BY-NC)",bichario,Prunus persica,338,0.884
+inat-619472222,fresh_fruit,inaturalist,https://www.inaturalist.org/observations/340410312,cc-by-nc,"(c) Vincent Egan, some rights reserved (CC BY-NC)",vince-egan,Pyrus pyrifolia,343,0.859
+inat-758063544,fresh_fruit,inaturalist,https://www.inaturalist.org/observations/412023505,cc-by-nc,"(c) shaylovem, some rights reserved (CC BY-NC)",shaylovem,Malus domestica,354,0.817
+inat-748847085,fresh_fruit,inaturalist,https://www.inaturalist.org/observations/407490136,cc-by-nc,"(c) hanschris, some rights reserved (CC BY-NC)",hanschris,Diospyros kaki,357,0.847
+inat-749900302,fresh_fruit,inaturalist,https://www.inaturalist.org/observations/408005181,cc-by-nc,"(c) aurelie guilbault, some rights reserved (CC BY-NC)",aurelie87836,Diospyros kaki,361,0.835
+inat-750386696,fresh_fruit,inaturalist,https://www.inaturalist.org/observations/408239372,cc-by-nc,"(c) danois, some rights reserved (CC BY-NC)",danois,Diospyros kaki,366,0.801
+inat-613563570,fresh_fruit,inaturalist,https://www.inaturalist.org/observations/337507477,cc-by-nc,"(c) Lacy Rogers, some rights reserved (CC BY-NC)",rogersl01,Pyrus pyrifolia,368,0.855
+inat-749099138,fresh_fruit,inaturalist,https://www.inaturalist.org/observations/407616761,cc-by,"(c) L. Eaton, some rights reserved (CC BY)",nuthatchfanatic,Citrus × aurantium,376,0.65
+inat-752330202,fresh_fruit,inaturalist,https://www.inaturalist.org/observations/409198484,cc-by-nc,"(c) Di, some rights reserved (CC BY-NC)",dpetrak,Diospyros kaki,379,0.841
+inat-753022016,fresh_fruit,inaturalist,https://www.inaturalist.org/observations/409536507,cc-by-nc,"(c) jojoturnip, some rights reserved (CC BY-NC)",jojoturnip,Pyrus pyrifolia,382,0.828
+inat-745229913,fresh_fruit,inaturalist,https://www.inaturalist.org/observations/405690105,cc-by-nc,"(c) ssnp190, some rights reserved (CC BY-NC)",ssnp190,Diospyros kaki,384,0.84
+inat-755682739,tomato_fresh,inaturalist,https://www.inaturalist.org/observations/410841719,cc-by-nc,"(c) ndr2nd, some rights reserved (CC BY-NC)",ndr2nd,Solanum lycopersicum,390,0.774
+inat-752909306,tomato_fresh,inaturalist,https://www.inaturalist.org/observations/409482022,cc-by-nc,"(c) Nina Boomer, some rights reserved (CC BY-NC)",nina55600,Solanum lycopersicum,392,0.9
+inat-752235871,tomato_fresh,inaturalist,https://www.inaturalist.org/observations/409151515,cc-by-nc,"(c) zothanpuia, some rights reserved (CC BY-NC)",zothanpuia,Solanum lycopersicum,402,0.873
+inat-758364917,tomato_fresh,inaturalist,https://www.inaturalist.org/observations/412170507,cc-by-nc,"(c) getty-images-stock, some rights reserved (CC BY-NC)",getty-images-stock,Solanum lycopersicum,406,0.883
+inat-754968510,tomato_fresh,inaturalist,https://www.inaturalist.org/observations/410490734,cc-by-nc,"(c) huba-duba, some rights reserved (CC BY-NC)",huba-duba,Solanum lycopersicum,437,0.785
+inat-752496087,tomato_fresh,inaturalist,https://www.inaturalist.org/observations/409282496,cc-by-nc,"(c) ryryryanfn, some rights reserved (CC BY-NC)",ryryryanfn,Solanum lycopersicum,451,0.905
+inat-754500145,tomato_fresh,inaturalist,https://www.inaturalist.org/observations/410263277,cc-by-nc,"(c) Toki, some rights reserved (CC BY-NC)",tokintshangase,Solanum lycopersicum,455,0.832
+inat-753369998,tomato_fresh,inaturalist,https://www.inaturalist.org/observations/409705172,cc-by,"(c) Elizabeth Axley, some rights reserved (CC BY)",actuallyaxley,Solanum lycopersicum,461,0.827
+inat-758255978,tomato_fresh,inaturalist,https://www.inaturalist.org/observations/412118623,cc-by-nc,"(c) raviner, some rights reserved (CC BY-NC)",raviner,Solanum lycopersicum,476,0.878
+inat-755966578,tomato_fresh,inaturalist,https://www.inaturalist.org/observations/410981216,cc-by-nc,"(c) justin_giurlando, some rights reserved (CC BY-NC)",justin_giurlando,Solanum lycopersicum,495,0.886
+inat-751466835,tomato_fresh,inaturalist,https://www.inaturalist.org/observations/408773791,cc-by-nc,"(c) Zdenek Kaplan, some rights reserved (CC BY-NC)",zdenek_kaplan,Solanum lycopersicum,496,0.919
+inat-754702873,tomato_fresh,inaturalist,https://www.inaturalist.org/observations/410365057,cc-by-nc,"(c) Gabriel Rollins, some rights reserved (CC BY-NC)",gabriel22934,Solanum lycopersicum,503,0.865
+inat-755157629,tomato_fresh,inaturalist,https://www.inaturalist.org/observations/410584950,cc-by-nc,"(c) danielkatsin, some rights reserved (CC BY-NC)",danielkatsin,Solanum lycopersicum,505,0.902
+inat-755567547,tomato_fresh,inaturalist,https://www.inaturalist.org/observations/410784410,cc-by-nc,"(c) rosedigh, some rights reserved (CC BY-NC)",rosedigh,Solanum lycopersicum,506,0.839
+inat-757405943,tomato_fresh,inaturalist,https://www.inaturalist.org/observations/411692226,cc-by-nc,"(c) mariama_touray, some rights reserved (CC BY-NC)",mariama_touray,Solanum lycopersicum,524,0.888
+inat-752219253,tomato_fresh,inaturalist,https://www.inaturalist.org/observations/409143986,cc-by-nc,"(c) Pierre-Yves BUREAU, some rights reserved (CC BY-NC)",piwaibee,Solanum lycopersicum,530,0.896
+inat-756896527,tomato_fresh,inaturalist,https://www.inaturalist.org/observations/411439477,cc-by-nc,"(c) losprogramadorescbtis76, some rights reserved (CC BY-NC)",losprogramadorescbtis76,Solanum lycopersicum cerasiforme,536,0.885
+inat-733989152,potato_fresh,inaturalist,https://www.inaturalist.org/observations/400024833,cc-by-nc-sa,"(c) Diego Almendras, some rights reserved (CC BY-NC-SA)",diegoalmendras,Solanum tuberosum,556,0.83
+inat-711899111,potato_fresh,inaturalist,https://www.inaturalist.org/observations/388682869,cc-by-nc,"(c) udangkejhu, some rights reserved (CC BY-NC)",udangkejhu,Solanum tuberosum,572,0.88
+inat-712051359,potato_fresh,inaturalist,https://www.inaturalist.org/observations/388762464,cc-by-nc,"(c) thefireyphonenix, some rights reserved (CC BY-NC)",thefireyphonenix,Solanum tuberosum,579,0.803
+inat-741753082,potato_fresh,inaturalist,https://www.inaturalist.org/observations/403953253,cc-by-nc,"(c) vivianng1618, some rights reserved (CC BY-NC)",vivianng1618,Solanum tuberosum,583,0.911
+inat-733123049,potato_fresh,inaturalist,https://www.inaturalist.org/observations/399580960,cc-by-nc,"(c) Bombyx Cosmos, some rights reserved (CC BY-NC)",speckleddragon,Solanum tuberosum,585,0.791
+inat-731829506,potato_rotten,inaturalist,https://www.inaturalist.org/observations/398909064,cc-by-nc,"(c) Suraj Rai, some rights reserved (CC BY-NC)",surajraibhutan,Solanum tuberosum,608,0.78
+inat-752706543,potato_fresh,inaturalist,https://www.inaturalist.org/observations/409381061,cc-by-nc,"(c) ditaassss, some rights reserved (CC BY-NC)",ditaassss,Solanum tuberosum,619,0.863
+inat-711897013,potato_fresh,inaturalist,https://www.inaturalist.org/observations/388681666,cc-by-nc,"(c) fartass, some rights reserved (CC BY-NC)",fartass,Solanum tuberosum,640,0.855
+inat-715137387,potato_fresh,inaturalist,https://www.inaturalist.org/observations/390354562,cc-by-nc-sa,"(c) m-gutierrez, some rights reserved (CC BY-NC-SA)",m-gutierrez,Solanum tuberosum,649,0.865
+inat-734041407,potato_rotten,inaturalist,https://www.inaturalist.org/observations/397924553,cc-by-nc,"(c) dogdog, some rights reserved (CC BY-NC)",dogdog,Solanum tuberosum,654,0.769
+inat-715605161,potato_fresh,inaturalist,https://www.inaturalist.org/observations/390593635,cc-by-nc,"(c) Artichoke, some rights reserved (CC BY-NC)",artichoke1,Solanum tuberosum,674,0.85
+inat-744787197,potato_fresh,inaturalist,https://www.inaturalist.org/observations/405476832,cc-by-nc,"(c) Hanna Król, some rights reserved (CC BY-NC)",hanna_krol,Solanum tuberosum,678,0.858
+inat-757797346,potato_fresh,inaturalist,https://www.inaturalist.org/observations/411888839,cc-by-nc,"(c) jimmy0326, some rights reserved (CC BY-NC)",jimmy0326,Solanum tuberosum,679,0.862
+inat-745679569,potato_fresh,inaturalist,https://www.inaturalist.org/observations/405918538,cc-by-nc,"(c) Иванова Иоанна Ивановна, some rights reserved (CC BY-NC)",drozd228,Solanum tuberosum,696,0.867
+inat-722156525,potato_rotten,inaturalist,https://www.inaturalist.org/observations/393953758,cc-by-nc,"(c) chalkycharo, some rights reserved (CC BY-NC)",chalkycharo,Solanum tuberosum,724,0.811
+inat-726736348,potato_rotten,inaturalist,https://www.inaturalist.org/observations/396285144,cc-by-nc,"(c) yiyi6533, some rights reserved (CC BY-NC)",yiyi6533,Solanum tuberosum,741,0.796
+inat-740313871,potato_fresh,inaturalist,https://www.inaturalist.org/observations/403222227,cc-by-nc,"(c) Vitaliy Butryn, some rights reserved (CC BY-NC)",vitaliy60982,Solanum tuberosum,761,0.736
+inat-734211897,potato_fresh,inaturalist,https://www.inaturalist.org/observations/400132861,cc-by-nc,"(c) forscher10b, some rights reserved (CC BY-NC)",forscher10b,Solanum tuberosum,768,0.856
+inat-708061649,cucumber_fresh,inaturalist,https://www.inaturalist.org/observations/386710932,cc-by-nc,"(c) なえとる, some rights reserved (CC BY-NC)",nqet0ru,Cucumis sativus,786,0.897
+inat-754203630,cucumber_fresh,inaturalist,https://www.inaturalist.org/observations/410117326,cc-by-nc,"(c) Lucia, some rights reserved (CC BY-NC)",lucia34856,Cucumis sativus,788,0.807
+inat-715009681,cucumber_fresh,inaturalist,https://www.inaturalist.org/observations/390289925,cc-by-nc,"(c) gps1, some rights reserved (CC BY-NC)",gps1,Cucumis sativus,796,0.858
+inat-733055534,cucumber_fresh,inaturalist,https://www.inaturalist.org/observations/399545469,cc-by-nc,"(c) lemsypop, some rights reserved (CC BY-NC)",lemsypop,Cucumis sativus,803,0.823
+inat-705342766,cucumber_fresh,inaturalist,https://www.inaturalist.org/observations/385289859,cc-by-nc,"(c) Marian Maciantowicz, some rights reserved (CC BY-NC)",marian39719,Cucumis sativus,820,0.875
+inat-719911728,cucumber_fresh,inaturalist,https://www.inaturalist.org/observations/392806128,cc-by-nc,"(c) Mia A. Newkirk, some rights reserved (CC BY-NC)",miaapapaya,Cucumis sativus,821,0.807
+inat-717103663,cucumber_fresh,inaturalist,https://www.inaturalist.org/observations/391363005,cc-by-nc,"(c) Дмитрий Токарев, some rights reserved (CC BY-NC)",dmitriy_tokarev,Cucumis sativus,825,0.876
+inat-718749293,cucumber_fresh,inaturalist,https://www.inaturalist.org/observations/392212752,cc-by-nc,"(c) Delaine Weiner, some rights reserved (CC BY-NC)",delaineweiner,Cucumis sativus,834,0.842
+inat-728428005,cucumber_fresh,inaturalist,https://www.inaturalist.org/observations/397171070,cc-by-nc,"(c) Vera Pyers-Ludovissy, some rights reserved (CC BY-NC)",leafmealone123,Cucumis sativus,836,0.861
+inat-742967016,cucumber_fresh,inaturalist,https://www.inaturalist.org/observations/404564518,cc-by-nc,"(c) netherw, some rights reserved (CC BY-NC)",netherw,Cucumis sativus,854,0.806
+inat-757691935,cucumber_fresh,inaturalist,https://www.inaturalist.org/observations/409076118,cc-by-nc,"(c) Mauricio Cruz, some rights reserved (CC BY-NC)",mauau,Cucumis sativus,859,0.874
+inat-730456199,cucumber_fresh,inaturalist,https://www.inaturalist.org/observations/398209950,cc-by-nc,"(c) halleballe, some rights reserved (CC BY-NC)",halleballe,Cucumis sativus,864,0.839
+inat-726651203,cucumber_fresh,inaturalist,https://www.inaturalist.org/observations/396245805,cc-by-nc,"(c) Grupo Malaria, Universidad de Antioquia COL, some rights reserved (CC BY-NC)",uraba-biodiversa,Cucumis sativus,875,0.854
+inat-756372009,cucumber_fresh,inaturalist,https://www.inaturalist.org/observations/411180205,cc-by-nc,"(c) Kerem Alp Özcan, some rights reserved (CC BY-NC)",cirnoice,Cucumis sativus,883,0.877
+inat-714174199,cucumber_fresh,inaturalist,https://www.inaturalist.org/observations/389862170,cc-by-nc,"(c) max_pa, some rights reserved (CC BY-NC)",max_pa,Cucumis sativus,895,0.808
+inat-727669400,cucumber_fresh,inaturalist,https://www.inaturalist.org/observations/396786194,cc-by-nc,"(c) Davi Santos, some rights reserved (CC BY-NC)",davi88300,Cucumis sativus,898,0.801
+inat-742198674,cucumber_fresh,inaturalist,https://www.inaturalist.org/observations/404175804,cc-by-nc,"(c) Дарья Фролова, some rights reserved (CC BY-NC)",darya3251,Cucumis sativus,902,0.801
+inat-743209882,cucumber_fresh,inaturalist,https://www.inaturalist.org/observations/404683392,cc-by-nc,"(c) Meeganmeade, some rights reserved (CC BY-NC)",mysoulisdeadxo,Cucumis sativus,903,0.787
+inat-709479457,cucumber_fresh,inaturalist,https://www.inaturalist.org/observations/387446751,cc-by-nc,"(c) Alexey V. Ivanov, some rights reserved (CC BY-NC)",wkent,Cucumis sativus,909,0.862
+inat-717249052,cucumber_fresh,inaturalist,https://www.inaturalist.org/observations/391437702,cc-by-nc,"(c) Руслан Янбулатов, some rights reserved (CC BY-NC)",ruslan14730,Cucumis sativus,918,0.804
+inat-753151665,other_veg,inaturalist,https://www.inaturalist.org/observations/409597880,cc-by-nc,"(c) rahmamaryanaoktavianti, some rights reserved (CC BY-NC)",rahmamaryanaoktavianti,Capsicum annuum,931,0.856
+inat-749664620,other_veg,inaturalist,https://www.inaturalist.org/observations/407890325,cc-by-nc,"(c) yohaanbhargava, some rights reserved (CC BY-NC)",yohaanbhargava,Capsicum annuum,937,0.812
+inat-754080756,bellpepper_fresh,inaturalist,https://www.inaturalist.org/observations/410054822,cc-by-nc,"(c) tamilasyvavilebi, some rights reserved (CC BY-NC)",tamilasyvavilebi,Capsicum annuum,1031,0.86
+inat-756948557,bellpepper_fresh,inaturalist,https://www.inaturalist.org/observations/411465216,cc-by-nc,"(c) sepsy11, some rights reserved (CC BY-NC)",sepsy11,Capsicum annuum,1163,0.82
+inat-747123181,bellpepper_fresh,inaturalist,https://www.inaturalist.org/observations/406634688,cc-by-nc,"(c) Richard Ewalt, some rights reserved (CC BY-NC)",richard_ewalt,Capsicum annuum,1177,0.872
+inat-756422900,bellpepper_fresh,inaturalist,https://www.inaturalist.org/observations/411206277,cc-by-nc,"(c) jaden chau, some rights reserved (CC BY-NC)",jaden_chau,Capsicum annuum,1184,0.851
+inat-666845744,onion_rotten,inaturalist,https://www.inaturalist.org/observations/365253108,cc-by-nc,"(c) nubkiminal, some rights reserved (CC BY-NC)",nubkiminal,Allium cepa,1231,0.836
+inat-758379449,onion_fresh,inaturalist,https://www.inaturalist.org/observations/412178219,cc-by-nc,"(c) brescia_cuellar_20, some rights reserved (CC BY-NC)",brescia_cuellar_20,Allium cepa,1246,0.851
+inat-667785563,onion_fresh,inaturalist,https://www.inaturalist.org/observations/365745589,cc-by-nc,"(c) u9010433, some rights reserved (CC BY-NC)",u9010433,Allium cepa,1250,0.861
+inat-758280845,sweetpotato_fresh,inaturalist,https://www.inaturalist.org/observations/412129342,cc-by-nc,"(c) jimmy0326, some rights reserved (CC BY-NC)",jimmy0326,Ipomoea batatas,1271,0.842
+inat-676186092,tomato_rotten,inaturalist,https://www.inaturalist.org/observations/370150238,cc-by-nc,"(c) g_leiva, some rights reserved (CC BY-NC)",g_leiva,Botrytis cinerea,1282,0.847
+inat-648775417,onion_rotten,inaturalist,https://www.inaturalist.org/observations/355767696,cc-by-nc,"(c) luzluz, some rights reserved (CC BY-NC)",luzluz,Botrytis cinerea,1387,0.807
+inat-645380921,tomato_rotten,inaturalist,https://www.inaturalist.org/observations/353741106,cc-by-nc,"(c) Max Moreno, some rights reserved (CC BY-NC)",graciela_moreno,Botrytis cinerea,1506,0.849
+inat-735381955,onion_rotten,inaturalist,https://www.inaturalist.org/observations/400380219,cc-by-nc,"(c) roupya, some rights reserved (CC BY-NC)",roupya,Fusarium,1513,0.758
+inat-113800036,tomato_rotten,inaturalist,https://www.inaturalist.org/observations/70047560,cc-by-nc,"(c) npm536, some rights reserved (CC BY-NC)",npm536,Sclerotinia sclerotiorum,1576,0.851
+inat-740460661,tomato_rotten,inaturalist,https://www.inaturalist.org/observations/403304405,cc-by-nc,"(c) Татьяна Иванкина, some rights reserved (CC BY-NC)",tatjana_ivankina,Phytophthora,2070,0.84
+inat-349274544,tomato_rotten,inaturalist,https://www.inaturalist.org/observations/198197754,cc-by-nc,"(c) Marie-B, some rights reserved (CC BY-NC)",mbfoyard,Rhizopus stolonifer,2258,0.844
+inat-99366261,potato_rotten,inaturalist,https://www.inaturalist.org/observations/62048324,cc-by-nc,"(c) Kiara Gadsby, some rights reserved (CC BY-NC)",lipidlayer,Rhizoctonia solani,2284,0.825
+inat-515317021,tomato_rotten,inaturalist,https://www.inaturalist.org/observations/286635918,cc-by,"(c) Juan Cruzado Cortés, some rights reserved (CC BY)",juancruzado,Rhizopus stolonifer,2309,0.807
+inat-420203355,tomato_rotten,inaturalist,https://www.inaturalist.org/observations/236208777,cc-by,"(c) Brandon Corder, some rights reserved (CC BY)",brandoncorder,Colletotrichum coccodes,2313,0.797
+inat-524644448,tomato_rotten,inaturalist,https://www.inaturalist.org/observations/291592568,cc-by-nc,"(c) blakewxb, some rights reserved (CC BY-NC)",blakewxb,Colletotrichum coccodes,2325,0.872
+inat-275559168,carrot_rotten,inaturalist,https://www.inaturalist.org/observations/159490300,cc-by,"(c) nuujaka, some rights reserved (CC BY)",nuujaka,Pythium,2347,0.861
+inat-171500794,bellpepper_rotten,inaturalist,https://www.inaturalist.org/observations/102575678,cc-by-nc,"(c) annamkr, some rights reserved (CC BY-NC)",annamkr,Colletotrichum coccodes,2446,0.795
+inat-545258529,tomato_rotten,inaturalist,https://www.inaturalist.org/observations/302546688,cc-by-nc,"(c) Nicoleta, some rights reserved (CC BY-NC)",nicoleta_nour,Alternaria solani,2449,0.8
+inat-5782606,potato_rotten,inaturalist,https://www.inaturalist.org/observations/4753911,cc-by,"(c) Matt Bowser, some rights reserved (CC BY)",mbowser,Rhizoctonia solani,2489,0.82
+inat-243549511,cucumber_rotten,inaturalist,https://www.inaturalist.org/observations/142089847,cc-by-nc,"(c) alyssa_c, some rights reserved (CC BY-NC)",alyssa_c,Sclerotinia sclerotiorum,2490,0.783
+inat-595638820,tomato_rotten,inaturalist,https://www.inaturalist.org/observations/328678307,cc-by,"(c) Dan MacNeal, some rights reserved (CC BY)",dan_macneal,Rhizopus stolonifer,2505,0.83
+inat-752588115,tomato_rotten,inaturalist,https://www.inaturalist.org/observations/409327127,cc-by-nc,"(c) humbaba, some rights reserved (CC BY-NC)",humbaba,Colletotrichum coccodes,2522,0.819
+inat-436034502,potato_rotten,inaturalist,https://www.inaturalist.org/observations/244446428,cc-by-nc-sa,"(c) Markku A. Huttunen, some rights reserved (CC BY-NC-SA)",markku39,Rhizoctonia solani,2533,0.819
+inat-183589662,tomato_rotten,inaturalist,https://www.inaturalist.org/observations/108978468,cc-by-nc,"(c) eilynpv, some rights reserved (CC BY-NC)",eilynpv,Clavibacter michiganensis,2537,0.839
+inat-319443564,tomato_rotten,inaturalist,https://www.inaturalist.org/observations/183133408,cc-by-nc,"(c) Valentina, some rights reserved (CC BY-NC)",valentinabuono,Alternaria solani,2541,0.815
+inat-622405199,onion_rotten,inaturalist,https://www.inaturalist.org/observations/341846606,cc-by-nc,"(c) waffell, some rights reserved (CC BY-NC)",waffell,Allium cepa,2623,0.875
+inat-571382924,onion_rotten,inaturalist,https://www.inaturalist.org/observations/316256945,cc-by-nc,"(c) kc8283aphidetk, some rights reserved (CC BY-NC)",kc8283aphidetk,Allium cepa,2627,0.801
+inat-549007021,onion_fresh,inaturalist,https://www.inaturalist.org/observations/304535999,cc-by-nc,"(c) krissilke, some rights reserved (CC BY-NC)",krissilke,Allium cepa,2633,0.861
+inat-572735909,onion_fresh,inaturalist,https://www.inaturalist.org/observations/316976759,cc-by-nc,"(c) snc-6i, some rights reserved (CC BY-NC)",snc-6i,Allium cepa,2635,0.829
+inat-655454209,onion_fresh,inaturalist,https://www.inaturalist.org/observations/359258901,cc-by-nc,"(c) Ali Gürcan, some rights reserved (CC BY-NC)",ali_gurcan,Allium cepa,2643,0.808
+inat-535340175,onion_rotten,inaturalist,https://www.inaturalist.org/observations/297260476,cc-by-nc,"(c) NatInNature, some rights reserved (CC BY-NC)",natasa-stuper,Allium cepa,2646,0.795
+inat-515529956,onion_fresh,inaturalist,https://www.inaturalist.org/observations/286743612,cc-by-nc,"(c) ratatuuuu, some rights reserved (CC BY-NC)",ratatuuuu,Allium cepa,2669,0.889
+inat-541294180,onion_fresh,inaturalist,https://www.inaturalist.org/observations/300420245,cc-by-nc,"(c) waveyqp, some rights reserved (CC BY-NC)",waveyqp,Allium cepa,2675,0.842
+inat-573758206,onion_rotten,inaturalist,https://www.inaturalist.org/observations/317515330,cc-by-nc,"(c) kc-8370wichai, some rights reserved (CC BY-NC)",kc-8370wichai,Allium cepa,2683,0.787
+inat-609685837,onion_fresh,inaturalist,https://www.inaturalist.org/observations/335593950,cc-by-nc,"(c) kami_l, some rights reserved (CC BY-NC)",kami_l,Allium cepa,2685,0.909
+inat-642131512,onion_rotten,inaturalist,https://www.inaturalist.org/observations/351848298,cc-by-nc,"(c) sergeantdogo, some rights reserved (CC BY-NC)",sergeantdogo,Allium cepa,2700,0.76
+inat-573758746,onion_rotten,inaturalist,https://www.inaturalist.org/observations/317515622,cc-by-nc,"(c) pound vorapat, some rights reserved (CC BY-NC)",pound1,Allium cepa,2722,0.813
+inat-657857399,onion_fresh,inaturalist,https://www.inaturalist.org/observations/360522143,cc-by-nc,"(c) Sam sung, some rights reserved (CC BY-NC)",nonlaphan_iq,Allium cepa,2725,0.855
+inat-620319595,onion_rotten,inaturalist,https://www.inaturalist.org/observations/340831102,cc-by-nc,"(c) Miles Williams, some rights reserved (CC BY-NC)",miles66184,Allium cepa,2741,0.874
+inat-618791367,onion_fresh,inaturalist,https://www.inaturalist.org/observations/340078376,cc-by-nc,"(c) Alexandra Noyes, some rights reserved (CC BY-NC)",skatingflamingo,Allium cepa,2750,0.755
+inat-660127859,potato_fresh,inaturalist,https://www.inaturalist.org/observations/361701065,cc-by-nc,"(c) G vishnu G vishnu, some rights reserved (CC BY-NC)",g_vishnu,Solanum tuberosum,2782,0.86
+inat-674982303,potato_rotten,inaturalist,https://www.inaturalist.org/observations/369520938,cc-by-nc,"(c) emmybug, some rights reserved (CC BY-NC)",emmybug,Solanum tuberosum,2784,0.816
+inat-658155037,potato_fresh,inaturalist,https://www.inaturalist.org/observations/360677571,cc-by-nc,"(c) xwoasoxc, some rights reserved (CC BY-NC)",xwoasoxc,Solanum tuberosum,2792,0.863
+inat-657258966,potato_fresh,inaturalist,https://www.inaturalist.org/observations/360202013,cc-by-nc,"(c) Matthew costain velasco, some rights reserved (CC BY-NC)",matthewcostain,Solanum tuberosum,2807,0.871
+inat-706992988,potato_rotten,inaturalist,https://www.inaturalist.org/observations/386146921,cc-by-nc,"(c) jrdc, some rights reserved (CC BY-NC)",jrdc,Solanum tuberosum,2824,0.765
+inat-707927250,potato_fresh,inaturalist,https://www.inaturalist.org/observations/386635883,cc-by-nc,"(c) Hasini Akr, some rights reserved (CC BY-NC)",ecohasini,Solanum tuberosum,2831,0.895
+inat-679391746,potato_fresh,inaturalist,https://www.inaturalist.org/observations/371829382,cc-by-nc,"(c) Natalia Allen, some rights reserved (CC BY-NC)",natalia77028,Solanum tuberosum,2839,0.797
+inat-705865246,potato_rotten,inaturalist,https://www.inaturalist.org/observations/385559750,cc-by-nc,"(c) dehalogenase, some rights reserved (CC BY-NC)",dehalogenase,Solanum tuberosum,2861,0.601
+inat-705458581,potato_fresh,inaturalist,https://www.inaturalist.org/observations/385350799,cc-by-nc,"(c) Madelyn Anahi Gonzalez Flores, some rights reserved (CC BY-NC)",madelyn_anahi2,Solanum tuberosum,2887,0.832
+commons-65fba0a9b96e,tomato_rotten,wikimedia_commons,https://commons.wikimedia.org/wiki/File:%C3%87i%C3%A7ek_burnu_%C3%A7%C3%BCr%C3%BCkl%C3%BC%C4%9F%C3%BC.jpg,CC BY-SA 4.0,Zemxer,zemxer,blossom end rot,3006,0.812
+commons-b24dacb2e5f8,tomato_rotten,wikimedia_commons,https://commons.wikimedia.org/wiki/File:Tomato_with_Phytophthora_infestans_(late_blight).jpg,CC BY-SA 3.0,Downtowngal,downtowngal,tomatoes,3012,0.837
+commons-baef25531018,potato_rotten,wikimedia_commons,https://commons.wikimedia.org/wiki/File:Potatoe_buds_1.jpg,CC BY-SA 3.0,ProjectManhattan,projectmanhattan,sprouting potatoes,3043,0.859
+commons-42d7965c7229,potato_rotten,wikimedia_commons,https://commons.wikimedia.org/wiki/File:Potatoe_buds.jpg,CC BY-SA 3.0,ProjectManhattan,projectmanhattan,sprouting potatoes,3044,0.855
+commons-ccfef4798081,potato_rotten,wikimedia_commons,https://commons.wikimedia.org/wiki/File:Kartoffel_mit_Wurzeltrieb_2021.jpg,CC BY-SA 4.0,VSchagow,vschagow,sprouting potatoes,3048,0.717
+commons-7c658b4dc999,potato_rotten,wikimedia_commons,https://commons.wikimedia.org/wiki/File:Pomme_de_terre_germ%C3%A9e.JPG,CC BY-SA 3.0,Zewan,zewan,sprouting potatoes,3060,0.785
+commons-f95b2c796155,potato_rotten,wikimedia_commons,https://commons.wikimedia.org/wiki/File:Nakl%C3%AD%C4%8Den%C3%A9_brambory_(2).jpg,CC BY 3.0,Dezidor,dezidor,sprouting potatoes,3062,0.768
+commons-e6f3b291ab13,potato_rotten,wikimedia_commons,https://commons.wikimedia.org/wiki/File:Canada_djermon.jpg,CC BY-SA 4.0,Lucyin,lucyin,sprouting potatoes,3063,0.805
+commons-5bf635583981,potato_rotten,wikimedia_commons,https://commons.wikimedia.org/wiki/File:Kartoffeln-falsch_gelagert.JPG,CC BY-SA 3.0,Thomas Kees (powerbiker1),thomas kees (powerbiker1),sprouting potatoes,3066,0.712
+commons-d8dad87fe81a,potato_rotten,wikimedia_commons,https://commons.wikimedia.org/wiki/File:Ziemniaki_kielki.jpg,CC BY-SA 4.0,Navaho,navaho,sprouting potatoes,3067,0.816
+commons-d32b2ce1138f,potato_rotten,wikimedia_commons,https://commons.wikimedia.org/wiki/File:HK_food_%E5%9C%9F%E8%B1%86_Potato_%E7%99%BC%E8%8A%BD_%E8%96%AF%E4%BB%94_November_2020_SS2_03.jpg,CC BY-SA 4.0,Zoebufigahvex,zoebufigahvex,sprouting potatoes,3069,0.901
+commons-48ee5cda1f2e,sweetpotato_fresh,wikimedia_commons,https://commons.wikimedia.org/wiki/File:Sweet_Potatoes_in_Qingdao.jpg,CC0,Brücke-Osteuropa,brücke-osteuropa,sweet potatoes,3075,0.7
+commons-c18eff9578eb,sweetpotato_fresh,wikimedia_commons,https://commons.wikimedia.org/wiki/File:Sweet_Potatos.jpg,CC0,စာကလေး SarKaLay,စာကလေး sarkalay,sweet potatoes,3076,0.876
+commons-5cb1c89f915e,sweetpotato_fresh,wikimedia_commons,"https://commons.wikimedia.org/wiki/File:Pile_of_Sweet_Potatoes_at_Barkin_Dogo_Market,_Kaduna_North_02.jpg",CC BY-SA 4.0,Samsule2,samsule2,sweet potatoes,3081,0.872
+commons-55a0922d96c0,sweetpotato_fresh,wikimedia_commons,https://commons.wikimedia.org/wiki/File:Sweet_potato_brazil2.jpg,CC BY-SA 3.0,No machine-readable author provided. Carioca assumed (based on copyright claims).,no machine-readable author provided. carioca assumed (based on copyright claims),sweet potatoes,3082,0.819
+commons-cbd92ad6e93f,sweetpotato_fresh,wikimedia_commons,https://commons.wikimedia.org/wiki/File:Sweet_Potato_-_%E0%B4%AE%E0%B4%A7%E0%B5%81%E0%B4%B0%E0%B4%95%E0%B5%8D%E0%B4%95%E0%B4%BF%E0%B4%B4%E0%B4%99%E0%B5%8D%E0%B4%99%E0%B5%8D_004.JPG,CC BY-SA 3.0,കാക്കര,കാക്കര,sweet potatoes,3088,0.796
+commons-17e0627c0a22,sweetpotato_fresh,wikimedia_commons,https://commons.wikimedia.org/wiki/File:Butter_sweet_potato.jpg,CC BY-SA 4.0,ChisomAchukwu,chisomachukwu,sweet potatoes,3090,0.821
+commons-d76c3b0f043b,sweetpotato_fresh,wikimedia_commons,https://commons.wikimedia.org/wiki/File:Sweet_potatoes_from_northern_China.jpg,CC0,Suginami,suginami,sweet potatoes,3091,0.814
+commons-f54b2ef795be,sweetpotato_fresh,wikimedia_commons,https://commons.wikimedia.org/wiki/File:Liat_Portal_for_Foodie_Disorder_-_Sweet_potato.jpg,CC BY-SA 4.0,HaJunkiyada,hajunkiyada,sweet potatoes,3094,0.794
+commons-c217eef3abf6,sweetpotato_fresh,wikimedia_commons,https://commons.wikimedia.org/wiki/File:Sweet_Potatoes_(_mabura_).jpg,CC BY-SA 4.0,ThereMazo,theremazo,sweet potatoes,3096,0.86
+commons-34d438b8f84c,greenonion_fresh,wikimedia_commons,https://commons.wikimedia.org/wiki/File:Spring_Onions_at_Bakin_Dogo_market_Kaduna_04.jpg,CC BY-SA 4.0,Weyham,weyham,scallions,3135,0.851
+commons-2326a23705dd,greenonion_fresh,wikimedia_commons,https://commons.wikimedia.org/wiki/File:2010-10-16_Scallions_in_Taipei.jpg,CC BY 2.0,tomscoffin,57200171@n03,scallions,3140,0.853
+commons-d84c623fd50a,greenonion_fresh,wikimedia_commons,https://commons.wikimedia.org/wiki/File:Nissato_Green_Onion_5.jpg,CC BY-SA 4.0,Miyuki Meinaka,miyuki meinaka,green onions,3142,0.866
+commons-1dda011eb046,greenonion_fresh,wikimedia_commons,https://commons.wikimedia.org/wiki/File:Spring_onions_displayed.jpg,CC0,Judethedeus,judethedeus,scallions,3160,0.858
+commons-36bedc86d146,greenonion_fresh,wikimedia_commons,https://commons.wikimedia.org/wiki/File:Large_green_onions_-_Flickr_-_Al_Jazeera_English.jpg,CC BY-SA 2.0,Al Jazeera English,32834977@n03,green onions,3161,0.892
+commons-3610191ccf4e,greenonion_fresh,wikimedia_commons,https://commons.wikimedia.org/wiki/File:Young_onion_shoots_at_an_organic_food_mela_in_India.jpg,CC BY-SA 2.0,"Hari Prasad Nadig from Bangalore, India",66722888@n00,scallions,3172,0.877
+commons-6c0bf649af6c,greenonion_fresh,wikimedia_commons,https://commons.wikimedia.org/wiki/File:Onion_selles_in_the_market_(4).jpg,CC BY-SA 4.0,Fatheema,fatheema,scallions,3175,0.775
+commons-f70a7cca1009,greenonion_fresh,wikimedia_commons,https://commons.wikimedia.org/wiki/File:Hoton_albasa.jpg,CC0,Nnamadee,nnamadee,scallions,3178,0.825
+commons-0a1109cbeb06,greenonion_fresh,wikimedia_commons,"https://commons.wikimedia.org/wiki/File:Freshly_Harvested_Onions_at_Barkin_Dogo_Market,_Kaduna_North_01.jpg",CC BY-SA 4.0,Samsule2,samsule2,scallions,3182,0.815
+commons-e780bd828223,greenonion_fresh,wikimedia_commons,https://commons.wikimedia.org/wiki/File:Tarin_albasa.jpg,CC BY-SA 4.0,Nnamadee,nnamadee,scallions,3205,0.796
+commons-a35827337882,bellpepper_fresh,wikimedia_commons,https://commons.wikimedia.org/wiki/File:Red_bell_peppers_for_sale_at_Safeway.jpg,CC BY-SA 4.0,Grendelkhan,grendelkhan,bell peppers,3218,0.94
+commons-b402bf5d6d1d,bellpepper_fresh,wikimedia_commons,https://commons.wikimedia.org/wiki/File:Washing_bell_peppers.jpg,Public domain,U.S. Air Force photo by Airman 1st Class Levin Boland,u.s. air force photo by airman 1st class levin boland,bell peppers,3219,0.842
+commons-98c1382e2bdb,bellpepper_fresh,wikimedia_commons,"https://commons.wikimedia.org/wiki/File:Iranian_(VSA_Ardestani_label)_bell_peppers_sold_in_Moscow,_June_2025_03.jpg",CC0,Retired electrician,retired electrician,bell peppers,3221,0.848
+commons-716ae2e737c9,bellpepper_fresh,wikimedia_commons,"https://commons.wikimedia.org/wiki/File:Bell_Pepper_at_Bakin_Dogo_Market,_Kaduna_North_02.jpg",CC BY-SA 4.0,Samsule2,samsule2,bell peppers,3222,0.93
+commons-8ffbe8363926,bellpepper_fresh,wikimedia_commons,"https://commons.wikimedia.org/wiki/File:Red,_Yellow,_and_Green_bell_peppers.jpg",CC0,Jiafei Slay Queen,jiafei slay queen,bell peppers,3223,0.89
+commons-c86d5a7f72af,bellpepper_fresh,wikimedia_commons,"https://commons.wikimedia.org/wiki/File:Ripening_Pepper,_2020-10-17.jpg",CC0,Cbaile19,cbaile19,bell peppers,3225,0.859
+commons-ba13782e1b27,bellpepper_fresh,wikimedia_commons,https://commons.wikimedia.org/wiki/File:Bell_peppers_2020_G2.jpg,CC BY-SA 4.0,George Chernilevsky,george chernilevsky,bell peppers,3228,0.907
+commons-32014cca6b8a,bellpepper_fresh,wikimedia_commons,https://commons.wikimedia.org/wiki/File:Bell_peppers_2020_G1.jpg,CC BY-SA 4.0,George Chernilevsky,george chernilevsky,bell peppers,3229,0.877
+commons-988e44cbe1d5,bellpepper_fresh,wikimedia_commons,https://commons.wikimedia.org/wiki/File:Colorful_Bell_Peppers.JPG,Public domain,Michelet-密是力 (talk),michelet-密是力 (talk),bell peppers,3231,0.892
+commons-1b8b3c2d222b,bellpepper_fresh,wikimedia_commons,https://commons.wikimedia.org/wiki/File:Purple_bellpepper.jpg,CC BY-SA 3.0,Caroline Ford,caroline ford,bell peppers,3232,0.81
+commons-bd93a81ae879,bellpepper_fresh,wikimedia_commons,https://commons.wikimedia.org/wiki/File:A_yellow_bell_pepper.jpg,CC BY-SA 4.0,Billjones94,billjones94,bell peppers,3237,0.88
+commons-8bd4f0b48e78,bellpepper_fresh,wikimedia_commons,https://commons.wikimedia.org/wiki/File:Poivrons_Luc_Viatour.jpg,CC BY-SA 3.0,Luc Viatour,luc viatour,bell peppers,3238,0.886
+commons-3125a267d7d0,bellpepper_fresh,wikimedia_commons,https://commons.wikimedia.org/wiki/File:Three_colors_of_peppers_at_Giant.jpg,CC BY-SA 4.0,Ser Amantio di Nicolao,ser amantio di nicolao,bell peppers,3239,0.933
+commons-31f03db78888,bellpepper_fresh,wikimedia_commons,"https://commons.wikimedia.org/wiki/File:Yellow,_Red,_Green_Sweet_Peppers.jpg",CC BY-SA 4.0,Dinkun Chen,dinkun chen,bell peppers,3241,0.854
+commons-908a0c8702be,bellpepper_fresh,wikimedia_commons,https://commons.wikimedia.org/wiki/File:Bell_Peppers_From_The_Garden_(120856553).jpeg,CC BY 3.0,Rob Bertholf,rob bertholf,bell peppers,3243,0.885
+commons-d263cad01fde,potato_rotten,wikimedia_commons,https://commons.wikimedia.org/wiki/File:Solanum_tuberosum%E3%81%AE%E7%99%BA%E8%8A%BD.jpg,CC BY-SA 3.0,投稿者自身による作品,投稿者自身による作品,potatoes,3302,0.781
