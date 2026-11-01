@@ -27,6 +27,7 @@ from model_utils import (
     marginal_probabilities, open_image, preprocess_for, resolve_device, set_classifier_layer, set_seed,
     state_checksum,
 )
+from watermark_aug import RandomWatermark
 
 SPLITS = ("train", "val", "test")
 
@@ -70,9 +71,10 @@ class CachedImages(Dataset):
     """Decodes every photo once; training images are kept small and augmented on the fly."""
 
     def __init__(self, rows: list[dict], root: Path, train: bool, size: int = 224, crop_scale_min: float = 0.6,
-                 lowres_prob: float = 0.0):
+                 lowres_prob: float = 0.0, watermark: RandomWatermark | None = None):
         self.labels = [int(r["class_id"]) for r in rows]
         self.train = train
+        self.watermark = watermark
         if train:
             self.transform = make_train_transform(size, crop_scale_min, lowres_prob)
             self.images = []
@@ -89,8 +91,12 @@ class CachedImages(Dataset):
         return len(self.labels)
 
     def __getitem__(self, index):
-        image = self.images[index]
-        return (self.transform(image) if self.train else image), self.labels[index]
+        image, label = self.images[index], self.labels[index]
+        if not self.train:
+            return image, label
+        if self.watermark:
+            image = self.watermark(image, label)
+        return self.transform(image), label
 
 
 @torch.no_grad()
@@ -190,6 +196,12 @@ def parse_args():
                         help="Smallest random crop, as a fraction of the photo area (augmentation).")
     parser.add_argument("--lowres-prob", type=float, default=0.0,
                         help="Augmentation: chance of first shrinking a training photo to thumbnail size (48-112 px).")
+    parser.add_argument("--watermark-fresh", type=float, default=0.0,
+                        help="Augmentation: chance of stamping a synthetic stock-photo watermark on a fresh training photo "
+                             "(experiments/watermark).")
+    parser.add_argument("--watermark-rotten", type=float, default=0.0,
+                        help="The same for rotten photos. Use a lower value than for fresh photos, because many rotten "
+                             "photos already carry real watermarks.")
     parser.add_argument("--num-classes", type=int, choices=[6, 10, len(CLASS_NAMES)], default=len(CLASS_NAMES),
                         help="6 = cucumber/potato/tomato only (the earlier runs), 10 = all five vegetables.")
     parser.add_argument("--threads", type=int, default=6)
@@ -219,6 +231,10 @@ def main():
     model.to(device)
 
     augment = not args.no_augment
+    watermark = None
+    if augment and (args.watermark_fresh > 0 or args.watermark_rotten > 0):
+        watermark = RandomWatermark({i: args.watermark_rotten if i % 2 else args.watermark_fresh
+                                     for i in range(len(class_names))})
     linear = args.mode == "linear"
     for p in model.parameters():
         p.requires_grad_(not linear or id(p) in head_ids)
@@ -241,7 +257,7 @@ def main():
     else:
         train_loader = DataLoader(CachedImages(splits["train"], manifest.parent, train=augment,
                                                 size=args.image_size, crop_scale_min=args.crop_scale_min,
-                                                lowres_prob=args.lowres_prob),
+                                                lowres_prob=args.lowres_prob, watermark=watermark),
                                   batch_size=args.batch_size, shuffle=True,
                                   generator=torch.Generator().manual_seed(args.seed))
         train_on_features = False
@@ -341,6 +357,7 @@ def main():
             "scheduler": None if linear else "cosine", "augmentation": augment,
             "image_size": args.image_size, "crop_scale_min": args.crop_scale_min if augment else None,
             "lowres_prob": args.lowres_prob if augment else None,
+            **({"watermark_probability": {"fresh": args.watermark_fresh, "rotten": args.watermark_rotten}} if watermark else {}),
             "device": args.device, "threads": args.threads,
         },
         "pretrained_source": pretrained_source,

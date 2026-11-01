@@ -327,6 +327,7 @@ depp-env22/
 │   ├── train_new_veg_head.py 양파·고구마·대파용 두 번째 CLIP 분류기(16칸 + "여덟 채소가 아님")를 만들어 model.pth에 넣는 스크립트
 │   ├── calibrate.py         가중치에 확률 보정·거르기 기준을 붙이는 스크립트 (--extra-photos: 실제 장면 채소도 함께 사용)
 │   ├── model_utils.py       공통 함수 (모델 불러오기, 전처리, 클래스 이름)
+│   ├── watermark_aug.py     학습용 가짜 워터마크 (train.py --watermark-fresh/--watermark-rotten, experiments/watermark)
 │   ├── make_plots.py        학습 곡선, 혼동행렬, 모델 비교 그래프
 │   └── gradcam.py           모델이 사진의 어느 부분을 보고 판단했는지 보여주는 그림
 ├── results/                 실험별 metrics.json, history.csv, val/test_predictions.csv, 그래프
@@ -334,7 +335,7 @@ depp-env22/
 │   ├── 10class/             현재 10개 클래스 모델의 기록 (calibration_unknown/: 확률 보정·거르기 평가, outside_test/: 인터넷 사진 평가, outside_test2/: 봉인한 새 인터넷 시험지 241장, anyphoto_test/: "아무 사진" 시험지 255장, model_comparison/: 초기 모델부터 지금까지 같은 사진으로 비교, system_checks/: 과대·과소적합·회전·전처리 점검, extra_features/: 히트맵·다시 찍기 안내·가장 가까운 것)
 │   ├── (그 밖의 폴더)       6개 클래스 때의 모델 비교 (같은 Test 180장, 6개 클래스 가중치는 커밋 9dc8749의 model.pth)
 │   └── round1_v1_data/      1차 모델의 학습 기록 (1차 가중치는 커밋 03db425에 있음)
-└── experiments/             추가 실험 기록 (채택: real_scene_threshold, clip_classifier, not_five_class, clip_only_reject, new_vegetables / 채택 안 함: field_tomato, partial_rot, 10class_tuning, pepper_web, rotten_phone, more_data, fix_carrot_cucumber, asian_cucumber, fruit_other, fruit_gate, posthoc_literature, clip_gate, tta, clip_head_more_data, weak_spots, fusion_weight, fruit_farm_tomato)
+└── experiments/             추가 실험 기록 (채택: real_scene_threshold, clip_classifier, not_five_class, clip_only_reject, new_vegetables / 채택 안 함: field_tomato, partial_rot, 10class_tuning, pepper_web, rotten_phone, more_data, fix_carrot_cucumber, asian_cucumber, fruit_other, fruit_gate, posthoc_literature, clip_gate, tta, clip_head_more_data, weak_spots, fusion_weight, fruit_farm_tomato, watermark)
 ```
 
 가중치는 용량 때문에 최종 모델(`model.pth`)만 올렸다.
@@ -350,6 +351,10 @@ depp-env22/
     - 새 채소의 정상/비정상은 CLIP 분류기 혼자 판정하고, 상한 곳 히트맵이 없다.
 - 최종 판정은 CLIP(약 600MB)을 함께 돌려야 한다. 브라우저 데모는 CLIP의 사진 부분을 8비트로 줄여(약 88MB) 최종 판정을 기본으로 돌린다. 처음 한 번 내려받는 데 시간이 걸린다.
 - 상한 과일은 아직 잘 거르지 못한다. "아무 사진" 시험지의 상한 과일 50장 중 26장에 채소 이름을 붙였다(대부분 "상한 감자"·"상한 토마토"). 닮은 다른 채소(파스닙→당근, 여주·애호박→오이)도 일부 착각한다([anyphoto_test](results/10class/anyphoto_test/README.md)).
+- **워터마크 지름길이 있다.** Valid·Test 상한 사진의 47%(정상은 8%)에 스톡 사진 워터마크가 있어서, 채소 모델이 "사진 위 글자 = 상함"을 일부 배웠다.
+    - 학습에 없던 반복 글씨 워터마크를 Valid 정상 사진 150장에 찍으면, 채소 모델 혼자서는 38장, 최종 판정은 18장을 상함으로 본다(원래 7장).
+    - 워터마크를 정상·상한 사진에 같은 비율로 넣고 다시 학습하면 지름길은 거의 없어졌다. 하지만 160장 시험지에서 5장을 잃어 채택하지 않았다([watermark](experiments/watermark/README.md)).
+    - 글자·로고가 있는 사진은 정상인데 "상함"으로 나올 수 있다.
 - Valid·Test가 각 300장이라 한 장이 0.33%p다. 95% 신뢰구간 폭이 약 ±3%p이므로 1~2%p 차이는 의미 있게 보기 어렵다.
 - 학습하지 않은 사진 거르기는 완벽하지 않다. 인터넷 과일 사진은 10%가 그대로 10개 중 하나로 답하고, 진짜 채소 사진도 Test에서 1.3%, 새 인터넷 시험지에서 5.8%(14/241)를 거른다. 거르는 사진을 줄인 대신, 거르지 않고 틀린 답을 보여 주는 사진은 새 시험지에서 23장에서 34장으로 늘었다. 채소를 돌리거나 거꾸로 놓은 사진은 더 많이 거른다([system_checks](results/10class/system_checks/README.md)).
 - 피망·당근은 상한 사진이 부족해 Train이 클래스마다 106장·104장으로 다른 채소(140장)보다 적다.
