@@ -1,0 +1,421 @@
+{
+ "0.0": {
+  "threshold": -0.5918164253234863,
+  "tau": 0.8,
+  "tau_grid": {
+   "0.5": 9,
+   "0.7": 2,
+   "0.8": 1,
+   "0.9": 1,
+   "0.95": 0
+  },
+  "valid": {
+   "accuracy": 289,
+   "kept_correct": 286,
+   "n": 300,
+   "to_new_vegetable": 0
+  },
+  "odev": {
+   "accuracy": 199,
+   "kept_correct": 192,
+   "n": 221,
+   "to_new_vegetable": 1
+  },
+  "o160": {
+   "accuracy": 147,
+   "kept_correct": 147,
+   "n": 160,
+   "to_new_vegetable": 0
+  },
+  "asian37": {
+   "accuracy": 35,
+   "kept_correct": 31,
+   "n": 37,
+   "to_new_vegetable": 0
+  },
+  "fruit374": {
+   "turned_away": 335,
+   "n": 374,
+   "to_new_vegetable": 0
+  },
+  "coco400": {
+   "turned_away": 400,
+   "n": 400,
+   "to_new_vegetable": 0
+  },
+  "lvis": {
+   "turned_away": 22,
+   "n": 192,
+   "to_new_vegetable": 1
+  },
+  "newval": {
+   "kind_right_kept": 78,
+   "n": 89,
+   "sweetpotato_rotten": "8/9"
+  },
+  "kaggle_fruit": {
+   "turned_away": 318,
+   "n": 527,
+   "to_new_vegetable": 0
+  },
+  "inat_rotten_fruit": {
+   "turned_away": 83,
+   "n": 184,
+   "to_new_vegetable": 1
+  },
+  "openverse_rotten_fruit": {
+   "turned_away": 38,
+   "n": 50,
+   "to_new_vegetable": 0
+  },
+  "rotten_fruit_turned_away": 439,
+  "old_dev_to_new": 2
+ },
+ "0.25": {
+  "threshold": -0.32037675380706787,
+  "tau": 0.7,
+  "tau_grid": {
+   "0.5": 9,
+   "0.7": 1,
+   "0.8": 0,
+   "0.9": 0,
+   "0.95": 0
+  },
+  "valid": {
+   "accuracy": 289,
+   "kept_correct": 286,
+   "n": 300,
+   "to_new_vegetable": 0
+  },
+  "odev": {
+   "accuracy": 199,
+   "kept_correct": 190,
+   "n": 221,
+   "to_new_vegetable": 0
+  },
+  "o160": {
+   "accuracy": 147,
+   "kept_correct": 146,
+   "n": 160,
+   "to_new_vegetable": 0
+  },
+  "asian37": {
+   "accuracy": 35,
+   "kept_correct": 33,
+   "n": 37,
+   "to_new_vegetable": 0
+  },
+  "fruit374": {
+   "turned_away": 347,
+   "n": 374,
+   "to_new_vegetable": 1
+  },
+  "coco400": {
+   "turned_away": 400,
+   "n": 400,
+   "to_new_vegetable": 0
+  },
+  "lvis": {
+   "turned_away": 20,
+   "n": 192,
+   "to_new_vegetable": 2
+  },
+  "newval": {
+   "kind_right_kept": 78,
+   "n": 89,
+   "sweetpotato_rotten": "8/9"
+  },
+  "kaggle_fruit": {
+   "turned_away": 378,
+   "n": 527,
+   "to_new_vegetable": 0
+  },
+  "inat_rotten_fruit": {
+   "turned_away": 112,
+   "n": 184,
+   "to_new_vegetable": 6
+  },
+  "openverse_rotten_fruit": {
+   "turned_away": 44,
+   "n": 50,
+   "to_new_vegetable": 0
+  },
+  "rotten_fruit_turned_away": 534,
+  "old_dev_to_new": 2
+ },
+ "0.5": {
+  "threshold": 0.15864917635917664,
+  "tau": 0.7,
+  "tau_grid": {
+   "0.5": 6,
+   "0.7": 0,
+   "0.8": 0,
+   "0.9": 0,
+   "0.95": 0
+  },
+  "valid": {
+   "accuracy": 289,
+   "kept_correct": 283,
+   "n": 300,
+   "to_new_vegetable": 0
+  },
+  "odev": {
+   "accuracy": 198,
+   "kept_correct": 188,
+   "n": 221,
+   "to_new_vegetable": 1
+  },
+  "o160": {
+   "accuracy": 147,
+   "kept_correct": 146,
+   "n": 160,
+   "to_new_vegetable": 0
+  },
+  "asian37": {
+   "accuracy": 35,
+   "kept_correct": 33,
+   "n": 37,
+   "to_new_vegetable": 0
+  },
+  "fruit374": {
+   "turned_away": 354,
+   "n": 374,
+   "to_new_vegetable": 1
+  },
+  "coco400": {
+   "turned_away": 400,
+   "n": 400,
+   "to_new_vegetable": 0
+  },
+  "lvis": {
+   "turned_away": 16,
+   "n": 192,
+   "to_new_vegetable": 2
+  },
+  "newval": {
+   "kind_right_kept": 78,
+   "n": 89,
+   "sweetpotato_rotten": "8/9"
+  },
+  "kaggle_fruit": {
+   "turned_away": 406,
+   "n": 527,
+   "to_new_vegetable": 0
+  },
+  "inat_rotten_fruit": {
+   "turned_away": 125,
+   "n": 184,
+   "to_new_vegetable": 8
+  },
+  "openverse_rotten_fruit": {
+   "turned_away": 46,
+   "n": 50,
+   "to_new_vegetable": 0
+  },
+  "rotten_fruit_turned_away": 577,
+  "old_dev_to_new": 3
+ },
+ "1.0": {
+  "threshold": 0.8448194861412048,
+  "tau": 0.7,
+  "tau_grid": {
+   "0.5": 6,
+   "0.7": 0,
+   "0.8": 0,
+   "0.9": 0,
+   "0.95": 0
+  },
+  "valid": {
+   "accuracy": 289,
+   "kept_correct": 283,
+   "n": 300,
+   "to_new_vegetable": 0
+  },
+  "odev": {
+   "accuracy": 198,
+   "kept_correct": 183,
+   "n": 221,
+   "to_new_vegetable": 1
+  },
+  "o160": {
+   "accuracy": 147,
+   "kept_correct": 144,
+   "n": 160,
+   "to_new_vegetable": 0
+  },
+  "asian37": {
+   "accuracy": 35,
+   "kept_correct": 32,
+   "n": 37,
+   "to_new_vegetable": 0
+  },
+  "fruit374": {
+   "turned_away": 362,
+   "n": 374,
+   "to_new_vegetable": 1
+  },
+  "coco400": {
+   "turned_away": 400,
+   "n": 400,
+   "to_new_vegetable": 0
+  },
+  "lvis": {
+   "turned_away": 16,
+   "n": 192,
+   "to_new_vegetable": 2
+  },
+  "newval": {
+   "kind_right_kept": 79,
+   "n": 89,
+   "sweetpotato_rotten": "8/9"
+  },
+  "kaggle_fruit": {
+   "turned_away": 439,
+   "n": 527,
+   "to_new_vegetable": 0
+  },
+  "inat_rotten_fruit": {
+   "turned_away": 142,
+   "n": 184,
+   "to_new_vegetable": 11
+  },
+  "openverse_rotten_fruit": {
+   "turned_away": 46,
+   "n": 50,
+   "to_new_vegetable": 0
+  },
+  "rotten_fruit_turned_away": 627,
+  "old_dev_to_new": 3
+ },
+ "2.0": {
+  "threshold": 3.8383071422576904,
+  "tau": 0.7,
+  "tau_grid": {
+   "0.5": 6,
+   "0.7": 0,
+   "0.8": 0,
+   "0.9": 0,
+   "0.95": 0
+  },
+  "valid": {
+   "accuracy": 289,
+   "kept_correct": 280,
+   "n": 300,
+   "to_new_vegetable": 0
+  },
+  "odev": {
+   "accuracy": 198,
+   "kept_correct": 183,
+   "n": 221,
+   "to_new_vegetable": 1
+  },
+  "o160": {
+   "accuracy": 147,
+   "kept_correct": 144,
+   "n": 160,
+   "to_new_vegetable": 0
+  },
+  "asian37": {
+   "accuracy": 35,
+   "kept_correct": 32,
+   "n": 37,
+   "to_new_vegetable": 0
+  },
+  "fruit374": {
+   "turned_away": 365,
+   "n": 374,
+   "to_new_vegetable": 1
+  },
+  "coco400": {
+   "turned_away": 399,
+   "n": 400,
+   "to_new_vegetable": 1
+  },
+  "lvis": {
+   "turned_away": 13,
+   "n": 192,
+   "to_new_vegetable": 2
+  },
+  "newval": {
+   "kind_right_kept": 79,
+   "n": 89,
+   "sweetpotato_rotten": "8/9"
+  },
+  "kaggle_fruit": {
+   "turned_away": 444,
+   "n": 527,
+   "to_new_vegetable": 0
+  },
+  "inat_rotten_fruit": {
+   "turned_away": 143,
+   "n": 184,
+   "to_new_vegetable": 13
+  },
+  "openverse_rotten_fruit": {
+   "turned_away": 46,
+   "n": 50,
+   "to_new_vegetable": 0
+  },
+  "rotten_fruit_turned_away": 633,
+  "old_dev_to_new": 3
+ },
+ "rules": {
+  "0.25": {
+   "checks": {
+    "Valid kept >= -3": true,
+    "internet 221 accuracy >= -3": true,
+    "internet 221 kept >= -3": true,
+    "160 kept >= -3": true,
+    "Asian 37 kept >= -2": true,
+    "everyday 400 turned away >= -5": true,
+    "new-vegetable Valid >= -2": true,
+    "old-vegetable dev to new <= +1": true
+   },
+   "pass": true,
+   "rotten_fruit_gain": 95
+  },
+  "0.5": {
+   "checks": {
+    "Valid kept >= -3": true,
+    "internet 221 accuracy >= -3": true,
+    "internet 221 kept >= -3": false,
+    "160 kept >= -3": true,
+    "Asian 37 kept >= -2": true,
+    "everyday 400 turned away >= -5": true,
+    "new-vegetable Valid >= -2": true,
+    "old-vegetable dev to new <= +1": true
+   },
+   "pass": false,
+   "rotten_fruit_gain": 138
+  },
+  "1.0": {
+   "checks": {
+    "Valid kept >= -3": true,
+    "internet 221 accuracy >= -3": true,
+    "internet 221 kept >= -3": false,
+    "160 kept >= -3": true,
+    "Asian 37 kept >= -2": true,
+    "everyday 400 turned away >= -5": true,
+    "new-vegetable Valid >= -2": true,
+    "old-vegetable dev to new <= +1": true
+   },
+   "pass": false,
+   "rotten_fruit_gain": 188
+  },
+  "2.0": {
+   "checks": {
+    "Valid kept >= -3": false,
+    "internet 221 accuracy >= -3": true,
+    "internet 221 kept >= -3": false,
+    "160 kept >= -3": true,
+    "Asian 37 kept >= -2": true,
+    "everyday 400 turned away >= -5": true,
+    "new-vegetable Valid >= -2": true,
+    "old-vegetable dev to new <= +1": true
+   },
+   "pass": false,
+   "rotten_fruit_gain": 194
+  }
+ },
+ "chosen": 0.25
+}

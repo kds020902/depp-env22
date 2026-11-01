@@ -1,0 +1,175 @@
+{
+ "alpha": 0.25,
+ "TV-11": {
+  "test_300": {
+   "n": 300,
+   "accuracy": 287,
+   "kept_correct": 284,
+   "turned_away": 4,
+   "to_sweet_potato": {},
+   "tomato_rotten": "28/30"
+  },
+  "new_test_241": {
+   "n": 241,
+   "accuracy": 199,
+   "kept_correct": 189,
+   "turned_away": 12,
+   "to_sweet_potato": {
+    "potato_fresh": 1,
+    "potato_rotten": 2,
+    "carrot_fresh": 1
+   },
+   "tomato_rotten": "49/74"
+  },
+  "any_photo_v2": {
+   "good_old_categories": 205,
+   "of_old": 247,
+   "good_new_veg": 6,
+   "of_new_veg": 6,
+   "by_category": {
+    "rotten_fruit": "23/50",
+    "fresh_fruit": "28/30",
+    "other_veg": "37/42",
+    "new_veg": "6/6",
+    "food": "25/25",
+    "drawing_toy": "14/16",
+    "everyday": "30/30",
+    "cut_five": "16/19",
+    "several": "12/13",
+    "five_daily": "20/22"
+   }
+  },
+  "new_veg_test1": {
+   "n": 97,
+   "kind_right_and_kept": 85,
+   "rejected": 4,
+   "sweetpotato_rotten": [
+    3,
+    6
+   ]
+  },
+  "new_veg_test2": {
+   "n": 54,
+   "kind_right_and_kept": 48,
+   "rejected": 4,
+   "sweetpotato_rotten": [
+    2,
+    5
+   ]
+  },
+  "new_veg_test3": {
+   "n": 21,
+   "kind_right_and_kept": 19,
+   "rejected": 2,
+   "sweetpotato_rotten": [
+    3,
+    5
+   ]
+  },
+  "new_veg_test4": {
+   "n": 26,
+   "kind_right_and_kept": 24,
+   "rejected": 0,
+   "sweetpotato_rotten": [
+    7,
+    7
+   ]
+  },
+  "new_veg_tests_total": 176,
+  "sweetpotato_rotten_total": [
+   15,
+   23
+  ]
+ },
+ "candidate": {
+  "test_300": {
+   "n": 300,
+   "accuracy": 287,
+   "kept_correct": 285,
+   "turned_away": 3,
+   "to_sweet_potato": {},
+   "tomato_rotten": "28/30"
+  },
+  "new_test_241": {
+   "n": 241,
+   "accuracy": 197,
+   "kept_correct": 186,
+   "turned_away": 13,
+   "to_sweet_potato": {
+    "potato_fresh": 3,
+    "potato_rotten": 3,
+    "carrot_fresh": 1
+   },
+   "tomato_rotten": "48/74"
+  },
+  "any_photo_v2": {
+   "good_old_categories": 216,
+   "of_old": 247,
+   "good_new_veg": 6,
+   "of_new_veg": 6,
+   "by_category": {
+    "rotten_fruit": "31/50",
+    "fresh_fruit": "29/30",
+    "other_veg": "39/42",
+    "new_veg": "6/6",
+    "food": "25/25",
+    "drawing_toy": "14/16",
+    "everyday": "30/30",
+    "cut_five": "16/19",
+    "several": "12/13",
+    "five_daily": "20/22"
+   }
+  },
+  "new_veg_test1": {
+   "n": 97,
+   "kind_right_and_kept": 86,
+   "rejected": 4,
+   "sweetpotato_rotten": [
+    3,
+    6
+   ]
+  },
+  "new_veg_test2": {
+   "n": 54,
+   "kind_right_and_kept": 48,
+   "rejected": 4,
+   "sweetpotato_rotten": [
+    2,
+    5
+   ]
+  },
+  "new_veg_test3": {
+   "n": 21,
+   "kind_right_and_kept": 19,
+   "rejected": 2,
+   "sweetpotato_rotten": [
+    3,
+    5
+   ]
+  },
+  "new_veg_test4": {
+   "n": 26,
+   "kind_right_and_kept": 25,
+   "rejected": 0,
+   "sweetpotato_rotten": [
+    7,
+    7
+   ]
+  },
+  "new_veg_tests_total": 178,
+  "sweetpotato_rotten_total": [
+   15,
+   23
+  ]
+ },
+ "rules": {
+  "any-photo old 247 good >= 210": true,
+  "any-photo new 6 good >= 5": true,
+  "internet 241 accuracy >= 197": true,
+  "internet 241 kept >= 187": false,
+  "Test accuracy >= 284": true,
+  "Test kept >= 281": true,
+  "new-vegetable tests 1-4 >= 173": true
+ },
+ "adopt": false
+}

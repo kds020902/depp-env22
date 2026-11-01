@@ -75,7 +75,7 @@
 | 일상 사진 30장 | 30 | 29 | 29 | 30 | 30 |
 | 썬 다섯 채소 19장 | – | – | – | 13 | 16 |
 
-- TV-8은 양파·고구마·대파를 더하기 전의 다섯 채소 시스템이다. WC(TV-11)는 워터마크 지름길을 줄이려고 다섯 채소 부분을 다시 학습한 것이다([watermark](../../../experiments/watermark/README.md)). 이 시험지는 WC로 여섯 번째 채점했다.
+- TV-8은 양파·고구마·대파를 더하기 전의 다섯 채소 시스템이다. WC(TV-11)는 워터마크 지름길을 줄이려고 다섯 채소 부분을 다시 학습한 것이다([watermark](../../../experiments/watermark/README.md)). 이 시험지는 WC로 여섯 번째, [글 설명 거르기 후보](../../../experiments/zero_shot_reject/README.md)(채택 안 함, 좋은 답 216)로 일곱 번째 채점했다.
 
 자세한 내용은 [experiments/new_vegetables](../../../experiments/new_vegetables/README.md)에 있다.
 
