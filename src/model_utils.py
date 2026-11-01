@@ -384,7 +384,27 @@ def is_unknown_combined(logits: torch.Tensor, clip_logits: torch.Tensor, checkpo
     return is_unknown(logits, checkpoint) | clip_says
 
 
-# ---------- onion, sweet potato, green onion: a second CLIP head (experiments/new_vegetables, V6-H) ----------
+# ---------- onion, sweet potato, green onion: a second CLIP head (experiments/new_vegetables, V7) ----------
+def zero_shot_logits(features: torch.Tensor, head: dict) -> torch.Tensor:
+    """CLIP zero-shot class scores (100 x cosine to each class's text prompts), centred over the trained classes per photo;
+    classes without training photos get 0."""
+    text = head["text_embeddings"].to(features.device)
+    z = 100 * features.float() @ text.T
+    trained = torch.tensor([c not in head.get("untrained_classes", []) for c in head["class_names"]], device=features.device)
+    z = z - z[:, trained].mean(1, keepdim=True)
+    return z * trained
+
+
+def new_vegetable_logits(features: torch.Tensor, head: dict) -> torch.Tensor:
+    """The second head's logits (16 classes + "not one of the eight vegetables"): logistic regression on CLIP image features,
+    plus alpha x zero-shot class scores on the 16 class columns when the head has text embeddings (V7)."""
+    z = features.float() @ head["coef"].T.to(features.device) + head["intercept"].to(features.device)
+    if head.get("alpha"):
+        k = len(head["class_names"])
+        z = torch.cat([z[:, :k] + head["alpha"] * zero_shot_logits(features, head), z[:, k:]], 1)
+    return z
+
+
 def new_vegetable_decision(probabilities: torch.Tensor, unknown: torch.Tensor, features: torch.Tensor,
                            checkpoint: dict) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor]:
     """The five-vegetable system answers first; the second CLIP head (16 classes + "not one of the eight vegetables")
@@ -397,7 +417,7 @@ def new_vegetable_decision(probabilities: torch.Tensor, unknown: torch.Tensor, f
     otherwise the five-vegetable probabilities padded with zeros), the chosen class per photo (for a switched photo the
     head's most likely kind, then its more likely condition), the new unknown flags and which photos were switched."""
     head = checkpoint["new_vegetable_head"]
-    z = features.float() @ head["coef"].T.to(features.device) + head["intercept"].to(features.device)
+    z = new_vegetable_logits(features, head)
     k = z.shape[1] - 1                                    # last column: not one of the eight vegetables
     p = z[:, :k].softmax(1)
     n, n_species = len(z), k // len(CONDITION_NAMES)

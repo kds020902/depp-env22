@@ -1,0 +1,482 @@
+{
+ "base": {
+  "EC": -1.0697359004712632,
+  "tau": 0.7,
+  "grid": {
+   "0.5": 8,
+   "0.7": 1,
+   "0.8": 1,
+   "0.9": 0,
+   "0.95": 0
+  },
+  "valid": "291/287 new 0",
+  "odev": "197/190 new 2",
+  "o160": "150/150 new 0",
+  "asian37": "34/30 new 1",
+  "fruit374": "rej 334 new 3",
+  "coco400": "rej 400 new 0",
+  "lvis": "rej 20 new 2",
+  "newval": {
+   "kind": 60,
+   "of": 73,
+   "by": {
+    "onion_fresh": [
+     24,
+     23,
+     29
+    ],
+    "onion_rotten": [
+     5,
+     5,
+     5
+    ],
+    "sweetpotato_fresh": [
+     15,
+     14,
+     17
+    ],
+    "sweetpotato_rotten": [
+     4,
+     3,
+     6
+    ],
+    "greenonion_fresh": [
+     12,
+     12,
+     16
+    ]
+   }
+  },
+  "cv": {
+   "kind": 280,
+   "of": 348,
+   "by": {
+    "onion_fresh": [
+     96,
+     94,
+     104
+    ],
+    "onion_rotten": [
+     42,
+     39,
+     60
+    ],
+    "sweetpotato_fresh": [
+     63,
+     62,
+     73
+    ],
+    "sweetpotato_rotten": [
+     10,
+     8,
+     32
+    ],
+    "greenonion_fresh": [
+     69,
+     69,
+     79
+    ]
+   }
+  }
+ },
+ "zs0.1": {
+  "EC": -1.7356464531661997,
+  "tau": 0.7,
+  "grid": {
+   "0.5": 7,
+   "0.7": 1,
+   "0.8": 1,
+   "0.9": 1,
+   "0.95": 0
+  },
+  "valid": "291/287 new 0",
+  "odev": "198/190 new 1",
+  "o160": "150/150 new 0",
+  "asian37": "34/30 new 0",
+  "fruit374": "rej 335 new 2",
+  "coco400": "rej 400 new 0",
+  "lvis": "rej 20 new 2",
+  "newval": {
+   "kind": 62,
+   "of": 73,
+   "by": {
+    "onion_fresh": [
+     25,
+     24,
+     29
+    ],
+    "onion_rotten": [
+     5,
+     5,
+     5
+    ],
+    "sweetpotato_fresh": [
+     15,
+     14,
+     17
+    ],
+    "sweetpotato_rotten": [
+     5,
+     4,
+     6
+    ],
+    "greenonion_fresh": [
+     12,
+     12,
+     16
+    ]
+   }
+  },
+  "cv": {
+   "kind": 287,
+   "of": 348,
+   "by": {
+    "onion_fresh": [
+     98,
+     96,
+     104
+    ],
+    "onion_rotten": [
+     42,
+     40,
+     60
+    ],
+    "sweetpotato_fresh": [
+     66,
+     64,
+     73
+    ],
+    "sweetpotato_rotten": [
+     11,
+     10,
+     32
+    ],
+    "greenonion_fresh": [
+     70,
+     70,
+     79
+    ]
+   }
+  }
+ },
+ "zs0.25": {
+  "EC": -2.965830552214048,
+  "tau": 0.8,
+  "grid": {
+   "0.5": 8,
+   "0.7": 2,
+   "0.8": 1,
+   "0.9": 1,
+   "0.95": 1
+  },
+  "valid": "291/287 new 0",
+  "odev": "198/190 new 1",
+  "o160": "150/150 new 0",
+  "asian37": "34/30 new 0",
+  "fruit374": "rej 337 new 0",
+  "coco400": "rej 400 new 0",
+  "lvis": "rej 21 new 1",
+  "newval": {
+   "kind": 61,
+   "of": 73,
+   "by": {
+    "onion_fresh": [
+     26,
+     25,
+     29
+    ],
+    "onion_rotten": [
+     5,
+     5,
+     5
+    ],
+    "sweetpotato_fresh": [
+     15,
+     14,
+     17
+    ],
+    "sweetpotato_rotten": [
+     5,
+     4,
+     6
+    ],
+    "greenonion_fresh": [
+     10,
+     10,
+     16
+    ]
+   }
+  },
+  "cv": {
+   "kind": 293,
+   "of": 348,
+   "by": {
+    "onion_fresh": [
+     100,
+     98,
+     104
+    ],
+    "onion_rotten": [
+     42,
+     40,
+     60
+    ],
+    "sweetpotato_fresh": [
+     67,
+     63,
+     73
+    ],
+    "sweetpotato_rotten": [
+     11,
+     10,
+     32
+    ],
+    "greenonion_fresh": [
+     73,
+     73,
+     79
+    ]
+   }
+  }
+ },
+ "zs0.5": {
+  "EC": -4.458466134917461,
+  "tau": 0.9,
+  "grid": {
+   "0.5": 8,
+   "0.7": 4,
+   "0.8": 2,
+   "0.9": 1,
+   "0.95": 1
+  },
+  "valid": "291/287 new 0",
+  "odev": "198/190 new 1",
+  "o160": "150/150 new 0",
+  "asian37": "34/30 new 0",
+  "fruit374": "rej 336 new 1",
+  "coco400": "rej 400 new 0",
+  "lvis": "rej 21 new 1",
+  "newval": {
+   "kind": 61,
+   "of": 73,
+   "by": {
+    "onion_fresh": [
+     26,
+     25,
+     29
+    ],
+    "onion_rotten": [
+     5,
+     5,
+     5
+    ],
+    "sweetpotato_fresh": [
+     16,
+     15,
+     17
+    ],
+    "sweetpotato_rotten": [
+     5,
+     5,
+     6
+    ],
+    "greenonion_fresh": [
+     9,
+     9,
+     16
+    ]
+   }
+  },
+  "cv": {
+   "kind": 294,
+   "of": 348,
+   "by": {
+    "onion_fresh": [
+     101,
+     97,
+     104
+    ],
+    "onion_rotten": [
+     42,
+     40,
+     60
+    ],
+    "sweetpotato_fresh": [
+     65,
+     61,
+     73
+    ],
+    "sweetpotato_rotten": [
+     12,
+     11,
+     32
+    ],
+    "greenonion_fresh": [
+     74,
+     74,
+     79
+    ]
+   }
+  }
+ },
+ "cb": {
+  "EC": -1.0038151743266814,
+  "tau": 0.8,
+  "grid": {
+   "0.5": 12,
+   "0.7": 2,
+   "0.8": 1,
+   "0.9": 0,
+   "0.95": 0
+  },
+  "valid": "291/287 new 0",
+  "odev": "197/190 new 2",
+  "o160": "150/150 new 0",
+  "asian37": "34/30 new 1",
+  "fruit374": "rej 334 new 3",
+  "coco400": "rej 400 new 0",
+  "lvis": "rej 20 new 2",
+  "newval": {
+   "kind": 59,
+   "of": 73,
+   "by": {
+    "onion_fresh": [
+     23,
+     22,
+     29
+    ],
+    "onion_rotten": [
+     5,
+     5,
+     5
+    ],
+    "sweetpotato_fresh": [
+     15,
+     14,
+     17
+    ],
+    "sweetpotato_rotten": [
+     4,
+     3,
+     6
+    ],
+    "greenonion_fresh": [
+     12,
+     12,
+     16
+    ]
+   }
+  },
+  "cv": {
+   "kind": 266,
+   "of": 348,
+   "by": {
+    "onion_fresh": [
+     93,
+     92,
+     104
+    ],
+    "onion_rotten": [
+     39,
+     37,
+     60
+    ],
+    "sweetpotato_fresh": [
+     55,
+     54,
+     73
+    ],
+    "sweetpotato_rotten": [
+     10,
+     9,
+     32
+    ],
+    "greenonion_fresh": [
+     69,
+     69,
+     79
+    ]
+   }
+  }
+ },
+ "cb+zs0.25": {
+  "EC": -2.9519036731428256,
+  "tau": 0.9,
+  "grid": {
+   "0.5": 10,
+   "0.7": 3,
+   "0.8": 2,
+   "0.9": 1,
+   "0.95": 1
+  },
+  "valid": "291/287 new 0",
+  "odev": "198/190 new 1",
+  "o160": "150/150 new 0",
+  "asian37": "34/30 new 0",
+  "fruit374": "rej 335 new 2",
+  "coco400": "rej 400 new 0",
+  "lvis": "rej 21 new 1",
+  "newval": {
+   "kind": 58,
+   "of": 73,
+   "by": {
+    "onion_fresh": [
+     26,
+     25,
+     29
+    ],
+    "onion_rotten": [
+     5,
+     5,
+     5
+    ],
+    "sweetpotato_fresh": [
+     15,
+     14,
+     17
+    ],
+    "sweetpotato_rotten": [
+     3,
+     3,
+     6
+    ],
+    "greenonion_fresh": [
+     9,
+     9,
+     16
+    ]
+   }
+  },
+  "cv": {
+   "kind": 283,
+   "of": 348,
+   "by": {
+    "onion_fresh": [
+     98,
+     95,
+     104
+    ],
+    "onion_rotten": [
+     39,
+     37,
+     60
+    ],
+    "sweetpotato_fresh": [
+     63,
+     60,
+     73
+    ],
+    "sweetpotato_rotten": [
+     10,
+     9,
+     32
+    ],
+    "greenonion_fresh": [
+     73,
+     73,
+     79
+    ]
+   }
+  }
+ }
+}

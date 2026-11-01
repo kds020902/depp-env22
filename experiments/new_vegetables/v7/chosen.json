@@ -1,0 +1,84 @@
+{
+ "variant": "zs0.25",
+ "checks_pass": true,
+ "dev": {
+  "EC": -3.1291321023953156,
+  "tau": 0.8,
+  "grid": {
+   "0.5": 9,
+   "0.7": 2,
+   "0.8": 1,
+   "0.9": 1,
+   "0.95": 0
+  },
+  "valid": "291/287 new 0",
+  "odev": "198/190 new 1",
+  "o160": "150/150 new 0",
+  "asian37": "34/30 new 0",
+  "fruit374": "rej 337 new 0",
+  "coco400": "rej 400 new 0",
+  "lvis": "rej 21 new 1",
+  "newval": {
+   "kind": 78,
+   "of": 89,
+   "by": {
+    "onion_fresh": [
+     27,
+     26,
+     29
+    ],
+    "onion_rotten": [
+     5,
+     5,
+     5
+    ],
+    "sweetpotato_fresh": [
+     24,
+     22,
+     26
+    ],
+    "sweetpotato_rotten": [
+     8,
+     6,
+     9
+    ],
+    "greenonion_fresh": [
+     14,
+     14,
+     20
+    ]
+   }
+  },
+  "cv": {
+   "kind": 343,
+   "of": 401,
+   "by": {
+    "onion_fresh": [
+     102,
+     100,
+     106
+    ],
+    "onion_rotten": [
+     43,
+     41,
+     61
+    ],
+    "sweetpotato_fresh": [
+     85,
+     78,
+     93
+    ],
+    "sweetpotato_rotten": [
+     23,
+     22,
+     44
+    ],
+    "greenonion_fresh": [
+     90,
+     90,
+     97
+    ]
+   }
+  }
+ }
+}
