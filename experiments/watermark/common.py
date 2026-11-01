@@ -100,7 +100,7 @@ def system(checkpoint: dict, b: np.ndarray, f: np.ndarray):
     logits, feats = torch.tensor(b), torch.tensor(f)
     clip_logits = clip_head_logits(feats, checkpoint)
     probabilities = combined_probabilities(combined_logits(logits, clip_logits, checkpoint), checkpoint)
-    unknown = is_unknown_combined(logits, clip_logits, checkpoint)
+    unknown = is_unknown_combined(logits, clip_logits, checkpoint, feats)
     _, index, still_unknown, switched = new_vegetable_decision(probabilities, unknown, feats, checkpoint)
     return {"five": probabilities.numpy(), "five_unknown": unknown.numpy(), "index": index.numpy(),
             "unknown": still_unknown.numpy(), "switched": switched.numpy(),

@@ -43,7 +43,7 @@ def five_vegetable_answer(checkpoint: dict, b: np.ndarray, f: np.ndarray) -> tup
     logits, feats = torch.tensor(b), torch.tensor(f)
     clip_logits = clip_head_logits(feats, checkpoint)
     probabilities = combined_probabilities(combined_logits(logits, clip_logits, checkpoint), checkpoint)
-    return probabilities, is_unknown_combined(logits, clip_logits, checkpoint)
+    return probabilities, is_unknown_combined(logits, clip_logits, checkpoint, feats)
 
 
 def main():

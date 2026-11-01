@@ -120,7 +120,7 @@ def main():
                     features = clip.image_features([photo]).cpu()
                     clip_logits = clip_head_logits(features, checkpoint)
                     probabilities = combined_probabilities(combined_logits(logits, clip_logits, checkpoint), checkpoint)
-                    unknown = bool(is_unknown_combined(logits, clip_logits, checkpoint)[0])
+                    unknown = bool(is_unknown_combined(logits, clip_logits, checkpoint, features)[0])
                 else:
                     probabilities = calibrated_probabilities(logits, checkpoint)
                     unknown = bool(is_unknown(logits, checkpoint)[0])
@@ -160,7 +160,7 @@ def main():
                     "condition_marginal_prediction": CONDITION_NAMES[condition_index],
                     "condition_probability": round(float(condition_probs[0, condition_index]), 4),
                     "unknown_score": round(float(unknown_score(logits)[0]), 4),
-                    "clip_unknown_score": "" if clip_logits is None else round(float(clip_unknown_score(clip_logits, checkpoint)[0]), 4),
+                    "clip_unknown_score": "" if clip_logits is None else round(float(clip_unknown_score(clip_logits, checkpoint, features)[0]), 4),
                     "rot_evidence": "" if no_map else round(float(rot_map.max()) / scale, 3),
                     "heatmap": "",
                     "error": "",

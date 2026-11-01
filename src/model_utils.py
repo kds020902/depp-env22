@@ -357,12 +357,30 @@ def clip_class_logits(clip_logits: torch.Tensor, checkpoint: dict) -> torch.Tens
     return clip_logits[:, :-1] if checkpoint["clip_head"].get("other_class") else clip_logits
 
 
-def clip_unknown_score(clip_logits: torch.Tensor, checkpoint: dict) -> torch.Tensor:
+def text_evidence(features: torch.Tensor, checkpoint: dict) -> torch.Tensor:
+    """CLIP zero-shot evidence that the photo shows something other than the five vegetables (TV-12,
+    experiments/zero_shot_reject): logsumexp(100 cos(photo, other words)) - logsumexp(100 cos(photo, five vegetables))."""
+    words = checkpoint["clip_head"]["text_evidence"]
+    f = features.float()
+    other = 100 * f @ words["other"].to(f.device).float().T
+    vegetables = 100 * f @ words["vegetables"].to(f.device).float().T
+    return torch.logsumexp(other, 1) - torch.logsumexp(vegetables, 1)
+
+
+def clip_unknown_score(clip_logits: torch.Tensor, checkpoint: dict, features: torch.Tensor | None = None) -> torch.Tensor:
     """Higher = less like a trained vegetable. With an "other" class: its log-odds against all vegetable classes;
-    otherwise the energy of the head's logits, as for the vegetable model."""
-    if checkpoint["clip_head"].get("other_class"):
-        return clip_logits[:, -1] - torch.logsumexp(clip_logits[:, :-1], 1)
-    return unknown_score(clip_logits)
+    otherwise the energy of the head's logits, as for the vegetable model. When the head has "text_evidence" (TV-12),
+    alpha x text_evidence() of the CLIP image features is added, so the features must be given."""
+    head = checkpoint["clip_head"]
+    if head.get("other_class"):
+        score = clip_logits[:, -1] - torch.logsumexp(clip_logits[:, :-1], 1)
+    else:
+        score = unknown_score(clip_logits)
+    if head.get("text_evidence"):
+        if features is None:
+            raise ValueError("this model's check also uses CLIP text evidence: pass the CLIP image features")
+        score = score + head["text_evidence"]["alpha"] * text_evidence(features, checkpoint).to(score.dtype)
+    return score
 
 
 def combined_logits(logits: torch.Tensor, clip_logits: torch.Tensor, checkpoint: dict) -> torch.Tensor:
@@ -375,10 +393,12 @@ def combined_probabilities(combined: torch.Tensor, checkpoint: dict) -> torch.Te
     return (combined / checkpoint["clip_head"]["temperature"]).softmax(1)
 
 
-def is_unknown_combined(logits: torch.Tensor, clip_logits: torch.Tensor, checkpoint: dict) -> torch.Tensor:
+def is_unknown_combined(logits: torch.Tensor, clip_logits: torch.Tensor, checkpoint: dict,
+                        features: torch.Tensor | None = None) -> torch.Tensor:
     """Turned away when the CLIP head's check says the photo is not one of the trained vegetables, and also when the
-    vegetable model's own check does, unless the head turns that off ("vegetable_model_check": False, experiments/clip_only_reject)."""
-    clip_says = clip_unknown_score(clip_logits, checkpoint) > checkpoint["clip_head"]["unknown_threshold"]
+    vegetable model's own check does, unless the head turns that off ("vegetable_model_check": False, experiments/clip_only_reject).
+    `features` (CLIP image features) are needed when the head uses text evidence (TV-12)."""
+    clip_says = clip_unknown_score(clip_logits, checkpoint, features) > checkpoint["clip_head"]["unknown_threshold"]
     if not checkpoint["clip_head"].get("vegetable_model_check", True):
         return clip_says
     return is_unknown(logits, checkpoint) | clip_says

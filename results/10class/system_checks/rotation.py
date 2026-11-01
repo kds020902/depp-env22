@@ -32,8 +32,8 @@ for name in ('valid', 'odev'):
         for i in range(0, len(images), 32):
             ims = [fn(im) for im in images[i:i + 32]]
             with torch.inference_mode():
-                bl = B(torch.stack([tf(im) for im in ims])); cl = clip_head_logits(clip.image_features(ims), ck)
-                preds.append(combined_logits(bl, cl, ck).argmax(1)); rejs.append(is_unknown_combined(bl, cl, ck))
+                fe = clip.image_features(ims); bl = B(torch.stack([tf(im) for im in ims])); cl = clip_head_logits(fe, ck)
+                preds.append(combined_logits(bl, cl, ck).argmax(1)); rejs.append(is_unknown_combined(bl, cl, ck, fe))
         p, r = torch.cat(preds), torch.cat(rejs)
         if base is None: base = p
         right = p == y
