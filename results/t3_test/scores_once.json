@@ -1,0 +1,938 @@
+{
+ "seal": "5f4fad0b4814648223cfd917f77090f7c2a3cf22a4ea1740ef4f1c21ed4b6bfa",
+ "n": 247,
+ "pipeline_check": {
+  "clip_max_diff": 0.0,
+  "vegetable_model_max_diff": 0.0
+ },
+ "TV-11": {
+  "five_vegetables": {
+   "n": 137,
+   "kept_correct": 108,
+   "ci95": [
+    0.713,
+    0.848
+   ],
+   "kind_right": 134,
+   "accuracy_ignoring_rejection": 109,
+   "turned_away": 1,
+   "to_new_vegetable": 1
+  },
+  "new_vegetables": {
+   "n": 40,
+   "kind_right_and_kept": 31,
+   "class_right_and_kept": 26,
+   "turned_away": 2
+  },
+  "not_five": {
+   "n": 70,
+   "turned_away": 41,
+   "ci95": [
+    0.469,
+    0.694
+   ],
+   "rotten_fruit": "8/30",
+   "fresh_fruit": "15/15",
+   "other_veg": "18/25"
+  },
+  "per_class": {
+   "carrot_fresh": {
+    "n": 20,
+    "good": 16,
+    "answers": {
+     "carrot_fresh": 16,
+     "carrot_rotten": 3,
+     "거름": 1
+    }
+   },
+   "tomato_fresh": {
+    "n": 20,
+    "good": 18,
+    "answers": {
+     "tomato_fresh": 18,
+     "tomato_rotten": 2
+    }
+   },
+   "rotten_fruit": {
+    "n": 30,
+    "good": 8,
+    "answers": {
+     "potato_rotten": 14,
+     "거름": 8,
+     "cucumber_rotten": 4,
+     "tomato_rotten": 2,
+     "tomato_fresh": 1,
+     "onion_rotten": 1
+    }
+   },
+   "other_veg": {
+    "n": 25,
+    "good": 18,
+    "answers": {
+     "거름": 18,
+     "bellpepper_rotten": 2,
+     "carrot_fresh": 2,
+     "tomato_rotten": 1,
+     "tomato_fresh": 1,
+     "onion_rotten": 1
+    }
+   },
+   "fresh_fruit": {
+    "n": 15,
+    "good": 15,
+    "answers": {
+     "거름": 15
+    }
+   },
+   "potato_fresh": {
+    "n": 20,
+    "good": 10,
+    "answers": {
+     "potato_fresh": 10,
+     "potato_rotten": 9,
+     "sweetpotato_fresh": 1
+    }
+   },
+   "potato_rotten": {
+    "n": 20,
+    "good": 18,
+    "answers": {
+     "potato_rotten": 18,
+     "potato_fresh": 2
+    }
+   },
+   "cucumber_fresh": {
+    "n": 20,
+    "good": 18,
+    "answers": {
+     "cucumber_fresh": 18,
+     "tomato_fresh": 1,
+     "cucumber_rotten": 1
+    }
+   },
+   "bellpepper_fresh": {
+    "n": 19,
+    "good": 17,
+    "answers": {
+     "bellpepper_fresh": 17,
+     "bellpepper_rotten": 2
+    }
+   },
+   "onion_rotten": {
+    "n": 10,
+    "good": 8,
+    "answers": {
+     "onion_rotten": 7,
+     "greenonion_fresh": 2,
+     "onion_fresh": 1
+    }
+   },
+   "onion_fresh": {
+    "n": 10,
+    "good": 8,
+    "answers": {
+     "onion_fresh": 5,
+     "onion_rotten": 3,
+     "거름": 1,
+     "greenonion_fresh": 1
+    }
+   },
+   "sweetpotato_fresh": {
+    "n": 10,
+    "good": 6,
+    "answers": {
+     "sweetpotato_fresh": 5,
+     "potato_rotten": 2,
+     "potato_fresh": 1,
+     "sweetpotato_rotten": 1,
+     "carrot_fresh": 1
+    }
+   },
+   "tomato_rotten": {
+    "n": 15,
+    "good": 9,
+    "answers": {
+     "tomato_rotten": 9,
+     "tomato_fresh": 5,
+     "potato_rotten": 1
+    }
+   },
+   "carrot_rotten": {
+    "n": 1,
+    "good": 0,
+    "answers": {
+     "carrot_fresh": 1
+    }
+   },
+   "bellpepper_rotten": {
+    "n": 1,
+    "good": 1,
+    "answers": {
+     "bellpepper_rotten": 1
+    }
+   },
+   "cucumber_rotten": {
+    "n": 1,
+    "good": 1,
+    "answers": {
+     "cucumber_rotten": 1
+    }
+   },
+   "greenonion_fresh": {
+    "n": 10,
+    "good": 9,
+    "answers": {
+     "greenonion_fresh": 9,
+     "거름": 1
+    }
+   }
+  },
+  "answers": [
+   "carrot_fresh",
+   "carrot_fresh",
+   "carrot_fresh",
+   "carrot_fresh",
+   "carrot_fresh",
+   "carrot_fresh",
+   "carrot_fresh",
+   "carrot_fresh",
+   "carrot_fresh",
+   "carrot_fresh",
+   "carrot_fresh",
+   "carrot_rotten",
+   "carrot_rotten",
+   "carrot_rotten",
+   "carrot_fresh",
+   "carrot_fresh",
+   "carrot_fresh",
+   "거름",
+   "carrot_fresh",
+   "carrot_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "cucumber_rotten",
+   "tomato_rotten",
+   "tomato_rotten",
+   "potato_rotten",
+   "potato_rotten",
+   "tomato_fresh",
+   "거름",
+   "거름",
+   "potato_rotten",
+   "거름",
+   "거름",
+   "거름",
+   "potato_rotten",
+   "거름",
+   "potato_rotten",
+   "거름",
+   "potato_rotten",
+   "tomato_rotten",
+   "potato_rotten",
+   "potato_rotten",
+   "cucumber_rotten",
+   "onion_rotten",
+   "cucumber_rotten",
+   "potato_rotten",
+   "potato_rotten",
+   "cucumber_rotten",
+   "potato_rotten",
+   "potato_rotten",
+   "potato_rotten",
+   "potato_rotten",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "bellpepper_rotten",
+   "거름",
+   "거름",
+   "bellpepper_rotten",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "tomato_fresh",
+   "carrot_fresh",
+   "거름",
+   "onion_rotten",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "tomato_rotten",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_rotten",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "potato_fresh",
+   "potato_fresh",
+   "potato_rotten",
+   "potato_fresh",
+   "potato_rotten",
+   "potato_rotten",
+   "potato_fresh",
+   "potato_fresh",
+   "potato_rotten",
+   "potato_rotten",
+   "potato_rotten",
+   "potato_fresh",
+   "potato_fresh",
+   "sweetpotato_fresh",
+   "potato_rotten",
+   "potato_rotten",
+   "potato_rotten",
+   "potato_rotten",
+   "cucumber_fresh",
+   "cucumber_fresh",
+   "cucumber_fresh",
+   "cucumber_fresh",
+   "cucumber_fresh",
+   "cucumber_fresh",
+   "cucumber_fresh",
+   "cucumber_fresh",
+   "cucumber_fresh",
+   "tomato_fresh",
+   "cucumber_fresh",
+   "cucumber_fresh",
+   "cucumber_fresh",
+   "cucumber_fresh",
+   "cucumber_fresh",
+   "cucumber_fresh",
+   "cucumber_fresh",
+   "cucumber_rotten",
+   "cucumber_fresh",
+   "cucumber_fresh",
+   "carrot_fresh",
+   "거름",
+   "bellpepper_fresh",
+   "bellpepper_fresh",
+   "bellpepper_fresh",
+   "bellpepper_rotten",
+   "onion_rotten",
+   "거름",
+   "greenonion_fresh",
+   "potato_fresh",
+   "tomato_rotten",
+   "onion_rotten",
+   "tomato_rotten",
+   "onion_rotten",
+   "tomato_rotten",
+   "tomato_rotten",
+   "tomato_rotten",
+   "potato_rotten",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "carrot_fresh",
+   "bellpepper_rotten",
+   "potato_rotten",
+   "potato_rotten",
+   "cucumber_rotten",
+   "tomato_rotten",
+   "tomato_fresh",
+   "potato_fresh",
+   "tomato_rotten",
+   "tomato_rotten",
+   "onion_rotten",
+   "greenonion_fresh",
+   "onion_rotten",
+   "onion_rotten",
+   "onion_rotten",
+   "onion_rotten",
+   "onion_fresh",
+   "onion_fresh",
+   "greenonion_fresh",
+   "onion_fresh",
+   "onion_rotten",
+   "onion_rotten",
+   "onion_fresh",
+   "onion_fresh",
+   "onion_fresh",
+   "potato_fresh",
+   "potato_rotten",
+   "potato_fresh",
+   "potato_rotten",
+   "potato_rotten",
+   "potato_fresh",
+   "potato_rotten",
+   "potato_rotten",
+   "potato_rotten",
+   "tomato_fresh",
+   "tomato_rotten",
+   "potato_rotten",
+   "potato_rotten",
+   "potato_rotten",
+   "potato_rotten",
+   "potato_rotten",
+   "potato_fresh",
+   "potato_rotten",
+   "potato_rotten",
+   "potato_rotten",
+   "potato_rotten",
+   "sweetpotato_fresh",
+   "sweetpotato_fresh",
+   "sweetpotato_rotten",
+   "sweetpotato_fresh",
+   "potato_rotten",
+   "sweetpotato_fresh",
+   "carrot_fresh",
+   "sweetpotato_fresh",
+   "greenonion_fresh",
+   "greenonion_fresh",
+   "greenonion_fresh",
+   "greenonion_fresh",
+   "greenonion_fresh",
+   "greenonion_fresh",
+   "거름",
+   "greenonion_fresh",
+   "greenonion_fresh",
+   "greenonion_fresh",
+   "bellpepper_fresh",
+   "bellpepper_fresh",
+   "bellpepper_fresh",
+   "bellpepper_fresh",
+   "bellpepper_fresh",
+   "bellpepper_rotten",
+   "bellpepper_fresh",
+   "bellpepper_fresh",
+   "bellpepper_fresh",
+   "bellpepper_fresh",
+   "bellpepper_fresh",
+   "bellpepper_fresh",
+   "bellpepper_fresh",
+   "bellpepper_fresh",
+   "bellpepper_fresh",
+   "potato_rotten"
+  ]
+ },
+ "ZS8": {
+  "five_vegetables": {
+   "n": 137,
+   "kept_correct": 109,
+   "ci95": [
+    0.72,
+    0.855
+   ],
+   "kind_right": 134,
+   "accuracy_ignoring_rejection": 109,
+   "turned_away": 1,
+   "to_new_vegetable": 1
+  },
+  "new_vegetables": {
+   "n": 40,
+   "kind_right_and_kept": 31,
+   "class_right_and_kept": 26,
+   "turned_away": 2
+  },
+  "not_five": {
+   "n": 70,
+   "turned_away": 48,
+   "ci95": [
+    0.57,
+    0.782
+   ],
+   "rotten_fruit": "13/30",
+   "fresh_fruit": "15/15",
+   "other_veg": "20/25"
+  },
+  "per_class": {
+   "carrot_fresh": {
+    "n": 20,
+    "good": 17,
+    "answers": {
+     "carrot_fresh": 17,
+     "carrot_rotten": 3
+    }
+   },
+   "tomato_fresh": {
+    "n": 20,
+    "good": 18,
+    "answers": {
+     "tomato_fresh": 18,
+     "거름": 1,
+     "tomato_rotten": 1
+    }
+   },
+   "rotten_fruit": {
+    "n": 30,
+    "good": 13,
+    "answers": {
+     "거름": 13,
+     "potato_rotten": 11,
+     "cucumber_rotten": 3,
+     "onion_rotten": 2,
+     "tomato_rotten": 1
+    }
+   },
+   "other_veg": {
+    "n": 25,
+    "good": 20,
+    "answers": {
+     "거름": 20,
+     "bellpepper_rotten": 2,
+     "carrot_fresh": 2,
+     "onion_rotten": 1
+    }
+   },
+   "fresh_fruit": {
+    "n": 15,
+    "good": 15,
+    "answers": {
+     "거름": 15
+    }
+   },
+   "potato_fresh": {
+    "n": 20,
+    "good": 10,
+    "answers": {
+     "potato_fresh": 10,
+     "potato_rotten": 9,
+     "sweetpotato_fresh": 1
+    }
+   },
+   "potato_rotten": {
+    "n": 20,
+    "good": 18,
+    "answers": {
+     "potato_rotten": 18,
+     "potato_fresh": 2
+    }
+   },
+   "cucumber_fresh": {
+    "n": 20,
+    "good": 18,
+    "answers": {
+     "cucumber_fresh": 18,
+     "tomato_fresh": 1,
+     "cucumber_rotten": 1
+    }
+   },
+   "bellpepper_fresh": {
+    "n": 19,
+    "good": 17,
+    "answers": {
+     "bellpepper_fresh": 17,
+     "bellpepper_rotten": 2
+    }
+   },
+   "onion_rotten": {
+    "n": 10,
+    "good": 8,
+    "answers": {
+     "onion_rotten": 7,
+     "greenonion_fresh": 2,
+     "onion_fresh": 1
+    }
+   },
+   "onion_fresh": {
+    "n": 10,
+    "good": 8,
+    "answers": {
+     "onion_fresh": 5,
+     "onion_rotten": 3,
+     "거름": 1,
+     "greenonion_fresh": 1
+    }
+   },
+   "sweetpotato_fresh": {
+    "n": 10,
+    "good": 6,
+    "answers": {
+     "sweetpotato_fresh": 5,
+     "potato_rotten": 2,
+     "potato_fresh": 1,
+     "sweetpotato_rotten": 1,
+     "carrot_fresh": 1
+    }
+   },
+   "tomato_rotten": {
+    "n": 15,
+    "good": 9,
+    "answers": {
+     "tomato_rotten": 9,
+     "tomato_fresh": 5,
+     "potato_rotten": 1
+    }
+   },
+   "carrot_rotten": {
+    "n": 1,
+    "good": 0,
+    "answers": {
+     "carrot_fresh": 1
+    }
+   },
+   "bellpepper_rotten": {
+    "n": 1,
+    "good": 1,
+    "answers": {
+     "bellpepper_rotten": 1
+    }
+   },
+   "cucumber_rotten": {
+    "n": 1,
+    "good": 1,
+    "answers": {
+     "cucumber_rotten": 1
+    }
+   },
+   "greenonion_fresh": {
+    "n": 10,
+    "good": 9,
+    "answers": {
+     "greenonion_fresh": 9,
+     "거름": 1
+    }
+   }
+  },
+  "answers": [
+   "carrot_fresh",
+   "carrot_fresh",
+   "carrot_fresh",
+   "carrot_fresh",
+   "carrot_fresh",
+   "carrot_fresh",
+   "carrot_fresh",
+   "carrot_fresh",
+   "carrot_fresh",
+   "carrot_fresh",
+   "carrot_fresh",
+   "carrot_rotten",
+   "carrot_rotten",
+   "carrot_rotten",
+   "carrot_fresh",
+   "carrot_fresh",
+   "carrot_fresh",
+   "carrot_fresh",
+   "carrot_fresh",
+   "carrot_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "거름",
+   "거름",
+   "거름",
+   "potato_rotten",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "potato_rotten",
+   "거름",
+   "거름",
+   "거름",
+   "potato_rotten",
+   "거름",
+   "potato_rotten",
+   "거름",
+   "거름",
+   "tomato_rotten",
+   "potato_rotten",
+   "potato_rotten",
+   "cucumber_rotten",
+   "onion_rotten",
+   "cucumber_rotten",
+   "potato_rotten",
+   "onion_rotten",
+   "cucumber_rotten",
+   "potato_rotten",
+   "potato_rotten",
+   "potato_rotten",
+   "potato_rotten",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "bellpepper_rotten",
+   "거름",
+   "거름",
+   "bellpepper_rotten",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "carrot_fresh",
+   "거름",
+   "onion_rotten",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_rotten",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "potato_fresh",
+   "potato_fresh",
+   "potato_rotten",
+   "potato_fresh",
+   "potato_rotten",
+   "potato_rotten",
+   "potato_fresh",
+   "potato_fresh",
+   "potato_rotten",
+   "potato_rotten",
+   "potato_rotten",
+   "potato_fresh",
+   "potato_fresh",
+   "sweetpotato_fresh",
+   "potato_rotten",
+   "potato_rotten",
+   "potato_rotten",
+   "potato_rotten",
+   "cucumber_fresh",
+   "cucumber_fresh",
+   "cucumber_fresh",
+   "cucumber_fresh",
+   "cucumber_fresh",
+   "cucumber_fresh",
+   "cucumber_fresh",
+   "cucumber_fresh",
+   "cucumber_fresh",
+   "tomato_fresh",
+   "cucumber_fresh",
+   "cucumber_fresh",
+   "cucumber_fresh",
+   "cucumber_fresh",
+   "cucumber_fresh",
+   "cucumber_fresh",
+   "cucumber_fresh",
+   "cucumber_rotten",
+   "cucumber_fresh",
+   "cucumber_fresh",
+   "carrot_fresh",
+   "거름",
+   "bellpepper_fresh",
+   "bellpepper_fresh",
+   "bellpepper_fresh",
+   "bellpepper_rotten",
+   "onion_rotten",
+   "거름",
+   "greenonion_fresh",
+   "potato_fresh",
+   "tomato_rotten",
+   "onion_rotten",
+   "tomato_rotten",
+   "onion_rotten",
+   "tomato_rotten",
+   "tomato_rotten",
+   "tomato_rotten",
+   "potato_rotten",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "carrot_fresh",
+   "bellpepper_rotten",
+   "potato_rotten",
+   "potato_rotten",
+   "cucumber_rotten",
+   "tomato_rotten",
+   "tomato_fresh",
+   "potato_fresh",
+   "tomato_rotten",
+   "tomato_rotten",
+   "onion_rotten",
+   "greenonion_fresh",
+   "onion_rotten",
+   "onion_rotten",
+   "onion_rotten",
+   "onion_rotten",
+   "onion_fresh",
+   "onion_fresh",
+   "greenonion_fresh",
+   "onion_fresh",
+   "onion_rotten",
+   "onion_rotten",
+   "onion_fresh",
+   "onion_fresh",
+   "onion_fresh",
+   "potato_fresh",
+   "potato_rotten",
+   "potato_fresh",
+   "potato_rotten",
+   "potato_rotten",
+   "potato_fresh",
+   "potato_rotten",
+   "potato_rotten",
+   "potato_rotten",
+   "tomato_fresh",
+   "tomato_rotten",
+   "potato_rotten",
+   "potato_rotten",
+   "potato_rotten",
+   "potato_rotten",
+   "potato_rotten",
+   "potato_fresh",
+   "potato_rotten",
+   "potato_rotten",
+   "potato_rotten",
+   "potato_rotten",
+   "sweetpotato_fresh",
+   "sweetpotato_fresh",
+   "sweetpotato_rotten",
+   "sweetpotato_fresh",
+   "potato_rotten",
+   "sweetpotato_fresh",
+   "carrot_fresh",
+   "sweetpotato_fresh",
+   "greenonion_fresh",
+   "greenonion_fresh",
+   "greenonion_fresh",
+   "greenonion_fresh",
+   "greenonion_fresh",
+   "greenonion_fresh",
+   "거름",
+   "greenonion_fresh",
+   "greenonion_fresh",
+   "greenonion_fresh",
+   "bellpepper_fresh",
+   "bellpepper_fresh",
+   "bellpepper_fresh",
+   "bellpepper_fresh",
+   "bellpepper_fresh",
+   "bellpepper_rotten",
+   "bellpepper_fresh",
+   "bellpepper_fresh",
+   "bellpepper_fresh",
+   "bellpepper_fresh",
+   "bellpepper_fresh",
+   "bellpepper_fresh",
+   "bellpepper_fresh",
+   "bellpepper_fresh",
+   "bellpepper_fresh",
+   "potato_rotten"
+  ]
+ },
+ "ZS8_rules": {
+  "five-vegetable kept >= -2": true,
+  "new-vegetable kind kept >= -1": true,
+  "not-five turned away >= +3": true,
+  "five vegetables to new vegetables <= +1": true
+ },
+ "ZS8_adopt": true,
+ "differences": [
+  {
+   "id": "inat-675184631",
+   "class": "carrot_fresh",
+   "TV-11": "거름",
+   "ZS8": "carrot_fresh"
+  },
+  {
+   "id": "inat-676202765",
+   "class": "rotten_fruit",
+   "TV-11": "cucumber_rotten",
+   "ZS8": "거름"
+  },
+  {
+   "id": "inat-739964743",
+   "class": "other_veg",
+   "TV-11": "tomato_rotten",
+   "ZS8": "거름"
+  },
+  {
+   "id": "inat-724095493",
+   "class": "rotten_fruit",
+   "TV-11": "tomato_rotten",
+   "ZS8": "거름"
+  },
+  {
+   "id": "inat-582210262",
+   "class": "rotten_fruit",
+   "TV-11": "potato_rotten",
+   "ZS8": "거름"
+  },
+  {
+   "id": "inat-613312826",
+   "class": "rotten_fruit",
+   "TV-11": "tomato_fresh",
+   "ZS8": "거름"
+  },
+  {
+   "id": "inat-634304399",
+   "class": "rotten_fruit",
+   "TV-11": "potato_rotten",
+   "ZS8": "거름"
+  },
+  {
+   "id": "inat-580999435",
+   "class": "rotten_fruit",
+   "TV-11": "potato_rotten",
+   "ZS8": "onion_rotten"
+  },
+  {
+   "id": "inat-755788080",
+   "class": "other_veg",
+   "TV-11": "tomato_fresh",
+   "ZS8": "거름"
+  },
+  {
+   "id": "inat-755682739",
+   "class": "tomato_fresh",
+   "TV-11": "tomato_rotten",
+   "ZS8": "거름"
+  }
+ ]
+}
