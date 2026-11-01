@@ -74,6 +74,8 @@ def main():
                              "watermark with this chance (experiments/watermark). 0 for all three = no copies.")
     parser.add_argument("--watermark-rotten", type=float, default=0.0, help="The same for rotten photos.")
     parser.add_argument("--watermark-other", type=float, default=0.0, help="The same for not_five photos.")
+    parser.add_argument("--watermark-style", choices=["standard", "light"], default="standard",
+                        help="Size and strength of the synthetic watermarks (light: smaller and see-through).")
     parser.add_argument("--feature-cache", type=Path,
                         help="Optional .npz file that keeps the CLIP features computed so far (resume a stopped run).")
     parser.add_argument("--c", type=float, default=10.0, help="Inverse regularisation strength of the head.")
@@ -109,9 +111,11 @@ def main():
         stamped = [i for i, y in enumerate(train_y) if float(torch.rand(1, generator=generator)) < chance(y)]
         # each copy's watermark comes from its own seed, so the result does not depend on the order or on a resumed run
         copies = train_x.clone()
+        prefix = "watermark" if args.watermark_style == "standard" else f"watermark-{args.watermark_style}"
         copies[stamped] = clip_features(
-            clip, [], cache=cache, keys=[f"watermark:{i}:{train_paths[i]}" for i in stamped],
-            load=lambda k: stamp(open_image(train_paths[stamped[k]]), Dice(torch.Generator().manual_seed(stamped[k] + 1))))
+            clip, [], cache=cache, keys=[f"{prefix}:{i}:{train_paths[i]}" for i in stamped],
+            load=lambda k: stamp(open_image(train_paths[stamped[k]]), Dice(torch.Generator().manual_seed(stamped[k] + 1)),
+                                 style=args.watermark_style))
         train_x, train_y, n_stamped = torch.cat([train_x, copies]), train_y + train_y, len(stamped)
     head = LogisticRegression(C=args.c, max_iter=5000).fit(train_x.numpy(), train_y)
     # A class with no training photos (UNTRAINED_CLASSES) gets a zero row and a very low intercept, so it is never chosen.
@@ -139,7 +143,7 @@ def main():
                               + (f" + {n_extra} extra photos ({n_other} not_five)" if n_extra else "")
                               + (f"; plus one copy of each, {n_stamped} of them with a synthetic watermark "
                                  f"(chance fresh {args.watermark_fresh}, rotten {args.watermark_rotten}, "
-                                 f"not_five {args.watermark_other})" if n_stamped else ""),
+                                 f"not_five {args.watermark_other}, {args.watermark_style} style)" if n_stamped else ""),
                       "temperature": temperature, "temperature_fitted_on": "val (combined model)",
                       "unknown_threshold": threshold, "accept_rate": args.accept_rate,
                       "unknown_fitted_on": f"val + {len(extra)} extra real-world vegetable photos",

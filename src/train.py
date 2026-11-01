@@ -202,6 +202,8 @@ def parse_args():
     parser.add_argument("--watermark-rotten", type=float, default=0.0,
                         help="The same for rotten photos. Use a lower value than for fresh photos, because many rotten "
                              "photos already carry real watermarks.")
+    parser.add_argument("--watermark-style", choices=["standard", "light"], default="standard",
+                        help="Size and strength of the synthetic watermarks (light: smaller and see-through).")
     parser.add_argument("--num-classes", type=int, choices=[6, 10, len(CLASS_NAMES)], default=len(CLASS_NAMES),
                         help="6 = cucumber/potato/tomato only (the earlier runs), 10 = all five vegetables.")
     parser.add_argument("--threads", type=int, default=6)
@@ -234,7 +236,7 @@ def main():
     watermark = None
     if augment and (args.watermark_fresh > 0 or args.watermark_rotten > 0):
         watermark = RandomWatermark({i: args.watermark_rotten if i % 2 else args.watermark_fresh
-                                     for i in range(len(class_names))})
+                                     for i in range(len(class_names))}, args.watermark_style)
     linear = args.mode == "linear"
     for p in model.parameters():
         p.requires_grad_(not linear or id(p) in head_ids)
@@ -357,7 +359,8 @@ def main():
             "scheduler": None if linear else "cosine", "augmentation": augment,
             "image_size": args.image_size, "crop_scale_min": args.crop_scale_min if augment else None,
             "lowres_prob": args.lowres_prob if augment else None,
-            **({"watermark_probability": {"fresh": args.watermark_fresh, "rotten": args.watermark_rotten}} if watermark else {}),
+            **({"watermark_probability": {"fresh": args.watermark_fresh, "rotten": args.watermark_rotten},
+                "watermark_style": args.watermark_style} if watermark else {}),
             "device": args.device, "threads": args.threads,
         },
         "pretrained_source": pretrained_source,

@@ -390,6 +390,40 @@
    },
    "pass": false,
    "S1+S2 increase": 19
+  },
+  "WC": {
+   "checks": {
+    "D1 S1 increase <= 3": true,
+    "D1 S2 increase <= 3": true,
+    "D2 Valid kept >= V7-3": true,
+    "D2 internet 221 accuracy >= V7-3": true,
+    "D2 internet 221 kept >= V7-3": true,
+    "D2 160 kept >= V7-3": true,
+    "D2 Asian 37 kept >= V7-2": true,
+    "D2 fruit 374 turned away >= V7-10": true,
+    "D2 everyday 400 turned away >= V7-5": true,
+    "D2 new-vegetable Valid >= V7-2": true,
+    "D3 Valid without watermark kept >= V7-2": true
+   },
+   "pass": true,
+   "S1+S2 increase": 2
+  },
+  "WD": {
+   "checks": {
+    "D1 S1 increase <= 3": false,
+    "D1 S2 increase <= 3": false,
+    "D2 Valid kept >= V7-3": true,
+    "D2 internet 221 accuracy >= V7-3": true,
+    "D2 internet 221 kept >= V7-3": true,
+    "D2 160 kept >= V7-3": true,
+    "D2 Asian 37 kept >= V7-2": true,
+    "D2 fruit 374 turned away >= V7-10": true,
+    "D2 everyday 400 turned away >= V7-5": true,
+    "D2 new-vegetable Valid >= V7-2": true,
+    "D3 Valid without watermark kept >= V7-2": true
+   },
+   "pass": false,
+   "S1+S2 increase": 11
   }
  },
  "chosen": null,
@@ -732,5 +766,346 @@
    "valid": 289,
    "valid_no_watermark": 209
   }
- }
+ },
+ "WC": {
+  "tau": 0.8,
+  "stamp_test": {
+   "S1": {
+    "system": {
+     "fresh answered rotten": [
+      9,
+      9
+     ],
+     "rotten answered fresh": [
+      2,
+      1
+     ],
+     "fresh mean P(rotten)": [
+      0.059,
+      0.071
+     ]
+    },
+    "vegetable model": {
+     "fresh answered rotten": [
+      8,
+      15
+     ],
+     "rotten answered fresh": [
+      4,
+      2
+     ],
+     "fresh mean P(rotten)": [
+      0.074,
+      0.108
+     ]
+    },
+    "CLIP head": {
+     "fresh answered rotten": [
+      9,
+      5
+     ],
+     "rotten answered fresh": [
+      2,
+      2
+     ],
+     "fresh mean P(rotten)": [
+      0.074,
+      0.074
+     ]
+    },
+    "increase": 0
+   },
+   "S2": {
+    "system": {
+     "fresh answered rotten": [
+      9,
+      11
+     ],
+     "rotten answered fresh": [
+      2,
+      2
+     ],
+     "fresh mean P(rotten)": [
+      0.059,
+      0.082
+     ]
+    },
+    "vegetable model": {
+     "fresh answered rotten": [
+      8,
+      14
+     ],
+     "rotten answered fresh": [
+      4,
+      5
+     ],
+     "fresh mean P(rotten)": [
+      0.074,
+      0.137
+     ]
+    },
+    "CLIP head": {
+     "fresh answered rotten": [
+      9,
+      8
+     ],
+     "rotten answered fresh": [
+      2,
+      3
+     ],
+     "fresh mean P(rotten)": [
+      0.074,
+      0.076
+     ]
+    },
+    "increase": 2
+   }
+  },
+  "valid": {
+   "accuracy": 289,
+   "kept_correct": 286,
+   "n": 300,
+   "to_new_vegetable": 0
+  },
+  "odev": {
+   "accuracy": 199,
+   "kept_correct": 192,
+   "n": 221,
+   "to_new_vegetable": 1
+  },
+  "o160": {
+   "accuracy": 147,
+   "kept_correct": 147,
+   "n": 160,
+   "to_new_vegetable": 0
+  },
+  "asian37": {
+   "accuracy": 35,
+   "kept_correct": 31,
+   "n": 37,
+   "to_new_vegetable": 0
+  },
+  "fruit374": {
+   "turned_away": 335,
+   "n": 374,
+   "to_new_vegetable": 0
+  },
+  "coco400": {
+   "turned_away": 400,
+   "n": 400,
+   "to_new_vegetable": 0
+  },
+  "lvis": {
+   "turned_away": 22,
+   "n": 192,
+   "to_new_vegetable": 1
+  },
+  "newval": {
+   "kind_right_kept": 78,
+   "n": 89
+  },
+  "valid_no_watermark": {
+   "accuracy": 211,
+   "kept_correct": 208,
+   "n": 218,
+   "to_new_vegetable": 0
+  },
+  "valid_watermark": {
+   "accuracy": 78,
+   "kept_correct": 78,
+   "n": 82,
+   "to_new_vegetable": 0
+  },
+  "valid_fresh_with_watermark": {
+   "accuracy": 9,
+   "kept_correct": 9,
+   "n": 13,
+   "to_new_vegetable": 0
+  },
+  "valid_rotten_without_watermark": {
+   "accuracy": 79,
+   "kept_correct": 79,
+   "n": 81,
+   "to_new_vegetable": 0
+  },
+  "vegetable_model_alone": {
+   "valid": 280,
+   "valid_no_watermark": 206
+  },
+  "clip_head_alone": {
+   "valid": 286,
+   "valid_no_watermark": 206
+  }
+ },
+ "WD": {
+  "tau": 0.8,
+  "stamp_test": {
+   "S1": {
+    "system": {
+     "fresh answered rotten": [
+      6,
+      11
+     ],
+     "rotten answered fresh": [
+      2,
+      1
+     ],
+     "fresh mean P(rotten)": [
+      0.058,
+      0.088
+     ]
+    },
+    "vegetable model": {
+     "fresh answered rotten": [
+      8,
+      15
+     ],
+     "rotten answered fresh": [
+      4,
+      2
+     ],
+     "fresh mean P(rotten)": [
+      0.074,
+      0.108
+     ]
+    },
+    "CLIP head": {
+     "fresh answered rotten": [
+      6,
+      10
+     ],
+     "rotten answered fresh": [
+      2,
+      1
+     ],
+     "fresh mean P(rotten)": [
+      0.083,
+      0.145
+     ]
+    },
+    "increase": 5
+   },
+   "S2": {
+    "system": {
+     "fresh answered rotten": [
+      6,
+      12
+     ],
+     "rotten answered fresh": [
+      2,
+      3
+     ],
+     "fresh mean P(rotten)": [
+      0.058,
+      0.101
+     ]
+    },
+    "vegetable model": {
+     "fresh answered rotten": [
+      8,
+      14
+     ],
+     "rotten answered fresh": [
+      4,
+      5
+     ],
+     "fresh mean P(rotten)": [
+      0.074,
+      0.137
+     ]
+    },
+    "CLIP head": {
+     "fresh answered rotten": [
+      6,
+      10
+     ],
+     "rotten answered fresh": [
+      2,
+      2
+     ],
+     "fresh mean P(rotten)": [
+      0.083,
+      0.134
+     ]
+    },
+    "increase": 6
+   }
+  },
+  "valid": {
+   "accuracy": 290,
+   "kept_correct": 286,
+   "n": 300,
+   "to_new_vegetable": 0
+  },
+  "odev": {
+   "accuracy": 197,
+   "kept_correct": 189,
+   "n": 221,
+   "to_new_vegetable": 1
+  },
+  "o160": {
+   "accuracy": 149,
+   "kept_correct": 149,
+   "n": 160,
+   "to_new_vegetable": 0
+  },
+  "asian37": {
+   "accuracy": 35,
+   "kept_correct": 31,
+   "n": 37,
+   "to_new_vegetable": 0
+  },
+  "fruit374": {
+   "turned_away": 337,
+   "n": 374,
+   "to_new_vegetable": 0
+  },
+  "coco400": {
+   "turned_away": 400,
+   "n": 400,
+   "to_new_vegetable": 0
+  },
+  "lvis": {
+   "turned_away": 21,
+   "n": 192,
+   "to_new_vegetable": 1
+  },
+  "newval": {
+   "kind_right_kept": 78,
+   "n": 89
+  },
+  "valid_no_watermark": {
+   "accuracy": 212,
+   "kept_correct": 208,
+   "n": 218,
+   "to_new_vegetable": 0
+  },
+  "valid_watermark": {
+   "accuracy": 78,
+   "kept_correct": 78,
+   "n": 82,
+   "to_new_vegetable": 0
+  },
+  "valid_fresh_with_watermark": {
+   "accuracy": 9,
+   "kept_correct": 9,
+   "n": 13,
+   "to_new_vegetable": 0
+  },
+  "valid_rotten_without_watermark": {
+   "accuracy": 78,
+   "kept_correct": 78,
+   "n": 81,
+   "to_new_vegetable": 0
+  },
+  "vegetable_model_alone": {
+   "valid": 280,
+   "valid_no_watermark": 206
+  },
+  "clip_head_alone": {
+   "valid": 289,
+   "valid_no_watermark": 209
+  }
+ },
+ "chosen_round2": "WC"
 }

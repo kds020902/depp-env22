@@ -1,0 +1,424 @@
+{
+ "candidate": "WC",
+ "V7": {
+  "test_300": {
+   "n": 300,
+   "accuracy": 288,
+   "kept_correct": 285,
+   "turned_away": 4,
+   "answered_new_vegetable": 0,
+   "by_class": {
+    "cucumber_fresh": "30/30",
+    "cucumber_rotten": "27/30",
+    "potato_fresh": "29/30",
+    "potato_rotten": "29/30",
+    "tomato_fresh": "30/30",
+    "tomato_rotten": "27/30",
+    "bellpepper_fresh": "29/30",
+    "bellpepper_rotten": "28/30",
+    "carrot_fresh": "30/30",
+    "carrot_rotten": "29/30"
+   }
+  },
+  "test_no_watermark": {
+   "n": 219,
+   "accuracy": 209,
+   "kept_correct": 207,
+   "turned_away": 3,
+   "answered_new_vegetable": 0,
+   "by_class": {
+    "cucumber_fresh": "28/28",
+    "cucumber_rotten": "8/11",
+    "potato_fresh": "27/27",
+    "potato_rotten": "18/19",
+    "tomato_fresh": "28/28",
+    "tomato_rotten": "17/19",
+    "bellpepper_fresh": "28/29",
+    "bellpepper_rotten": "12/14",
+    "carrot_fresh": "28/28",
+    "carrot_rotten": "15/16"
+   }
+  },
+  "test_watermark": {
+   "n": 81,
+   "accuracy": 79,
+   "kept_correct": 78,
+   "turned_away": 1,
+   "answered_new_vegetable": 0,
+   "by_class": {
+    "cucumber_fresh": "2/2",
+    "cucumber_rotten": "19/19",
+    "potato_fresh": "2/3",
+    "potato_rotten": "11/11",
+    "tomato_fresh": "2/2",
+    "tomato_rotten": "10/11",
+    "bellpepper_fresh": "1/1",
+    "bellpepper_rotten": "16/16",
+    "carrot_fresh": "2/2",
+    "carrot_rotten": "14/14"
+   }
+  },
+  "test_fresh_S1": {
+   "fresh answered rotten": [
+    2,
+    19
+   ]
+  },
+  "test_fresh_S2": {
+   "fresh answered rotten": [
+    2,
+    19
+   ]
+  },
+  "new_test_241": {
+   "n": 241,
+   "accuracy": 200,
+   "kept_correct": 190,
+   "turned_away": 13,
+   "answered_new_vegetable": 4,
+   "by_class": {
+    "cucumber_fresh": "22/24",
+    "cucumber_rotten": "2/2",
+    "potato_fresh": "12/16",
+    "potato_rotten": "13/17",
+    "tomato_fresh": "40/41",
+    "tomato_rotten": "55/74",
+    "bellpepper_fresh": "20/22",
+    "bellpepper_rotten": "2/7",
+    "carrot_fresh": "33/37",
+    "carrot_rotten": "1/1"
+   }
+  },
+  "any_photo_v2": {
+   "good_old_categories": 203,
+   "of_old": 247,
+   "good_new_veg": 6,
+   "of_new_veg": 6,
+   "by_category": {
+    "rotten_fruit": "24/50",
+    "fresh_fruit": "28/30",
+    "other_veg": "37/42",
+    "new_veg": "6/6",
+    "food": "25/25",
+    "drawing_toy": "14/16",
+    "everyday": "30/30",
+    "cut_five": "13/19",
+    "several": "12/13",
+    "five_daily": "20/22"
+   }
+  },
+  "new_veg_test1": {
+   "n": 97,
+   "kind_right_and_kept": 85,
+   "rejected": 4,
+   "misses": [
+    [
+     "greenonion_fresh->onion_fresh",
+     2
+    ],
+    [
+     "sweetpotato_rotten->potato_rotten",
+     2
+    ],
+    [
+     "greenonion_fresh->REJ",
+     2
+    ],
+    [
+     "sweetpotato_rotten->REJ",
+     1
+    ],
+    [
+     "onion_rotten->cucumber_rotten",
+     1
+    ],
+    [
+     "onion_rotten->tomato_rotten",
+     1
+    ],
+    [
+     "sweetpotato_fresh->potato_fresh",
+     1
+    ],
+    [
+     "onion_fresh->REJ",
+     1
+    ],
+    [
+     "greenonion_fresh->onion_rotten",
+     1
+    ]
+   ]
+  },
+  "new_veg_test2": {
+   "n": 54,
+   "kind_right_and_kept": 48,
+   "rejected": 4,
+   "misses": [
+    [
+     "sweetpotato_rotten->REJ",
+     2
+    ],
+    [
+     "greenonion_fresh->REJ",
+     1
+    ],
+    [
+     "onion_fresh->greenonion_fresh",
+     1
+    ],
+    [
+     "sweetpotato_rotten->potato_rotten",
+     1
+    ],
+    [
+     "onion_fresh->REJ",
+     1
+    ]
+   ]
+  },
+  "new_veg_test3": {
+   "n": 21,
+   "kind_right_and_kept": 19,
+   "rejected": 2,
+   "misses": [
+    [
+     "sweetpotato_rotten->REJ",
+     2
+    ]
+   ]
+  },
+  "new_veg_test4": {
+   "n": 26,
+   "kind_right_and_kept": 24,
+   "rejected": 0,
+   "misses": [
+    [
+     "sweetpotato_fresh->potato_fresh",
+     1
+    ],
+    [
+     "sweetpotato_fresh->carrot_rotten",
+     1
+    ]
+   ]
+  },
+  "new_veg_tests_total": 176
+ },
+ "WC": {
+  "test_300": {
+   "n": 300,
+   "accuracy": 287,
+   "kept_correct": 284,
+   "turned_away": 4,
+   "answered_new_vegetable": 0,
+   "by_class": {
+    "cucumber_fresh": "30/30",
+    "cucumber_rotten": "27/30",
+    "potato_fresh": "29/30",
+    "potato_rotten": "29/30",
+    "tomato_fresh": "30/30",
+    "tomato_rotten": "28/30",
+    "bellpepper_fresh": "28/30",
+    "bellpepper_rotten": "28/30",
+    "carrot_fresh": "30/30",
+    "carrot_rotten": "28/30"
+   }
+  },
+  "test_no_watermark": {
+   "n": 219,
+   "accuracy": 209,
+   "kept_correct": 207,
+   "turned_away": 3,
+   "answered_new_vegetable": 0,
+   "by_class": {
+    "cucumber_fresh": "28/28",
+    "cucumber_rotten": "8/11",
+    "potato_fresh": "27/27",
+    "potato_rotten": "18/19",
+    "tomato_fresh": "28/28",
+    "tomato_rotten": "18/19",
+    "bellpepper_fresh": "27/29",
+    "bellpepper_rotten": "13/14",
+    "carrot_fresh": "28/28",
+    "carrot_rotten": "14/16"
+   }
+  },
+  "test_watermark": {
+   "n": 81,
+   "accuracy": 78,
+   "kept_correct": 77,
+   "turned_away": 1,
+   "answered_new_vegetable": 0,
+   "by_class": {
+    "cucumber_fresh": "2/2",
+    "cucumber_rotten": "19/19",
+    "potato_fresh": "2/3",
+    "potato_rotten": "11/11",
+    "tomato_fresh": "2/2",
+    "tomato_rotten": "10/11",
+    "bellpepper_fresh": "1/1",
+    "bellpepper_rotten": "15/16",
+    "carrot_fresh": "2/2",
+    "carrot_rotten": "14/14"
+   }
+  },
+  "test_fresh_S1": {
+   "fresh answered rotten": [
+    3,
+    9
+   ]
+  },
+  "test_fresh_S2": {
+   "fresh answered rotten": [
+    3,
+    11
+   ]
+  },
+  "new_test_241": {
+   "n": 241,
+   "accuracy": 199,
+   "kept_correct": 189,
+   "turned_away": 12,
+   "answered_new_vegetable": 4,
+   "by_class": {
+    "cucumber_fresh": "22/24",
+    "cucumber_rotten": "2/2",
+    "potato_fresh": "12/16",
+    "potato_rotten": "15/17",
+    "tomato_fresh": "40/41",
+    "tomato_rotten": "50/74",
+    "bellpepper_fresh": "22/22",
+    "bellpepper_rotten": "2/7",
+    "carrot_fresh": "33/37",
+    "carrot_rotten": "1/1"
+   }
+  },
+  "any_photo_v2": {
+   "good_old_categories": 205,
+   "of_old": 247,
+   "good_new_veg": 6,
+   "of_new_veg": 6,
+   "by_category": {
+    "rotten_fruit": "23/50",
+    "fresh_fruit": "28/30",
+    "other_veg": "37/42",
+    "new_veg": "6/6",
+    "food": "25/25",
+    "drawing_toy": "14/16",
+    "everyday": "30/30",
+    "cut_five": "16/19",
+    "several": "12/13",
+    "five_daily": "20/22"
+   }
+  },
+  "new_veg_test1": {
+   "n": 97,
+   "kind_right_and_kept": 85,
+   "rejected": 4,
+   "misses": [
+    [
+     "greenonion_fresh->onion_fresh",
+     2
+    ],
+    [
+     "sweetpotato_rotten->potato_rotten",
+     2
+    ],
+    [
+     "greenonion_fresh->REJ",
+     2
+    ],
+    [
+     "sweetpotato_rotten->REJ",
+     1
+    ],
+    [
+     "onion_rotten->cucumber_rotten",
+     1
+    ],
+    [
+     "onion_rotten->tomato_rotten",
+     1
+    ],
+    [
+     "sweetpotato_fresh->potato_fresh",
+     1
+    ],
+    [
+     "onion_fresh->REJ",
+     1
+    ],
+    [
+     "greenonion_fresh->onion_rotten",
+     1
+    ]
+   ]
+  },
+  "new_veg_test2": {
+   "n": 54,
+   "kind_right_and_kept": 48,
+   "rejected": 4,
+   "misses": [
+    [
+     "sweetpotato_rotten->REJ",
+     2
+    ],
+    [
+     "greenonion_fresh->REJ",
+     1
+    ],
+    [
+     "onion_fresh->greenonion_fresh",
+     1
+    ],
+    [
+     "sweetpotato_rotten->potato_rotten",
+     1
+    ],
+    [
+     "onion_fresh->REJ",
+     1
+    ]
+   ]
+  },
+  "new_veg_test3": {
+   "n": 21,
+   "kind_right_and_kept": 19,
+   "rejected": 2,
+   "misses": [
+    [
+     "sweetpotato_rotten->REJ",
+     2
+    ]
+   ]
+  },
+  "new_veg_test4": {
+   "n": 26,
+   "kind_right_and_kept": 24,
+   "rejected": 0,
+   "misses": [
+    [
+     "sweetpotato_fresh->potato_fresh",
+     1
+    ],
+    [
+     "sweetpotato_fresh->carrot_rotten",
+     1
+    ]
+   ]
+  },
+  "new_veg_tests_total": 176
+ },
+ "rules": {
+  "Test accuracy >= 284": true,
+  "Test kept >= 281": true,
+  "Test without watermark kept >= V7-2": true,
+  "internet 241 accuracy >= 199": true,
+  "internet 241 kept >= 189": true,
+  "any-photo old 247 good >= 200": true,
+  "any-photo new 6 good >= 5": true,
+  "new-vegetable tests 1-4 >= 173": true
+ },
+ "adopt": true
+}

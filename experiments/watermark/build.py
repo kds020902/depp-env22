@@ -31,6 +31,14 @@ EXTRA = S / "negx/extra_train_N3.csv"
 WATERMARK_HEAD = ["--watermark-fresh", "1.0", "--watermark-rotten", "0.25", "--watermark-other", "0.5"]
 
 
+def best_seed(name: str) -> Path:
+    """The seed with the lower Valid cross-entropy (no watermark result is used)."""
+    loss = {s: json.load(open(W / f"{name}_s{s}/metrics.json"))["metrics"]["val"]["loss"] for s in (42, 43)}
+    run_dir = W / f"{name}_s{min(loss, key=loss.get)}"
+    print("Valid loss per seed", loss, "->", run_dir.name, flush=True)
+    return run_dir
+
+
 def run(*args):
     print("+", " ".join(map(str, args)), flush=True)
     subprocess.run([sys.executable, *map(str, args)], check=True, cwd=REPO)
@@ -72,17 +80,19 @@ def main():
     if tag == "V7":
         shutil.copy(REPO / "model.pth", out)
         finish(out, tag)  # must give tau 0.8 again (pipeline check)
-    elif tag == "WA":
+    elif tag in ("WA", "WAL"):  # WAL (round 2): the same with light watermarks
         shutil.copy(REPO / "model.pth", out)
         run("src/train_clip_head.py", "--model", out, "--extra-photos", LVIS, "--extra-train", EXTRA, "--clip-check-only",
-            *WATERMARK_HEAD, "--feature-cache", W / "head_features.npz")
+            *WATERMARK_HEAD, "--feature-cache", W / "head_features.npz",
+            *(["--watermark-style", "light"] if tag == "WAL" else []))
         finish(out, tag)
     else:
-        if tag == "WB":  # the seed with the lower Valid cross-entropy (no watermark result is used)
-            loss = {s: json.load(open(W / f"WB_s{s}/metrics.json"))["metrics"]["val"]["loss"] for s in (42, 43)}
-            run_dir = W / f"WB_s{min(loss, key=loss.get)}"
-            print("Valid loss per seed", loss, "->", run_dir.name, flush=True)
+        if tag == "WB":
+            run_dir = best_seed("WB")
             head_source = torch.load(W / "WA.pth", map_location="cpu", weights_only=True)
+        elif tag in ("WC", "WD"):  # round 2: light-watermark vegetable model + light-watermark head (WC) or V7's head (WD)
+            run_dir = best_seed("WC")
+            head_source = torch.load(W / "WAL.pth" if tag == "WC" else REPO / "model.pth", map_location="cpu", weights_only=True)
         else:
             run_dir = W / sys.argv[2]
             head_source = torch.load(REPO / "model.pth", map_location="cpu", weights_only=True)

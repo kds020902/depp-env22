@@ -1,0 +1,152 @@
+{
+ "V7": {
+  "test_system": {
+   "n": 300,
+   "accuracy": 288,
+   "species": 294,
+   "condition": 293,
+   "rotten_found": 145,
+   "fresh_found": 148,
+   "kept_correct": 285,
+   "turned_away": 4
+  },
+  "test_vegetable_model": {
+   "n": 300,
+   "accuracy": 275,
+   "species": 287,
+   "condition": 285,
+   "rotten_found": 142,
+   "fresh_found": 143
+  },
+  "test_clip_head": {
+   "n": 300,
+   "accuracy": 286,
+   "species": 295,
+   "condition": 291,
+   "rotten_found": 143,
+   "fresh_found": 148
+  },
+  "valid_system": {
+   "n": 300,
+   "accuracy": 291,
+   "species": 299,
+   "condition": 292,
+   "rotten_found": 149,
+   "fresh_found": 143,
+   "kept_correct": 287,
+   "turned_away": 4
+  },
+  "valid_vegetable_model": {
+   "n": 300,
+   "accuracy": 281,
+   "species": 291,
+   "condition": 290,
+   "rotten_found": 147,
+   "fresh_found": 143
+  },
+  "new_test_241_five_only": {
+   "n": 241,
+   "accuracy": 203,
+   "species": 229,
+   "condition": 215,
+   "rotten_found": 85,
+   "fresh_found": 130,
+   "kept_correct": 193,
+   "turned_away": 14
+  },
+  "internet_221_five_only": {
+   "n": 221,
+   "accuracy": 199,
+   "species": 218,
+   "condition": 202,
+   "rotten_found": 79,
+   "fresh_found": 123,
+   "kept_correct": 190,
+   "turned_away": 11
+  },
+  "internet_221_vegetable_model": {
+   "n": 221,
+   "accuracy": 167,
+   "species": 198,
+   "condition": 186,
+   "rotten_found": 67,
+   "fresh_found": 119
+  },
+  "any_photo_five_only_good_of_247": 205
+ },
+ "WC": {
+  "test_system": {
+   "n": 300,
+   "accuracy": 287,
+   "species": 296,
+   "condition": 291,
+   "rotten_found": 144,
+   "fresh_found": 147,
+   "kept_correct": 284,
+   "turned_away": 4
+  },
+  "test_vegetable_model": {
+   "n": 300,
+   "accuracy": 274,
+   "species": 290,
+   "condition": 284,
+   "rotten_found": 142,
+   "fresh_found": 142
+  },
+  "test_clip_head": {
+   "n": 300,
+   "accuracy": 287,
+   "species": 295,
+   "condition": 292,
+   "rotten_found": 144,
+   "fresh_found": 148
+  },
+  "valid_system": {
+   "n": 300,
+   "accuracy": 289,
+   "species": 300,
+   "condition": 289,
+   "rotten_found": 148,
+   "fresh_found": 141,
+   "kept_correct": 286,
+   "turned_away": 3
+  },
+  "valid_vegetable_model": {
+   "n": 300,
+   "accuracy": 280,
+   "species": 292,
+   "condition": 288,
+   "rotten_found": 146,
+   "fresh_found": 142
+  },
+  "new_test_241_five_only": {
+   "n": 241,
+   "accuracy": 202,
+   "species": 227,
+   "condition": 216,
+   "rotten_found": 85,
+   "fresh_found": 131,
+   "kept_correct": 192,
+   "turned_away": 13
+  },
+  "internet_221_five_only": {
+   "n": 221,
+   "accuracy": 199,
+   "species": 219,
+   "condition": 201,
+   "rotten_found": 80,
+   "fresh_found": 121,
+   "kept_correct": 192,
+   "turned_away": 10
+  },
+  "internet_221_vegetable_model": {
+   "n": 221,
+   "accuracy": 167,
+   "species": 200,
+   "condition": 180,
+   "rotten_found": 62,
+   "fresh_found": 118
+  },
+  "any_photo_five_only_good_of_247": 207
+ }
+}

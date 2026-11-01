@@ -10,6 +10,7 @@ from __future__ import annotations
 import collections
 import csv
 import json
+import sys
 
 import numpy as np
 import torch
@@ -126,7 +127,8 @@ def score(tag, sets, F):
 
 def main():
     dev = json.load(open(REPO / "experiments/watermark/dev_results.json"))
-    tag = dev["chosen"]; assert tag in ("WA", "WB"), tag
+    round2 = len(sys.argv) > 1 and sys.argv[1] == "round2"
+    tag = dev["chosen_round2" if round2 else "chosen"]; assert tag in (("WC", "WD") if round2 else ("WA", "WB")), tag
     sets = photo_sets(); F = features(sets)
     res = {"candidate": tag, "V7": score("V7", sets, F)}
     v7 = res["V7"]
@@ -145,7 +147,7 @@ def main():
         "new-vegetable tests 1-4 >= 173": c["new_veg_tests_total"] >= 173,
     }
     res["rules"] = rules; res["adopt"] = all(rules.values())
-    json.dump(res, open(REPO / "experiments/watermark/final_once.json", "w"), indent=1, ensure_ascii=False)
+    json.dump(res, open(REPO / f"experiments/watermark/final_once{'_round2' if round2 else ''}.json", "w"), indent=1, ensure_ascii=False)
     print(json.dumps(res, indent=1, ensure_ascii=False))
 
 

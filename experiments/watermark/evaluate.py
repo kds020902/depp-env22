@@ -94,15 +94,18 @@ def main():
     for tag in tags:
         out[tag] = evaluate(tag)
         print(tag, json.dumps(out[tag], ensure_ascii=False), flush=True)
-    for tag in [t for t in out if t not in ("V7", "rules", "chosen")]:
+    for tag in [t for t in out if t not in ("V7", "rules") and not t.startswith("chosen")]:
         if "V7" in out:
             out.setdefault("rules", {})[tag] = rules(out[tag], out["V7"])
-    candidates = {t: r for t, r in out.get("rules", {}).items() if t in ("WA", "WB") and r["pass"]}
-    order = sorted(candidates, key=lambda t: (candidates[t]["S1+S2 increase"],
-                                              -out[t]["valid_no_watermark"]["kept_correct"], t != "WA"))
-    out["chosen"] = order[0] if order else None
+    # round 1: WA, WB (ties -> WA); round 2 (PREREG.md, light watermarks): WC, WD (ties -> WD, the smaller change)
+    for key, pair, simpler in (("chosen", ("WA", "WB"), "WA"), ("chosen_round2", ("WC", "WD"), "WD")):
+        candidates = {t: r for t, r in out.get("rules", {}).items() if t in pair and r["pass"]}
+        order = sorted(candidates, key=lambda t: (candidates[t]["S1+S2 increase"],
+                                                  -out[t]["valid_no_watermark"]["kept_correct"], t != simpler))
+        out[key] = order[0] if order else None
     json.dump(out, open(path, "w"), indent=1, ensure_ascii=False)
-    print(json.dumps({"rules": out.get("rules"), "chosen": out["chosen"]}, indent=1, ensure_ascii=False))
+    print(json.dumps({"rules": out.get("rules"), "chosen": out["chosen"], "chosen_round2": out["chosen_round2"]},
+                     indent=1, ensure_ascii=False))
 
 
 if __name__ == "__main__":
