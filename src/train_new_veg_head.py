@@ -4,7 +4,7 @@
 
 The head is a multinomial logistic regression (C=10) on CLIP image features (ViT-B-16, DataComp-XL, L2-normalised) with 16
 vegetable classes and a 17th "not one of the eight vegetables" class. With --alpha > 0, alpha x CLIP zero-shot class scores
-(text prompts stored in the data file) are added to the 16 class logits (experiments/new_vegetables, V7).
+(text prompts stored in the data file) are added to the 16 class logits (experiments/new_vegetables, V7 = TV-10).
 
 head_data.npz holds every training feature and label (so the photos are not needed) and the development sets used to set
 - the "not eight" threshold: 95% of Valid (old + new vegetables) and of 192 real-scene vegetable crops pass;
@@ -50,7 +50,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--model", type=Path, required=True, help="Checkpoint with the five-vegetable system (model.pth).")
     parser.add_argument("--data", type=Path, required=True)
-    parser.add_argument("--alpha", type=float, default=0.25, help="Weight of the CLIP zero-shot class scores (0 = V6-H).")
+    parser.add_argument("--alpha", type=float, default=0.25, help="Weight of the CLIP zero-shot class scores (0 = V6-H, TV-9).")
     parser.add_argument("--out", type=Path, help="Where to write the checkpoint (default: overwrite --model).")
     args = parser.parse_args()
     data = np.load(args.data)

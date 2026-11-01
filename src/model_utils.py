@@ -384,7 +384,7 @@ def is_unknown_combined(logits: torch.Tensor, clip_logits: torch.Tensor, checkpo
     return is_unknown(logits, checkpoint) | clip_says
 
 
-# ---------- onion, sweet potato, green onion: a second CLIP head (experiments/new_vegetables, V7) ----------
+# ---------- onion, sweet potato, green onion: a second CLIP head (experiments/new_vegetables, V7 = TV-10) ----------
 def zero_shot_logits(features: torch.Tensor, head: dict) -> torch.Tensor:
     """CLIP zero-shot class scores (100 x cosine to each class's text prompts), centred over the trained classes per photo;
     classes without training photos get 0."""
@@ -397,7 +397,7 @@ def zero_shot_logits(features: torch.Tensor, head: dict) -> torch.Tensor:
 
 def new_vegetable_logits(features: torch.Tensor, head: dict) -> torch.Tensor:
     """The second head's logits (16 classes + "not one of the eight vegetables"): logistic regression on CLIP image features,
-    plus alpha x zero-shot class scores on the 16 class columns when the head has text embeddings (V7)."""
+    plus alpha x zero-shot class scores on the 16 class columns when the head has text embeddings (V7 = TV-10)."""
     z = features.float() @ head["coef"].T.to(features.device) + head["intercept"].to(features.device)
     if head.get("alpha"):
         k = len(head["class_names"])
