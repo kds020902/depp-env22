@@ -1,0 +1,141 @@
+test_image,class_name,best_cosine,reviewed_as,same_session
+test/P_fresh/potato_fresh_0850.jpg,potato_fresh,0.968,cosine>=0.88,1
+test/P_fresh/tomato_fresh_1047.jpg,tomato_fresh,0.966,cosine>=0.88,0
+test/P_fresh/potato_fresh_0866.jpg,potato_fresh,0.965,cosine>=0.88,1
+test/P_fresh/potato_fresh_0883.jpg,potato_fresh,0.964,cosine>=0.88,1
+test/P_fresh/cucumber_fresh_0659.jpg,cucumber_fresh,0.96,cosine>=0.88,1
+test/P_fresh/potato_fresh_0879.jpg,potato_fresh,0.953,cosine>=0.88,1
+test/P_fresh/carrot_fresh_0001.png,carrot_fresh,0.953,cosine>=0.88,0
+test/P_fresh/tomato_fresh_1051.jpg,tomato_fresh,0.946,cosine>=0.88,0
+test/P_fresh/carrot_fresh_0051.jpg,carrot_fresh,0.945,cosine>=0.88,0
+test/P_fresh/cucumber_fresh_0704.png,cucumber_fresh,0.944,cosine>=0.88,0
+test/P_fresh/carrot_fresh_0102.jpg,carrot_fresh,0.944,cosine>=0.88,0
+test/P_fresh/tomato_fresh_0497.jpg,tomato_fresh,0.942,cosine>=0.88,0
+test/P_fresh/carrot_fresh_0087.jpg,carrot_fresh,0.942,cosine>=0.88,0
+test/P_fresh/carrot_fresh_0060.jpg,carrot_fresh,0.942,cosine>=0.88,0
+test/N_rotten/carrot_rotten_0080.jpg,carrot_rotten,0.941,cosine>=0.88,1
+test/N_rotten/cucumber_rotten_0779.jpg,cucumber_rotten,0.94,cosine>=0.88,1
+test/P_fresh/tomato_fresh_1151.jpg,tomato_fresh,0.939,cosine>=0.88,0
+test/P_fresh/carrot_fresh_0106.jpg,carrot_fresh,0.938,cosine>=0.88,0
+test/P_fresh/tomato_fresh_1132.jpg,tomato_fresh,0.937,cosine>=0.88,0
+test/P_fresh/carrot_fresh_0127.jpg,carrot_fresh,0.934,cosine>=0.88,0
+test/N_rotten/carrot_rotten_0082.jpg,carrot_rotten,0.933,cosine>=0.88,0
+test/N_rotten/cucumber_rotten_0786.jpg,cucumber_rotten,0.932,cosine>=0.88,0
+test/P_fresh/tomato_fresh_1068.jpg,tomato_fresh,0.931,cosine>=0.88,0
+test/P_fresh/bellpepper_fresh_0146.jpg,bellpepper_fresh,0.93,cosine>=0.88,0
+test/P_fresh/carrot_fresh_0139.jpg,carrot_fresh,0.929,cosine>=0.88,0
+test/P_fresh/carrot_fresh_0158.jpg,carrot_fresh,0.929,cosine>=0.88,0
+test/P_fresh/potato_fresh_0930.png,potato_fresh,0.928,cosine>=0.88,0
+test/P_fresh/cucumber_fresh_0017.jpg,cucumber_fresh,0.928,cosine>=0.88,0
+test/P_fresh/carrot_fresh_0114.jpg,carrot_fresh,0.928,cosine>=0.88,0
+test/N_rotten/potato_rotten_0958.jpg,potato_rotten,0.925,cosine>=0.88,0
+test/N_rotten/potato_rotten_0990.jpg,potato_rotten,0.925,cosine>=0.88,1
+test/P_fresh/cucumber_fresh_0710.png,cucumber_fresh,0.924,cosine>=0.88,0
+test/P_fresh/cucumber_fresh_0712.png,cucumber_fresh,0.923,cosine>=0.88,0
+test/P_fresh/bellpepper_fresh_0150.jpg,bellpepper_fresh,0.923,cosine>=0.88,0
+test/P_fresh/carrot_fresh_0061.jpg,carrot_fresh,0.923,cosine>=0.88,0
+test/P_fresh/cucumber_fresh_0700.png,cucumber_fresh,0.922,cosine>=0.88,0
+test/P_fresh/bellpepper_fresh_0135.jpg,bellpepper_fresh,0.922,cosine>=0.88,0
+test/N_rotten/cucumber_rotten_0731.jpg,cucumber_rotten,0.922,cosine>=0.88,1
+test/P_fresh/cucumber_fresh_0713.png,cucumber_fresh,0.921,cosine>=0.88,0
+test/P_fresh/tomato_fresh_1143.jpg,tomato_fresh,0.92,cosine>=0.88,0
+test/P_fresh/bellpepper_fresh_0077.jpg,bellpepper_fresh,0.919,cosine>=0.88,0
+test/P_fresh/carrot_fresh_0081.jpg,carrot_fresh,0.918,cosine>=0.88,0
+test/P_fresh/cucumber_fresh_0642.jpg,cucumber_fresh,0.918,cosine>=0.88,0
+test/P_fresh/potato_fresh_0842.jpg,potato_fresh,0.917,cosine>=0.88,0
+test/P_fresh/tomato_fresh_1114.jpg,tomato_fresh,0.917,cosine>=0.88,1
+test/P_fresh/carrot_fresh_0094.jpg,carrot_fresh,0.915,cosine>=0.88,0
+test/P_fresh/carrot_fresh_0137.jpg,carrot_fresh,0.915,cosine>=0.88,0
+test/P_fresh/carrot_fresh_0109.jpg,carrot_fresh,0.915,cosine>=0.88,0
+test/P_fresh/tomato_fresh_1067.jpg,tomato_fresh,0.915,cosine>=0.88,0
+test/N_rotten/carrot_rotten_0033.jpg,carrot_rotten,0.914,cosine>=0.88,0
+test/P_fresh/potato_fresh_0931.jpg,potato_fresh,0.912,cosine>=0.88,0
+test/P_fresh/tomato_fresh_1055.jpg,tomato_fresh,0.912,cosine>=0.88,0
+test/P_fresh/tomato_fresh_0485.jpg,tomato_fresh,0.911,cosine>=0.88,0
+test/P_fresh/carrot_fresh_0022.jpeg,carrot_fresh,0.91,cosine>=0.88,0
+test/P_fresh/potato_fresh_0201.jpg,potato_fresh,0.91,cosine>=0.88,0
+test/P_fresh/cucumber_fresh_0056.jpeg,cucumber_fresh,0.909,cosine>=0.88,0
+test/P_fresh/bellpepper_fresh_0001.jpeg,bellpepper_fresh,0.909,cosine>=0.88,0
+test/N_rotten/potato_rotten_1028.jpg,potato_rotten,0.908,cosine>=0.88,1
+test/P_fresh/potato_fresh_0206.jpg,potato_fresh,0.908,cosine>=0.88,0
+test/P_fresh/carrot_fresh_0002.jpeg,carrot_fresh,0.907,cosine>=0.88,0
+test/P_fresh/carrot_fresh_0083.jpg,carrot_fresh,0.906,cosine>=0.88,0
+test/P_fresh/bellpepper_fresh_0164.jpg,bellpepper_fresh,0.906,cosine>=0.88,0
+test/P_fresh/cucumber_fresh_0053.jpg,cucumber_fresh,0.905,cosine>=0.88,0
+test/N_rotten/tomato_rotten_1241.jpg,tomato_rotten,0.904,cosine>=0.88,1
+test/P_fresh/potato_fresh_0861.jpg,potato_fresh,0.904,cosine>=0.88,0
+test/N_rotten/bellpepper_rotten_0037.jpg,bellpepper_rotten,0.904,cosine>=0.88,0
+test/N_rotten/carrot_rotten_0137.jpg,carrot_rotten,0.903,cosine>=0.88,0
+test/P_fresh/carrot_fresh_0043.jpg,carrot_fresh,0.902,cosine>=0.88,0
+test/P_fresh/bellpepper_fresh_0132.jpg,bellpepper_fresh,0.901,cosine>=0.88,0
+test/P_fresh/carrot_fresh_0122.jpg,carrot_fresh,0.901,cosine>=0.88,0
+test/P_fresh/bellpepper_fresh_0003.jpg,bellpepper_fresh,0.901,cosine>=0.88,0
+test/P_fresh/carrot_fresh_0075.jpg,carrot_fresh,0.899,cosine>=0.88,0
+test/P_fresh/carrot_fresh_0069.jpg,carrot_fresh,0.899,cosine>=0.88,0
+test/P_fresh/cucumber_fresh_0021.jpg,cucumber_fresh,0.899,cosine>=0.88,0
+test/P_fresh/potato_fresh_0284.jpg,potato_fresh,0.899,cosine>=0.88,0
+test/N_rotten/carrot_rotten_0160.jpg,carrot_rotten,0.897,cosine>=0.88,0
+test/N_rotten/cucumber_rotten_0757.jpg,cucumber_rotten,0.897,cosine>=0.88,0
+test/N_rotten/bellpepper_rotten_0138.jpg,bellpepper_rotten,0.895,cosine>=0.88,0
+test/P_fresh/potato_fresh_0936.jpg,potato_fresh,0.895,cosine>=0.88,0
+test/P_fresh/potato_fresh_0280.jpg,potato_fresh,0.894,cosine>=0.88,0
+test/P_fresh/bellpepper_fresh_0155.jpg,bellpepper_fresh,0.894,cosine>=0.88,0
+test/N_rotten/potato_rotten_0987.jpg,potato_rotten,0.893,cosine>=0.88,0
+test/P_fresh/tomato_fresh_1133.jpg,tomato_fresh,0.893,cosine>=0.88,0
+test/P_fresh/cucumber_fresh_0628.jpg,cucumber_fresh,0.893,cosine>=0.88,1
+test/P_fresh/bellpepper_fresh_0043.jpg,bellpepper_fresh,0.893,cosine>=0.88,0
+test/P_fresh/carrot_fresh_0044.jpg,carrot_fresh,0.892,cosine>=0.88,0
+test/P_fresh/potato_fresh_0898.jpg,potato_fresh,0.892,cosine>=0.88,1
+test/P_fresh/tomato_fresh_1049.jpg,tomato_fresh,0.892,cosine>=0.88,0
+test/P_fresh/carrot_fresh_0079.jpg,carrot_fresh,0.891,cosine>=0.88,0
+test/P_fresh/bellpepper_fresh_0138.jpg,bellpepper_fresh,0.891,cosine>=0.88,0
+test/P_fresh/bellpepper_fresh_0157.jpg,bellpepper_fresh,0.89,cosine>=0.88,0
+test/P_fresh/bellpepper_fresh_0006.jpg,bellpepper_fresh,0.89,cosine>=0.88,0
+test/N_rotten/cucumber_rotten_0798.jpg,cucumber_rotten,0.89,cosine>=0.88,1
+test/P_fresh/potato_fresh_0892.jpg,potato_fresh,0.89,cosine>=0.88,0
+test/N_rotten/potato_rotten_0997.jpg,potato_rotten,0.889,cosine>=0.88,0
+test/P_fresh/bellpepper_fresh_0137.jpg,bellpepper_fresh,0.889,cosine>=0.88,0
+test/P_fresh/tomato_fresh_0401.jpg,tomato_fresh,0.889,cosine>=0.88,0
+test/N_rotten/carrot_rotten_0125.jpg,carrot_rotten,0.889,cosine>=0.88,1
+test/P_fresh/bellpepper_fresh_0159.jpg,bellpepper_fresh,0.888,cosine>=0.88,0
+test/P_fresh/potato_fresh_0290.jpg,potato_fresh,0.888,cosine>=0.88,0
+test/N_rotten/tomato_rotten_1257.jpg,tomato_rotten,0.888,cosine>=0.88,1
+test/P_fresh/carrot_fresh_0097.jpg,carrot_fresh,0.888,cosine>=0.88,0
+test/N_rotten/carrot_rotten_0049.jpg,carrot_rotten,0.887,cosine>=0.88,0
+test/P_fresh/cucumber_fresh_0089.jpg,cucumber_fresh,0.887,cosine>=0.88,0
+test/P_fresh/bellpepper_fresh_0012.jpg,bellpepper_fresh,0.887,cosine>=0.88,0
+test/P_fresh/cucumber_fresh_0650.png,cucumber_fresh,0.886,cosine>=0.88,0
+test/P_fresh/carrot_fresh_0065.jpg,carrot_fresh,0.886,cosine>=0.88,0
+test/N_rotten/cucumber_rotten_0173.jpg,cucumber_rotten,0.886,cosine>=0.88,0
+test/N_rotten/carrot_rotten_0152.jpg,carrot_rotten,0.885,cosine>=0.88,1
+test/N_rotten/cucumber_rotten_0791.jpg,cucumber_rotten,0.885,cosine>=0.88,0
+test/P_fresh/tomato_fresh_1150.jpg,tomato_fresh,0.885,cosine>=0.88,0
+test/N_rotten/bellpepper_rotten_0031.jpg,bellpepper_rotten,0.885,cosine>=0.88,0
+test/N_rotten/carrot_rotten_0128.jpg,carrot_rotten,0.885,cosine>=0.88,0
+test/N_rotten/potato_rotten_0957.jpg,potato_rotten,0.884,cosine>=0.88,0
+test/P_fresh/carrot_fresh_0052.jpg,carrot_fresh,0.883,cosine>=0.88,0
+test/P_fresh/carrot_fresh_0117.jpeg,carrot_fresh,0.882,cosine>=0.88,0
+test/P_fresh/cucumber_fresh_0618.jpg,cucumber_fresh,0.882,cosine>=0.88,0
+test/P_fresh/potato_fresh_0231.jpg,potato_fresh,0.882,cosine>=0.88,0
+test/P_fresh/cucumber_fresh_0714.png,cucumber_fresh,0.881,cosine>=0.88,0
+test/N_rotten/bellpepper_rotten_0043.jpg,bellpepper_rotten,0.881,cosine>=0.88,0
+test/P_fresh/bellpepper_fresh_0092.jpg,bellpepper_fresh,0.878,random 20 of 0.85-0.88,0
+test/P_fresh/cucumber_fresh_0636.jpg,cucumber_fresh,0.876,random 20 of 0.85-0.88,0
+test/N_rotten/potato_rotten_0979.jpg,potato_rotten,0.876,random 20 of 0.85-0.88,0
+test/P_fresh/tomato_fresh_1111.jpg,tomato_fresh,0.875,random 20 of 0.85-0.88,1
+test/N_rotten/carrot_rotten_0141.jpg,carrot_rotten,0.874,random 20 of 0.85-0.88,0
+test/P_fresh/cucumber_fresh_0058.jpg,cucumber_fresh,0.874,random 20 of 0.85-0.88,0
+test/N_rotten/cucumber_rotten_0787.jpg,cucumber_rotten,0.873,random 20 of 0.85-0.88,0
+test/P_fresh/bellpepper_fresh_0023.jpg,bellpepper_fresh,0.871,random 20 of 0.85-0.88,0
+test/P_fresh/cucumber_fresh_0055.jpg,cucumber_fresh,0.87,random 20 of 0.85-0.88,0
+test/N_rotten/carrot_rotten_0158.jpg,carrot_rotten,0.87,random 20 of 0.85-0.88,0
+test/P_fresh/tomato_fresh_1054.jpg,tomato_fresh,0.869,random 20 of 0.85-0.88,0
+test/P_fresh/tomato_fresh_1061.jpg,tomato_fresh,0.864,random 20 of 0.85-0.88,0
+test/N_rotten/bellpepper_rotten_0139.jpg,bellpepper_rotten,0.863,random 20 of 0.85-0.88,0
+test/N_rotten/tomato_rotten_1188.jpg,tomato_rotten,0.863,random 20 of 0.85-0.88,0
+test/N_rotten/carrot_rotten_0149.jpg,carrot_rotten,0.861,random 20 of 0.85-0.88,0
+test/P_fresh/cucumber_fresh_0707.png,cucumber_fresh,0.859,random 20 of 0.85-0.88,0
+test/P_fresh/bellpepper_fresh_0152.jpg,bellpepper_fresh,0.858,random 20 of 0.85-0.88,0
+test/N_rotten/carrot_rotten_0101.jpg,carrot_rotten,0.855,random 20 of 0.85-0.88,0
+test/P_fresh/tomato_fresh_0498.jpg,tomato_fresh,0.854,random 20 of 0.85-0.88,0
+test/P_fresh/cucumber_fresh_0611.jpeg,cucumber_fresh,0.851,random 20 of 0.85-0.88,0
