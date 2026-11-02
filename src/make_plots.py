@@ -1,4 +1,4 @@
-"""Draw learning curves, test confusion matrices and the model comparison from results/*/ (needs matplotlib)."""
+"""Draw learning curves, test confusion matrices and the model comparison from the run folders under --runs (default results/6class; needs matplotlib)."""
 
 from __future__ import annotations
 
@@ -112,9 +112,9 @@ def comparison(runs: list[Path], metas: list[dict], out: Path, highlight: str):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--runs", type=Path, default=Path("results"))
+    parser.add_argument("--runs", type=Path, default=Path("results/6class"))
     parser.add_argument("--highlight", default="efficientnet_b0_finetune")
-    parser.add_argument("--out", type=Path, default=Path("results/model_comparison.png"))
+    parser.add_argument("--out", type=Path, default=Path("results/6class/model_comparison.png"))
     args = parser.parse_args()
     runs, metas = [], []
     for p in sorted(args.runs.iterdir()):

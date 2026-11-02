@@ -1,7 +1,15 @@
+# Python
 __pycache__/
+*.pyc
+.pytest_cache/
 .ipynb_checkpoints/
-# 실험별 가중치는 올리지 않음 (최종 모델만 맨 위 model.pth로 올림)
+
+# 실험별 가중치는 올리지 않는다 (최종 모델만 맨 위 model.pth로 올림)
 results/**/model.pth
 pretrained/
+
+# 내 사진과 예측 결과 (predict.py 기본 출력)
 my_photos/
 results.csv
+report.html
+heatmaps/

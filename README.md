@@ -354,10 +354,10 @@ python src/train_new_veg_head.py --model model.pth --data experiments/new_vegeta
 # model.pth의 clip_head["text_evidence"]와 unknown_threshold를 experiments/zero_shot_reject의 값으로 다시 넣는다.
 
 # 6개 클래스 때의 모델 비교 (오이·감자·토마토만, 같은 Test 180장)
-python src/train.py --manifest dataset/manifest.csv --num-classes 6 --out results/efficientnet_b0_finetune --arch efficientnet_b0 --mode finetune --epochs 30 --patience 8
-python src/train.py --manifest dataset/manifest.csv --num-classes 6 --out results/resnet18_finetune --arch resnet18 --mode finetune --epochs 30 --patience 8
-python src/train.py --manifest dataset/manifest.csv --num-classes 6 --out results/resnet18_linear --arch resnet18 --mode linear --no-augment --lr 0.005 --batch-size 16 --label-smoothing 0 --epochs 100 --patience 15
-python src/make_plots.py
+python src/train.py --manifest dataset/manifest.csv --num-classes 6 --out results/6class/efficientnet_b0_finetune --arch efficientnet_b0 --mode finetune --epochs 30 --patience 8
+python src/train.py --manifest dataset/manifest.csv --num-classes 6 --out results/6class/resnet18_finetune --arch resnet18 --mode finetune --epochs 30 --patience 8
+python src/train.py --manifest dataset/manifest.csv --num-classes 6 --out results/6class/resnet18_linear --arch resnet18 --mode linear --no-augment --lr 0.005 --batch-size 16 --label-smoothing 0 --epochs 100 --patience 15
+python src/make_plots.py --runs results/6class --out results/6class/model_comparison.png
 ```
 
 명령은 모두 저장소 맨 위 폴더에서 실행한다. 처음 실행하면 ImageNet 사전학습 가중치를 내려받는다. GPU가 있으면 `--device cuda`를 붙인다. 설정은 Valid 결과만 보고 바꾸고, Test 결과를 보고 설정을 다시 고치지 않는다.
