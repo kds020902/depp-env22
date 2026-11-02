@@ -3,10 +3,11 @@
 # Split: Openverse / iNaturalist / Commons by uploader (sha1 parity, as the blind sets: even = test side);
 # Kaggle (kritikseth) and LVIS crops by group hash (1 in 4 to test). Test side -> "new vegetable" blind test;
 # the rest -> 80% Train, 20% Valid by group hash.
+import os
 import json, csv, re, hashlib, collections, sys, numpy as np, torch, open_clip
-sys.path.insert(0, '/home/user/depp-env22/src')
+sys.path.insert(0, (os.path.abspath(os.path.join(os.path.dirname(__file__), "../../..")) + "/src"))
 from model_utils import open_image
-S = '/tmp/claude-0/-home-user-depp-env22/a974ab14-e897-5da8-89f1-d4ea639bb37e/scratchpad/'; V = S + 'v4/'
+S = (os.environ.get("DEPP_WORK", "/tmp/claude-0/-home-user-depp-env22/a974ab14-e897-5da8-89f1-d4ea639bb37e/scratchpad") + "/"); V = S + 'v4/'
 h = lambda s: int(hashlib.sha1(s.encode()).hexdigest()[:8], 16)
 rows = []
 ov = {o['id']: o for f in ('candidates_search.json', 'candidates_search2.json') for o in json.load(open(V + f))}
@@ -16,7 +17,7 @@ for i, v in json.load(open(V + 'ov_labels.json')).items():
     rows.append(dict(path=o['path'], class_name=v['label'], source='openverse:' + o['provider'].split(':', 1)[1], license=f"{o['license']} {o['license_version'] or ''}".strip(),
                      reference=o['page'] or o['url'], group='u:' + o['uploader'], side=v['side']))
 inat = {str(o['obs_id']): o for o in json.load(open(V + 'inat/inat_obs.json'))}
-held = {r['creator'].lower() for r in csv.DictReader(open('/home/user/depp-env22/results/10class/outside_test2/outside_test2.csv', encoding='utf-8')) if r['id'].startswith('inat-')}
+held = {r['creator'].lower() for r in csv.DictReader(open((os.path.abspath(os.path.join(os.path.dirname(__file__), "../../..")) + "/results/10class/outside_test2/outside_test2.csv"), encoding='utf-8')) if r['id'].startswith('inat-')}
 for i, v in json.load(open(V + 'inat_labels.json')).items():
     if not v: continue
     o = inat[i]; u = (o['user'] or '').lower()

@@ -1,14 +1,15 @@
 # Final check (development photos only): fit gap, calibration and turned/flipped photos for the current system (N3 + R1)
 # and candidate F1. Analysis only; nothing is tuned on it.
+import os
 import sys, json, pickle, numpy as np, torch, open_clip
 from PIL import Image
 from scipy.special import log_softmax, logsumexp, softmax
-sys.path.insert(0, '/home/user/depp-env22/src')
+sys.path.insert(0, (os.path.abspath(os.path.join(os.path.dirname(__file__), "../../..")) + "/src"))
 from model_utils import load_model, make_transform, open_image, input_size
 torch.set_num_threads(4)
-S = '/tmp/claude-0/-home-user-depp-env22/a974ab14-e897-5da8-89f1-d4ea639bb37e/scratchpad/'
+S = (os.environ.get("DEPP_WORK", "/tmp/claude-0/-home-user-depp-env22/a974ab14-e897-5da8-89f1-d4ea639bb37e/scratchpad") + "/")
 NAMES = ['cucumber_fresh','cucumber_rotten','potato_fresh','potato_rotten','tomato_fresh','tomato_rotten','bellpepper_fresh','bellpepper_rotten','carrot_fresh','carrot_rotten']
-B, ck = load_model('/home/user/depp-env22/model.pth', torch.device('cpu')); tf = make_transform(input_size(ck))
+B, ck = load_model((os.path.abspath(os.path.join(os.path.dirname(__file__), "../../..")) + "/model.pth"), torch.device('cpu')); tf = make_transform(input_size(ck))
 clip, _, prep = open_clip.create_model_and_transforms('ViT-B-16', pretrained='datacomp_xl_s13b_b90k'); clip.eval()
 TB, h = ck['calibration']['temperature'], ck['clip_head']; hf = pickle.load(open(S + 'candF/head_F.pkl', 'rb'))
 SYS = {'current': (h['coef'].numpy(), h['intercept'].numpy(), h['unknown_threshold'], h['temperature']), 'F1': (hf['coef'], hf['intercept'], hf['EC'], hf['T1'])}
@@ -25,7 +26,7 @@ sets = json.load(open(S + 'clip/sets.json')); F = np.load(S + 'clip/feat_datacom
 out = {'fit': {}, 'rotation': {}}
 # 1. fit gap and calibration: training photos (1,260) vs Valid vs photos from other sources
 import csv
-rows = list(csv.DictReader(open('/home/user/depp-env22/dataset/manifest.csv', encoding='utf-8'))); lab = {'/home/user/depp-env22/dataset/' + r['image_path']: r['class_name'] for r in rows if r['split'] == 'train'}
+rows = list(csv.DictReader(open((os.path.abspath(os.path.join(os.path.dirname(__file__), "../../..")) + "/dataset/manifest.csv"), encoding='utf-8'))); lab = {(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../..")) + "/dataset/") + r['image_path']: r['class_name'] for r in rows if r['split'] == 'train'}
 ti = [i for i, (p, _) in enumerate(sets['probe_train']) if p in lab]; ytr = [lab[sets['probe_train'][i][0]] for i in ti]
 data = {'train': (C['B/train/logit'], F['probe_train'][ti], ytr)}
 assert len(C['B/train/logit']) == len(ti) and Y['train'] == ytr

@@ -1,10 +1,11 @@
 # Pre-registered final scoring (negx/PREREG.md, N3): new blind test set (241) and Test (300), once each.
 # The current system is recomputed with the same features as a pipeline check (it must reproduce 191 / 165 on the new test set).
+import os
 import sys, csv, json, pickle, numpy as np, torch, open_clip
 from scipy.special import log_softmax, logsumexp
-sys.path.insert(0, '/home/user/depp-env22/src')
+sys.path.insert(0, (os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")) + "/src"))
 from model_utils import load_model, make_transform, open_image, input_size
-S = '/tmp/claude-0/-home-user-depp-env22/a974ab14-e897-5da8-89f1-d4ea639bb37e/scratchpad/'; REPO = '/home/user/depp-env22/'
+S = (os.environ.get("DEPP_WORK", "/tmp/claude-0/-home-user-depp-env22/a974ab14-e897-5da8-89f1-d4ea639bb37e/scratchpad") + "/"); REPO = (os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")) + "/")
 NAMES = ['cucumber_fresh','cucumber_rotten','potato_fresh','potato_rotten','tomato_fresh','tomato_rotten','bellpepper_fresh','bellpepper_rotten','carrot_fresh','carrot_rotten']
 torch.set_num_threads(4)
 B, ck = load_model(REPO + 'model.pth', torch.device('cpu')); tf = make_transform(input_size(ck))

@@ -1,11 +1,12 @@
 # Pre-registered (candF/PREREG.md): CLIP head N3 + farm tomatoes (vegetable side) + rotten/fresh fruit (not-five side).
 # F1 keeps the 1:1 combination; F2 refits the vegetable model's weight w and temperature T as in tom/PREREG.md (W).
 # Development checks only. Rejection stays R1 (CLIP not-five log-odds above the threshold).
+import os
 import sys, csv, json, pickle, collections, numpy as np, torch
 from sklearn.linear_model import LogisticRegression
 from scipy.special import log_softmax, logsumexp
 from scipy.optimize import minimize_scalar
-S = '/tmp/claude-0/-home-user-depp-env22/a974ab14-e897-5da8-89f1-d4ea639bb37e/scratchpad/'
+S = (os.environ.get("DEPP_WORK", "/tmp/claude-0/-home-user-depp-env22/a974ab14-e897-5da8-89f1-d4ea639bb37e/scratchpad") + "/")
 src = open(S + 'negx/evaluate.py').read(); exec(src[:src.index("ck = torch.load")])   # Xt, Xp, Xw, Xa, Xn and copy checks exactly as N3
 sys.path.insert(0, REPO + 'src')
 from model_utils import load_model, make_transform, open_image, input_size, fit_temperature

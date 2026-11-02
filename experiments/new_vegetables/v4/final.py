@@ -1,10 +1,11 @@
 # Pre-registered (v4/PREREG.md): V4 (8 vegetables, 16 slots) and the current system, scored once on the blind sets:
 # Test 300, the new internet test 241, the any-photo set relabelled for 8 vegetables (v2), and the new-vegetable test 97.
+import os
 import sys, csv, json, pickle, collections, numpy as np, torch, open_clip
 from scipy.special import log_softmax, logsumexp
-sys.path.insert(0, '/home/user/depp-env22/src')
+sys.path.insert(0, (os.path.abspath(os.path.join(os.path.dirname(__file__), "../../..")) + "/src"))
 from model_utils import load_model, make_transform, open_image, input_size, CLASS_NAMES
-S = '/tmp/claude-0/-home-user-depp-env22/a974ab14-e897-5da8-89f1-d4ea639bb37e/scratchpad/'; V = S + 'v4/'; REPO = '/home/user/depp-env22/'
+S = (os.environ.get("DEPP_WORK", "/tmp/claude-0/-home-user-depp-env22/a974ab14-e897-5da8-89f1-d4ea639bb37e/scratchpad") + "/"); V = S + 'v4/'; REPO = (os.path.abspath(os.path.join(os.path.dirname(__file__), "../../..")) + "/")
 REJECT = ('rotten_fruit', 'fresh_fruit', 'other_veg', 'food', 'drawing_toy', 'everyday')
 torch.set_num_threads(4)
 B4, ck4 = load_model(sys.argv[1], torch.device('cpu')); tf4 = make_transform(input_size(ck4)); hv = pickle.load(open(V + 'head_v4.pkl', 'rb'))   # retrained model: run for the record only, V4-R does not use it

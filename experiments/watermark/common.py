@@ -24,7 +24,7 @@ from model_utils import (  # noqa: E402
 )
 from stamps import STAMPS  # noqa: E402
 
-S = Path("/tmp/claude-0/-home-user-depp-env22/a974ab14-e897-5da8-89f1-d4ea639bb37e/scratchpad")
+S = Path(os.environ.get("DEPP_WORK", "/tmp/claude-0/-home-user-depp-env22/a974ab14-e897-5da8-89f1-d4ea639bb37e/scratchpad"))
 W = S / "wm"
 TAU_GRID = (0.5, 0.7, 0.8, 0.9, 0.95)
 OLD_DEV = ("valid", "odev", "o160", "asian37", "lvis")

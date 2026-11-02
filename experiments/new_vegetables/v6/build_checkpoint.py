@@ -1,8 +1,9 @@
 # Put the adopted V6-H head into model.pth as "new_vegetable_head" (the vegetable model and the five-vegetable CLIP head are
 # unchanged). The display temperature (probabilities shown for switched photos only; decisions do not use it) is fitted on
 # Valid: the 300 old Valid photos and the 73 new-vegetable Valid photos.
+import os
 import sys, json, pickle, numpy as np, torch
-S = '/tmp/claude-0/-home-user-depp-env22/a974ab14-e897-5da8-89f1-d4ea639bb37e/scratchpad/'; V = S + 'v6/'; REPO = '/home/user/depp-env22/'
+S = (os.environ.get("DEPP_WORK", "/tmp/claude-0/-home-user-depp-env22/a974ab14-e897-5da8-89f1-d4ea639bb37e/scratchpad") + "/"); V = S + 'v6/'; REPO = (os.path.abspath(os.path.join(os.path.dirname(__file__), "../../..")) + "/")
 sys.path.insert(0, REPO + 'src')
 from model_utils import CLASS_NAMES, fit_temperature
 hv = pickle.load(open(V + 'head_v6_noaug.pkl', 'rb')); fin = json.load(open(V + 'final_once.json')); chk = json.load(open(V + 'check_noaug.json'))

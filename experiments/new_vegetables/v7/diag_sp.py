@@ -1,6 +1,7 @@
 # Development only: where do abnormal sweet potato (and green onion) Train photos go in grouped CV (variant zs0.25 and base)?
+import os
 import sys, collections, numpy as np
-XS = open('/tmp/claude-0/-home-user-depp-env22/a974ab14-e897-5da8-89f1-d4ea639bb37e/scratchpad/v7/explore.py').read()
+XS = open((os.environ.get("DEPP_WORK", "/tmp/claude-0/-home-user-depp-env22/a974ab14-e897-5da8-89f1-d4ea639bb37e/scratchpad") + "/v7/explore.py")).read()
 exec(XS[:XS.index("VARIANTS = {")])
 groups = [pool[i]["group"] for i in tr]; fold = np.array([int(hashlib.sha1(("cv:" + g).encode()).hexdigest()[:8], 16) % 5 for g in groups])
 SPN = ['cucumber','potato','tomato','bellpepper','carrot','onion','sweetpotato','greenonion']

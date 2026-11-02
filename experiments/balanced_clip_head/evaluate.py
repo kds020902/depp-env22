@@ -19,7 +19,7 @@ import numpy as np
 import torch
 
 HERE = Path(__file__).resolve().parent
-os.environ.setdefault("T3WS_LISTS", str(Path("/tmp/claude-0/-home-user-depp-env22/a974ab14-e897-5da8-89f1-d4ea639bb37e/scratchpad/t5/lists")))
+os.environ.setdefault("T3WS_LISTS", str(Path((os.environ.get("DEPP_WORK", "/tmp/claude-0/-home-user-depp-env22/a974ab14-e897-5da8-89f1-d4ea639bb37e/scratchpad") + "/t5/lists"))))
 sys.path.insert(0, str(HERE.parent / "watermark"))
 from common import REPO, W, clip_features, dev_sets, system  # noqa: E402
 from model_utils import CLASS_NAMES  # noqa: E402

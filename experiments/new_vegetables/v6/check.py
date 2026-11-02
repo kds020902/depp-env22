@@ -2,11 +2,12 @@
 # of the five new classes are topped up to that average with augmented copies of their own Train photos (random crop 60-100%,
 # flip, mild colour jitter; seed 0). The decision is V5-H's; tau is chosen by the same rule as V5-H (smallest of 0.5/0.7/0.8/0.9/0.95
 # that moves at most 1 old-vegetable development photo the current system answered to a new vegetable). argv[1] = 'aug' or 'noaug'.
+import os
 import sys, csv, json, pickle, random, collections, numpy as np, torch, open_clip
 from sklearn.linear_model import LogisticRegression
 from scipy.special import log_softmax, logsumexp, softmax
 from torchvision import transforms
-S = '/tmp/claude-0/-home-user-depp-env22/a974ab14-e897-5da8-89f1-d4ea639bb37e/scratchpad/'; V = S + 'v6/'; MODE = sys.argv[1]
+S = (os.environ.get("DEPP_WORK", "/tmp/claude-0/-home-user-depp-env22/a974ab14-e897-5da8-89f1-d4ea639bb37e/scratchpad") + "/"); V = S + 'v6/'; MODE = sys.argv[1]
 src = open(S + 'negx/evaluate.py').read(); exec(src[:src.index("ck = torch.load")])
 sys.path.insert(0, REPO + 'src')
 from model_utils import load_model, make_transform, open_image, input_size, CLASS_NAMES

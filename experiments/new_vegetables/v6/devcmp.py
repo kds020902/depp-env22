@@ -1,7 +1,8 @@
 # Development only: V5-H and V6-H (aug / noaug) on the same new-vegetable Valid photos (v6 pool, 73).
+import os
 import sys, json, pickle, collections, numpy as np, torch
 from scipy.special import log_softmax, logsumexp, softmax
-S = '/tmp/claude-0/-home-user-depp-env22/a974ab14-e897-5da8-89f1-d4ea639bb37e/scratchpad/'; REPO = '/home/user/depp-env22/'
+S = (os.environ.get("DEPP_WORK", "/tmp/claude-0/-home-user-depp-env22/a974ab14-e897-5da8-89f1-d4ea639bb37e/scratchpad") + "/"); REPO = (os.path.abspath(os.path.join(os.path.dirname(__file__), "../../..")) + "/")
 sys.path.insert(0, REPO + 'src')
 from model_utils import load_model, make_transform, open_image, input_size, CLASS_NAMES
 pool = json.load(open(S + 'v6/pool.json')); pf = np.load(S + 'v6/pool_feats.npz')['f']

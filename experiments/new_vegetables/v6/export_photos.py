@@ -1,7 +1,7 @@
 # Write the photo lists for the repository: every reviewed new-vegetable photo (v4, v5, v6 rounds) with its split, source,
 # licence, attribution and download address, and the three blind new-vegetable tests. Photo files are not committed.
 import json, csv, glob, os, hashlib, collections, sys
-S = '/tmp/claude-0/-home-user-depp-env22/a974ab14-e897-5da8-89f1-d4ea639bb37e/scratchpad/'; R = '/home/user/depp-env22/'
+S = (os.environ.get("DEPP_WORK", "/tmp/claude-0/-home-user-depp-env22/a974ab14-e897-5da8-89f1-d4ea639bb37e/scratchpad") + "/"); R = (os.path.abspath(os.path.join(os.path.dirname(__file__), "../../..")) + "/")
 out_dir, test_dir = sys.argv[1], sys.argv[2]
 ov = {}
 for f in glob.glob(S + 'v4/candidates_search*.json') + [S + 'v5/candidates_search3.json'] + glob.glob(S + 'v6/candidates_search_ov*.json'):

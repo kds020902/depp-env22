@@ -1,7 +1,8 @@
 # Development check record for V5-H (tau 0.7) and R5 (v5/PREREG.md). No blind set is touched.
+import os
 import sys, json, pickle, collections, numpy as np, torch
 from scipy.special import log_softmax, logsumexp, softmax
-S = '/tmp/claude-0/-home-user-depp-env22/a974ab14-e897-5da8-89f1-d4ea639bb37e/scratchpad/'; V = S + 'v5/'; REPO = '/home/user/depp-env22/'
+S = (os.environ.get("DEPP_WORK", "/tmp/claude-0/-home-user-depp-env22/a974ab14-e897-5da8-89f1-d4ea639bb37e/scratchpad") + "/"); V = S + 'v5/'; REPO = (os.path.abspath(os.path.join(os.path.dirname(__file__), "../../..")) + "/")
 XSRC = open(V + 'explore.py').read()
 exec(XSRC[:XSRC.index('lr = LogisticRegression')])
 hd = pickle.load(open(V + 'head_v5.pkl', 'rb')); coef, icp, EC = hd['coef'], hd['intercept'], hd['EC']

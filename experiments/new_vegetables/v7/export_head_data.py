@@ -3,9 +3,10 @@
 #   eight vegetables), in the order the adopted head was fitted, with a short source tag per row;
 # - dev: features (+ vegetable-model logits) of the development sets used for the "not eight" threshold and the tau rule;
 # - text: the 16 class text embeddings (CLIP zero-shot prompts) and the prompts themselves.
+import os
 import sys, json, numpy as np
-XS = open('/tmp/claude-0/-home-user-depp-env22/a974ab14-e897-5da8-89f1-d4ea639bb37e/scratchpad/v7/explore.py').read()
-sys.argv = ['x', '/tmp/claude-0/-home-user-depp-env22/a974ab14-e897-5da8-89f1-d4ea639bb37e/scratchpad/v7/pool.json']
+XS = open((os.environ.get("DEPP_WORK", "/tmp/claude-0/-home-user-depp-env22/a974ab14-e897-5da8-89f1-d4ea639bb37e/scratchpad") + "/v7/explore.py")).read()
+sys.argv = ['x', (os.environ.get("DEPP_WORK", "/tmp/claude-0/-home-user-depp-env22/a974ab14-e897-5da8-89f1-d4ea639bb37e/scratchpad") + "/v7/pool.json")]
 exec(XS[:XS.index("VARIANTS = {")])
 X = np.concatenate([X0, pf[tr]]).astype(np.float32); y = np.concatenate([y0, ytr]).astype(np.int16)
 tags = np.array(['train1260'] * len(Xt) + ['reviewed_extra'] * len(Xp) + ['weak_spots'] * len(Xw) + ['asian_cucumber'] * len(Xa) + ['not_eight'] * len(Xn16) + ['new_vegetables'] * len(tr))

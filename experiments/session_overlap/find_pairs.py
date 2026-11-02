@@ -1,8 +1,9 @@
 # Record of the review sheets (paths point into the working folder; photos of the CLIP-head extra set are not in the repository).
 # Make review sheets: each row = Test photo + its two most similar training photos (Train 1260 + CLIP-head extra 4623).
+import os
 import numpy as np, csv, json, sys, random
 from PIL import Image, ImageDraw, ImageFont, ImageOps
-S='/tmp/claude-0/-home-user-depp-env22/a974ab14-e897-5da8-89f1-d4ea639bb37e/scratchpad/'; R='/home/user/depp-env22/'
+S=(os.environ.get("DEPP_WORK", "/tmp/claude-0/-home-user-depp-env22/a974ab14-e897-5da8-89f1-d4ea639bb37e/scratchpad") + "/"); R=(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")) + "/")
 F=np.load(S+'sess/feats.npz')
 rows=list(csv.DictReader(open(R+'dataset/manifest.csv',encoding='utf-8')))
 tr=[(R+'dataset/'+r['image_path'], 'Train '+r['class_name']) for r in rows if r['split']=='train']

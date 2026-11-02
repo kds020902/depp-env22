@@ -1,7 +1,8 @@
 # Diagnostic only (development photos): accuracy of each check set as the vegetable model's weight w changes. Rejection unchanged (R1).
+import os
 import json, pickle, numpy as np
 from scipy.special import log_softmax, logsumexp
-S = '/tmp/claude-0/-home-user-depp-env22/a974ab14-e897-5da8-89f1-d4ea639bb37e/scratchpad/'
+S = (os.environ.get("DEPP_WORK", "/tmp/claude-0/-home-user-depp-env22/a974ab14-e897-5da8-89f1-d4ea639bb37e/scratchpad") + "/")
 NAMES = ['cucumber_fresh','cucumber_rotten','potato_fresh','potato_rotten','tomato_fresh','tomato_rotten','bellpepper_fresh','bellpepper_rotten','carrot_fresh','carrot_rotten']
 C = np.load(S + 'post/cache.npz'); Y = json.load(open(S + 'post/labels.json')); F = np.load(S + 'clip/feat_datacomp_xl_s13b_b90k.npz')
 h = pickle.load(open(S + 'negx/head_N3.pkl', 'rb')); TB = 0.5283377766609192

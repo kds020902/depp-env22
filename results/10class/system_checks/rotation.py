@@ -1,14 +1,15 @@
 # Does the adopted system (vegetable model + CLIP head N3) give the same answer when the photo is turned or flipped?
 # Development photos only: Valid 300 and the first internet set 221. Analysis only; nothing is tuned on it.
+import os
 import sys, json, numpy as np, torch
 from PIL import Image
-sys.path.insert(0, '/home/user/depp-env22/src')
+sys.path.insert(0, (os.path.abspath(os.path.join(os.path.dirname(__file__), "../../..")) + "/src"))
 from model_utils import (load_model, make_transform, open_image, input_size, clip_head_logits, combined_logits, is_unknown_combined)
 from clip_model import ClipModel
 torch.set_num_threads(int(sys.argv[1]) if len(sys.argv) > 1 else 4)
-S = '/tmp/claude-0/-home-user-depp-env22/a974ab14-e897-5da8-89f1-d4ea639bb37e/scratchpad/'
+S = (os.environ.get("DEPP_WORK", "/tmp/claude-0/-home-user-depp-env22/a974ab14-e897-5da8-89f1-d4ea639bb37e/scratchpad") + "/")
 NAMES = ['cucumber_fresh','cucumber_rotten','potato_fresh','potato_rotten','tomato_fresh','tomato_rotten','bellpepper_fresh','bellpepper_rotten','carrot_fresh','carrot_rotten']
-B, ck = load_model('/home/user/depp-env22/model.pth', torch.device('cpu')); tf = make_transform(input_size(ck)); clip = ClipModel('cpu')
+B, ck = load_model((os.path.abspath(os.path.join(os.path.dirname(__file__), "../../..")) + "/model.pth"), torch.device('cpu')); tf = make_transform(input_size(ck)); clip = ClipModel('cpu')
 FILL = (124, 116, 104)  # the same grey-brown the training rotation used for empty corners
 VARIANTS = {
     'original': lambda im: im,

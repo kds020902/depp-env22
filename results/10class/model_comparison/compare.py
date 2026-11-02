@@ -1,10 +1,11 @@
 # Same photos, five systems: initial recipe (ResNet18, last layer only), improved 1 (EfficientNet-B0), improved 2 (+ CLIP head, 10 classes),
 # current (N3 + R1), and candidate F1. Reporting only: no system is chosen from these numbers.
+import os
 import sys, csv, json, pickle, collections, numpy as np, torch, open_clip
 from scipy.special import log_softmax, logsumexp
-sys.path.insert(0, '/home/user/depp-env22/src')
+sys.path.insert(0, (os.path.abspath(os.path.join(os.path.dirname(__file__), "../../..")) + "/src"))
 from model_utils import load_model, make_transform, open_image, input_size
-S = '/tmp/claude-0/-home-user-depp-env22/a974ab14-e897-5da8-89f1-d4ea639bb37e/scratchpad/'; REPO = '/home/user/depp-env22/'
+S = (os.environ.get("DEPP_WORK", "/tmp/claude-0/-home-user-depp-env22/a974ab14-e897-5da8-89f1-d4ea639bb37e/scratchpad") + "/"); REPO = (os.path.abspath(os.path.join(os.path.dirname(__file__), "../../..")) + "/")
 NAMES = ['cucumber_fresh','cucumber_rotten','potato_fresh','potato_rotten','tomato_fresh','tomato_rotten','bellpepper_fresh','bellpepper_rotten','carrot_fresh','carrot_rotten']
 REJECT = ('rotten_fruit', 'fresh_fruit', 'other_veg', 'food', 'drawing_toy', 'everyday')
 torch.set_num_threads(4)

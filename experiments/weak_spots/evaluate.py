@@ -1,11 +1,12 @@
 # Pre-registered (weak/PREREG.md): CLIP head retrained with the weak-spot photos (W1) or with them plus the earlier reviewed photos (W2).
 # Development checks only; the new blind test set and Test are scored later, once, by final.py.
+import os
 import sys, csv, json, pickle, collections, numpy as np, torch
 from sklearn.linear_model import LogisticRegression
 from scipy.special import log_softmax, logsumexp
-sys.path.insert(0, '/home/user/depp-env22/src')
+sys.path.insert(0, (os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")) + "/src"))
 from model_utils import fit_temperature
-S = '/tmp/claude-0/-home-user-depp-env22/a974ab14-e897-5da8-89f1-d4ea639bb37e/scratchpad/'; E = S + 'ext3/'; REPO = '/home/user/depp-env22/'
+S = (os.environ.get("DEPP_WORK", "/tmp/claude-0/-home-user-depp-env22/a974ab14-e897-5da8-89f1-d4ea639bb37e/scratchpad") + "/"); E = S + 'ext3/'; REPO = (os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")) + "/")
 NAMES = ['cucumber_fresh','cucumber_rotten','potato_fresh','potato_rotten','tomato_fresh','tomato_rotten','bellpepper_fresh','bellpepper_rotten','carrot_fresh','carrot_rotten']
 sets = json.load(open(S + 'clip/sets.json')); F = dict(np.load(S + 'clip/feat_datacomp_xl_s13b_b90k.npz'))
 feat_of = {p: F['probe_train'][i] for i, (p, _) in enumerate(sets['probe_train'])}

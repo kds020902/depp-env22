@@ -2,10 +2,11 @@
 #   R (router, as V4-R): the new head picks the kind; old five -> the current system's answer; rejection by the new head.
 #   C (cascade): the current system first; only photos it turns away go to the new head, which may answer onion / sweet potato /
 #     green onion (when its "not five" log-odds is under its threshold and the most likely kind is a new one); otherwise still turned away.
+import os
 import sys, csv, json, pickle, collections, numpy as np, torch
 from sklearn.linear_model import LogisticRegression
 from scipy.special import log_softmax, logsumexp
-S = '/tmp/claude-0/-home-user-depp-env22/a974ab14-e897-5da8-89f1-d4ea639bb37e/scratchpad/'; V = S + 'v5/'
+S = (os.environ.get("DEPP_WORK", "/tmp/claude-0/-home-user-depp-env22/a974ab14-e897-5da8-89f1-d4ea639bb37e/scratchpad") + "/"); V = S + 'v5/'
 src = open(S + 'negx/evaluate.py').read(); exec(src[:src.index("ck = torch.load")])
 sys.path.insert(0, REPO + 'src')
 from model_utils import load_model, make_transform, open_image, input_size, CLASS_NAMES

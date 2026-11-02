@@ -1,10 +1,11 @@
 # Pre-registered (v6/PREREG.md): V6-H (adoptable; more photos), V6-A (record only; + augmentation to the average) and V5-H, scored once together with the current
 # system on Test 300, the new internet test 241, the any-photo set v2 and new-vegetable tests 1 (97), 2 (54) and 3 (this round).
+import os
 import sys, csv, json, pickle, collections, numpy as np, torch, open_clip
 from scipy.special import log_softmax, logsumexp, softmax
-sys.path.insert(0, '/home/user/depp-env22/src')
+sys.path.insert(0, (os.path.abspath(os.path.join(os.path.dirname(__file__), "../../..")) + "/src"))
 from model_utils import load_model, make_transform, open_image, input_size, CLASS_NAMES
-S = '/tmp/claude-0/-home-user-depp-env22/a974ab14-e897-5da8-89f1-d4ea639bb37e/scratchpad/'; V = S + 'v6/'; REPO = '/home/user/depp-env22/'
+S = (os.environ.get("DEPP_WORK", "/tmp/claude-0/-home-user-depp-env22/a974ab14-e897-5da8-89f1-d4ea639bb37e/scratchpad") + "/"); V = S + 'v6/'; REPO = (os.path.abspath(os.path.join(os.path.dirname(__file__), "../../..")) + "/")
 assert json.load(open(V + 'check_noaug.json'))['checks_pass'] and json.load(open(V + 'check_aug.json'))['checks_pass']
 REJECT = ('rotten_fruit', 'fresh_fruit', 'other_veg', 'food', 'drawing_toy', 'everyday'); K = 16
 torch.set_num_threads(4)
