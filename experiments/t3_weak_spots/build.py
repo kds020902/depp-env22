@@ -126,7 +126,7 @@ def check():
 def k2_manifest():
     """Train + Valid rows of dataset/manifest.csv (no Test rows, so training never scores Test) + the training share."""
     os.makedirs(K2DATA / "add", exist_ok=True)
-    for d in ("train", "val"):
+    for d in ("train", "valid"):
         if not (K2DATA / d).exists():
             os.symlink(REPO / "dataset" / d, K2DATA / d)
     base = [r for r in csv.DictReader(open(REPO / "dataset/manifest.csv", encoding="utf-8")) if r["split"] in ("train", "val")]
