@@ -25,6 +25,7 @@
     - 채소 모델을 인터넷 사진으로 다시 학습하면 밭·휴대폰 사진이 떨어졌다(세 번 모두).
     - 블라인드 테스트셋 T4(100장)에서 참고로 한 번 재 봤다. TV-12는 흙 묻은 정상 감자를 9/20만 맞히고, CLIP 쪽만 보강한 L1은 14/20이다(다른 클래스는 그대로). 결과는 [results/t4_test](results/t4_test/README.md)에 있다.
 11. **학습 사진 수 균형 맞추기 (채택 안 함):** 형체가 무너진 상한 사진 78장을 빼고, CLIP 분류기의 정상:상함을 채소마다 1:1(350장 안팎)로 맞췄다. 개발용 다섯 채소 718장에서 655장 → 655장으로 점수가 그대로라 채택하지 않았다([experiments/balanced_clip_head](experiments/balanced_clip_head/README.md)).
+12. **새 사진 없이 판정 개선하기 (채택 안 함):** CLIP 글 설명 점수 섞기와 사진 조각 보기는 인터넷 사진에서 조금 좋아졌지만 밭·휴대폰 사진에서 떨어져 채택하지 않았다. 확신이 낮을 때 판단을 보류하면 자신 있게 틀린 답이 34 → 12장으로 줄지만, 실제 답에 넣을지는 나중에 정한다([experiments/improve_without_photos](experiments/improve_without_photos/README.md)).
 
 ## 버전 (TV = test version)
 
