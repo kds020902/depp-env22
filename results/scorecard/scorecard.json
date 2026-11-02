@@ -1,0 +1,519 @@
+{
+ "model": "TV-12",
+ "dev:valid": {
+  "label": "Valid 300",
+  "n": 300,
+  "right_and_kept": 286,
+  "accuracy": 0.9533,
+  "ci95": [
+   0.923,
+   0.972
+  ],
+  "turned_away": 4,
+  "wrong_kind": 0,
+  "rotten_n": 150,
+  "rotten_to_fresh": 1,
+  "fresh_n": 150,
+  "fresh_to_rotten": 9,
+  "per_class": {
+   "cucumber_fresh": "27/30",
+   "cucumber_rotten": "29/30",
+   "potato_fresh": "24/30",
+   "potato_rotten": "30/30",
+   "tomato_fresh": "28/30",
+   "tomato_rotten": "29/30",
+   "bellpepper_fresh": "29/30",
+   "bellpepper_rotten": "30/30",
+   "carrot_fresh": "30/30",
+   "carrot_rotten": "30/30"
+  },
+  "rotten_to_fresh_rate": 0.0067,
+  "fresh_to_rotten_rate": 0.06,
+  "confusion": {
+   "cucumber_fresh": {
+    "cucumber_fresh": 27,
+    "거름": 3
+   },
+   "cucumber_rotten": {
+    "cucumber_rotten": 29,
+    "cucumber_fresh": 1
+   },
+   "potato_fresh": {
+    "potato_fresh": 24,
+    "potato_rotten": 6
+   },
+   "potato_rotten": {
+    "potato_rotten": 30
+   },
+   "tomato_fresh": {
+    "tomato_fresh": 28,
+    "tomato_rotten": 2
+   },
+   "tomato_rotten": {
+    "tomato_rotten": 29,
+    "거름": 1
+   },
+   "bellpepper_fresh": {
+    "bellpepper_fresh": 29,
+    "bellpepper_rotten": 1
+   },
+   "bellpepper_rotten": {
+    "bellpepper_rotten": 30
+   },
+   "carrot_fresh": {
+    "carrot_fresh": 30
+   },
+   "carrot_rotten": {
+    "carrot_rotten": 30
+   }
+  }
+ },
+ "dev:odev": {
+  "label": "first internet 221",
+  "n": 221,
+  "right_and_kept": 190,
+  "accuracy": 0.8597,
+  "ci95": [
+   0.808,
+   0.899
+  ],
+  "turned_away": 11,
+  "wrong_kind": 2,
+  "rotten_n": 94,
+  "rotten_to_fresh": 12,
+  "fresh_n": 127,
+  "fresh_to_rotten": 6,
+  "per_class": {
+   "cucumber_fresh": "10/12",
+   "cucumber_rotten": "2/2",
+   "potato_fresh": "13/16",
+   "potato_rotten": "35/42",
+   "tomato_fresh": "47/49",
+   "tomato_rotten": "30/45",
+   "bellpepper_fresh": "22/22",
+   "bellpepper_rotten": "2/2",
+   "carrot_fresh": "26/28",
+   "carrot_rotten": "3/3"
+  },
+  "rotten_to_fresh_rate": 0.1277,
+  "fresh_to_rotten_rate": 0.0472,
+  "confusion": {
+   "cucumber_fresh": {
+    "거름": 2,
+    "cucumber_fresh": 10
+   },
+   "cucumber_rotten": {
+    "cucumber_rotten": 2
+   },
+   "potato_fresh": {
+    "potato_fresh": 13,
+    "potato_rotten": 3
+   },
+   "potato_rotten": {
+    "potato_rotten": 35,
+    "potato_fresh": 4,
+    "거름": 3
+   },
+   "tomato_fresh": {
+    "tomato_fresh": 47,
+    "tomato_rotten": 1,
+    "거름": 1
+   },
+   "tomato_rotten": {
+    "tomato_rotten": 30,
+    "tomato_fresh": 8,
+    "거름": 5,
+    "potato_rotten": 1,
+    "bellpepper_rotten": 1
+   },
+   "bellpepper_fresh": {
+    "bellpepper_fresh": 22
+   },
+   "bellpepper_rotten": {
+    "bellpepper_rotten": 2
+   },
+   "carrot_fresh": {
+    "carrot_fresh": 26,
+    "carrot_rotten": 2
+   },
+   "carrot_rotten": {
+    "carrot_rotten": 3
+   }
+  }
+ },
+ "dev:o160": {
+  "label": "160 field / phone",
+  "n": 160,
+  "right_and_kept": 146,
+  "accuracy": 0.9125,
+  "ci95": [
+   0.858,
+   0.947
+  ],
+  "turned_away": 1,
+  "wrong_kind": 9,
+  "rotten_n": 62,
+  "rotten_to_fresh": 1,
+  "fresh_n": 98,
+  "fresh_to_rotten": 3,
+  "per_class": {
+   "cucumber_fresh": "19/20",
+   "cucumber_rotten": "2/10",
+   "potato_fresh": "19/20",
+   "potato_rotten": "12/12",
+   "tomato_fresh": "17/20",
+   "tomato_rotten": "20/20",
+   "bellpepper_fresh": "18/18",
+   "bellpepper_rotten": "10/10",
+   "carrot_fresh": "20/20",
+   "carrot_rotten": "9/10"
+  },
+  "rotten_to_fresh_rate": 0.0161,
+  "fresh_to_rotten_rate": 0.0306,
+  "confusion": {
+   "cucumber_fresh": {
+    "cucumber_fresh": 19,
+    "cucumber_rotten": 1
+   },
+   "cucumber_rotten": {
+    "cucumber_rotten": 2,
+    "potato_rotten": 8
+   },
+   "tomato_fresh": {
+    "tomato_rotten": 1,
+    "tomato_fresh": 17,
+    "거름": 1,
+    "bellpepper_fresh": 1
+   },
+   "tomato_rotten": {
+    "tomato_rotten": 20
+   },
+   "bellpepper_fresh": {
+    "bellpepper_fresh": 18
+   },
+   "bellpepper_rotten": {
+    "bellpepper_rotten": 10
+   },
+   "carrot_fresh": {
+    "carrot_fresh": 20
+   },
+   "potato_fresh": {
+    "potato_fresh": 19,
+    "potato_rotten": 1
+   },
+   "carrot_rotten": {
+    "carrot_fresh": 1,
+    "carrot_rotten": 9
+   },
+   "potato_rotten": {
+    "potato_rotten": 12
+   }
+  }
+ },
+ "dev:asian37": {
+  "label": "Asian cucumbers 37",
+  "n": 37,
+  "right_and_kept": 33,
+  "accuracy": 0.8919,
+  "ci95": [
+   0.753,
+   0.957
+  ],
+  "turned_away": 3,
+  "wrong_kind": 1,
+  "rotten_n": 0,
+  "rotten_to_fresh": 0,
+  "fresh_n": 37,
+  "fresh_to_rotten": 0,
+  "per_class": {
+   "cucumber_fresh": "33/37"
+  },
+  "rotten_to_fresh_rate": null,
+  "fresh_to_rotten_rate": 0.0,
+  "confusion": {
+   "cucumber_fresh": {
+    "cucumber_fresh": 33,
+    "거름": 3,
+    "bellpepper_fresh": 1
+   }
+  }
+ },
+ "blind:test_300": {
+  "n": 300,
+  "right_and_kept": 285,
+  "accuracy": 0.95,
+  "ci95": [
+   0.919,
+   0.969
+  ],
+  "turned_away": 3,
+  "wrong_kind": 4,
+  "rotten_n": 150,
+  "rotten_to_fresh": 6,
+  "fresh_n": 150,
+  "fresh_to_rotten": 2,
+  "per_class": {
+   "cucumber_fresh": "29/30",
+   "cucumber_rotten": "27/30",
+   "potato_fresh": "29/30",
+   "potato_rotten": "28/30",
+   "tomato_fresh": "30/30",
+   "tomato_rotten": "28/30",
+   "bellpepper_fresh": "28/30",
+   "bellpepper_rotten": "28/30",
+   "carrot_fresh": "30/30",
+   "carrot_rotten": "28/30"
+  },
+  "rotten_to_fresh_rate": 0.04,
+  "fresh_to_rotten_rate": 0.0133,
+  "confusion": {
+   "cucumber_fresh": {
+    "cucumber_fresh": 29,
+    "거름": 1
+   },
+   "cucumber_rotten": {
+    "cucumber_rotten": 27,
+    "cucumber_fresh": 2,
+    "potato_rotten": 1
+   },
+   "potato_fresh": {
+    "potato_fresh": 29,
+    "potato_rotten": 1
+   },
+   "potato_rotten": {
+    "potato_rotten": 28,
+    "거름": 1,
+    "potato_fresh": 1
+   },
+   "tomato_fresh": {
+    "tomato_fresh": 30
+   },
+   "tomato_rotten": {
+    "tomato_rotten": 28,
+    "tomato_fresh": 2
+   },
+   "bellpepper_fresh": {
+    "bellpepper_fresh": 28,
+    "bellpepper_rotten": 1,
+    "거름": 1
+   },
+   "bellpepper_rotten": {
+    "tomato_rotten": 2,
+    "bellpepper_rotten": 28
+   },
+   "carrot_fresh": {
+    "carrot_fresh": 30
+   },
+   "carrot_rotten": {
+    "carrot_rotten": 28,
+    "potato_rotten": 1,
+    "carrot_fresh": 1
+   }
+  }
+ },
+ "blind:new_test_241": {
+  "n": 241,
+  "right_and_kept": 188,
+  "accuracy": 0.7801,
+  "ci95": [
+   0.724,
+   0.828
+  ],
+  "turned_away": 13,
+  "wrong_kind": 18,
+  "rotten_n": 101,
+  "rotten_to_fresh": 16,
+  "fresh_n": 140,
+  "fresh_to_rotten": 6,
+  "per_class": {
+   "cucumber_fresh": "18/24",
+   "cucumber_rotten": "2/2",
+   "potato_fresh": "12/16",
+   "potato_rotten": "13/17",
+   "tomato_fresh": "38/41",
+   "tomato_rotten": "48/74",
+   "bellpepper_fresh": "21/22",
+   "bellpepper_rotten": "2/7",
+   "carrot_fresh": "33/37",
+   "carrot_rotten": "1/1"
+  },
+  "rotten_to_fresh_rate": 0.1584,
+  "fresh_to_rotten_rate": 0.0429,
+  "confusion": {
+   "cucumber_fresh": {
+    "cucumber_fresh": 18,
+    "cucumber_rotten": 1,
+    "거름": 5
+   },
+   "cucumber_rotten": {
+    "cucumber_rotten": 2
+   },
+   "potato_fresh": {
+    "potato_fresh": 12,
+    "potato_rotten": 2,
+    "sweetpotato_fresh": 1,
+    "거름": 1
+   },
+   "potato_rotten": {
+    "potato_rotten": 13,
+    "거름": 2,
+    "sweetpotato_rotten": 2
+   },
+   "tomato_fresh": {
+    "tomato_fresh": 38,
+    "거름": 2,
+    "bellpepper_fresh": 1
+   },
+   "tomato_rotten": {
+    "tomato_rotten": 48,
+    "tomato_fresh": 13,
+    "bellpepper_rotten": 7,
+    "potato_rotten": 3,
+    "거름": 2,
+    "cucumber_rotten": 1
+   },
+   "bellpepper_fresh": {
+    "bellpepper_fresh": 21,
+    "거름": 1
+   },
+   "bellpepper_rotten": {
+    "bellpepper_fresh": 3,
+    "bellpepper_rotten": 2,
+    "cucumber_rotten": 1,
+    "tomato_rotten": 1
+   },
+   "carrot_fresh": {
+    "carrot_fresh": 33,
+    "carrot_rotten": 3,
+    "sweetpotato_fresh": 1
+   },
+   "carrot_rotten": {
+    "carrot_rotten": 1
+   }
+  }
+ },
+ "blind:t3": {
+  "n": 137,
+  "right_and_kept": 109,
+  "accuracy": 0.7956,
+  "ci95": [
+   0.72,
+   0.855
+  ],
+  "turned_away": 1,
+  "wrong_kind": 3,
+  "rotten_n": 38,
+  "rotten_to_fresh": 8,
+  "fresh_n": 99,
+  "fresh_to_rotten": 16,
+  "per_class": {
+   "cucumber_fresh": "18/20",
+   "cucumber_rotten": "1/1",
+   "potato_fresh": "10/20",
+   "potato_rotten": "18/20",
+   "tomato_fresh": "18/20",
+   "tomato_rotten": "9/15",
+   "bellpepper_fresh": "17/19",
+   "bellpepper_rotten": "1/1",
+   "carrot_fresh": "17/20",
+   "carrot_rotten": "0/1"
+  },
+  "rotten_to_fresh_rate": 0.2105,
+  "fresh_to_rotten_rate": 0.1616,
+  "confusion": {
+   "carrot_fresh": {
+    "carrot_fresh": 17,
+    "carrot_rotten": 3
+   },
+   "tomato_fresh": {
+    "tomato_fresh": 18,
+    "거름": 1,
+    "tomato_rotten": 1
+   },
+   "potato_fresh": {
+    "potato_fresh": 10,
+    "potato_rotten": 9,
+    "sweetpotato_fresh": 1
+   },
+   "potato_rotten": {
+    "potato_rotten": 18,
+    "potato_fresh": 2
+   },
+   "cucumber_fresh": {
+    "cucumber_fresh": 18,
+    "tomato_fresh": 1,
+    "cucumber_rotten": 1
+   },
+   "bellpepper_fresh": {
+    "bellpepper_fresh": 17,
+    "bellpepper_rotten": 2
+   },
+   "tomato_rotten": {
+    "tomato_rotten": 9,
+    "tomato_fresh": 5,
+    "potato_rotten": 1
+   },
+   "carrot_rotten": {
+    "carrot_fresh": 1
+   },
+   "bellpepper_rotten": {
+    "bellpepper_rotten": 1
+   },
+   "cucumber_rotten": {
+    "cucumber_rotten": 1
+   }
+  }
+ },
+ "blind:t4": {
+  "n": 63,
+  "right_and_kept": 41,
+  "accuracy": 0.6508,
+  "ci95": [
+   0.528,
+   0.757
+  ],
+  "turned_away": 1,
+  "wrong_kind": 4,
+  "rotten_n": 23,
+  "rotten_to_fresh": 9,
+  "fresh_n": 40,
+  "fresh_to_rotten": 9,
+  "per_class": {
+   "potato_fresh": "9/20",
+   "potato_rotten": "8/10",
+   "tomato_fresh": "10/10",
+   "tomato_rotten": "6/11",
+   "carrot_fresh": "8/10",
+   "carrot_rotten": "0/2"
+  },
+  "rotten_to_fresh_rate": 0.3913,
+  "fresh_to_rotten_rate": 0.225,
+  "confusion": {
+   "potato_fresh": {
+    "potato_fresh": 9,
+    "potato_rotten": 8,
+    "거름": 1,
+    "sweetpotato_fresh": 2
+   },
+   "carrot_fresh": {
+    "carrot_fresh": 8,
+    "sweetpotato_fresh": 1,
+    "potato_rotten": 1
+   },
+   "carrot_rotten": {
+    "carrot_fresh": 2
+   },
+   "potato_rotten": {
+    "potato_fresh": 2,
+    "potato_rotten": 8
+   },
+   "tomato_rotten": {
+    "tomato_fresh": 5,
+    "tomato_rotten": 6
+   },
+   "tomato_fresh": {
+    "tomato_fresh": 10
+   }
+  }
+ }
+}

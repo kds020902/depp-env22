@@ -5,7 +5,7 @@
 2. 작업 폴더의 공개 데이터셋 사진
 3. 작업 폴더의 인터넷 사진
 
-라이선스 때문에 2와 3은 git에 올리지 않았다. 스크립트는 작업 폴더 위치를 환경변수 `DEPP_WORK`로 받는다([experiments/README.md](experiments/README.md)).
+라이선스 때문에 2와 3은 git에 올리지 않았다. 실험 스크립트는 작업 폴더 위치를 환경변수 `DEPP_WORK`로 받는다(꼭 설정해야 한다).
 
 ## 1. 저장소 안: `dataset/` (1,860장, Train 1,260 / Valid 300 / Test 300)
 - **muhriddinmuxiddinov "Fruits and Vegetables Dataset"** (Kaggle): 1,800장
@@ -52,7 +52,4 @@ python tools/fetch_listed_photos.py results/10class/outside_test2/outside_test2.
 - **CLIP 분류기 다섯 채소 3,033장:**
     - 데이터셋 사진이 약 96%다. 대부분 한 곳에서 찍은 묶음이다.
     - 사람들이 실제로 찍어 올린 인터넷 사진(iNaturalist·Commons·Flickr)은 약 130장, 약 4%다(작업 폴더 기록으로 센 대략값).
-- **그래서:**
-    - 학습과 같은 출처인 Test 300에서는 95%를 맞힌다.
-    - 처음 보는 인터넷 사진(T3)에서는 약 80%를 맞힌다.
-    - 성적표: [results/scorecard](results/scorecard/README.md)
+- **그래서** 학습과 같은 출처의 Test에서는 점수가 높고, 처음 보는 인터넷 사진에서는 낮다([성적표](results/scorecard/README.md)).
