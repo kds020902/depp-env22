@@ -1,0 +1,98 @@
+{
+ "photos": [
+  "test/P_fresh/cucumber_fresh_0017.jpg",
+  "test/N_rotten/cucumber_rotten_0142.jpg",
+  "test/P_fresh/potato_fresh_0201.jpg",
+  "test/N_rotten/potato_rotten_0319.jpg",
+  "test/P_fresh/tomato_fresh_0401.jpg",
+  "test/N_rotten/tomato_rotten_0514.jpg",
+  "test/P_fresh/bellpepper_fresh_0001.jpeg",
+  "test/N_rotten/bellpepper_rotten_0002.jpg",
+  "test/P_fresh/carrot_fresh_0001.png",
+  "test/N_rotten/carrot_rotten_0010.jpg"
+ ],
+ "no_clip": {
+  "bellpepper_fresh_0001.jpeg": {
+   "predicted_class": "bellpepper_fresh",
+   "probability": 0.9953
+  },
+  "bellpepper_rotten_0002.jpg": {
+   "predicted_class": "tomato_rotten",
+   "probability": 0.9469
+  },
+  "carrot_fresh_0001.png": {
+   "predicted_class": "carrot_fresh",
+   "probability": 0.9971
+  },
+  "carrot_rotten_0010.jpg": {
+   "predicted_class": "potato_rotten",
+   "probability": 0.47
+  },
+  "cucumber_fresh_0017.jpg": {
+   "predicted_class": "cucumber_fresh",
+   "probability": 0.9943
+  },
+  "cucumber_rotten_0142.jpg": {
+   "predicted_class": "cucumber_rotten",
+   "probability": 0.6349
+  },
+  "potato_fresh_0201.jpg": {
+   "predicted_class": "potato_fresh",
+   "probability": 0.9833
+  },
+  "potato_rotten_0319.jpg": {
+   "predicted_class": "potato_rotten",
+   "probability": 0.9859
+  },
+  "tomato_fresh_0401.jpg": {
+   "predicted_class": "tomato_fresh",
+   "probability": 0.9888
+  },
+  "tomato_rotten_0514.jpg": {
+   "predicted_class": "tomato_rotten",
+   "probability": 0.9983
+  }
+ },
+ "full": {
+  "bellpepper_fresh_0001.jpeg": {
+   "predicted_class": "bellpepper_fresh",
+   "probability": 0.9983
+  },
+  "bellpepper_rotten_0002.jpg": {
+   "predicted_class": "tomato_rotten",
+   "probability": 0.9246
+  },
+  "carrot_fresh_0001.png": {
+   "predicted_class": "carrot_fresh",
+   "probability": 1.0
+  },
+  "carrot_rotten_0010.jpg": {
+   "predicted_class": "carrot_rotten",
+   "probability": 0.8438
+  },
+  "cucumber_fresh_0017.jpg": {
+   "predicted_class": "cucumber_fresh",
+   "probability": 0.9998
+  },
+  "cucumber_rotten_0142.jpg": {
+   "predicted_class": "cucumber_rotten",
+   "probability": 0.9947
+  },
+  "potato_fresh_0201.jpg": {
+   "predicted_class": "potato_fresh",
+   "probability": 0.9936
+  },
+  "potato_rotten_0319.jpg": {
+   "predicted_class": "potato_rotten",
+   "probability": 0.9994
+  },
+  "tomato_fresh_0401.jpg": {
+   "predicted_class": "tomato_fresh",
+   "probability": 0.9994
+  },
+  "tomato_rotten_0514.jpg": {
+   "predicted_class": "tomato_rotten",
+   "probability": 0.9956
+  }
+ }
+}
