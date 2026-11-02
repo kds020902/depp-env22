@@ -100,11 +100,11 @@ def main():
     tv12 = torch.load(REPO / "model.pth", map_location="cpu", weights_only=True)
     cand_path = W / f"{tag}.pth"; cand = torch.load(cand_path, map_location="cpu", weights_only=True)
     F, B12 = features(paths, REPO / "model.pth")
-    Bc = B12 if tag == "K1" else features(paths, cand_path)[1]
+    Bc = B12 if tag in ("K1", "K3") else features(paths, cand_path)[1]
     res = {"seal": digest, "n": len(rows), "candidate": tag, "TV-12": t4_scores(tv12, B12, F, rows), tag: t4_scores(cand, Bc, F, rows)}
     sets = wm.photo_sets(); Fe = dict(np.load(W / "final_clip.npz"))
     Be12 = dict(np.load(W / "final_b_WC.npz"))
-    Bec = Be12 if tag == "K1" else wm.logits(tag, sets)  # caches final_b_K2.npz
+    Bec = Be12 if tag in ("K1", "K3") else wm.logits(tag, sets)  # caches final_b_<tag>.npz
     res["earlier_TV-12"] = e12 = earlier(tv12, Be12, Fe, sets)
     assert (e12["test_300"]["kept_correct"], e12["new_test_241"]["kept_correct"], e12["any_photo_v2"], e12["new_veg_tests_total"]) == (285, 188, 216, 176), e12
     res[f"earlier_{tag}"] = ec = earlier(cand, Bec, Fe, sets)

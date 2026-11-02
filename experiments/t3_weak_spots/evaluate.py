@@ -96,7 +96,7 @@ def score(tag: str, path: Path, b_tag: str) -> dict:
 def main():
     res = {"TV-12": score("TV-12", REPO / "model.pth", "WC")}
     for tag in sys.argv[1:]:
-        res[tag] = score(tag, W / f"{tag}.pth", "WC" if tag == "K1" else tag)
+        res[tag] = score(tag, W / f"{tag}.pth", "WC" if tag in ("K1", "K3") else "K2")
     base = res["TV-12"]; rules = {}
     for tag in sys.argv[1:]:
         c = res[tag]; d = lambda n, f: c[n][f] - base[n][f]

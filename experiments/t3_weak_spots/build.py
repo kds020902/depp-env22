@@ -53,11 +53,12 @@ def train_rows() -> list[dict]:
     return list(csv.DictReader(open(LISTS / "train.csv", encoding="utf-8")))
 
 
-def write_extra_csv(path: Path, add: bool) -> Path:
+def write_extra_csv(path: Path, add: bool, fruit: bool = True) -> Path:
+    """fruit=False (K3, K4): the rotten fruit of the training share are left out (PREREG addendum 3)."""
     rows = list(csv.DictReader(open(EXTRA, encoding="utf-8")))
     if add:
         rows += [{"path": r["path"], "class_name": "not_five" if r["class_name"] == "rotten_fruit" else r["class_name"],
-                  "group": "t3_weak_spots"} for r in train_rows() if r["class_name"] in FIVE or r["class_name"] == "rotten_fruit"]
+                  "group": "t3_weak_spots"} for r in train_rows() if r["class_name"] in FIVE or (fruit and r["class_name"] == "rotten_fruit")]
     with open(path, "w", newline="", encoding="utf-8") as fh:
         w = csv.DictWriter(fh, fieldnames=["path", "class_name", "group"]); w.writeheader(); w.writerows(rows)
     return path
@@ -95,11 +96,11 @@ def new_veg_head(path: Path, add: bool, data_out: Path):
     torch.save(ck, path)
 
 
-def heads(tag: str, add: bool) -> Path:
+def heads(tag: str, add: bool, fruit: bool = True) -> Path:
     tv12 = torch.load(REPO / "model.pth", map_location="cpu", weights_only=True)
     out = W / f"{tag}.pth"
     shutil.copy(REPO / "model.pth", out)
-    run("src/train_clip_head.py", "--model", out, "--extra-photos", LVIS, "--extra-train", write_extra_csv(W / f"extra_train_{tag}.csv", add), *HEAD_ARGS)
+    run("src/train_clip_head.py", "--model", out, "--extra-photos", LVIS, "--extra-train", write_extra_csv(W / f"extra_train_{tag}.csv", add, fruit), *HEAD_ARGS)
     refit_text_evidence(out, tv12)
     new_veg_head(out, add, W / f"head_data_{tag}.npz")
     ck = torch.load(out, map_location="cpu", weights_only=True)
@@ -152,15 +153,15 @@ def k2_manifest():
     print("K2 manifest:", len(base), "+", len(add), Counter(r["class_name"] for r in add))
 
 
-def k2():
+def k2(tag: str = "K2", heads_from: str = "K1"):
     loss = {s: json.load(open(W / f"K2_s{s}/metrics.json"))["metrics"]["val"]["loss"] for s in (42, 43)}
     run_dir = W / f"K2_s{min(loss, key=loss.get)}"
     print("Valid loss per seed", loss, "->", run_dir.name, flush=True)
-    out = W / "K2.pth"
+    out = W / f"{tag}.pth"
     shutil.copy(run_dir / "model.pth", out)
     run("src/calibrate.py", "--model", out, "--extra-photos", LVIS, "--extra-name", "LVIS real-scene vegetable crops")
     ck = torch.load(out, map_location="cpu", weights_only=True)
-    k1 = torch.load(W / "K1.pth", map_location="cpu", weights_only=True)
+    k1 = torch.load(W / f"{heads_from}.pth", map_location="cpu", weights_only=True)
     ck["clip_head"] = copy.deepcopy(k1["clip_head"]); ck["new_vegetable_head"] = copy.deepcopy(k1["new_vegetable_head"])
     sets = dev_sets(); F = clip_features(sets); paths, y = sets["valid"]
     model, _ = load_model(out, torch.device("cpu")); tf = make_transform(input_size(ck))
@@ -174,11 +175,12 @@ def k2():
             species = logits.argmax(1) // len(CONDITION_NAMES)
             peaks += [float(maps[k, s].max()) for k, s in enumerate(species)]
     ck["rot_map"] = {**k1["rot_map"], "scale": float(np.median(peaks))}
-    ck["version"] = "candidate K2 (experiments/t3_weak_spots)"
+    ck["version"] = f"candidate {tag} (experiments/t3_weak_spots)"
     ck.setdefault("watermark_round", k1.get("watermark_round"))
     torch.save(ck, out)
-    print("K2 combined T", round(ck["clip_head"]["temperature"], 4), "rot scale", round(ck["rot_map"]["scale"], 3), flush=True)
+    print(tag, "combined T", round(ck["clip_head"]["temperature"], 4), "rot scale", round(ck["rot_map"]["scale"], 3), flush=True)
 
 
 if __name__ == "__main__":
-    {"check": check, "K1": lambda: heads("K1", add=True), "data": k2_manifest, "K2": k2}[sys.argv[1]]()
+    {"check": check, "K1": lambda: heads("K1", add=True), "data": k2_manifest, "K2": k2,
+     "K3": lambda: heads("K3", add=True, fruit=False), "K4": lambda: k2("K4", "K3")}[sys.argv[1]]()
