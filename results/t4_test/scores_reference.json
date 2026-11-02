@@ -1,0 +1,1220 @@
+{
+ "seal": "dd509fc5a84b13c1c705f80dec643ba31ecfd1cdd449f40565c42afc8aa28bde",
+ "n": 100,
+ "note": "reference only; no candidate was chosen on development photos",
+ "TV-12": {
+  "per_class": {
+   "potato_fresh": {
+    "good": 9,
+    "n": 20,
+    "answers": {
+     "potato_fresh": 9,
+     "potato_rotten": 8,
+     "거름": 1,
+     "sweetpotato_fresh": 2
+    }
+   },
+   "rotten_fruit": {
+    "good": 12,
+    "n": 30,
+    "answers": {
+     "거름": 12,
+     "tomato_fresh": 1,
+     "tomato_rotten": 4,
+     "cucumber_rotten": 1,
+     "potato_rotten": 12
+    }
+   },
+   "carrot_fresh": {
+    "good": 8,
+    "n": 10,
+    "answers": {
+     "carrot_fresh": 8,
+     "sweetpotato_fresh": 1,
+     "potato_rotten": 1
+    }
+   },
+   "carrot_rotten": {
+    "good": 0,
+    "n": 2,
+    "answers": {
+     "carrot_fresh": 2
+    }
+   },
+   "sweetpotato_fresh": {
+    "good": 5,
+    "n": 7,
+    "answers": {
+     "sweetpotato_fresh": 5,
+     "potato_fresh": 2
+    }
+   },
+   "potato_rotten": {
+    "good": 8,
+    "n": 10,
+    "answers": {
+     "potato_fresh": 2,
+     "potato_rotten": 8
+    }
+   },
+   "tomato_rotten": {
+    "good": 6,
+    "n": 11,
+    "answers": {
+     "tomato_fresh": 5,
+     "tomato_rotten": 6
+    }
+   },
+   "tomato_fresh": {
+    "good": 10,
+    "n": 10,
+    "answers": {
+     "tomato_fresh": 10
+    }
+   }
+  },
+  "weak_total": 40,
+  "pair_total": 18,
+  "answers": [
+   "potato_fresh",
+   "거름",
+   "tomato_fresh",
+   "tomato_rotten",
+   "cucumber_rotten",
+   "potato_rotten",
+   "potato_rotten",
+   "거름",
+   "거름",
+   "거름",
+   "potato_rotten",
+   "potato_rotten",
+   "거름",
+   "거름",
+   "potato_rotten",
+   "tomato_rotten",
+   "tomato_rotten",
+   "potato_rotten",
+   "거름",
+   "potato_rotten",
+   "거름",
+   "거름",
+   "potato_rotten",
+   "potato_rotten",
+   "potato_rotten",
+   "potato_rotten",
+   "거름",
+   "거름",
+   "potato_rotten",
+   "tomato_rotten",
+   "거름",
+   "carrot_fresh",
+   "carrot_fresh",
+   "carrot_fresh",
+   "carrot_fresh",
+   "carrot_fresh",
+   "sweetpotato_fresh",
+   "potato_rotten",
+   "carrot_fresh",
+   "carrot_fresh",
+   "carrot_fresh",
+   "sweetpotato_fresh",
+   "sweetpotato_fresh",
+   "potato_fresh",
+   "sweetpotato_fresh",
+   "sweetpotato_fresh",
+   "potato_fresh",
+   "carrot_fresh",
+   "carrot_fresh",
+   "potato_fresh",
+   "potato_rotten",
+   "potato_rotten",
+   "sweetpotato_fresh",
+   "potato_rotten",
+   "potato_rotten",
+   "potato_fresh",
+   "potato_fresh",
+   "potato_fresh",
+   "potato_rotten",
+   "potato_fresh",
+   "potato_fresh",
+   "potato_rotten",
+   "potato_rotten",
+   "potato_rotten",
+   "potato_fresh",
+   "거름",
+   "sweetpotato_fresh",
+   "sweetpotato_fresh",
+   "potato_rotten",
+   "potato_rotten",
+   "potato_fresh",
+   "potato_rotten",
+   "potato_fresh",
+   "potato_rotten",
+   "potato_rotten",
+   "potato_fresh",
+   "potato_rotten",
+   "potato_rotten",
+   "potato_rotten",
+   "tomato_fresh",
+   "tomato_rotten",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_rotten",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_rotten",
+   "tomato_fresh",
+   "tomato_rotten",
+   "tomato_rotten",
+   "tomato_fresh",
+   "tomato_rotten"
+  ]
+ },
+ "K1": {
+  "per_class": {
+   "potato_fresh": {
+    "good": 14,
+    "n": 20,
+    "answers": {
+     "potato_fresh": 14,
+     "potato_rotten": 2,
+     "sweetpotato_fresh": 3,
+     "거름": 1
+    }
+   },
+   "rotten_fruit": {
+    "good": 27,
+    "n": 30,
+    "answers": {
+     "거름": 27,
+     "onion_rotten": 2,
+     "sweetpotato_rotten": 1
+    }
+   },
+   "carrot_fresh": {
+    "good": 8,
+    "n": 10,
+    "answers": {
+     "carrot_fresh": 8,
+     "sweetpotato_fresh": 1,
+     "potato_rotten": 1
+    }
+   },
+   "carrot_rotten": {
+    "good": 0,
+    "n": 2,
+    "answers": {
+     "carrot_fresh": 2
+    }
+   },
+   "sweetpotato_fresh": {
+    "good": 7,
+    "n": 7,
+    "answers": {
+     "sweetpotato_fresh": 7
+    }
+   },
+   "potato_rotten": {
+    "good": 7,
+    "n": 10,
+    "answers": {
+     "potato_fresh": 2,
+     "potato_rotten": 7,
+     "거름": 1
+    }
+   },
+   "tomato_rotten": {
+    "good": 4,
+    "n": 11,
+    "answers": {
+     "tomato_fresh": 5,
+     "거름": 2,
+     "tomato_rotten": 4
+    }
+   },
+   "tomato_fresh": {
+    "good": 10,
+    "n": 10,
+    "answers": {
+     "tomato_fresh": 10
+    }
+   }
+  },
+  "weak_total": 60,
+  "pair_total": 17,
+  "answers": [
+   "potato_fresh",
+   "거름",
+   "거름",
+   "onion_rotten",
+   "sweetpotato_rotten",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "onion_rotten",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "carrot_fresh",
+   "carrot_fresh",
+   "carrot_fresh",
+   "carrot_fresh",
+   "carrot_fresh",
+   "sweetpotato_fresh",
+   "potato_rotten",
+   "carrot_fresh",
+   "carrot_fresh",
+   "carrot_fresh",
+   "sweetpotato_fresh",
+   "sweetpotato_fresh",
+   "sweetpotato_fresh",
+   "sweetpotato_fresh",
+   "sweetpotato_fresh",
+   "sweetpotato_fresh",
+   "carrot_fresh",
+   "carrot_fresh",
+   "potato_fresh",
+   "potato_fresh",
+   "potato_fresh",
+   "sweetpotato_fresh",
+   "potato_rotten",
+   "potato_fresh",
+   "potato_fresh",
+   "potato_fresh",
+   "potato_fresh",
+   "potato_rotten",
+   "potato_fresh",
+   "potato_fresh",
+   "potato_rotten",
+   "potato_fresh",
+   "potato_rotten",
+   "potato_fresh",
+   "sweetpotato_fresh",
+   "sweetpotato_fresh",
+   "sweetpotato_fresh",
+   "potato_rotten",
+   "potato_rotten",
+   "potato_fresh",
+   "potato_fresh",
+   "potato_fresh",
+   "거름",
+   "potato_rotten",
+   "potato_fresh",
+   "거름",
+   "potato_rotten",
+   "potato_rotten",
+   "tomato_fresh",
+   "거름",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "거름",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_rotten",
+   "tomato_fresh",
+   "tomato_rotten",
+   "tomato_rotten",
+   "tomato_fresh",
+   "tomato_rotten"
+  ]
+ },
+ "K3": {
+  "per_class": {
+   "potato_fresh": {
+    "good": 14,
+    "n": 20,
+    "answers": {
+     "potato_fresh": 14,
+     "potato_rotten": 3,
+     "sweetpotato_fresh": 3
+    }
+   },
+   "rotten_fruit": {
+    "good": 11,
+    "n": 30,
+    "answers": {
+     "거름": 11,
+     "tomato_rotten": 5,
+     "cucumber_rotten": 1,
+     "potato_rotten": 13
+    }
+   },
+   "carrot_fresh": {
+    "good": 8,
+    "n": 10,
+    "answers": {
+     "carrot_fresh": 8,
+     "sweetpotato_fresh": 1,
+     "potato_rotten": 1
+    }
+   },
+   "carrot_rotten": {
+    "good": 0,
+    "n": 2,
+    "answers": {
+     "carrot_fresh": 2
+    }
+   },
+   "sweetpotato_fresh": {
+    "good": 7,
+    "n": 7,
+    "answers": {
+     "sweetpotato_fresh": 7
+    }
+   },
+   "potato_rotten": {
+    "good": 8,
+    "n": 10,
+    "answers": {
+     "potato_fresh": 2,
+     "potato_rotten": 8
+    }
+   },
+   "tomato_rotten": {
+    "good": 6,
+    "n": 11,
+    "answers": {
+     "tomato_fresh": 5,
+     "tomato_rotten": 6
+    }
+   },
+   "tomato_fresh": {
+    "good": 10,
+    "n": 10,
+    "answers": {
+     "tomato_fresh": 10
+    }
+   }
+  },
+  "weak_total": 46,
+  "pair_total": 18,
+  "answers": [
+   "potato_fresh",
+   "거름",
+   "tomato_rotten",
+   "tomato_rotten",
+   "cucumber_rotten",
+   "potato_rotten",
+   "potato_rotten",
+   "거름",
+   "potato_rotten",
+   "거름",
+   "potato_rotten",
+   "potato_rotten",
+   "거름",
+   "거름",
+   "potato_rotten",
+   "tomato_rotten",
+   "tomato_rotten",
+   "potato_rotten",
+   "거름",
+   "potato_rotten",
+   "거름",
+   "거름",
+   "potato_rotten",
+   "potato_rotten",
+   "potato_rotten",
+   "potato_rotten",
+   "거름",
+   "거름",
+   "potato_rotten",
+   "tomato_rotten",
+   "거름",
+   "carrot_fresh",
+   "carrot_fresh",
+   "carrot_fresh",
+   "carrot_fresh",
+   "carrot_fresh",
+   "sweetpotato_fresh",
+   "potato_rotten",
+   "carrot_fresh",
+   "carrot_fresh",
+   "carrot_fresh",
+   "sweetpotato_fresh",
+   "sweetpotato_fresh",
+   "sweetpotato_fresh",
+   "sweetpotato_fresh",
+   "sweetpotato_fresh",
+   "sweetpotato_fresh",
+   "carrot_fresh",
+   "carrot_fresh",
+   "potato_fresh",
+   "potato_fresh",
+   "potato_fresh",
+   "sweetpotato_fresh",
+   "potato_rotten",
+   "potato_fresh",
+   "potato_fresh",
+   "potato_fresh",
+   "potato_fresh",
+   "potato_rotten",
+   "potato_fresh",
+   "potato_fresh",
+   "potato_rotten",
+   "potato_fresh",
+   "potato_rotten",
+   "potato_fresh",
+   "sweetpotato_fresh",
+   "sweetpotato_fresh",
+   "sweetpotato_fresh",
+   "potato_rotten",
+   "potato_rotten",
+   "potato_fresh",
+   "potato_fresh",
+   "potato_fresh",
+   "potato_rotten",
+   "potato_rotten",
+   "potato_fresh",
+   "potato_rotten",
+   "potato_rotten",
+   "potato_rotten",
+   "tomato_fresh",
+   "tomato_rotten",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_rotten",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_rotten",
+   "tomato_fresh",
+   "tomato_rotten",
+   "tomato_rotten",
+   "tomato_fresh",
+   "tomato_rotten"
+  ]
+ },
+ "L1": {
+  "per_class": {
+   "potato_fresh": {
+    "good": 14,
+    "n": 20,
+    "answers": {
+     "potato_fresh": 14,
+     "potato_rotten": 3,
+     "sweetpotato_fresh": 3
+    }
+   },
+   "rotten_fruit": {
+    "good": 10,
+    "n": 30,
+    "answers": {
+     "거름": 10,
+     "tomato_rotten": 5,
+     "cucumber_rotten": 1,
+     "potato_rotten": 14
+    }
+   },
+   "carrot_fresh": {
+    "good": 8,
+    "n": 10,
+    "answers": {
+     "carrot_fresh": 8,
+     "sweetpotato_fresh": 1,
+     "potato_rotten": 1
+    }
+   },
+   "carrot_rotten": {
+    "good": 0,
+    "n": 2,
+    "answers": {
+     "carrot_fresh": 2
+    }
+   },
+   "sweetpotato_fresh": {
+    "good": 7,
+    "n": 7,
+    "answers": {
+     "sweetpotato_fresh": 7
+    }
+   },
+   "potato_rotten": {
+    "good": 8,
+    "n": 10,
+    "answers": {
+     "potato_fresh": 2,
+     "potato_rotten": 8
+    }
+   },
+   "tomato_rotten": {
+    "good": 6,
+    "n": 11,
+    "answers": {
+     "tomato_fresh": 5,
+     "tomato_rotten": 6
+    }
+   },
+   "tomato_fresh": {
+    "good": 10,
+    "n": 10,
+    "answers": {
+     "tomato_fresh": 10
+    }
+   }
+  },
+  "weak_total": 45,
+  "pair_total": 18,
+  "answers": [
+   "potato_fresh",
+   "거름",
+   "tomato_rotten",
+   "tomato_rotten",
+   "cucumber_rotten",
+   "potato_rotten",
+   "potato_rotten",
+   "거름",
+   "potato_rotten",
+   "거름",
+   "potato_rotten",
+   "potato_rotten",
+   "거름",
+   "거름",
+   "potato_rotten",
+   "tomato_rotten",
+   "tomato_rotten",
+   "potato_rotten",
+   "거름",
+   "potato_rotten",
+   "거름",
+   "거름",
+   "potato_rotten",
+   "potato_rotten",
+   "potato_rotten",
+   "potato_rotten",
+   "potato_rotten",
+   "거름",
+   "potato_rotten",
+   "tomato_rotten",
+   "거름",
+   "carrot_fresh",
+   "carrot_fresh",
+   "carrot_fresh",
+   "carrot_fresh",
+   "carrot_fresh",
+   "sweetpotato_fresh",
+   "potato_rotten",
+   "carrot_fresh",
+   "carrot_fresh",
+   "carrot_fresh",
+   "sweetpotato_fresh",
+   "sweetpotato_fresh",
+   "sweetpotato_fresh",
+   "sweetpotato_fresh",
+   "sweetpotato_fresh",
+   "sweetpotato_fresh",
+   "carrot_fresh",
+   "carrot_fresh",
+   "potato_fresh",
+   "potato_fresh",
+   "potato_fresh",
+   "sweetpotato_fresh",
+   "potato_rotten",
+   "potato_fresh",
+   "potato_fresh",
+   "potato_fresh",
+   "potato_fresh",
+   "potato_rotten",
+   "potato_fresh",
+   "potato_fresh",
+   "potato_rotten",
+   "potato_fresh",
+   "potato_rotten",
+   "potato_fresh",
+   "sweetpotato_fresh",
+   "sweetpotato_fresh",
+   "sweetpotato_fresh",
+   "potato_rotten",
+   "potato_rotten",
+   "potato_fresh",
+   "potato_fresh",
+   "potato_fresh",
+   "potato_rotten",
+   "potato_rotten",
+   "potato_fresh",
+   "potato_rotten",
+   "potato_rotten",
+   "potato_rotten",
+   "tomato_fresh",
+   "tomato_rotten",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_rotten",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_rotten",
+   "tomato_fresh",
+   "tomato_rotten",
+   "tomato_rotten",
+   "tomato_fresh",
+   "tomato_rotten"
+  ]
+ },
+ "K2": {
+  "per_class": {
+   "potato_fresh": {
+    "good": 16,
+    "n": 20,
+    "answers": {
+     "potato_fresh": 16,
+     "sweetpotato_fresh": 3,
+     "거름": 1
+    }
+   },
+   "rotten_fruit": {
+    "good": 27,
+    "n": 30,
+    "answers": {
+     "거름": 27,
+     "onion_rotten": 2,
+     "sweetpotato_rotten": 1
+    }
+   },
+   "carrot_fresh": {
+    "good": 8,
+    "n": 10,
+    "answers": {
+     "carrot_fresh": 8,
+     "sweetpotato_fresh": 1,
+     "potato_rotten": 1
+    }
+   },
+   "carrot_rotten": {
+    "good": 0,
+    "n": 2,
+    "answers": {
+     "carrot_fresh": 2
+    }
+   },
+   "sweetpotato_fresh": {
+    "good": 7,
+    "n": 7,
+    "answers": {
+     "sweetpotato_fresh": 7
+    }
+   },
+   "potato_rotten": {
+    "good": 5,
+    "n": 10,
+    "answers": {
+     "potato_fresh": 4,
+     "potato_rotten": 5,
+     "거름": 1
+    }
+   },
+   "tomato_rotten": {
+    "good": 4,
+    "n": 11,
+    "answers": {
+     "tomato_fresh": 5,
+     "거름": 2,
+     "tomato_rotten": 4
+    }
+   },
+   "tomato_fresh": {
+    "good": 10,
+    "n": 10,
+    "answers": {
+     "tomato_fresh": 10
+    }
+   }
+  },
+  "weak_total": 62,
+  "pair_total": 15,
+  "answers": [
+   "potato_fresh",
+   "거름",
+   "거름",
+   "onion_rotten",
+   "sweetpotato_rotten",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "onion_rotten",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "거름",
+   "carrot_fresh",
+   "carrot_fresh",
+   "carrot_fresh",
+   "carrot_fresh",
+   "carrot_fresh",
+   "sweetpotato_fresh",
+   "potato_rotten",
+   "carrot_fresh",
+   "carrot_fresh",
+   "carrot_fresh",
+   "sweetpotato_fresh",
+   "sweetpotato_fresh",
+   "sweetpotato_fresh",
+   "sweetpotato_fresh",
+   "sweetpotato_fresh",
+   "sweetpotato_fresh",
+   "carrot_fresh",
+   "carrot_fresh",
+   "potato_fresh",
+   "potato_fresh",
+   "potato_fresh",
+   "sweetpotato_fresh",
+   "potato_fresh",
+   "potato_fresh",
+   "potato_fresh",
+   "potato_fresh",
+   "potato_fresh",
+   "potato_rotten",
+   "potato_fresh",
+   "potato_fresh",
+   "potato_rotten",
+   "potato_fresh",
+   "potato_fresh",
+   "potato_fresh",
+   "sweetpotato_fresh",
+   "sweetpotato_fresh",
+   "sweetpotato_fresh",
+   "potato_rotten",
+   "potato_rotten",
+   "potato_fresh",
+   "potato_fresh",
+   "potato_fresh",
+   "거름",
+   "potato_fresh",
+   "potato_fresh",
+   "거름",
+   "potato_fresh",
+   "potato_rotten",
+   "tomato_fresh",
+   "거름",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "거름",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_rotten",
+   "tomato_fresh",
+   "tomato_rotten",
+   "tomato_rotten",
+   "tomato_fresh",
+   "tomato_rotten"
+  ]
+ },
+ "K4": {
+  "per_class": {
+   "potato_fresh": {
+    "good": 17,
+    "n": 20,
+    "answers": {
+     "potato_fresh": 17,
+     "sweetpotato_fresh": 3
+    }
+   },
+   "rotten_fruit": {
+    "good": 11,
+    "n": 30,
+    "answers": {
+     "거름": 11,
+     "tomato_rotten": 8,
+     "potato_rotten": 10,
+     "potato_fresh": 1
+    }
+   },
+   "carrot_fresh": {
+    "good": 8,
+    "n": 10,
+    "answers": {
+     "carrot_fresh": 8,
+     "sweetpotato_fresh": 1,
+     "potato_rotten": 1
+    }
+   },
+   "carrot_rotten": {
+    "good": 0,
+    "n": 2,
+    "answers": {
+     "carrot_fresh": 2
+    }
+   },
+   "sweetpotato_fresh": {
+    "good": 7,
+    "n": 7,
+    "answers": {
+     "sweetpotato_fresh": 7
+    }
+   },
+   "potato_rotten": {
+    "good": 5,
+    "n": 10,
+    "answers": {
+     "potato_fresh": 5,
+     "potato_rotten": 5
+    }
+   },
+   "tomato_rotten": {
+    "good": 6,
+    "n": 11,
+    "answers": {
+     "tomato_fresh": 5,
+     "tomato_rotten": 6
+    }
+   },
+   "tomato_fresh": {
+    "good": 10,
+    "n": 10,
+    "answers": {
+     "tomato_fresh": 10
+    }
+   }
+  },
+  "weak_total": 49,
+  "pair_total": 15,
+  "answers": [
+   "potato_fresh",
+   "거름",
+   "tomato_rotten",
+   "tomato_rotten",
+   "tomato_rotten",
+   "potato_rotten",
+   "potato_rotten",
+   "거름",
+   "potato_rotten",
+   "거름",
+   "potato_rotten",
+   "tomato_rotten",
+   "거름",
+   "거름",
+   "potato_rotten",
+   "tomato_rotten",
+   "tomato_rotten",
+   "potato_fresh",
+   "거름",
+   "potato_rotten",
+   "거름",
+   "거름",
+   "potato_rotten",
+   "potato_rotten",
+   "tomato_rotten",
+   "potato_rotten",
+   "거름",
+   "거름",
+   "potato_rotten",
+   "tomato_rotten",
+   "거름",
+   "carrot_fresh",
+   "carrot_fresh",
+   "carrot_fresh",
+   "carrot_fresh",
+   "carrot_fresh",
+   "sweetpotato_fresh",
+   "potato_rotten",
+   "carrot_fresh",
+   "carrot_fresh",
+   "carrot_fresh",
+   "sweetpotato_fresh",
+   "sweetpotato_fresh",
+   "sweetpotato_fresh",
+   "sweetpotato_fresh",
+   "sweetpotato_fresh",
+   "sweetpotato_fresh",
+   "carrot_fresh",
+   "carrot_fresh",
+   "potato_fresh",
+   "potato_fresh",
+   "potato_fresh",
+   "sweetpotato_fresh",
+   "potato_fresh",
+   "potato_fresh",
+   "potato_fresh",
+   "potato_fresh",
+   "potato_fresh",
+   "potato_rotten",
+   "potato_fresh",
+   "potato_fresh",
+   "potato_rotten",
+   "potato_fresh",
+   "potato_fresh",
+   "potato_fresh",
+   "sweetpotato_fresh",
+   "sweetpotato_fresh",
+   "sweetpotato_fresh",
+   "potato_rotten",
+   "potato_rotten",
+   "potato_fresh",
+   "potato_fresh",
+   "potato_fresh",
+   "potato_fresh",
+   "potato_fresh",
+   "potato_fresh",
+   "potato_fresh",
+   "potato_fresh",
+   "potato_rotten",
+   "tomato_fresh",
+   "tomato_rotten",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_rotten",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_rotten",
+   "tomato_fresh",
+   "tomato_rotten",
+   "tomato_rotten",
+   "tomato_fresh",
+   "tomato_rotten"
+  ]
+ },
+ "L2": {
+  "per_class": {
+   "potato_fresh": {
+    "good": 17,
+    "n": 20,
+    "answers": {
+     "potato_fresh": 17,
+     "sweetpotato_fresh": 3
+    }
+   },
+   "rotten_fruit": {
+    "good": 10,
+    "n": 30,
+    "answers": {
+     "거름": 10,
+     "tomato_rotten": 9,
+     "potato_rotten": 8,
+     "potato_fresh": 3
+    }
+   },
+   "carrot_fresh": {
+    "good": 8,
+    "n": 10,
+    "answers": {
+     "carrot_fresh": 8,
+     "sweetpotato_fresh": 1,
+     "potato_rotten": 1
+    }
+   },
+   "carrot_rotten": {
+    "good": 0,
+    "n": 2,
+    "answers": {
+     "carrot_fresh": 2
+    }
+   },
+   "sweetpotato_fresh": {
+    "good": 7,
+    "n": 7,
+    "answers": {
+     "sweetpotato_fresh": 7
+    }
+   },
+   "potato_rotten": {
+    "good": 4,
+    "n": 10,
+    "answers": {
+     "potato_fresh": 6,
+     "potato_rotten": 4
+    }
+   },
+   "tomato_rotten": {
+    "good": 6,
+    "n": 11,
+    "answers": {
+     "tomato_fresh": 5,
+     "tomato_rotten": 6
+    }
+   },
+   "tomato_fresh": {
+    "good": 10,
+    "n": 10,
+    "answers": {
+     "tomato_fresh": 10
+    }
+   }
+  },
+  "weak_total": 48,
+  "pair_total": 14,
+  "answers": [
+   "potato_fresh",
+   "거름",
+   "tomato_rotten",
+   "tomato_rotten",
+   "tomato_rotten",
+   "potato_rotten",
+   "potato_rotten",
+   "거름",
+   "potato_rotten",
+   "거름",
+   "potato_rotten",
+   "tomato_rotten",
+   "거름",
+   "거름",
+   "potato_rotten",
+   "tomato_rotten",
+   "tomato_rotten",
+   "potato_fresh",
+   "거름",
+   "potato_rotten",
+   "거름",
+   "거름",
+   "potato_rotten",
+   "potato_rotten",
+   "tomato_rotten",
+   "tomato_rotten",
+   "potato_fresh",
+   "거름",
+   "potato_fresh",
+   "tomato_rotten",
+   "거름",
+   "carrot_fresh",
+   "carrot_fresh",
+   "carrot_fresh",
+   "carrot_fresh",
+   "carrot_fresh",
+   "sweetpotato_fresh",
+   "potato_rotten",
+   "carrot_fresh",
+   "carrot_fresh",
+   "carrot_fresh",
+   "sweetpotato_fresh",
+   "sweetpotato_fresh",
+   "sweetpotato_fresh",
+   "sweetpotato_fresh",
+   "sweetpotato_fresh",
+   "sweetpotato_fresh",
+   "carrot_fresh",
+   "carrot_fresh",
+   "potato_fresh",
+   "potato_fresh",
+   "potato_fresh",
+   "sweetpotato_fresh",
+   "potato_fresh",
+   "potato_fresh",
+   "potato_fresh",
+   "potato_fresh",
+   "potato_fresh",
+   "potato_rotten",
+   "potato_fresh",
+   "potato_fresh",
+   "potato_fresh",
+   "potato_fresh",
+   "potato_fresh",
+   "potato_fresh",
+   "sweetpotato_fresh",
+   "sweetpotato_fresh",
+   "sweetpotato_fresh",
+   "potato_rotten",
+   "potato_rotten",
+   "potato_fresh",
+   "potato_fresh",
+   "potato_fresh",
+   "potato_fresh",
+   "potato_fresh",
+   "potato_fresh",
+   "potato_fresh",
+   "potato_fresh",
+   "potato_rotten",
+   "tomato_fresh",
+   "tomato_rotten",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_rotten",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_rotten",
+   "tomato_fresh",
+   "tomato_rotten",
+   "tomato_rotten",
+   "tomato_fresh",
+   "tomato_rotten"
+  ]
+ }
+}
