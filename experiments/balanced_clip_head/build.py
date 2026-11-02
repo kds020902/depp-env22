@@ -1,6 +1,6 @@
 """Build candidate B1 of PREREG.md: the CLIP head retrained on a balanced list (fresh : rotten = 1 : 1 per vegetable).
 
-    python experiments/balanced_clip_head/build.py lists   # balanced list -> working folder t6/b1/, b1_counts.json here
+    python experiments/balanced_clip_head/build.py lists   # balanced list and its counts -> working folder t6/b1/
     python experiments/balanced_clip_head/build.py B1      # CLIP head on that list with TV-12's rules -> wm/B1.pth
 
 The photos stay in the working folder (licences); the review labels are the record files of the working folder
@@ -130,7 +130,7 @@ def lists():
     report["collapsed_removed"] = len(collapsed)
     report["copies_skipped"] = {f"{c} {src}": n for (c, src), n in skipped.items()}
     report["asian_fresh_cucumbers_kept"] = sum(r["group"] == "asian_cucumber" for r in final)
-    json.dump(report, open(HERE / "b1_counts.json", "w"), indent=1, ensure_ascii=False)
+    json.dump(report, open(OUT / "b1_counts.json", "w"), indent=1, ensure_ascii=False)  # copied here with the addendum once final
     print(json.dumps(report, indent=1, ensure_ascii=False))
 
 
