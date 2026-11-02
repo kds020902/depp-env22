@@ -22,8 +22,8 @@ GOLDEN = json.load(open(REPO / "tests/golden.json"))
 # tests/conftest.py puts src on the path
 from calibration import calibrated_probabilities  # noqa: E402
 from decision import (  # noqa: E402
-    clip_head_logits, clip_unknown_score, combined_logits, combined_probabilities, decide, is_unknown_combined,
-    new_vegetable_decision,
+    clip_head_logits, clip_unknown_score, combined_logits, combined_probabilities, decide, fresh_or_rotten_doubt, held_back,
+    is_unknown_combined, new_vegetable_decision,
 )
 from images import make_transform, read_image  # noqa: E402
 from labels import CLASS_NAMES  # noqa: E402
@@ -91,6 +91,9 @@ def test_full_decision_shapes(checkpoint):
     a = decide(logits, checkpoint, f)
     assert torch.equal(a.index, index) and torch.equal(a.unknown, still_unknown) and torch.equal(a.probabilities, out)
     assert torch.equal(a.five, p) and torch.allclose(a.probability, out[torch.arange(len(f)), index])
+    held = held_back(a, 0.9)
+    assert torch.equal(held, ~a.unknown & (a.probability < 0.9))
+    assert fresh_or_rotten_doubt(a).shape == (len(f),)
 
 
 # ---------- the same answers as when the model was adopted ----------
@@ -116,10 +119,26 @@ def _predict(extra: list[str]) -> dict:
         return {Path(r["image"]).name: r for r in csv.DictReader(open(out, encoding="utf-8"))}
 
 
+def _check_hold_back(rows: dict, golden: dict):
+    """Below 0.9 the answer is "판단 보류" (closest class kept in predicted_class); otherwise the answer is given."""
+    for name, want in golden.items():
+        held = want["probability"] < 0.9
+        assert rows[name]["held_back"] == ("yes" if held else "no"), name
+        assert (rows[name]["answer"] == "판단 보류") == held, name
+        assert rows[name]["message"].startswith("판단 보류: 가장 가까운 답은") == held, name
+
+
 def test_predict_cli_without_clip():
     rows = _predict(["--no-clip"])
     for name, want in GOLDEN["no_clip"].items():
         assert rows[name]["predicted_class"] == want["predicted_class"] and rows[name]["error"] == ""
+    _check_hold_back(rows, GOLDEN["no_clip"])
+    assert any(r["held_back"] == "yes" for r in rows.values())  # two of the ten photos are below 0.9 without CLIP
+
+
+def test_hold_back_can_be_turned_off():
+    rows = _predict(["--no-clip", "--hold-back-below", "0"])
+    assert all(r["held_back"] == "no" and r["answer"] != "판단 보류" for r in rows.values())
 
 
 @pytest.mark.skipif(not os.environ.get("FULL_TESTS"), reason="needs open_clip and the CLIP weights (about 600 MB); set FULL_TESTS=1")
@@ -128,3 +147,4 @@ def test_predict_cli_full_system():
     for name, want in GOLDEN["full"].items():
         assert rows[name]["predicted_class"] == want["predicted_class"], name
         assert abs(float(rows[name]["probability"]) - want["probability"]) < 2e-3, name
+    _check_hold_back(rows, GOLDEN["full"])

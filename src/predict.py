@@ -5,6 +5,10 @@ like one of the vegetables, and the second CLIP head may answer onion, sweet pot
 `pip install open_clip_torch` and downloads about 600 MB on first use; --no-clip uses the vegetable model alone (five
 vegetables only), --five-only skips the onion / sweet potato / green onion head.
 
+An answer whose probability is below --hold-back-below (0.9, decision.HOLD_BACK_BELOW) is held back: the photo is answered
+"판단 보류" with the closest answer and advice (check it yourself when the doubt is between fresh and rotten, else take the
+photo again). The CSV keeps the closest class in predicted_class; `answer` is what the person is told.
+
     python src/predict.py --input my_photos --model model.pth [--report report.html] [--heatmap heatmaps]
 """
 
@@ -18,14 +22,17 @@ from pathlib import Path
 import torch
 
 from calibration import marginal_probabilities, unknown_score
-from decision import clip_head_logits, clip_unknown_score, decide
+from decision import HOLD_BACK_BELOW, clip_head_logits, clip_unknown_score, decide, fresh_or_rotten_doubt, held_back
 from images import IMAGE_EXTENSIONS, make_transform, open_image
 from labels import CONDITION_NAMES, KOREAN, SPECIES_NAMES, UNKNOWN_MESSAGE, condition_of
 from networks import forward_with_rot_maps, input_size, load_model, resolve_device, rot_map_overlay
 from report import image_data_uri, write_report
 
-RETAKE_MESSAGE = "확신이 낮습니다. 채소 하나만, 밝은 곳에서, 상한 부분이 보이게 가까이 다시 찍어 보세요."
-FIELDS = ["image", "known", "message", "closest_guess", "retake", "predicted_class", "species", "condition", "probability",
+RETAKE_MESSAGE = "채소 하나만, 밝은 곳에서, 상한 부분이 보이게 가까이 다시 찍어 보세요."
+CHECK_ROT_MESSAGE = "정상인지 상했는지 헷갈립니다. 상했을 수 있으니 직접 확인하세요."
+HELD = "판단 보류"
+FIELDS = ["image", "answer", "held_back", "known", "message", "closest_guess", "retake", "predicted_class", "species",
+          "condition", "probability",
           "uncertain", "species_marginal_prediction", "species_probability", "condition_marginal_prediction",
           "condition_probability", "unknown_score", "clip_unknown_score", "rot_evidence", "heatmap", "error"]
 
@@ -39,9 +46,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--threads", type=int, default=6)
     parser.add_argument("--uncertain-below", type=float, default=0.5,
                         help="Mark a photo as uncertain when the top class probability is below this value.")
-    parser.add_argument("--retake-below", type=float, default=0.9,
-                        help="Suggest taking the photo again when the top class probability is below this value "
-                             "(combined model on Valid: 98.9%% of photos at 90%% or more were right, 68%% of those below).")
+    parser.add_argument("--hold-back-below", "--retake-below", dest="hold_back_below", type=float, default=HOLD_BACK_BELOW,
+                        help="Answer '판단 보류' (with the closest answer and advice) when the answer's probability is below "
+                             "this value; 0 always answers. Default 0.9, chosen on the development photos "
+                             "(experiments/improve_without_photos).")
     parser.add_argument("--no-clip", action="store_true",
                         help="Use the vegetable model alone, without CLIP (faster, no 600 MB download; five vegetables only, "
                              "and no closest-thing hint for photos turned away).")
@@ -94,7 +102,7 @@ class Classifier:
             return "채소 모델 + CLIP 분류기 2개 (8종: 다섯 채소 + 양파·고구마·대파)"
         return "채소 모델 + CLIP 분류기 (다섯 채소)" if self.clip is not None else "채소 모델만 (다섯 채소)"
 
-    def classify(self, photo, retake_below: float) -> dict:
+    def classify(self, photo, hold_back_below: float) -> dict:
         """Everything predict.py shows for one photo."""
         with torch.inference_mode():
             logits, rot_maps = forward_with_rot_maps(self.model, self.checkpoint, self.transform(photo).unsqueeze(0).to(self.device))
@@ -108,18 +116,20 @@ class Classifier:
         rot_map = rot_maps[min(kind, rot_maps.shape[0] - 1)]
         no_map = unknown or kind >= rot_maps.shape[0] or condition_of(index) == "not_judged"
         scale = self.rot_scale or float(rot_map.max()) or 1.0
-        retake = unknown or probability < retake_below
+        held = bool(held_back(a, hold_back_below)[0])
         message, closest = (UNKNOWN_MESSAGE if unknown else ""), ""
         if unknown and self.clip is not None:
             closest, sentence = self.clip.message(features[0])
             message = f"{UNKNOWN_MESSAGE} ({sentence})"
-        elif retake:
-            message = RETAKE_MESSAGE
+        elif held:
+            doubt = CHECK_ROT_MESSAGE if bool(fresh_or_rotten_doubt(a)[0]) else "어떤 채소인지 확신이 낮습니다."
+            message = (f"{HELD}: 가장 가까운 답은 {KOREAN[SPECIES_NAMES[kind]]} {KOREAN[condition_of(index)]}"
+                       f"(확률 {100 * probability:.0f}%)입니다. {doubt} {RETAKE_MESSAGE}")
         return {
             "index": index, "unknown": unknown, "probability": probability, "probabilities": a.probabilities[0],
             "species_index": int(species_probs[0].argmax()), "species_probability": float(species_probs[0].max()),
             "condition_index": int(condition_probs[0].argmax()), "condition_probability": float(condition_probs[0].max()),
-            "retake": retake, "message": message, "closest": closest,
+            "held": held, "retake": unknown or held, "message": message, "closest": closest,
             "unknown_score": float(unknown_score(logits)[0]),
             "clip_unknown_score": None if features is None else
             float(clip_unknown_score(clip_head_logits(features, self.checkpoint), self.checkpoint, features)[0]),
@@ -129,8 +139,10 @@ class Classifier:
 
 def csv_row(path: Path, r: dict, names: list[str], uncertain_below: float) -> dict:
     index, unknown = r["index"], r["unknown"]
+    answer = UNKNOWN_MESSAGE if unknown else HELD if r["held"] else f"{KOREAN[SPECIES_NAMES[index // 2]]} {KOREAN[condition_of(index)]}"
     row = {
-        "image": str(path), "known": "no" if unknown else "yes", "message": r["message"], "closest_guess": r["closest"],
+        "image": str(path), "answer": answer, "held_back": "yes" if r["held"] else "no",
+        "known": "no" if unknown else "yes", "message": r["message"], "closest_guess": r["closest"],
         "retake": "yes" if r["retake"] else "no", "predicted_class": "unknown" if unknown else names[index],
         "species": "" if unknown else SPECIES_NAMES[index // 2], "condition": "" if unknown else condition_of(index),
         "probability": round(r["probability"], 4), "uncertain": "yes" if r["probability"] < uncertain_below else "no",
@@ -145,14 +157,13 @@ def csv_row(path: Path, r: dict, names: list[str], uncertain_below: float) -> di
 
 
 def console_line(path: Path, r: dict, names: list[str], uncertain_below: float, calibrated: bool) -> str:
-    if r["unknown"]:
+    if r["unknown"] or r["held"]:
         return f"{path.name}: {r['message']}"
     index = r["index"]
     flag = " [uncertain]" if r["probability"] < uncertain_below else ""
     word = "probability" if calibrated else "uncalibrated score"
-    advice = f" - {RETAKE_MESSAGE}" if r["retake"] else ""
     return (f"{path.name}: {names[index]} ({KOREAN[SPECIES_NAMES[index // 2]]} {KOREAN[condition_of(index)]}, "
-            f"{word} {100 * r['probability']:.1f}%){flag}{advice}")
+            f"{word} {100 * r['probability']:.1f}%){flag}")
 
 
 def report_entry(path: Path, photo, r: dict) -> dict:
@@ -160,7 +171,8 @@ def report_entry(path: Path, photo, r: dict) -> dict:
     return {
         "name": path.name, "verdict": "unknown" if unknown else condition_of(index),
         "species": KOREAN[SPECIES_NAMES[index // 2]], "condition": KOREAN[condition_of(index)],
-        "probability": r["probability"], "retake": r["retake"], "retake_message": RETAKE_MESSAGE, "closest": r["closest"],
+        "probability": r["probability"], "held": r["held"], "advice": r["message"][len(HELD) + 2:] if r["held"] else "",
+        "closest": r["closest"],
         "hint": r["message"][len(UNKNOWN_MESSAGE):].strip(" ()") if unknown else "",
         "rot": None if r["rot_evidence"] is None else round(r["rot_evidence"], 3), "photo_uri": image_data_uri(photo),
         "heat_uri": "" if r["rot_map"] is None else image_data_uri(rot_map_overlay(photo, r["rot_map"], r["scale"], size=360, side_by_side=False)),
@@ -170,7 +182,7 @@ def report_entry(path: Path, photo, r: dict) -> dict:
 def write_html(path: Path, entries: list[dict], system: Classifier, source: Path) -> None:
     names = "오이·감자·토마토·피망·당근·양파·고구마·대파" if system.new_vegetables else "오이·감자·토마토·피망·당근"
     notes = [
-        "확률은 Valid 사진으로 보정한 값입니다. 이 판정의 확률이 90% 미만이면 다시 찍기를 권합니다.",
+        "확률은 Valid 사진으로 보정한 값입니다. 확률이 90% 미만이면 답하지 않고 '판단 보류'로 가장 가까운 답과 안내를 보여 줍니다.",
         "상한 흔적은 모델이 '비정상' 쪽으로 본 정도입니다. 1이면 Valid 비정상 사진의 중간 수준입니다.",
         "'상한 곳 보기'의 빨간 부분은 모델이 상했다고 본 곳입니다. 7×7칸 단위라 대략적인 위치입니다.",
         f"'학습된 데이터가 아닙니다'는 {names} 사진이 아닌 것 같다는 뜻입니다."
@@ -204,7 +216,7 @@ def main():
         for path in photos:
             try:
                 photo = open_image(path)
-                r = system.classify(photo, args.retake_below)
+                r = system.classify(photo, args.hold_back_below)
                 row = csv_row(path, r, names, args.uncertain_below)
                 if args.heatmap and r["rot_map"] is not None:
                     row["heatmap"] = str(args.heatmap / f"{path.stem}_heatmap.jpg")

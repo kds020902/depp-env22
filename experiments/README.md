@@ -23,7 +23,7 @@
 | [clip_gate](clip_gate/README.md) | CLIP 문지기("다섯 채소인가?"만 묻기) | 채택 안 함 |
 | [tta](tta/README.md) | 뒤집기 평균(TTA) | 채택 안 함 |
 | [posthoc_literature](posthoc_literature/README.md) | 논문 방법을 재학습 없이 적용 | 채택 안 함 |
-| [improve_without_photos](improve_without_photos/README.md) | 글 설명 점수 섞기, 조각 보기, 판단 보류 | 채택 안 함 (판단 보류는 나중에) |
+| [improve_without_photos](improve_without_photos/README.md) | 글 설명 점수 섞기, 조각 보기, 판단 보류 | 2·3 채택 안 함, 판단 보류는 predict.py 기본값으로 반영 |
 
 ## 학습 사진 늘리기·고치기
 

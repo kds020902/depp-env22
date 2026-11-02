@@ -168,3 +168,20 @@ def decide(logits: torch.Tensor, checkpoint: dict, features: torch.Tensor | None
         unknown, switched = five_unknown, torch.zeros_like(five_unknown)
     probability = probabilities[torch.arange(len(index)), index]
     return Answers(probabilities, index, probability, unknown, switched, five, five_unknown)
+
+
+# ---------- holding an answer back (experiments/improve_without_photos, part 4) ----------
+# The pre-registered rule picked 0.9: on the outside development photos the answers given at 0.9 or more were 96.3% right
+# (91.6% when every answer is given), and confidently wrong answers fell from 34 to 12.
+HOLD_BACK_BELOW = 0.9
+
+
+def held_back(a: Answers, below: float = HOLD_BACK_BELOW) -> torch.Tensor:
+    """Answers given with too little confidence to show as an answer: not turned away and probability below `below`."""
+    return ~a.unknown & (a.probability < below)
+
+
+def fresh_or_rotten_doubt(a: Answers) -> torch.Tensor:
+    """The two most likely classes are the fresh and the rotten class of one vegetable."""
+    top2 = a.probabilities.topk(2, dim=1).indices
+    return top2[:, 0] // len(CONDITION_NAMES) == top2[:, 1] // len(CONDITION_NAMES)

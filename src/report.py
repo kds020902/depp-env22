@@ -1,7 +1,8 @@
 """Self-contained HTML report for predict.py --report: one file with the photos embedded, opens offline in any browser.
 
-Summary counts, a per-vegetable table, filters (rotten / take again / turned away / fresh) and one card per photo with
-its verdict, probability, rot-evidence meter, retake advice or closest-thing hint, and the rot heatmap on a button.
+Summary counts, a per-vegetable table, filters (rotten / held back / turned away / fresh) and one card per photo with
+its verdict, probability, rot-evidence meter, advice when the answer is held back or the closest-thing hint for a photo
+turned away, and the rot heatmap on a button.
 """
 
 from __future__ import annotations
@@ -29,17 +30,21 @@ def _pct(value: float) -> str:
     return "99% 이상" if value >= 0.995 else "1% 미만" if value < 0.005 else f"{round(value * 100)}%"
 
 
-ATTENTION = {"rotten": 0, "unknown": 2, "error": 3, "fresh": 4, "not_judged": 4}
+ATTENTION = {"rotten": 0, "held": 1, "unknown": 2, "error": 3, "fresh": 4, "not_judged": 4}
 
 
 def _card(entry: dict) -> str:
     e = {k: html.escape(str(v)) if isinstance(v, str) else v for k, v in entry.items()}
     verdict = entry["verdict"]
-    retake = entry.get("retake") and verdict in ("fresh", "rotten", "not_judged")
-    if verdict in ("fresh", "rotten", "not_judged"):
+    held = bool(entry.get("held")) and verdict in ("fresh", "rotten", "not_judged")
+    if held:
+        head = ('<div class="verdict"><span class="chip held">판단 보류</span></div>'
+                f'<p class="prob">가장 가까운 답: <b>{e["species"]} {e["condition"]}</b> (확률 {_pct(entry["probability"])})</p>')
+    elif verdict in ("fresh", "rotten", "not_judged"):
         head = (f'<div class="verdict"><span class="veg">{e["species"]}</span>'
                 f'<span class="chip {verdict}">{e["condition"]}</span></div>'
                 f'<p class="prob">이 판정의 확률 <b>{_pct(entry["probability"])}</b></p>')
+    if verdict in ("fresh", "rotten", "not_judged"):
         rot = entry.get("rot")
         meter = "" if rot is None else (
             f'<div class="rot" title="상한 흔적: Valid 비정상 사진의 중간 수준을 1로 본 값">'
@@ -52,8 +57,8 @@ def _card(entry: dict) -> str:
     else:
         body = f'<div class="verdict"><span class="chip unknown">열 수 없음</span></div><p class="prob">{e.get("error", "")}</p>'
     notes = ""
-    if retake:
-        notes += f'<p class="note warn">{e["retake_message"]}</p>'
+    if held:
+        notes += f'<p class="note warn">{e["advice"]}</p>'
     if verdict == "unknown" and entry.get("hint"):
         notes += f'<p class="note">{e["hint"]}</p>'
     shot = ""
@@ -63,26 +68,26 @@ def _card(entry: dict) -> str:
         shot = f'<figure class="shot"><img class="photo" src="{entry["photo_uri"]}" alt="{e["name"]}">{heat}</figure>'
     button = ('<button class="heat-btn" type="button" aria-pressed="false">상한 곳 보기</button>'
               if entry.get("heat_uri") else "")
-    flags = f'data-verdict="{verdict}" data-retake="{1 if retake else 0}"'
+    flags = f'data-verdict="{verdict}" data-held="{1 if held else 0}"'
     return (f'<article class="card" {flags}>{shot}<div class="card-body">'
             f'<p class="name" title="{e["name"]}">{e["name"]}</p>{body}{notes}{button}</div></article>')
 
 
 def write_report(path: Path, entries: list[dict], meta: dict) -> None:
-    """entries: dicts with name, verdict (fresh/rotten/not_judged/unknown/error), species, condition (Korean), probability,
-    retake, retake_message, closest, hint, rot, photo_uri, heat_uri, error. meta: model, source, notes."""
-    counts = {v: sum(e["verdict"] == v for e in entries) for v in ("fresh", "rotten", "unknown", "error")}
-    retakes = sum(bool(e.get("retake")) and e["verdict"] in ("fresh", "rotten") for e in entries)
+    """entries: dicts with name, verdict (fresh/rotten/not_judged/unknown/error), held (answer held back), species,
+    condition (Korean), probability, advice, closest, hint, rot, photo_uri, heat_uri, error. meta: model, source, notes.
+    Counts and the per-vegetable table count only answers that were given (not held back)."""
+    held = sum(bool(e.get("held")) for e in entries)
+    counts = {v: sum(e["verdict"] == v and not e.get("held") for e in entries) for v in ("fresh", "rotten", "unknown", "error")}
     table = {s: [0, 0] for s in SPECIES_ORDER}
     for e in entries:
-        if e["verdict"] in ("fresh", "rotten"):
+        if e["verdict"] in ("fresh", "rotten") and not e.get("held"):
             table[e["species"]][e["verdict"] == "rotten"] += 1
     rows = "".join(f'<tr><th scope="row">{s}</th><td>{a}</td><td>{b}</td><td>{a + b}</td></tr>'
                    for s, (a, b) in table.items() if a + b)
-    ordered = sorted(entries, key=lambda e: (1 if e["verdict"] == "fresh" and e.get("retake") else ATTENTION[e["verdict"]],
-                                             e["name"]))
+    ordered = sorted(entries, key=lambda e: (ATTENTION["held"] if e.get("held") else ATTENTION[e["verdict"]], e["name"]))
     cards = "\n".join(_card(e) for e in ordered)
-    tiles = [("전체", len(entries), "all"), ("비정상", counts["rotten"], "rotten"), ("다시 찍기 권장", retakes, "retake"),
+    tiles = [("전체", len(entries), "all"), ("비정상", counts["rotten"], "rotten"), ("판단 보류", held, "held"),
              ("학습된 데이터가 아닙니다", counts["unknown"] + counts["error"], "unknown"), ("정상", counts["fresh"], "fresh")]
     tile_html = "".join(f'<button class="tile t-{k}" type="button" data-filter="{k}" aria-pressed="{str(k == "all").lower()}">'
                         f'<span class="tile-n">{n}</span><span class="tile-l">{label}</span></button>' for label, n, k in tiles)
@@ -137,7 +142,7 @@ h2 {{ margin: 0; font-size: 1.05rem; }}
 .tile-n {{ font-family: var(--font-data); font-size: 1.6rem; font-weight: 600; font-variant-numeric: tabular-nums; }}
 .tile-l {{ color: var(--ink-2); font-size: 0.8125rem; }}
 .tile[aria-pressed="true"] {{ border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent); }}
-.tile.t-rotten .tile-n {{ color: var(--rotten); }} .tile.t-retake .tile-n {{ color: var(--warn); }} .tile.t-fresh .tile-n {{ color: var(--fresh); }}
+.tile.t-rotten .tile-n {{ color: var(--rotten); }} .tile.t-held .tile-n {{ color: var(--warn); }} .tile.t-fresh .tile-n {{ color: var(--fresh); }}
 .tile:focus-visible, .heat-btn:focus-visible, .switch input:focus-visible {{ outline: 3px solid var(--accent); outline-offset: 2px; }}
 .tally {{ display: grid; gap: 8px; min-width: 0; }}
 .table-scroll {{ overflow-x: auto; }}
@@ -162,6 +167,7 @@ tr:last-child th, tr:last-child td {{ border-bottom: 0; }}
 .chip.fresh {{ color: var(--fresh); background: var(--fresh-bg); }}
 .chip.rotten {{ color: var(--rotten); background: var(--rotten-bg); }}
 .chip.unknown {{ color: var(--ink-2); background: var(--muted-bg); }}
+.chip.held {{ color: var(--warn); background: var(--warn-bg); }}
 .prob {{ margin: 0; font-size: 0.8125rem; color: var(--ink-2); }}
 .prob b {{ font-family: var(--font-data); color: var(--ink); font-weight: 600; }}
 .rot {{ display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 8px; align-items: center; font-size: 0.75rem; color: var(--ink-2); }}
@@ -205,8 +211,8 @@ tr:last-child th, tr:last-child td {{ border-bottom: 0; }}
 <script>
 (() => {{
   const cards = [...document.querySelectorAll(".card")], tiles = [...document.querySelectorAll(".tile")];
-  const match = {{ all: () => true, rotten: (c) => c.dataset.verdict === "rotten", retake: (c) => c.dataset.retake === "1",
-    unknown: (c) => c.dataset.verdict === "unknown" || c.dataset.verdict === "error", fresh: (c) => c.dataset.verdict === "fresh" }};
+  const match = {{ all: () => true, rotten: (c) => c.dataset.verdict === "rotten" && c.dataset.held === "0", held: (c) => c.dataset.held === "1",
+    unknown: (c) => c.dataset.verdict === "unknown" || c.dataset.verdict === "error", fresh: (c) => c.dataset.verdict === "fresh" && c.dataset.held === "0" }};
   tiles.forEach((t) => t.addEventListener("click", () => {{
     tiles.forEach((x) => x.setAttribute("aria-pressed", String(x === t)));
     let shown = 0;

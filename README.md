@@ -22,13 +22,16 @@
 3. **양파·고구마·대파 (TV-9·TV-10):** 두 번째 CLIP 분류기가 세 채소일 때만 답을 바꾼다. 감자를 고구마로 답하는 경우가 생겨 새 인터넷 시험지 점수가 3장 줄었다([new_vegetables](experiments/new_vegetables/README.md)).
 4. **워터마크 지름길 (TV-11):** 상한 사진의 절반쯤에 스톡 워터마크가 있어 모델이 "사진 위 글자 = 상함"을 배웠다. 가짜 워터마크를 넣어 다시 학습해, 워터마크 때문에 답이 바뀌는 사진을 17장에서 6~8장으로 줄였다([watermark](experiments/watermark/README.md)).
 5. **글 설명으로 거르기 (TV-12):** 처음 보는 시험지 T3로 채택했다. T3에서 거른 "다섯 채소가 아닌 사진"이 41장에서 48장으로 늘었다([results/t3_test](results/t3_test/README.md)).
-6. **추가 기능:** 상했다고 본 부분을 사진 위에 빨갛게 표시하고, 확신이 낮으면 다시 찍기를 권한다([추가 기능](results/10class/extra_features/README.md)).
+6. **추가 기능:** 상했다고 본 부분을 사진 위에 빨갛게 표시한다([추가 기능](results/10class/extra_features/README.md)).
 7. **채택하지 않은 시도:** 공통점은 밭·휴대폰 사진에서 떨어지거나 효과가 없었다는 것이다([실험 색인](experiments/README.md)).
     - T3 약점 고치기(후보 6개)
     - 학습 사진 수 균형 맞추기(개발용 718장 중 655 → 655)
     - 새 사진 없이 판정 개선(글 설명 점수 섞기, 사진 조각 보기)
-    - 확신이 낮을 때 판단을 보류하는 방식은 나중에 정한다.
-8. **남은 약점:** 원인은 실제로 찍은 사진(휴대폰·부엌·마트)이 학습에 거의 없기 때문으로 본다.
+8. **판단 보류 (답하는 방식만 바꿈, `model.pth`는 그대로):** 확률이 90% 미만이면 답 대신 "판단 보류"와 가장 가까운 답, 안내를 보여 준다.
+    - 바깥 개발용 사진 403장에서 81%에 답하고, 답한 사진의 정답률이 91.6%에서 96.3%로 오른다.
+    - 자신 있게 틀린 답은 34장에서 12장으로 준다.
+    - 보류한 77장 중 55장은 원래 맞았을 사진이다([improve_without_photos](experiments/improve_without_photos/README.md)).
+9. **남은 약점:** 원인은 실제로 찍은 사진(휴대폰·부엌·마트)이 학습에 거의 없기 때문으로 본다.
     - 흙 묻은 정상 감자를 상했다고 본다(T3에서 20장 중 10장만 맞힘).
     - 상한 토마토 초기 증상을 놓친다.
     - 처음 보는 사진에서 상한 채소 5개 중 1개를 정상이라고 답한다.
@@ -319,7 +322,7 @@ Python 3.11~3.12, PyTorch 2.8.0 CPU 환경에서 확인했다.
 
 ```bash
 python -m pip install torch==2.8.0 torchvision==0.23.0 --index-url https://download.pytorch.org/whl/cpu
-python -m pip install "Pillow>=10.0,<12.0" "numpy>=1.26,<3.0" matplotlib open_clip_torch
+python -m pip install -r requirements.txt
 python src/predict.py --model model.pth --input my_photos --output results.csv
 ```
 
@@ -331,7 +334,7 @@ python src/predict.py --model model.pth --input my_photos --output results.csv
 - `probability`: 예측한 클래스의 보정된 확률(0~1)이다. `prob_*` 열은 16개 클래스 각각의 확률이다. 양파·고구마·대파로 답한 사진은 두 번째 CLIP 분류기의 확률이고, 나머지는 다섯 채소 확률이다(새 채소 칸은 0). `--five-only`면 10개 클래스다.
 - `species_probability`, `condition_probability`: 채소 종류만, 정상/비정상만 따로 본 확률이다(10개 확률을 더한 값).
 - `uncertain`: 확률이 0.5보다 낮으면 `yes`다. 기준은 `--uncertain-below`로 바꿀 수 있다.
-- `retake`: 이 판정의 확률이 90% 미만이거나 "학습된 데이터가 아닙니다"로 거른 사진이면 `yes`이고, `message`에 다시 찍기 안내가 들어간다. 두 모델을 합친 확률로 Valid에서 90% 이상은 98.9%, 미만은 68%를 맞혔다. 기준은 `--retake-below`로 바꿀 수 있다.
+- `answer`, `held_back`: 사람에게 보여 주는 답이다. 확률이 90% 미만이면 `answer=판단 보류`, `held_back=yes`이고, `message`에 가장 가까운 답과 안내가 들어간다(정상/상함 사이에서 헷갈리면 "상했을 수 있으니 직접 확인하세요"). `predicted_class`에는 가장 가까운 답이 그대로 남는다. 기준은 `--hold-back-below`로 바꾸고, 0이면 항상 답한다. `retake`는 판단 보류이거나 거른 사진이면 `yes`다.
 - `--report 리포트.html`을 붙이면 결과를 한 장짜리 HTML 보고서로도 만든다. 사진이 파일 안에 들어 있어 인터넷 없이 열린다. 요약 숫자(누르면 그 사진만 보기), 채소별 표, 사진마다 판정·확률·상한 흔적·다시 찍기 안내와 "상한 곳 보기" 버튼이 있다. 확인이 필요한 사진(비정상, 다시 찍기, 거른 사진)이 먼저 나온다.
 - `rot_evidence`, `heatmap`: 모델이 상했다고 본 정도(1이면 Valid 비정상 사진의 중간 수준)와 히트맵 파일이다. `--heatmap 폴더`를 주면 사진마다 원본과, 상했다고 본 부분을 빨갛게 칠한 사진을 나란히 저장한다.
 - `closest_guess`: 거른 사진이 무엇과 가장 비슷한지(예: 사과) CLIP으로 알려 준다. `message`에도 "(사과로 보입니다.)"처럼 붙는다.
@@ -366,38 +369,41 @@ python src/make_plots.py --runs results/6class --out results/6class/model_compar
 
 ```
 depp-env22/
-├── README.md
+├── README.md                이 문서
+├── data_sources.md          사진 출처·라이선스와 다시 받는 방법
+├── model.pth                지금 모델 TV-12 (채소 모델 + CLIP 분류기 2개 + 보정·거르기 기준)
+├── requirements.txt         결과를 만든 환경 그대로 고정한 패키지 (requirements-dev.txt: + pytest)
 ├── 학습결과_확인.ipynb      결과를 훑어보는 노트북
-├── model.pth                최종 모델 (EfficientNet-B0 가중치 + CLIP 분류기 + 양파·고구마·대파용 두 번째 CLIP 분류기)와 클래스·전처리·성능 정보
-├── requirements.txt         필요한 파이썬 패키지
-├── dataset/                 사진 1,860장과 데이터셋 설명
-│   ├── train/ valid/ test/  각각 P_fresh/(정상), N_rotten/(비정상)
-│   ├── manifest.csv         사진마다 분할·클래스·그룹·출처·해시
-│   ├── README.md            출처, 검수 기준, 중복 검사 방법, 다시 만드는 방법
-│   ├── summary.json         클래스·분할별 수량과 출처 정보
-│   ├── review/              눈 검수 기록 (1차, 2차, 3차)
-│   └── tools/               두 Kaggle 원본으로 dataset/을 다시 만드는 스크립트 (2차, 3차)
+├── dataset/                 사진 1,860장 (train/ valid/ test/ × P_fresh/ N_rotten/), manifest.csv, 만드는 도구
 ├── src/
-│   ├── train.py             학습
-│   ├── predict.py           내 사진 예측 (보정된 확률, "학습된 데이터가 아닙니다")
-│   ├── report.py            predict.py --report의 HTML 보고서
-│   ├── clip_model.py        CLIP 특징 계산, 거른 사진에 "가장 가까운 것" 알려주기
-│   ├── train_clip_head.py   CLIP 특징 위의 분류기(10개 클래스 + "다섯 채소가 아님")를 학습해 model.pth에 넣는 스크립트
-│   ├── train_new_veg_head.py 양파·고구마·대파용 두 번째 CLIP 분류기(16칸 + "여덟 채소가 아님")를 만들어 model.pth에 넣는 스크립트
-│   ├── calibrate.py         가중치에 확률 보정·거르기 기준을 붙이는 스크립트 (--extra-photos: 실제 장면 채소도 함께 사용)
-│   ├── model_utils.py       공통 함수 (모델 불러오기, 전처리, 클래스 이름)
-│   ├── watermark_aug.py     학습용 가짜 워터마크 (train.py --watermark-fresh/--watermark-rotten, experiments/watermark)
-│   ├── make_plots.py        학습 곡선, 혼동행렬, 모델 비교 그래프
-│   └── gradcam.py           모델이 사진의 어느 부분을 보고 판단했는지 보여주는 그림
-├── results/                 실험별 metrics.json, history.csv, val/test_predictions.csv, 그래프
-│   ├── 16class/new_veg_test/  새 채소 블라인드 테스트셋 1~4 (양파·고구마·대파 198장) 목록
-│   ├── 10class/             현재 10개 클래스 모델의 기록 (calibration_unknown/: 확률 보정·거르기 평가, outside_test/: 인터넷 사진 평가, outside_test2/: 새 인터넷 블라인드 테스트셋 241장, anyphoto_test/: "아무 사진" 시험지 255장, model_comparison/: 초기 모델부터 지금까지 같은 사진으로 비교, system_checks/: 과대·과소적합·회전·전처리 점검, extra_features/: 히트맵·다시 찍기 안내·가장 가까운 것)
-│   ├── (그 밖의 폴더)       6개 클래스 때의 모델 비교 (같은 Test 180장, 6개 클래스 가중치는 커밋 9dc8749의 model.pth)
-│   └── round1_v1_data/      1차 모델의 학습 기록 (1차 가중치는 커밋 03db425에 있음)
-└── experiments/             추가 실험 기록 (채택: real_scene_threshold, clip_classifier, not_five_class, clip_only_reject, new_vegetables, watermark / 채택 안 함: field_tomato, partial_rot, 10class_tuning, pepper_web, rotten_phone, more_data, fix_carrot_cucumber, asian_cucumber, fruit_other, fruit_gate, posthoc_literature, clip_gate, tta, clip_head_more_data, weak_spots, fusion_weight, fruit_farm_tomato, zero_shot_reject / 측정: session_overlap)
+│   ├── predict.py           내 사진 예측: CSV, 화면 출력, --report HTML, --heatmap
+│   ├── decision.py          최종 답을 내는 곳 하나 (decide: 두 모델 합치기, 거르기, 새 채소, 판단 보류)
+│   ├── networks.py          채소 모델 만들기·불러오기, 상한 곳 지도
+│   ├── calibration.py       확률 보정과 채소 모델의 거르기 점수
+│   ├── images.py            사진 열기, 전처리·증강
+│   ├── labels.py            클래스·채소 이름과 한국어 이름
+│   ├── model_utils.py       옛 실험 스크립트용 창구 (위 모듈들을 그대로 다시 내보냄)
+│   ├── clip_model.py        CLIP 특징, 거른 사진에 "가장 가까운 것" 알려주기
+│   ├── report.py            --report HTML 보고서
+│   ├── train.py             채소 모델 학습
+│   ├── calibrate.py         확률 보정·거르기 기준 붙이기
+│   ├── train_clip_head.py   CLIP 분류기(10칸 + "다섯 채소 아님") 학습
+│   ├── train_new_veg_head.py 양파·고구마·대파용 두 번째 CLIP 분류기 학습
+│   ├── watermark_aug.py     학습용 가짜 워터마크
+│   └── make_plots.py        학습 곡선·혼동행렬·모델 비교 그래프
+├── tests/                   pytest (데이터 분할, 모델 버전, 판정 함수, 정답 사진 10장, 판단 보류)
+├── tools/fetch_listed_photos.py  시험지 사진 다시 받기
+├── results/
+│   ├── scorecard/           성적표 (대표 성능 T3, 오류 종류별 비율)
+│   ├── t3_test/ t4_test/    블라인드 테스트셋 목록과 채점 기록
+│   ├── 10class/ 16class/    지금 모델의 평가 기록 (인터넷 시험지, "아무 사진", 새 채소 시험지, 점검)
+│   └── 6class/              6개 클래스 때의 모델 비교와 1차 기록
+├── experiments/             실험 기록 27개 (목록: experiments/README.md, 공통 코드: experiments/watermark/common.py)
+└── .github/workflows/       push마다 빠른 테스트
 ```
 
-가중치는 용량 때문에 최종 모델(`model.pth`)만 올렸다.
+- **가중치:** 최종 모델(`model.pth`)만 올렸다. 예전 버전은 버전 표의 커밋으로 받는다.
+- **저장소 크기:** git 이력에 예전 `model.pth`들이 있어 전체 이력은 약 400MB다. 최신 버전만 쓰려면 `git clone --depth 1 <저장소 주소>`로 받는다(사진 약 300MB 포함). 예전 버전(TV-n)을 꺼내려면 전체 이력이 필요하다.
 
 ## 한계
 
