@@ -15,7 +15,7 @@ ARCH, PRETRAINED = "ViT-B-16", "datacomp_xl_s13b_b90k"
 TEMPLATES = ["a photo of a {}.", "a close-up photo of a {}.", "a photo of a fresh {}.", "a photo of a rotten {}.",
              "a photo of {}s."]
 TRAINED = {"cucumber": "오이", "potato": "감자", "tomato": "토마토", "bell pepper": "피망", "carrot": "당근"}
-# words for vegetables added later (model_utils.SPECIES_NAMES -> word in the lists below)
+# words for vegetables added later (labels.SPECIES_NAMES -> word in the lists below)
 SPECIES_WORDS = {"cucumber": ["cucumber"], "potato": ["potato"], "tomato": ["tomato"], "bellpepper": ["bell pepper"],
                  "carrot": ["carrot"], "onion": ["onion"], "sweetpotato": ["sweet potato"], "greenonion": ["leek", "green onion"]}
 FRUITS = {

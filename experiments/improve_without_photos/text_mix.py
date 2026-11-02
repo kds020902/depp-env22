@@ -10,9 +10,7 @@ candidate is scored on the development photos with the 8 rules of experiments/t3
 from __future__ import annotations
 
 import copy
-import importlib.util
 import json
-import os
 import sys
 from pathlib import Path
 
@@ -20,15 +18,11 @@ import numpy as np
 import torch
 
 HERE = Path(__file__).resolve().parent
-os.environ.setdefault("T3WS_LISTS", os.environ["DEPP_WORK"] + "/t5/lists")
 sys.path.insert(0, str(HERE.parent / "watermark"))
-from common import REPO, W, clip_features, dev_sets, kept_right_per_class  # noqa: E402
+from common import REPO, W, clip_features, dev_rules, dev_score, dev_sets, kept_right_per_class  # noqa: E402
 from model_utils import (  # noqa: E402
     clip_head_logits, clip_unknown_score, combined_logits, fit_temperature,
 )
-
-spec = importlib.util.spec_from_file_location("t3ws_evaluate", HERE.parent / "t3_weak_spots/evaluate.py")
-t3ws = importlib.util.module_from_spec(spec); spec.loader.exec_module(t3ws)
 
 ALPHAS = (0.1, 0.25, 0.5, 1.0)
 FIVE_DEV = ("valid", "odev", "o160", "asian37")
@@ -49,7 +43,7 @@ def candidate(tv12: dict, alpha: float, F: dict, B: dict, y_valid: np.ndarray) -
 def main():
     sets = dev_sets(); F = clip_features(sets); B = dict(np.load(W / "b_WC.npz"))
     tv12 = torch.load(REPO / "model.pth", map_location="cpu", weights_only=True)
-    res = {"TV-12": t3ws.score("TV-12", REPO / "model.pth", "WC")}
+    res = {"TV-12": dev_score(REPO / "model.pth")}
     res["TV-12"]["five_dev_total"] = sum(res["TV-12"][n]["kept_correct"] for n in FIVE_DEV)
     res["TV-12"]["per_class"] = kept_right_per_class(tv12, FIVE_DEV)
     # reference only (not used to choose): the text prompts alone, argmax over the 10 classes, no turning away
@@ -58,10 +52,10 @@ def main():
     for alpha in ALPHAS:
         tag = f"Z{int(round(alpha * 100)):03d}"
         ck = candidate(tv12, alpha, F, B, sets["valid"][1]); torch.save(ck, W / f"{tag}.pth")
-        c = res[tag] = t3ws.score(tag, W / f"{tag}.pth", "WC")
+        c = res[tag] = dev_score(W / f"{tag}.pth")
         c["five_dev_total"] = sum(c[n]["kept_correct"] for n in FIVE_DEV)
         c["per_class"] = kept_right_per_class(ck, FIVE_DEV)
-        c["checks"] = t3ws.dev_rules(c, res["TV-12"]); c["all_kept"] = all(c["checks"].values())
+        c["checks"] = dev_rules(c, res["TV-12"]); c["all_kept"] = all(c["checks"].values())
         c["temperature"], c["unknown_threshold"] = ck["clip_head"]["temperature"], ck["clip_head"]["unknown_threshold"]
         print(tag, "five-dev", c["five_dev_total"], "weak", c["weak_total"], "all rules", c["all_kept"], flush=True)
     ok = [t for t in res if t.startswith("Z") and res[t]["all_kept"]]

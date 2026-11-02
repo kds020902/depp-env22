@@ -19,10 +19,15 @@ import torch
 REPO = Path(__file__).resolve().parents[1]
 GOLDEN = json.load(open(REPO / "tests/golden.json"))
 
-from model_utils import (  # noqa: E402  (tests/conftest.py puts src on the path)
-    CLASS_NAMES, clip_head_logits, clip_unknown_score, combined_logits, combined_probabilities, is_unknown_combined,
-    new_vegetable_decision, read_image, make_transform, input_size, load_model, calibrated_probabilities,
+# tests/conftest.py puts src on the path
+from calibration import calibrated_probabilities  # noqa: E402
+from decision import (  # noqa: E402
+    clip_head_logits, clip_unknown_score, combined_logits, combined_probabilities, decide, is_unknown_combined,
+    new_vegetable_decision,
 )
+from images import make_transform, read_image  # noqa: E402
+from labels import CLASS_NAMES  # noqa: E402
+from networks import input_size, load_model  # noqa: E402
 from train import read_manifest  # noqa: E402
 
 
@@ -82,6 +87,10 @@ def test_full_decision_shapes(checkpoint):
     out, index, still_unknown, switched = new_vegetable_decision(p, unknown, f, checkpoint)
     assert out.shape == (len(f), 16) and index.shape == still_unknown.shape == switched.shape == (len(f),)
     assert not (still_unknown & switched).any()
+    # decide() is that same chain in one call
+    a = decide(logits, checkpoint, f)
+    assert torch.equal(a.index, index) and torch.equal(a.unknown, still_unknown) and torch.equal(a.probabilities, out)
+    assert torch.equal(a.five, p) and torch.allclose(a.probability, out[torch.arange(len(f)), index])
 
 
 # ---------- the same answers as when the model was adopted ----------

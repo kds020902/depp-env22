@@ -1,466 +1,72 @@
-"""Shared model loading, preprocessing and label definitions."""
+"""Older entry point kept for the experiment scripts: what used to live here is now split into labels.py, images.py,
+networks.py, calibration.py and decision.py. New code imports from those modules."""
 
-from __future__ import annotations
-
-import hashlib
-import os
-import random
-from pathlib import Path
-
-import numpy as np
-from PIL import Image, ImageOps
-import torch
-from torch import nn
-from torchvision import transforms
-from torchvision.models import (
-    EfficientNet_B0_Weights, ResNet18_Weights, efficientnet_b0, resnet18,
+from calibration import (
+    calibrated_probabilities, calibration_extras, fit_temperature, fit_unknown_threshold, is_unknown, marginal_probabilities, unknown_score,
+)
+from decision import (
+    Answers, clip_class_logits, clip_head_logits, clip_unknown_score, combined_logits, combined_probabilities, decide, is_unknown_combined, new_vegetable_decision, new_vegetable_logits, text_evidence, text_scores, zero_shot_logits,
+)
+from images import (
+    IMAGE_EXTENSIONS, PREPROCESS, RandomLowRes, make_train_transform, make_transform, open_image, preprocess_for, read_image,
+)
+from labels import (
+    CLASS_NAMES, CONDITION_NAMES, KOREAN, NO_CONDITION_SPECIES, SPECIES_NAMES, UNKNOWN_MESSAGE, UNTRAINED_CLASSES, condition_of,
+)
+from networks import (
+    ARCHITECTURES, AvgMaxPool, HEATMAP_LAYERS, PRETRAINED_DIR, _apply_pooling, classifier_layer, create_model, forward_with_rot_maps, input_size, load_model, resolve_device, rot_map_overlay, set_classifier_layer, set_seed, state_checksum,
 )
 
-
-# Class id = 2 x species + condition. New species are appended, so older 6-class checkpoints keep their ids.
-CLASS_NAMES = [
-    "cucumber_fresh", "cucumber_rotten", "potato_fresh",
-    "potato_rotten", "tomato_fresh", "tomato_rotten",
-    "bellpepper_fresh", "bellpepper_rotten", "carrot_fresh", "carrot_rotten",
-    "onion_fresh", "onion_rotten", "sweetpotato_fresh", "sweetpotato_rotten", "greenonion_fresh", "greenonion_rotten",
+__all__ = [
+    "calibrated_probabilities",
+    "calibration_extras",
+    "fit_temperature",
+    "fit_unknown_threshold",
+    "is_unknown",
+    "marginal_probabilities",
+    "unknown_score",
+    "Answers",
+    "clip_class_logits",
+    "clip_head_logits",
+    "clip_unknown_score",
+    "combined_logits",
+    "combined_probabilities",
+    "decide",
+    "is_unknown_combined",
+    "new_vegetable_decision",
+    "new_vegetable_logits",
+    "text_evidence",
+    "text_scores",
+    "zero_shot_logits",
+    "IMAGE_EXTENSIONS",
+    "PREPROCESS",
+    "RandomLowRes",
+    "make_train_transform",
+    "make_transform",
+    "open_image",
+    "preprocess_for",
+    "read_image",
+    "CLASS_NAMES",
+    "CONDITION_NAMES",
+    "KOREAN",
+    "NO_CONDITION_SPECIES",
+    "SPECIES_NAMES",
+    "UNKNOWN_MESSAGE",
+    "UNTRAINED_CLASSES",
+    "condition_of",
+    "ARCHITECTURES",
+    "AvgMaxPool",
+    "HEATMAP_LAYERS",
+    "PRETRAINED_DIR",
+    "_apply_pooling",
+    "classifier_layer",
+    "create_model",
+    "forward_with_rot_maps",
+    "input_size",
+    "load_model",
+    "resolve_device",
+    "rot_map_overlay",
+    "set_classifier_layer",
+    "set_seed",
+    "state_checksum",
 ]
-SPECIES_NAMES = ["cucumber", "potato", "tomato", "bellpepper", "carrot", "onion", "sweetpotato", "greenonion"]
-# No public photos of rotten green onions were found: the slot keeps class ids aligned but has no training photos,
-# so green onions are recognised by kind only and their condition is not judged.
-UNTRAINED_CLASSES = {"greenonion_rotten"}
-NO_CONDITION_SPECIES = {"greenonion"}
-CONDITION_NAMES = ["fresh", "rotten"]
-IMAGE_EXTENSIONS = {".jpg", ".jpeg", ".png", ".bmp", ".webp", ".tif", ".tiff"}
-PREPROCESS = {
-    "exif_transpose": True,
-    "color_mode": "RGB",
-    "resize": [224, 224],
-    "interpolation": "bilinear",
-    "antialias": True,
-    "mean": [0.485, 0.456, 0.406],
-    "std": [0.229, 0.224, 0.225],
-}
-# name -> (builder, ImageNet weights, official weight file name, classifier attribute path)
-ARCHITECTURES = {
-    "resnet18": (resnet18, ResNet18_Weights.IMAGENET1K_V1, "resnet18-f37072fd.pth", ("fc",)),
-    "efficientnet_b0": (efficientnet_b0, EfficientNet_B0_Weights.IMAGENET1K_V1,
-                        "efficientnet_b0_rwightman-7f5810bc.pth", ("classifier", "1")),
-}
-PRETRAINED_DIR = Path(__file__).resolve().parent.parent / "pretrained"  # <repo>/pretrained
-
-
-def set_seed(seed: int = 42, threads: int = 6) -> None:
-    os.environ.setdefault("CUBLAS_WORKSPACE_CONFIG", ":4096:8")
-    random.seed(seed)
-    np.random.seed(seed)
-    torch.manual_seed(seed)
-    if torch.cuda.is_available():
-        torch.cuda.manual_seed_all(seed)
-    torch.set_num_threads(threads)
-    # warn_only: a few CUDA backward kernels have no deterministic version.
-    torch.use_deterministic_algorithms(True, warn_only=True)
-    torch.backends.cudnn.benchmark = False
-    torch.backends.cudnn.deterministic = True
-
-
-def resolve_device(name: str) -> torch.device:
-    if name == "cuda" and not torch.cuda.is_available():
-        raise RuntimeError("--device cuda was requested, but CUDA is unavailable.")
-    return torch.device(name)
-
-
-def preprocess_for(size: int = 224) -> dict:
-    """PREPROCESS with a different square input size (224 = the original setting)."""
-    return {**PREPROCESS, "resize": [size, size]}
-
-
-def make_transform(size: int = 224):
-    """Evaluation/prediction transform: the whole photo squeezed to size x size."""
-    return transforms.Compose([
-        transforms.Resize(
-            (size, size),
-            interpolation=transforms.InterpolationMode.BILINEAR,
-            antialias=True,
-        ),
-        transforms.ToTensor(),
-        transforms.Normalize(PREPROCESS["mean"], PREPROCESS["std"]),
-    ])
-
-
-class RandomLowRes:
-    """With probability p, shrink the photo so its short side is low..high px, like a small web thumbnail.
-    The random crop that follows enlarges it again, so the model also learns from blurry, small photos."""
-
-    def __init__(self, p: float, low: int = 48, high: int = 112):
-        self.p, self.low, self.high = p, low, high
-
-    def __call__(self, image: Image.Image) -> Image.Image:
-        if float(torch.rand(1)) >= self.p:
-            return image
-        scale = int(torch.randint(self.low, self.high + 1, (1,))) / min(image.size)
-        if scale >= 1:
-            return image
-        return image.resize((max(1, round(image.width * scale)), max(1, round(image.height * scale))),
-                            Image.BILINEAR)
-
-
-def make_train_transform(size: int = 224, crop_scale_min: float = 0.6, lowres_prob: float = 0.0):
-    """Training augmentation: random crop/scale, flips, small rotation and colour change
-    (optionally first a random shrink to thumbnail size)."""
-    lowres = [RandomLowRes(lowres_prob)] if lowres_prob > 0 else []
-    return transforms.Compose(lowres + [
-        transforms.RandomResizedCrop(
-            (size, size), scale=(crop_scale_min, 1.0), ratio=(3 / 4, 4 / 3), antialias=True,
-        ),
-        transforms.RandomHorizontalFlip(),
-        transforms.RandomVerticalFlip(),
-        transforms.RandomRotation(15, fill=(124, 116, 104)),
-        transforms.ColorJitter(brightness=0.2, contrast=0.2, saturation=0.2, hue=0.02),
-        transforms.ToTensor(),
-        transforms.Normalize(PREPROCESS["mean"], PREPROCESS["std"]),
-    ])
-
-
-def open_image(path: str | Path) -> Image.Image:
-    with Image.open(path) as image:
-        return ImageOps.exif_transpose(image).convert("RGB")
-
-
-def read_image(path: str | Path, transform=None) -> torch.Tensor:
-    return (transform or make_transform())(open_image(path))
-
-
-def classifier_layer(model: nn.Module, arch: str) -> nn.Linear:
-    module = model
-    for name in ARCHITECTURES[arch][3]:
-        module = module[int(name)] if name.isdigit() else getattr(module, name)
-    return module
-
-
-def set_classifier_layer(model: nn.Module, arch: str, layer: nn.Module) -> None:
-    *parents, last = ARCHITECTURES[arch][3]
-    module = model
-    for name in parents:
-        module = module[int(name)] if name.isdigit() else getattr(module, name)
-    if last.isdigit():
-        module[int(last)] = layer
-    else:
-        setattr(module, last, layer)
-
-
-class AvgMaxPool(nn.Module):
-    """Average and max pooling side by side, so one small suspicious patch is not averaged away."""
-
-    def forward(self, x):
-        return torch.cat([x.mean((2, 3), keepdim=True), x.amax((2, 3), keepdim=True)], 1)
-
-
-def _apply_pooling(model: nn.Module, arch: str, pooling: str) -> None:
-    """Swap the global pooling before the classifier ("avg" = torchvision default)."""
-    if pooling == "avg":
-        return
-    if pooling != "avgmax":
-        raise ValueError(f"Unknown pooling {pooling!r}; choose 'avg' or 'avgmax'")
-    model.avgpool = AvgMaxPool()
-    old = classifier_layer(model, arch)
-    set_classifier_layer(model, arch, nn.Linear(old.in_features * 2, old.out_features))
-
-
-def create_model(arch: str = "resnet18", pretrained: str | Path | None = None,
-                 pooling: str = "avg", num_classes: int = len(CLASS_NAMES)) -> tuple[nn.Module, str]:
-    """ImageNet backbone with a newly initialised classifier (one output per class)."""
-    if arch not in ARCHITECTURES:
-        raise ValueError(f"Unknown architecture {arch!r}; choose from {sorted(ARCHITECTURES)}")
-    builder, weights, file_name, _ = ARCHITECTURES[arch]
-    if pretrained is None and (PRETRAINED_DIR / file_name).is_file():
-        pretrained = PRETRAINED_DIR / file_name
-    if pretrained is not None:
-        path = Path(pretrained).expanduser().resolve()
-        if not path.is_file():
-            raise FileNotFoundError(f"Pretrained checkpoint not found: {path}")
-        model = builder(weights=None)
-        model.load_state_dict(torch.load(path, map_location="cpu", weights_only=True), strict=True)
-        source = str(path)
-    else:
-        # Uses torchvision's cache; the first run downloads the official weights.
-        model = builder(weights=weights)
-        source = f"torchvision.{type(weights).__name__}.{weights.name}"
-    old = classifier_layer(model, arch)
-    set_classifier_layer(model, arch, nn.Linear(old.in_features, num_classes))
-    _apply_pooling(model, arch, pooling)
-    return model, source
-
-
-def load_model(path: str | Path, device: torch.device) -> tuple[nn.Module, dict]:
-    checkpoint = torch.load(path, map_location="cpu", weights_only=True)
-    arch = checkpoint.get("architecture")
-    if arch not in ARCHITECTURES:
-        raise ValueError(f"Unsupported architecture in checkpoint: {arch!r}")
-    names = checkpoint.get("class_names") or []
-    if len(names) < 2 or names != CLASS_NAMES[:len(names)]:  # 6- and 10-class checkpoints are prefixes of the 16
-        raise ValueError("Checkpoint class order does not match this application.")
-    if checkpoint.get("preprocess") != preprocess_for(input_size(checkpoint)):
-        raise ValueError("Checkpoint preprocessing does not match this application.")
-    model = ARCHITECTURES[arch][0](weights=None)
-    old = classifier_layer(model, arch)
-    set_classifier_layer(model, arch, nn.Linear(old.in_features, len(names)))
-    _apply_pooling(model, arch, checkpoint.get("pooling", "avg"))
-    model.load_state_dict(checkpoint["state_dict"], strict=True)
-    model.to(device).eval()
-    return model, checkpoint
-
-
-def input_size(checkpoint: dict) -> int:
-    """Square input size a checkpoint was trained with (224 for older checkpoints)."""
-    return int(checkpoint.get("preprocess", PREPROCESS)["resize"][0])
-
-
-def state_checksum(state: dict[str, torch.Tensor], exclude_prefixes: tuple[str, ...] = ()) -> str:
-    digest = hashlib.sha256()
-    for name in sorted(state):
-        if name.startswith(exclude_prefixes):
-            continue
-        tensor = state[name].detach().cpu().contiguous()
-        digest.update(name.encode("utf-8"))
-        digest.update(str(tensor.dtype).encode("ascii"))
-        digest.update(str(tuple(tensor.shape)).encode("ascii"))
-        digest.update(tensor.numpy().tobytes())
-    return digest.hexdigest()
-
-
-def marginal_probabilities(probabilities: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor]:
-    """Sum the joint (species x condition) probabilities, rather than reusing joint argmax labels."""
-    joint = probabilities.reshape(-1, probabilities.shape[1] // len(CONDITION_NAMES), len(CONDITION_NAMES))
-    return joint.sum(dim=2), joint.sum(dim=1)
-
-
-# ---------- calibrated probability and the "not a trained vegetable" check ----------
-UNKNOWN_MESSAGE = "학습된 데이터가 아닙니다"
-
-
-def fit_temperature(logits: torch.Tensor, labels: torch.Tensor) -> float:
-    """Temperature scaling: one number T so that softmax(logits / T) matches how often the model is right
-    (fitted on the validation split by minimising cross-entropy)."""
-    log_t = torch.zeros(1, requires_grad=True)
-    optimizer = torch.optim.LBFGS([log_t], lr=0.1, max_iter=200)
-
-    def closure():
-        optimizer.zero_grad()
-        loss = nn.functional.cross_entropy(logits / log_t.exp(), labels)
-        loss.backward()
-        return loss
-    optimizer.step(closure)
-    return float(log_t.detach().exp())
-
-
-def unknown_score(logits: torch.Tensor) -> torch.Tensor:
-    """Energy score, -logsumexp(logits): high when no trained class fits the photo well."""
-    return -torch.logsumexp(logits, dim=1)
-
-
-def fit_unknown_threshold(val_logits: torch.Tensor, accept_rate: float = 0.95,
-                          extra_logits: torch.Tensor | None = None) -> float:
-    """Threshold that still accepts accept_rate of the validation photos (all real vegetables),
-    pooled with extra_logits: unlabeled real-world vegetable photos, when given."""
-    logits = val_logits if extra_logits is None else torch.cat([val_logits, extra_logits])
-    return float(torch.quantile(unknown_score(logits), accept_rate))
-
-
-def calibrated_probabilities(logits: torch.Tensor, checkpoint: dict) -> torch.Tensor:
-    temperature = checkpoint.get("calibration", {}).get("temperature", 1.0)
-    return (logits / temperature).softmax(1)
-
-
-def is_unknown(logits: torch.Tensor, checkpoint: dict) -> torch.Tensor:
-    threshold = checkpoint.get("unknown_check", {}).get("threshold")
-    if threshold is None:  # older checkpoints have no check
-        return torch.zeros(len(logits), dtype=torch.bool)
-    return unknown_score(logits) > threshold
-
-
-def calibration_extras(val_logits: torch.Tensor, val_labels: torch.Tensor, accept_rate: float = 0.95,
-                       extra_logits: torch.Tensor | None = None, extra_name: str = "") -> dict:
-    """The checkpoint entries for calibrated probabilities and the unknown-photo check.
-    The temperature is fitted on Valid only; the threshold on Valid, or on Valid pooled with extra real-world vegetable
-    photos (extra_logits, no labels needed)."""
-    threshold = fit_unknown_threshold(val_logits, accept_rate, extra_logits)
-    check = {"method": "energy score -logsumexp(logits)", "threshold": threshold,
-             "valid_accept_rate": accept_rate, "fitted_on": "val", "message": UNKNOWN_MESSAGE}
-    if extra_logits is not None:
-        check.update({"accept_rate": accept_rate, "fitted_on": f"val + {len(extra_logits)} {extra_name}".strip(),
-                      "valid_accept_rate": float((unknown_score(val_logits) <= threshold).float().mean())})
-    return {
-        "calibration": {"method": "temperature scaling", "temperature": fit_temperature(val_logits, val_labels),
-                        "fitted_on": "val"},
-        "unknown_check": check,
-    }
-
-
-# ---------- where the model sees rot (heatmap) ----------
-HEATMAP_LAYERS = {"resnet18": "layer4", "efficientnet_b0": "features"}
-
-
-def forward_with_rot_maps(model: nn.Module, checkpoint: dict, images: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor]:
-    """Logits plus a 7x7 "rot map" per photo and vegetable, shape (photos, vegetables, h, w): how much each part of the
-    photo pushes that vegetable's "rotten" logit above its "fresh" logit.
-
-    The classifier sits on top of average pooling, so the rotten-minus-fresh logit is exactly the mean over locations of
-    (w_rotten - w_fresh) . feature(location); each location's term is its share (class activation map, Zhou et al. 2016).
-    Only the positive part (evidence for rotten) is kept. For avg+max pooling only the average half is used.
-    Pick the map of the vegetable that was finally predicted.
-    """
-    arch = checkpoint["architecture"]
-    store = {}
-    hook = dict(model.named_modules())[HEATMAP_LAYERS[arch]].register_forward_hook(
-        lambda module, inputs, output: store.update(features=output))
-    try:
-        logits = model(images)
-    finally:
-        hook.remove()
-    features = store["features"]
-    weight = classifier_layer(model, arch).weight[:, :features.shape[1]]
-    weight = weight.reshape(-1, len(CONDITION_NAMES), features.shape[1])
-    direction = weight[:, CONDITION_NAMES.index("rotten")] - weight[:, CONDITION_NAMES.index("fresh")]
-    return logits, torch.relu(torch.einsum("sc,nchw->nshw", direction, features))
-
-
-def rot_map_overlay(image: Image.Image, rot_map: torch.Tensor, scale: float, size: int = 480,
-                    side_by_side: bool = True) -> Image.Image:
-    """The plain photo next to a copy with the rot map laid over it in red (stronger red = stronger rot evidence);
-    side_by_side=False returns the coloured copy only.
-    The map is divided by a fixed scale (not by its own maximum), so a fresh-looking photo stays almost uncoloured."""
-    image = image.copy()
-    image.thumbnail((size, size))
-    level = torch.nn.functional.interpolate((rot_map / scale).clamp(0, 1)[None, None], size=image.size[::-1],
-                                            mode="bilinear", align_corners=False)[0, 0].numpy()[..., None]
-    color = np.array([230.0, 20.0, 20.0])
-    alpha = 0.7 * level
-    overlay = Image.fromarray((np.asarray(image) * (1 - alpha) + color * alpha).astype(np.uint8))
-    if not side_by_side:
-        return overlay
-    canvas = Image.new("RGB", (image.width * 2 + 8, image.height), "white")
-    canvas.paste(image, (0, 0))
-    canvas.paste(overlay, (image.width + 8, 0))
-    return canvas
-
-
-# ---------- CLIP classifier head combined with the vegetable model (experiments/clip_classifier) ----------
-def clip_head_logits(features: torch.Tensor, checkpoint: dict) -> torch.Tensor:
-    """Logits of the CLIP classifier head (multinomial logistic regression on L2-normalised CLIP image features).
-    With "other_class" the last column is "not one of the five vegetables" (experiments/not_five_class)."""
-    head = checkpoint["clip_head"]
-    logits = features.float() @ head["coef"].T.to(features.device) + head["intercept"].to(features.device)
-    if head.get("alpha"):
-        # + alpha x CLIP zero-shot class scores on the class columns (experiments/improve_without_photos, as the V7 head):
-        # 100 x cosine to each class's text prompts, centred over the classes per photo; "not five" column unchanged
-        text = head["text_embeddings"].to(features.device).float()
-        z = 100 * features.float() @ text.T
-        z = z - z.mean(1, keepdim=True)
-        k = text.shape[0]
-        logits = torch.cat([logits[:, :k] + head["alpha"] * z, logits[:, k:]], 1)
-    return logits
-
-
-def clip_class_logits(clip_logits: torch.Tensor, checkpoint: dict) -> torch.Tensor:
-    """The CLIP head's logits for the trained vegetable classes only."""
-    return clip_logits[:, :-1] if checkpoint["clip_head"].get("other_class") else clip_logits
-
-
-def text_evidence(features: torch.Tensor, checkpoint: dict) -> torch.Tensor:
-    """CLIP zero-shot evidence that the photo shows something other than the five vegetables (TV-12,
-    experiments/zero_shot_reject): logsumexp(100 cos(photo, other words)) - logsumexp(100 cos(photo, five vegetables))."""
-    words = checkpoint["clip_head"]["text_evidence"]
-    f = features.float()
-    other = 100 * f @ words["other"].to(f.device).float().T
-    vegetables = 100 * f @ words["vegetables"].to(f.device).float().T
-    return torch.logsumexp(other, 1) - torch.logsumexp(vegetables, 1)
-
-
-def clip_unknown_score(clip_logits: torch.Tensor, checkpoint: dict, features: torch.Tensor | None = None) -> torch.Tensor:
-    """Higher = less like a trained vegetable. With an "other" class: its log-odds against all vegetable classes;
-    otherwise the energy of the head's logits, as for the vegetable model. When the head has "text_evidence" (TV-12),
-    alpha x text_evidence() of the CLIP image features is added, so the features must be given."""
-    head = checkpoint["clip_head"]
-    if head.get("other_class"):
-        score = clip_logits[:, -1] - torch.logsumexp(clip_logits[:, :-1], 1)
-    else:
-        score = unknown_score(clip_logits)
-    if head.get("text_evidence"):
-        if features is None:
-            raise ValueError("this model's check also uses CLIP text evidence: pass the CLIP image features")
-        score = score + head["text_evidence"]["alpha"] * text_evidence(features, checkpoint).to(score.dtype)
-    return score
-
-
-def combined_logits(logits: torch.Tensor, clip_logits: torch.Tensor, checkpoint: dict) -> torch.Tensor:
-    """Sum of the two models' log-probabilities (the vegetable model at its own temperature)."""
-    temperature = checkpoint.get("calibration", {}).get("temperature", 1.0)
-    return torch.log_softmax(logits / temperature, 1) + torch.log_softmax(clip_class_logits(clip_logits, checkpoint), 1)
-
-
-def combined_probabilities(combined: torch.Tensor, checkpoint: dict) -> torch.Tensor:
-    return (combined / checkpoint["clip_head"]["temperature"]).softmax(1)
-
-
-def is_unknown_combined(logits: torch.Tensor, clip_logits: torch.Tensor, checkpoint: dict,
-                        features: torch.Tensor | None = None) -> torch.Tensor:
-    """Turned away when the CLIP head's check says the photo is not one of the trained vegetables, and also when the
-    vegetable model's own check does, unless the head turns that off ("vegetable_model_check": False, experiments/clip_only_reject).
-    `features` (CLIP image features) are needed when the head uses text evidence (TV-12)."""
-    clip_says = clip_unknown_score(clip_logits, checkpoint, features) > checkpoint["clip_head"]["unknown_threshold"]
-    if not checkpoint["clip_head"].get("vegetable_model_check", True):
-        return clip_says
-    return is_unknown(logits, checkpoint) | clip_says
-
-
-# ---------- onion, sweet potato, green onion: a second CLIP head (experiments/new_vegetables, V7 = TV-10) ----------
-def zero_shot_logits(features: torch.Tensor, head: dict) -> torch.Tensor:
-    """CLIP zero-shot class scores (100 x cosine to each class's text prompts), centred over the trained classes per photo;
-    classes without training photos get 0."""
-    text = head["text_embeddings"].to(features.device)
-    z = 100 * features.float() @ text.T
-    trained = torch.tensor([c not in head.get("untrained_classes", []) for c in head["class_names"]], device=features.device)
-    z = z - z[:, trained].mean(1, keepdim=True)
-    return z * trained
-
-
-def new_vegetable_logits(features: torch.Tensor, head: dict) -> torch.Tensor:
-    """The second head's logits (16 classes + "not one of the eight vegetables"): logistic regression on CLIP image features,
-    plus alpha x zero-shot class scores on the 16 class columns when the head has text embeddings (V7 = TV-10)."""
-    z = features.float() @ head["coef"].T.to(features.device) + head["intercept"].to(features.device)
-    if head.get("alpha"):
-        k = len(head["class_names"])
-        z = torch.cat([z[:, :k] + head["alpha"] * zero_shot_logits(features, head), z[:, k:]], 1)
-    return z
-
-
-def new_vegetable_decision(probabilities: torch.Tensor, unknown: torch.Tensor, features: torch.Tensor,
-                           checkpoint: dict) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor]:
-    """The five-vegetable system answers first; the second CLIP head (16 classes + "not one of the eight vegetables")
-    may change the answer to onion, sweet potato or green onion:
-    - a photo the five-vegetable system turned away, when the head does not turn it away and its most likely kind
-      (sum of the fresh and rotten probabilities) is a new vegetable;
-    - a photo the five-vegetable system answered, only when the head gives the new vegetables together at least
-      `switch_probability` and its most likely kind is a new vegetable.
-    Returns probabilities over the head's 16 classes (the head's, at its display temperature, for switched photos;
-    otherwise the five-vegetable probabilities padded with zeros), the chosen class per photo (for a switched photo the
-    head's most likely kind, then its more likely condition), the new unknown flags and which photos were switched."""
-    head = checkpoint["new_vegetable_head"]
-    z = new_vegetable_logits(features, head)
-    k = z.shape[1] - 1                                    # last column: not one of the eight vegetables
-    p = z[:, :k].softmax(1)
-    n, n_species = len(z), k // len(CONDITION_NAMES)
-    species = p.reshape(n, n_species, len(CONDITION_NAMES)).sum(2).argmax(1)
-    within = z[:, :k].reshape(n, n_species, len(CONDITION_NAMES))[torch.arange(n), species].argmax(1)
-    head_index = species * len(CONDITION_NAMES) + within
-    head_unknown = z[:, k] - torch.logsumexp(z[:, :k], 1) > head["unknown_threshold"]
-    first_new = head["first_new_species"]
-    is_new = species >= first_new
-    new_share = p[:, first_new * len(CONDITION_NAMES):].sum(1)
-    switch = (unknown & ~head_unknown & is_new) | (~unknown & (new_share >= head["switch_probability"]) & is_new)
-    padded = torch.zeros(n, k, dtype=probabilities.dtype)
-    padded[:, :probabilities.shape[1]] = probabilities
-    head_probabilities = (z[:, :k] / head["temperature"]).softmax(1).to(padded.dtype)
-    output = torch.where(switch[:, None], head_probabilities, padded)
-    index = torch.where(switch, head_index, padded.argmax(1))
-    return output, index, unknown & ~switch, switch

@@ -9,28 +9,22 @@ B1 changes only the CLIP head, so the vegetable-model logits of TV-12 are reused
 
 from __future__ import annotations
 
-import importlib.util
 import json
-import os
 import sys
 from pathlib import Path
 
 import torch
 
 HERE = Path(__file__).resolve().parent
-os.environ.setdefault("T3WS_LISTS", os.environ["DEPP_WORK"] + "/t5/lists")
 sys.path.insert(0, str(HERE.parent / "watermark"))
-from common import REPO, W, kept_right_per_class  # noqa: E402
-
-spec = importlib.util.spec_from_file_location("t3ws_evaluate", HERE.parent / "t3_weak_spots/evaluate.py")
-t3ws = importlib.util.module_from_spec(spec); spec.loader.exec_module(t3ws)
+from common import REPO, W, dev_rules, dev_score, kept_right_per_class  # noqa: E402
 
 
 def main():
-    res = {"TV-12": t3ws.score("TV-12", REPO / "model.pth", "WC"), "B1": t3ws.score("B1", W / "B1.pth", "WC")}
+    res = {"TV-12": dev_score(REPO / "model.pth"), "B1": dev_score(W / "B1.pth")}
     for tag, path in (("TV-12", REPO / "model.pth"), ("B1", W / "B1.pth")):
         res[tag]["per_class"] = kept_right_per_class(torch.load(path, map_location="cpu", weights_only=True))
-    checks = t3ws.dev_rules(res["B1"], res["TV-12"])
+    checks = dev_rules(res["B1"], res["TV-12"])
     res["rules"] = {"checks": checks, "all_kept": all(checks.values()),
                     "note": "even if every rule holds, B1 is not adopted without a new blind test set (PREREG.md section 3)"}
     json.dump(res, open(HERE / "dev_results.json", "w"), indent=1, ensure_ascii=False)

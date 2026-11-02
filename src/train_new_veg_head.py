@@ -22,10 +22,9 @@ from pathlib import Path
 import numpy as np
 import torch
 
-from model_utils import (
-    CLASS_NAMES, UNTRAINED_CLASSES, clip_head_logits, combined_logits, combined_probabilities, fit_temperature,
-    is_unknown_combined, new_vegetable_decision, new_vegetable_logits,
-)
+from calibration import fit_temperature
+from decision import decide, new_vegetable_decision, new_vegetable_logits
+from labels import CLASS_NAMES, UNTRAINED_CLASSES
 
 TAU_GRID = (0.5, 0.7, 0.8, 0.9, 0.95)
 OLD_DEV = ("valid", "odev", "o160", "asian37", "lvis")
@@ -40,10 +39,8 @@ def fit_head(x: np.ndarray, y: np.ndarray, k: int) -> tuple[np.ndarray, np.ndarr
 
 
 def five_vegetable_answer(checkpoint: dict, b: np.ndarray, f: np.ndarray) -> tuple[torch.Tensor, torch.Tensor]:
-    logits, feats = torch.tensor(b), torch.tensor(f)
-    clip_logits = clip_head_logits(feats, checkpoint)
-    probabilities = combined_probabilities(combined_logits(logits, clip_logits, checkpoint), checkpoint)
-    return probabilities, is_unknown_combined(logits, clip_logits, checkpoint, feats)
+    a = decide(torch.tensor(b), checkpoint, torch.tensor(f), new_vegetables=False)
+    return a.five, a.five_unknown
 
 
 def main():

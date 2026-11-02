@@ -19,23 +19,11 @@ import torch
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parent / "watermark"))
 from common import W, clip_features, dev_sets  # noqa: E402
-from model_utils import (  # noqa: E402
-    clip_head_logits, combined_logits, combined_probabilities, is_unknown_combined, new_vegetable_decision,
-)
+from decision import decide  # noqa: E402
 
 QS = (0.5, 0.6, 0.7, 0.8, 0.9)
 SETS = ("valid", "odev", "o160", "asian37")
 OUTSIDE = ("odev", "o160", "asian37")
-
-
-def decide(ck, b, f):
-    """The full 8-vegetable answer as predict.py gives it: chosen class, its probability, turned away."""
-    logits, feats = torch.tensor(b), torch.tensor(f)
-    clip_logits = clip_head_logits(feats, ck)
-    p = combined_probabilities(combined_logits(logits, clip_logits, ck), ck)
-    unknown = is_unknown_combined(logits, clip_logits, ck, feats)
-    out, index, still_unknown, _ = new_vegetable_decision(p, unknown, feats, ck)
-    return index.numpy(), out[torch.arange(len(index)), index].numpy(), still_unknown.numpy()
 
 
 def table(right: np.ndarray, conf: np.ndarray, same_pair: np.ndarray) -> dict:
@@ -54,10 +42,9 @@ def main():
     sets = dev_sets(); F = clip_features(sets); B = dict(np.load(W / "b_WC.npz"))
     res, pooled = {"model": Path(sys.argv[1]).name}, {"right": [], "conf": [], "pair": []}
     for name in SETS:
-        index, conf, unknown = decide(ck, B[name], F[name]); y = sets[name][1]
-        logits = torch.tensor(B[name]); clip_logits = clip_head_logits(torch.tensor(F[name]), ck)
-        p5 = combined_probabilities(combined_logits(logits, clip_logits, ck), ck).numpy()
-        top2 = np.argsort(-p5, 1)[:, :2]
+        a = decide(torch.tensor(B[name]), ck, torch.tensor(F[name])); y = sets[name][1]
+        index, conf, unknown = a.index.numpy(), a.probability.numpy(), a.unknown.numpy()
+        top2 = np.argsort(-a.five.numpy(), 1)[:, :2]
         same_pair = (top2[:, 0] // 2) == (top2[:, 1] // 2)          # doubt is between fresh and rotten of one vegetable
         keep = ~unknown
         right = (index == y)[keep]

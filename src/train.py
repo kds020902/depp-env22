@@ -21,12 +21,10 @@ import torch
 from torch import nn
 from torch.utils.data import DataLoader, Dataset, TensorDataset
 
-from model_utils import (
-    CLASS_NAMES, CONDITION_NAMES, SPECIES_NAMES, UNTRAINED_CLASSES,
-    calibration_extras, classifier_layer, create_model, make_train_transform, make_transform,
-    marginal_probabilities, open_image, preprocess_for, resolve_device, set_classifier_layer, set_seed,
-    state_checksum,
-)
+from calibration import calibration_extras, marginal_probabilities
+from images import make_train_transform, make_transform, open_image, preprocess_for
+from labels import CLASS_NAMES, CONDITION_NAMES, SPECIES_NAMES, UNTRAINED_CLASSES
+from networks import classifier_layer, create_model, resolve_device, set_classifier_layer, set_seed, state_checksum
 from watermark_aug import RandomWatermark
 
 SPLITS = ("train", "val", "test")

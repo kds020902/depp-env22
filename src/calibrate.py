@@ -14,7 +14,10 @@ from pathlib import Path
 import torch
 from torch.utils.data import DataLoader
 
-from model_utils import CLASS_NAMES, calibration_extras, input_size, load_model, make_transform, open_image
+from calibration import calibration_extras
+from images import make_transform, open_image
+from labels import CLASS_NAMES
+from networks import input_size, load_model
 from train import CachedImages, predict_logits, read_manifest
 
 

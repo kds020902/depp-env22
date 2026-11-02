@@ -19,7 +19,6 @@ import hashlib
 import json
 import os
 import shutil
-import subprocess
 import sys
 from pathlib import Path
 
@@ -28,25 +27,17 @@ import torch
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parent / "watermark"))
-from common import REPO, S, W, clip_features, dev_sets  # noqa: E402
+from common import HEAD_ARGS, LVIS, REPO, S, W, clip_features, dev_sets, refit_text_evidence, run  # noqa: E402
 from model_utils import (  # noqa: E402
-    CLASS_NAMES, CONDITION_NAMES, clip_head_logits, clip_unknown_score, combined_logits, fit_temperature,
+    CLASS_NAMES, CONDITION_NAMES, clip_head_logits, combined_logits, fit_temperature,
     forward_with_rot_maps, input_size, load_model, make_transform, open_image,
 )
 
 LISTS = Path(os.environ.get("T3WS_LISTS", S / "t4/lists"))  # round 2: t5/lists (+ new rotten tomatoes)
-LVIS = S / "negx/lvis_veg"
 EXTRA = S / "negx/extra_train_N3.csv"
 HEAD_DATA = REPO / "experiments/new_vegetables/v7/head_data.npz"
-HEAD_ARGS = ["--clip-check-only", "--watermark-fresh", "1.0", "--watermark-rotten", "0.25", "--watermark-other", "0.5",
-             "--watermark-style", "light", "--feature-cache", str(W / "head_features.npz")]
 FIVE = CLASS_NAMES[:10]
 K2DATA = Path(os.environ.get("T3WS_K2DATA", S / "k2data"))
-
-
-def run(*args):
-    print("+", " ".join(map(str, args)), flush=True)
-    subprocess.run([sys.executable, *map(str, args)], check=True, cwd=REPO)
 
 
 def train_rows() -> list[dict]:
@@ -62,18 +53,6 @@ def write_extra_csv(path: Path, add: bool, fruit: bool = True) -> Path:
     with open(path, "w", newline="", encoding="utf-8") as fh:
         w = csv.DictWriter(fh, fieldnames=["path", "class_name", "group"]); w.writeheader(); w.writerows(rows)
     return path
-
-
-def refit_text_evidence(path: Path, tv12: dict):
-    """Put TV-12's text evidence into the new CLIP head and refit the not-five threshold by the zero_shot_reject rule."""
-    ck = torch.load(path, map_location="cpu", weights_only=True)
-    ck["clip_head"]["text_evidence"] = copy.deepcopy(tv12["clip_head"]["text_evidence"])
-    F = clip_features(dev_sets())
-    scores = [clip_unknown_score(clip_head_logits(torch.tensor(F[n]), ck), ck, torch.tensor(F[n])) for n in ("valid", "lvis")]
-    ck["clip_head"]["tv11_unknown_threshold"] = ck["clip_head"]["unknown_threshold"]
-    ck["clip_head"]["unknown_threshold"] = float(torch.quantile(torch.cat(scores), 0.95))
-    torch.save(ck, path)
-    return ck
 
 
 def new_veg_head(path: Path, add: bool, data_out: Path):

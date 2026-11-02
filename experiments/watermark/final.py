@@ -15,27 +15,12 @@ import sys
 import numpy as np
 import torch
 
-from common import REPO, S, W, system
+from common import REPO, W, photo_sets, system
 from model_utils import CLASS_NAMES, input_size, load_model, make_transform, open_image
 from clip_model import ClipModel
 from stamps import STAMPS
 
 REJECT = ("rotten_fruit", "fresh_fruit", "other_veg", "food", "drawing_toy", "everyday")
-NEW = ("onion", "sweetpotato", "greenonion")
-
-
-def photo_sets():
-    test = [r for r in csv.DictReader(open(REPO / "dataset/manifest.csv", encoding="utf-8")) if r["split"] == "test"]
-    sets = {"test_300": ([str(REPO / "dataset" / r["image_path"]) for r in test], [r["class_name"] for r in test])}
-    t2 = list(csv.DictReader(open(REPO / "results/10class/outside_test2/outside_test2.csv", encoding="utf-8")))
-    sets["new_test_241"] = ([str(S / f"weak/t2img/{r['id']}.jpg") for r in t2], [r["class_name"] for r in t2])
-    rows = list(csv.DictReader(open(S / "arb/anyphoto_test_v2.csv", encoding="utf-8"))); files = json.load(open(S / "arb/local_files.json"))
-    sets["any_photo_v2"] = ([files[r["id"]] for r in rows], rows)
-    pool = json.load(open(S / "v7/pool.json"))
-    for k, rnd in enumerate(("v4", "v5", "v6", "v7"), 1):
-        te = [r for r in pool if r["round"] == rnd and r["split"] == "test" and r["class_name"].startswith(NEW)]
-        sets[f"new_veg_test{k}"] = ([r["path"] for r in te], [r["class_name"] for r in te])
-    return sets
 
 
 def features(sets):

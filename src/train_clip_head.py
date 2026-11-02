@@ -28,9 +28,11 @@ from sklearn.linear_model import LogisticRegression
 from torch.utils.data import DataLoader
 
 from clip_model import ARCH, PRETRAINED, ClipModel
-from model_utils import (
-    CLASS_NAMES, IMAGE_EXTENSIONS, clip_unknown_score, combined_logits, fit_temperature, input_size, load_model, open_image,
-)
+from calibration import fit_temperature
+from decision import clip_unknown_score, combined_logits
+from images import IMAGE_EXTENSIONS, open_image
+from labels import CLASS_NAMES
+from networks import input_size, load_model
 
 NOT_FIVE = "not_five"
 from train import CachedImages, predict_logits, read_manifest

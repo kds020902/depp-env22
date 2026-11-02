@@ -10,7 +10,6 @@ new-vegetable head by its rule. Uses cached CLIP features / vegetable-model logi
 
 from __future__ import annotations
 
-import csv
 import json
 import sys
 from pathlib import Path
@@ -20,7 +19,7 @@ import torch
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parent / "watermark"))
-from common import OLD_DEV, REPO, S, TAU_GRID, W, dev_sets  # noqa: E402
+from common import OLD_DEV, REPO, TAU_GRID, W, dev_sets, rotten_fruit_features  # noqa: E402
 from model_utils import (  # noqa: E402
     clip_head_logits, clip_unknown_score, combined_logits, combined_probabilities, new_vegetable_decision,
 )
@@ -53,15 +52,6 @@ def text_embeddings():
 def evidence(f: np.ndarray, veg: np.ndarray, other: np.ndarray) -> np.ndarray:
     from scipy.special import logsumexp
     return logsumexp(100 * f @ other.T, 1) - logsumexp(100 * f @ veg.T, 1)
-
-
-def rotten_fruit_features() -> dict[str, np.ndarray]:
-    pool = list(csv.DictReader(open(S / "arb/pool/pool.csv", encoding="utf-8"))); pf = np.load(S / "arb/pool/feats.npz")["f"]
-    keep = set(np.load(S / "arb/pool/keep_idx.npy").tolist())
-    inf = np.load(S / "arb/inat/features.npz"); idx = {str(n): i for i, n in enumerate(inf["ids"])}
-    return {"kaggle_fruit": pf[[i for i, r in enumerate(pool) if i in keep and r["group"] == "kaggle_fruit"]],
-            "inat_rotten_fruit": inf["f"][[idx[i] for i in json.load(open(S / "arb/pool/inat_train_keep.json"))]],
-            "openverse_rotten_fruit": np.load(S / "arb/ov_train_fruit.npz")["f"]}
 
 
 def decide(ck, b, f, e, alpha, threshold):

@@ -9,9 +9,7 @@ Crop features are cached per development set (working folder wm/crops_<set>.npz)
 
 from __future__ import annotations
 
-import importlib.util
 import json
-import os
 import sys
 from pathlib import Path
 
@@ -19,13 +17,9 @@ import numpy as np
 import torch
 
 HERE = Path(__file__).resolve().parent
-os.environ.setdefault("T3WS_LISTS", os.environ["DEPP_WORK"] + "/t5/lists")
 sys.path.insert(0, str(HERE.parent / "watermark"))
-from common import W, clip_features, dev_sets, system  # noqa: E402
+from common import DEV_LISTS, PAIR, WEAK, W, clip_features, dev_new, dev_sets, system  # noqa: E402
 from model_utils import CLASS_NAMES, clip_head_logits, open_image  # noqa: E402
-
-spec = importlib.util.spec_from_file_location("t3ws_evaluate", HERE.parent / "t3_weak_spots/evaluate.py")
-t3ws = importlib.util.module_from_spec(spec); spec.loader.exec_module(t3ws)
 
 THRESHOLDS = (0.6, 0.7, 0.8, 0.9)
 FIVE_DEV = ("valid", "odev", "o160", "asian37")
@@ -87,8 +81,8 @@ def score(ck, sets, F, B, FC, dev, t):
             good = (index[m] == CLASS_NAMES.index(c)) & ~unknown[m]
         per[c] = [int(good.sum()), int(m.sum())]
     out["new_dev"] = per
-    out["weak_total"] = sum(per.get(c, [0])[0] for c in t3ws.WEAK)
-    out["pair_total"] = sum(per.get(c, [0])[0] for c in t3ws.PAIR)
+    out["weak_total"] = sum(per.get(c, [0])[0] for c in WEAK)
+    out["pair_total"] = sum(per.get(c, [0])[0] for c in PAIR)
     return out
 
 
@@ -96,7 +90,7 @@ def main():
     base_path = Path(sys.argv[1]); ck = torch.load(base_path, map_location="cpu", weights_only=True)
     sets = dev_sets(); F = clip_features(sets); B = dict(np.load(W / "b_WC.npz"))
     FC = {n: crop_features(n, sets[n][0]) for n in FIVE_DEV}
-    rows, Fn, Bn = t3ws.new_dev("WC", base_path)
+    rows, Fn, Bn = dev_new(DEV_LISTS, "WC", base_path)
     dev = (rows, Fn, Bn, crop_features("t5dev", [r["path"] for r in rows]))
     res = {"base": str(base_path.name), "none": score(ck, sets, F, B, FC, dev, None)}
     base = res["none"]

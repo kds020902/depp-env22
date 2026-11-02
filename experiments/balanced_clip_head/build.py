@@ -31,7 +31,7 @@ import torch
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parent / "watermark"))
-from common import REPO, S, W  # noqa: E402
+from common import HEAD_ARGS, LVIS, REPO, S, W, refit_text_evidence, run  # noqa: E402
 from model_utils import CLASS_NAMES  # noqa: E402
 
 T6 = S / "t6"
@@ -139,9 +139,6 @@ def lists():
 def b1():
     """Manifest = Valid (for the temperature) + the Train rows kept in the balanced list; every other photo of the list goes
     in the extra CSV with the 2,850 not-five photos. Paths are absolute, so the feature cache of TV-12's head is reused."""
-    import importlib.util  # experiments/t3_weak_spots/build.py: same head arguments and text-evidence refit
-    spec = importlib.util.spec_from_file_location("t3ws_build", HERE.parent / "t3_weak_spots/build.py")
-    t3ws = importlib.util.module_from_spec(spec); spec.loader.exec_module(t3ws)
     man = list(csv.DictReader(open(REPO / "dataset/manifest.csv", encoding="utf-8")))
     five = list(csv.DictReader(open(OUT / "train_five.csv", encoding="utf-8")))
     keep = {r["path"] for r in five if r["source"] == "manifest_train"}
@@ -158,9 +155,9 @@ def b1():
     tv12 = torch.load(REPO / "model.pth", map_location="cpu", weights_only=True)
     out = W / "B1.pth"
     shutil.copy(REPO / "model.pth", out)
-    t3ws.run("src/train_clip_head.py", "--model", out, "--manifest", OUT / "manifest_B1.csv", "--extra-photos", t3ws.LVIS,
-             "--extra-train", OUT / "extra_train_B1.csv", *t3ws.HEAD_ARGS)
-    t3ws.refit_text_evidence(out, tv12)
+    run("src/train_clip_head.py", "--model", out, "--manifest", OUT / "manifest_B1.csv", "--extra-photos", LVIS,
+        "--extra-train", OUT / "extra_train_B1.csv", *HEAD_ARGS)
+    refit_text_evidence(out, tv12)
     ck = torch.load(out, map_location="cpu", weights_only=True)
     assert torch.equal(ck["new_vegetable_head"]["coef"], tv12["new_vegetable_head"]["coef"])
     ck["version"] = "candidate B1 (experiments/balanced_clip_head)"

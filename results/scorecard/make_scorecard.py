@@ -15,7 +15,6 @@ Errors, for photos of the five vegetables:
 from __future__ import annotations
 
 import csv
-import importlib.util
 import json
 import math
 import sys
@@ -27,7 +26,7 @@ import torch
 HERE = Path(__file__).resolve().parent
 REPO = HERE.parents[1]
 sys.path.insert(0, str(REPO / "experiments/watermark"))
-from common import W, clip_features, dev_sets, system  # noqa: E402
+from common import W, clip_features, dev_sets, photo_sets, system  # noqa: E402
 from model_utils import CLASS_NAMES  # noqa: E402
 
 FIVE = CLASS_NAMES[:10]
@@ -75,9 +74,7 @@ def main():
     for name, label in (("valid", "Valid 300"), ("odev", "first internet 221"), ("o160", "160 field / phone"), ("asian37", "Asian cucumbers 37")):
         res[f"dev:{name}"] = {"label": label, **card([CLASS_NAMES[i] for i in sets[name][1]], answer_names(system(ck, B[name], F[name])))}
     # Test 300 and new internet 241: outputs cached at their last scoring, same answers split by class
-    spec = importlib.util.spec_from_file_location("wm_final", REPO / "experiments/watermark/final.py")
-    wm = importlib.util.module_from_spec(spec); spec.loader.exec_module(wm)
-    ph = wm.photo_sets(); Fe = dict(np.load(W / "final_clip.npz")); Be = dict(np.load(W / "final_b_WC.npz"))
+    ph = photo_sets(); Fe = dict(np.load(W / "final_clip.npz")); Be = dict(np.load(W / "final_b_WC.npz"))
     for name, recorded in (("test_300", 285), ("new_test_241", 188)):
         c = card(ph[name][1], answer_names(system(ck, Be[name], Fe[name])))
         assert c["right_and_kept"] == recorded, (name, c["right_and_kept"], recorded)
