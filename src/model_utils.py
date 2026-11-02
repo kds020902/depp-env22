@@ -349,7 +349,16 @@ def clip_head_logits(features: torch.Tensor, checkpoint: dict) -> torch.Tensor:
     """Logits of the CLIP classifier head (multinomial logistic regression on L2-normalised CLIP image features).
     With "other_class" the last column is "not one of the five vegetables" (experiments/not_five_class)."""
     head = checkpoint["clip_head"]
-    return features.float() @ head["coef"].T.to(features.device) + head["intercept"].to(features.device)
+    logits = features.float() @ head["coef"].T.to(features.device) + head["intercept"].to(features.device)
+    if head.get("alpha"):
+        # + alpha x CLIP zero-shot class scores on the class columns (experiments/improve_without_photos, as the V7 head):
+        # 100 x cosine to each class's text prompts, centred over the classes per photo; "not five" column unchanged
+        text = head["text_embeddings"].to(features.device).float()
+        z = 100 * features.float() @ text.T
+        z = z - z.mean(1, keepdim=True)
+        k = text.shape[0]
+        logits = torch.cat([logits[:, :k] + head["alpha"] * z, logits[:, k:]], 1)
+    return logits
 
 
 def clip_class_logits(clip_logits: torch.Tensor, checkpoint: dict) -> torch.Tensor:
