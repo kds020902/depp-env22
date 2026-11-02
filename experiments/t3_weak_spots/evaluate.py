@@ -11,6 +11,7 @@ from __future__ import annotations
 import csv
 import importlib.util
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -22,7 +23,8 @@ sys.path.insert(0, str(HERE.parent / "watermark"))
 from common import OLD_DEV, REPO, S, W, clip_features, dev_sets, system, vegetable_logits  # noqa: E402
 from model_utils import CLASS_NAMES, input_size, load_model, make_transform, open_image  # noqa: E402
 
-LISTS = S / "t4/lists"
+LISTS = Path(os.environ.get("T3WS_LISTS", S / "t4/lists"))  # round 2: t5/lists
+OUT = os.environ.get("T3WS_OUT", "dev_results.json")
 WEAK = ("potato_fresh", "carrot_fresh", "tomato_rotten", "sweetpotato_fresh", "rotten_fruit")
 PAIR = ("potato_rotten", "tomato_fresh", "carrot_rotten")
 
@@ -39,7 +41,8 @@ zs = _load("zs_evaluate", REPO / "experiments/zero_shot_reject/evaluate.py")
 def new_dev(tag: str, path: Path):
     """CLIP features (cached once) and vegetable-model logits (cached per candidate) of the development share."""
     rows = list(csv.DictReader(open(LISTS / "dev.csv", encoding="utf-8")))
-    fcache, bcache = W / "t3ws_dev_clip.npz", W / f"t3ws_dev_b_{tag}.npz"
+    sfx = "" if LISTS.parent.name == "t4" else "_" + LISTS.parent.name
+    fcache, bcache = W / f"t3ws_dev_clip{sfx}.npz", W / f"t3ws_dev_b_{tag}{sfx}.npz"
     paths = [r["path"] for r in rows]
     if fcache.exists():
         F = np.load(fcache)["f"]
@@ -96,7 +99,7 @@ def score(tag: str, path: Path, b_tag: str) -> dict:
 def main():
     res = {"TV-12": score("TV-12", REPO / "model.pth", "WC")}
     for tag in sys.argv[1:]:
-        res[tag] = score(tag, W / f"{tag}.pth", "WC" if tag in ("K1", "K3") else "K2")
+        res[tag] = score(tag, W / f"{tag}.pth", "WC" if tag in ("K1", "K3", "L1") else ("K2" if tag in ("K2", "K4") else tag))
     base = res["TV-12"]; rules = {}
     for tag in sys.argv[1:]:
         c = res[tag]; d = lambda n, f: c[n][f] - base[n][f]
@@ -111,7 +114,7 @@ def main():
     best = max(ok, key=lambda t: rules[t]["weak_gain"]) if ok else None
     chosen = best if best is not None and rules[best]["weak_gain"] >= 10 else None
     res.update(rules=rules, chosen=chosen)
-    json.dump(res, open(HERE / "dev_results.json", "w"), indent=1, ensure_ascii=False)
+    json.dump(res, open(HERE / OUT, "w"), indent=1, ensure_ascii=False)
     print(json.dumps(res, indent=1, ensure_ascii=False))
 
 

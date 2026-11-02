@@ -34,14 +34,14 @@ from model_utils import (  # noqa: E402
     forward_with_rot_maps, input_size, load_model, make_transform, open_image,
 )
 
-LISTS = S / "t4/lists"
+LISTS = Path(os.environ.get("T3WS_LISTS", S / "t4/lists"))  # round 2: t5/lists (+ new rotten tomatoes)
 LVIS = S / "negx/lvis_veg"
 EXTRA = S / "negx/extra_train_N3.csv"
 HEAD_DATA = REPO / "experiments/new_vegetables/v7/head_data.npz"
 HEAD_ARGS = ["--clip-check-only", "--watermark-fresh", "1.0", "--watermark-rotten", "0.25", "--watermark-other", "0.5",
              "--watermark-style", "light", "--feature-cache", str(W / "head_features.npz")]
 FIVE = CLASS_NAMES[:10]
-K2DATA = S / "k2data"
+K2DATA = Path(os.environ.get("T3WS_K2DATA", S / "k2data"))
 
 
 def run(*args):
@@ -153,9 +153,9 @@ def k2_manifest():
     print("K2 manifest:", len(base), "+", len(add), Counter(r["class_name"] for r in add))
 
 
-def k2(tag: str = "K2", heads_from: str = "K1"):
-    loss = {s: json.load(open(W / f"K2_s{s}/metrics.json"))["metrics"]["val"]["loss"] for s in (42, 43)}
-    run_dir = W / f"K2_s{min(loss, key=loss.get)}"
+def k2(tag: str = "K2", heads_from: str = "K1", runs: str = "K2"):
+    loss = {s: json.load(open(W / f"{runs}_s{s}/metrics.json"))["metrics"]["val"]["loss"] for s in (42, 43)}
+    run_dir = W / f"{runs}_s{min(loss, key=loss.get)}"
     print("Valid loss per seed", loss, "->", run_dir.name, flush=True)
     out = W / f"{tag}.pth"
     shutil.copy(run_dir / "model.pth", out)
@@ -183,4 +183,5 @@ def k2(tag: str = "K2", heads_from: str = "K1"):
 
 if __name__ == "__main__":
     {"check": check, "K1": lambda: heads("K1", add=True), "data": k2_manifest, "K2": k2,
-     "K3": lambda: heads("K3", add=True, fruit=False), "K4": lambda: k2("K4", "K3")}[sys.argv[1]]()
+     "K3": lambda: heads("K3", add=True, fruit=False), "K4": lambda: k2("K4", "K3"),
+     "L1": lambda: heads("L1", add=True, fruit=False), "L2": lambda: k2("L2", "L1", runs="L2")}[sys.argv[1]]()
