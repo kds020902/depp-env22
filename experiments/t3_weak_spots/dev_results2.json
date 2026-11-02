@@ -1,0 +1,222 @@
+{
+ "TV-12": {
+  "valid": {
+   "kept_correct": 286,
+   "to_new_vegetable": 0
+  },
+  "odev": {
+   "kept_correct": 190,
+   "to_new_vegetable": 0
+  },
+  "o160": {
+   "kept_correct": 146,
+   "to_new_vegetable": 0
+  },
+  "asian37": {
+   "kept_correct": 33,
+   "to_new_vegetable": 0
+  },
+  "coco400": {
+   "turned_away": 400,
+   "to_new_vegetable": 0
+  },
+  "lvis": {
+   "turned_away": 20,
+   "to_new_vegetable": 1
+  },
+  "newval": {
+   "kind_right_kept": 78
+  },
+  "old_dev_to_new": 1,
+  "old_rotten_fruit_761_turned_away": 534,
+  "new_dev": {
+   "carrot_fresh": [
+    5,
+    5
+   ],
+   "potato_fresh": [
+    16,
+    20
+   ],
+   "potato_rotten": [
+    5,
+    6
+   ],
+   "rotten_fruit": [
+    9,
+    30
+   ],
+   "sweetpotato_fresh": [
+    7,
+    10
+   ],
+   "tomato_fresh": [
+    11,
+    12
+   ],
+   "tomato_rotten": [
+    8,
+    16
+   ]
+  },
+  "weak_total": 45,
+  "pair_total": 16
+ },
+ "L1": {
+  "valid": {
+   "kept_correct": 287,
+   "to_new_vegetable": 0
+  },
+  "odev": {
+   "kept_correct": 191,
+   "to_new_vegetable": 0
+  },
+  "o160": {
+   "kept_correct": 146,
+   "to_new_vegetable": 0
+  },
+  "asian37": {
+   "kept_correct": 33,
+   "to_new_vegetable": 0
+  },
+  "coco400": {
+   "turned_away": 400,
+   "to_new_vegetable": 0
+  },
+  "lvis": {
+   "turned_away": 20,
+   "to_new_vegetable": 1
+  },
+  "newval": {
+   "kind_right_kept": 77
+  },
+  "old_dev_to_new": 1,
+  "old_rotten_fruit_761_turned_away": 520,
+  "new_dev": {
+   "carrot_fresh": [
+    5,
+    5
+   ],
+   "potato_fresh": [
+    19,
+    20
+   ],
+   "potato_rotten": [
+    6,
+    6
+   ],
+   "rotten_fruit": [
+    9,
+    30
+   ],
+   "sweetpotato_fresh": [
+    9,
+    10
+   ],
+   "tomato_fresh": [
+    11,
+    12
+   ],
+   "tomato_rotten": [
+    10,
+    16
+   ]
+  },
+  "weak_total": 52,
+  "pair_total": 17
+ },
+ "L2": {
+  "valid": {
+   "kept_correct": 285,
+   "to_new_vegetable": 0
+  },
+  "odev": {
+   "kept_correct": 190,
+   "to_new_vegetable": 0
+  },
+  "o160": {
+   "kept_correct": 136,
+   "to_new_vegetable": 0
+  },
+  "asian37": {
+   "kept_correct": 34,
+   "to_new_vegetable": 0
+  },
+  "coco400": {
+   "turned_away": 400,
+   "to_new_vegetable": 0
+  },
+  "lvis": {
+   "turned_away": 20,
+   "to_new_vegetable": 1
+  },
+  "newval": {
+   "kind_right_kept": 77
+  },
+  "old_dev_to_new": 1,
+  "old_rotten_fruit_761_turned_away": 520,
+  "new_dev": {
+   "carrot_fresh": [
+    5,
+    5
+   ],
+   "potato_fresh": [
+    19,
+    20
+   ],
+   "potato_rotten": [
+    5,
+    6
+   ],
+   "rotten_fruit": [
+    9,
+    30
+   ],
+   "sweetpotato_fresh": [
+    9,
+    10
+   ],
+   "tomato_fresh": [
+    12,
+    12
+   ],
+   "tomato_rotten": [
+    12,
+    16
+   ]
+  },
+  "weak_total": 54,
+  "pair_total": 17
+ },
+ "rules": {
+  "L1": {
+   "checks": {
+    "Valid kept >= -3": true,
+    "internet 221 kept >= -3": true,
+    "160 kept >= -3": true,
+    "Asian 37 kept >= -2": true,
+    "everyday 400 turned away >= -5": true,
+    "new-vegetable Valid >= -2": true,
+    "old-vegetable dev to new <= +1": true,
+    "pair classes >= -2": true
+   },
+   "pass": true,
+   "weak_gain": 7
+  },
+  "L2": {
+   "checks": {
+    "Valid kept >= -3": true,
+    "internet 221 kept >= -3": true,
+    "160 kept >= -3": false,
+    "Asian 37 kept >= -2": true,
+    "everyday 400 turned away >= -5": true,
+    "new-vegetable Valid >= -2": true,
+    "old-vegetable dev to new <= +1": true,
+    "pair classes >= -2": true
+   },
+   "pass": false,
+   "weak_gain": 9
+  }
+ },
+ "chosen": null
+}
