@@ -1,0 +1,120 @@
+{
+ "tomato": {
+  "target": 429,
+  "T": 429,
+  "tomato_fresh": {
+   "TV-12_after_collapsed_removed": 429,
+   "final": 429,
+   "by_source": {
+    "manifest_train": 140,
+    "extra_train_N3": 289
+   }
+  },
+  "tomato_rotten": {
+   "TV-12_after_collapsed_removed": 561,
+   "final": 429,
+   "by_source": {
+    "manifest_train": 113,
+    "extra_train_N3": 316
+   }
+  }
+ },
+ "potato": {
+  "target": 350,
+  "T": 350,
+  "potato_fresh": {
+   "TV-12_after_collapsed_removed": 267,
+   "final": 350,
+   "by_source": {
+    "manifest_train": 140,
+    "extra_train_N3": 127,
+    "weak_spot_share": 60,
+    "local_dataset": 23
+   }
+  },
+  "potato_rotten": {
+   "TV-12_after_collapsed_removed": 265,
+   "final": 350,
+   "by_source": {
+    "manifest_train": 133,
+    "extra_train_N3": 132,
+    "weak_spot_share": 21,
+    "local_dataset": 64
+   }
+  }
+ },
+ "cucumber": {
+  "target": 350,
+  "T": 350,
+  "cucumber_fresh": {
+   "TV-12_after_collapsed_removed": 408,
+   "final": 350,
+   "by_source": {
+    "extra_train_N3": 246,
+    "manifest_train": 104
+   }
+  },
+  "cucumber_rotten": {
+   "TV-12_after_collapsed_removed": 205,
+   "final": 350,
+   "by_source": {
+    "manifest_train": 103,
+    "extra_train_N3": 102,
+    "local_dataset": 145
+   }
+  }
+ },
+ "bellpepper": {
+  "target": 350,
+  "T": 334,
+  "bellpepper_fresh": {
+   "TV-12_after_collapsed_removed": 184,
+   "final": 334,
+   "by_source": {
+    "manifest_train": 106,
+    "extra_train_N3": 78,
+    "local_dataset": 89,
+    "internet": 61
+   }
+  },
+  "bellpepper_rotten": {
+   "TV-12_after_collapsed_removed": 178,
+   "final": 334,
+   "by_source": {
+    "extra_train_N3": 77,
+    "local_dataset": 152,
+    "manifest_train": 99,
+    "internet": 6
+   }
+  }
+ },
+ "carrot": {
+  "target": 350,
+  "T": 350,
+  "carrot_fresh": {
+   "TV-12_after_collapsed_removed": 225,
+   "final": 350,
+   "by_source": {
+    "manifest_train": 104,
+    "extra_train_N3": 121,
+    "weak_spot_share": 23,
+    "local_dataset": 102
+   }
+  },
+  "carrot_rotten": {
+   "TV-12_after_collapsed_removed": 233,
+   "final": 350,
+   "by_source": {
+    "manifest_train": 104,
+    "extra_train_N3": 129,
+    "weak_spot_share": 2,
+    "local_dataset": 115
+   }
+  }
+ },
+ "collapsed_removed": 78,
+ "copies_skipped": {
+  "bellpepper_fresh local_dataset": 47
+ },
+ "asian_fresh_cucumbers_kept": 140
+}

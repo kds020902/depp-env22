@@ -1,0 +1,224 @@
+{
+ "TV-12": {
+  "valid": {
+   "kept_correct": 286,
+   "to_new_vegetable": 0
+  },
+  "odev": {
+   "kept_correct": 190,
+   "to_new_vegetable": 0
+  },
+  "o160": {
+   "kept_correct": 146,
+   "to_new_vegetable": 0
+  },
+  "asian37": {
+   "kept_correct": 33,
+   "to_new_vegetable": 0
+  },
+  "coco400": {
+   "turned_away": 400,
+   "to_new_vegetable": 0
+  },
+  "lvis": {
+   "turned_away": 20,
+   "to_new_vegetable": 1
+  },
+  "newval": {
+   "kind_right_kept": 78
+  },
+  "old_dev_to_new": 1,
+  "old_rotten_fruit_761_turned_away": 534,
+  "new_dev": {
+   "carrot_fresh": [
+    5,
+    5
+   ],
+   "potato_fresh": [
+    16,
+    20
+   ],
+   "potato_rotten": [
+    5,
+    6
+   ],
+   "rotten_fruit": [
+    9,
+    30
+   ],
+   "sweetpotato_fresh": [
+    7,
+    10
+   ],
+   "tomato_fresh": [
+    11,
+    12
+   ],
+   "tomato_rotten": [
+    8,
+    16
+   ]
+  },
+  "weak_total": 45,
+  "pair_total": 16,
+  "per_class": {
+   "valid": {
+    "cucumber_fresh": "27/30",
+    "cucumber_rotten": "29/30",
+    "potato_fresh": "24/30",
+    "potato_rotten": "30/30",
+    "tomato_fresh": "28/30",
+    "tomato_rotten": "29/30",
+    "bellpepper_fresh": "29/30",
+    "bellpepper_rotten": "30/30",
+    "carrot_fresh": "30/30",
+    "carrot_rotten": "30/30"
+   },
+   "odev": {
+    "cucumber_fresh": "10/12",
+    "cucumber_rotten": "2/2",
+    "potato_fresh": "13/16",
+    "potato_rotten": "35/42",
+    "tomato_fresh": "47/49",
+    "tomato_rotten": "30/45",
+    "bellpepper_fresh": "22/22",
+    "bellpepper_rotten": "2/2",
+    "carrot_fresh": "26/28",
+    "carrot_rotten": "3/3"
+   },
+   "o160": {
+    "cucumber_fresh": "19/20",
+    "cucumber_rotten": "2/10",
+    "potato_fresh": "19/20",
+    "potato_rotten": "12/12",
+    "tomato_fresh": "17/20",
+    "tomato_rotten": "20/20",
+    "bellpepper_fresh": "18/18",
+    "bellpepper_rotten": "10/10",
+    "carrot_fresh": "20/20",
+    "carrot_rotten": "9/10"
+   },
+   "asian37": {
+    "cucumber_fresh": "33/37"
+   }
+  }
+ },
+ "B1": {
+  "valid": {
+   "kept_correct": 288,
+   "to_new_vegetable": 0
+  },
+  "odev": {
+   "kept_correct": 189,
+   "to_new_vegetable": 0
+  },
+  "o160": {
+   "kept_correct": 145,
+   "to_new_vegetable": 0
+  },
+  "asian37": {
+   "kept_correct": 33,
+   "to_new_vegetable": 0
+  },
+  "coco400": {
+   "turned_away": 400,
+   "to_new_vegetable": 0
+  },
+  "lvis": {
+   "turned_away": 19,
+   "to_new_vegetable": 2
+  },
+  "newval": {
+   "kind_right_kept": 78
+  },
+  "old_dev_to_new": 2,
+  "old_rotten_fruit_761_turned_away": 533,
+  "new_dev": {
+   "carrot_fresh": [
+    5,
+    5
+   ],
+   "potato_fresh": [
+    19,
+    20
+   ],
+   "potato_rotten": [
+    5,
+    6
+   ],
+   "rotten_fruit": [
+    10,
+    30
+   ],
+   "sweetpotato_fresh": [
+    7,
+    10
+   ],
+   "tomato_fresh": [
+    11,
+    12
+   ],
+   "tomato_rotten": [
+    9,
+    16
+   ]
+  },
+  "weak_total": 50,
+  "pair_total": 16,
+  "per_class": {
+   "valid": {
+    "cucumber_fresh": "27/30",
+    "cucumber_rotten": "29/30",
+    "potato_fresh": "25/30",
+    "potato_rotten": "29/30",
+    "tomato_fresh": "30/30",
+    "tomato_rotten": "29/30",
+    "bellpepper_fresh": "29/30",
+    "bellpepper_rotten": "30/30",
+    "carrot_fresh": "30/30",
+    "carrot_rotten": "30/30"
+   },
+   "odev": {
+    "cucumber_fresh": "10/12",
+    "cucumber_rotten": "2/2",
+    "potato_fresh": "15/16",
+    "potato_rotten": "35/42",
+    "tomato_fresh": "47/49",
+    "tomato_rotten": "26/45",
+    "bellpepper_fresh": "22/22",
+    "bellpepper_rotten": "2/2",
+    "carrot_fresh": "27/28",
+    "carrot_rotten": "3/3"
+   },
+   "o160": {
+    "cucumber_fresh": "19/20",
+    "cucumber_rotten": "2/10",
+    "potato_fresh": "19/20",
+    "potato_rotten": "12/12",
+    "tomato_fresh": "18/20",
+    "tomato_rotten": "20/20",
+    "bellpepper_fresh": "16/18",
+    "bellpepper_rotten": "10/10",
+    "carrot_fresh": "20/20",
+    "carrot_rotten": "9/10"
+   },
+   "asian37": {
+    "cucumber_fresh": "33/37"
+   }
+  }
+ },
+ "rules": {
+  "checks": {
+   "Valid kept >= -3": true,
+   "internet 221 kept >= -3": true,
+   "160 kept >= -3": true,
+   "Asian 37 kept >= -2": true,
+   "everyday 400 turned away >= -5": true,
+   "new-vegetable Valid >= -2": true,
+   "old-vegetable dev to new <= +1": true,
+   "pair classes >= -2": true
+  },
+  "all_kept": true,
+  "note": "even if every rule holds, B1 is not adopted without a new blind test set (PREREG.md section 3)"
+ }
+}
