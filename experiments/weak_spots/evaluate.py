@@ -1,5 +1,5 @@
 # Pre-registered (weak/PREREG.md): CLIP head retrained with the weak-spot photos (W1) or with them plus the earlier reviewed photos (W2).
-# Development checks only; the new sealed test set and Test are scored later, once, by final.py.
+# Development checks only; the new blind test set and Test are scored later, once, by final.py.
 import sys, csv, json, pickle, collections, numpy as np, torch
 from sklearn.linear_model import LogisticRegression
 from scipy.special import log_softmax, logsumexp
@@ -35,7 +35,7 @@ for r in csv.DictReader(open(S + 'fix/dsK/manifest_notest.csv', encoding='utf-8'
         pool.append((S + 'fix/dsK/' + r['image_path'], r['class_name']))
 Xp = np.stack([feat_of[p] for p, _ in pool]); yp = np.array([NAMES.index(c) for _, c in pool])
 
-# No copies of any check photo (Valid, Test, internet 221, 160 exam, Asian cucumbers, new sealed test set)
+# No copies of any check photo (Valid, Test, internet 221, 160 exam, Asian cucumbers, new blind test set)
 T = np.load(S + 'clipcls/test_features.npz')['clip']
 t2 = {r['id'] for r in csv.DictReader(open(E + 'outside_test2/outside_test2.csv', encoding='utf-8'))}
 inf = np.load(E + 'inat/features.npz')

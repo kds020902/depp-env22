@@ -1,4 +1,4 @@
-# Pre-registered (v4/PREREG.md): V4 (8 vegetables, 16 slots) and the current system, scored once on the sealed sets:
+# Pre-registered (v4/PREREG.md): V4 (8 vegetables, 16 slots) and the current system, scored once on the blind sets:
 # Test 300, the new internet test 241, the any-photo set relabelled for 8 vegetables (v2), and the new-vegetable test 97.
 import sys, csv, json, pickle, collections, numpy as np, torch, open_clip
 from scipy.special import log_softmax, logsumexp

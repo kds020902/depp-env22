@@ -39,7 +39,7 @@ Xa = np.stack([feat_of[p] for p, _ in sets['probe_train'] if '/asia/zen/' in p])
 # "Not one of the five" photos: fruit, everyday objects and scenes, other vegetables
 Xn = np.concatenate([np.load(S + f'neg/{k}_feats.npz')['f'] for k in ('fruit', 'everyday', 'otherveg')])
 
-# No copies of any check photo (Valid, Test, internet 221, 160 exam, Asian cucumbers, internet fruit 374, everyday 400, new sealed test set)
+# No copies of any check photo (Valid, Test, internet 221, 160 exam, Asian cucumbers, internet fruit 374, everyday 400, new blind test set)
 T = np.load(S + 'clipcls/test_features.npz')['clip']
 t2 = {r['id'] for r in csv.DictReader(open(E + 'outside_test2/outside_test2.csv', encoding='utf-8'))}
 inf = np.load(E + 'inat/features.npz')

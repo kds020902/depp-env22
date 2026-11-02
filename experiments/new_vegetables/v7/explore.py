@@ -1,4 +1,4 @@
-# v7, development only (no sealed set is touched): ways to help abnormal sweet potato and green onion in the new-vegetable head.
+# v7, development only (no blind set is touched): ways to help abnormal sweet potato and green onion in the new-vegetable head.
 #   base : V6-H as adopted (logistic regression, C=10)
 #   zs(a): + a x CLIP zero-shot class logits (100 x cosine to text prompts, centred per photo) added to the 16 class logits
 #   cb   : class-balanced sample weights for the six new-vegetable classes (each weighs as much as their average)

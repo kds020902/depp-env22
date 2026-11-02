@@ -12,7 +12,7 @@ from model_utils import load_model, make_transform, open_image, input_size, fit_
 torch.set_num_threads(4)
 TB = 0.5283377766609192
 C = np.load(S + 'post/cache.npz'); Y = json.load(open(S + 'post/labels.json')); yv = np.array([NAMES.index(c) for c in Y['valid']])
-any_test = np.load(S + 'arb/anyphoto_features.npz')['f']           # the sealed "any photo" set: no copies in training
+any_test = np.load(S + 'arb/anyphoto_features.npz')['f']           # the blind "any photo" set: no copies in training
 chk = np.concatenate([checks, any_test])
 dropx = lambda X: (X @ chk.T).max(1) >= 0.95
 

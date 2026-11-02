@@ -1,4 +1,4 @@
-"""Sealed test T3 (RULES.md): score TV-11 and the ZS8 candidate once.
+"""Blind test set T3 (RULES.md): score TV-11 and the ZS8 candidate once.
 
 The photos stay in the working folder (licences); t3_test.csv lists them with source, licence and author. The script
 refuses to run unless the SHA-256 of t3_test.csv equals the seal written at the end of RULES.md.

@@ -1,4 +1,4 @@
-# Development only (no sealed set is touched): 16-slot CLIP head trained with the v5 pool, and two ways to use it:
+# Development only (no blind set is touched): 16-slot CLIP head trained with the v5 pool, and two ways to use it:
 #   R (router, as V4-R): the new head picks the kind; old five -> the current system's answer; rejection by the new head.
 #   C (cascade): the current system first; only photos it turns away go to the new head, which may answer onion / sweet potato /
 #     green onion (when its "not five" log-odds is under its threshold and the most likely kind is a new one); otherwise still turned away.

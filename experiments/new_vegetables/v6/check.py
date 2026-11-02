@@ -1,4 +1,4 @@
-# v6 development check (no sealed set is touched). 16-slot CLIP head trained with the v6 pool; classes under the average Train count
+# v6 development check (no blind set is touched). 16-slot CLIP head trained with the v6 pool; classes under the average Train count
 # of the five new classes are topped up to that average with augmented copies of their own Train photos (random crop 60-100%,
 # flip, mild colour jitter; seed 0). The decision is V5-H's; tau is chosen by the same rule as V5-H (smallest of 0.5/0.7/0.8/0.9/0.95
 # that moves at most 1 old-vegetable development photo the current system answered to a new vegetable). argv[1] = 'aug' or 'noaug'.

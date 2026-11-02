@@ -1,6 +1,6 @@
 # v6 pool: the v5 pool (splits unchanged) + photos reviewed in this round (iNaturalist, Openverse, Wikimedia Commons, LVIS crops).
 # Same rules as v4/v5: copies (CLIP cosine >= 0.95) of any earlier photo or of each other are dropped; split by uploader / observer /
-# source photo; a group already in the pool keeps its split; uploaders of sealed check sets go to the test side; otherwise
+# source photo; a group already in the pool keeps its split; uploaders of blind check sets go to the test side; otherwise
 # h('t:'+group) % 3 == 0 -> test; at most 1/3 of each class's new photos go to test (non-held groups moved back in hash order);
 # Valid = h('v:'+group) % 5 == 0 among the rest.
 import json, csv, re, math, hashlib, collections, sys, glob, os, numpy as np, torch, open_clip

@@ -1,5 +1,5 @@
-"""Sealed test T4 (experiments/t3_weak_spots/PREREG.md): TV-12 and the candidate chosen on development photos, once each.
-Also the earlier sealed tests once each for the candidate (TV-12 must give its recorded numbers: pipeline check).
+"""Blind test set T4 (experiments/t3_weak_spots/PREREG.md): TV-12 and the candidate chosen on development photos, once each.
+Also the earlier blind tests once each for the candidate (TV-12 must give its recorded numbers: pipeline check).
 Refuses to run unless t4_test.csv matches the seal written in PREREG.md.
 
     python results/t4_test/score.py   -> scores_once.json

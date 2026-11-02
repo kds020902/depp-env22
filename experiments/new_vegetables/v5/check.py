@@ -1,4 +1,4 @@
-# Development check record for V5-H (tau 0.7) and R5 (v5/PREREG.md). No sealed set is touched.
+# Development check record for V5-H (tau 0.7) and R5 (v5/PREREG.md). No blind set is touched.
 import sys, json, pickle, collections, numpy as np, torch
 from scipy.special import log_softmax, logsumexp, softmax
 S = '/tmp/claude-0/-home-user-depp-env22/a974ab14-e897-5da8-89f1-d4ea639bb37e/scratchpad/'; V = S + 'v5/'; REPO = '/home/user/depp-env22/'

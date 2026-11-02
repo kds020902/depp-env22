@@ -1,7 +1,7 @@
 # All reviewed photos for v4 (new vegetables + a few weak-spot photos), with source, licence and a group (uploader /
 # observer / source photo) for splitting; CLIP features; copies of earlier photos and near-copies inside the pool dropped.
-# Split: Openverse / iNaturalist / Commons by uploader (sha1 parity, as the sealed sets: even = test side);
-# Kaggle (kritikseth) and LVIS crops by group hash (1 in 4 to test). Test side -> "new vegetable" sealed test;
+# Split: Openverse / iNaturalist / Commons by uploader (sha1 parity, as the blind sets: even = test side);
+# Kaggle (kritikseth) and LVIS crops by group hash (1 in 4 to test). Test side -> "new vegetable" blind test;
 # the rest -> 80% Train, 20% Valid by group hash.
 import json, csv, re, hashlib, collections, sys, numpy as np, torch, open_clip
 sys.path.insert(0, '/home/user/depp-env22/src')

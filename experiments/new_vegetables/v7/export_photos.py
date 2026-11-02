@@ -1,5 +1,5 @@
 # Write the photo lists for the repository: every reviewed new-vegetable photo (v4-v7 rounds) with its split, source,
-# licence, attribution and download address, and the three sealed new-vegetable tests. Photo files are not committed.
+# licence, attribution and download address, and the three blind new-vegetable tests. Photo files are not committed.
 import json, csv, glob, os, hashlib, collections, sys
 S = '/tmp/claude-0/-home-user-depp-env22/a974ab14-e897-5da8-89f1-d4ea639bb37e/scratchpad/'; R = '/home/user/depp-env22/'
 out_dir, test_dir = sys.argv[1], sys.argv[2]

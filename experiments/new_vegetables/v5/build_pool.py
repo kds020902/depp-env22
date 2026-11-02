@@ -1,6 +1,6 @@
 # v5 pool: the v4 pool (splits unchanged) + photos reviewed in this round (iNaturalist, Openverse, Wikimedia Commons, more LVIS crops).
 # Same rules as v4: copies (CLIP cosine >= 0.95) of any earlier photo, or of each other, are dropped; split by uploader / observer /
-# source photo; a group already in the v4 pool keeps its v4 split; uploaders of sealed check sets go to the test side; otherwise
+# source photo; a group already in the v4 pool keeps its v4 split; uploaders of blind check sets go to the test side; otherwise
 # h('t:'+group) % 3 == 0 -> test; at most 1/3 of each new class goes to test (non-held groups moved back in hash order);
 # Valid = h('v:'+group) % 5 == 0 among the rest. Photos of the old five (weak spots) are Train only.
 import json, csv, re, math, hashlib, collections, sys, glob, numpy as np, torch, open_clip
@@ -60,7 +60,7 @@ def feats(paths):
             out.append(torch.nn.functional.normalize(model.encode_image(torch.stack([prep(open_image(p)) for p in paths[i:i + 32]])), dim=-1))
     return torch.cat(out).numpy()
 f = feats([r['path'] for r in rows])
-t2 = sorted(glob.glob(S + 'weak/t2img/*.jpg')); ft2 = feats(t2)       # the sealed new internet test 241, to be sure
+t2 = sorted(glob.glob(S + 'weak/t2img/*.jpg')); ft2 = feats(t2)       # the blind new internet test 241, to be sure
 F = dict(np.load(S + 'clip/feat_datacomp_xl_s13b_b90k.npz'))
 old = [F[k] for k in F if k != 'demo'] + [np.load(S + 'clipcls/test_features.npz')['clip'], np.load(S + 'arb/anyphoto_features.npz')['f'], ft2, np.load(V4 + 'pool_feats.npz')['f']]
 old += [np.load(p)['f'] for p in (S + 'ext3/features.npz', S + 'ext3/inat/features.npz', S + 'ext4/features.npz', S + 'arb/pool/feats.npz')]

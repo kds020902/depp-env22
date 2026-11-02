@@ -1,5 +1,5 @@
 """TV-12 (= ZS8: alpha 0.25, threshold -0.3204, tau 0.8) on the earlier test sets, for the record after it was adopted by
-the sealed test T3 (results/t3_test). Not used for any choice. Also checks that the TV-12 checkpoint (model.pth, text
+the blind test T3 (results/t3_test). Not used for any choice. Also checks that the TV-12 checkpoint (model.pth, text
 evidence inside the CLIP head) gives exactly the ZS8 decisions of evaluate.decide() on every development and test set.
 
     python experiments/zero_shot_reject/final_zs8.py   -> final_zs8.json

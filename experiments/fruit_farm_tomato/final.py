@@ -1,5 +1,5 @@
-# Pre-registered (candF/PREREG.md): the chosen candidate (F1 or F2) and the current system (N3 + R1), scored once on the sealed sets:
-# new internet test 241, Test 300, and the new sealed "any photo" set (scored for both systems at the same time).
+# Pre-registered (candF/PREREG.md): the chosen candidate (F1 or F2) and the current system (N3 + R1), scored once on the blind sets:
+# new internet test 241, Test 300, and the new blind "any photo" set (scored for both systems at the same time).
 import sys, csv, json, pickle, collections, numpy as np, torch, open_clip
 from scipy.special import log_softmax, logsumexp
 sys.path.insert(0, '/home/user/depp-env22/src')

@@ -1,4 +1,4 @@
-"""Development checks of the watermark round (PREREG.md section 3); no sealed test set is touched.
+"""Development checks of the watermark round (PREREG.md section 3); no blind test set is touched.
 
     python experiments/watermark/evaluate.py V7 WA W0 WB    -> dev_results.json
 """

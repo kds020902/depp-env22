@@ -1,4 +1,4 @@
-# Pre-registered final scoring (negx/PREREG.md, N3): new sealed test set (241) and Test (300), once each.
+# Pre-registered final scoring (negx/PREREG.md, N3): new blind test set (241) and Test (300), once each.
 # The current system is recomputed with the same features as a pipeline check (it must reproduce 191 / 165 on the new test set).
 import sys, csv, json, pickle, numpy as np, torch, open_clip
 from scipy.special import log_softmax, logsumexp
@@ -34,7 +34,7 @@ def score(bl, f, y):
                      'by_class': {n: f'{int(right[y == i].sum())}/{int((y == i).sum())} (kept {int((right & ~r)[y == i].sum())})' for i, n in enumerate(NAMES) if (y == i).any()}}
     out['fixed'] = int((pn == y).sum() - ((pn == y) & (pc == y)).sum()); out['broken'] = int((pc == y).sum() - ((pn == y) & (pc == y)).sum())
     return out
-# new sealed test set
+# new blind test set
 t2 = list(csv.DictReader(open(S + 'ext3/outside_test2/outside_test2.csv', encoding='utf-8')))
 bl, f = feats([S + f"weak/t2img/{r['id']}.jpg" for r in t2]); y = np.array([NAMES.index(r['class_name']) for r in t2])
 res = {'new_test_241': score(bl, f, y)}
