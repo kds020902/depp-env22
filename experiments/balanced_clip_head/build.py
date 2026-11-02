@@ -31,7 +31,6 @@ import torch
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parent / "watermark"))
-sys.path.insert(0, str(HERE.parent / "t3_weak_spots"))
 from common import REPO, S, W  # noqa: E402
 from model_utils import CLASS_NAMES  # noqa: E402
 
@@ -140,7 +139,9 @@ def lists():
 def b1():
     """Manifest = Valid (for the temperature) + the Train rows kept in the balanced list; every other photo of the list goes
     in the extra CSV with the 2,850 not-five photos. Paths are absolute, so the feature cache of TV-12's head is reused."""
-    import build as t3ws  # experiments/t3_weak_spots/build.py: same head arguments and text-evidence refit
+    import importlib.util  # experiments/t3_weak_spots/build.py: same head arguments and text-evidence refit
+    spec = importlib.util.spec_from_file_location("t3ws_build", HERE.parent / "t3_weak_spots/build.py")
+    t3ws = importlib.util.module_from_spec(spec); spec.loader.exec_module(t3ws)
     man = list(csv.DictReader(open(REPO / "dataset/manifest.csv", encoding="utf-8")))
     five = list(csv.DictReader(open(OUT / "train_five.csv", encoding="utf-8")))
     keep = {r["path"] for r in five if r["source"] == "manifest_train"}
