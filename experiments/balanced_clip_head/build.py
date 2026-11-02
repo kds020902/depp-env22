@@ -63,6 +63,9 @@ def fill_pools() -> dict[str, list[dict]]:
     for r in json.load(open(T6 / "local_candidates.json")):
         if lab.get(r["path"]) == "ok":
             pools[r["class_name"]].append({"path": r["path"], "class_name": r["class_name"], "source": "local_dataset", "group": r["src"]})
+    for p, v in json.load(open(T6 / "local3_labels.json")).items():  # VegNet unripe (green, firm) bell peppers, reviewed last
+        if v == "ok":
+            pools["bellpepper_fresh"].append({"path": p, "class_name": "bellpepper_fresh", "source": "local_dataset", "group": "vegnet_unripe"})
     for web in ("web", "web2"):
         f = T6 / web / "labels.json"
         if f.exists():
