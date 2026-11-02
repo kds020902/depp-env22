@@ -6,13 +6,12 @@
 
 from __future__ import annotations
 
-import csv
 import json
 
 import numpy as np
 import torch
 
-from common import REPO, S, W, dev_sets, system
+from common import REPO, W, dev_sets, system
 from final import REJECT, photo_sets
 from model_utils import CLASS_NAMES
 

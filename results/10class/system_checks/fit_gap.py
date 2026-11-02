@@ -4,7 +4,7 @@ import os
 import sys, json, pickle, csv, numpy as np, torch
 from sklearn.linear_model import LogisticRegression
 from scipy.special import log_softmax, logsumexp
-S = (os.environ.get("DEPP_WORK", "/tmp/claude-0/-home-user-depp-env22/a974ab14-e897-5da8-89f1-d4ea639bb37e/scratchpad") + "/")
+S = os.environ["DEPP_WORK"] + "/"
 src = open(S + 'negx/evaluate.py').read()
 exec(src[:src.index("def run(")])
 Xa_ = Xa

@@ -2,9 +2,10 @@
 #   (a) the current system turns it away and the new head says onion / sweet potato / green onion (as cascade C), or
 #   (b) the current system answers but the new head gives the three new kinds together probability >= tau.
 import os
+ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../.."))  # the repository
 import sys, json, pickle, numpy as np, torch
 from scipy.special import log_softmax, logsumexp, softmax
-S = (os.environ.get("DEPP_WORK", "/tmp/claude-0/-home-user-depp-env22/a974ab14-e897-5da8-89f1-d4ea639bb37e/scratchpad") + "/"); V = S + 'v5/'; REPO = (os.path.abspath(os.path.join(os.path.dirname(__file__), "../../..")) + "/")
+S = os.environ["DEPP_WORK"] + "/"; V = S + 'v5/'; REPO = ROOT + "/"
 XSRC = open(V + 'explore.py').read()
 # reuse explore.py's data loading but not its head training: load the saved head
 pre = XSRC[:XSRC.index('lr = LogisticRegression')]

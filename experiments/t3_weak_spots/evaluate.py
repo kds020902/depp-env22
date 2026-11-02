@@ -96,20 +96,25 @@ def score(tag: str, path: Path, b_tag: str) -> dict:
     return out
 
 
+def dev_rules(c: dict, base: dict) -> dict:
+    """The 8 development rules (PREREG.md): what a candidate (score() output) must keep compared with the base model."""
+    d = lambda n, f: c[n][f] - base[n][f]
+    return {"Valid kept >= -3": d("valid", "kept_correct") >= -3, "internet 221 kept >= -3": d("odev", "kept_correct") >= -3,
+            "160 kept >= -3": d("o160", "kept_correct") >= -3, "Asian 37 kept >= -2": d("asian37", "kept_correct") >= -2,
+            "everyday 400 turned away >= -5": d("coco400", "turned_away") >= -5,
+            "new-vegetable Valid >= -2": d("newval", "kind_right_kept") >= -2,
+            "old-vegetable dev to new <= +1": c["old_dev_to_new"] - base["old_dev_to_new"] <= 1,
+            "pair classes >= -2": c["pair_total"] - base["pair_total"] >= -2}
+
+
 def main():
     res = {"TV-12": score("TV-12", REPO / "model.pth", "WC")}
     for tag in sys.argv[1:]:
         res[tag] = score(tag, W / f"{tag}.pth", "WC" if tag in ("K1", "K3", "L1") else ("K2" if tag in ("K2", "K4") else tag))
     base = res["TV-12"]; rules = {}
     for tag in sys.argv[1:]:
-        c = res[tag]; d = lambda n, f: c[n][f] - base[n][f]
-        checks = {"Valid kept >= -3": d("valid", "kept_correct") >= -3, "internet 221 kept >= -3": d("odev", "kept_correct") >= -3,
-                  "160 kept >= -3": d("o160", "kept_correct") >= -3, "Asian 37 kept >= -2": d("asian37", "kept_correct") >= -2,
-                  "everyday 400 turned away >= -5": d("coco400", "turned_away") >= -5,
-                  "new-vegetable Valid >= -2": d("newval", "kind_right_kept") >= -2,
-                  "old-vegetable dev to new <= +1": c["old_dev_to_new"] - base["old_dev_to_new"] <= 1,
-                  "pair classes >= -2": c["pair_total"] - base["pair_total"] >= -2}
-        rules[tag] = {"checks": checks, "pass": all(checks.values()), "weak_gain": c["weak_total"] - base["weak_total"]}
+        checks = dev_rules(res[tag], base)
+        rules[tag] = {"checks": checks, "pass": all(checks.values()), "weak_gain": res[tag]["weak_total"] - base["weak_total"]}
     ok = [t for t in rules if rules[t]["pass"]]
     best = max(ok, key=lambda t: rules[t]["weak_gain"]) if ok else None
     chosen = best if best is not None and rules[best]["weak_gain"] >= 10 else None

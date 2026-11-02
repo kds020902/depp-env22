@@ -2,12 +2,13 @@
 # The CLIP-side rejection score becomes logit(other) - logsumexp(vegetable logits); its threshold keeps the same rule (95% of Valid + 192 real-scene vegetables pass).
 # Classification still uses only the 10 vegetable logits, combined with the vegetable model (B) as now. Development checks only.
 import os
+ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))  # the repository
 import sys, csv, json, pickle, collections, numpy as np, torch
 from sklearn.linear_model import LogisticRegression
 from scipy.special import log_softmax, logsumexp
-sys.path.insert(0, (os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")) + "/src"))
+sys.path.insert(0, ROOT + "/src")
 from model_utils import fit_temperature
-S = (os.environ.get("DEPP_WORK", "/tmp/claude-0/-home-user-depp-env22/a974ab14-e897-5da8-89f1-d4ea639bb37e/scratchpad") + "/"); E = S + 'ext3/'; REPO = (os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")) + "/")
+S = os.environ["DEPP_WORK"] + "/"; E = S + 'ext3/'; REPO = ROOT + "/"
 NAMES = ['cucumber_fresh','cucumber_rotten','potato_fresh','potato_rotten','tomato_fresh','tomato_rotten','bellpepper_fresh','bellpepper_rotten','carrot_fresh','carrot_rotten']
 OTHER = 10
 sets = json.load(open(S + 'clip/sets.json')); F = dict(np.load(S + 'clip/feat_datacomp_xl_s13b_b90k.npz'))

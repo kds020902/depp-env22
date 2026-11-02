@@ -1,11 +1,12 @@
 # Pre-registered (v5/PREREG.md): V5-H (adoptable) and R5 (record only), scored once together with the current system on
 # Test 300, the new internet test 241, the any-photo set v2, new-vegetable test 1 (97) and new-vegetable test 2 (54).
 import os
+ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../.."))  # the repository
 import sys, csv, json, pickle, collections, numpy as np, torch, open_clip
 from scipy.special import log_softmax, logsumexp, softmax
-sys.path.insert(0, (os.path.abspath(os.path.join(os.path.dirname(__file__), "../../..")) + "/src"))
+sys.path.insert(0, ROOT + "/src")
 from model_utils import load_model, make_transform, open_image, input_size, CLASS_NAMES
-S = (os.environ.get("DEPP_WORK", "/tmp/claude-0/-home-user-depp-env22/a974ab14-e897-5da8-89f1-d4ea639bb37e/scratchpad") + "/"); V = S + 'v5/'; REPO = (os.path.abspath(os.path.join(os.path.dirname(__file__), "../../..")) + "/")
+S = os.environ["DEPP_WORK"] + "/"; V = S + 'v5/'; REPO = ROOT + "/"
 assert json.load(open(V + 'check_results.json'))['V5-H_checks_pass']
 REJECT = ('rotten_fruit', 'fresh_fruit', 'other_veg', 'food', 'drawing_toy', 'everyday'); K = 16; TAU = 0.7
 torch.set_num_threads(4)

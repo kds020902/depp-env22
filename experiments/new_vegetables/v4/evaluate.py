@@ -4,7 +4,7 @@ import os
 import sys, csv, json, pickle, collections, numpy as np, torch
 from sklearn.linear_model import LogisticRegression
 from scipy.special import log_softmax, logsumexp
-S = (os.environ.get("DEPP_WORK", "/tmp/claude-0/-home-user-depp-env22/a974ab14-e897-5da8-89f1-d4ea639bb37e/scratchpad") + "/"); V = S + 'v4/'
+S = os.environ["DEPP_WORK"] + "/"; V = S + 'v4/'
 src = open(S + 'negx/evaluate.py').read(); exec(src[:src.index("ck = torch.load")])   # Xt, Xp, Xw, Xa, Xn (+ copy checks) exactly as N3
 sys.path.insert(0, REPO + 'src')
 from model_utils import load_model, make_transform, open_image, input_size, fit_temperature, CLASS_NAMES, UNTRAINED_CLASSES

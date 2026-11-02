@@ -16,7 +16,7 @@ import torch
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parent / "watermark"))
-from common import REPO, W, dev_sets, system  # noqa: E402
+from common import REPO, W, system  # noqa: E402
 
 import importlib.util  # noqa: E402
 

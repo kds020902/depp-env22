@@ -4,10 +4,11 @@
 # h('t:'+group) % 3 == 0 -> test; at most 1/3 of each new class goes to test (non-held groups moved back in hash order);
 # Valid = h('v:'+group) % 5 == 0 among the rest. Photos of the old five (weak spots) are Train only.
 import os
+ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../.."))  # the repository
 import json, csv, re, math, hashlib, collections, sys, glob, numpy as np, torch, open_clip
-sys.path.insert(0, (os.path.abspath(os.path.join(os.path.dirname(__file__), "../../..")) + "/src"))
+sys.path.insert(0, ROOT + "/src")
 from model_utils import open_image
-S = (os.environ.get("DEPP_WORK", "/tmp/claude-0/-home-user-depp-env22/a974ab14-e897-5da8-89f1-d4ea639bb37e/scratchpad") + "/"); V4 = S + 'v4/'; V = S + 'v5/'; R = (os.path.abspath(os.path.join(os.path.dirname(__file__), "../../..")) + "/")
+S = os.environ["DEPP_WORK"] + "/"; V4 = S + 'v4/'; V = S + 'v5/'; R = ROOT + "/"
 h = lambda s: int(hashlib.sha1(s.encode()).hexdigest()[:8], 16)
 NEW = ('onion', 'sweetpotato', 'greenonion')
 def uploader(o):

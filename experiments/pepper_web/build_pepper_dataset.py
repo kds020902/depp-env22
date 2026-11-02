@@ -33,7 +33,7 @@ import numpy as np
 import torch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "dataset" / "tools"))
-from build_dataset_v2 import CONDITION_DIRS, T_DUP, T_SESSION, fingerprints, load_rgb, orb_inliers, union_find  # noqa: E402
+from build_dataset_v2 import CONDITION_DIRS, T_DUP, T_SESSION, load_rgb, orb_inliers, union_find  # noqa: E402
 from build_dataset_v3 import CLASS_NAMES, TRAIN_MAX, drop_old_duplicates, near_hash, similarity  # noqa: E402
 
 SOURCE = ("vetion", "https://www.kaggle.com/datasets/vetion/vege-quality", "1")

@@ -8,7 +8,7 @@
 import sys, json, pickle, hashlib, collections, numpy as np, torch, open_clip, os
 from sklearn.linear_model import LogisticRegression
 from scipy.special import log_softmax, logsumexp, softmax
-S = (os.environ.get("DEPP_WORK", "/tmp/claude-0/-home-user-depp-env22/a974ab14-e897-5da8-89f1-d4ea639bb37e/scratchpad") + "/"); V6 = S + 'v6/'; V = S + 'v7/'
+S = os.environ["DEPP_WORK"] + "/"; V6 = S + 'v6/'; V = S + 'v7/'
 src = open(S + 'negx/evaluate.py').read(); exec(src[:src.index("ck = torch.load")])
 sys.path.insert(0, REPO + 'src')
 from model_utils import load_model, make_transform, open_image, input_size, CLASS_NAMES

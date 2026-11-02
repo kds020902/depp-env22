@@ -1,11 +1,12 @@
 # Pre-registered (v7/PREREG.md): V7 (the variant chosen on development photos, v7/chosen.json) against V6-H (adopted now), scored once
 # together with the five-vegetable system on Test 300, the new internet test 241, the any-photo set v2 and new-vegetable tests 1-4.
 import os
+ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../.."))  # the repository
 import sys, csv, json, pickle, collections, numpy as np, torch, open_clip
 from scipy.special import log_softmax, logsumexp, softmax
-sys.path.insert(0, (os.path.abspath(os.path.join(os.path.dirname(__file__), "../../..")) + "/src"))
+sys.path.insert(0, ROOT + "/src")
 from model_utils import load_model, make_transform, open_image, input_size, CLASS_NAMES
-S = (os.environ.get("DEPP_WORK", "/tmp/claude-0/-home-user-depp-env22/a974ab14-e897-5da8-89f1-d4ea639bb37e/scratchpad") + "/"); V = S + 'v7/'; REPO = (os.path.abspath(os.path.join(os.path.dirname(__file__), "../../..")) + "/")
+S = os.environ["DEPP_WORK"] + "/"; V = S + 'v7/'; REPO = ROOT + "/"
 CH = json.load(open(V + 'chosen.json')); assert CH['checks_pass']
 T16 = np.load(V + 'text16.npy')
 REJECT = ('rotten_fruit', 'fresh_fruit', 'other_veg', 'food', 'drawing_toy', 'everyday'); K = 16

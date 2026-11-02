@@ -24,7 +24,7 @@ from model_utils import (  # noqa: E402
 )
 from stamps import STAMPS  # noqa: E402
 
-S = Path(os.environ.get("DEPP_WORK", "/tmp/claude-0/-home-user-depp-env22/a974ab14-e897-5da8-89f1-d4ea639bb37e/scratchpad"))
+S = Path(os.environ["DEPP_WORK"])
 W = S / "wm"
 TAU_GRID = (0.5, 0.7, 0.8, 0.9, 0.95)
 OLD_DEV = ("valid", "odev", "o160", "asian37", "lvis")
@@ -106,6 +106,16 @@ def system(checkpoint: dict, b: np.ndarray, f: np.ndarray):
             "unknown": still_unknown.numpy(), "switched": switched.numpy(),
             "vegetable_model": (logits / checkpoint["calibration"]["temperature"]).softmax(1).numpy(),
             "clip_head": clip_class_logits(clip_logits, checkpoint).softmax(1).numpy()}
+
+
+def kept_right_per_class(checkpoint: dict, names=("valid", "odev", "o160", "asian37")) -> dict:
+    """set -> class -> "kept and right / photos" on the labelled development sets (TV-12's vegetable-model outputs, b_WC)."""
+    sets = dev_sets(); F = clip_features(sets); B = dict(np.load(W / "b_WC.npz")); out = {}
+    for name in names:
+        r = system(checkpoint, B[name], F[name]); y = sets[name][1]
+        out[name] = {CLASS_NAMES[c]: f"{int(((r['index'] == c) & ~r['unknown'])[y == c].sum())}/{int((y == c).sum())}"
+                     for c in range(10) if (y == c).any()}
+    return out
 
 
 def choose_tau(checkpoint: dict, B: dict, F: dict) -> tuple[float, dict]:
