@@ -3,6 +3,7 @@
     python experiments/root_and_tomato/build.py dedup        # CLIP cosine >= 0.95 to test / development / dataset photos -> left out
     python experiments/root_and_tomato/build.py B0p          # TV-12's two heads rebuilt, no new photos
     python experiments/root_and_tomato/build.py R1           # + the new photos of new_train.csv that pass dedup
+    python experiments/root_and_tomato/build.py R2           # the same with the R2 photos; the new-vegetable head gets every new photo
 
 Same rules as TV-12 (experiments/t3_weak_spots/build.py):
 - CLIP head: src/train_clip_head.py with the light watermark copies (fresh 1.0 / rotten 0.25 / not-five 0.5), C=10.
@@ -46,8 +47,9 @@ def run(*args):
     subprocess.run([sys.executable, *map(str, args)], check=True, cwd=REPO, env={**os.environ, "DEPP_WORK": str(S)})
 
 
-def new_rows() -> list[dict]:
-    rows = list(csv.DictReader(open(HERE / "new_train.csv", encoding="utf-8")))
+def new_rows(tag: str) -> list[dict]:
+    """The photos of new_train.csv that passed dedup; R1 leaves out the rows added for R2 (note starting with "R2")."""
+    rows = [r for r in csv.DictReader(open(HERE / "new_train.csv", encoding="utf-8")) if tag != "R1" or not r["note"].startswith("R2")]
     out = set(json.load(open(DEDUP))["left_out"]) if DEDUP.exists() else None
     assert out is not None, "run dedup first"
     return [r for r in rows if r["id"] not in out]
@@ -116,15 +118,17 @@ def refit_text_evidence(path: Path, tv12: dict):
     torch.save(ck, path)
 
 
-def new_veg_head(path: Path, rows: list[dict], data_out: Path):
+def new_veg_head(path: Path, rows: list[dict], data_out: Path, all_classes: bool = False):
+    """R1: only the onion / sweet potato / green onion photos are added; R2 (PREREG addendum 1): every new photo, since this
+    head also learns the five vegetables' ten classes."""
     data = dict(np.load(HEAD_DATA))
-    add = [r for r in rows if r["class_name"] in CLASS_NAMES[10:]]
+    add = [r for r in rows if all_classes or r["class_name"] in CLASS_NAMES[10:]]
     if add:
         X = features([str(RT / f"{r['id']}.jpg") for r in add])
         data["train_X"] = np.concatenate([data["train_X"], X.astype(np.float32)])
         data["train_y"] = np.concatenate([data["train_y"], np.array([CLASS_NAMES.index(r["class_name"]) for r in add], np.int16)])
         data["train_tag"] = np.concatenate([data["train_tag"], np.array(["root_and_tomato"] * len(add))])
-    print("new-vegetable head: added", {c: sum(r["class_name"] == c for r in add) for c in CLASS_NAMES[10:]}, flush=True)
+    print("new-vegetable head: added", {c: n for c in CLASS_NAMES if (n := sum(r["class_name"] == c for r in add))}, flush=True)
     np.savez(data_out, **data)
     run("src/train_new_veg_head.py", "--model", path, "--data", data_out, "--tau", "0.8")
 
@@ -132,7 +136,7 @@ def new_veg_head(path: Path, rows: list[dict], data_out: Path):
 def heads(tag: str, add: bool, skip_clip_head: bool = False) -> Path:
     tv12 = torch.load(REPO / "model.pth", map_location="cpu", weights_only=True)
     out = W / f"{tag}.pth"
-    rows = new_rows() if add else []
+    rows = new_rows(tag) if add else []
     extra = W / f"extra_train_{tag}.csv"
     base = list(csv.DictReader(open(W / "extra_train_B0p.csv", encoding="utf-8")))   # the recovered TV-12 head photos
     with open(extra, "w", newline="", encoding="utf-8") as fh:
@@ -143,7 +147,7 @@ def heads(tag: str, add: bool, skip_clip_head: bool = False) -> Path:
         shutil.copy(REPO / "model.pth", out)
         run("src/train_clip_head.py", "--model", out, "--extra-photos", LVIS, "--extra-train", extra, "--threads", "4", *HEAD_ARGS)
     refit_text_evidence(out, tv12)
-    new_veg_head(out, rows, W / f"head_data_{tag}.npz")
+    new_veg_head(out, rows, W / f"head_data_{tag}.npz", all_classes=tag != "R1")
     ck = torch.load(out, map_location="cpu", weights_only=True)
     ck["version"] = f"{tag} (experiments/root_and_tomato)"
     ck["new_vegetable_head"]["switch_rule"] = "tau 0.8 as in TV-12 (ZS8), experiments/root_and_tomato/PREREG.md"
