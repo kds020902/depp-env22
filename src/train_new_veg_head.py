@@ -52,6 +52,9 @@ def main():
     parser.add_argument("--logit-scale", type=float, default=100.0,
                         help="Scale of the zero-shot scores: the image model's own logit scale (100 for TV-12's ViT-B-16).")
     parser.add_argument("--tau", type=float, help="Use this switch probability instead of the rule (TV-12 = ZS8 uses 0.8).")
+    parser.add_argument("--untrained", nargs="*", default=[], choices=CLASS_NAMES,
+                        help="More classes without training photos (experiments/no_greenonion: greenonion_fresh), "
+                             "besides labels.UNTRAINED_CLASSES; their rows must already be relabelled in --data.")
     args = parser.parse_args()
     data = np.load(args.data)
     checkpoint = torch.load(args.model, map_location="cpu", weights_only=True)
@@ -60,7 +63,7 @@ def main():
     head = {
         "clip": dict(checkpoint["clip_head"]["clip"]), "class_names": list(CLASS_NAMES), "first_new_species": 5,
         "coef": torch.tensor(coef, dtype=torch.float32), "intercept": torch.tensor(intercept, dtype=torch.float32),
-        "other_name": "not one of the eight vegetables", "untrained_classes": sorted(UNTRAINED_CLASSES), "no_condition_species": ["greenonion"],
+        "other_name": "not one of the eight vegetables", "untrained_classes": sorted(UNTRAINED_CLASSES | set(args.untrained)), "no_condition_species": ["greenonion"],
         "alpha": float(args.alpha), "temperature": 1.0, "switch_probability": 1.0, "unknown_threshold": 0.0,
     }
     if args.logit_scale != 100.0:
