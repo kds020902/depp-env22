@@ -49,6 +49,9 @@ def main():
     parser.add_argument("--data", type=Path, required=True)
     parser.add_argument("--alpha", type=float, default=0.25, help="Weight of the CLIP zero-shot class scores (0 = V6-H, TV-9).")
     parser.add_argument("--out", type=Path, help="Where to write the checkpoint (default: overwrite --model).")
+    parser.add_argument("--logit-scale", type=float, default=100.0,
+                        help="Scale of the zero-shot scores: the image model's own logit scale (100 for TV-12's ViT-B-16).")
+    parser.add_argument("--tau", type=float, help="Use this switch probability instead of the rule (TV-12 = ZS8 uses 0.8).")
     args = parser.parse_args()
     data = np.load(args.data)
     checkpoint = torch.load(args.model, map_location="cpu", weights_only=True)
@@ -60,6 +63,8 @@ def main():
         "other_name": "not one of the eight vegetables", "untrained_classes": sorted(UNTRAINED_CLASSES), "no_condition_species": ["greenonion"],
         "alpha": float(args.alpha), "temperature": 1.0, "switch_probability": 1.0, "unknown_threshold": 0.0,
     }
+    if args.logit_scale != 100.0:
+        head["logit_scale"] = float(args.logit_scale)
     if args.alpha:
         head["text_embeddings"] = torch.tensor(data["text16"], dtype=torch.float32)
         head["prompts"] = [str(p) for p in data["prompts"]]
@@ -82,7 +87,7 @@ def main():
             count += int((~unknown & switched).sum())
         return count
     grid = {tau: moved(tau) for tau in TAU_GRID}
-    head["switch_probability"] = min([tau for tau, m in grid.items() if m <= 1] or [TAU_GRID[-1]])
+    head["switch_probability"] = args.tau if args.tau is not None else min([tau for tau, m in grid.items() if m <= 1] or [TAU_GRID[-1]])
 
     # display temperature (switched photos only), fitted on Valid old + new
     z = torch.cat([new_vegetable_logits(feats(n), head)[:, :k] for n in ("valid", "newval")])
@@ -94,7 +99,8 @@ def main():
         "head": f"multinomial logistic regression, C=10, 17 outputs, {len(data['train_y'])} training rows; new-vegetable Train {counts}"
                 + (f"; + {args.alpha} x CLIP zero-shot class scores" if args.alpha else ""),
         "unknown_fitted_on": "95% of Valid (old + new vegetables) and 192 real-scene vegetable crops pass",
-        "switch_rule": f"smallest tau moving at most 1 old-vegetable development photo; moved per tau: {grid}",
+        "switch_rule": (f"tau {args.tau} given" if args.tau is not None else "smallest tau moving at most 1 old-vegetable development photo")
+                       + f"; moved per tau: {grid}",
         "temperature_fitted_on": "Valid (old + new vegetables), display only",
         "data": str(args.data),
     })

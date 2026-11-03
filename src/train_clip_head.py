@@ -83,12 +83,14 @@ def main():
     parser.add_argument("--c", type=float, default=10.0, help="Inverse regularisation strength of the head.")
     parser.add_argument("--accept-rate", type=float, default=0.95)
     parser.add_argument("--threads", type=int, default=4)
+    parser.add_argument("--clip-arch", default=ARCH, help="open_clip image model (experiments/bigger_eye); default: TV-12's.")
+    parser.add_argument("--clip-pretrained", default=PRETRAINED)
     args = parser.parse_args()
     torch.set_num_threads(args.threads)
     model, checkpoint = load_model(args.model, torch.device("cpu"))
     manifest = args.manifest.expanduser().resolve()
     splits = read_manifest(manifest, CLASS_NAMES[:len(checkpoint["class_names"])])
-    clip = ClipModel("cpu")
+    clip = ClipModel("cpu", arch=args.clip_arch, pretrained=args.clip_pretrained)
 
     class_names = list(checkpoint["class_names"])
     train_paths = [manifest.parent / r["image_path"] for r in splits["train"]]
@@ -125,7 +127,7 @@ def main():
     coef = torch.zeros(n_out, train_x.shape[1]); intercept = torch.full((n_out,), float(head.intercept_.min()) - 50.0)
     coef[torch.tensor(head.classes_)] = torch.tensor(head.coef_, dtype=torch.float32)
     intercept[torch.tensor(head.classes_)] = torch.tensor(head.intercept_, dtype=torch.float32)
-    clip_head = {"clip": {"arch": ARCH, "pretrained": PRETRAINED}, "coef": coef, "intercept": intercept, "other_class": other_class}
+    clip_head = {"clip": {"arch": args.clip_arch, "pretrained": args.clip_pretrained}, "coef": coef, "intercept": intercept, "other_class": other_class}
     with_head = {**checkpoint, "clip_head": clip_head}
 
     val = splits["val"]

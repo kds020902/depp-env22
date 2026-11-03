@@ -13,10 +13,11 @@ from calibration import calibrated_probabilities, is_unknown, unknown_score
 from labels import CONDITION_NAMES
 
 
-def text_scores(features: torch.Tensor, text: torch.Tensor, trained: torch.Tensor | None = None) -> torch.Tensor:
-    """CLIP zero-shot class scores: 100 x cosine to each class's text prompts, centred over the classes per photo.
+def text_scores(features: torch.Tensor, text: torch.Tensor, trained: torch.Tensor | None = None, scale: float = 100.0) -> torch.Tensor:
+    """CLIP zero-shot class scores: scale x cosine to each class's text prompts, centred over the classes per photo.
+    scale is the image model's own logit scale (100 for the ViT-B-16 of TV-12; a head stores another as "logit_scale").
     With a `trained` mask the centre uses the trained classes only and untrained classes get 0."""
-    z = 100 * features.float() @ text.to(features.device).float().T
+    z = scale * features.float() @ text.to(features.device).float().T
     if trained is None:
         return z - z.mean(1, keepdim=True)
     return (z - z[:, trained].mean(1, keepdim=True)) * trained
@@ -32,7 +33,8 @@ def clip_head_logits(features: torch.Tensor, checkpoint: dict) -> torch.Tensor:
         # + alpha x CLIP zero-shot class scores on the class columns (experiments/improve_without_photos, as the V7 head):
         # 100 x cosine to each class's text prompts, centred over the classes per photo; "not five" column unchanged
         k = head["text_embeddings"].shape[0]
-        logits = torch.cat([logits[:, :k] + head["alpha"] * text_scores(features, head["text_embeddings"]), logits[:, k:]], 1)
+        scores = text_scores(features, head["text_embeddings"], scale=head.get("logit_scale", 100.0))
+        logits = torch.cat([logits[:, :k] + head["alpha"] * scores, logits[:, k:]], 1)
     return logits
 
 
@@ -45,9 +47,9 @@ def text_evidence(features: torch.Tensor, checkpoint: dict) -> torch.Tensor:
     """CLIP zero-shot evidence that the photo shows something other than the five vegetables (TV-12,
     experiments/zero_shot_reject): logsumexp(100 cos(photo, other words)) - logsumexp(100 cos(photo, five vegetables))."""
     words = checkpoint["clip_head"]["text_evidence"]
-    f = features.float()
-    other = 100 * f @ words["other"].to(f.device).float().T
-    vegetables = 100 * f @ words["vegetables"].to(f.device).float().T
+    f, scale = features.float(), words.get("logit_scale", 100.0)
+    other = scale * f @ words["other"].to(f.device).float().T
+    vegetables = scale * f @ words["vegetables"].to(f.device).float().T
     return torch.logsumexp(other, 1) - torch.logsumexp(vegetables, 1)
 
 
@@ -93,7 +95,7 @@ def zero_shot_logits(features: torch.Tensor, head: dict) -> torch.Tensor:
     """CLIP zero-shot class scores (100 x cosine to each class's text prompts), centred over the trained classes per photo;
     classes without training photos get 0."""
     trained = torch.tensor([c not in head.get("untrained_classes", []) for c in head["class_names"]], device=features.device)
-    return text_scores(features, head["text_embeddings"], trained)
+    return text_scores(features, head["text_embeddings"], trained, scale=head.get("logit_scale", 100.0))
 
 
 def new_vegetable_logits(features: torch.Tensor, head: dict) -> torch.Tensor:
