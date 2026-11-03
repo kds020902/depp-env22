@@ -31,8 +31,12 @@ def load(tag: str):
     return lambda paths: torch.tensor(np.stack([store[p] for p in paths]))
 
 
-def score(ck: dict, feats, lists: dict) -> dict:
-    B = dict(np.load(W / "b_WC.npz")); dev = lists["dev"]
+def score(ck: dict, feats, lists: dict, veg: dict | None = None) -> dict:
+    """veg: the vegetable-model outputs to use ({"dev": {set: logits}, "t5_dev": logits, "test_300": logits});
+    default TV-12's (WC), cached at their last scoring."""
+    veg = veg or {"dev": dict(np.load(W / "b_WC.npz")), "t5_dev": np.load(W / "t3ws_dev_b_WC_t5.npz")["b"],
+                  "test_300": np.load(W / "final_b_WC.npz")["test_300"]}
+    B = veg["dev"]; dev = lists["dev"]
     sets = json.load(open(Path(W).parent / "clip/sets.json"))
     labels = {n: np.array([CLASS_NAMES.index(c) for _, c in sets[n]]) for n in LABELLED}
     pool = json.load(open(Path(W).parent / "v7/pool.json"))
@@ -58,7 +62,7 @@ def score(ck: dict, feats, lists: dict) -> dict:
     import csv
     from common import DEV_LISTS
     rows = list(csv.DictReader(open(DEV_LISTS / "dev.csv", encoding="utf-8")))
-    a = decide(torch.tensor(np.load(W / "t3ws_dev_b_WC_t5.npz")["b"]), ck, feats(lists["t5_dev"]))
+    a = decide(torch.tensor(veg["t5_dev"]), ck, feats(lists["t5_dev"]))
     index, unknown, per = a.index.numpy(), a.unknown.numpy(), {}
     for c in sorted({r["class_name"] for r in rows}):
         m = np.array([r["class_name"] == c for r in rows])
@@ -75,7 +79,7 @@ def score(ck: dict, feats, lists: dict) -> dict:
     out["outside"] = {k: sum(out[n][k] for n in OUTSIDE) for k in out["odev"]}
     out["dev_total"] = out["valid"]["kept_correct"] + out["outside"]["kept_correct"]
     # Test 300: not blind any more (its errors were looked at), reference only
-    t = decide(torch.tensor(np.load(W / "final_b_WC.npz")["test_300"]), ck, feats(lists["test_300"]))
+    t = decide(torch.tensor(veg["test_300"]), ck, feats(lists["test_300"]))
     import csv as _csv
     yt = np.array([CLASS_NAMES.index(r["class_name"]) for r in _csv.DictReader(open(REPO / "dataset/manifest.csv", encoding="utf-8"))
                    if r["split"] == "test"])
