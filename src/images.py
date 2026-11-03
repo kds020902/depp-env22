@@ -79,3 +79,10 @@ def open_image(path: str | Path) -> Image.Image:
 
 def read_image(path: str | Path, transform=None) -> torch.Tensor:
     return (transform or make_transform())(open_image(path))
+
+
+def five_crops(image: Image.Image) -> list[Image.Image]:
+    """Four corners and the centre, each 2/3 of the width and height (experiments/improve_without_photos, tomato_crops)."""
+    w, h = image.size; cw, ch = round(w * 2 / 3), round(h * 2 / 3)
+    boxes = [(0, 0), (w - cw, 0), (0, h - ch), (w - cw, h - ch), ((w - cw) // 2, (h - ch) // 2)]
+    return [image.crop((x, y, x + cw, y + ch)) for x, y in boxes]

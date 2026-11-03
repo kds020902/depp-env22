@@ -187,3 +187,31 @@ def fresh_or_rotten_doubt(a: Answers) -> torch.Tensor:
     """The two most likely classes are the fresh and the rotten class of one vegetable."""
     top2 = a.probabilities.topk(2, dim=1).indices
     return top2[:, 0] // len(CONDITION_NAMES) == top2[:, 1] // len(CONDITION_NAMES)
+
+
+# ---------- slightly rotten tomatoes: look at five crops (experiments/tomato_crops) ----------
+def needs_crop_check(a: Answers, checkpoint: dict) -> torch.Tensor:
+    """Photos whose answer is "fresh tomato" when the checkpoint has the tomato crop check (else none)."""
+    from labels import CLASS_NAMES
+    if "tomato_crop_check" not in checkpoint:
+        return torch.zeros_like(a.unknown)
+    return ~a.unknown & (a.index == CLASS_NAMES.index("tomato_fresh"))
+
+
+def apply_crop_check(a: Answers, checkpoint: dict, crop_features: torch.Tensor, rows: torch.Tensor) -> Answers:
+    """`crop_features` (len(rows) x 5 x d): CLIP features of the five crops (images.five_crops) of the photos `rows`
+    (indices where needs_crop_check is True). An answer "fresh tomato" becomes "rotten tomato" when, for some crop, the
+    five-vegetable CLIP head gives "rotten tomato" at least `threshold` of the two tomato classes; its shown probability is
+    that share. Nothing else changes."""
+    from labels import CLASS_NAMES
+    if len(rows) == 0:
+        return a
+    fresh = CLASS_NAMES.index("tomato_fresh")
+    z = clip_head_logits(crop_features.reshape(-1, crop_features.shape[-1]), checkpoint)[:, fresh:fresh + 2]
+    share = z.softmax(1)[:, 1].reshape(len(rows), -1).max(1).values
+    hit = share >= checkpoint["tomato_crop_check"]["threshold"]
+    flip = rows[hit]
+    index, probability = a.index.clone(), a.probability.clone()
+    index[flip] = fresh + 1
+    probability[flip] = share[hit].to(probability.dtype)   # shown probability: the strongest crop's "rotten tomato" share
+    return Answers(a.probabilities, index, probability, a.unknown, a.switched, a.five, a.five_unknown)
