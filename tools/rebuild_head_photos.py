@@ -42,11 +42,15 @@ def get(url: str, dst: Path | None = None, tries: int = 4) -> bytes | None:
 
 
 def match(names: list[str], ref: str) -> str | None:
-    """The zip member for a listed path: the listed path without its first folder (the local folder name), matched at the end."""
+    """The zip member for a listed path: the listed path without its first folders, matched at the end. "name.*" matches any
+    extension; a trailing " (crop ...)" is ignored here."""
+    ref = ref.split(" (crop")[0]
     parts = ref.split("/")
-    for cut in range(1, len(parts)):
-        tail = "/" + "/".join(parts[cut:])
-        hits = [n for n in names if n.endswith(tail) or n == tail[1:]]
+    any_ext = parts[-1].endswith(".*")
+    strip = lambda n: n.rsplit(".", 1)[0] if any_ext else n
+    for cut in range(0, len(parts)):
+        tail = "/".join(parts[cut:]); tail = tail[:-2] if any_ext else tail
+        hits = [n for n in names if strip(n).endswith("/" + tail) or strip(n) == tail]
         if len(hits) == 1:
             return hits[0]
         if hits:
@@ -62,7 +66,7 @@ def main():
     save = lambda: json.dump(local, open(state_path, "w"))
     # Kaggle datasets, one zip at a time
     for key, ref in KAGGLE.items():
-        todo = [i for i, r in enumerate(rows) if f"kaggle.com/datasets/{ref}" in r["source"] and str(i) not in local]
+        todo = [i for i, r in enumerate(rows) if f"kaggle.com/datasets/{ref}" in r["source"] and not local.get(str(i))]
         if not todo:
             continue
         zpath = out / (ref.replace("/", "__") + ".zip")
@@ -79,9 +83,60 @@ def main():
                 dst.parent.mkdir(parents=True, exist_ok=True); dst.write_bytes(z.read(m)); local[str(i)] = str(dst)
         zpath.unlink(); save()
         print("  found", sum(bool(local[str(i)]) for i in todo), "of", len(todo), flush=True)
+    # other archives: (name, url, which rows)
+    archives = [
+        ("caltech101", "https://data.caltech.edu/records/mzrjq-6wc02/files/caltech-101.zip?download=1", lambda r: r["source"].startswith("Caltech-101")),
+        ("zenodo_cucumber", "https://zenodo.org/api/records/10081197/files/Cucumber%20Dataset.zip/content", lambda r: "zenodo.org/records/10081197" in r["source"]),
+        ("mendeley_cucumber", "https://data.mendeley.com/public-api/zip/zncrtr2yhn/download/1", lambda r: r["source"] == "" and r["reference"].startswith("CUCUMBER/")),
+        ("zenodo_potato", "https://zenodo.org/api/records/20616991/files/dataset_papas_hibrido.zip/content",
+         lambda r: r["source"] == "" and r["reference"].split("/")[0] in ("train", "val", "test")),
+    ]
+    for name, url, which in archives:
+        todo = [i for i, r in enumerate(rows) if which(r) and not local.get(str(i))]
+        if not todo:
+            continue
+        zpath = out / f"{name}.zip"
+        print("archive", name, len(todo), flush=True)
+        if get(url, zpath) is None:
+            continue
+        z = zipfile.ZipFile(zpath); names = [n for n in z.namelist() if not n.endswith("/")]
+        inner = [n for n in names if n.endswith(".tar.gz")]
+        if inner:   # Caltech-101: the photos are in a tar.gz inside the zip
+            import tarfile
+            tf = tarfile.open(fileobj=io.BytesIO(z.read(inner[0]))); members = {m.name: m for m in tf.getmembers() if m.isfile()}
+            read, names = (lambda n: tf.extractfile(members[n]).read()), list(members)
+        else:
+            read = z.read
+        for i in todo:
+            ref = rows[i]["reference"]; m = match(names, ref)
+            if m is None:
+                local[str(i)] = ""; continue
+            dst = out / name / (m.replace("/", "__") if " (crop" not in ref else m.replace("/", "__") + ".crop.jpg")
+            dst.parent.mkdir(parents=True, exist_ok=True); data = read(m)
+            if " (crop" in ref:
+                from PIL import Image, ImageOps
+                box = [int(v) for v in ref.split(" (crop ")[1].rstrip(")").split()]
+                ImageOps.exif_transpose(Image.open(io.BytesIO(data))).convert("RGB").crop(box).save(dst, quality=95)
+            else:
+                dst.write_bytes(data)
+            local[str(i)] = str(dst)
+        z.close(); zpath.unlink(); save()
+        print("  found", sum(bool(local[str(i)]) for i in todo), "of", len(todo), flush=True)
+    # Hugging Face Places365 sample: parquet rows
+    todo = [i for i, r in enumerate(rows) if "places365-mini-sample-easy" in r["source"] and not local.get(str(i))]
+    if todo:
+        import pyarrow.parquet as pq
+        ppath = out / "places_test.parquet"
+        get("https://huggingface.co/datasets/dpdl-benchmark/places365-mini-sample-easy/resolve/main/data/test-00000-of-00001.parquet", ppath)
+        imgs = pq.read_table(ppath).column("image").to_pylist()
+        for i in todo:
+            k = int(rows[i]["reference"].split(" row ")[1].split()[0])
+            dst = out / "places" / f"row{k}.jpg"; dst.parent.mkdir(parents=True, exist_ok=True); dst.write_bytes(imgs[k]["bytes"])
+            local[str(i)] = str(dst)
+        save()
     # Openverse rows: the image URL from the Openverse record
     for i, r in enumerate(rows):
-        if str(i) in local or not r["reference"].startswith("openverse "):
+        if local.get(str(i)) or not r["reference"].startswith("openverse "):
             continue
         oid = r["reference"].split()[1]
         meta = get(f"https://api.openverse.org/v1/images/{oid}/")
