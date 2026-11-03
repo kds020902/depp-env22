@@ -5,7 +5,9 @@
 - **출처:** iNaturalist·Wikimedia Commons에서 새로 모았다.
 - **사람 단위 분리:** 올린 사람 단위로 학습·개발용과 나눴다. T3에 사진을 올린 사람은 넣지 않았다.
 - **정답 고정:** 정답 목록 `t4_test.csv`의 SHA-256을 모델을 돌리기 전에 [PREREG.md](../../experiments/t3_weak_spots/PREREG.md)에 적고 커밋했다(cb21672).
-- **사용 횟수: 1번.** 2026-11-02, 사용자 요청으로 TV-12와 후보 6개를 참고용으로 한 번씩 채점했다(`score_reference.py` → `scores_reference.json`).
+- **사용 횟수: 2번.**
+    - 1번째(2026-11-02): 사용자 요청으로 TV-12와 후보 6개를 참고용으로 한 번씩 채점했다(`score_reference.py` → `scores_reference.json`).
+    - 2번째(2026-11-03): [bigger_eye](../../experiments/bigger_eye/README.md)의 L1을 참고용으로 한 번 채점했다.
     - 개발용 사진에서 고른 후보가 없었으므로 채택 단계가 아니다.
     - 이제 T4는 본 테스트셋이다. 다음 개선은 새 블라인드 테스트셋으로 잰다.
 

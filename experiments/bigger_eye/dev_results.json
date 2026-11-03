@@ -1,0 +1,590 @@
+{
+ "TV-12": {
+  "valid": {
+   "kept_correct": 286,
+   "to_new_vegetable": 0,
+   "known": 296,
+   "answered": 271,
+   "answered_right": 267,
+   "confident_wrong": 4,
+   "rotten_to_fresh_answered": 0
+  },
+  "odev": {
+   "kept_correct": 190,
+   "to_new_vegetable": 0,
+   "known": 210,
+   "answered": 167,
+   "answered_right": 158,
+   "confident_wrong": 9,
+   "rotten_to_fresh_answered": 7
+  },
+  "o160": {
+   "kept_correct": 146,
+   "to_new_vegetable": 0,
+   "known": 159,
+   "answered": 130,
+   "answered_right": 127,
+   "confident_wrong": 3,
+   "rotten_to_fresh_answered": 0
+  },
+  "asian37": {
+   "kept_correct": 33,
+   "to_new_vegetable": 0,
+   "known": 34,
+   "answered": 29,
+   "answered_right": 29,
+   "confident_wrong": 0,
+   "rotten_to_fresh_answered": 0
+  },
+  "fruit374": {
+   "turned_away": 347,
+   "to_new_vegetable": 0
+  },
+  "coco400": {
+   "turned_away": 400,
+   "to_new_vegetable": 0
+  },
+  "lvis": {
+   "turned_away": 20,
+   "to_new_vegetable": 1
+  },
+  "newval": {
+   "kind_right_kept": 78
+  },
+  "old_dev_to_new": 1,
+  "old_rotten_fruit_761_turned_away": 534,
+  "new_dev": {
+   "carrot_fresh": [
+    5,
+    5
+   ],
+   "potato_fresh": [
+    16,
+    20
+   ],
+   "potato_rotten": [
+    5,
+    6
+   ],
+   "rotten_fruit": [
+    9,
+    30
+   ],
+   "sweetpotato_fresh": [
+    7,
+    10
+   ],
+   "tomato_fresh": [
+    11,
+    12
+   ],
+   "tomato_rotten": [
+    8,
+    16
+   ]
+  },
+  "weak_total": 45,
+  "pair_total": 16,
+  "outside": {
+   "kept_correct": 369,
+   "to_new_vegetable": 0,
+   "known": 403,
+   "answered": 326,
+   "answered_right": 314,
+   "confident_wrong": 12,
+   "rotten_to_fresh_answered": 7
+  },
+  "dev_total": 655,
+  "test_300_reference": {
+   "kept_correct": 285,
+   "answered": 267,
+   "confident_wrong": 3
+  }
+ },
+ "B0": {
+  "valid": {
+   "kept_correct": 286,
+   "to_new_vegetable": 0,
+   "known": 296,
+   "answered": 271,
+   "answered_right": 267,
+   "confident_wrong": 4,
+   "rotten_to_fresh_answered": 0
+  },
+  "odev": {
+   "kept_correct": 190,
+   "to_new_vegetable": 0,
+   "known": 210,
+   "answered": 167,
+   "answered_right": 158,
+   "confident_wrong": 9,
+   "rotten_to_fresh_answered": 7
+  },
+  "o160": {
+   "kept_correct": 146,
+   "to_new_vegetable": 0,
+   "known": 159,
+   "answered": 130,
+   "answered_right": 127,
+   "confident_wrong": 3,
+   "rotten_to_fresh_answered": 0
+  },
+  "asian37": {
+   "kept_correct": 33,
+   "to_new_vegetable": 0,
+   "known": 34,
+   "answered": 29,
+   "answered_right": 29,
+   "confident_wrong": 0,
+   "rotten_to_fresh_answered": 0
+  },
+  "fruit374": {
+   "turned_away": 347,
+   "to_new_vegetable": 0
+  },
+  "coco400": {
+   "turned_away": 400,
+   "to_new_vegetable": 0
+  },
+  "lvis": {
+   "turned_away": 20,
+   "to_new_vegetable": 1
+  },
+  "newval": {
+   "kind_right_kept": 78
+  },
+  "old_dev_to_new": 1,
+  "old_rotten_fruit_761_turned_away": 534,
+  "new_dev": {
+   "carrot_fresh": [
+    5,
+    5
+   ],
+   "potato_fresh": [
+    16,
+    20
+   ],
+   "potato_rotten": [
+    5,
+    6
+   ],
+   "rotten_fruit": [
+    9,
+    30
+   ],
+   "sweetpotato_fresh": [
+    7,
+    10
+   ],
+   "tomato_fresh": [
+    11,
+    12
+   ],
+   "tomato_rotten": [
+    8,
+    16
+   ]
+  },
+  "weak_total": 45,
+  "pair_total": 16,
+  "outside": {
+   "kept_correct": 369,
+   "to_new_vegetable": 0,
+   "known": 403,
+   "answered": 326,
+   "answered_right": 314,
+   "confident_wrong": 12,
+   "rotten_to_fresh_answered": 7
+  },
+  "dev_total": 655,
+  "test_300_reference": {
+   "kept_correct": 285,
+   "answered": 267,
+   "confident_wrong": 3
+  },
+  "rules": {
+   "Valid kept >= -3": true,
+   "internet 221 kept >= -3": true,
+   "160 kept >= -3": true,
+   "Asian 37 kept >= -2": true,
+   "everyday 400 turned away >= -5": true,
+   "new-vegetable Valid >= -2": true,
+   "old-vegetable dev to new <= +1": true,
+   "pair classes >= -2": true
+  },
+  "passes_rules": true,
+  "gain": 0,
+  "clip": {
+   "arch": "ViT-B-16",
+   "pretrained": "datacomp_xl_s13b_b90k"
+  }
+ },
+ "B1": {
+  "valid": {
+   "kept_correct": 286,
+   "to_new_vegetable": 0,
+   "known": 297,
+   "answered": 272,
+   "answered_right": 270,
+   "confident_wrong": 2,
+   "rotten_to_fresh_answered": 0
+  },
+  "odev": {
+   "kept_correct": 189,
+   "to_new_vegetable": 0,
+   "known": 212,
+   "answered": 174,
+   "answered_right": 164,
+   "confident_wrong": 10,
+   "rotten_to_fresh_answered": 7
+  },
+  "o160": {
+   "kept_correct": 151,
+   "to_new_vegetable": 0,
+   "known": 160,
+   "answered": 138,
+   "answered_right": 135,
+   "confident_wrong": 3,
+   "rotten_to_fresh_answered": 0
+  },
+  "asian37": {
+   "kept_correct": 30,
+   "to_new_vegetable": 0,
+   "known": 31,
+   "answered": 26,
+   "answered_right": 26,
+   "confident_wrong": 0,
+   "rotten_to_fresh_answered": 0
+  },
+  "fruit374": {
+   "turned_away": 362,
+   "to_new_vegetable": 1
+  },
+  "coco400": {
+   "turned_away": 400,
+   "to_new_vegetable": 0
+  },
+  "lvis": {
+   "turned_away": 21,
+   "to_new_vegetable": 1
+  },
+  "newval": {
+   "kind_right_kept": 80
+  },
+  "old_dev_to_new": 1,
+  "old_rotten_fruit_761_turned_away": 600,
+  "new_dev": {
+   "carrot_fresh": [
+    5,
+    5
+   ],
+   "potato_fresh": [
+    16,
+    20
+   ],
+   "potato_rotten": [
+    5,
+    6
+   ],
+   "rotten_fruit": [
+    23,
+    30
+   ],
+   "sweetpotato_fresh": [
+    7,
+    10
+   ],
+   "tomato_fresh": [
+    11,
+    12
+   ],
+   "tomato_rotten": [
+    9,
+    16
+   ]
+  },
+  "weak_total": 60,
+  "pair_total": 16,
+  "outside": {
+   "kept_correct": 370,
+   "to_new_vegetable": 0,
+   "known": 403,
+   "answered": 338,
+   "answered_right": 325,
+   "confident_wrong": 13,
+   "rotten_to_fresh_answered": 7
+  },
+  "dev_total": 656,
+  "test_300_reference": {
+   "kept_correct": 288,
+   "answered": 277,
+   "confident_wrong": 5
+  },
+  "rules": {
+   "Valid kept >= -3": true,
+   "internet 221 kept >= -3": true,
+   "160 kept >= -3": true,
+   "Asian 37 kept >= -2": false,
+   "everyday 400 turned away >= -5": true,
+   "new-vegetable Valid >= -2": true,
+   "old-vegetable dev to new <= +1": true,
+   "pair classes >= -2": true
+  },
+  "passes_rules": false,
+  "gain": 1,
+  "clip": {
+   "arch": "ViT-B-16-SigLIP2",
+   "pretrained": "webli"
+  }
+ },
+ "B2": {
+  "valid": {
+   "kept_correct": 286,
+   "to_new_vegetable": 0,
+   "known": 297,
+   "answered": 268,
+   "answered_right": 265,
+   "confident_wrong": 3,
+   "rotten_to_fresh_answered": 0
+  },
+  "odev": {
+   "kept_correct": 190,
+   "to_new_vegetable": 1,
+   "known": 213,
+   "answered": 166,
+   "answered_right": 154,
+   "confident_wrong": 12,
+   "rotten_to_fresh_answered": 7
+  },
+  "o160": {
+   "kept_correct": 149,
+   "to_new_vegetable": 0,
+   "known": 160,
+   "answered": 135,
+   "answered_right": 131,
+   "confident_wrong": 4,
+   "rotten_to_fresh_answered": 1
+  },
+  "asian37": {
+   "kept_correct": 33,
+   "to_new_vegetable": 3,
+   "known": 37,
+   "answered": 31,
+   "answered_right": 30,
+   "confident_wrong": 1,
+   "rotten_to_fresh_answered": 0
+  },
+  "fruit374": {
+   "turned_away": 344,
+   "to_new_vegetable": 1
+  },
+  "coco400": {
+   "turned_away": 400,
+   "to_new_vegetable": 0
+  },
+  "lvis": {
+   "turned_away": 21,
+   "to_new_vegetable": 1
+  },
+  "newval": {
+   "kind_right_kept": 78
+  },
+  "old_dev_to_new": 5,
+  "old_rotten_fruit_761_turned_away": 524,
+  "new_dev": {
+   "carrot_fresh": [
+    5,
+    5
+   ],
+   "potato_fresh": [
+    15,
+    20
+   ],
+   "potato_rotten": [
+    4,
+    6
+   ],
+   "rotten_fruit": [
+    13,
+    30
+   ],
+   "sweetpotato_fresh": [
+    9,
+    10
+   ],
+   "tomato_fresh": [
+    12,
+    12
+   ],
+   "tomato_rotten": [
+    10,
+    16
+   ]
+  },
+  "weak_total": 52,
+  "pair_total": 16,
+  "outside": {
+   "kept_correct": 372,
+   "to_new_vegetable": 4,
+   "known": 410,
+   "answered": 332,
+   "answered_right": 315,
+   "confident_wrong": 17,
+   "rotten_to_fresh_answered": 8
+  },
+  "dev_total": 658,
+  "test_300_reference": {
+   "kept_correct": 285,
+   "answered": 271,
+   "confident_wrong": 5
+  },
+  "rules": {
+   "Valid kept >= -3": true,
+   "internet 221 kept >= -3": true,
+   "160 kept >= -3": true,
+   "Asian 37 kept >= -2": true,
+   "everyday 400 turned away >= -5": true,
+   "new-vegetable Valid >= -2": true,
+   "old-vegetable dev to new <= +1": false,
+   "pair classes >= -2": true
+  },
+  "passes_rules": false,
+  "gain": 3,
+  "clip": {
+   "arch": "PE-Core-B-16",
+   "pretrained": "meta"
+  }
+ },
+ "L1": {
+  "valid": {
+   "kept_correct": 291,
+   "to_new_vegetable": 0,
+   "known": 300,
+   "answered": 279,
+   "answered_right": 276,
+   "confident_wrong": 3,
+   "rotten_to_fresh_answered": 0
+  },
+  "odev": {
+   "kept_correct": 199,
+   "to_new_vegetable": 0,
+   "known": 216,
+   "answered": 183,
+   "answered_right": 177,
+   "confident_wrong": 6,
+   "rotten_to_fresh_answered": 3
+  },
+  "o160": {
+   "kept_correct": 150,
+   "to_new_vegetable": 0,
+   "known": 160,
+   "answered": 141,
+   "answered_right": 135,
+   "confident_wrong": 6,
+   "rotten_to_fresh_answered": 0
+  },
+  "asian37": {
+   "kept_correct": 35,
+   "to_new_vegetable": 0,
+   "known": 35,
+   "answered": 31,
+   "answered_right": 31,
+   "confident_wrong": 0,
+   "rotten_to_fresh_answered": 0
+  },
+  "fruit374": {
+   "turned_away": 364,
+   "to_new_vegetable": 0
+  },
+  "coco400": {
+   "turned_away": 400,
+   "to_new_vegetable": 0
+  },
+  "lvis": {
+   "turned_away": 25,
+   "to_new_vegetable": 0
+  },
+  "newval": {
+   "kind_right_kept": 83
+  },
+  "old_dev_to_new": 0,
+  "old_rotten_fruit_761_turned_away": 635,
+  "new_dev": {
+   "carrot_fresh": [
+    5,
+    5
+   ],
+   "potato_fresh": [
+    18,
+    20
+   ],
+   "potato_rotten": [
+    6,
+    6
+   ],
+   "rotten_fruit": [
+    24,
+    30
+   ],
+   "sweetpotato_fresh": [
+    9,
+    10
+   ],
+   "tomato_fresh": [
+    12,
+    12
+   ],
+   "tomato_rotten": [
+    10,
+    16
+   ]
+  },
+  "weak_total": 66,
+  "pair_total": 18,
+  "outside": {
+   "kept_correct": 384,
+   "to_new_vegetable": 0,
+   "known": 411,
+   "answered": 355,
+   "answered_right": 343,
+   "confident_wrong": 12,
+   "rotten_to_fresh_answered": 3
+  },
+  "dev_total": 675,
+  "test_300_reference": {
+   "kept_correct": 288,
+   "answered": 278,
+   "confident_wrong": 7
+  },
+  "rules": {
+   "Valid kept >= -3": true,
+   "internet 221 kept >= -3": true,
+   "160 kept >= -3": true,
+   "Asian 37 kept >= -2": true,
+   "everyday 400 turned away >= -5": true,
+   "new-vegetable Valid >= -2": true,
+   "old-vegetable dev to new <= +1": true,
+   "pair classes >= -2": true
+  },
+  "passes_rules": true,
+  "gain": 20,
+  "clip": {
+   "arch": "ViT-L-16-SigLIP2-256",
+   "pretrained": "webli"
+  }
+ },
+ "B0_same_answers_as_TV12": {
+  "valid": 0,
+  "odev": 0,
+  "o160": 0,
+  "asian37": 0,
+  "fruit374": 0,
+  "coco400": 0,
+  "lvis": 0,
+  "newval": 0
+ },
+ "chosen": {
+  "candidate": "L1",
+  "rule": "8 rules pass and +10 on Valid + outside 718; highest; a web-sized one within 5 wins"
+ }
+}

@@ -1,6 +1,6 @@
 # 실험 색인
 
-실험 폴더 28개를 주제별로 한 줄씩 정리했다. 폴더마다 계획(PREREG)과 결과가 README에 있다.
+실험 폴더 29개를 주제별로 한 줄씩 정리했다. 폴더마다 계획(PREREG)과 결과가 README에 있다.
 채택된 것은 `model.pth`의 버전(TV)을 올렸다(맨 위 [README](../README.md)의 버전 표).
 
 **스크립트를 다시 돌리려면:**
@@ -24,6 +24,7 @@
 | [tta](tta/README.md) | 뒤집기 평균(TTA) | 채택 안 함 |
 | [posthoc_literature](posthoc_literature/README.md) | 논문 방법을 재학습 없이 적용 | 채택 안 함 |
 | [improve_without_photos](improve_without_photos/README.md) | 글 설명 점수 섞기, 조각 보기, 판단 보류 | 2·3 채택 안 함, 판단 보류는 predict.py 기본값으로 반영 |
+| [bigger_eye](bigger_eye/README.md) | CLIP 자리에 더 좋은 이미지 모델 넣기 (B급 2개, L급 1개) | 반영 안 함 (L1 개발 +20, T5로 다시 확인 예정) |
 | [shape_and_parts](shape_and_parts/README.md) | Test 오류 두 종류 고치기: 종류는 CLIP 글로(A), 상한 조각이면 보류(B) | 둘 다 반영 안 함 (A −2, B는 오답 2장 잡고 맞는 답 16장 보류) |
 
 ## 학습 사진 늘리기·고치기
