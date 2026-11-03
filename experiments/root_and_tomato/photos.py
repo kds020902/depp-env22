@@ -15,6 +15,7 @@ import csv
 import io
 import os
 import time
+import urllib.error
 import urllib.request
 import zipfile
 from pathlib import Path
@@ -37,6 +38,10 @@ def get(url: str, dst: Path | None = None, tries: int = 4) -> bytes | None:
                     while chunk := r.read(1 << 22):
                         f.write(chunk)
                 return b""
+        except urllib.error.HTTPError as e:
+            if e.code == 404:
+                return None
+            print("retry", url[:80], e, flush=True); time.sleep(20 * (k + 1))
         except Exception as e:  # noqa: BLE001
             print("retry", url[:80], e, flush=True); time.sleep(20 * (k + 1))
     return None
@@ -71,7 +76,7 @@ def main():
     for r in rows:
         if r["id"].startswith("inat-"):
             pid = r["id"][5:]
-            data = next((d for ext in ("jpg", "jpeg", "png")
+            data = next((d for ext in ("jpg", "jpeg", "png", "JPG", "JPEG", "PNG")
                          if (d := get(f"https://inaturalist-open-data.s3.amazonaws.com/photos/{pid}/large.{ext}", tries=2))), None)
             if data:
                 save(data, r["reference"], OUT / f"{r['id']}.jpg")
