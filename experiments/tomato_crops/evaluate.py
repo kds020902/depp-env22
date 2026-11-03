@@ -60,7 +60,7 @@ def run(ck: dict, b, f, paths: list[str], t: float | None) -> list[str]:
 
 def main():
     sets = rt.photo_sets(); B, F = rt.outputs(sets)
-    valid = [r for r in csv.DictReader(open(REPO / "dataset/manifest.csv", encoding="utf-8")) if r["split"] == "valid"]
+    valid = [r for r in csv.DictReader(open(REPO / "dataset/manifest.csv", encoding="utf-8")) if r["split"] == "val"]
     paths = {n: sets[n][0] for n in ("t3", "t4", "t5")} | {"valid": [str(REPO / "dataset" / r["image_path"]) for r in valid]}
     assert [r["class_name"] for r in valid] == sets["valid"][1], "Valid order differs from head_data.npz"
     tv12 = torch.load(REPO / "model.pth", map_location="cpu", weights_only=True)
