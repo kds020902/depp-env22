@@ -4,6 +4,7 @@
     python experiments/root_and_tomato/build.py B0p          # TV-12's two heads rebuilt, no new photos
     python experiments/root_and_tomato/build.py R1           # + the new photos of new_train.csv that pass dedup
     python experiments/root_and_tomato/build.py R2           # the same with the R2 photos; the new-vegetable head gets every new photo
+    python experiments/root_and_tomato/build.py R3           # R2's potato photos only (PREREG addendum 2)
 
 Same rules as TV-12 (experiments/t3_weak_spots/build.py):
 - CLIP head: src/train_clip_head.py with the light watermark copies (fresh 1.0 / rotten 0.25 / not-five 0.5), C=10.
@@ -52,7 +53,10 @@ def new_rows(tag: str) -> list[dict]:
     rows = [r for r in csv.DictReader(open(HERE / "new_train.csv", encoding="utf-8")) if tag != "R1" or not r["note"].startswith("R2")]
     out = set(json.load(open(DEDUP))["left_out"]) if DEDUP.exists() else None
     assert out is not None, "run dedup first"
-    return [r for r in rows if r["id"] not in out]
+    rows = [r for r in rows if r["id"] not in out]
+    if tag == "R3":   # PREREG addendum 2: the potato photos only
+        rows = [r for r in rows if r["class_name"].startswith("potato_")]
+    return rows
 
 
 def features(paths: list[str]) -> np.ndarray:
