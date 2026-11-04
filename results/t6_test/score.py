@@ -26,8 +26,8 @@ sys.path.insert(0, str(REPO / "src"))
 sys.path.insert(0, str(REPO / "experiments/watermark"))
 from common import S, W  # noqa: E402
 from clip_model import ClipModel  # noqa: E402
-from decision import decide, held_back  # noqa: E402
-from images import make_transform, open_image  # noqa: E402
+from decision import apply_crop_check, decide, held_back, needs_crop_check  # noqa: E402
+from images import five_crops, make_transform, open_image  # noqa: E402
 from labels import CLASS_NAMES  # noqa: E402
 from networks import input_size, load_model  # noqa: E402
 
@@ -62,8 +62,20 @@ def outputs(paths: list[str], clips: dict) -> tuple[np.ndarray, dict]:
     return torch.cat(B).numpy(), {k: torch.cat(v).numpy() for k, v in F.items()}
 
 
-def score(card, ck: dict, b: np.ndarray, f: np.ndarray, labels: list[str]) -> dict:
+def crop_check(a, ck: dict, paths: list[str], clip):
+    """RULES.md addendum (2026-11-04): the tomato crop check of experiments/tomato_crops, when the checkpoint has it."""
+    rows = torch.where(needs_crop_check(a, ck))[0]
+    if len(rows) == 0:
+        return a
+    with torch.inference_mode():
+        fc = torch.stack([clip.image_features(five_crops(open_image(paths[i]))).cpu() for i in rows.tolist()])
+    return apply_crop_check(a, ck, fc, rows)
+
+
+def score(card, ck: dict, b: np.ndarray, f: np.ndarray, labels: list[str], paths: list[str] | None = None, clip=None) -> dict:
     a = decide(torch.tensor(b), ck, torch.tensor(f))
+    if "tomato_crop_check" in ck:
+        a = crop_check(a, ck, paths, clip)
     answers = [TURNED_AWAY if u else CLASS_NAMES[int(i)] for i, u in zip(a.index, a.unknown)]
     held = held_back(a).numpy()
     five = [i for i, y in enumerate(labels) if y in CLASS_NAMES[:10]]
@@ -71,7 +83,8 @@ def score(card, ck: dict, b: np.ndarray, f: np.ndarray, labels: list[str]) -> di
     right = np.array([answers[i] == labels[i] for i in five]); answered = ~a.unknown.numpy()[five] & ~held[five]
     rotten = np.array([labels[i].endswith("_rotten") for i in five])
     answered_rotten_to_fresh = sum(answered[k] and rotten[k] and answers[i].endswith("_fresh") for k, i in enumerate(five))
-    newv = [i for i, y in enumerate(labels) if y in CLASS_NAMES[10:]]
+    untrained = set(ck.get("new_vegetable_head", {}).get("untrained_classes", []))
+    newv = [i for i, y in enumerate(labels) if y in CLASS_NAMES[10:] and not ({"greenonion_fresh", "greenonion_rotten"} <= untrained and y.startswith("greenonion"))]
     rej = [i for i, y in enumerate(labels) if y in REJECT]
     kind = lambda s: s.rsplit("_", 1)[0]
     return {
@@ -111,26 +124,43 @@ def main():
     digest = seal_ok()
     card = _load("make_scorecard", REPO / "results/scorecard/make_scorecard.py").card
     rows = list(csv.DictReader(open(HERE / "t6_test.csv", encoding="utf-8")))
+    missing = [r["id"] for r in rows if not (IMG / f"{r['id']}.jpg").exists()]   # RULES.md addendum: left out for both models
+    rows = [r for r in rows if r["id"] not in missing]
     labels = [r["class_name"] for r in rows]
     tv12 = torch.load(REPO / "model.pth", map_location="cpu", weights_only=True)
     cand = torch.load(sys.argv[1], map_location="cpu", weights_only=True)
     clips = {"TV-12": ClipModel("cpu")}
     if cand["clip_head"]["clip"] != tv12["clip_head"]["clip"]:
         clips["candidate"] = ClipModel("cpu", **cand["clip_head"]["clip"])
-    b, F = outputs([str(IMG / f"{r['id']}.jpg") for r in rows], clips)
+    paths = [str(IMG / f"{r['id']}.jpg") for r in rows]
+    b, F = outputs(paths, clips)
     F.setdefault("candidate", F["TV-12"])
-    res = {"seal": digest, "n": len(rows), "candidate": str(sys.argv[1]), "candidate_version": cand.get("version"),
-           "TV-12": score(card, tv12, b, F["TV-12"], labels), "candidate_scores": score(card, cand, b, F["candidate"], labels)}
+    res = {"seal": digest, "n": len(rows), "missing_left_out": missing, "candidate": str(sys.argv[1]), "candidate_version": cand.get("version"),
+           "candidate_tomato_crop_check": cand.get("tomato_crop_check"),
+           "TV-12": score(card, tv12, b, F["TV-12"], labels),
+           "candidate_scores": score(card, cand, b, F["candidate"], labels, paths, clips.get("candidate", clips["TV-12"]))}
     for m in ("TV-12", "candidate_scores"):
         res[m]["weak_spots"] = weak_spots(rows, res[m]["answers"])
     res["differences"] = [{"id": r["id"], "class": r["class_name"], "TV-12": x, "candidate": y}
                           for r, x, y in zip(rows, res["TV-12"]["answers"], res["candidate_scores"]["answers"]) if x != y]
+    t, c = res["TV-12"], res["candidate_scores"]
+    right = lambda r, cls: sum(a == cls for a, y in zip(r["answers"], labels) if y == cls)
+    res["green_onion_rows"] = [{"id": r["id"], "TV-12": t["answers"][i], "candidate": c["answers"][i]} for i, r in enumerate(rows) if r["class_name"].startswith("greenonion")]
+    res["conditions_tomato_crops"] = {   # experiments/tomato_crops/PREREG.md addendum (2026-11-04)
+        "rotten tomato +3": right(c, "tomato_rotten") - right(t, "tomato_rotten") >= 3,
+        "fresh tomato >= -1": right(c, "tomato_fresh") - right(t, "tomato_fresh") >= -1,
+        "five vegetables right and kept >= TV-12": c["five_vegetables"]["right_and_kept"] >= t["five_vegetables"]["right_and_kept"],
+        "turned away of 75 >= -3": c["not_five"]["turned_away"] - t["not_five"]["turned_away"] >= -3,
+        "onion kind >= -1": c["new_vegetables"]["kind_right_and_kept"] - t["new_vegetables"]["kind_right_and_kept"] >= -1}
+    res["tomato_counts"] = {m: {cls: f"{right(r, cls)}/{labels.count(cls)}" for cls in ("tomato_fresh", "tomato_rotten")} for m, r in (("TV-12", t), ("candidate", c))}
+    res["proposed"] = all(res["conditions_tomato_crops"].values())
     json.dump(res, open(sys.argv[2], "w"), indent=1, ensure_ascii=False)
     for m in ("TV-12", "candidate_scores"):
         r = res[m]; f = r["five_vegetables"]
         print(f"{m:16} five {f['right_and_kept']}/{f['n']} rot->fresh {f['rotten_to_fresh']}/{f['rotten_n']} fresh->rot {f['fresh_to_rotten']}/{f['fresh_n']} "
               f"| not-five away {r['not_five']['turned_away']}/{r['not_five']['n']} | weak {r['weak_spots']}")
-    print("differences:", len(res["differences"]))
+    print("differences:", len(res["differences"]), "| missing left out:", res["missing_left_out"])
+    print("tomatoes:", res["tomato_counts"], "| conditions:", res["conditions_tomato_crops"], "| proposed:", res["proposed"])
 
 
 if __name__ == "__main__":
