@@ -139,6 +139,8 @@ dataset/
 | 새 채소 Valid | 89 | iNaturalist·Openverse·Wikimedia·Kaggle·LVIS | 개발용 (양파·고구마·대파) | 종류 88% |
 | 새 채소 시험지 1~4 (블라인드) | 97 / 54 / 21 / 26 | 위와 같음, 올린 사람 단위로 분리 | 마지막 평가 (7 / 6 / 5 / 4번) | 종류 89% |
 | **시험지 T3** | 247 | iNaturalist·Wikimedia Commons, 예전에 사진을 올린 적 없는 사람 | 마지막 평가 (2번, 2번째는 참고) | 다섯 채소 79.6%, 거름 69% |
+| 시험지 T5 | 140 | iNaturalist·Wikimedia Commons | 마지막 평가 (1번, [기록](results/t5_test/README.md)) | 다섯 채소 92% (58/63), 거름 67% |
+| 시험지 T6 | 175 | iNaturalist·Openverse·Commons·공개 데이터셋, 약점 사진 위주 | 마지막 평가 (1번, [기록](results/t6_test/README.md)) | 다섯 채소 86% (83/97), 거름 76% |
 
 - 지금 결과는 8종 시스템(TV-12) 기준이다. TV-11에서 다섯 채소만 쓰면(`--five-only`) 첫 인터넷 시험지 90.0%, 새 인터넷 시험지 83.8%, 아무 사진(새 채소가 아닌 247장) 84%였다.
 

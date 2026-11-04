@@ -27,6 +27,8 @@
 | [bigger_eye](bigger_eye/README.md) | CLIP 자리에 더 좋은 이미지 모델 넣기 (B급 2개, L급 1개) | 반영 안 함 (L1: 개발 +20, 블라인드 T5에서 다섯 채소 −3) |
 | [shape_and_parts](shape_and_parts/README.md) | Test 오류 두 종류 고치기: 종류는 CLIP 글로(A), 상한 조각이면 보류(B) | 둘 다 반영 안 함 (A −2, B는 오답 2장 잡고 맞는 답 16장 보류) |
 | [root_and_tomato](root_and_tomato/README.md) | 흙 묻은 감자·고구마·양파·대파 vs 썩은 것, 살짝 상한 토마토: 새 사진으로 분류기 다시 학습 (R1·R2) | 반영 안 함 (정상 감자 45% → 60%, 상한 토마토 +1장, 상한 과일 거름 −5·예전→새 채소 +2로 조건 실패, T6 안 엶) |
+| [no_greenonion](no_greenonion/README.md) | 대파 없애기(8종 → 7종, 사용자 결정) | 반영 안 함 (개발: 대파 94% 거름, T6: 거르기 −4) |
+| [tomato_crops](tomato_crops/README.md) | 살짝 상한 토마토: "정상 토마토" 답만 조각 5개로 다시 보기 | 반영 안 함 (개발: 상한 토마토 57% → 86%, T6: 이미 100%라 잴 수 없음) |
 
 ## 학습 사진 늘리기·고치기
 
