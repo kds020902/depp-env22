@@ -1,0 +1,150 @@
+{
+ "seal": "6386e49ac51a2c926c756e1d0f748ce905ae484ffda853d7c0d97e01cf7b49ed",
+ "n": 46,
+ "TV-12": {
+  "rotten_right": [
+   28,
+   32
+  ],
+  "rotten_slight_right": [
+   10,
+   12
+  ],
+  "rotten_heavy_right": [
+   18,
+   20
+  ],
+  "fresh_right": [
+   13,
+   14
+  ],
+  "rotten_to_fresh": 2,
+  "fresh_to_rotten": 0,
+  "turned_away": 2,
+  "other_vegetable": 1,
+  "answers": [
+   "tomato_rotten",
+   "tomato_fresh",
+   "tomato_rotten",
+   "tomato_rotten",
+   "tomato_rotten",
+   "tomato_rotten",
+   "tomato_rotten",
+   "tomato_rotten",
+   "tomato_rotten",
+   "tomato_rotten",
+   "tomato_rotten",
+   "tomato_rotten",
+   "tomato_rotten",
+   "tomato_rotten",
+   "tomato_rotten",
+   "거름",
+   "tomato_rotten",
+   "tomato_rotten",
+   "tomato_rotten",
+   "tomato_rotten",
+   "tomato_rotten",
+   "tomato_rotten",
+   "tomato_rotten",
+   "tomato_rotten",
+   "tomato_rotten",
+   "tomato_rotten",
+   "tomato_fresh",
+   "tomato_rotten",
+   "tomato_rotten",
+   "tomato_rotten",
+   "cucumber_rotten",
+   "tomato_rotten",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "거름",
+   "tomato_fresh"
+  ]
+ },
+ "C1": {
+  "rotten_right": [
+   28,
+   32
+  ],
+  "rotten_slight_right": [
+   10,
+   12
+  ],
+  "rotten_heavy_right": [
+   18,
+   20
+  ],
+  "fresh_right": [
+   13,
+   14
+  ],
+  "rotten_to_fresh": 2,
+  "fresh_to_rotten": 0,
+  "turned_away": 2,
+  "other_vegetable": 1,
+  "answers": [
+   "tomato_rotten",
+   "tomato_fresh",
+   "tomato_rotten",
+   "tomato_rotten",
+   "tomato_rotten",
+   "tomato_rotten",
+   "tomato_rotten",
+   "tomato_rotten",
+   "tomato_rotten",
+   "tomato_rotten",
+   "tomato_rotten",
+   "tomato_rotten",
+   "tomato_rotten",
+   "tomato_rotten",
+   "tomato_rotten",
+   "거름",
+   "tomato_rotten",
+   "tomato_rotten",
+   "tomato_rotten",
+   "tomato_rotten",
+   "tomato_rotten",
+   "tomato_rotten",
+   "tomato_rotten",
+   "tomato_rotten",
+   "tomato_rotten",
+   "tomato_rotten",
+   "tomato_fresh",
+   "tomato_rotten",
+   "tomato_rotten",
+   "tomato_rotten",
+   "cucumber_rotten",
+   "tomato_rotten",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "tomato_fresh",
+   "거름",
+   "tomato_fresh"
+  ]
+ },
+ "conditions": {
+  "rotten tomato +3": false,
+  "fresh tomato >= -1": true
+ },
+ "proposed": false,
+ "differences": []
+}
