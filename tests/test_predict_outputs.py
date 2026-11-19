@@ -33,6 +33,15 @@ def test_heatmap_names_are_unique(tmp_path):
     assert heatmap_names([single], single) == {single: Path("a_heatmap.jpg")}   # --input was one photo
 
 
+def test_heatmap_names_resolve_collisions_with_full_names_and_folders(tmp_path):
+    paths = ["a.jpg", "a.png", "a.jpg.png", "b.jpg", "b_heatmap.jpg/photo.jpg"]
+    photos = [tmp_path / path for path in paths]
+    outputs = set(heatmap_names(photos, tmp_path).values())
+
+    assert len(outputs) == len(photos)
+    assert not any(parent in outputs for output in outputs for parent in output.parents)
+
+
 def test_heatmaps_of_same_named_photos_do_not_overwrite(tmp_path):
     for sub, src in (("a", PHOTO), ("b", REPO / "dataset/test/N_rotten/tomato_rotten_1201.jpg")):
         (tmp_path / "in" / sub).mkdir(parents=True)
@@ -69,21 +78,22 @@ def test_report_notes_follow_the_options():
 
 
 class _FakeClip:
-    def __init__(self, value: float):
-        self.value, self.calls = value, 0
+    def __init__(self, value: float, width: int = 4):
+        self.value, self.width, self.calls = value, width, 0
 
     def image_features(self, images):
         self.calls += len(images)
-        return torch.full((len(images), 4), self.value)
+        return torch.full((len(images), self.width), self.value)
 
 
 def test_feature_cache_keeps_image_models_apart(tmp_path):
     cache, paths, load = tmp_path / "f.npz", [Path("p1.jpg"), Path("p2.jpg")], (lambda i: None)
     default, other = encoder_tag("ViT-B-16", "datacomp_xl_s13b_b90k"), encoder_tag("ViT-L-16-SigLIP2-256", "webli")
     assert default == "" and other
-    a, b = _FakeClip(1.0), _FakeClip(2.0)
+    a, b = _FakeClip(1.0), _FakeClip(2.0, width=6)
     assert float(clip_features(a, paths, cache=cache, load=load, encoder=default).mean()) == 1.0
-    assert float(clip_features(b, paths, cache=cache, load=load, encoder=other).mean()) == 2.0   # not the cached 1.0
+    alternate = clip_features(b, paths, cache=cache, load=load, encoder=other)
+    assert alternate.shape == (2, 6) and float(alternate.mean()) == 2.0
     assert float(clip_features(_FakeClip(9.0), paths, cache=cache, load=load, encoder=default).mean()) == 1.0   # still cached
     again = _FakeClip(9.0)
     assert float(clip_features(again, paths, cache=cache, load=load, encoder=other).mean()) == 2.0 and again.calls == 0
