@@ -77,30 +77,32 @@ def find_images(path: Path) -> list[Path]:
 
 
 def heatmap_names(photos: list[Path], source: Path) -> dict[Path, Path]:
-    """Keep input folders and familiar names while reserving distinct paths for every heat map."""
+    """Keep input folders and familiar names while reserving distinct paths for every heat map. Names that differ only in
+    upper/lower case count as the same, so the heat maps also stay apart on Windows and macOS disks."""
+    fold = lambda path: path.as_posix().casefold()
     directory_input = source.is_dir()
     relative = {p: (p.relative_to(source) if directory_input else Path(p.name)) for p in photos}
-    stems = Counter((r.parent, r.stem) for r in relative.values())
+    stems = Counter((fold(r.parent), r.stem.casefold()) for r in relative.values())
     preferred = {}
     for photo, path in relative.items():
-        name = path.name if stems[path.parent, path.stem] > 1 else path.stem
+        name = path.name if stems[fold(path.parent), path.stem.casefold()] > 1 else path.stem
         preferred[photo] = path.with_name(f"{name}_heatmap.jpg")
 
     # An input directory can itself be called, for example, a_heatmap.jpg.
-    folders = {parent for path in relative.values() for parent in path.parents}
-    reserved = folders | set(preferred.values())
+    folders = {fold(parent) for path in relative.values() for parent in path.parents}
+    reserved = folders | {fold(path) for path in preferred.values()}
     used = set(folders)
     suffixes = Counter()
     names = {}
     for photo, path in preferred.items():
         candidate = path
-        if path in used:
-            while candidate in reserved:
-                suffixes[path] += 1
-                candidate = path.with_name(f"{path.stem}_{suffixes[path]}{path.suffix}")
+        if fold(path) in used:
+            while fold(candidate) in reserved:
+                suffixes[fold(path)] += 1
+                candidate = path.with_name(f"{path.stem}_{suffixes[fold(path)]}{path.suffix}")
         names[photo] = candidate
-        used.add(candidate)
-        reserved.add(candidate)
+        used.add(fold(candidate))
+        reserved.add(fold(candidate))
     return names
 
 

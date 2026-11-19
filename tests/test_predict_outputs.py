@@ -42,6 +42,14 @@ def test_heatmap_names_resolve_collisions_with_full_names_and_folders(tmp_path):
     assert not any(parent in outputs for output in outputs for parent in output.parents)
 
 
+def test_heatmap_names_differ_by_more_than_letter_case(tmp_path):
+    paths = ["A.jpg", "a.png", "IMG.JPG", "img.jpg.png", "Sub/x.jpg", "sub/X.png"]
+    names = heatmap_names([tmp_path / path for path in paths], tmp_path)
+    assert len({name.as_posix().casefold() for name in names.values()}) == len(paths)
+    plain = heatmap_names([tmp_path / "Photo.JPG"], tmp_path)
+    assert plain[tmp_path / "Photo.JPG"] == Path("Photo_heatmap.jpg")   # an ordinary name keeps its letters
+
+
 def test_heatmaps_of_same_named_photos_do_not_overwrite(tmp_path):
     for sub, src in (("a", PHOTO), ("b", REPO / "dataset/test/N_rotten/tomato_rotten_1201.jpg")):
         (tmp_path / "in" / sub).mkdir(parents=True)
