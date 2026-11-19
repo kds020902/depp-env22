@@ -28,7 +28,9 @@
     - 학습 사진은 깨끗한 배경의 데이터셋 하나(97%)에 몰려 있다.
 - **다음 순서:**
     1. 실수의 무게(상한 걸 놓치는 것 대 멀쩡한 걸 버리는 것)를 정한다.
-    2. 쓰는 장면을 정한 큰 블라인드 시험지 T8을 한 번 제대로 만든다.
+    2. ~~쓰는 장면을 정한 큰 블라인드 시험지 T8을 만든다.~~ 2026-11-15에 만들어 한 번 채점했다([T8 기록](results/t8_test/README.md)).
+        - T8은 약점을 겨냥한 시험지다(상한 채소, 흙 묻은 감자, 곰팡이 과일). 대표 성능은 여전히 T3로 본다.
+        - 상한 채소를 정상으로 답한 것은 148장 중 8장이다. 흙 묻은 정상 감자는 28장 중 2장, 상한 고구마는 16장 중 0장만 맞혔다.
     3. 그다음 실제 사용 장면의 학습 사진을 수백 장 단위로 늘린다.
 - **흙 묻은 감자 (이미 본 개발 사진 T3~T5, 분석만):** TV-12가 정상 감자를 "상함"으로 답한 18장 중 11장은 이미 판단 보류(확률 0.9 미만)로 "확인하세요"가 붙는다. 자신 있게 틀린 것은 7장이다.
 
@@ -361,6 +363,8 @@ python src/predict.py --model model.pth --input my_photos --output results.csv
 - `answer`, `held_back`: 사람에게 보여 주는 답이다. 확률이 90% 미만이면 `answer=판단 보류`, `held_back=yes`이고, `message`에 가장 가까운 답과 안내가 들어간다(정상/상함 사이에서 헷갈리면 "상했을 수 있으니 직접 확인하세요"). `predicted_class`에는 가장 가까운 답이 그대로 남는다. 기준은 `--hold-back-below`로 바꾸고, 0이면 항상 답한다. `retake`는 판단 보류이거나 거른 사진이면 `yes`다.
 - `--report 리포트.html`을 붙이면 결과를 한 장짜리 HTML 보고서로도 만든다. 사진이 파일 안에 들어 있어 인터넷 없이 열린다. 요약 숫자(누르면 그 사진만 보기), 채소별 표, 사진마다 판정·확률·상한 흔적·다시 찍기 안내와 "상한 곳 보기" 버튼이 있다. 확인이 필요한 사진(비정상, 다시 찍기, 거른 사진)이 먼저 나온다.
 - `rot_evidence`, `heatmap`: 모델이 상했다고 본 정도(1이면 Valid 비정상 사진의 중간 수준)와 히트맵 파일이다. `--heatmap 폴더`를 주면 사진마다 원본과, 상했다고 본 부분을 빨갛게 칠한 사진을 나란히 저장한다.
+    - 히트맵 파일 이름은 `사진이름_heatmap.jpg`다. 입력 폴더 안의 하위 폴더는 히트맵 폴더에도 그대로 만들어져서, 이름이 같은 사진끼리 덮어쓰지 않는다.
+- 사진을 한 장도 판정하지 못하면(모두 열 수 없는 파일 등) 종료 코드 1로 끝난다. CSV에는 사진마다 오류가 적힌다.
 - `closest_guess`: 거른 사진이 무엇과 가장 비슷한지(예: 사과) CLIP으로 알려 준다. `message`에도 "(사과로 보입니다.)"처럼 붙는다.
 - `unknown_score`, `clip_unknown_score`: 채소 모델과 CLIP 분류기가 각각 학습하지 않은 사진을 가르는 점수다. 채소 모델은 energy 점수, CLIP 분류기는 "다섯 채소가 아님"일 로그 오즈다. 지금 `model.pth`는 CLIP 분류기 기준(−0.60)을 넘을 때만 거른다(`clip_head.vegetable_model_check: false`). `--no-clip`이면 채소 모델 기준(−1.96)으로 거른다.
 - 보정 정보는 `model.pth` 안에 있다. 새로 학습하면 `train.py`가 Valid로 자동으로 계산해 넣는다. 보정 정보가 없는 예전 가중치는 `python src/calibrate.py --model 가중치.pth`로 붙인다. 이렇게 하면 기준은 Valid만으로 정해진다. 지금 `model.pth`처럼 실제 장면 채소 사진도 함께 쓰려면 `--extra-photos 사진폴더`를 더한다([방법](experiments/real_scene_threshold/README.md#다시-돌리기)).
@@ -371,14 +375,16 @@ python src/predict.py --model model.pth --input my_photos --output results.csv
 # 채소 모델 (TV-11·TV-12 공통, 10개 클래스, EfficientNet-B0 미세조정, 가벼운 가짜 워터마크: experiments/watermark 2회차)
 python src/train.py --manifest dataset/manifest.csv --out results/10class/efficientnet_b0_finetune --arch efficientnet_b0 --num-classes 10 --mode finetune --epochs 30 --patience 8 --seed 42 --watermark-fresh 0.6 --watermark-rotten 0.3 --watermark-style light
 python src/make_plots.py --runs results/10class
+# 아래 단계는 모두 --model로 받은 파일을 제자리에서 고친다. 배포 중인 루트 model.pth를 덮어쓰지 않도록 새 가중치를 복사해 그 파일 하나를 끝까지 넘긴다.
+cp results/10class/efficientnet_b0_finetune/model.pth candidate.pth
 # 채소 모델과 함께 쓰는 CLIP 분류기 (experiments/real_scene_threshold의 실제 장면 채소 192장이 필요)
-python src/train_clip_head.py --model model.pth --extra-photos lvis_vegetables
+python src/train_clip_head.py --model candidate.pth --extra-photos lvis_vegetables
 # 지금 model.pth의 CLIP 분류기 ("다섯 채소가 아님" 포함, 학습 사진마다 가벼운 워터마크 복사본): experiments/not_five_class/added_photos.csv의 사진을 path,class_name CSV로
-python src/train_clip_head.py --model model.pth --extra-photos lvis_vegetables --extra-train extra_train.csv --clip-check-only --watermark-fresh 1.0 --watermark-rotten 0.25 --watermark-other 0.5 --watermark-style light
+python src/train_clip_head.py --model candidate.pth --extra-photos lvis_vegetables --extra-train extra_train.csv --clip-check-only --watermark-fresh 1.0 --watermark-rotten 0.25 --watermark-other 0.5 --watermark-style light
 # 양파·고구마·대파용 두 번째 CLIP 분류기 (TV-10의 V7): 사진 없이 저장해 둔 CLIP 특징으로 다시 만든다
-python src/train_new_veg_head.py --model model.pth --data experiments/new_vegetables/v7/head_data.npz
+python src/train_new_veg_head.py --model candidate.pth --data experiments/new_vegetables/v7/head_data.npz
 # TV-12: 거르기에 CLIP 글 설명 유사도(0.25배)를 더하고 기준을 -0.3204로 바꾼다. CLIP 분류기를 다시 학습하면 이 설정이 빠지므로
-# model.pth의 clip_head["text_evidence"]와 unknown_threshold를 experiments/zero_shot_reject의 값으로 다시 넣는다.
+# candidate.pth의 clip_head["text_evidence"]와 unknown_threshold를 experiments/zero_shot_reject의 값으로 다시 넣는다.
 
 # 6개 클래스 때의 모델 비교 (오이·감자·토마토만, 같은 Test 180장)
 python src/train.py --manifest dataset/manifest.csv --num-classes 6 --out results/6class/efficientnet_b0_finetune --arch efficientnet_b0 --mode finetune --epochs 30 --patience 8
@@ -422,7 +428,7 @@ depp-env22/
 │   ├── t3_test/ t4_test/    블라인드 테스트셋 목록과 채점 기록
 │   ├── 10class/ 16class/    지금 모델의 평가 기록 (인터넷 시험지, "아무 사진", 새 채소 시험지, 점검)
 │   └── 6class/              6개 클래스 때의 모델 비교와 1차 기록
-├── experiments/             실험 기록 27개 (목록: experiments/README.md, 공통 코드: experiments/watermark/common.py)
+├── experiments/             실험 기록 36개 (목록: experiments/README.md, 공통 코드: experiments/watermark/common.py)
 └── .github/workflows/       push마다 빠른 테스트
 ```
 

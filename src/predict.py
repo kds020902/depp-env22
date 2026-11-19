@@ -75,6 +75,14 @@ def find_images(path: Path) -> list[Path]:
     return sorted(p for p in path.rglob("*") if p.is_file() and p.suffix.lower() in IMAGE_EXTENSIONS)
 
 
+def heatmap_names(photos: list[Path], source: Path) -> dict[Path, Path]:
+    """Heat-map path (inside the --heatmap folder) for every photo, each one different: the photo's folder below the input
+    folder is kept, and two photos of one folder with the same stem (a.jpg, a.png) keep their full file names."""
+    relative = {p: (p.relative_to(source) if source.is_dir() else Path(p.name)) for p in photos}
+    stems = [(r.parent, r.stem) for r in relative.values()]
+    return {p: r.parent / f"{r.name if stems.count((r.parent, r.stem)) > 1 else r.stem}_heatmap.jpg" for p, r in relative.items()}
+
+
 class Classifier:
     """The adopted system, one photo at a time."""
 
@@ -179,10 +187,13 @@ def report_entry(path: Path, photo, r: dict) -> dict:
     }
 
 
-def write_html(path: Path, entries: list[dict], system: Classifier, source: Path) -> None:
+def report_notes(system: Classifier, hold_back_below: float) -> list[str]:
+    """The notes under the report: what the probabilities are and when an answer is held back, as this run was set."""
     names = "오이·감자·토마토·피망·당근·양파·고구마·대파" if system.new_vegetables else "오이·감자·토마토·피망·당근"
     notes = [
-        "확률은 Valid 사진으로 보정한 값입니다. 확률이 90% 미만이면 답하지 않고 '판단 보류'로 가장 가까운 답과 안내를 보여 줍니다.",
+        ("확률은 Valid 사진으로 보정한 값입니다." if system.calibrated else "이 가중치에는 보정 정보가 없어서 확률은 보정하지 않은 값입니다.")
+        + (f" 확률이 {100 * hold_back_below:g}% 미만이면 답하지 않고 '판단 보류'로 가장 가까운 답과 안내를 보여 줍니다."
+           if hold_back_below > 0 else " 이번 실행은 판단 보류를 쓰지 않아서(--hold-back-below 0) 확률이 낮아도 답을 보여 줍니다."),
         "상한 흔적은 모델이 '비정상' 쪽으로 본 정도입니다. 1이면 Valid 비정상 사진의 중간 수준입니다.",
         "'상한 곳 보기'의 빨간 부분은 모델이 상했다고 본 곳입니다. 7×7칸 단위라 대략적인 위치입니다.",
         f"'학습된 데이터가 아닙니다'는 {names} 사진이 아닌 것 같다는 뜻입니다."
@@ -191,7 +202,12 @@ def write_html(path: Path, entries: list[dict], system: Classifier, source: Path
     ]
     if system.new_vegetables:
         notes.append("'상한 곳 보기'는 다섯 채소에만 있습니다. 양파·고구마·대파는 CLIP 분류기가 답해서 상한 곳 지도가 없습니다.")
-    write_report(path, entries, {"model": system.describe(), "source": f"입력 폴더: {source.name}", "notes": notes})
+    return notes
+
+
+def write_html(path: Path, entries: list[dict], system: Classifier, source: Path, hold_back_below: float) -> None:
+    write_report(path, entries, {"model": system.describe(), "source": f"입력 폴더: {source.name}",
+                                 "notes": report_notes(system, hold_back_below)})
 
 
 def main():
@@ -209,6 +225,7 @@ def main():
     args.output.parent.mkdir(parents=True, exist_ok=True)
     if args.heatmap:
         args.heatmap.mkdir(parents=True, exist_ok=True)
+    heatmaps = heatmap_names(photos, source)
     entries, success = [], 0
     with args.output.open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, fieldnames=FIELDS + [f"prob_{name}" for name in names])
@@ -219,7 +236,8 @@ def main():
                 r = system.classify(photo, args.hold_back_below)
                 row = csv_row(path, r, names, args.uncertain_below)
                 if args.heatmap and r["rot_map"] is not None:
-                    row["heatmap"] = str(args.heatmap / f"{path.stem}_heatmap.jpg")
+                    row["heatmap"] = str(args.heatmap / heatmaps[path])
+                    Path(row["heatmap"]).parent.mkdir(parents=True, exist_ok=True)
                     rot_map_overlay(photo, r["rot_map"], r["scale"]).save(row["heatmap"], quality=90)
                 if args.report:
                     entries.append(report_entry(path, photo, r))
@@ -233,8 +251,10 @@ def main():
             writer.writerow(row)
     print(f"Saved {success}/{len(photos)} successful predictions to {args.output.resolve()}")
     if args.report:
-        write_html(args.report, entries, system, source)
+        write_html(args.report, entries, system, source, args.hold_back_below)
         print(f"Saved the report to {args.report.resolve()}")
+    if not success:  # every photo failed: the CSV (and report) list the errors, and the command fails
+        raise SystemExit(1)
 
 
 if __name__ == "__main__":

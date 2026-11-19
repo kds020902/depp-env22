@@ -39,12 +39,19 @@ from train import CachedImages, predict_logits, read_manifest
 from watermark_aug import Dice, stamp
 
 
+def encoder_tag(arch: str, pretrained: str) -> str:
+    """Prefix of the cache keys of an image model other than TV-12's, so one cache file never mixes two models' features.
+    TV-12's model has no prefix: caches written before this prefix existed hold its features under the bare photo path."""
+    return "" if (arch, pretrained) == (ARCH, PRETRAINED) else f"{arch}/{pretrained}::"
+
+
 def clip_features(clip: ClipModel, paths: list[Path], batch: int = 32, cache: Path | None = None,
-                  keys: list[str] | None = None, load=None) -> torch.Tensor:
+                  keys: list[str] | None = None, load=None, encoder: str = "") -> torch.Tensor:
     """CLIP image features, one row per photo. With `cache` (an .npz file) finished batches are saved as they go, so a run
     that is stopped can continue where it stopped. `keys`/`load` name and open photos that are not plain files
-    (the watermarked copies)."""
-    keys = keys or [str(p) for p in paths]
+    (the watermarked copies). `encoder` (encoder_tag) keeps the features of different image models apart in one cache.
+    The cache trusts the path: a photo replaced under the same name keeps its old features until the cache is deleted."""
+    keys = [encoder + k for k in (keys or [str(p) for p in paths])]
     load = load or (lambda i: open_image(paths[i]))
     store = {}
     if cache is not None and cache.exists():
@@ -79,7 +86,8 @@ def main():
     parser.add_argument("--watermark-style", choices=["standard", "light"], default="standard",
                         help="Size and strength of the synthetic watermarks (light: smaller and see-through).")
     parser.add_argument("--feature-cache", type=Path,
-                        help="Optional .npz file that keeps the CLIP features computed so far (resume a stopped run).")
+                        help="Optional .npz file that keeps the CLIP features computed so far (resume a stopped run). Keyed by photo "
+                             "path and image model; delete it when photos were replaced under the same names.")
     parser.add_argument("--c", type=float, default=10.0, help="Inverse regularisation strength of the head.")
     parser.add_argument("--accept-rate", type=float, default=0.95)
     parser.add_argument("--threads", type=int, default=4)
@@ -104,7 +112,8 @@ def main():
                 n_extra += 1
     other_class = len(class_names) in train_y
     cache = args.feature_cache
-    train_x = clip_features(clip, train_paths, cache=cache)
+    encoder = encoder_tag(args.clip_arch, args.clip_pretrained)
+    train_x = clip_features(clip, train_paths, cache=cache, encoder=encoder)
     n_stamped = 0
     if max(args.watermark_fresh, args.watermark_rotten, args.watermark_other) > 0:
         # One copy of every photo, so the classes keep their sizes. Stamping fresh copies more often than rotten ones makes a
@@ -119,7 +128,7 @@ def main():
         copies[stamped] = clip_features(
             clip, [], cache=cache, keys=[f"{prefix}:{i}:{train_paths[i]}" for i in stamped],
             load=lambda k: stamp(open_image(train_paths[stamped[k]]), Dice(torch.Generator().manual_seed(stamped[k] + 1)),
-                                 style=args.watermark_style))
+                                 style=args.watermark_style), encoder=encoder)
         train_x, train_y, n_stamped = torch.cat([train_x, copies]), train_y + train_y, len(stamped)
     head = LogisticRegression(C=args.c, max_iter=5000).fit(train_x.numpy(), train_y)
     # A class with no training photos (UNTRAINED_CLASSES) gets a zero row and a very low intercept, so it is never chosen.
@@ -134,11 +143,11 @@ def main():
     loader = DataLoader(CachedImages(val, manifest.parent, train=False, size=input_size(checkpoint)), batch_size=32)
     with torch.no_grad():
         val_logits, val_y = predict_logits(model, loader, torch.device("cpu"))
-    val_clip = clip_features(clip, [manifest.parent / r["image_path"] for r in val], cache=cache) @ clip_head["coef"].T + clip_head["intercept"]
+    val_clip = clip_features(clip, [manifest.parent / r["image_path"] for r in val], cache=cache, encoder=encoder) @ clip_head["coef"].T + clip_head["intercept"]
     temperature = fit_temperature(combined_logits(val_logits, val_clip, with_head), val_y)
 
     extra = sorted(p for p in args.extra_photos.iterdir() if p.suffix.lower() in IMAGE_EXTENSIONS)
-    extra_clip = clip_features(clip, extra, cache=cache) @ clip_head["coef"].T + clip_head["intercept"]
+    extra_clip = clip_features(clip, extra, cache=cache, encoder=encoder) @ clip_head["coef"].T + clip_head["intercept"]
     threshold = float(torch.quantile(clip_unknown_score(torch.cat([val_clip, extra_clip]), with_head), args.accept_rate))
 
     n_photos = len(train_y) // 2 if n_stamped else len(train_y)
