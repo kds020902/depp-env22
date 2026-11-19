@@ -37,8 +37,9 @@ import torch
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from build_dataset_v2 import (  # noqa: E402
-    BIG_SESSION, CONDITION_DIRS, EVAL_SESSION_CAP, SOURCES, SPLIT_DIRS, T_DUP, T_SESSION,
-    fingerprints, hamming, load_rgb, orb_inliers, union_find,
+    CONDITION_DIRS, SOURCES, SPLIT_DIRS, T_DUP, T_SESSION,
+    assign_eval_splits, fingerprints, load_rgb, near_hash, orb_duplicate_edges,
+    orb_inliers, similarity, union_find,
 )
 
 OLD_CLASSES = ["cucumber_fresh", "cucumber_rotten", "potato_fresh", "potato_rotten", "tomato_fresh", "tomato_rotten"]
@@ -64,17 +65,6 @@ def collect(args):
     return nodes, old, base_rows
 
 
-def similarity(variants):
-    E = variants[:, 0]
-    S = np.max(np.stack([E @ variants[:, k].T for k in range(8)]), axis=0)
-    return np.maximum(S, S.T)
-
-
-def near_hash(nodes):
-    return (hamming(np.array([int(n["phash"], 16) for n in nodes], dtype=np.uint64)) <= 6) & \
-           (hamming(np.array([int(n["dhash"], 16) for n in nodes], dtype=np.uint64)) <= 8)
-
-
 def drop_old_duplicates(nodes, old):
     """A candidate that matches any photo already in the dataset is dropped (it could cross splits)."""
     both = nodes + old
@@ -96,10 +86,8 @@ def assign(nodes, variants, same_pairs):
     N = len(nodes)
     S = similarity(variants)
     near = near_hash(nodes)
-    orb = orb_inliers(nodes, zip(*np.nonzero(np.triu(S >= 0.80, 1))))
     species = [n["class_name"].split("_")[0] for n in nodes]
-    orb_edges = [(a, b) for (a, b), v in orb.items()
-                 if (v >= 30 and S[a, b] >= 0.85) or (v >= 80 and species[a] == species[b])]
+    orb_edges = orb_duplicate_edges(nodes, S, species)
     index = {n["archive_path"]: i for i, n in enumerate(nodes)}
     same_edges = [(index[a], index[b]) for a, b in same_pairs if a in index and b in index]
     dup = union_find(N, same_edges + orb_edges + list(zip(*np.nonzero(np.triu(near | (S >= T_DUP), 1)))))
@@ -115,31 +103,7 @@ def assign(nodes, variants, same_pairs):
         members = [i for i in range(N) if shoot[i] and cls[i] == c]
         for i in members:
             ses[i] = members[0]
-    ses_size = collections.Counter(int(x) for x in ses)
-
-    groups = collections.defaultdict(list)
-    for i in range(N):
-        groups[int(dup[i])].append(i)
-    order = list(groups.values())
-    random.seed(42)
-    random.shuffle(order)
-    order.sort(key=len)  # smallest groups first: val/test get the most varied photos
-    split, cnt, ses_eval = {}, collections.Counter(), collections.Counter()
-    for g in order:
-        need = collections.Counter(cls[i] for i in g)
-        sc = collections.Counter((cls[i], int(ses[i])) for i in g)
-        dest = "train"
-        if not any(ses_size[int(ses[i])] >= BIG_SESSION for i in g):
-            for s in ("test", "val"):
-                if all(cnt[(s, c)] + k <= EVAL_QUOTA for c, k in need.items()) and \
-                   all(ses_eval[key] + k <= EVAL_SESSION_CAP for key, k in sc.items()):
-                    dest = s
-                    break
-        for i in g:
-            split[i] = dest
-        if dest != "train":
-            cnt.update({(dest, c): k for c, k in need.items()})
-            ses_eval.update(sc)
+    split, cnt = assign_eval_splits(cls, dup, ses, {"test": EVAL_QUOTA, "val": EVAL_QUOTA})
     for c in sorted(set(cls)):
         for s in ("val", "test"):
             if cnt[(s, c)] != EVAL_QUOTA:
