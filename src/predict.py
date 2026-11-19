@@ -17,6 +17,7 @@ from __future__ import annotations
 import argparse
 import csv
 import sys
+from collections import Counter
 from pathlib import Path
 
 import torch
@@ -76,11 +77,31 @@ def find_images(path: Path) -> list[Path]:
 
 
 def heatmap_names(photos: list[Path], source: Path) -> dict[Path, Path]:
-    """Heat-map path (inside the --heatmap folder) for every photo, each one different: the photo's folder below the input
-    folder is kept, and two photos of one folder with the same stem (a.jpg, a.png) keep their full file names."""
-    relative = {p: (p.relative_to(source) if source.is_dir() else Path(p.name)) for p in photos}
-    stems = [(r.parent, r.stem) for r in relative.values()]
-    return {p: r.parent / f"{r.name if stems.count((r.parent, r.stem)) > 1 else r.stem}_heatmap.jpg" for p, r in relative.items()}
+    """Keep input folders and familiar names while reserving distinct paths for every heat map."""
+    directory_input = source.is_dir()
+    relative = {p: (p.relative_to(source) if directory_input else Path(p.name)) for p in photos}
+    stems = Counter((r.parent, r.stem) for r in relative.values())
+    preferred = {}
+    for photo, path in relative.items():
+        name = path.name if stems[path.parent, path.stem] > 1 else path.stem
+        preferred[photo] = path.with_name(f"{name}_heatmap.jpg")
+
+    # An input directory can itself be called, for example, a_heatmap.jpg.
+    folders = {parent for path in relative.values() for parent in path.parents}
+    reserved = folders | set(preferred.values())
+    used = set(folders)
+    suffixes = Counter()
+    names = {}
+    for photo, path in preferred.items():
+        candidate = path
+        if path in used:
+            while candidate in reserved:
+                suffixes[path] += 1
+                candidate = path.with_name(f"{path.stem}_{suffixes[path]}{path.suffix}")
+        names[photo] = candidate
+        used.add(candidate)
+        reserved.add(candidate)
+    return names
 
 
 class Classifier:
@@ -225,7 +246,7 @@ def main():
     args.output.parent.mkdir(parents=True, exist_ok=True)
     if args.heatmap:
         args.heatmap.mkdir(parents=True, exist_ok=True)
-    heatmaps = heatmap_names(photos, source)
+    heatmaps = heatmap_names(photos, source) if args.heatmap else {}
     entries, success = [], 0
     with args.output.open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, fieldnames=FIELDS + [f"prob_{name}" for name in names])
