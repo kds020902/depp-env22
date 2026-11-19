@@ -3,8 +3,9 @@
     python tools/compare_dataset_builds.py OUT_A OUT_B            # two build folders
     python tools/compare_dataset_builds.py OUT_A dataset --rows 1200   # against the committed dataset (first 1,200 rows = 2nd round)
 
-Reports: whether manifest.csv is byte-identical; per column, how many rows differ; the photo assignment (class, split,
-source path) as a set; and the relative path + SHA-256 list of the photo files. Exit code 0 only when everything is the same.
+Reports: whether manifest.csv is byte-identical; the CSV header; per column, how many rows differ; the photo assignment
+(class, split, source path) as a set; whether every photo a manifest lists is in its folder with the SHA-256 the manifest
+records; and the relative path + SHA-256 list of the photo files. Exit code 0 only when everything is the same.
 """
 
 from __future__ import annotations
@@ -19,8 +20,19 @@ PHOTO_DIRS = ("train", "valid", "test")
 
 def manifest(folder: Path, rows: int | None):
     data = (folder / "manifest.csv").read_bytes()
-    table = list(csv.DictReader(data.decode("utf-8-sig").splitlines()))
-    return data, table[:rows] if rows else table
+    reader = csv.DictReader(data.decode("utf-8-sig").splitlines())
+    table = list(reader)
+    return data, table[:rows] if rows else table, list(reader.fieldnames or [])
+
+
+def listed_photos_ok(folder: Path, table: list[dict], name: str) -> bool:
+    """Every photo the manifest lists must be in the folder, with the SHA-256 the manifest records for it."""
+    missing = [r["image_path"] for r in table if not (folder / r["image_path"]).is_file()]
+    wrong = [r["image_path"] for r in table if (folder / r["image_path"]).is_file()
+             and hashlib.sha256((folder / r["image_path"]).read_bytes()).hexdigest() != r["sha256"]]
+    print(f"{name}: photos listed in the manifest {len(table)}, missing {len(missing)}, SHA-256 not as recorded {len(wrong)}",
+          *(missing + wrong)[:3])
+    return not missing and not wrong
 
 
 def photos(folder: Path, keep: set[str] | None):
@@ -39,8 +51,12 @@ def main():
     parser.add_argument("b", type=Path)
     parser.add_argument("--rows", type=int, help="Compare only the first N manifest rows (and their photos).")
     args = parser.parse_args()
-    (raw_a, a), (raw_b, b) = manifest(args.a, args.rows), manifest(args.b, args.rows)
-    same = True
+    (raw_a, a, head_a), (raw_b, b, head_b) = manifest(args.a, args.rows), manifest(args.b, args.rows)
+    same = bool(a) and bool(b)
+    print("CSV header identical:", head_a == head_b,
+          "" if head_a == head_b else f"| only in A {[c for c in head_a if c not in head_b]}, only in B {[c for c in head_b if c not in head_a]}")
+    same &= head_a == head_b
+    same &= listed_photos_ok(args.a, a, "A") & listed_photos_ok(args.b, b, "B")
     print("manifest.csv bytes identical:", raw_a == raw_b if not args.rows else "(not compared: --rows)")
     print("rows:", len(a), len(b))
     key = lambda r: (r["source_dataset"], r["source_archive_path"])
@@ -50,11 +66,11 @@ def main():
           f"| only in A {len(only_a)}, only in B {len(only_b)}")
     same &= not only_a and not only_b and len(a) == len(b)
     if len(a) == len(b):
-        for col in a[0]:
-            n = sum(x[col] != y.get(col) for x, y in zip(a, b))
+        for col in dict.fromkeys(head_a + head_b):
+            n = sum(x.get(col) != y.get(col) for x, y in zip(a, b))
             if n:
                 same = False
-                first = next((x["image_id"], x[col], y.get(col)) for x, y in zip(a, b) if x[col] != y.get(col))
+                first = next((x["image_id"], x.get(col), y.get(col)) for x, y in zip(a, b) if x.get(col) != y.get(col))
                 print(f"  column {col}: {n} rows differ, first {first}")
     keep = (lambda t: {r["image_path"].replace("\\", "/") for r in t})
     pa, pb = photos(args.a, keep(a) if args.rows else None), photos(args.b, keep(b) if args.rows else None)

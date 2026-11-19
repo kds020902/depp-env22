@@ -85,6 +85,8 @@ def main():
     args = parser.parse_args()
     work = args.work.resolve()
     work.mkdir(parents=True, exist_ok=True)
+    if any((work / d).exists() for d in ("v2", "v3")):  # photos left by an earlier build would be compared as if new
+        raise SystemExit(f"{work} already holds a build (v2/ or v3/); use an empty folder for every run.")
     (work / "v1_manifest.csv").write_bytes(subprocess.run(["git", "show", "03db425:manifest.csv"], cwd=REPO, check=True,
                                                            capture_output=True).stdout)
     src1, src2 = (args.src1, args.src2) if args.src1 else stand_in_sources(work, args.mirror_zip)
