@@ -16,7 +16,7 @@ Claude와 Codex가 작업을 마칠 때마다 맨 위에 새 항목을 덧붙인
 
 | Codex의 지적 | 확인 | 근거 |
 |---|---|---|
-| 히트맵 파일명 충돌 | 맞음 | `src/predict.py:228`이 `path.stem`만 쓴다. 하위 폴더의 같은 이름은 덮어쓴다. |
+| 히트맵 파일명 충돌 | 맞음 | `src/predict.py:222`가 `path.stem`만 쓴다. 하위 폴더의 같은 이름은 덮어쓴다. |
 | 0장 성공해도 정상 종료 | 맞음. **회귀다.** | main(88c10d9)의 `predict.py:89-90`에는 `SystemExit(1)`이 있었다. 지금 `main()`에는 없다. |
 | HTML 안내가 옵션과 다름 | 맞음 | `predict.py:185`의 "90% 미만"과 "보정한 값"이 고정 문장이다. `--hold-back-below`와 `system.calibrated`를 반영하지 않는다. |
 | CLIP 특징 캐시가 모델을 구분 못 함 | 맞음. 내가 만든 구멍이다. | `train_clip_head.py`의 캐시 키는 사진 경로뿐이다. `--clip-arch` 옵션(bigger_eye 실험 때 추가)을 같은 캐시 파일로 쓰면 다른 모델의 특징이 섞인다. |
