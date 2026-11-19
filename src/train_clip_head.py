@@ -20,11 +20,11 @@ from __future__ import annotations
 
 import argparse
 import csv
+import hashlib
 from pathlib import Path
 
 import numpy as np
 import torch
-from sklearn.linear_model import LogisticRegression
 from torch.utils.data import DataLoader
 
 from clip_model import ARCH, PRETRAINED, ClipModel
@@ -40,8 +40,7 @@ from watermark_aug import Dice, stamp
 
 
 def encoder_tag(arch: str, pretrained: str) -> str:
-    """Prefix of the cache keys of an image model other than TV-12's, so one cache file never mixes two models' features.
-    TV-12's model has no prefix: caches written before this prefix existed hold its features under the bare photo path."""
+    """Cache namespace for an alternate encoder. TV-12 keeps the original cache file and keys."""
     return "" if (arch, pretrained) == (ARCH, PRETRAINED) else f"{arch}/{pretrained}::"
 
 
@@ -49,9 +48,12 @@ def clip_features(clip: ClipModel, paths: list[Path], batch: int = 32, cache: Pa
                   keys: list[str] | None = None, load=None, encoder: str = "") -> torch.Tensor:
     """CLIP image features, one row per photo. With `cache` (an .npz file) finished batches are saved as they go, so a run
     that is stopped can continue where it stopped. `keys`/`load` name and open photos that are not plain files
-    (the watermarked copies). `encoder` (encoder_tag) keeps the features of different image models apart in one cache.
+    (the watermarked copies). An alternate encoder uses its own sibling cache because feature widths can differ.
     The cache trusts the path: a photo replaced under the same name keeps its old features until the cache is deleted."""
-    keys = [encoder + k for k in (keys or [str(p) for p in paths])]
+    if cache is not None and encoder:
+        cache_id = hashlib.sha256(encoder.encode("utf-8")).hexdigest()[:16]
+        cache = cache.with_name(f"{cache.stem}-{cache_id}.npz")
+    keys = keys or [str(p) for p in paths]
     load = load or (lambda i: open_image(paths[i]))
     store = {}
     if cache is not None and cache.exists():
@@ -86,14 +88,17 @@ def main():
     parser.add_argument("--watermark-style", choices=["standard", "light"], default="standard",
                         help="Size and strength of the synthetic watermarks (light: smaller and see-through).")
     parser.add_argument("--feature-cache", type=Path,
-                        help="Optional .npz file that keeps the CLIP features computed so far (resume a stopped run). Keyed by photo "
-                             "path and image model; delete it when photos were replaced under the same names.")
+                        help="Optional .npz file for resuming feature extraction. Alternate image models use sibling cache files. "
+                             "Delete the relevant cache when photos are replaced under the same names.")
     parser.add_argument("--c", type=float, default=10.0, help="Inverse regularisation strength of the head.")
     parser.add_argument("--accept-rate", type=float, default=0.95)
     parser.add_argument("--threads", type=int, default=4)
     parser.add_argument("--clip-arch", default=ARCH, help="open_clip image model (experiments/bigger_eye); default: TV-12's.")
     parser.add_argument("--clip-pretrained", default=PRETRAINED)
     args = parser.parse_args()
+
+    from sklearn.linear_model import LogisticRegression
+
     torch.set_num_threads(args.threads)
     model, checkpoint = load_model(args.model, torch.device("cpu"))
     manifest = args.manifest.expanduser().resolve()
