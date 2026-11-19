@@ -60,3 +60,11 @@ def test_photo_not_matching_its_manifest_hash_fails(tmp_path):
     for folder in (a, b):  # the same wrong file on both sides
         (folder / "train/P_fresh/a.jpg").write_bytes(b"changed after the manifest was written")
     assert run(a, b) == 1
+
+
+def test_rows_needs_that_many_rows_and_a_positive_number(tmp_path):
+    a, b = build(tmp_path / "a", PHOTOS), build(tmp_path / "b", PHOTOS)
+    assert run(a, b, "--rows", "2") == 0
+    assert run(a, b, "--rows", "1200") == 1   # both have only 2 rows
+    assert run(a, b, "--rows", "-1") == 2     # argparse error
+    assert run(a, b, "--rows", "0") == 2

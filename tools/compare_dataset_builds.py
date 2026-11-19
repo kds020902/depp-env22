@@ -51,8 +51,13 @@ def main():
     parser.add_argument("b", type=Path)
     parser.add_argument("--rows", type=int, help="Compare only the first N manifest rows (and their photos).")
     args = parser.parse_args()
+    if args.rows is not None and args.rows < 1:
+        parser.error("--rows must be a positive number")
     (raw_a, a, head_a), (raw_b, b, head_b) = manifest(args.a, args.rows), manifest(args.b, args.rows)
     same = bool(a) and bool(b)
+    if args.rows and min(len(a), len(b)) < args.rows:  # fewer rows than asked for is not a pass
+        print(f"--rows {args.rows}: A has {len(a)} rows, B has {len(b)}")
+        same = False
     print("CSV header identical:", head_a == head_b,
           "" if head_a == head_b else f"| only in A {[c for c in head_a if c not in head_b]}, only in B {[c for c in head_b if c not in head_a]}")
     same &= head_a == head_b
