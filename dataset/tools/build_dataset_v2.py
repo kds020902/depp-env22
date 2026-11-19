@@ -37,8 +37,6 @@ from torchvision import transforms
 from torchvision.models import ResNet18_Weights, resnet18
 
 CLASS_NAMES = ["cucumber_fresh", "cucumber_rotten", "potato_fresh", "potato_rotten", "tomato_fresh", "tomato_rotten"]
-SRC1_FOLDERS = {"cucumber_fresh": "FreshCucumber", "cucumber_rotten": "RottenCucumber", "potato_fresh": "FreshPotato",
-                "potato_rotten": "RottenPotato", "tomato_fresh": "FreshTomato", "tomato_rotten": "RottenTomato"}
 SOURCES = {"muhriddinmuxiddinov": ("https://www.kaggle.com/datasets/muhriddinmuxiddinov/fruits-and-vegetables-dataset", "2"),
            "swoyam2609": ("https://www.kaggle.com/datasets/swoyam2609/fresh-and-stale-classification", "1")}
 QUOTA = {"train": 140, "val": 30, "test": 30}
@@ -190,50 +188,73 @@ def hamming(values):
     return np.unpackbits(x.view(np.uint8).reshape(len(values), len(values), 8), axis=2).sum(2)
 
 
-def assign_splits(nodes, variants):
-    N = len(nodes)
+def similarity(variants):
     E = variants[:, 0]
     S = np.max(np.stack([E @ variants[:, k].T for k in range(8)]), axis=0)
-    S = np.maximum(S, S.T)
-    near = (hamming(np.array([int(n["phash"], 16) for n in nodes], dtype=np.uint64)) <= 6) & \
+    return np.maximum(S, S.T)
+
+
+def near_hash(nodes):
+    return (hamming(np.array([int(n["phash"], 16) for n in nodes], dtype=np.uint64)) <= 6) & \
            (hamming(np.array([int(n["dhash"], 16) for n in nodes], dtype=np.uint64)) <= 8)
+
+
+def orb_duplicate_edges(nodes, similarities, species):
+    """Find strong ORB matches within a batch of candidate photos."""
+    pairs = zip(*np.nonzero(np.triu(similarities >= 0.80, 1)))
+    return [
+        (a, b)
+        for (a, b), inliers in orb_inliers(nodes, pairs).items()
+        if (inliers >= 30 and similarities[a, b] >= 0.85)
+        or (inliers >= 80 and species[a] == species[b])
+    ]
+
+
+def assign_eval_splits(classes, duplicate_groups, sessions, eval_quotas):
+    """Keep duplicate groups together and place eligible small groups in test, then val."""
+    session_sizes = collections.Counter(int(session) for session in sessions)
+    groups = collections.defaultdict(list)
+    for i, group in enumerate(duplicate_groups):
+        groups[int(group)].append(i)
+    order = list(groups.values())
+    random.seed(42)
+    random.shuffle(order)
+    order.sort(key=len)  # stable sort keeps the shuffled order among equal-sized groups
+    splits, counts, session_eval_counts = {}, collections.Counter(), collections.Counter()
+    for group in order:
+        needed = collections.Counter(classes[i] for i in group)
+        session_counts = collections.Counter((classes[i], int(sessions[i])) for i in group)
+        dest = "train"
+        if not any(session_sizes[int(sessions[i])] >= BIG_SESSION for i in group):
+            for candidate in ("test", "val"):
+                if all(counts[(candidate, c)] + n <= eval_quotas[candidate] for c, n in needed.items()) and all(
+                    session_eval_counts[key] + n <= EVAL_SESSION_CAP for key, n in session_counts.items()
+                ):
+                    dest = candidate
+                    break
+        for i in group:
+            splits[i] = dest
+        if dest != "train":
+            counts.update({(dest, c): n for c, n in needed.items()})
+            session_eval_counts.update(session_counts)
+    return splits, counts
+
+
+def assign_splits(nodes, variants):
+    N = len(nodes)
+    S = similarity(variants)
+    near = near_hash(nodes)
     old = collections.defaultdict(list)
     for i, n in enumerate(nodes):
         if "old_group" in n:
             old[n["old_group"]].append(i)
     base = [(v[0], a) for v in old.values() for a in v[1:]]
-    orb = orb_inliers(nodes, zip(*np.nonzero(np.triu(S >= 0.80, 1))))
     species = [n["class_name"].split("_")[0] for n in nodes]
-    orb_edges = [(a, b) for (a, b), v in orb.items()
-                 if (v >= 30 and S[a, b] >= 0.85) or (v >= 80 and species[a] == species[b])]
+    orb_edges = orb_duplicate_edges(nodes, S, species)
     dup = union_find(N, base + orb_edges + list(zip(*np.nonzero(np.triu(near | (S >= T_DUP), 1)))))
     ses = union_find(N, base + orb_edges + list(zip(*np.nonzero(np.triu(near | (S >= T_SESSION), 1)))))
     cls = [n["class_name"] for n in nodes]
-    ses_size = collections.Counter(int(x) for x in ses)
-
-    groups = collections.defaultdict(list)
-    for i in range(N):
-        groups[int(dup[i])].append(i)
-    order = list(groups.values())
-    random.seed(42)
-    random.shuffle(order)
-    order.sort(key=len)  # smallest groups first: val/test get the most varied photos
-    split, cnt, ses_eval = {}, collections.Counter(), collections.Counter()
-    for g in order:
-        need = collections.Counter(cls[i] for i in g)
-        sc = collections.Counter((cls[i], int(ses[i])) for i in g)
-        dest = "train"
-        if not any(ses_size[int(ses[i])] >= BIG_SESSION for i in g):
-            for s in ("test", "val"):
-                if all(cnt[(s, c)] + k <= QUOTA[s] for c, k in need.items()) and \
-                   all(ses_eval[key] + k <= EVAL_SESSION_CAP for key, k in sc.items()):
-                    dest = s
-                    break
-        for i in g:
-            split[i] = dest
-        if dest != "train":
-            cnt.update({(dest, c): k for c, k in need.items()})
-            ses_eval.update(sc)
+    split, _ = assign_eval_splits(cls, dup, ses, QUOTA)
 
     random.seed(7)  # trim train to quota, always from the class's largest session
     for c in sorted(set(cls)):
