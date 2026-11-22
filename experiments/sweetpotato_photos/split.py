@@ -12,7 +12,7 @@ classes:
 - of the other groups, a set is taken for T9 so that T9 gets exactly T9_PER_CLASS rotten sweet potatoes AND at least
   T9_PER_CLASS of each potato class (counting the groups above): in the order of the SHA-256 of the group name, a group is
   taken whenever all three can still be met. When the three cannot be met together, the set is chosen for the rotten
-  sweet potatoes alone, and the result is "hold" with the counts. The groups not taken train.
+  sweet potatoes alone (still with their sprout limit), and the result is "hold" with the counts. The groups not taken train.
 In T9 a group gives at most 2 photos of a class, photos that only sprouted (severity "싹") are at most a third of a class
 (SPROUT_LIMIT), and each potato class is cut to T9_PER_CLASS in the order of the group hash. Within a group the photos
 that are more than sprouted come first, then the file name (in_group_order). The limit of 2 counts the photos actually
@@ -42,20 +42,6 @@ def group_order(name: str) -> str:
     return hashlib.sha256(name.encode("utf-8")).hexdigest()
 
 
-def choose_exact(sizes: list[int], target: int) -> list[int] | None:
-    """Indices of the earliest choice (taking an item whenever the target can still be met) that sums to `target`."""
-    reachable = [{0}]                                   # reachable[i]: sums the items from i on can make (built from the end)
-    for size in reversed(sizes):
-        reachable.insert(0, reachable[0] | {s + size for s in reachable[0]})
-    if target not in reachable[0]:
-        return None
-    chosen, left = [], target
-    for i, size in enumerate(sizes):
-        if size <= left and left - size in reachable[i + 1]:
-            chosen.append(i); left -= size
-    return chosen
-
-
 def in_group_order(r: dict) -> tuple:
     """Within a group: photos that are more than sprouted first, then by file name."""
     return (r.get("severity") == SPROUT, r["path"])
@@ -73,10 +59,11 @@ def offer(rows: list[dict]) -> dict[str, tuple[int, int]]:
     return out
 
 
-def choose_for_t9(offers: list[dict], start: dict[str, tuple[int, int]]) -> list[int] | None:
+def choose_for_t9(offers: list[dict], start: dict[str, tuple[int, int]], potatoes_too: bool = True) -> list[int] | None:
     """Indices of the earliest choice of groups (in the given order, taking a group whenever the goal can still be met) with
     exactly T9_PER_CLASS rotten sweet potatoes, at most SPROUT_LIMIT of them sprouted, and for each potato class at least
-    T9_PER_CLASS counting at most SPROUT_LIMIT sprouted ones. `start`: what the groups already in T9 give."""
+    T9_PER_CLASS counting at most SPROUT_LIMIT sprouted ones. `start`: what the groups already in T9 give.
+    With potatoes_too=False the potato classes are not asked for (the sprout limit of the sweet potatoes still is)."""
     potato = [c for c in T9_CLASSES if c != ADDED]
 
     def add(state, o):
@@ -91,7 +78,7 @@ def choose_for_t9(offers: list[dict], start: dict[str, tuple[int, int]]) -> list
         if left < 0 or sprouts < 0:
             return False
         if i == len(offers):
-            return left == 0 and all(a + b >= T9_PER_CLASS for a, b in counts)
+            return left == 0 and (not potatoes_too or all(a + b >= T9_PER_CLASS for a, b in counts))
         return possible(i + 1, add(state, offers[i])) or possible(i + 1, state)
 
     state = (T9_PER_CLASS, SPROUT_LIMIT, tuple((min(T9_PER_CLASS, start[c][0]), min(SPROUT_LIMIT, start[c][1])) for c in potato))
@@ -118,7 +105,7 @@ def split(rows: list[dict]) -> dict:
     picked = choose_for_t9([offers[g] for g in small], start)
     together = picked is not None
     if not together:                                    # the three classes cannot be met together: report the counts of the
-        picked = choose_exact([added[g] for g in small], T9_PER_CLASS)   # choice for the rotten sweet potatoes alone
+        picked = choose_for_t9([offers[g] for g in small], start, potatoes_too=False)   # choice for the rotten sweet potatoes alone
     for_t9 = {small[i] for i in picked or []} | set(fixed)
     assignment, in_t9, sprouts = {}, Counter(), Counter()
     for g in names:

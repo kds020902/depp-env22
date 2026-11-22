@@ -6,7 +6,7 @@ from collections import Counter
 from conftest import REPO
 
 sys.path.insert(0, str(REPO / "experiments/sweetpotato_photos"))
-from split import choose_exact, group_order, split  # noqa: E402
+from split import HERE, group_order, split  # noqa: E402
 
 
 def photos(group: str, **counts: int) -> list[dict]:
@@ -19,11 +19,6 @@ def potatoes(n_groups: int = 15) -> list[dict]:
 
 def by_hash(names: list[str]) -> list[str]:
     return sorted(names, key=group_order)
-
-
-def test_exact_choice_is_the_earliest_that_can_be_completed():
-    assert choose_exact([2] * 14 + [1, 2], 30) == list(range(14)) + [15]
-    assert choose_exact([1, 2, 2], 4) == [1, 2] and choose_exact([2, 2], 3) is None and choose_exact([], 0) == []
 
 
 def test_codex_case_gives_30_and_20_not_31_and_19():
@@ -112,8 +107,24 @@ def test_a_group_gives_its_rotten_photos_before_its_sprouted_ones():
     assert [result["assignment"][p][:8] for p in ("g/a.jpg", "g/b.jpg", "g/c.jpg", "g/d.jpg")] == ["left out", "left out", "t9", "t9"]
 
 
-def test_current_list_waits():
-    import csv
-    rows = [r for r in csv.DictReader(open(REPO / "experiments/sweetpotato_photos/collected.csv", encoding="utf-8")) if r["status"] == "kept"]
+def test_codex_case_sweet_potato_count_is_not_understated_when_potatoes_are_short():
+    """Rotten potato 29 (so hold either way). Sweet potatoes: 11 sprouted in the first groups by hash, then 20 rotten.
+    Choosing 11 sprouted + 19 rotten and then dropping a sprout showed 29; 10 + 20 gives the 30 that are possible."""
+    order = by_hash([f"sp-{i}" for i in range(31)])
+    rows = [{**r, "severity": "싹"} for g in order[:11] for r in photos(g, sweetpotato_rotten=1)]
+    rows += [r for g in order[11:] for r in photos(g, sweetpotato_rotten=1)]
+    rows += [r for i in range(14) for r in photos(f"pr-{i}", potato_rotten=2)] + photos("pr-x", potato_rotten=1)
+    rows += [r for i in range(15) for r in photos(f"pf-{i}", potato_fresh=2)]
     result = split(rows)
-    assert result["status"] == "hold"
+    assert result["t9"] == {"sweetpotato_rotten": 30, "potato_rotten": 29, "potato_fresh": 30} and result["status"] == "hold"
+    assert result["t9_only_sprouted"]["sweetpotato_rotten"] == 10 and result["train_rotten_sweet_potato"] == 1
+
+
+def test_committed_split_is_what_the_collected_list_gives():
+    """split.json must be rerun whenever collected.csv changes (whether the list is still on hold or ready)."""
+    import csv
+    import json
+    rows = [r for r in csv.DictReader(open(HERE / "collected.csv", encoding="utf-8")) if r["status"] == "kept"]
+    stored = json.load(open(HERE / "split.json", encoding="utf-8"))
+    again = json.loads(json.dumps(split(rows)))
+    assert {k: stored[k] for k in again} == again
