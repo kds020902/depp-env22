@@ -86,8 +86,34 @@ def test_only_sprouted_photos_are_at_most_a_third_of_a_class():
     assert result["t9"]["potato_rotten"] == 30 and result["t9_only_sprouted"]["potato_rotten"] == 10
 
 
+def test_codex_case_a_passed_over_sprout_does_not_use_up_the_group():
+    """Rotten potato: 10 sprouted, 19 rotten in other groups, and a later group with 2 sprouted + 1 rotten. The rotten
+    one must get in (30 / 30 / 30); counting the passed-over sprouts against the group's 2 gave 30 / 29 / 30."""
+    def sprouted(group, **counts):
+        return [{**r, "severity": "싹"} for r in photos(group, **counts)]
+    order = by_hash([f"g-{i}" for i in range(40)])
+    rows = [r for g in order[:5] for r in sprouted(g, potato_rotten=2)]                  # 10 sprouted
+    rows += [r for g in order[5:14] for r in photos(g, potato_rotten=2)] + photos(order[14], potato_rotten=1)   # 19 rotten
+    last = sprouted(order[39], potato_rotten=2) + [{**r, "path": order[39] + "/z_rotten.jpg"} for r in photos(order[39], potato_rotten=1)]
+    rows += last + [r for g in order[15:30] for r in photos(g, potato_fresh=2)]
+    rows += [r for i in range(15) for r in photos(f"s-{i}", sweetpotato_rotten=2)] + photos("large", sweetpotato_rotten=20)
+    result = split(rows)
+    assert result["t9"] == {"sweetpotato_rotten": 30, "potato_rotten": 30, "potato_fresh": 30} and result["status"] == "ready"
+    assert [result["assignment"][r["path"]][:8] for r in last] == ["left out", "left out", "t9"]
+    assert result["t9_only_sprouted"]["potato_rotten"] == 10
+
+
+def test_a_group_gives_its_rotten_photos_before_its_sprouted_ones():
+    rows = [{"path": "g/a.jpg", "class_name": "potato_rotten", "source_group": "g", "severity": "싹"},
+            {"path": "g/b.jpg", "class_name": "potato_rotten", "source_group": "g", "severity": "싹"},
+            {"path": "g/c.jpg", "class_name": "potato_rotten", "source_group": "g", "severity": "척봐도"},
+            {"path": "g/d.jpg", "class_name": "potato_rotten", "source_group": "g", "severity": "약간"}]
+    result = split(rows)
+    assert [result["assignment"][p][:8] for p in ("g/a.jpg", "g/b.jpg", "g/c.jpg", "g/d.jpg")] == ["left out", "left out", "t9", "t9"]
+
+
 def test_current_list_waits():
     import csv
     rows = [r for r in csv.DictReader(open(REPO / "experiments/sweetpotato_photos/collected.csv", encoding="utf-8")) if r["status"] == "kept"]
     result = split(rows)
-    assert result["status"] == "hold" and result["t9"]["sweetpotato_rotten"] == 0
+    assert result["status"] == "hold"

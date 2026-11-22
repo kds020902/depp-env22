@@ -14,7 +14,9 @@ classes:
   taken whenever all three can still be met. When the three cannot be met together, the set is chosen for the rotten
   sweet potatoes alone, and the result is "hold" with the counts. The groups not taken train.
 In T9 a group gives at most 2 photos of a class, photos that only sprouted (severity "싹") are at most a third of a class
-(SPROUT_LIMIT), and each potato class is cut to T9_PER_CLASS in the order (group hash, file name).
+(SPROUT_LIMIT), and each potato class is cut to T9_PER_CLASS in the order of the group hash. Within a group the photos
+that are more than sprouted come first, then the file name (in_group_order). The limit of 2 counts the photos actually
+put into T9: a photo passed over because of the sprout limit does not use it up.
 Training uses the rotten sweet potatoes of its groups only; other photos of a training group are left out (they may not be
 in T9, and this experiment adds no other class).
 The experiment waits ("hold") unless T9 has exactly T9_PER_CLASS photos of each of the three classes and training has
@@ -54,12 +56,18 @@ def choose_exact(sizes: list[int], target: int) -> list[int] | None:
     return chosen
 
 
+def in_group_order(r: dict) -> tuple:
+    """Within a group: photos that are more than sprouted first, then by file name."""
+    return (r.get("severity") == SPROUT, r["path"])
+
+
 def offer(rows: list[dict]) -> dict[str, tuple[int, int]]:
     """What a group would give T9 per class: (photos that are more than sprouted, sprouted photos), 2 photos at most,
-    in file-name order."""
+    in in_group_order. (When T9 has no room left for sprouted photos, only the first number counts: choose_for_t9 caps
+    the sprouted ones, and the filling in split() passes over them without using up the group's 2.)"""
     out = {}
     for c in T9_CLASSES:
-        first = sorted((r for r in rows if r["class_name"] == c), key=lambda r: r["path"])[:PER_GROUP_IN_T9]
+        first = sorted((r for r in rows if r["class_name"] == c), key=in_group_order)[:PER_GROUP_IN_T9]
         sprouted = sum(r.get("severity") == SPROUT for r in first)
         out[c] = (len(first) - sprouted, sprouted)
     return out
@@ -115,7 +123,7 @@ def split(rows: list[dict]) -> dict:
     assignment, in_t9, sprouts = {}, Counter(), Counter()
     for g in names:
         taken = Counter()
-        for r in sorted(groups[g], key=lambda r: r["path"]):
+        for r in sorted(groups[g], key=in_group_order):
             c = r["class_name"]
             if g not in for_t9:
                 assignment[r["path"]] = "train" if c == ADDED else "left out: its group is in training and only rotten sweet potatoes are added"
@@ -124,7 +132,6 @@ def split(rows: list[dict]) -> dict:
             elif taken[c] >= PER_GROUP_IN_T9:
                 assignment[r["path"]] = f"left out: more than {PER_GROUP_IN_T9} photos of a class from one group"
             elif r.get("severity") == SPROUT and sprouts[c] >= SPROUT_LIMIT:
-                taken[c] += 1
                 assignment[r["path"]] = f"left out: T9 already has {SPROUT_LIMIT} photos of this class that only sprouted"
             elif in_t9[c] >= T9_PER_CLASS:
                 assignment[r["path"]] = f"left out: T9 already has {T9_PER_CLASS} of this class"
