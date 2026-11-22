@@ -2,14 +2,16 @@
 
     python experiments/sweetpotato_photos/build.py PHOTOS.csv OUT.pth [--bank FEATURES.npz ...]
 
-PHOTOS.csv: columns path,class_name (+ anything else); every row must be sweetpotato_rotten (the one thing changed).
+PHOTOS.csv: columns path,class_name (+ "name" = the path in collected.csv, kept in the record instead of the local
+path); every row must be sweetpotato_rotten (the one thing changed).
 The head is rebuilt by TV-12's own recipe (src/train_new_veg_head.py on experiments/new_vegetables/v7/head_data.npz, tau 0.8)
 with the new rows appended to the training rows; nothing else in the checkpoint changes. With no rows the result is
 TV-12's head exactly (checked on 2026-11-22: weights equal, 0 of 1,935 development answers changed).
 
 Left out before training (image similarity only, no model answer is looked at): a photo whose CLIP cosine is >= 0.95 to a
 development photo, to a training row, to a row of a --bank file (key "X" or "f": blind-test and dataset photos), or to an
-earlier new photo. The kept rows' features go to added_features.npz, so the head can be rebuilt without the photos.
+earlier new photo. The kept rows' features go to added_features.npz, so the head can be rebuilt without the photos, and
+the new head alone to heads_SP1.pt (the candidate is model.pth with this head; results/t9_test/score.py seals it).
 """
 
 from __future__ import annotations
@@ -90,9 +92,11 @@ def main():
     subprocess.run([sys.executable, "src/train_new_veg_head.py", "--model", str(args.out.resolve()), "--data", str(work.resolve()), "--tau", "0.8"],
                    check=True, cwd=REPO)
     if rows:
-        np.savez_compressed(HERE / "added_features.npz", X=kept, paths=np.array([r["path"] for i, r in enumerate(rows) if i not in left_out]))
-        json.dump({"given": len(rows), "kept": len(kept), "left_out": {rows[i]["path"]: why for i, why in left_out.items()}},
+        name = lambda r: r.get("name") or r["path"]
+        np.savez_compressed(HERE / "added_features.npz", X=kept, paths=np.array([name(r) for i, r in enumerate(rows) if i not in left_out]))
+        json.dump({"given": len(rows), "kept": len(kept), "left_out": {name(rows[i]): why for i, why in left_out.items()}},
                   open(HERE / "dedup.json", "w", encoding="utf-8"), indent=1, ensure_ascii=False)
+        torch.save(torch.load(args.out, map_location="cpu", weights_only=True)["new_vegetable_head"], HERE / "heads_SP1.pt")
     print(f"added {len(kept)} of {len(rows)} photos ({len(left_out)} too close to an existing photo); saved {args.out}")
 
 

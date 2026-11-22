@@ -5,6 +5,57 @@ Claude와 Codex가 작업을 마칠 때마다 맨 위에 새 항목을 덧붙인
 
 ---
 
+## 2026-11-23 · Claude: 6차 사진 확인 → 분할 ready → T9 봉인 → SP1 개발 확인 탈락, T9는 열지 않음
+
+### 확인한 커밋 / 변경 파일
+- Codex의 `65d76e6`(6차 7장, 5차 제외 5장 유지 의견)과 사용자가 전달한 6차 ZIP을 확인했다.
+- 커밋 순서: `b77be05`(6차 목록, 분할 ready) → `4ee70e4`(T9 규칙·목록 봉인, 채점 스크립트) → 이번 커밋(SP1 제작과 개발 결과)
+- 새 파일: `results/t9_test/`(RULES.md, t9_test.csv, score.py), `tests/test_t9_score.py`, `experiments/sweetpotato_photos/`의 README.md, added_features.npz, dedup.json, heads_SP1.pt, dev_results.json
+- 고친 파일: `collected.csv`(7행 추가, 모두 145행), `split.json`, `build.py`(기록에 목록 경로를 쓰고 분류기만 따로 저장), `PREREG.md`(덧붙임 8), `experiments/README.md`
+- `model.pth`와 `src/`는 바꾸지 않았다.
+
+### 결과
+- **6차 7장:** 해시·크기 일치, 중복 없음. `고구마_상함_약간_6차_03`은 라벨 보류(끝이 쭈글쭈글할 뿐 곰팡이·무름이 보이지 않음. Codex가 봐 주면 좋겠다). 6장을 남겼다.
+- **분할:** ready. T9 30 / 30 / 30장(묶음 25 / 25 / 28), 학습용 상한 고구마 21장, 양쪽에 걸친 묶음 없음. Codex의 가정(전량 채택 시 학습 22장)과는 보류 1장만큼 다르다.
+- **T9:** 90장 목록과 규칙을 SP1을 만들기 전에 봉인했다(`t9_test.csv` SHA-256 `1490131…46b287`). 학습 사진과의 CLIP 코사인 최댓값 0.855.
+- **SP1 개발 확인: 탈락.**
+
+| 조건 (TV-12 대비) | 기준 | TV-12 | SP1 | 판정 |
+|---|---|---:|---:|---|
+| 감자 259장을 고구마로 답한 수 | +1장 이내 | 2 | 5 | 어김 (+3) |
+| 다섯 채소 맞은 수 (827장) | −2장 이내 | 745 | 742 | 어김 (−3) |
+| 상함 → 정상 오류 (385장) | TV-12 이하 | 17 | 17 | 지킴 |
+| 상한 고구마 25장을 고구마로 답한 수 | −1장 이내 | 21 | 21 | 지킴 |
+| 과일 374 / 일상 400 거른 수 | 각각 −2장 이내 | 347 / 400 | 346 / 400 | 지킴 |
+
+- 달라진 답은 1,935장 중 10장. 같은 사진에서 맞음 → 틀림 5장, 틀림 → 맞음 2장.
+- **계획대로 T9를 채점하지 않았다.** T9 사진은 TV-12를 포함해 어떤 모델도 보지 않았다. `heads_SP1.pt`의 봉인을 RULES에 적지 않았으므로 `score.py`는 돌지 않는다.
+
+### 실제 실행한 명령
+```bash
+python experiments/sweetpotato_photos/split.py                                   # ready
+python experiments/sweetpotato_photos/build.py sp1_train.csv SP1.pth --bank bank_t3_t8_dataset.npz t9_features_for_dedup.npz   # 21장 모두 추가
+python tools/compare_on_dev.py experiments/sweetpotato_photos/dev_results.json SP1=SP1.pth
+DEPP_WORK=작업폴더 python results/t9_test/score.py out.json --rehearsal          # T9 사진 없이 개발 사진 162장으로 스크립트만 확인
+python -m pytest -q                                                              # 41 통과, 1 건너뜀
+```
+
+### 이전과 달라진 점
+- 새 블라인드 시험지 T9(90장)가 생겼고, 아직 아무 모델도 보지 않았다.
+- SP1은 "반영 안 함"으로 닫았다. TV-12 그대로다.
+
+### 하고 싶은 것 (사용자 결정이 필요)
+- **같은 21장 + 전환 기준을 학습 스크립트의 원래 규칙대로(0.9):** SP1을 만들 때 "기존 채소 개발 사진을 새 채소로 옮긴 수"가 0.8에서 3장, 0.9에서 0장이었다. TV-12와 SP1은 0.8을 고정해서 썼다. 0.9로 하면 감자 오인은 줄 것으로 보이지만(추측), 상한 고구마를 고구마로 넘기기도 어려워진다. 변수가 다른 새 실험이므로 계획을 따로 적고, 개발 확인을 통과하면 T9로 간다.
+- Codex 검수: T9 규칙(`results/t9_test/RULES.md`)과 `score.py`의 맞음 정의·조건이 PREREG와 같은지, 개발 조건 판정을 내가 맞게 셌는지 봐 달라.
+
+### 문제 있는 것 / 남은 한계
+- 개발 사진은 T8·T9 같은 사진보다 쉽다. SP1이 T9에서는 좋아졌을 수도 있지만, 안전 조건을 어겼으므로 확인하지 않았다.
+- T9의 상한 고구마·상한 감자는 농업 기관의 병해 표본 사진이 많다.
+- `score.py`의 조건은 SP1용으로 적혀 있다. 다음 후보에 쓸 때는 RULES에 덧붙이고 후보 이름과 봉인을 바꿔야 한다.
+- 이번 커밋의 GitHub Actions 결과는 올린 뒤 확인하겠다.
+
+---
+
 ## 2026-11-23 · Codex — T9 6차 사진 7장과 5차 제외 검토
 
 ### 한 것
