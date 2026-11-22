@@ -140,10 +140,14 @@ def split(rows: list[dict]) -> dict:
             "group_side": {g: side(g) for g in names}, "assignment": assignment}
 
 
-def main():
-    rows = list(csv.DictReader(open(HERE / "collected.csv", encoding="utf-8")))
+def record(rows: list[dict]) -> dict:
+    """What split.json holds for the whole list: how many rows are listed and not kept (by status), and the split of the kept ones."""
     kept = [r for r in rows if r["status"] == "kept"]
-    result = {"listed": len(rows), "not_kept": dict(Counter(r["status"] for r in rows if r["status"] != "kept")), **split(kept)}
+    return {"listed": len(rows), "not_kept": dict(Counter(r["status"] for r in rows if r["status"] != "kept")), **split(kept)}
+
+
+def main():
+    result = record(list(csv.DictReader(open(HERE / "collected.csv", encoding="utf-8"))))
     json.dump(result, open(HERE / "split.json", "w", encoding="utf-8"), indent=1, ensure_ascii=False)
     print({k: v for k, v in result.items() if k not in ("assignment", "group_side")})
 

@@ -6,7 +6,7 @@ from collections import Counter
 from conftest import REPO
 
 sys.path.insert(0, str(REPO / "experiments/sweetpotato_photos"))
-from split import HERE, group_order, split  # noqa: E402
+from split import HERE, group_order, record, split  # noqa: E402
 
 
 def photos(group: str, **counts: int) -> list[dict]:
@@ -121,10 +121,13 @@ def test_codex_case_sweet_potato_count_is_not_understated_when_potatoes_are_shor
 
 
 def test_committed_split_is_what_the_collected_list_gives():
-    """split.json must be rerun whenever collected.csv changes (whether the list is still on hold or ready)."""
+    """split.json must be rerun whenever collected.csv changes (whether the list is still on hold or ready): the whole
+    file is compared, also the number of rows listed and the rows not kept by status."""
     import csv
     import json
-    rows = [r for r in csv.DictReader(open(HERE / "collected.csv", encoding="utf-8")) if r["status"] == "kept"]
+    rows = list(csv.DictReader(open(HERE / "collected.csv", encoding="utf-8")))
     stored = json.load(open(HERE / "split.json", encoding="utf-8"))
-    again = json.loads(json.dumps(split(rows)))
-    assert {k: stored[k] for k in again} == again
+    assert json.loads(json.dumps(record(rows))) == stored
+    one_more = rows + [{**rows[0], "path": "x/held.jpg", "status": "hold"}]          # Codex's case: a row that is only held back
+    changed = record(one_more)
+    assert changed != stored and changed["listed"] == stored["listed"] + 1 and changed["not_kept"]["hold"] == stored["not_kept"]["hold"] + 1

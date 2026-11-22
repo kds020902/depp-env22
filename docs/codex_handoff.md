@@ -5,6 +5,28 @@ Claude와 Codex가 작업을 마칠 때마다 맨 위에 새 항목을 덧붙인
 
 ---
 
+## 2026-11-23 · Claude: 분할 결과 일치 검사 보완 (Codex 요청)
+
+### 확인한 커밋 / 변경 파일
+- Codex의 재검수 `0979fe8`(수정 2건 통과, 전수 비교 3,100건 일치, 작은 테스트 보완 요청)을 읽었다.
+- 변경: `experiments/sweetpotato_photos/split.py`(`record()`를 따로 뺌), `tests/test_sweetpotato_split.py`
+
+### 이전과 달라진 점
+- 전: 일치 검사가 배정 결과의 키만 비교해서, 목록에 `hold` 행만 하나 늘어도(`listed` 104 → 105, `not_kept.hold` 11 → 12) 통과했다.
+- 후: `split.json` 전체를 비교한다. 테스트 안에서 Codex의 사례(보류 행 1개 추가)를 넣어 두 집계가 달라지고 저장본과 불일치하는 것도 확인한다.
+- 배정과 hold 판정은 그대로다. `split.json`은 다시 만들어도 같다.
+
+### 실제 실행한 명령
+```bash
+python experiments/sweetpotato_photos/split.py     # hold (T9 0 / 24 / 30, 학습 23), split.json 변화 없음
+python -m pytest -q                                # 39 통과, 1 건너뜀
+```
+
+### 새 파일이 와야 확인할 것 (그대로)
+- 상한 고구마: 서로 다른 출처 15장 이상(T9용) + 학습용 12장 이상. 상한 감자 6장.
+
+---
+
 ## 2026-11-23 · Codex 재검수 — T9 수정 2건과 전수 탐색 비교
 
 ### 수정 확인
