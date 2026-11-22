@@ -1,0 +1,20 @@
+{
+ "P0_name_only": {
+  "potato_fresh": ["a photo of a fresh potato."],
+  "potato_rotten": ["a photo of a rotten potato."],
+  "sweetpotato_fresh": ["a photo of a fresh sweet potato."],
+  "sweetpotato_rotten": ["a photo of a rotten sweet potato."]
+ },
+ "P1_photo_context": {
+  "potato_fresh": ["a photo of a fresh potato on a kitchen counter.", "a photo of fresh potatoes at a market.", "a close-up photo of a fresh potato."],
+  "potato_rotten": ["a photo of a rotten potato on a kitchen counter.", "a photo of rotten potatoes in a storage box.", "a close-up photo of a rotten potato."],
+  "sweetpotato_fresh": ["a photo of a fresh sweet potato on a kitchen counter.", "a photo of fresh sweet potatoes at a market.", "a close-up photo of a fresh sweet potato."],
+  "sweetpotato_rotten": ["a photo of a rotten sweet potato on a kitchen counter.", "a photo of rotten sweet potatoes in a storage box.", "a close-up photo of a rotten sweet potato."]
+ },
+ "P2_visible_features": {
+  "potato_fresh": ["a photo of a fresh potato, a round tuber with thin light brown skin.", "a photo of fresh potatoes with pale yellow skin and shallow eyes.", "a close-up photo of a fresh potato with smooth firm skin."],
+  "potato_rotten": ["a photo of a rotten potato, a round tuber with thin light brown skin and soft dark spots.", "a photo of rotten potatoes with pale yellow skin, mold and sprouts.", "a close-up photo of a rotten potato with wrinkled moldy skin."],
+  "sweetpotato_fresh": ["a photo of a fresh sweet potato, a long tapered root with reddish purple skin.", "a photo of fresh sweet potatoes with red-brown skin and pointed ends.", "a close-up photo of a fresh sweet potato with smooth firm skin."],
+  "sweetpotato_rotten": ["a photo of a rotten sweet potato, a long tapered root with reddish purple skin and soft dark spots.", "a photo of rotten sweet potatoes with red-brown skin, mold and sprouts.", "a close-up photo of a rotten sweet potato with wrinkled moldy skin."]
+ }
+}
