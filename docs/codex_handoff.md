@@ -5,6 +5,44 @@ Claude와 Codex가 작업을 마칠 때마다 맨 위에 새 항목을 덧붙인
 
 ---
 
+## 2026-11-22 · Claude: 다음 실험 준비(상한 고구마 사진 추가)와 개발 사진 정정
+
+### 확인한 커밋 / 변경 파일
+- Codex의 재검수 `2d8a36f`(4건 통과)를 읽었다. 그 위에서 작업했다.
+- 새 파일: `experiments/sweetpotato_photos/PREREG.md`, `build.py`. 고친 파일: `experiments/sweetpotato_prompts/PREREG.md`(덧붙임 2)·`README.md`, `experiments/README.md`, `docs/training_and_evaluation.md`
+- `model.pth`, `src/`, `dataset/`, `tools/`는 바꾸지 않았다. 후보 모델도 결과도 만들지 않았다.
+
+### 한 것
+- **다음 실험의 계획을 사진이 오기 전에 적었다.** 변수는 하나다: 새 채소 분류기의 학습 행에 상한 고구마 사진만 더한다. 출처 단위 나누기, 중복 제거, 개발 안전 조건, 새 블라인드 시험지 T9의 조건(상한 고구마 +20%포인트 등)을 정했다.
+- **재학습 방법이 TV-12를 그대로 재현하는 것을 확인했다.** `train_new_veg_head.py --tau 0.8`을 사진 추가 없이 돌리면 가중치 차이가 0이고 개발 사진 1,935장 중 달라진 답이 0장이다. 차이가 생기면 더한 사진 때문이라고 말할 수 있다.
+- **`build.py`를 결과 없이 점검했다.** 빈 목록 → TV-12와 같음. 다른 클래스가 섞인 목록 → 종료 코드 1. 개발 사진 3장을 넣음 → 3장 모두 "기존 사진과 닮음"으로 빠짐.
+
+### 문제 있는 것: 개발 사진 정정 (내 실수)
+- 감자·고구마 웹 사진 162장 중 **9장이 TV-12 분류기의 학습 사진과 CLIP 코사인 0.95 이상으로 닮았다**(정상 고구마 6, 상한 고구마 3). 지난 항목에서 "TV-12 학습에 쓰지 않았다"고 적은 것은 파일 기준으로만 맞다.
+- 원인: 예전 중복 검사가 분류기 학습 특징(`head_data.npz`의 `train_X`)과는 비교하지 않았다. 새 `build.py`는 비교한다.
+- **정정 수치:** 닮은 3장을 뺀 상한 고구마 22장에서 TV-12 19, P0 18, P1 17, P2 20장이다. 차이(−1, −2, +1)와 결론은 같다.
+- `dev_features.npz`와 기준선 기록은 그대로 두었다. 다음 실험은 9장을 뺀 수도 함께 적는다.
+
+### 실제 실행한 명령
+```bash
+python src/train_new_veg_head.py --model sp0.pth --data experiments/new_vegetables/v7/head_data.npz --tau 0.8
+python tools/compare_on_dev.py o.json SP0=sp0.pth                               # 달라진 답 0장
+python experiments/sweetpotato_photos/build.py empty.csv sp_empty.pth           # 0장 추가, TV-12와 같음
+python experiments/sweetpotato_photos/build.py bad.csv x.pth                    # 종료 코드 1
+python experiments/sweetpotato_photos/build.py dup.csv sp_dup.pth               # 3장 모두 빠짐
+python -m pytest -q                                                             # 29 통과, 1 건너뜀
+```
+
+### 하고 싶은 것
+- Codex 검수: PREREG의 조건이 적절한지 봐 달라. 특히 T9의 "+20%포인트"와 "감자 → 고구마 +2장 이내", 출처 단위 나누기 규칙.
+- 사진이 오면 T9 규칙(`results/t9_test/RULES.md`)을 쓰고 나눈 뒤 SP1을 만든다.
+
+### 새 파일이 와야 확인할 것
+- 상한 고구마 90장(학습 60 + T9 30), 상한 감자 30장, 흙 묻은 정상 감자 30장. 출처가 여럿이어야 나눌 수 있다.
+- `build.py`의 `--bank`에 넣을 T3~T8·데이터셋 사진의 특징 파일은 아직 만들지 않았다(사진이 오면 함께 만든다).
+
+---
+
 ## 2026-11-22 · Codex 재검수 — 평가 도구 수정 4건 통과
 
 ### 한 것

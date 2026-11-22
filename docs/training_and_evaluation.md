@@ -62,7 +62,7 @@ python tools/compare_on_dev.py OUT.json 후보이름=candidate.pth [다른이름
 | 밭·휴대폰 160장 시험지(개발용이 된 것) | 160 | 있음 |
 | 아시아 오이 | 37 | 있음 |
 | 새 채소 Valid | 89 | 있음 |
-| 감자·고구마 웹 사진 | 162 | 있음 |
+| 감자·고구마 웹 사진 (고구마 9장은 학습 사진과 닮음: `experiments/sweetpotato_prompts/PREREG.md` 덧붙임 2) | 162 | 있음 |
 | 과일 / 일상 사진 | 374 / 400 | 없음 (걸러야 맞음) |
 | 실제 장면 채소 조각 | 192 | 없음 (거르면 안 됨) |
 
