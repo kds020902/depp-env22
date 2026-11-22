@@ -1,6 +1,6 @@
 # 실험 색인
 
-실험 폴더 36개를 주제별로 한 줄씩 정리했다. 폴더마다 계획(PREREG)과 결과가 README에 있다.
+실험 폴더 37개를 주제별로 한 줄씩 정리했다. 폴더마다 계획(PREREG)과 결과가 README에 있다.
 채택된 것은 `model.pth`의 버전(TV)을 올렸다(맨 위 [README](../README.md)의 버전 표).
 
 **스크립트를 다시 돌리려면:**
@@ -32,6 +32,7 @@
 | [sharper_eye](sharper_eye/README.md) | 채소 모델을 320픽셀로 다시 학습 | 반영 안 함 (상한 토마토 −1, 상한 감자 악화) |
 | [reject_by_bigger_eye](reject_by_bigger_eye/README.md) | 큰 이미지 모델로 과일 거르기 | 보류 (계획만) |
 | [tomato_crops](tomato_crops/README.md) | 살짝 상한 토마토: "정상 토마토" 답만 조각 5개로 다시 보기 | 반영 안 함 (개발: 상한 토마토 57% → 86%, T6·T7: 바뀐 답 0장, TV-12가 이미 100%·88%) |
+| [sweetpotato_prompts](sweetpotato_prompts/README.md) | 감자·고구마 글 설명 문구만 바꾸기(이름만 / 사진 문맥 / 보이는 특징) | 반영 안 함 (개발: 상한 고구마 25장 중 21 → 19~22장, 조건 +2장 미달) |
 
 ## 학습 사진 늘리기·고치기
 

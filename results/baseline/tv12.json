@@ -1,0 +1,158 @@
+{
+ "version": "TV-12",
+ "files_sha256": {
+  "model.pth": "969fbf7c7e05ee171e91ad71e3dc7bc4e318940d74330cdc737ff52bd8f9a2ad",
+  "dataset/manifest.csv": "3d5950247671e5e9051391983c291bb6e60f92034011597fcf644c9000aecf13",
+  "experiments/new_vegetables/v7/head_data.npz": "144b697a8d9f1d4f2defe6743dd5d4178ba718d91add7ad735b8a64f15e590b5",
+  "experiments/sweetpotato_prompts/dev_features.npz": "8e1959b5ded02b61f466f53152f32b7df1a1010bf0967c1132b7e88223cd40ed",
+  "requirements.txt": "ce4f3aca1f3a45f2d5ab64ca4af8fd022f83e2c7b71e94480c222d370eea6590"
+ },
+ "data": {
+  "manifest": "dataset/manifest.csv",
+  "split_column": "split",
+  "rows_per_split": {
+   "test": 300,
+   "train": 1260,
+   "val": 300
+  },
+  "split_made_by": "dataset/tools/build_dataset_v3.py (rebuild check: tools/rebuild_and_compare.py)"
+ },
+ "vegetable_model": {
+  "architecture": "efficientnet_b0",
+  "seed": 42,
+  "best_epoch": 12,
+  "epochs_completed": 20,
+  "selection": "lowest validation cross-entropy (trained on Train with Valid for selection; Test was scored once afterwards, experiments/watermark round 2)",
+  "hyperparameters": {
+   "optimizer": "AdamW",
+   "lr": 0.001,
+   "backbone_lr": 0.0002,
+   "weight_decay": 0.0001,
+   "label_smoothing": 0.1,
+   "batch_size": 32,
+   "max_epochs": 30,
+   "early_stopping_patience": 8,
+   "scheduler": "cosine",
+   "augmentation": true,
+   "image_size": 224,
+   "crop_scale_min": 0.6,
+   "lowres_prob": 0.0,
+   "watermark_probability": {
+    "fresh": 0.6,
+    "rotten": 0.3
+   },
+   "watermark_style": "light",
+   "device": "cpu",
+   "threads": 4
+  },
+  "pretrained_source": "torchvision.EfficientNet_B0_Weights.IMAGENET1K_V1",
+  "command": "python src/train.py --watermark-fresh 0.6 --watermark-rotten 0.3 --watermark-style light --seed 42 --manifest dataset/manifest.csv --out OUT --arch efficientnet_b0 --num-classes 10 --mode finetune --epochs 30 --patience 8",
+  "metrics": {
+   "val": {
+    "sample_count": 300,
+    "accuracy": 0.9333333373069763,
+    "macro_f1": 0.9339210154052893,
+    "species_accuracy": 0.9733333587646484,
+    "condition_accuracy": 0.949999988079071,
+    "rotten_recall": 0.9666666388511658,
+    "fresh_recall": 0.9333333373069763
+   },
+   "test": {
+    "sample_count": 300,
+    "accuracy": 0.9133333563804626,
+    "macro_f1": 0.9139868474128763,
+    "species_accuracy": 0.9666666388511658,
+    "condition_accuracy": 0.9566666483879089,
+    "rotten_recall": 0.9466666579246521,
+    "fresh_recall": 0.9666666388511658
+   }
+  }
+ },
+ "clip_head": {
+  "clip": {
+   "arch": "ViT-B-16",
+   "pretrained": "datacomp_xl_s13b_b90k"
+  },
+  "trained_on": "multinomial logistic regression, C=10.0, on 1260 Train photos + 4623 extra photos (2850 not_five); plus one copy of each, 3332 of them with a synthetic watermark (chance fresh 1.0, rotten 0.25, not_five 0.5, light style)",
+  "command": "python src/train_clip_head.py --watermark-fresh 1.0 --watermark-rotten 0.25 --watermark-other 0.5 --watermark-style light --model CANDIDATE.pth --extra-photos LVIS --extra-train EXTRA.csv --clip-check-only",
+  "photos": "not in the repository (licences): tools/rebuild_head_photos.py recovers 4,591 of them; experiments/root_and_tomato (B0') shows how close the rebuilt head comes"
+ },
+ "new_vegetable_head": {
+  "command": "python src/train_new_veg_head.py --model CANDIDATE.pth --data experiments/new_vegetables/v7/head_data.npz --tau 0.8",
+  "trained_on": "multinomial logistic regression, C=10, 17 outputs, 6271 training rows; new-vegetable Train {'onion_fresh': 106, 'onion_rotten': 61, 'sweetpotato_fresh': 93, 'sweetpotato_rotten': 44, 'greenonion_fresh': 97, 'greenonion_rotten': 0}; + 0.25 x CLIP zero-shot class scores",
+  "text_prompts": [
+   "a photo of a fresh cucumber.|a photo of cucumbers.|a close-up photo of a fresh cucumber.",
+   "a photo of a rotten cucumber.|a photo of a moldy cucumber.|a photo of a sprouting cucumber.|a photo of a spoiled cucumber.",
+   "a photo of a fresh potato.|a photo of potatoes.|a close-up photo of a fresh potato.",
+   "a photo of a rotten potato.|a photo of a moldy potato.|a photo of a sprouting potato.|a photo of a spoiled potato.",
+   "a photo of a fresh tomato.|a photo of tomatoes.|a close-up photo of a fresh tomato.",
+   "a photo of a rotten tomato.|a photo of a moldy tomato.|a photo of a sprouting tomato.|a photo of a spoiled tomato.",
+   "a photo of a fresh bell pepper.|a photo of bell peppers.|a close-up photo of a fresh bell pepper.",
+   "a photo of a rotten bell pepper.|a photo of a moldy bell pepper.|a photo of a sprouting bell pepper.|a photo of a spoiled bell pepper.",
+   "a photo of a fresh carrot.|a photo of carrots.|a close-up photo of a fresh carrot.",
+   "a photo of a rotten carrot.|a photo of a moldy carrot.|a photo of a sprouting carrot.|a photo of a spoiled carrot.",
+   "a photo of a fresh onion.|a photo of onions.|a close-up photo of a fresh onion.",
+   "a photo of a rotten onion.|a photo of a moldy onion.|a photo of a sprouting onion.|a photo of a spoiled onion.",
+   "a photo of a fresh sweet potato.|a photo of sweet potatoes.|a close-up photo of a fresh sweet potato.",
+   "a photo of a rotten sweet potato.|a photo of a moldy sweet potato.|a photo of a sprouting sweet potato.|a photo of a spoiled sweet potato.",
+   "a photo of green onions.|a photo of scallions.|a photo of leeks.|a photo of a bunch of green onions.|a photo of welsh onions.",
+   "a photo of rotten green onions."
+  ]
+ },
+ "decision_settings": {
+  "vegetable_model_temperature": 0.6025446653366089,
+  "combined_temperature": 1.5608313083648682,
+  "not_five_threshold": -0.32037675380706787,
+  "text_evidence_alpha": 0.25,
+  "new_vegetable_text_alpha": 0.25,
+  "new_vegetable_switch_probability": 0.8,
+  "not_eight_threshold": -3.1291303634643555,
+  "hold_back_below": 0.9
+ },
+ "environment": {
+  "python": "3.11",
+  "torch": "2.8.0+cpu",
+  "device": "cpu",
+  "packages": "requirements.txt (exact versions)"
+ },
+ "commits": {
+  "model.pth": "9ebb286e7cb267d5678955381459d662817c4a65",
+  "dataset/manifest.csv": "4806be132c3fcf58f340f89f939d37d48733f90a",
+  "src/decision.py": "a4e5842bf9d32f0226ee53e91d647f2ecd9e0027"
+ },
+ "development_baseline": {
+  "file": "results/baseline/tv12_dev.json",
+  "made_by": "python tools/compare_on_dev.py results/baseline/tv12_dev.json",
+  "all_labelled": {
+   "n": 969,
+   "right": 859,
+   "rotten_n": 385,
+   "rotten_called_fresh": 17,
+   "turned_away": 25,
+   "held_back": 165,
+   "shown": 779,
+   "shown_right": 747
+  }
+ },
+ "blind_tests_scored_once": {
+  "results/t3_test": {
+   "scores_once.json": "adf72ed2b680e2b2c21a82590eab731e1c6ab35c6cb8ef739afe8f4f577725e2"
+  },
+  "results/t4_test": {
+   "scores_reference.json": "4d3de648a9a601f9e256bfe7d5139d85f19d33a3d0c21d78cf4bf8655b64544b"
+  },
+  "results/t5_test": {
+   "scores_once.json": "7b22187c0218d50c29721e8ae9ffd61a5ad7ba1f96900cf1028f3c12943e4930"
+  },
+  "results/t6_test": {
+   "scores_once.json": "c10349995ad6995a05d1c1b543118af11553be31694b2caa49ca8c43e79b3bec"
+  },
+  "results/t7_test": {
+   "scores_once.json": "740484accdfebc0e6b07d5066e2630467f2651769cb30940cee3a2b080c6657d"
+  },
+  "results/t8_test": {
+   "scores_once.json": "eb65d7cec58bda670c350f83cb34acc6401e5919239449502c7617ac7541ca90"
+  }
+ },
+ "blind_tests_note": "T3-T8 are used up: never score a candidate on them again (their files are kept as the record)."
+}
