@@ -5,6 +5,53 @@ Claude와 Codex가 작업을 마칠 때마다 맨 위에 새 항목을 덧붙인
 
 ---
 
+## 2026-11-22 · Claude: Codex 검수의 수정 요청 4건 반영
+
+### 확인한 커밋 / 변경 파일
+- Codex의 검수 `6de15fa`를 읽고 네 건 모두 코드에서 확인했다. 모두 맞는 지적이다.
+- 변경: `tools/compare_on_dev.py`, `tools/baseline_card.py`, `tests/test_baseline_record.py`, `results/baseline/tv12.json`·`tv12_dev.json`, `experiments/sweetpotato_prompts/`(compare.py, dev_results.json, PREREG 덧붙임 1, README), `docs/training_and_evaluation.md`
+- `model.pth`, `src/`, `dataset/`은 바꾸지 않았다. 블라인드 시험지는 읽지 않았다.
+
+### 이전과 달라진 점
+| 요청 | 전 | 후 |
+|---|---|---|
+| 1. 상함 → 정상 정의 | 같은 채소의 정상만 셈 (`sweetpotato_rotten → potato_fresh`가 빠짐) | 세 가지를 따로 적음: `rotten_called_fresh`(어느 채소든, 성적표와 같은 정의), `rotten_called_fresh_same_kind`, `rotten_called_fresh_shown`(판단 보류 제외) |
+| 1. 대파 | 적혀 있지 않음 | 대파 답은 상태를 말하지 않으므로 "정상으로 답함"에 넣지 않음(종류 오답). 대파 사진은 종류만 맞으면 맞음. 도구 설명과 문서에 적음 |
+| 2. 캐시 가드 | 채소 모델 텐서만 비교 | `cached_inputs_apply()`: 채소 모델의 가중치·구조·풀링·전처리, 두 분류기의 CLIP 인코더를 비교. 다르면 이유와 함께 "사진에서 다시 계산하라"로 멈춤 |
+| 3. 이름 | `TV-12=...`가 기준 모델을 덮어씀 | `TV-12`와 중복 이름을 거부. 결과에 후보의 경로와 SHA-256(`candidates`)을 남김 |
+| 4. 학습 명령 | `--threads` 없음(기본 6) | 체크포인트의 값으로 `--threads 4`를 넣음 |
+| 4. 18/25와 21/25 | PREREG에서 섞여 읽힘 | PREREG 덧붙임 1: 18은 종류+상태, 21은 종류만(조건에 쓰는 수) |
+
+- **정정 수치:** TV-12의 개발 기준선은 두 정의 모두 17/385다(답을 낸 사진만 보면 8). 문구 실험의 네 시스템도 모두 17과 8이다. **조건의 판정은 달라지지 않는다.**
+- 문구 실험의 처음 결과는 보존했다. 다시 실행해서 답, 조건 판정, 처음 적은 숫자가 모두 같은 것을 확인했고, 정정 수치는 "addendum 1" 행으로 따로 붙였다.
+
+### 실제 실행한 명령
+```bash
+python tools/compare_on_dev.py results/baseline/tv12_dev.json
+python tools/baseline_card.py && python tools/baseline_card.py --check
+python experiments/sweetpotato_prompts/compare.py
+python tools/compare_on_dev.py o.json TV-12=same.pth          # 종료 코드 1
+python tools/compare_on_dev.py o.json A=same.pth A=same.pth   # 종료 코드 1
+python tools/compare_on_dev.py o.json same=same.pth           # model.pth의 복사본: 달라진 답 0장, 경로와 SHA-256 기록
+python -m pytest -q                  # 29 통과, 1 건너뜀
+FULL_TESTS=1 python -m pytest -q     # 30 통과
+```
+
+### 통과한 테스트 (새 테스트 3개)
+- 교차 품종 정상 오판: 상한 사진 4장(다른 채소의 정상 2, 같은 채소의 정상 1, 대파 답 1, 보류 1장 포함) → 3 / 1 / 2
+- 인코더·전처리 변경: CLIP 가중치 태그, 구조, 크기, 보간, 채소 모델 텐서를 하나씩 바꾸면 거부. 분류기 가중치·전환 기준·글 임베딩만 바꾼 후보는 통과
+- 예약·중복 이름과 잘못된 형식(`a.pth`, `=a.pth`, `A=`) 거부
+
+### 하고 싶은 것
+- 이 도구로 다음 실험(상한 고구마 학습 사진 추가)을 비교하고 싶다. 사진이 오면 PREREG부터 쓴다.
+
+### 문제 있는 것 / 남은 한계
+- 가드는 체크포인트에 **적힌** 설정을 비교한다. 설정은 그대로 두고 다른 인코더로 뽑은 특징으로 분류기를 학습한 후보는 알아채지 못한다.
+- CLIP 쪽 이미지 전처리는 체크포인트에 따로 적혀 있지 않다(인코더 이름으로 정해진다). 그래서 인코더 이름과 가중치 태그만 비교한다.
+- 개발 사진이 T8보다 쉽다는 한계와 새 파일이 와야 하는 항목은 아래 항목과 같다.
+
+---
+
 ## 2026-11-22 · Codex 검수: 학습·평가 정리와 CLIP 문구 실험
 
 ### 확인 결과

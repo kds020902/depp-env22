@@ -46,7 +46,7 @@
    "threads": 4
   },
   "pretrained_source": "torchvision.EfficientNet_B0_Weights.IMAGENET1K_V1",
-  "command": "python src/train.py --watermark-fresh 0.6 --watermark-rotten 0.3 --watermark-style light --seed 42 --manifest dataset/manifest.csv --out OUT --arch efficientnet_b0 --num-classes 10 --mode finetune --epochs 30 --patience 8",
+  "command": "python src/train.py --watermark-fresh 0.6 --watermark-rotten 0.3 --watermark-style light --seed 42 --manifest dataset/manifest.csv --out OUT --arch efficientnet_b0 --num-classes 10 --mode finetune --epochs 30 --patience 8 --threads 4",
   "metrics": {
    "val": {
     "sample_count": 300,
@@ -128,6 +128,8 @@
    "right": 859,
    "rotten_n": 385,
    "rotten_called_fresh": 17,
+   "rotten_called_fresh_same_kind": 17,
+   "rotten_called_fresh_shown": 8,
    "turned_away": 25,
    "held_back": 165,
    "shown": 779,

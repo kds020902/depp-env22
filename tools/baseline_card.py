@@ -52,7 +52,8 @@ def build() -> dict:
                             "epochs_completed": ck["epochs_completed"], "selection": ck["selection"],
                             "hyperparameters": ck["hyperparameters"], "pretrained_source": ck["pretrained_source"],
                             "command": "python src/" + ck["watermark_round"]["vegetable_model"] + " --manifest dataset/manifest.csv --out OUT "
-                                       "--arch efficientnet_b0 --num-classes 10 --mode finetune --epochs 30 --patience 8",
+                                       "--arch efficientnet_b0 --num-classes 10 --mode finetune --epochs 30 --patience 8 "
+                                       f"--threads {ck['hyperparameters']['threads']}",
                             "metrics": {s: {k: ck["metrics"][s][k] for k in METRICS} for s in ("val", "test")}},
         "clip_head": {"clip": clip_head["clip"], "trained_on": clip_head["head"],
                       "command": "python src/" + ck["watermark_round"]["clip_head"] + " --model CANDIDATE.pth --extra-photos LVIS --extra-train EXTRA.csv --clip-check-only",

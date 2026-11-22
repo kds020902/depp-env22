@@ -59,7 +59,9 @@ def root_counts(result: dict, sets: dict) -> dict:
             "rotten sweet potato -> potato": [kind(rotten, "potato"), len(rotten)],
             "fresh sweet potato -> sweet potato": [kind(fresh, "sweetpotato"), len(fresh)],
             "potato -> sweet potato": [kind(potato, "sweetpotato"), len(potato)],
-            "rotten called fresh (all labelled)": [total["rotten_called_fresh"], total["rotten_n"]],
+            "rotten called fresh (all labelled)": [total["rotten_called_fresh_same_kind"], total["rotten_n"]],   # same vegetable, as first recorded
+            "rotten called fresh of any vegetable (addendum 1)": [total["rotten_called_fresh"], total["rotten_n"]],
+            "rotten called fresh of any vegetable, shown answers (addendum 1)": [total["rotten_called_fresh_shown"], total["rotten_n"]],
             "five vegetables right": [sum(total["classes"][c]["right"] for c in FIVE), sum(total["classes"][c]["n"] for c in FIVE)],
             "held back": [total["held_back"], total["n"]], "shown answers right": [total["shown_right"], total["shown"]],
             "fruit 374 turned away": [result["fruit 374"]["answers"].count(AWAY), 374],

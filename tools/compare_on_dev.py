@@ -11,8 +11,14 @@ as model inputs (b = the vegetable model's logits, X = CLIP image features):
 No blind test set (T3-T8) is read. Because b is stored, a candidate must keep model.pth's vegetable model (checked);
 a candidate with a retrained vegetable model has to be compared on photos (experiments/root_and_tomato/evaluate.py).
 
-Per set and class: recall, rotten photos answered "fresh" of the same vegetable, turned away, held back (answered below 0.9),
-and how many of the answers actually shown (not turned away, not held back) are right.
+Per set and class (tally()):
+- right: the answer is the class; for green onions the kind is enough (the system does not judge their condition);
+- rotten_called_fresh: a rotten photo answered "fresh" of any vegetable, as results/scorecard counts it;
+  rotten_called_fresh_same_kind: of the same vegetable only; rotten_called_fresh_shown: those among the shown answers.
+  A green onion answer claims no condition, so it is a wrong kind, never a "fresh" answer;
+- turned_away, held_back (answered, but below 0.9), and shown = neither: the answers a user actually sees, and how many are right.
+A candidate may change the heads, thresholds and text embeddings. It must keep what the stored inputs were made with:
+model.pth's vegetable-model weights and preprocessing, and the CLIP image encoder of both heads (cached_inputs_apply()).
 """
 
 from __future__ import annotations
@@ -37,6 +43,7 @@ LABELLED = {"valid": "Valid 300", "odev": "internet 221", "o160": "field 160", "
             "newval": "new-vegetable Valid 89"}
 UNLABELLED = {"fruit374": ("fruit 374", True), "coco400": ("everyday things 400", True), "lvis": ("real-scene vegetable crops 192", False)}
 AWAY = "turned_away"
+BASELINE = "TV-12"
 SPECIES_ONLY = ("greenonion",)   # the system does not judge the condition of green onions
 
 
@@ -64,13 +71,20 @@ def answers_of(checkpoint: dict, logits: torch.Tensor, features: torch.Tensor) -
     return [AWAY if u else CLASS_NAMES[int(i)] for i, u in zip(a.index, a.unknown)], held_back(a).tolist()
 
 
+def says_fresh(answer: str) -> bool:
+    """The answer claims a fresh vegetable (a green onion answer claims no condition)."""
+    return answer.endswith("_fresh") and not answer.startswith(SPECIES_ONLY)
+
+
 def tally(labels: list[str], answers: list[str], held: list[bool]) -> dict:
-    """Counts for one group of labelled photos."""
+    """Counts for one group of labelled photos (definitions in the module text)."""
     n = len(labels)
     shown = [i for i in range(n) if answers[i] != AWAY and not held[i]]
     rotten = [i for i in range(n) if labels[i].endswith("_rotten")]
     return {"n": n, "right": sum(right(y, a) for y, a in zip(labels, answers)),
-            "rotten_n": len(rotten), "rotten_called_fresh": sum(answers[i] == labels[i].replace("_rotten", "_fresh") for i in rotten),
+            "rotten_n": len(rotten), "rotten_called_fresh": sum(says_fresh(answers[i]) for i in rotten),
+            "rotten_called_fresh_same_kind": sum(answers[i] == labels[i].replace("_rotten", "_fresh") for i in rotten),
+            "rotten_called_fresh_shown": sum(says_fresh(answers[i]) for i in rotten if not held[i]),
             "turned_away": answers.count(AWAY), "held_back": sum(held),
             "shown": len(shown), "shown_right": sum(right(labels[i], answers[i]) for i in shown)}
 
@@ -104,37 +118,64 @@ def percent(k: int, n: int) -> str:
 def table(results: dict[str, dict]) -> str:
     """Markdown: one row per class of all labelled development photos, the systems side by side."""
     names = list(results)
-    lines = ["| class | n | " + " | ".join(f"{m} right" for m in names) + " | " + " | ".join(f"{m} rotten->fresh" for m in names) + " |",
+    lines = ["| class | n | " + " | ".join(f"{m} right" for m in names) + " | " + " | ".join(f"{m} rotten->fresh (any kind / same kind)" for m in names) + " |",
              "|---|---:|" + "---:|" * (2 * len(names))]
     first = results[names[0]]["_all_labelled"]
     for c, t in list(first["classes"].items()) + [("all labelled", first)]:
         cells = [results[m]["_all_labelled"]["classes"][c] if c != "all labelled" else results[m]["_all_labelled"] for m in names]
         lines.append(f"| {c} | {t['n']} | " + " | ".join(percent(x["right"], x["n"]) for x in cells) + " | "
-                     + " | ".join(str(x["rotten_called_fresh"]) if x["rotten_n"] else "-" for x in cells) + " |")
-    lines += ["", "| system | held back (below %.1f) | turned away | shown answers right |" % HOLD_BACK_BELOW, "|---|---:|---:|---:|"]
+                     + " | ".join(f"{x['rotten_called_fresh']} / {x['rotten_called_fresh_same_kind']}" if x["rotten_n"] else "-" for x in cells) + " |")
+    lines += ["", "| system | held back (below %.1f) | turned away | shown answers right | rotten->fresh among shown answers |" % HOLD_BACK_BELOW,
+              "|---|---:|---:|---:|---:|"]
     for m in names:
         t = results[m]["_all_labelled"]
-        lines.append(f"| {m} | {percent(t['held_back'], t['n'])} | {percent(t['turned_away'], t['n'])} | {percent(t['shown_right'], t['shown'])} |")
+        lines.append(f"| {m} | {percent(t['held_back'], t['n'])} | {percent(t['turned_away'], t['n'])} | {percent(t['shown_right'], t['shown'])} | {t['rotten_called_fresh_shown']} |")
     return "\n".join(lines)
 
 
-def same_vegetable_model(a: dict, b: dict) -> bool:
-    return state_checksum(a["state_dict"]) == state_checksum(b["state_dict"])
+def cached_inputs_apply(baseline: dict, candidate: dict) -> list[str]:
+    """Why the stored logits and CLIP features cannot be used for `candidate` (empty = they can)."""
+    reasons = []
+    if state_checksum(baseline["state_dict"]) != state_checksum(candidate["state_dict"]):
+        reasons.append("the vegetable model's weights differ")
+    for key in ("architecture", "pooling", "preprocess"):
+        if baseline.get(key) != candidate.get(key):
+            reasons.append(f"the vegetable model's {key} differs")
+    for head in ("clip_head", "new_vegetable_head"):
+        if head in candidate and candidate[head].get("clip") != baseline["clip_head"]["clip"]:
+            reasons.append(f"{head} uses another CLIP image encoder: {candidate[head].get('clip')}")
+    return reasons
+
+
+def parse_candidates(arguments: list[str]) -> dict[str, Path]:
+    candidates = {}
+    for argument in arguments:
+        name, separator, path = argument.partition("=")
+        if not separator or not name or not path:
+            raise SystemExit(f"{argument!r}: write a candidate as NAME=checkpoint.pth")
+        if name == BASELINE:
+            raise SystemExit(f"{BASELINE} is the baseline's name (model.pth): give the candidate another name")
+        if name in candidates:
+            raise SystemExit(f"the name {name} is given twice")
+        candidates[name] = Path(path)
+    return candidates
 
 
 def main():
-    out, candidates = Path(sys.argv[1]), dict(arg.split("=", 1) for arg in sys.argv[2:])
+    out, candidates = Path(sys.argv[1]), parse_candidates(sys.argv[2:])
     baseline = torch.load(REPO / "model.pth", map_location="cpu", weights_only=True)
     sets = development_sets()
-    results = {"TV-12": evaluate(baseline, sets)}
+    results = {BASELINE: evaluate(baseline, sets)}
     for name, path in candidates.items():
         candidate = torch.load(path, map_location="cpu", weights_only=True)
-        if not same_vegetable_model(baseline, candidate):
-            raise SystemExit(f"{name}: the vegetable model differs from model.pth; the stored logits do not apply (compare on photos)")
+        if reasons := cached_inputs_apply(baseline, candidate):
+            raise SystemExit(f"{name}: the stored development inputs do not apply ({'; '.join(reasons)}). "
+                             "Compute the answers from the photos instead (experiments/root_and_tomato/evaluate.py).")
         results[name] = evaluate(candidate, sets)
     record = {"inputs": {p.relative_to(REPO).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest() for p in (REPO / "model.pth", HEAD_DATA, ROOT_DATA)},
+              "candidates": {name: {"path": str(path), "sha256": hashlib.sha256(path.read_bytes()).hexdigest()} for name, path in candidates.items()},
               "hold_back_below": HOLD_BACK_BELOW, "systems": results,
-              "answers_changed_from_TV-12": {name: changed(results["TV-12"], results[name], sets) for name in candidates}}
+              "answers_changed_from_TV-12": {name: changed(results[BASELINE], results[name], sets) for name in candidates}}
     json.dump(record, open(out, "w"), indent=1, ensure_ascii=False)
     print(table(results))
     for name, counts in record["answers_changed_from_TV-12"].items():
