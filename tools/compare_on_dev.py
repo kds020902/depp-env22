@@ -111,6 +111,18 @@ def changed(base: dict, other: dict, sets: dict) -> dict:
     return {name: sum(x != y for x, y in zip(base[name]["answers"], other[name]["answers"])) for name in sets}
 
 
+def paired(base: dict, other: dict, sets: dict) -> dict:
+    """The same labelled photos under both systems: answers that went from right to wrong and from wrong to right, per class."""
+    out = {}
+    for name, (_, _, labels) in sets.items():
+        for y, a, b in zip(labels or [], base[name]["answers"], other[name]["answers"]):
+            counts = out.setdefault(y, {"right_to_wrong": 0, "wrong_to_right": 0})
+            counts["right_to_wrong"] += right(y, a) and not right(y, b)
+            counts["wrong_to_right"] += not right(y, a) and right(y, b)
+    out["_all_labelled"] = {k: sum(c[k] for c in out.values()) for k in ("right_to_wrong", "wrong_to_right")}
+    return out
+
+
 def percent(k: int, n: int) -> str:
     return f"{k}/{n} ({100 * k / n:.1f}%)" if n else "-"
 
@@ -175,11 +187,13 @@ def main():
     record = {"inputs": {p.relative_to(REPO).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest() for p in (REPO / "model.pth", HEAD_DATA, ROOT_DATA)},
               "candidates": {name: {"path": str(path), "sha256": hashlib.sha256(path.read_bytes()).hexdigest()} for name, path in candidates.items()},
               "hold_back_below": HOLD_BACK_BELOW, "systems": results,
-              "answers_changed_from_TV-12": {name: changed(results[BASELINE], results[name], sets) for name in candidates}}
+              "answers_changed_from_TV-12": {name: changed(results[BASELINE], results[name], sets) for name in candidates},
+              "right_and_wrong_against_TV-12": {name: paired(results[BASELINE], results[name], sets) for name in candidates}}
     json.dump(record, open(out, "w"), indent=1, ensure_ascii=False)
     print(table(results))
     for name, counts in record["answers_changed_from_TV-12"].items():
         print(f"\n{name}: answers changed from TV-12:", counts)
+        print(f"{name}: right -> wrong / wrong -> right on the same photos:", record["right_and_wrong_against_TV-12"][name]["_all_labelled"])
 
 
 if __name__ == "__main__":

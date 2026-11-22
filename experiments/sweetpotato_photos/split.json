@@ -1,0 +1,46 @@
+{
+ "listed": 12,
+ "not_kept": {
+  "left_out": 2
+ },
+ "status": "hold",
+ "hold_reasons": [
+  "T9 has 0 of 30 sweetpotato_rotten",
+  "T9 has 2 of 30 potato_rotten",
+  "T9 has 6 of 30 potato_fresh",
+  "training has 2 rotten sweet potatoes (minimum 20, goal 60)"
+ ],
+ "t9": {
+  "sweetpotato_rotten": 0,
+  "potato_rotten": 2,
+  "potato_fresh": 6
+ },
+ "train_rotten_sweet_potato": 2,
+ "groups": {
+  "t9": 7,
+  "train": 1,
+  "t9_with_rotten_sweet_potato": 0
+ },
+ "group_side": {
+  "commons.wikimedia.org / kukuh bhahari": "t9",
+  "inaturalist.org / dinomariobob": "t9",
+  "commons.wikimedia.org / midori": "t9",
+  "data.mendeley.com / samiul islam saif; mst. fahmida tasnim saba; m. shamim kaiser": "t9",
+  "commons.wikimedia.org / propoli87": "t9",
+  "Scot Nelson": "train",
+  "inaturalist.org / jokerrr83": "t9",
+  "commons.wikimedia.org / nightgane": "t9"
+ },
+ "assignment": {
+  "감자_정상_흙묻음/감자_정상_흙묻음_01.jpg": "t9",
+  "감자_정상_흙묻음/감자_정상_흙묻음_04.jpg": "t9",
+  "감자_정상_흙묻음/감자_정상_흙묻음_05.jpg": "t9",
+  "감자_상함/감자_상함_약간_04.jpg": "t9",
+  "감자_상함/감자_상함_척봐도_03.jpg": "t9",
+  "감자_정상_흙묻음/감자_정상_흙묻음_06.jpg": "t9",
+  "고구마_상함/고구마_상함_약간_01.jpg": "train",
+  "고구마_상함/고구마_상함_척봐도_02.jpg": "train",
+  "감자_정상_흙묻음/감자_정상_흙묻음_03.jpg": "t9",
+  "감자_정상_흙묻음/감자_정상_흙묻음_02.jpg": "t9"
+ }
+}

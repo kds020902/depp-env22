@@ -12,7 +12,7 @@ sys.path.insert(0, str(REPO / "tools"))
 import copy  # noqa: E402
 
 import pytest  # noqa: E402
-from compare_on_dev import cached_inputs_apply, development_sets, evaluate, parse_candidates, right, tally  # noqa: E402
+from compare_on_dev import cached_inputs_apply, development_sets, evaluate, paired, parse_candidates, right, tally  # noqa: E402
 
 
 def test_baseline_card_matches_the_files():
@@ -66,3 +66,12 @@ def test_candidate_names_cannot_replace_the_baseline_or_repeat():
     for bad in (["TV-12=a.pth"], ["A=a.pth", "A=b.pth"], ["a.pth"], ["=a.pth"], ["A="]):
         with pytest.raises(SystemExit):
             parse_candidates(bad)
+
+
+def test_paired_counts_follow_the_same_photo():
+    sets = {"a": (None, None, ["potato_rotten", "potato_rotten", "sweetpotato_rotten"]), "no labels": (None, None, None)}
+    base = {"a": {"answers": ["potato_rotten", "potato_fresh", "potato_rotten"]}, "no labels": {"answers": ["turned_away"]}}
+    other = {"a": {"answers": ["sweetpotato_rotten", "potato_rotten", "sweetpotato_rotten"]}, "no labels": {"answers": ["potato_fresh"]}}
+    assert paired(base, other, sets) == {"potato_rotten": {"right_to_wrong": 1, "wrong_to_right": 1},
+                                         "sweetpotato_rotten": {"right_to_wrong": 0, "wrong_to_right": 1},
+                                         "_all_labelled": {"right_to_wrong": 1, "wrong_to_right": 2}}
