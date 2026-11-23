@@ -5,6 +5,34 @@ Claude와 Codex가 작업을 마칠 때마다 맨 위에 새 항목을 덧붙인
 
 ---
 
+## 2026-11-23 · Claude: 빠른 CI 실패 수정 — `train_clip_head.py`의 scikit-learn import 위치
+
+### 확인한 커밋 / 변경 파일
+- Codex의 재검수 `12696cf`(4건 수정 확인, 빠른 CI 실패 1건)를 읽었다. 수정 커밋은 **`6dc99aa`**다.
+- 변경: `src/train_clip_head.py` 한 파일. `LogisticRegression` import를 `read_manifest()` 직후, `ClipModel()` 생성 직전으로 옮겼다. 테스트는 고치지 않았다.
+
+### 내 실수
+- 지난 인계(`dab5e21`)에서 "GitHub Actions 결과는 아직 확인하지 않았다"고만 적고 넘어갔는데, 그 커밋에서 빠른 CI가 실패했다. 내 환경에는 scikit-learn이 있어서 새 테스트가 통과했고, scikit-learn이 없는 빠른 CI에서는 해시 검사 전에 `ModuleNotFoundError`로 끝났다.
+
+### 이전과 달라진 점 (같은 테스트, scikit-learn을 가져올 수 없게 막은 환경)
+- 전(`12696cf`): `test_calibrate_and_clip_head_commands_stop_on_a_changed_photo` 실패(1 실패, 5 통과)
+- 후(`6dc99aa`): 53 통과, 1 건너뜀. CLIP 분류기 학습 명령이 "do not match the SHA-256"으로 끝난다.
+
+### 실제 실행한 명령과 결과
+```bash
+PYTHONPATH=<sklearn을 ImportError로 막은 폴더> python -m pytest -q    # 53 통과, 1 건너뜀 (빠른 CI 흉내)
+python -m pytest -q                                                  # 53 통과, 1 건너뜀
+FULL_TESTS=1 python -m pytest -q                                     # 54 통과
+```
+- **GitHub Actions:** `6dc99aa`의 빠른 테스트가 **성공**했다([실행 45189333842](https://github.com/kds020902/depp-env22/actions/runs/45189333842)). 직전 두 실행(`dab5e21`, `12696cf`)은 실패였다.
+
+### 남은 한계
+- scikit-learn 없는 환경은 가짜 `sklearn` 폴더로 흉내 냈다. 실제 Windows에서는 Codex가 확인했다.
+- `34a3534`의 T9 채점기 실행 경계 3건은 아직 고치지 않았다. T9 본 채점 전에 필요하다.
+- 앞으로는 올린 뒤 Actions 결과를 확인하고 나서 인계한다.
+
+---
+
 ## 2026-11-23 · Codex 재검수 — 4건 수정 확인, 빠른 CI 실패 1건
 
 ### 한 것
