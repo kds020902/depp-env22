@@ -179,7 +179,9 @@ def decide(logits: torch.Tensor, checkpoint: dict, features: torch.Tensor | None
 def apply_potato_check(a: Answers, checkpoint: dict, clip_logits: torch.Tensor) -> Answers:
     """Only when the checkpoint has "potato_check" (TV-12 has not). An answer "rotten potato" given by the five-vegetable
     system becomes "fresh potato" when the five-vegetable CLIP head alone gives "fresh potato" at least `threshold` of the
-    two potato classes; its shown probability is that share (so below 0.9 it is still held back). Nothing else changes."""
+    two potato classes; its shown probability is that share (so below 0.9 it is still held back). The shown class
+    probabilities of such a photo become that share for "fresh potato" and the rest for "rotten potato", so that the
+    condition summary predict.py derives from them agrees with the answer. Other photos are not changed."""
     from labels import CLASS_NAMES
     fresh = CLASS_NAMES.index("potato_fresh")
     share = clip_logits[:, fresh:fresh + 2].softmax(1)[:, 0]
@@ -187,7 +189,11 @@ def apply_potato_check(a: Answers, checkpoint: dict, clip_logits: torch.Tensor) 
     index, probability = a.index.clone(), a.probability.clone()
     index[flip] = fresh
     probability[flip] = share[flip].to(probability.dtype)
-    return Answers(a.probabilities, index, probability, a.unknown, a.switched, a.five, a.five_unknown)
+    probabilities = a.probabilities.clone()
+    probabilities[flip] = 0
+    probabilities[flip, fresh] = probability[flip].to(probabilities.dtype)
+    probabilities[flip, fresh + 1] = 1 - probabilities[flip, fresh]
+    return Answers(probabilities, index, probability, a.unknown, a.switched, a.five, a.five_unknown)
 
 
 # ---------- holding an answer back (experiments/improve_without_photos, part 4) ----------

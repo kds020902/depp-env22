@@ -1,12 +1,14 @@
 """Blind test set T9 (RULES.md, addendum 3): score TV-12 and the candidate PC1 once.
 
-    DEPP_WORK=... python results/t9_test/score.py OUT.json
-    DEPP_WORK=... python results/t9_test/score.py OUT.json --rehearsal    # development photos, to try the script only
+    DEPP_WORK=... python results/t9_test/score.py                         # the one scoring: writes scores_once.json here
+    DEPP_WORK=... python results/t9_test/score.py --rehearsal OUT.json    # development photos, to try the script only
 
 PC1 = TV-12 with the potato re-check at threshold 0.5 (experiments/potato_check; no weight differs).
 The photos stay in the working folder ($DEPP_WORK/t9/img; licences); t9_test.csv lists all 90 with their source.
 The judgement uses t9_main.csv: the 89 photos left when the one that is also a T8 photo is taken out; the counts on all
-90 are written next to it. Refuses to run unless the SHA-256 of both lists equal the seals in RULES.md.
+90 are written next to it. Before any photo is read the scoring stops unless the SHA-256 of both lists equal the seals
+in RULES.md, and when scores_once.json or the run marker scores_once.running already exists (a second run, or a run that
+was interrupted: look at what happened before removing the marker by hand).
 --rehearsal reads no T9 photo: it runs the same code on the 162 potato / sweet potato development photos
 ($DEPP_WORK/rt/img, experiments/sweetpotato_prompts/dev_features.npz ids) and marks the output as a rehearsal.
 (HEAD, the earlier candidate SP1's head, is still used by results/user_photos_2/score.py.)
@@ -79,6 +81,7 @@ def report(labels: list[str], severities: list[str], answers: list[str], held: l
     return out
 
 
+RESULT = HERE / "scores_once.json"
 CANDIDATE = "PC1"
 POTATO_CHECK = {"threshold": 0.5}
 
@@ -107,9 +110,20 @@ def seals() -> dict:
     for name in ("t9_test.csv", "t9_main.csv"):
         sealed = re.findall(rf"{re.escape(name)} SHA-256[^`]*`([0-9a-f]{{64}})`", text)
         digest = hashlib.sha256((HERE / name).read_bytes()).hexdigest()
-        assert sealed and sealed[-1] == digest, f"{name} does not match its seal in RULES.md ({digest})"
+        if not sealed or sealed[-1] != digest:
+            raise SystemExit(f"{name} does not match its seal in RULES.md ({digest}): nothing was read or scored")
         found[name] = digest
     return found
+
+
+def claim_the_one_run(result: Path, marker: Path) -> None:
+    """Stop before any photo is read when T9 was scored already or a scoring run is (or was left) under way."""
+    if result.exists():
+        raise SystemExit(f"{result.name} exists: T9 has been scored once already; nothing was read")
+    try:
+        os.close(os.open(marker, os.O_CREAT | os.O_EXCL | os.O_WRONLY))
+    except FileExistsError:
+        raise SystemExit(f"{marker.name} exists: a scoring run is under way or was interrupted; nothing was read") from None
 
 
 def model_inputs(paths: list[Path]) -> tuple[torch.Tensor, torch.Tensor]:
@@ -128,7 +142,13 @@ def model_inputs(paths: list[Path]) -> tuple[torch.Tensor, torch.Tensor]:
 
 
 def main():
-    out, rehearsal = Path(sys.argv[1]), "--rehearsal" in sys.argv
+    rehearsal = "--rehearsal" in sys.argv
+    arguments = [a for a in sys.argv[1:] if a != "--rehearsal"]
+    if rehearsal != (len(arguments) == 1):
+        raise SystemExit("usage: score.py   (the one scoring, writes scores_once.json)   or   score.py --rehearsal OUT.json")
+    out, marker = (Path(arguments[0]), None) if rehearsal else (RESULT, RESULT.with_suffix(".running"))
+    if rehearsal and out.resolve() == RESULT.resolve():
+        raise SystemExit("a rehearsal may not write scores_once.json")
     work = Path(os.environ["DEPP_WORK"])
     tv12 = torch.load(REPO / "model.pth", map_location="cpu", weights_only=True)
     if rehearsal:
@@ -138,6 +158,7 @@ def main():
         severities, paths, sealed, main_ids = ["dev"] * len(ids), [work / "rt/img" / f"{i}.jpg" for i in ids], {}, set(ids)
     else:
         sealed = seals()
+        claim_the_one_run(out, marker)
         rows = list(csv.DictReader(open(HERE / "t9_test.csv", encoding="utf-8")))
         ids, labels, severities = [r["id"] for r in rows], [r["class_name"] for r in rows], [r["severity"] for r in rows]
         paths = [work / "t9/img" / f"{i}.jpg" for i in ids]
@@ -159,7 +180,11 @@ def main():
     base, other = list(result["TV-12"]["answers"].values()), list(result[CANDIDATE]["answers"].values())
     result["right_and_wrong_against_TV-12"] = paired(pick(labels), pick(base), pick(other))
     result["differences"] = [{"id": i, "class": y, "TV-12": a, CANDIDATE: b} for i, y, a, b in zip(ids, labels, base, other) if a != b]
-    json.dump(result, open(out, "w", encoding="utf-8"), indent=1, ensure_ascii=False)
+    partial = out.with_suffix(".partial")
+    json.dump(result, open(partial, "w", encoding="utf-8"), indent=1, ensure_ascii=False)
+    os.replace(partial, out)
+    if marker is not None:
+        marker.unlink()
     for name in ("TV-12", CANDIDATE):
         r = result[name]["main"]
         print(name, {c: f"{v['right']}/{v['n']}" for c, v in r.items() if c != "_all"}, r["_all"])

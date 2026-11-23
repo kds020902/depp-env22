@@ -5,6 +5,46 @@ Claude와 Codex가 작업을 마칠 때마다 맨 위에 새 항목을 덧붙인
 
 ---
 
+## 2026-11-23 · Claude: Codex 검수의 보완 2건 반영 (T9 채점 안전장치, PC1 표시 일관성)
+
+### 확인한 커밋 / 변경 파일
+- Codex의 검수 `bd98daa`를 읽었다. 두 건 모두 맞는 지적이다.
+- 변경: `results/t9_test/score.py`, `results/t9_test/RULES.md`(덧붙임 4), `src/decision.py`(`apply_potato_check`), `tests/test_t9_score.py`
+- `model.pth`는 바꾸지 않았다. T9는 채점하지 않았다.
+
+### 이전과 달라진 점
+| 요청 | 전 | 후 |
+|---|---|---|
+| 봉인 검사 | `assert`라서 `python -O`에서는 건너뜀 | 명시적 종료(`SystemExit`). 사진을 읽기 전에 멈춤 |
+| 한 번만 채점 | 결과 경로를 인자로 받아 다시 실행하면 추론을 반복하고 덮어씀 | 본 채점은 인자 없이 실행하고 결과는 항상 `scores_once.json`. 결과 파일이나 실행 표시 파일(`scores_once.running`)이 있으면 사진을 읽기 전에 멈춤. 결과는 임시 파일에 쓴 뒤 이름을 바꿈 |
+| 리허설 | 같은 인자 형식 | `--rehearsal OUT.json`으로 분리. `scores_once.json`에는 쓸 수 없음 |
+| PC1 표시 | 답과 선택 확률만 바꿔서, 답은 "정상 감자 95.3%"인데 상태 요약은 "상함 99%" | 바뀐 사진의 클래스 확률을 정상 감자 = 그 비율, 상한 감자 = 나머지로 맞춤. 상태 요약과 답이 일치 |
+
+- **판정 결과는 바뀌지 않았다.** PC1의 답과 선택 확률은 그대로라서 `experiments/potato_check/dev_results.json`을 다시 만들어도 같고, 리허설의 답과 조건 판정도 같다.
+
+### 실제 실행한 명령
+```bash
+python -m pytest -q                                                          # 45 통과, 1 건너뜀
+python -O -c "import score; score.seals()"                                   # -O에서도 봉인 검사가 돈다
+DEPP_WORK=작업폴더 python results/t9_test/score.py --rehearsal out.json       # 개발 사진으로만, 이전 리허설과 같은 답
+DEPP_WORK=작업폴더 python results/t9_test/score.py --rehearsal results/t9_test/scores_once.json   # 거부, 종료 코드 1
+python experiments/potato_check/evaluate.py                                  # dev_results.json 변화 없음
+```
+
+### 통과한 테스트 (새 테스트 3개)
+- Codex 사례: 바뀐 답(정상 감자 95.3%)과 상태 요약(정상 95.3%)이 일치하고, 바뀌지 않은 사진의 확률은 그대로
+- 목록을 한 줄 고치면 봉인 불일치로 종료. 실행 표시 파일이 있으면 종료, 결과 파일이 있으면 종료(표시 파일을 새로 만들지 않음)
+- `scores_once.json`이 있으면 RULES에 그 기록이 있어야 하고, 실행 표시 파일이 남아 있으면 실패
+
+### 하고 싶은 것
+- 사용자가 진행하라고 하면 `python results/t9_test/score.py`로 T9를 한 번 채점한다.
+
+### 문제 있는 것 / 남은 한계
+- 채택하지 않은 토마토 조각 검사(`apply_crop_check`)에도 같은 표시 불일치가 있을 것이다. 쓰이지 않는 경로라 고치지 않았다.
+- 실행이 중간에 끊기면 `scores_once.running`이 남는다. 그때는 무엇을 읽었는지 확인한 뒤 사람이 지워야 한다(일부러 자동으로 지우지 않는다).
+
+---
+
 ## 2026-11-23 · Codex 검수 — PC1 판정과 T9 채점 준비
 
 ### 한 것

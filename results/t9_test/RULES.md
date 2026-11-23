@@ -91,3 +91,9 @@
 ### 봉인
 - t9_main.csv SHA-256: `f800e5ad3623155363a9d8ab4270f4094499dad143d135452b1ed49328abdfe6`
 - t9_test.csv SHA-256: `149013156e15510002a3c2cc6d94a6e03327ed3006c1221579c30b412146b287` (바뀌지 않음)
+
+## 덧붙임 4 (2026-11-23): 채점 실행 방법 (Codex 검수 반영, 채점 전에 적음)
+- 본 채점은 `python results/t9_test/score.py`(인자 없음)이고 결과는 항상 `results/t9_test/scores_once.json`에 쓴다. 본문의 `score.py OUT.json`은 이 방법으로 바뀌었다.
+- 사진을 읽기 전에 멈추는 경우: 봉인이 다를 때, `scores_once.json`이 이미 있을 때, 실행 표시 파일 `scores_once.running`이 있을 때(실행 중이거나 중간에 끊긴 실행).
+- 리허설은 `score.py --rehearsal OUT.json`이고 `scores_once.json`에는 쓸 수 없다.
+- 판정에 쓰는 것은 그대로다(최종 답과 판단 보류). 조건과 봉인은 바뀌지 않았다.
