@@ -169,7 +169,25 @@ def decide(logits: torch.Tensor, checkpoint: dict, features: torch.Tensor | None
         probabilities, index = five, five.argmax(1)
         unknown, switched = five_unknown, torch.zeros_like(five_unknown)
     probability = probabilities[torch.arange(len(index)), index]
-    return Answers(probabilities, index, probability, unknown, switched, five, five_unknown)
+    answers = Answers(probabilities, index, probability, unknown, switched, five, five_unknown)
+    if "potato_check" in checkpoint and features is not None and "clip_head" in checkpoint:
+        answers = apply_potato_check(answers, checkpoint, clip_logits)
+    return answers
+
+
+# ---------- dirty fresh potatoes answered "rotten potato": ask the CLIP head alone (experiments/potato_check) ----------
+def apply_potato_check(a: Answers, checkpoint: dict, clip_logits: torch.Tensor) -> Answers:
+    """Only when the checkpoint has "potato_check" (TV-12 has not). An answer "rotten potato" given by the five-vegetable
+    system becomes "fresh potato" when the five-vegetable CLIP head alone gives "fresh potato" at least `threshold` of the
+    two potato classes; its shown probability is that share (so below 0.9 it is still held back). Nothing else changes."""
+    from labels import CLASS_NAMES
+    fresh = CLASS_NAMES.index("potato_fresh")
+    share = clip_logits[:, fresh:fresh + 2].softmax(1)[:, 0]
+    flip = ~a.unknown & ~a.switched & (a.index == fresh + 1) & (share >= checkpoint["potato_check"]["threshold"])
+    index, probability = a.index.clone(), a.probability.clone()
+    index[flip] = fresh
+    probability[flip] = share[flip].to(probability.dtype)
+    return Answers(a.probabilities, index, probability, a.unknown, a.switched, a.five, a.five_unknown)
 
 
 # ---------- holding an answer back (experiments/improve_without_photos, part 4) ----------
