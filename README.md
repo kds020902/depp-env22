@@ -1,8 +1,13 @@
-# 채소 종류·신선도 분류 (현재 버전 TV-12)
+# 채소 종류·신선도 분류 (현재 버전 TV-13)
 
 사진 한 장을 보고 채소 8종(오이·감자·토마토·피망·당근, 양파·고구마·대파)의 종류와 정상/상함을 답한다. 학습하지 않은 것 같은 사진에는 "학습된 데이터가 아닙니다"라고 답한다. 채소 모델(EfficientNet-B0)과 CLIP 분류기 두 개를 함께 쓰고, 대파는 종류만 본다.
 
-## 한눈에 보는 성적 (TV-12)
+## 한눈에 보는 성적 (TV-12의 점수, TV-13은 아래 설명)
+
+- **TV-13 (2026-11-24) = TV-12 + 감자 재확인.** 가중치는 TV-12와 같다. "상한 감자"라는 답만 CLIP 분류기에 한 번 더 묻고, CLIP이 정상 쪽을 더 그럴듯하게 보면 "정상 감자"로 바꾼다([potato_check](experiments/potato_check/README.md)).
+    - 블라인드 시험지 T9(89장, 한 번 채점): 흙 묻은 정상 감자 12 → 18/30장, 상한 감자 30 → 30/30장, 전체 59 → 65장([T9 기록](results/t9_test/README.md)).
+    - 바뀐 답은 대부분 확률이 0.9 미만이라 화면에는 판단 보류로 보인다. "상한 감자"라고 확정해서 틀리던 사진이 줄어든 것이 주된 변화다.
+    - 아래 표의 T3·새 인터넷 241·Test 300은 TV-12로 잰 점수다. 이미 본 시험지라 TV-13으로 다시 채점하지 않았다. 감자 답만 달라질 수 있다.
 
 | 시험지 | 다섯 채소 맞게 남김 | 상한 채소를 정상이라고 답함 |
 |---|---:|---:|
@@ -16,7 +21,12 @@
 - 양파·고구마·대파: 새 채소 시험지 198장에서 종류를 89%(176장) 맞힌다.
 - 자세한 표: [results/scorecard](results/scorecard/README.md). 데이터 출처: [data_sources.md](data_sources.md). 실험 목록: [experiments/README.md](experiments/README.md).
 
-### 현재 상태 (2026-11-04): TV-12 고정
+### 현재 상태 (2026-11-24): TV-13
+- 2026-11-22~24: 상한 고구마 글 설명 바꾸기([sweetpotato_prompts](experiments/sweetpotato_prompts/README.md))와 학습 사진 추가([sweetpotato_photos](experiments/sweetpotato_photos/README.md))는 반영하지 않았다. 감자 재확인([potato_check](experiments/potato_check/README.md))은 T9에서 미리 정한 조건을 모두 충족해 사용자가 채택했다.
+- **남은 약점 (T9에서 확인):** 상한 고구마 29장 중 12장을 "정상"으로 답한다(11장은 "정상 고구마"). 흙 묻은 정상 감자 30장 중 9장은 여전히 "상한 감자"다.
+- T3~T9는 모두 본 시험지다. 다음 후보에는 새 블라인드 사진이 필요하다.
+
+### 그 전 상태 (2026-11-04): TV-12 고정
 - 2026-11-03~04에 시도한 후보는 모두 반영하지 않았다.
     - 흙 묻은·썩은 감자 R1~R3
     - 살짝 상한 토마토: 사진 추가, 조각 검사
@@ -72,17 +82,19 @@
 | TV-9 | 10.31 | `42724fe` | 양파·고구마·대파 추가, 8종 (후보 V6-H, [new_vegetables](experiments/new_vegetables/README.md)) | 288 / 285 | 199 / 189 |
 | TV-10 | 11.01 | `971190e` | 상한 고구마·대파 개선, CLIP 글 설명 섞기 (후보 V7) | 288 / 285 | 200 / 190 |
 | TV-11 | 11.01 | `f18a159` | 작고 반투명한 가짜 워터마크로 다시 학습 (후보 WC, [watermark](experiments/watermark/README.md)) | 287 / 284 | 199 / 189 |
-| **TV-12** | 11.01 | `9ebb286` | CLIP 글 설명으로 거르기 보강 (후보 ZS8, [zero_shot_reject](experiments/zero_shot_reject/README.md), [T3](results/t3_test/README.md)) | **287 / 285** | **199 / 188** |
+| TV-12 | 11.01 | `9ebb286` | CLIP 글 설명으로 거르기 보강 (후보 ZS8, [zero_shot_reject](experiments/zero_shot_reject/README.md), [T3](results/t3_test/README.md)) | 287 / 285 | 199 / 188 |
+| **TV-13** | 11.24 | `TV13COMMIT` | "상한 감자" 답만 CLIP 분류기에 다시 묻기 (후보 PC1, [potato_check](experiments/potato_check/README.md), [T9](results/t9_test/README.md)). 가중치는 TV-12와 같음 | 다시 재지 않음 | 다시 재지 않음 |
 
 - TV-9부터는 8종 시스템의 결과다. 새 채소 시험지 1~4(198장)에서 TV-10 ~ TV-12는 176장(89%)의 종류를 맞힌다.
 - TV-12는 시험지 T3(247장)에서 다섯 채소 109/137을 맞게 남기고, 다섯 채소가 아닌 사진 48/70을 거른다(TV-11은 108, 41).
+- TV-13은 T9(89장)에서 65장을 맞혔다(TV-12는 59장). 개발 사진 969장에서는 869장(TV-12는 859장)이고, 달라진 답은 모두 감자다.
 - TV-1 ~ TV-5는 채소 모델 하나만 쓴다. TV-6부터는 채소 모델과 CLIP 분류기를 합친다.
 - 같은 이름의 git 태그를 붙이는 명령이다. 저장소 쓰기 권한이 있는 컴퓨터에서 한 번 실행하면 GitHub에서 `TV-3`처럼 이름으로 고를 수 있다.
 
 ```bash
 git fetch origin claude/great-planck-vnvyxx
 for v in "TV-1 03db425" "TV-2 2a3b851" "TV-3 78fe987" "TV-4 2bdf7e8" "TV-5 38e1736" "TV-6 5b1f7d7" \
-         "TV-7 cc21bb9" "TV-8 0e91fb8" "TV-9 42724fe" "TV-10 971190e" "TV-11 f18a159" "TV-12 9ebb286"; do
+         "TV-7 cc21bb9" "TV-8 0e91fb8" "TV-9 42724fe" "TV-10 971190e" "TV-11 f18a159" "TV-12 9ebb286" "TV-13 TV13COMMIT"; do
   set -- $v; git tag -a "$1" "$2" -m "$1"
 done
 git push origin --tags

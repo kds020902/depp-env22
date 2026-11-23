@@ -12,8 +12,8 @@ CLIP 판정에 들어가는 글 설명(영어 문장)과는 다른 것이다. �
 
 ## 공통 규칙 (세 템플릿 모두)
 - **기준:** `claude/great-planck-vnvyxx`의 최신 커밋과 `docs/codex_handoff.md` 맨 위 항목
-- **기준 모델:** TV-12(`model.pth`). 기록은 `results/baseline/tv12.json`에 있다. 사용자 결정 없이 `model.pth`를 바꾸지 않는다.
-- **블라인드 시험지 T3~T8은 다 썼다.** 후보를 고르거나 개선을 주장하는 데 다시 쓰지 않는다.
+- **기준 모델:** TV-13(`model.pth`). 기록은 `results/baseline/tv13.json`에 있다. 사용자 결정 없이 `model.pth`를 바꾸지 않는다.
+- **블라인드 시험지 T3~T9는 다 썼다.** 후보를 고르거나 개선을 주장하는 데 다시 쓰지 않는다.
 - **끝나면:** 작업 브랜치에 올리고, `docs/codex_handoff.md` 맨 위에 아래 "결과 보고 형식"으로 적는다.
 - 해 보지 않은 것은 "하지 않음"으로 적는다. 실패한 테스트는 출력과 함께 적는다.
 
@@ -105,7 +105,7 @@ CLIP 판정에 들어가는 글 설명(영어 문장)과는 다른 것이다. �
 목표: <약점>을 <방법>으로 줄일 수 있는지 본다. 채택은 사용자가 결정한다.
 
 입력 자료
-- 기준 모델: TV-12 (results/baseline/tv12.json, results/baseline/tv12_dev.json)
+- 기준 모델: TV-13 (results/baseline/tv13.json, results/baseline/tv13_dev.json)
 - 개발 자료: tools/compare_on_dev.py의 세트 + <추가 자료>
 - 새 학습 사진(있으면): <CSV. 출처·라이선스·주소 포함>
 

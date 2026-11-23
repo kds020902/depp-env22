@@ -1,4 +1,4 @@
-"""Write results/baseline/tv12.json: what is needed to rerun and to compare against the baseline model, in one file.
+"""Write results/baseline/tv13.json: what is needed to rerun and to compare against the baseline model, in one file.
 
     python tools/baseline_card.py            # rewrite the record from model.pth and the files it points to
     python tools/baseline_card.py --check    # exit 1 when the record no longer matches the files (also run by pytest)
@@ -21,8 +21,8 @@ from pathlib import Path
 import torch
 
 REPO = Path(__file__).resolve().parents[1]
-OUT = REPO / "results/baseline/tv12.json"
-DEV = REPO / "results/baseline/tv12_dev.json"
+OUT = REPO / "results/baseline/tv13.json"       # tv12.json / tv12_dev.json stay as the record of TV-12
+DEV = REPO / "results/baseline/tv13_dev.json"
 FILES = ["model.pth", "dataset/manifest.csv", "experiments/new_vegetables/v7/head_data.npz",
          "experiments/sweetpotato_prompts/dev_features.npz", "requirements.txt"]
 BLIND = ["results/t3_test", "results/t4_test", "results/t5_test", "results/t6_test", "results/t7_test", "results/t8_test", "results/t9_test"]
@@ -42,7 +42,7 @@ def build() -> dict:
     ck = torch.load(REPO / "model.pth", map_location="cpu", weights_only=True)
     clip_head, new_head = ck["clip_head"], ck["new_vegetable_head"]
     splits = Counter(r["split"] for r in csv.DictReader(open(REPO / "dataset/manifest.csv", encoding="utf-8")))
-    dev = json.load(open(DEV))["systems"]["TV-12"]["_all_labelled"]
+    dev = json.load(open(DEV))["systems"][ck["version"]]["_all_labelled"]
     return {
         "version": ck["version"],
         "files_sha256": {path: sha256(path) for path in FILES},
@@ -65,11 +65,14 @@ def build() -> dict:
                               "combined_temperature": clip_head["temperature"],
                               "not_five_threshold": clip_head["unknown_threshold"], "text_evidence_alpha": clip_head["text_evidence"]["alpha"],
                               "new_vegetable_text_alpha": new_head["alpha"], "new_vegetable_switch_probability": new_head["switch_probability"],
-                              "not_eight_threshold": new_head["unknown_threshold"], "hold_back_below": 0.9},
+                              "not_eight_threshold": new_head["unknown_threshold"], "hold_back_below": 0.9,
+                              "potato_check_threshold": ck["potato_check"]["threshold"]},
+        "potato_check": {"rule": ck["potato_check"]["rule"], "notes": ck["potato_check"]["notes"],
+                         "made_from": "TV-12 (results/baseline/tv12.json) plus this key; no weight was changed or trained"},
         "environment": {"python": "3.11", "torch": ck["runtime"]["torch_version"], "device": ck["hyperparameters"]["device"],
                         "packages": "requirements.txt (exact versions)"},
         "commits": {path: last_commit(path) for path in ("model.pth", "dataset/manifest.csv", "src/decision.py")},
-        "development_baseline": {"file": "results/baseline/tv12_dev.json", "made_by": "python tools/compare_on_dev.py results/baseline/tv12_dev.json",
+        "development_baseline": {"file": "results/baseline/tv13_dev.json", "made_by": "python tools/compare_on_dev.py results/baseline/tv13_dev.json",
                                  "all_labelled": {k: v for k, v in dev.items() if k != "classes"}},
         "blind_tests_scored_once": {path: {f.name: sha256(f"{path}/{f.name}") for f in sorted((REPO / path).glob("scores*.json"))}
                                     for path in BLIND},
@@ -84,8 +87,8 @@ def main():
         stored.pop("commits"); record.pop("commits")     # history is not available in shallow checkouts
         different = [key for key in record if record[key] != stored.get(key)]
         if different:
-            raise SystemExit(f"results/baseline/tv12.json is out of date: {different} (rerun tools/baseline_card.py)")
-        print("results/baseline/tv12.json matches the files")
+            raise SystemExit(f"results/baseline/tv13.json is out of date: {different} (rerun tools/baseline_card.py)")
+        print("results/baseline/tv13.json matches the files")
         return
     json.dump(record, open(OUT, "w", encoding="utf-8"), indent=1, ensure_ascii=False)
     print("wrote", OUT.relative_to(REPO))

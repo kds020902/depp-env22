@@ -21,9 +21,17 @@ def test_baseline_card_matches_the_files():
 
 
 def test_development_baseline_is_reproduced():
-    stored = json.load(open(REPO / "results/baseline/tv12_dev.json"))["systems"]["TV-12"]
+    stored = json.load(open(REPO / "results/baseline/tv13_dev.json"))["systems"]["TV-13"]
     again = evaluate(torch.load(REPO / "model.pth", map_location="cpu", weights_only=True), development_sets())
     assert json.loads(json.dumps(again)) == stored
+
+
+def test_tv12_is_model_pth_without_the_potato_check():
+    """TV-13 changed no weight: taking the potato check out of model.pth gives TV-12's recorded development answers."""
+    checkpoint = torch.load(REPO / "model.pth", map_location="cpu", weights_only=True)
+    tv12 = {k: v for k, v in checkpoint.items() if k != "potato_check"}
+    stored = json.load(open(REPO / "results/baseline/tv12_dev.json"))["systems"]["TV-12"]
+    assert json.loads(json.dumps(evaluate(tv12, development_sets()))) == stored
 
 
 def test_tally_counts_each_kind_of_outcome():
@@ -63,7 +71,7 @@ def test_stored_inputs_are_refused_when_the_candidate_was_not_made_with_them():
 
 def test_candidate_names_cannot_replace_the_baseline_or_repeat():
     assert parse_candidates(["A=a.pth", "B=dir/b=1.pth"]) == {"A": REPO.__class__("a.pth"), "B": REPO.__class__("dir/b=1.pth")}
-    for bad in (["TV-12=a.pth"], ["A=a.pth", "A=b.pth"], ["a.pth"], ["=a.pth"], ["A="]):
+    for bad in (["TV-13=a.pth"], ["A=a.pth", "A=b.pth"], ["a.pth"], ["=a.pth"], ["A="]):
         with pytest.raises(SystemExit):
             parse_candidates(bad)
 

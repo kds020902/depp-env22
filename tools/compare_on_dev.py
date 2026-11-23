@@ -1,4 +1,4 @@
-"""Compare the baseline (model.pth = TV-12) with candidate checkpoints on the same development photos.
+"""Compare the baseline (model.pth = TV-13) with candidate checkpoints on the same development photos.
 
     python tools/compare_on_dev.py OUT.json [NAME=candidate.pth ...]
 
@@ -8,7 +8,7 @@ as model inputs (b = the vegetable model's logits, X = CLIP image features):
   and three sets without a class label (rotten/other fruit 374 and everyday things 400 should be turned away; the 192
   real-scene vegetable crops should not);
 - experiments/sweetpotato_prompts/dev_features.npz: 162 potato / sweet potato web photos.
-No blind test set (T3-T8) is read. Because b is stored, a candidate must keep model.pth's vegetable model (checked);
+No blind test set (T3-T9) is read. Because b is stored, a candidate must keep model.pth's vegetable model (checked);
 a candidate with a retrained vegetable model has to be compared on photos (experiments/root_and_tomato/evaluate.py).
 
 Per set and class (tally()):
@@ -43,7 +43,7 @@ LABELLED = {"valid": "Valid 300", "odev": "internet 221", "o160": "field 160", "
             "newval": "new-vegetable Valid 89"}
 UNLABELLED = {"fruit374": ("fruit 374", True), "coco400": ("everyday things 400", True), "lvis": ("real-scene vegetable crops 192", False)}
 AWAY = "turned_away"
-BASELINE = "TV-12"
+BASELINE = "TV-13"   # the version of model.pth (TV-12 until 2026-11-24; its record is results/baseline/tv12_dev.json)
 SPECIES_ONLY = ("greenonion",)   # the system does not judge the condition of green onions
 
 
@@ -187,13 +187,13 @@ def main():
     record = {"inputs": {p.relative_to(REPO).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest() for p in (REPO / "model.pth", HEAD_DATA, ROOT_DATA)},
               "candidates": {name: {"path": str(path), "sha256": hashlib.sha256(path.read_bytes()).hexdigest()} for name, path in candidates.items()},
               "hold_back_below": HOLD_BACK_BELOW, "systems": results,
-              "answers_changed_from_TV-12": {name: changed(results[BASELINE], results[name], sets) for name in candidates},
-              "right_and_wrong_against_TV-12": {name: paired(results[BASELINE], results[name], sets) for name in candidates}}
+              f"answers_changed_from_{BASELINE}": {name: changed(results[BASELINE], results[name], sets) for name in candidates},
+              f"right_and_wrong_against_{BASELINE}": {name: paired(results[BASELINE], results[name], sets) for name in candidates}}
     json.dump(record, open(out, "w"), indent=1, ensure_ascii=False)
     print(table(results))
-    for name, counts in record["answers_changed_from_TV-12"].items():
-        print(f"\n{name}: answers changed from TV-12:", counts)
-        print(f"{name}: right -> wrong / wrong -> right on the same photos:", record["right_and_wrong_against_TV-12"][name]["_all_labelled"])
+    for name, counts in record[f"answers_changed_from_{BASELINE}"].items():
+        print(f"\n{name}: answers changed from {BASELINE}:", counts)
+        print(f"{name}: right -> wrong / wrong -> right on the same photos:", record[f"right_and_wrong_against_{BASELINE}"][name]["_all_labelled"])
 
 
 if __name__ == "__main__":

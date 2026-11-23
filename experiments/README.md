@@ -32,7 +32,7 @@
 | [sharper_eye](sharper_eye/README.md) | 채소 모델을 320픽셀로 다시 학습 | 반영 안 함 (상한 토마토 −1, 상한 감자 악화) |
 | [reject_by_bigger_eye](reject_by_bigger_eye/README.md) | 큰 이미지 모델로 과일 거르기 | 보류 (계획만) |
 | [tomato_crops](tomato_crops/README.md) | 살짝 상한 토마토: "정상 토마토" 답만 조각 5개로 다시 보기 | 반영 안 함 (개발: 상한 토마토 57% → 86%, T6·T7: 바뀐 답 0장, TV-12가 이미 100%·88%) |
-| [potato_check](potato_check/README.md) | 흙 묻은 감자: "상한 감자" 답만 CLIP 분류기에 다시 묻기 (PC1, 기준 0.5) | T9에서 조건 모두 충족 (흙 묻은 정상 감자 12 → 18/30장, 상한 감자 30/30 그대로, 전체 59 → 65/89장). 채택은 사용자 결정 |
+| [potato_check](potato_check/README.md) | 흙 묻은 감자: "상한 감자" 답만 CLIP 분류기에 다시 묻기 (PC1, 기준 0.5) | **채택 (TV-13)**: T9에서 조건 모두 충족 (흙 묻은 정상 감자 12 → 18/30장, 상한 감자 30/30 그대로, 전체 59 → 65/89장) |
 | [sweetpotato_photos](sweetpotato_photos/README.md) | 상한 고구마 학습 사진 21장 추가 (새 채소 분류기만 다시 학습, SP1) | 반영 안 함 (개발: 감자를 고구마로 답함 2 → 5장, 다섯 채소 −3장. T9는 열지 않음) |
 | [sweetpotato_prompts](sweetpotato_prompts/README.md) | 감자·고구마 글 설명 문구만 바꾸기(이름만 / 사진 문맥 / 보이는 특징) | 반영 안 함 (개발: 상한 고구마 25장 중 21 → 19~22장, 조건 +2장 미달) |
 

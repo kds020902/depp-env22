@@ -58,7 +58,8 @@ def user2_report(checkpoint: dict) -> dict:
 def main():
     if "--store" in sys.argv:
         store_user2()
-    tv12 = torch.load(REPO / "model.pth", map_location="cpu", weights_only=True)
+    # model.pth is TV-13 = PC1 since the adoption; TV-12 is the same file without the potato check
+    tv12 = {k: v for k, v in torch.load(REPO / "model.pth", map_location="cpu", weights_only=True).items() if k != "potato_check"}
     pc1 = {**tv12, "potato_check": {"threshold": THRESHOLD}}
     sets = development_sets()
     dev = {"TV-12": evaluate(tv12, sets), "PC1": evaluate(pc1, sets)}

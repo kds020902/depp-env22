@@ -50,8 +50,12 @@ def test_manifest_hashes_match_files():
 
 
 # ---------- the adopted checkpoint ----------
-def test_checkpoint_is_tv12(checkpoint):
-    assert checkpoint["version"] == "TV-12"
+def test_checkpoint_is_tv13(checkpoint):
+    """TV-13 = TV-12 with the potato re-check (experiments/potato_check); the weights are TV-12's."""
+    assert checkpoint["version"] == "TV-13"
+    assert checkpoint["potato_check"]["threshold"] == 0.5
+    from networks import state_checksum
+    assert state_checksum(checkpoint["state_dict"]) == "d4c96243b6e6dd9c43271bb20041fb7305985fed57ff8d7c19263c3c29fb42b5"
     assert checkpoint["class_names"] == CLASS_NAMES[:10]
     head = checkpoint["clip_head"]
     assert head["other_class"] and "text_evidence" in head and "alpha" not in head
