@@ -97,12 +97,13 @@ def main():
     parser.add_argument("--clip-pretrained", default=PRETRAINED)
     args = parser.parse_args()
 
-    from sklearn.linear_model import LogisticRegression
-
     torch.set_num_threads(args.threads)
     model, checkpoint = load_model(args.model, torch.device("cpu"))
     manifest = args.manifest.expanduser().resolve()
-    splits = read_manifest(manifest, CLASS_NAMES[:len(checkpoint["class_names"])])
+    splits = read_manifest(manifest, CLASS_NAMES[:len(checkpoint["class_names"])])   # also checks every photo's SHA-256
+    # scikit-learn only after the manifest check: the fast CI has no scikit-learn, and a changed photo must be reported first
+    from sklearn.linear_model import LogisticRegression
+
     clip = ClipModel("cpu", arch=args.clip_arch, pretrained=args.clip_pretrained)
 
     class_names = list(checkpoint["class_names"])
