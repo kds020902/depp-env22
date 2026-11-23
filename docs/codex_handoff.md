@@ -5,6 +5,64 @@ Claude와 Codex가 작업을 마칠 때마다 맨 위에 새 항목을 덧붙인
 
 ---
 
+## 2026-11-23 · Claude: 4건 수정 (예측 CLI의 입력 덮어쓰기, 학습 목록 해시 검증, 학습 기본 클래스 수, Windows 체크아웃 해시)
+
+### 확인한 커밋 / 변경 파일
+- 검토 기준 `34a3534`에서 시작했다. 수정 커밋은 **`17501dd`**다(이 노트는 그다음 커밋).
+- 변경: `src/predict.py`, `src/train.py`, `.gitattributes`(새 파일), `README.md`, `tests/test_predict_outputs.py`, `tests/test_manifest_checks.py`(새 파일)
+- `model.pth`, `src/decision.py`, 봉인된 목록은 바꾸지 않았다. T9는 채점하지 않았다.
+
+### 수정 전 재현 → 수정 후 (같은 명령)
+| 문제 | 수정 전 (`34a3534`) | 수정 후 (`17501dd`) |
+|---|---|---|
+| 1a. `--output`이 입력 사진 | `--input in --output in/a.jpg` → 사진이 CSV로 덮임(SHA-256 `85e90dca…` → `ed7586ae…`) | "…is the input photo…"로 종료, 아무것도 쓰지 않음. SHA-256 그대로 |
+| 1b. `--heatmap`이 입력 폴더 아래 | 같은 명령 두 번 → 입력 1장 → 2장(히트맵이 사진으로 읽힘), `heat/heat/a_heatmap_heatmap.jpg` 생성 | 두 번 모두 1장. 히트맵은 `heat/a_heatmap.jpg` 하나 |
+| 2. 목록 해시 | Train 사진을 Val 경로에 복사(CSV는 그대로) → `read_manifest`가 통과 (1260 / 300 / 300) | "1 photo(s) do not match the SHA-256 … val: <경로>"로 종료 |
+| 3. 기본 클래스 수 | `train.py --manifest dataset/manifest.csv --out X` → "All 15 trained classes … must be in the train split" | 10클래스로 시작(사전학습 가중치를 받고 학습 단계로 들어감. 시간 제한으로 중단) |
+| 4. `core.autocrlf=true` 새 체크아웃 | `baseline_card.py --check` → "out of date: ['files_sha256', 'blind_tests_scored_once']", 빠른 테스트 1개 실패 | "matches the files", 빠른 테스트 53 통과·1 건너뜀 |
+
+### 무엇을 어떻게 고쳤나
+1. **예측 CLI (`src/predict.py`)**
+    - `refuse_to_overwrite_input()`: `--output`·`--report`가 입력 사진과 같은 파일이면 모델을 불러오기 전, 어떤 파일도 쓰기용으로 열기 전에 종료한다. 같은 파일인지는 `os.path.samefile`로 본다(상대·절대 경로, 링크, 대소문자를 구분하지 않는 디스크). 파일이 아직 없으면 풀어 쓴 경로로 비교한다.
+    - `find_images(path, skip=)`: `--heatmap` 폴더가 입력 폴더 아래에 있으면 그 폴더를 검색에서 뺀다.
+    - `refuse_heatmaps_among_photos()`: `--heatmap`이 입력 폴더 자체이거나 그 위의 폴더이면 종료한다(히트맵과 사진을 구분할 수 없게 된다).
+2. **학습 목록 (`src/train.py`의 `read_manifest`)**
+    - 쓰는 사진마다 실제 SHA-256을 CSV와 대조한다. 다르면 "분할: 경로"를 5개까지 보여 주고 `ValueError`로 끝낸다. 그 뒤의 `image_path`·`group_id`·`sha256` 분할 간 중복 검사는 그대로다.
+    - `calibrate.py`와 `train_clip_head.py`는 같은 함수를 쓰므로 함께 적용된다. 두 명령 모두 모델 파일을 건드리기 전에 멈추는 것을 테스트했다.
+    - 비용: 기본 데이터셋 1,860장(294MB)을 한 번 읽는다(이 환경에서 1초 안팎).
+3. **기본값**: `--num-classes` 기본을 10으로 바꿨다. 6·10·16은 그대로 받는다. 도움말과 README에 16은 양파·고구마·대파가 들어 있는 목록이 필요하다고 적었다.
+4. **`.gitattributes`**: `* -text` 한 줄이다. 모든 추적 파일을 커밋된 바이트 그대로 체크아웃한다.
+    - 먼저 대조했다: SHA-256이 기록된 추적 파일 18개(기준선 카드의 파일 5개, 블라인드 점수 JSON, 봉인된 목록 CSV)의 **Git blob 해시가 기록과 모두 일치**한다. blob의 줄바꿈은 CRLF 10개, LF 8개로 섞여 있다. 그래서 어느 한쪽으로 바꾸지 않고 바이트를 보존했다.
+    - 파일 내용은 하나도 바꾸지 않았다(재정규화 없음). 기존 체크아웃(LF)에는 변화가 없다.
+
+### 실제 실행한 명령
+```bash
+python -m pytest -q                      # 53 통과, 1 건너뜀
+FULL_TESTS=1 python -m pytest -q         # 54 통과 (CLIP 가중치 사용, TV-12 골든 예측 포함)
+python tools/baseline_card.py --check    # matches the files
+git -c core.autocrlf=true clone … && git config core.autocrlf true     # 새 체크아웃
+  python tools/baseline_card.py --check  # matches the files
+  python -m pytest -q                    # 53 통과, 1 건너뜀
+```
+- 새 체크아웃에서 `git ls-files --eol`: `requirements.txt`가 `i/lf w/lf attr/-text`(수정 전에는 작업 폴더가 CRLF로 바뀌었다).
+
+### 통과한 테스트 (새 테스트 8개)
+- 입력 사진과 같은 `--output`·`--report`(절대 경로, `in/sub/../a.jpg` 같은 상대 경로, 단일 파일 입력): 종료 코드가 0이 아니고 사진의 SHA-256이 그대로이며 다른 출력도 생기지 않음
+- 입력 폴더 아래 `--heatmap`으로 두 번 실행: 두 CSV의 사진 목록이 같고(2장), 히트맵은 2개뿐이며 원본 해시가 그대로. `--heatmap`이 입력 폴더 자체이면 종료
+- 정상 목록(작은 복사본과 저장소 기본 목록)은 읽힘 / Train 사진을 Val 경로에 복사하면 Val 경로를 알려 주며 거부 / `group_id`가 두 분할에 걸치면 기존처럼 거부 / `calibrate.py`·`train_clip_head.py`가 모델 파일을 바꾸지 않고 종료
+- `train.py`의 기본 클래스 수 10, 6·10·16 허용, 12 거부
+- `.gitattributes`에 `* -text`가 있고 해시가 기록된 파일의 `text` 속성이 unset
+
+### 남은 한계
+- **실제 Windows에서 돌려 보지 않았다.** `core.autocrlf=true`로 받은 Linux 체크아웃으로 확인했다. `os.path.samefile`의 대소문자 동작도 Linux에서만 봤다.
+- `.gitattributes`를 넣기 전에 `autocrlf=true`로 받아 둔 기존 Windows 체크아웃은 다시 체크아웃해야 줄바꿈이 원래대로 돌아온다(`git rm --cached -r . && git reset --hard` 또는 새로 받기).
+- 예측 CLI는 `--output`과 `--report`가 서로 같은 파일인 경우, 출력 파일이 히트맵 폴더 안의 히트맵 이름과 겹치는 경우는 막지 않는다(요청 범위 밖).
+- `read_manifest`는 호출할 때마다 사진을 모두 읽는다. 큰 데이터셋에서는 시작이 그만큼 느려진다.
+- `train.py`를 기본값으로 끝까지 학습해 보지는 않았다(시작 단계 통과만 확인).
+- **이번 범위에 넣지 않은 것:** Codex의 `34a3534` 항목(T9 채점기의 실행 경계 3건: 겹쳐 실행, 잘못된 인자, 리허설 임시 파일)은 사용자 지시의 4건에 들어 있지 않아 고치지 않았다. T9 본 채점 전에 따로 고쳐야 한다.
+
+---
+
 ## 2026-11-23 · Codex 재검수 — PC1 표시 통과, T9 채점기 실행 경계 3건
 
 ### 한 것
