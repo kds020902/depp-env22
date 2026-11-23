@@ -113,3 +113,48 @@ def test_feature_cache_reads_caches_written_before_the_model_prefix(tmp_path):
     clip = _FakeClip(9.0)
     out = clip_features(clip, [Path("p1.jpg")], cache=cache, load=lambda i: None, encoder=encoder_tag("ViT-B-16", "datacomp_xl_s13b_b90k"))
     assert float(out.mean()) == 5.0 and clip.calls == 0
+
+
+def _sha(path: Path) -> str:
+    import hashlib
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def test_output_or_report_on_an_input_photo_is_refused_and_the_photo_survives(tmp_path):
+    """--output / --report naming an input photo (relative or absolute spelling) stops before anything is written."""
+    folder = tmp_path / "in"
+    folder.mkdir()
+    photo = folder / "a.jpg"
+    shutil.copy(PHOTO, photo)
+    before = _sha(photo)
+    relative = Path("in") / "sub" / ".." / "a.jpg"       # another spelling of the same file, from cwd = tmp_path
+    (folder / "sub").mkdir()
+    for option, target in (("--output", str(photo)), ("--output", str(relative)), ("--report", str(photo)), ("--report", str(relative))):
+        extra = [option, target] + ([] if option == "--output" else ["--output", str(tmp_path / "ok.csv")])
+        done = subprocess.run([sys.executable, str(REPO / "src/predict.py"), "--model", str(REPO / "model.pth"), "--no-clip",
+                               "--input", str(folder), *extra], capture_output=True, text=True, cwd=tmp_path)
+        assert done.returncode != 0 and "is the input photo" in done.stderr and option in done.stderr, done.stderr
+        assert _sha(photo) == before and not (tmp_path / "ok.csv").exists()
+    single = subprocess.run([sys.executable, str(REPO / "src/predict.py"), "--model", str(REPO / "model.pth"), "--no-clip",
+                             "--input", str(photo), "--output", "in/a.jpg"], capture_output=True, text=True, cwd=tmp_path)
+    assert single.returncode != 0 and _sha(photo) == before
+
+
+def test_heatmap_folder_inside_the_input_folder_is_not_read_as_input(tmp_path):
+    """The same command twice: the second run sees the same photos, not the heat maps the first one wrote."""
+    folder = tmp_path / "in"
+    (folder / "x").mkdir(parents=True)
+    shutil.copy(PHOTO, folder / "a.jpg")
+    shutil.copy(REPO / "dataset/test/N_rotten/tomato_rotten_1201.jpg", folder / "x" / "b.jpg")
+    hashes = {p: _sha(p) for p in (folder / "a.jpg", folder / "x" / "b.jpg")}
+    listed = []
+    for run in (1, 2):
+        out = tmp_path / f"run{run}.csv"
+        done = _run(["--input", str(folder), "--output", str(out), "--heatmap", str(folder / "heat")])
+        assert done.returncode == 0, done.stderr
+        listed.append(sorted(row["image"] for row in csv.DictReader(open(out, encoding="utf-8"))))
+    assert listed[0] == listed[1] and len(listed[0]) == 2
+    assert sorted(p.relative_to(folder / "heat").as_posix() for p in (folder / "heat").rglob("*.jpg")) == ["a_heatmap.jpg", "x/b_heatmap.jpg"]
+    assert all(_sha(p) == h for p, h in hashes.items())
+    same = _run(["--input", str(folder), "--output", str(tmp_path / "no.csv"), "--heatmap", str(folder)])
+    assert same.returncode != 0 and "is the input folder" in same.stderr and not (tmp_path / "no.csv").exists()

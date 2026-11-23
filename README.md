@@ -364,6 +364,8 @@ python src/predict.py --model model.pth --input my_photos --output results.csv
 - `--report 리포트.html`을 붙이면 결과를 한 장짜리 HTML 보고서로도 만든다. 사진이 파일 안에 들어 있어 인터넷 없이 열린다. 요약 숫자(누르면 그 사진만 보기), 채소별 표, 사진마다 판정·확률·상한 흔적·다시 찍기 안내와 "상한 곳 보기" 버튼이 있다. 확인이 필요한 사진(비정상, 다시 찍기, 거른 사진)이 먼저 나온다.
 - `rot_evidence`, `heatmap`: 모델이 상했다고 본 정도(1이면 Valid 비정상 사진의 중간 수준)와 히트맵 파일이다. `--heatmap 폴더`를 주면 사진마다 원본과, 상했다고 본 부분을 빨갛게 칠한 사진을 나란히 저장한다.
     - 히트맵 파일 이름은 `사진이름_heatmap.jpg`다. 입력 폴더 안의 하위 폴더는 히트맵 폴더에도 그대로 만들어져서, 이름이 같은 사진끼리 덮어쓰지 않는다.
+    - `--heatmap` 폴더가 입력 폴더 안에 있어도 된다. 그 폴더는 사진을 찾을 때 건너뛰므로, 같은 명령을 다시 실행해도 히트맵이 입력 사진으로 섞이지 않는다. 입력 폴더 자체를 히트맵 폴더로 주면 멈춘다.
+- `--output`이나 `--report`가 입력 사진과 같은 파일이면 아무것도 쓰지 않고 멈춘다(사진을 덮어쓰지 않는다).
 - 사진을 한 장도 판정하지 못하면(모두 열 수 없는 파일 등) 종료 코드 1로 끝난다. CSV에는 사진마다 오류가 적힌다.
 - `closest_guess`: 거른 사진이 무엇과 가장 비슷한지(예: 사과) CLIP으로 알려 준다. `message`에도 "(사과로 보입니다.)"처럼 붙는다.
 - `unknown_score`, `clip_unknown_score`: 채소 모델과 CLIP 분류기가 각각 학습하지 않은 사진을 가르는 점수다. 채소 모델은 energy 점수, CLIP 분류기는 "다섯 채소가 아님"일 로그 오즈다. 지금 `model.pth`는 CLIP 분류기 기준(−0.60)을 넘을 때만 거른다(`clip_head.vegetable_model_check: false`). `--no-clip`이면 채소 모델 기준(−1.96)으로 거른다.
@@ -392,6 +394,8 @@ python src/train.py --manifest dataset/manifest.csv --num-classes 6 --out result
 python src/train.py --manifest dataset/manifest.csv --num-classes 6 --out results/6class/resnet18_linear --arch resnet18 --mode linear --no-augment --lr 0.005 --batch-size 16 --label-smoothing 0 --epochs 100 --patience 15
 python src/make_plots.py --runs results/6class --out results/6class/model_comparison.png
 ```
+
+`--num-classes`를 생략하면 10(저장소의 `dataset/manifest.csv`에 있는 다섯 채소)이다. 6과 16은 직접 적는다. 16은 양파·고구마·대파 사진까지 들어 있는 목록이 있어야 한다. 학습·보정·CLIP 분류기 학습은 시작할 때 목록의 SHA-256과 실제 사진 파일을 대조하고, 다르면 파일 경로와 분할을 알려 주고 멈춘다.
 
 명령은 모두 저장소 맨 위 폴더에서 실행한다. 처음 실행하면 ImageNet 사전학습 가중치를 내려받는다. GPU가 있으면 `--device cuda`를 붙인다. 설정은 Valid 결과만 보고 바꾸고, Test 결과를 보고 설정을 다시 고치지 않는다.
 

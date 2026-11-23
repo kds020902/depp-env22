@@ -16,6 +16,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import os
 import sys
 from collections import Counter
 from pathlib import Path
@@ -68,12 +69,45 @@ def parse_args() -> argparse.Namespace:
     return args
 
 
-def find_images(path: Path) -> list[Path]:
+def find_images(path: Path, skip: Path | None = None) -> list[Path]:
+    """The photo itself, or every photo under the folder. `skip`: a folder under it that is not searched (the heat-map
+    folder of this command, so that heat maps written by an earlier run are not read as input photos)."""
     if path.is_file():
         return [path]
     if not path.is_dir():
         raise FileNotFoundError(path)
-    return sorted(p for p in path.rglob("*") if p.is_file() and p.suffix.lower() in IMAGE_EXTENSIONS)
+    skip = skip.expanduser().resolve() if skip is not None else None
+    if skip is not None and path.resolve() not in skip.parents:      # only a folder below the input folder is left out
+        skip = None
+    return sorted(p for p in path.rglob("*") if p.is_file() and p.suffix.lower() in IMAGE_EXTENSIONS
+                  and (skip is None or skip not in p.resolve().parents))
+
+
+def same_file(a: Path, b: Path) -> bool:
+    """Two paths name one file: by the file system when both exist (relative / absolute spellings, links, letter case on
+    Windows and macOS disks), else by their resolved spelling."""
+    try:
+        return os.path.samefile(a, b)
+    except OSError:
+        return a.expanduser().resolve() == b.expanduser().resolve()
+
+
+def refuse_to_overwrite_input(photos: list[Path], args) -> None:
+    """Stop before anything is opened for writing when --output or --report is one of the input photos."""
+    for option, target in (("--output", args.output), ("--report", args.report)):
+        hit = next((p for p in photos if target is not None and same_file(p, target)), None)
+        if hit is not None:
+            raise SystemExit(f"{option} {target} is the input photo {hit}: writing it would destroy the photo. "
+                             f"Give {option} another file name; nothing was written.")
+
+
+def refuse_heatmaps_among_photos(source: Path, args) -> None:
+    """Stop when the heat-map folder is the input folder itself or holds it: heat maps could not be told from photos."""
+    if args.heatmap is not None and source.is_dir():
+        heatmap = args.heatmap.expanduser().resolve()
+        if heatmap == source or heatmap in source.parents:
+            raise SystemExit(f"--heatmap {args.heatmap} is the input folder {source} or contains it: heat maps would be mixed "
+                             "with the photos. Give a separate folder (a new folder inside the input folder is fine); nothing was written.")
 
 
 def heatmap_names(photos: list[Path], source: Path) -> dict[Path, Path]:
@@ -236,12 +270,14 @@ def write_html(path: Path, entries: list[dict], system: Classifier, source: Path
 def main():
     args = parse_args()
     torch.set_num_threads(args.threads)
-    system = Classifier(args.model.expanduser().resolve(), resolve_device(args.device),
-                        use_clip=not args.no_clip, new_vegetables=not args.five_only)
     source = args.input.expanduser().resolve()
-    photos = find_images(source)
+    refuse_heatmaps_among_photos(source, args)
+    photos = find_images(source, skip=args.heatmap)
     if not photos:
         raise ValueError("No supported image files were found.")
+    refuse_to_overwrite_input(photos, args)      # before the model is loaded and before any file is opened for writing
+    system = Classifier(args.model.expanduser().resolve(), resolve_device(args.device),
+                        use_clip=not args.no_clip, new_vegetables=not args.five_only)
     if not system.calibrated:
         print("Note: this checkpoint has no calibration; run src/calibrate.py to get calibrated probabilities.", file=sys.stderr)
     names = system.class_names

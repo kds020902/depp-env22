@@ -1,0 +1,5 @@
+# Every tracked file is checked out byte for byte as it was committed (no line-ending conversion, whatever
+# core.autocrlf says). Several records are verified by SHA-256: results/baseline/tv12.json, the sealed test lists in
+# results/t*_test/RULES.md, the photo hashes in dataset/manifest.csv. Some of those files were committed with LF and
+# some with CRLF line endings, so the bytes of each commit are kept rather than normalised.
+* -text

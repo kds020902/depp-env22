@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import hashlib
 import json
 import time
 from collections import Counter
@@ -49,6 +50,13 @@ def read_manifest(path: Path, class_names: list[str]) -> dict[str, list[dict]]:
         image_ids.add(row["image_id"])
         if not (path.parent / row["image_path"]).is_file():
             raise FileNotFoundError(path.parent / row["image_path"])
+    # The files on disk must be the photos the manifest lists: the leakage checks below compare the listed hashes, so a
+    # file swapped for another photo (a Train photo copied over a Val one) would otherwise pass them.
+    changed = [f"{row['split']}: {path.parent / row['image_path']}" for row in rows
+               if hashlib.sha256((path.parent / row["image_path"]).read_bytes()).hexdigest() != row["sha256"]]
+    if changed:
+        raise ValueError(f"{len(changed)} photo(s) do not match the SHA-256 in {path.name}; nothing was trained or fitted. "
+                         "Restore the files or rebuild the manifest. " + "; ".join(changed[:5]) + (" ..." if len(changed) > 5 else ""))
     splits = {s: [r for r in rows if r["split"] == s] for s in SPLITS}
     trained = {i for i, name in enumerate(class_names) if name not in UNTRAINED_CLASSES}
     for s in ("train", "val"):
@@ -202,8 +210,10 @@ def parse_args():
                              "photos already carry real watermarks.")
     parser.add_argument("--watermark-style", choices=["standard", "light"], default="standard",
                         help="Size and strength of the synthetic watermarks (light: smaller and see-through).")
-    parser.add_argument("--num-classes", type=int, choices=[6, 10, len(CLASS_NAMES)], default=len(CLASS_NAMES),
-                        help="6 = cucumber/potato/tomato only (the earlier runs), 10 = all five vegetables.")
+    parser.add_argument("--num-classes", type=int, choices=[6, 10, len(CLASS_NAMES)], default=10,
+                        help="Classes read from the manifest, in labels.CLASS_NAMES order (default 10 = the five vegetables of "
+                             "dataset/manifest.csv; 6 = cucumber/potato/tomato only, the earlier runs; 16 needs a manifest "
+                             "that also lists onion, sweet potato and green onion photos).")
     parser.add_argument("--threads", type=int, default=6)
     parser.add_argument("--seed", type=int, default=42)
     return parser.parse_args()
