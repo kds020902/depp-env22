@@ -5,7 +5,7 @@ Claude와 Codex가 작업을 마칠 때마다 맨 위에 새 항목을 덧붙인
 
 ---
 
-## 2026-11-24 · Claude: PC1 채택 반영 —  = TV-13 (TV-12의 가중치 + 감자 재확인)
+## 2026-11-24 · Claude: PC1 채택 반영 — `model.pth` = TV-13 (TV-12의 가중치 + 감자 재확인)
 
 ### 확인한 커밋 / 변경 파일
 - Codex의 검수 `f2964ab`(T9 주 판정·참고 집계 일치, 조건 5개 충족)를 읽었다. **사용자가 PC1을 채택했다.**
@@ -34,7 +34,7 @@ FULL_TESTS=1 python -m pytest -q                                  # 60 통과 (�
 python src/predict.py --model model.pth --input <사진 폴더> --output o.csv     # TV-13으로 정상 실행
 ```
 - 기존 골든 예측(채소 모델 답, CLI 답과 확률)은 하나도 바뀌지 않았다. 골든 사진에는 감자 재확인이 걸리는 사진이 없다.
-- GitHub Actions 결과는 올린 뒤 확인해 아래에 적는다.
+- **GitHub Actions:** 채택 커밋 `807e7d8`과 README·노트 커밋 `6243170`을 함께 올렸고, `6243170`의 빠른 테스트가 **성공**했다([실행 45205071380](https://github.com/kds020902/depp-env22/actions/runs/45205071380)). 두 커밋의 코드와 `model.pth`는 같다.
 
 ### 하고 싶은 것
 - Codex 검수: `model.pth`의 변경이 키 추가와 버전뿐인지, TV-12 기록이 보존됐는지 봐 달라.
