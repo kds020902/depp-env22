@@ -1,0 +1,31 @@
+{
+ "rotten_sweet_potato_n": 15,
+ "five_vegetable_system": {
+  "turned_away": 0,
+  "answer_at_0.9_or_more": 10
+ },
+ "TV-12": {
+  "head_top_kind_sweet_potato": 3,
+  "trained_weights_only": 2,
+  "text_only": 11,
+  "new_share_0.8_or_more": 0,
+  "new_share_0.5_or_more": 2,
+  "new_share_median": 0.13
+ },
+ "SP1": {
+  "head_top_kind_sweet_potato": 7,
+  "trained_weights_only": 5,
+  "text_only": 11,
+  "new_share_0.8_or_more": 2,
+  "new_share_0.5_or_more": 5,
+  "new_share_median": 0.43
+ },
+ "dirty_fresh_potato": {
+  "n": 26,
+  "answered_rotten_potato": 22,
+  "of_those_at_0.9_or_more": 19,
+  "held_back": 4,
+  "vegetable_model_alone_says_fresh": 4,
+  "vegetable_model_alone_says_rotten_potato": 22
+ }
+}
