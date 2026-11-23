@@ -1,0 +1,820 @@
+{
+ "rehearsal_on_development_photos": false,
+ "seals": {
+  "t9_test.csv": "149013156e15510002a3c2cc6d94a6e03327ed3006c1221579c30b412146b287",
+  "t9_main.csv": "f800e5ad3623155363a9d8ab4270f4094499dad143d135452b1ed49328abdfe6"
+ },
+ "n": 90,
+ "n_main": 89,
+ "TV-12": {
+  "main": {
+   "potato_fresh": {
+    "n": 30,
+    "right": 12,
+    "class_right": 12,
+    "answered_sweet_potato": 2,
+    "answered_potato": 27,
+    "wrong_condition_same_kind": 15,
+    "turned_away": 1,
+    "held_back": 14,
+    "answers": {
+     "potato_fresh": 12,
+     "potato_rotten": 15,
+     "sweetpotato_fresh": 2,
+     "turned_away": 1
+    },
+    "right_dirty": [
+     12,
+     30
+    ]
+   },
+   "potato_rotten": {
+    "n": 30,
+    "right": 30,
+    "class_right": 30,
+    "answered_sweet_potato": 0,
+    "answered_potato": 30,
+    "wrong_condition_same_kind": 0,
+    "turned_away": 0,
+    "held_back": 3,
+    "answers": {
+     "potato_rotten": 30
+    },
+    "called_fresh": 0,
+    "right_heavy": [
+     21,
+     21
+    ],
+    "right_slight": [
+     5,
+     5
+    ],
+    "right_sprout": [
+     4,
+     4
+    ]
+   },
+   "sweetpotato_rotten": {
+    "n": 29,
+    "right": 17,
+    "class_right": 6,
+    "answered_sweet_potato": 17,
+    "answered_potato": 8,
+    "wrong_condition_same_kind": 11,
+    "turned_away": 1,
+    "held_back": 16,
+    "answers": {
+     "carrot_fresh": 1,
+     "carrot_rotten": 1,
+     "cucumber_rotten": 1,
+     "potato_rotten": 8,
+     "sweetpotato_fresh": 11,
+     "sweetpotato_rotten": 6,
+     "turned_away": 1
+    },
+    "called_fresh": 12,
+    "right_heavy": [
+     7,
+     14
+    ],
+    "right_slight": [
+     5,
+     10
+    ],
+    "right_sprout": [
+     5,
+     5
+    ]
+   },
+   "_all": {
+    "n": 89,
+    "right": 59,
+    "rotten_n": 59,
+    "rotten_called_fresh": 12,
+    "rotten_called_fresh_shown": 6,
+    "potato_n": 60,
+    "potato_answered_sweet_potato": 2,
+    "turned_away": 2,
+    "held_back": 33,
+    "shown": 54,
+    "shown_right": 40
+   }
+  },
+  "all": {
+   "potato_fresh": {
+    "n": 30,
+    "right": 12,
+    "class_right": 12,
+    "answered_sweet_potato": 2,
+    "answered_potato": 27,
+    "wrong_condition_same_kind": 15,
+    "turned_away": 1,
+    "held_back": 14,
+    "answers": {
+     "potato_fresh": 12,
+     "potato_rotten": 15,
+     "sweetpotato_fresh": 2,
+     "turned_away": 1
+    },
+    "right_dirty": [
+     12,
+     30
+    ]
+   },
+   "potato_rotten": {
+    "n": 30,
+    "right": 30,
+    "class_right": 30,
+    "answered_sweet_potato": 0,
+    "answered_potato": 30,
+    "wrong_condition_same_kind": 0,
+    "turned_away": 0,
+    "held_back": 3,
+    "answers": {
+     "potato_rotten": 30
+    },
+    "called_fresh": 0,
+    "right_heavy": [
+     21,
+     21
+    ],
+    "right_slight": [
+     5,
+     5
+    ],
+    "right_sprout": [
+     4,
+     4
+    ]
+   },
+   "sweetpotato_rotten": {
+    "n": 30,
+    "right": 17,
+    "class_right": 6,
+    "answered_sweet_potato": 17,
+    "answered_potato": 9,
+    "wrong_condition_same_kind": 11,
+    "turned_away": 1,
+    "held_back": 16,
+    "answers": {
+     "carrot_fresh": 1,
+     "carrot_rotten": 1,
+     "cucumber_rotten": 1,
+     "potato_rotten": 9,
+     "sweetpotato_fresh": 11,
+     "sweetpotato_rotten": 6,
+     "turned_away": 1
+    },
+    "called_fresh": 12,
+    "right_heavy": [
+     7,
+     15
+    ],
+    "right_slight": [
+     5,
+     10
+    ],
+    "right_sprout": [
+     5,
+     5
+    ]
+   },
+   "_all": {
+    "n": 90,
+    "right": 59,
+    "rotten_n": 60,
+    "rotten_called_fresh": 12,
+    "rotten_called_fresh_shown": 6,
+    "potato_n": 60,
+    "potato_answered_sweet_potato": 2,
+    "turned_away": 2,
+    "held_back": 33,
+    "shown": 55,
+    "shown_right": 40
+   }
+  },
+  "answers": {
+   "t9-sweetpotato_rotten-01": "sweetpotato_rotten",
+   "t9-sweetpotato_rotten-02": "sweetpotato_rotten",
+   "t9-sweetpotato_rotten-03": "sweetpotato_rotten",
+   "t9-sweetpotato_rotten-04": "sweetpotato_rotten",
+   "t9-sweetpotato_rotten-05": "sweetpotato_rotten",
+   "t9-sweetpotato_rotten-06": "sweetpotato_rotten",
+   "t9-sweetpotato_rotten-07": "potato_rotten",
+   "t9-sweetpotato_rotten-08": "sweetpotato_fresh",
+   "t9-sweetpotato_rotten-09": "sweetpotato_fresh",
+   "t9-sweetpotato_rotten-10": "carrot_fresh",
+   "t9-sweetpotato_rotten-11": "potato_rotten",
+   "t9-sweetpotato_rotten-12": "sweetpotato_fresh",
+   "t9-sweetpotato_rotten-13": "sweetpotato_fresh",
+   "t9-sweetpotato_rotten-14": "sweetpotato_fresh",
+   "t9-sweetpotato_rotten-15": "potato_rotten",
+   "t9-sweetpotato_rotten-16": "potato_rotten",
+   "t9-sweetpotato_rotten-17": "sweetpotato_fresh",
+   "t9-sweetpotato_rotten-18": "sweetpotato_fresh",
+   "t9-sweetpotato_rotten-19": "potato_rotten",
+   "t9-sweetpotato_rotten-20": "sweetpotato_fresh",
+   "t9-sweetpotato_rotten-21": "carrot_rotten",
+   "t9-sweetpotato_rotten-22": "sweetpotato_fresh",
+   "t9-sweetpotato_rotten-23": "sweetpotato_fresh",
+   "t9-sweetpotato_rotten-24": "cucumber_rotten",
+   "t9-sweetpotato_rotten-25": "potato_rotten",
+   "t9-sweetpotato_rotten-26": "sweetpotato_fresh",
+   "t9-sweetpotato_rotten-27": "potato_rotten",
+   "t9-sweetpotato_rotten-28": "potato_rotten",
+   "t9-sweetpotato_rotten-29": "potato_rotten",
+   "t9-sweetpotato_rotten-30": "turned_away",
+   "t9-potato_rotten-01": "potato_rotten",
+   "t9-potato_rotten-02": "potato_rotten",
+   "t9-potato_rotten-03": "potato_rotten",
+   "t9-potato_rotten-04": "potato_rotten",
+   "t9-potato_rotten-05": "potato_rotten",
+   "t9-potato_rotten-06": "potato_rotten",
+   "t9-potato_rotten-07": "potato_rotten",
+   "t9-potato_rotten-08": "potato_rotten",
+   "t9-potato_rotten-09": "potato_rotten",
+   "t9-potato_rotten-10": "potato_rotten",
+   "t9-potato_rotten-11": "potato_rotten",
+   "t9-potato_rotten-12": "potato_rotten",
+   "t9-potato_rotten-13": "potato_rotten",
+   "t9-potato_rotten-14": "potato_rotten",
+   "t9-potato_rotten-15": "potato_rotten",
+   "t9-potato_rotten-16": "potato_rotten",
+   "t9-potato_rotten-17": "potato_rotten",
+   "t9-potato_rotten-18": "potato_rotten",
+   "t9-potato_rotten-19": "potato_rotten",
+   "t9-potato_rotten-20": "potato_rotten",
+   "t9-potato_rotten-21": "potato_rotten",
+   "t9-potato_rotten-22": "potato_rotten",
+   "t9-potato_rotten-23": "potato_rotten",
+   "t9-potato_rotten-24": "potato_rotten",
+   "t9-potato_rotten-25": "potato_rotten",
+   "t9-potato_rotten-26": "potato_rotten",
+   "t9-potato_rotten-27": "potato_rotten",
+   "t9-potato_rotten-28": "potato_rotten",
+   "t9-potato_rotten-29": "potato_rotten",
+   "t9-potato_rotten-30": "potato_rotten",
+   "t9-potato_fresh-01": "potato_fresh",
+   "t9-potato_fresh-02": "potato_rotten",
+   "t9-potato_fresh-03": "potato_rotten",
+   "t9-potato_fresh-04": "potato_rotten",
+   "t9-potato_fresh-05": "sweetpotato_fresh",
+   "t9-potato_fresh-06": "potato_rotten",
+   "t9-potato_fresh-07": "potato_rotten",
+   "t9-potato_fresh-08": "potato_rotten",
+   "t9-potato_fresh-09": "potato_fresh",
+   "t9-potato_fresh-10": "potato_fresh",
+   "t9-potato_fresh-11": "potato_fresh",
+   "t9-potato_fresh-12": "potato_fresh",
+   "t9-potato_fresh-13": "potato_fresh",
+   "t9-potato_fresh-14": "potato_rotten",
+   "t9-potato_fresh-15": "potato_fresh",
+   "t9-potato_fresh-16": "potato_rotten",
+   "t9-potato_fresh-17": "sweetpotato_fresh",
+   "t9-potato_fresh-18": "potato_rotten",
+   "t9-potato_fresh-19": "potato_fresh",
+   "t9-potato_fresh-20": "potato_rotten",
+   "t9-potato_fresh-21": "potato_rotten",
+   "t9-potato_fresh-22": "potato_fresh",
+   "t9-potato_fresh-23": "potato_rotten",
+   "t9-potato_fresh-24": "potato_rotten",
+   "t9-potato_fresh-25": "potato_rotten",
+   "t9-potato_fresh-26": "potato_fresh",
+   "t9-potato_fresh-27": "potato_rotten",
+   "t9-potato_fresh-28": "potato_fresh",
+   "t9-potato_fresh-29": "turned_away",
+   "t9-potato_fresh-30": "potato_fresh"
+  },
+  "shown_probability": {
+   "t9-sweetpotato_rotten-01": 0.767,
+   "t9-sweetpotato_rotten-02": 0.891,
+   "t9-sweetpotato_rotten-03": 0.994,
+   "t9-sweetpotato_rotten-04": 0.871,
+   "t9-sweetpotato_rotten-05": 0.9,
+   "t9-sweetpotato_rotten-06": 0.779,
+   "t9-sweetpotato_rotten-07": 0.499,
+   "t9-sweetpotato_rotten-08": 0.919,
+   "t9-sweetpotato_rotten-09": 0.881,
+   "t9-sweetpotato_rotten-10": 0.619,
+   "t9-sweetpotato_rotten-11": 0.977,
+   "t9-sweetpotato_rotten-12": 0.905,
+   "t9-sweetpotato_rotten-13": 0.963,
+   "t9-sweetpotato_rotten-14": 0.713,
+   "t9-sweetpotato_rotten-15": 0.994,
+   "t9-sweetpotato_rotten-16": 0.99,
+   "t9-sweetpotato_rotten-17": 0.624,
+   "t9-sweetpotato_rotten-18": 0.966,
+   "t9-sweetpotato_rotten-19": 0.993,
+   "t9-sweetpotato_rotten-20": 0.715,
+   "t9-sweetpotato_rotten-21": 0.842,
+   "t9-sweetpotato_rotten-22": 0.927,
+   "t9-sweetpotato_rotten-23": 0.726,
+   "t9-sweetpotato_rotten-24": 0.569,
+   "t9-sweetpotato_rotten-25": 0.993,
+   "t9-sweetpotato_rotten-26": 0.987,
+   "t9-sweetpotato_rotten-27": 0.737,
+   "t9-sweetpotato_rotten-28": 0.792,
+   "t9-sweetpotato_rotten-29": 0.982,
+   "t9-sweetpotato_rotten-30": 0.894,
+   "t9-potato_rotten-01": 0.985,
+   "t9-potato_rotten-02": 0.997,
+   "t9-potato_rotten-03": 0.999,
+   "t9-potato_rotten-04": 0.969,
+   "t9-potato_rotten-05": 0.6,
+   "t9-potato_rotten-06": 0.952,
+   "t9-potato_rotten-07": 0.831,
+   "t9-potato_rotten-08": 0.997,
+   "t9-potato_rotten-09": 0.975,
+   "t9-potato_rotten-10": 0.997,
+   "t9-potato_rotten-11": 1.0,
+   "t9-potato_rotten-12": 0.999,
+   "t9-potato_rotten-13": 1.0,
+   "t9-potato_rotten-14": 1.0,
+   "t9-potato_rotten-15": 1.0,
+   "t9-potato_rotten-16": 0.999,
+   "t9-potato_rotten-17": 0.947,
+   "t9-potato_rotten-18": 0.991,
+   "t9-potato_rotten-19": 0.998,
+   "t9-potato_rotten-20": 0.995,
+   "t9-potato_rotten-21": 0.999,
+   "t9-potato_rotten-22": 0.992,
+   "t9-potato_rotten-23": 0.998,
+   "t9-potato_rotten-24": 0.935,
+   "t9-potato_rotten-25": 0.69,
+   "t9-potato_rotten-26": 0.999,
+   "t9-potato_rotten-27": 0.987,
+   "t9-potato_rotten-28": 0.998,
+   "t9-potato_rotten-29": 0.959,
+   "t9-potato_rotten-30": 0.999,
+   "t9-potato_fresh-01": 0.911,
+   "t9-potato_fresh-02": 0.969,
+   "t9-potato_fresh-03": 0.878,
+   "t9-potato_fresh-04": 0.994,
+   "t9-potato_fresh-05": 0.952,
+   "t9-potato_fresh-06": 0.78,
+   "t9-potato_fresh-07": 0.731,
+   "t9-potato_fresh-08": 0.967,
+   "t9-potato_fresh-09": 0.986,
+   "t9-potato_fresh-10": 0.982,
+   "t9-potato_fresh-11": 0.794,
+   "t9-potato_fresh-12": 0.592,
+   "t9-potato_fresh-13": 0.585,
+   "t9-potato_fresh-14": 0.568,
+   "t9-potato_fresh-15": 0.865,
+   "t9-potato_fresh-16": 0.84,
+   "t9-potato_fresh-17": 0.878,
+   "t9-potato_fresh-18": 0.626,
+   "t9-potato_fresh-19": 0.881,
+   "t9-potato_fresh-20": 0.987,
+   "t9-potato_fresh-21": 0.953,
+   "t9-potato_fresh-22": 0.546,
+   "t9-potato_fresh-23": 0.95,
+   "t9-potato_fresh-24": 0.742,
+   "t9-potato_fresh-25": 0.996,
+   "t9-potato_fresh-26": 0.997,
+   "t9-potato_fresh-27": 0.965,
+   "t9-potato_fresh-28": 0.939,
+   "t9-potato_fresh-29": 0.605,
+   "t9-potato_fresh-30": 0.992
+  }
+ },
+ "PC1": {
+  "main": {
+   "potato_fresh": {
+    "n": 30,
+    "right": 18,
+    "class_right": 18,
+    "answered_sweet_potato": 2,
+    "answered_potato": 27,
+    "wrong_condition_same_kind": 9,
+    "turned_away": 1,
+    "held_back": 16,
+    "answers": {
+     "potato_fresh": 18,
+     "potato_rotten": 9,
+     "sweetpotato_fresh": 2,
+     "turned_away": 1
+    },
+    "right_dirty": [
+     18,
+     30
+    ]
+   },
+   "potato_rotten": {
+    "n": 30,
+    "right": 30,
+    "class_right": 30,
+    "answered_sweet_potato": 0,
+    "answered_potato": 30,
+    "wrong_condition_same_kind": 0,
+    "turned_away": 0,
+    "held_back": 3,
+    "answers": {
+     "potato_rotten": 30
+    },
+    "called_fresh": 0,
+    "right_heavy": [
+     21,
+     21
+    ],
+    "right_slight": [
+     5,
+     5
+    ],
+    "right_sprout": [
+     4,
+     4
+    ]
+   },
+   "sweetpotato_rotten": {
+    "n": 29,
+    "right": 17,
+    "class_right": 6,
+    "answered_sweet_potato": 17,
+    "answered_potato": 8,
+    "wrong_condition_same_kind": 11,
+    "turned_away": 1,
+    "held_back": 16,
+    "answers": {
+     "carrot_fresh": 1,
+     "carrot_rotten": 1,
+     "cucumber_rotten": 1,
+     "potato_rotten": 8,
+     "sweetpotato_fresh": 11,
+     "sweetpotato_rotten": 6,
+     "turned_away": 1
+    },
+    "called_fresh": 12,
+    "right_heavy": [
+     7,
+     14
+    ],
+    "right_slight": [
+     5,
+     10
+    ],
+    "right_sprout": [
+     5,
+     5
+    ]
+   },
+   "_all": {
+    "n": 89,
+    "right": 65,
+    "rotten_n": 59,
+    "rotten_called_fresh": 12,
+    "rotten_called_fresh_shown": 6,
+    "potato_n": 60,
+    "potato_answered_sweet_potato": 2,
+    "turned_away": 2,
+    "held_back": 35,
+    "shown": 52,
+    "shown_right": 40
+   }
+  },
+  "all": {
+   "potato_fresh": {
+    "n": 30,
+    "right": 18,
+    "class_right": 18,
+    "answered_sweet_potato": 2,
+    "answered_potato": 27,
+    "wrong_condition_same_kind": 9,
+    "turned_away": 1,
+    "held_back": 16,
+    "answers": {
+     "potato_fresh": 18,
+     "potato_rotten": 9,
+     "sweetpotato_fresh": 2,
+     "turned_away": 1
+    },
+    "right_dirty": [
+     18,
+     30
+    ]
+   },
+   "potato_rotten": {
+    "n": 30,
+    "right": 30,
+    "class_right": 30,
+    "answered_sweet_potato": 0,
+    "answered_potato": 30,
+    "wrong_condition_same_kind": 0,
+    "turned_away": 0,
+    "held_back": 3,
+    "answers": {
+     "potato_rotten": 30
+    },
+    "called_fresh": 0,
+    "right_heavy": [
+     21,
+     21
+    ],
+    "right_slight": [
+     5,
+     5
+    ],
+    "right_sprout": [
+     4,
+     4
+    ]
+   },
+   "sweetpotato_rotten": {
+    "n": 30,
+    "right": 17,
+    "class_right": 6,
+    "answered_sweet_potato": 17,
+    "answered_potato": 9,
+    "wrong_condition_same_kind": 11,
+    "turned_away": 1,
+    "held_back": 16,
+    "answers": {
+     "carrot_fresh": 1,
+     "carrot_rotten": 1,
+     "cucumber_rotten": 1,
+     "potato_rotten": 9,
+     "sweetpotato_fresh": 11,
+     "sweetpotato_rotten": 6,
+     "turned_away": 1
+    },
+    "called_fresh": 12,
+    "right_heavy": [
+     7,
+     15
+    ],
+    "right_slight": [
+     5,
+     10
+    ],
+    "right_sprout": [
+     5,
+     5
+    ]
+   },
+   "_all": {
+    "n": 90,
+    "right": 65,
+    "rotten_n": 60,
+    "rotten_called_fresh": 12,
+    "rotten_called_fresh_shown": 6,
+    "potato_n": 60,
+    "potato_answered_sweet_potato": 2,
+    "turned_away": 2,
+    "held_back": 35,
+    "shown": 53,
+    "shown_right": 40
+   }
+  },
+  "answers": {
+   "t9-sweetpotato_rotten-01": "sweetpotato_rotten",
+   "t9-sweetpotato_rotten-02": "sweetpotato_rotten",
+   "t9-sweetpotato_rotten-03": "sweetpotato_rotten",
+   "t9-sweetpotato_rotten-04": "sweetpotato_rotten",
+   "t9-sweetpotato_rotten-05": "sweetpotato_rotten",
+   "t9-sweetpotato_rotten-06": "sweetpotato_rotten",
+   "t9-sweetpotato_rotten-07": "potato_rotten",
+   "t9-sweetpotato_rotten-08": "sweetpotato_fresh",
+   "t9-sweetpotato_rotten-09": "sweetpotato_fresh",
+   "t9-sweetpotato_rotten-10": "carrot_fresh",
+   "t9-sweetpotato_rotten-11": "potato_rotten",
+   "t9-sweetpotato_rotten-12": "sweetpotato_fresh",
+   "t9-sweetpotato_rotten-13": "sweetpotato_fresh",
+   "t9-sweetpotato_rotten-14": "sweetpotato_fresh",
+   "t9-sweetpotato_rotten-15": "potato_rotten",
+   "t9-sweetpotato_rotten-16": "potato_rotten",
+   "t9-sweetpotato_rotten-17": "sweetpotato_fresh",
+   "t9-sweetpotato_rotten-18": "sweetpotato_fresh",
+   "t9-sweetpotato_rotten-19": "potato_rotten",
+   "t9-sweetpotato_rotten-20": "sweetpotato_fresh",
+   "t9-sweetpotato_rotten-21": "carrot_rotten",
+   "t9-sweetpotato_rotten-22": "sweetpotato_fresh",
+   "t9-sweetpotato_rotten-23": "sweetpotato_fresh",
+   "t9-sweetpotato_rotten-24": "cucumber_rotten",
+   "t9-sweetpotato_rotten-25": "potato_rotten",
+   "t9-sweetpotato_rotten-26": "sweetpotato_fresh",
+   "t9-sweetpotato_rotten-27": "potato_rotten",
+   "t9-sweetpotato_rotten-28": "potato_rotten",
+   "t9-sweetpotato_rotten-29": "potato_rotten",
+   "t9-sweetpotato_rotten-30": "turned_away",
+   "t9-potato_rotten-01": "potato_rotten",
+   "t9-potato_rotten-02": "potato_rotten",
+   "t9-potato_rotten-03": "potato_rotten",
+   "t9-potato_rotten-04": "potato_rotten",
+   "t9-potato_rotten-05": "potato_rotten",
+   "t9-potato_rotten-06": "potato_rotten",
+   "t9-potato_rotten-07": "potato_rotten",
+   "t9-potato_rotten-08": "potato_rotten",
+   "t9-potato_rotten-09": "potato_rotten",
+   "t9-potato_rotten-10": "potato_rotten",
+   "t9-potato_rotten-11": "potato_rotten",
+   "t9-potato_rotten-12": "potato_rotten",
+   "t9-potato_rotten-13": "potato_rotten",
+   "t9-potato_rotten-14": "potato_rotten",
+   "t9-potato_rotten-15": "potato_rotten",
+   "t9-potato_rotten-16": "potato_rotten",
+   "t9-potato_rotten-17": "potato_rotten",
+   "t9-potato_rotten-18": "potato_rotten",
+   "t9-potato_rotten-19": "potato_rotten",
+   "t9-potato_rotten-20": "potato_rotten",
+   "t9-potato_rotten-21": "potato_rotten",
+   "t9-potato_rotten-22": "potato_rotten",
+   "t9-potato_rotten-23": "potato_rotten",
+   "t9-potato_rotten-24": "potato_rotten",
+   "t9-potato_rotten-25": "potato_rotten",
+   "t9-potato_rotten-26": "potato_rotten",
+   "t9-potato_rotten-27": "potato_rotten",
+   "t9-potato_rotten-28": "potato_rotten",
+   "t9-potato_rotten-29": "potato_rotten",
+   "t9-potato_rotten-30": "potato_rotten",
+   "t9-potato_fresh-01": "potato_fresh",
+   "t9-potato_fresh-02": "potato_fresh",
+   "t9-potato_fresh-03": "potato_rotten",
+   "t9-potato_fresh-04": "potato_rotten",
+   "t9-potato_fresh-05": "sweetpotato_fresh",
+   "t9-potato_fresh-06": "potato_rotten",
+   "t9-potato_fresh-07": "potato_fresh",
+   "t9-potato_fresh-08": "potato_rotten",
+   "t9-potato_fresh-09": "potato_fresh",
+   "t9-potato_fresh-10": "potato_fresh",
+   "t9-potato_fresh-11": "potato_fresh",
+   "t9-potato_fresh-12": "potato_fresh",
+   "t9-potato_fresh-13": "potato_fresh",
+   "t9-potato_fresh-14": "potato_fresh",
+   "t9-potato_fresh-15": "potato_fresh",
+   "t9-potato_fresh-16": "potato_rotten",
+   "t9-potato_fresh-17": "sweetpotato_fresh",
+   "t9-potato_fresh-18": "potato_fresh",
+   "t9-potato_fresh-19": "potato_fresh",
+   "t9-potato_fresh-20": "potato_rotten",
+   "t9-potato_fresh-21": "potato_rotten",
+   "t9-potato_fresh-22": "potato_fresh",
+   "t9-potato_fresh-23": "potato_fresh",
+   "t9-potato_fresh-24": "potato_fresh",
+   "t9-potato_fresh-25": "potato_rotten",
+   "t9-potato_fresh-26": "potato_fresh",
+   "t9-potato_fresh-27": "potato_rotten",
+   "t9-potato_fresh-28": "potato_fresh",
+   "t9-potato_fresh-29": "turned_away",
+   "t9-potato_fresh-30": "potato_fresh"
+  },
+  "shown_probability": {
+   "t9-sweetpotato_rotten-01": 0.767,
+   "t9-sweetpotato_rotten-02": 0.891,
+   "t9-sweetpotato_rotten-03": 0.994,
+   "t9-sweetpotato_rotten-04": 0.871,
+   "t9-sweetpotato_rotten-05": 0.9,
+   "t9-sweetpotato_rotten-06": 0.779,
+   "t9-sweetpotato_rotten-07": 0.499,
+   "t9-sweetpotato_rotten-08": 0.919,
+   "t9-sweetpotato_rotten-09": 0.881,
+   "t9-sweetpotato_rotten-10": 0.619,
+   "t9-sweetpotato_rotten-11": 0.977,
+   "t9-sweetpotato_rotten-12": 0.905,
+   "t9-sweetpotato_rotten-13": 0.963,
+   "t9-sweetpotato_rotten-14": 0.713,
+   "t9-sweetpotato_rotten-15": 0.994,
+   "t9-sweetpotato_rotten-16": 0.99,
+   "t9-sweetpotato_rotten-17": 0.624,
+   "t9-sweetpotato_rotten-18": 0.966,
+   "t9-sweetpotato_rotten-19": 0.993,
+   "t9-sweetpotato_rotten-20": 0.715,
+   "t9-sweetpotato_rotten-21": 0.842,
+   "t9-sweetpotato_rotten-22": 0.927,
+   "t9-sweetpotato_rotten-23": 0.726,
+   "t9-sweetpotato_rotten-24": 0.569,
+   "t9-sweetpotato_rotten-25": 0.993,
+   "t9-sweetpotato_rotten-26": 0.987,
+   "t9-sweetpotato_rotten-27": 0.737,
+   "t9-sweetpotato_rotten-28": 0.792,
+   "t9-sweetpotato_rotten-29": 0.982,
+   "t9-sweetpotato_rotten-30": 0.894,
+   "t9-potato_rotten-01": 0.985,
+   "t9-potato_rotten-02": 0.997,
+   "t9-potato_rotten-03": 0.999,
+   "t9-potato_rotten-04": 0.969,
+   "t9-potato_rotten-05": 0.6,
+   "t9-potato_rotten-06": 0.952,
+   "t9-potato_rotten-07": 0.831,
+   "t9-potato_rotten-08": 0.997,
+   "t9-potato_rotten-09": 0.975,
+   "t9-potato_rotten-10": 0.997,
+   "t9-potato_rotten-11": 1.0,
+   "t9-potato_rotten-12": 0.999,
+   "t9-potato_rotten-13": 1.0,
+   "t9-potato_rotten-14": 1.0,
+   "t9-potato_rotten-15": 1.0,
+   "t9-potato_rotten-16": 0.999,
+   "t9-potato_rotten-17": 0.947,
+   "t9-potato_rotten-18": 0.991,
+   "t9-potato_rotten-19": 0.998,
+   "t9-potato_rotten-20": 0.995,
+   "t9-potato_rotten-21": 0.999,
+   "t9-potato_rotten-22": 0.992,
+   "t9-potato_rotten-23": 0.998,
+   "t9-potato_rotten-24": 0.935,
+   "t9-potato_rotten-25": 0.69,
+   "t9-potato_rotten-26": 0.999,
+   "t9-potato_rotten-27": 0.987,
+   "t9-potato_rotten-28": 0.998,
+   "t9-potato_rotten-29": 0.959,
+   "t9-potato_rotten-30": 0.999,
+   "t9-potato_fresh-01": 0.911,
+   "t9-potato_fresh-02": 0.679,
+   "t9-potato_fresh-03": 0.878,
+   "t9-potato_fresh-04": 0.994,
+   "t9-potato_fresh-05": 0.952,
+   "t9-potato_fresh-06": 0.78,
+   "t9-potato_fresh-07": 0.656,
+   "t9-potato_fresh-08": 0.967,
+   "t9-potato_fresh-09": 0.986,
+   "t9-potato_fresh-10": 0.982,
+   "t9-potato_fresh-11": 0.794,
+   "t9-potato_fresh-12": 0.592,
+   "t9-potato_fresh-13": 0.585,
+   "t9-potato_fresh-14": 0.677,
+   "t9-potato_fresh-15": 0.865,
+   "t9-potato_fresh-16": 0.84,
+   "t9-potato_fresh-17": 0.878,
+   "t9-potato_fresh-18": 0.668,
+   "t9-potato_fresh-19": 0.881,
+   "t9-potato_fresh-20": 0.987,
+   "t9-potato_fresh-21": 0.953,
+   "t9-potato_fresh-22": 0.546,
+   "t9-potato_fresh-23": 0.66,
+   "t9-potato_fresh-24": 0.869,
+   "t9-potato_fresh-25": 0.996,
+   "t9-potato_fresh-26": 0.997,
+   "t9-potato_fresh-27": 0.965,
+   "t9-potato_fresh-28": 0.939,
+   "t9-potato_fresh-29": 0.605,
+   "t9-potato_fresh-30": 0.992
+  }
+ },
+ "conditions": {
+  "dirty fresh potato right: +6 or more": true,
+  "rotten potato right: at least -2": true,
+  "rotten called fresh (any vegetable): at most +2": true,
+  "rotten called fresh among shown answers: not more": true,
+  "all photos right: +3 or more": true
+ },
+ "all_conditions_met": true,
+ "conditions_on_all_photos": {
+  "dirty fresh potato right: +6 or more": true,
+  "rotten potato right: at least -2": true,
+  "rotten called fresh (any vegetable): at most +2": true,
+  "rotten called fresh among shown answers: not more": true,
+  "all photos right: +3 or more": true
+ },
+ "right_and_wrong_against_TV-12": {
+  "sweetpotato_rotten": {
+   "right_to_wrong": 0,
+   "wrong_to_right": 0
+  },
+  "potato_rotten": {
+   "right_to_wrong": 0,
+   "wrong_to_right": 0
+  },
+  "potato_fresh": {
+   "right_to_wrong": 0,
+   "wrong_to_right": 6
+  }
+ },
+ "differences": [
+  {
+   "id": "t9-potato_fresh-02",
+   "class": "potato_fresh",
+   "TV-12": "potato_rotten",
+   "PC1": "potato_fresh"
+  },
+  {
+   "id": "t9-potato_fresh-07",
+   "class": "potato_fresh",
+   "TV-12": "potato_rotten",
+   "PC1": "potato_fresh"
+  },
+  {
+   "id": "t9-potato_fresh-14",
+   "class": "potato_fresh",
+   "TV-12": "potato_rotten",
+   "PC1": "potato_fresh"
+  },
+  {
+   "id": "t9-potato_fresh-18",
+   "class": "potato_fresh",
+   "TV-12": "potato_rotten",
+   "PC1": "potato_fresh"
+  },
+  {
+   "id": "t9-potato_fresh-23",
+   "class": "potato_fresh",
+   "TV-12": "potato_rotten",
+   "PC1": "potato_fresh"
+  },
+  {
+   "id": "t9-potato_fresh-24",
+   "class": "potato_fresh",
+   "TV-12": "potato_rotten",
+   "PC1": "potato_fresh"
+  }
+ ]
+}
