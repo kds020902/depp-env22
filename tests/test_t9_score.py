@@ -7,7 +7,7 @@ from conftest import REPO
 sys.path.insert(0, str(REPO / "results/t9_test"))
 import pytest  # noqa: E402
 import score  # noqa: E402
-from score import claim_the_one_run, conditions, paired, report, right  # noqa: E402
+from score import claim_the_one_run, conditions, paired, parse_command, report, right, write_result  # noqa: E402
 
 LABELS = ["sweetpotato_rotten"] * 4 + ["potato_rotten"] * 3 + ["potato_fresh"] * 3
 SEVERITY = ["heavy", "heavy", "slight", "sprout"] + ["heavy"] * 3 + ["dirty"] * 3
@@ -107,3 +107,66 @@ def test_t9_has_not_been_scored_without_a_record():
     if (score.HERE / "scores_once.json").exists():
         assert "scores_once.json" in (score.HERE / "RULES.md").read_text(encoding="utf-8")
     assert not (score.HERE / "scores_once.running").exists()
+
+
+def test_a_run_that_finishes_between_the_first_look_and_the_marker_is_seen(tmp_path, monkeypatch):
+    """Codex's order: B has seen no result; A saves its result and removes its marker; B takes the marker. B must look
+    again, remove only its own marker and stop; A's result is untouched."""
+    result, marker = tmp_path / "scores_once.json", tmp_path / "scores_once.running"
+    real_open = score.os.open
+
+    def a_finishes_first(path, flags, *more):
+        if str(path) == str(marker):
+            result.write_text('{"run": "A"}', encoding="utf-8")      # A wrote its result (and its marker is already gone)
+        return real_open(path, flags, *more)
+
+    monkeypatch.setattr(score.os, "open", a_finishes_first)
+    with pytest.raises(SystemExit, match="another run scored T9"):
+        claim_the_one_run(result, marker)
+    assert not marker.exists() and result.read_text(encoding="utf-8") == '{"run": "A"}'
+    monkeypatch.setattr(score.os, "open", real_open)
+    result.unlink()
+    marker.write_text("left by another run")                         # an interrupted run's marker is never removed
+    with pytest.raises(SystemExit, match="under way or was interrupted"):
+        claim_the_one_run(result, marker)
+    assert marker.read_text() == "left by another run"
+
+
+def test_only_the_two_command_forms_are_accepted(tmp_path):
+    assert parse_command([]) == (False, score.RESULT)
+    assert parse_command(["--rehearsal", str(tmp_path / "o.json")]) == (True, tmp_path / "o.json")
+    for bad in (["a.json"], ["a.json", "b.json"], ["--rehearsal"], ["--rehearsal", "--rehearsal"], ["--rehearsal", "a.json", "b.json"],
+                ["a.json", "--rehearsal"], ["--rehearsal", "a.json", "--rehearsal"], ["--unknown"], ["--rehearsal", "--out"]):
+        with pytest.raises(SystemExit, match="usage"):
+            parse_command(bad)
+    for reserved in ("scores_once.json", "scores_once.running", "scores_once.partial"):
+        with pytest.raises(SystemExit, match="may not write"):
+            parse_command(["--rehearsal", str(score.HERE / reserved)])
+        with pytest.raises(SystemExit, match="may not write"):
+            parse_command(["--rehearsal", str(score.HERE / "." / "x" / ".." / reserved)])
+    assert parse_command(["--rehearsal", str(score.HERE / "scores_once.dev")])[0]
+
+
+def test_wrong_arguments_stop_before_models_photos_or_the_marker():
+    """The command itself: no DEPP_WORK, no model is loaded, nothing is created in results/t9_test."""
+    import os
+    import subprocess
+    before = sorted(p.name for p in score.HERE.iterdir() if p.name != "__pycache__")
+    environment = {k: v for k, v in os.environ.items() if k != "DEPP_WORK"}
+    for bad in (["one.json", "two.json"], ["--rehearsal"], ["--rehearsal", "--rehearsal"], ["one.json"]):
+        done = subprocess.run([sys.executable, str(score.HERE / "score.py"), *bad], capture_output=True, text=True, env=environment)
+        assert done.returncode != 0 and "usage" in done.stderr and "DEPP_WORK" not in done.stderr, done.stderr
+    assert sorted(p.name for p in score.HERE.iterdir() if p.name != "__pycache__") == before
+
+
+def test_each_run_writes_through_its_own_temporary_file(tmp_path):
+    """A rehearsal writing scores_once.dev next to a scoring run's unfinished file leaves that file alone; a failed write
+    removes only its own temporary file."""
+    unfinished = tmp_path / "scores_once.partial"
+    unfinished.write_text("the one scoring, half written", encoding="utf-8")
+    write_result({"rehearsal": True}, tmp_path / "scores_once.dev")
+    assert unfinished.read_text(encoding="utf-8") == "the one scoring, half written"
+    assert sorted(p.name for p in tmp_path.iterdir()) == ["scores_once.dev", "scores_once.partial"]
+    with pytest.raises(TypeError):
+        write_result({"not json": object()}, tmp_path / "broken.json")
+    assert sorted(p.name for p in tmp_path.iterdir()) == ["scores_once.dev", "scores_once.partial"]

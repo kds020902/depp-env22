@@ -6,9 +6,12 @@
 PC1 = TV-12 with the potato re-check at threshold 0.5 (experiments/potato_check; no weight differs).
 The photos stay in the working folder ($DEPP_WORK/t9/img; licences); t9_test.csv lists all 90 with their source.
 The judgement uses t9_main.csv: the 89 photos left when the one that is also a T8 photo is taken out; the counts on all
-90 are written next to it. Before any photo is read the scoring stops unless the SHA-256 of both lists equal the seals
-in RULES.md, and when scores_once.json or the run marker scores_once.running already exists (a second run, or a run that
-was interrupted: look at what happened before removing the marker by hand).
+90 are written next to it. Only the two command forms above are accepted; anything else stops before a model or photo is
+read. Before any photo is read the scoring stops unless the SHA-256 of both lists equal the seals in RULES.md, and when
+scores_once.json or the run marker scores_once.running already exists (a second run, or a run that was interrupted: look
+at what happened before removing the marker by hand). The marker is taken first and the result looked for again after it,
+so two runs started together cannot both go on. Every run writes its result to a temporary file of its own and renames it
+when complete; a rehearsal may not write to scores_once.json, scores_once.running or scores_once.partial.
 --rehearsal reads no T9 photo: it runs the same code on the 162 potato / sweet potato development photos
 ($DEPP_WORK/rt/img, experiments/sweetpotato_prompts/dev_features.npz ids) and marks the output as a rehearsal.
 (HEAD, the earlier candidate SP1's head, is still used by results/user_photos_2/score.py.)
@@ -22,6 +25,7 @@ import json
 import os
 import re
 import sys
+import tempfile
 from pathlib import Path
 
 import torch
@@ -116,14 +120,49 @@ def seals() -> dict:
     return found
 
 
+USAGE = "usage: score.py   (the one scoring, writes scores_once.json)   or   score.py --rehearsal OUT.json"
+
+
+def parse_command(arguments: list[str]) -> tuple[bool, Path]:
+    """(rehearsal, output file) for the two accepted forms: no argument, or exactly `--rehearsal OUT.json`."""
+    if not arguments:
+        return False, RESULT
+    if len(arguments) != 2 or arguments[0] != "--rehearsal" or arguments[1].startswith("-"):
+        raise SystemExit(USAGE)
+    out = Path(arguments[1])
+    reserved = [RESULT, RESULT.with_suffix(".running"), RESULT.with_suffix(".partial")]
+    if any(out.expanduser().resolve() == r.resolve() for r in reserved):
+        raise SystemExit(f"a rehearsal may not write {out.name}: that name belongs to the one scoring")
+    return True, out
+
+
 def claim_the_one_run(result: Path, marker: Path) -> None:
-    """Stop before any photo is read when T9 was scored already or a scoring run is (or was left) under way."""
+    """Stop before any photo is read when T9 was scored already or a scoring run is (or was left) under way. The marker is
+    created exclusively and the result is looked for again afterwards: a run that finished between this run's first look and
+    its marker is then seen, and only the marker this run made is removed. Another run's marker is never touched."""
     if result.exists():
         raise SystemExit(f"{result.name} exists: T9 has been scored once already; nothing was read")
     try:
         os.close(os.open(marker, os.O_CREAT | os.O_EXCL | os.O_WRONLY))
     except FileExistsError:
         raise SystemExit(f"{marker.name} exists: a scoring run is under way or was interrupted; nothing was read") from None
+    if result.exists():
+        marker.unlink()
+        raise SystemExit(f"{result.name} exists: another run scored T9 just now; nothing was read")
+
+
+def write_result(result: dict, out: Path) -> None:
+    """Write to a temporary file of this run in the output's folder and rename it when complete; on failure only that
+    temporary file is removed."""
+    handle, name = tempfile.mkstemp(dir=out.parent, prefix=out.name + ".", suffix=".tmp")
+    try:
+        with os.fdopen(handle, "w", encoding="utf-8") as stream:
+            json.dump(result, stream, indent=1, ensure_ascii=False)
+        os.replace(name, out)
+    except BaseException:
+        if os.path.exists(name):
+            os.unlink(name)
+        raise
 
 
 def model_inputs(paths: list[Path]) -> tuple[torch.Tensor, torch.Tensor]:
@@ -142,14 +181,12 @@ def model_inputs(paths: list[Path]) -> tuple[torch.Tensor, torch.Tensor]:
 
 
 def main():
-    rehearsal = "--rehearsal" in sys.argv
-    arguments = [a for a in sys.argv[1:] if a != "--rehearsal"]
-    if rehearsal != (len(arguments) == 1):
-        raise SystemExit("usage: score.py   (the one scoring, writes scores_once.json)   or   score.py --rehearsal OUT.json")
-    out, marker = (Path(arguments[0]), None) if rehearsal else (RESULT, RESULT.with_suffix(".running"))
-    if rehearsal and out.resolve() == RESULT.resolve():
-        raise SystemExit("a rehearsal may not write scores_once.json")
+    rehearsal, out = parse_command(sys.argv[1:])           # before any model, photo or marker
+    marker = None if rehearsal else RESULT.with_suffix(".running")
     work = Path(os.environ["DEPP_WORK"])
+    if not rehearsal:
+        sealed = seals()
+        claim_the_one_run(out, marker)
     tv12 = torch.load(REPO / "model.pth", map_location="cpu", weights_only=True)
     if rehearsal:
         import numpy as np
@@ -157,8 +194,6 @@ def main():
         ids, labels = [str(i) for i in stored["ids"]], [CLASS_NAMES[int(i)] for i in stored["y"]]
         severities, paths, sealed, main_ids = ["dev"] * len(ids), [work / "rt/img" / f"{i}.jpg" for i in ids], {}, set(ids)
     else:
-        sealed = seals()
-        claim_the_one_run(out, marker)
         rows = list(csv.DictReader(open(HERE / "t9_test.csv", encoding="utf-8")))
         ids, labels, severities = [r["id"] for r in rows], [r["class_name"] for r in rows], [r["severity"] for r in rows]
         paths = [work / "t9/img" / f"{i}.jpg" for i in ids]
@@ -180,9 +215,7 @@ def main():
     base, other = list(result["TV-12"]["answers"].values()), list(result[CANDIDATE]["answers"].values())
     result["right_and_wrong_against_TV-12"] = paired(pick(labels), pick(base), pick(other))
     result["differences"] = [{"id": i, "class": y, "TV-12": a, CANDIDATE: b} for i, y, a, b in zip(ids, labels, base, other) if a != b]
-    partial = out.with_suffix(".partial")
-    json.dump(result, open(partial, "w", encoding="utf-8"), indent=1, ensure_ascii=False)
-    os.replace(partial, out)
+    write_result(result, out)
     if marker is not None:
         marker.unlink()
     for name in ("TV-12", CANDIDATE):
