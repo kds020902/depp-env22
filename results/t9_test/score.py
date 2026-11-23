@@ -1,13 +1,15 @@
-"""Blind test set T9 (RULES.md): score TV-12 and the candidate SP1 once.
+"""Blind test set T9 (RULES.md, addendum 3): score TV-12 and the candidate PC1 once.
 
     DEPP_WORK=... python results/t9_test/score.py OUT.json
     DEPP_WORK=... python results/t9_test/score.py OUT.json --rehearsal    # development photos, to try the script only
 
-SP1 = model.pth with the new-vegetable head of experiments/sweetpotato_photos/heads_SP1.pt (nothing else differs).
-The photos stay in the working folder ($DEPP_WORK/t9/img; licences); t9_test.csv lists them with their source.
-Refuses to run unless the SHA-256 of t9_test.csv and of heads_SP1.pt equal the seals in RULES.md.
+PC1 = TV-12 with the potato re-check at threshold 0.5 (experiments/potato_check; no weight differs).
+The photos stay in the working folder ($DEPP_WORK/t9/img; licences); t9_test.csv lists all 90 with their source.
+The judgement uses t9_main.csv: the 89 photos left when the one that is also a T8 photo is taken out; the counts on all
+90 are written next to it. Refuses to run unless the SHA-256 of both lists equal the seals in RULES.md.
 --rehearsal reads no T9 photo: it runs the same code on the 162 potato / sweet potato development photos
 ($DEPP_WORK/rt/img, experiments/sweetpotato_prompts/dev_features.npz ids) and marks the output as a rehearsal.
+(HEAD, the earlier candidate SP1's head, is still used by results/user_photos_2/score.py.)
 """
 
 from __future__ import annotations
@@ -77,13 +79,17 @@ def report(labels: list[str], severities: list[str], answers: list[str], held: l
     return out
 
 
-def conditions(tv12: dict, sp1: dict) -> dict:
-    """RULES.md (experiments/sweetpotato_photos/PREREG.md, addendum 2), all against TV-12 on the same photos."""
-    return {"rotten sweet potato answered sweet potato: +6 or more": sp1["sweetpotato_rotten"]["right"] >= tv12["sweetpotato_rotten"]["right"] + 6,
-            "potatoes answered sweet potato: at most +2": sp1["_all"]["potato_answered_sweet_potato"] <= tv12["_all"]["potato_answered_sweet_potato"] + 2,
-            "rotten potato right: at least -1": sp1["potato_rotten"]["right"] >= tv12["potato_rotten"]["right"] - 1,
-            "rotten called fresh (any vegetable): not more": sp1["_all"]["rotten_called_fresh"] <= tv12["_all"]["rotten_called_fresh"],
-            "all photos right: not fewer": sp1["_all"]["right"] >= tv12["_all"]["right"]}
+CANDIDATE = "PC1"
+POTATO_CHECK = {"threshold": 0.5}
+
+
+def conditions(tv12: dict, candidate: dict) -> dict:
+    """RULES.md addendum 3 (experiments/potato_check/PREREG.md), all against TV-12 on the same photos."""
+    return {"dirty fresh potato right: +6 or more": candidate["potato_fresh"]["right"] >= tv12["potato_fresh"]["right"] + 6,
+            "rotten potato right: at least -2": candidate["potato_rotten"]["right"] >= tv12["potato_rotten"]["right"] - 2,
+            "rotten called fresh (any vegetable): at most +2": candidate["_all"]["rotten_called_fresh"] <= tv12["_all"]["rotten_called_fresh"] + 2,
+            "rotten called fresh among shown answers: not more": candidate["_all"]["rotten_called_fresh_shown"] <= tv12["_all"]["rotten_called_fresh_shown"],
+            "all photos right: +3 or more": candidate["_all"]["right"] >= tv12["_all"]["right"] + 3}
 
 
 def paired(labels: list[str], base: list[str], other: list[str]) -> dict:
@@ -98,9 +104,9 @@ def paired(labels: list[str], base: list[str], other: list[str]) -> dict:
 def seals() -> dict:
     text = (HERE / "RULES.md").read_text(encoding="utf-8")
     found = {}
-    for name, path in (("t9_test.csv", HERE / "t9_test.csv"), ("heads_SP1.pt", HEAD)):
+    for name in ("t9_test.csv", "t9_main.csv"):
         sealed = re.findall(rf"{re.escape(name)} SHA-256[^`]*`([0-9a-f]{{64}})`", text)
-        digest = hashlib.sha256(path.read_bytes()).hexdigest() if path.exists() else None
+        digest = hashlib.sha256((HERE / name).read_bytes()).hexdigest()
         assert sealed and sealed[-1] == digest, f"{name} does not match its seal in RULES.md ({digest})"
         found[name] = digest
     return found
@@ -129,28 +135,34 @@ def main():
         import numpy as np
         stored = np.load(REPO / "experiments/sweetpotato_prompts/dev_features.npz")
         ids, labels = [str(i) for i in stored["ids"]], [CLASS_NAMES[int(i)] for i in stored["y"]]
-        severities, paths, sealed = ["dev"] * len(ids), [work / "rt/img" / f"{i}.jpg" for i in ids], {}
-        head = torch.load(HEAD, map_location="cpu", weights_only=True) if HEAD.exists() else tv12["new_vegetable_head"]
+        severities, paths, sealed, main_ids = ["dev"] * len(ids), [work / "rt/img" / f"{i}.jpg" for i in ids], {}, set(ids)
     else:
         sealed = seals()
         rows = list(csv.DictReader(open(HERE / "t9_test.csv", encoding="utf-8")))
         ids, labels, severities = [r["id"] for r in rows], [r["class_name"] for r in rows], [r["severity"] for r in rows]
         paths = [work / "t9/img" / f"{i}.jpg" for i in ids]
-        head = torch.load(HEAD, map_location="cpu", weights_only=True)
+        main_ids = {r["id"] for r in csv.DictReader(open(HERE / "t9_main.csv", encoding="utf-8"))}
     logits, features = model_inputs(paths)
-    result = {"rehearsal_on_development_photos": rehearsal, "seals": sealed, "n": len(ids)}
-    for name, checkpoint in (("TV-12", tv12), ("SP1", {**tv12, "new_vegetable_head": head})):
+    main = [i for i, x in enumerate(ids) if x in main_ids]
+    pick = lambda values: [values[i] for i in main]
+    result = {"rehearsal_on_development_photos": rehearsal, "seals": sealed, "n": len(ids), "n_main": len(main)}
+    for name, checkpoint in (("TV-12", tv12), (CANDIDATE, {**tv12, "potato_check": POTATO_CHECK})):
         a = decide(logits, checkpoint, features)
         answers = [AWAY if u else CLASS_NAMES[int(i)] for i, u in zip(a.index, a.unknown)]
-        result[name] = {**report(labels, severities, answers, held_back(a).tolist()), "answers": dict(zip(ids, answers))}
-    result["conditions"] = conditions(result["TV-12"], result["SP1"])
+        held = held_back(a).tolist()
+        result[name] = {"main": report(pick(labels), pick(severities), pick(answers), pick(held)),
+                        "all": report(labels, severities, answers, held), "answers": dict(zip(ids, answers)),
+                        "shown_probability": {i: round(float(p), 3) for i, p in zip(ids, a.probability)}}
+    result["conditions"] = conditions(result["TV-12"]["main"], result[CANDIDATE]["main"])
     result["all_conditions_met"] = all(result["conditions"].values())
-    base, other = list(result["TV-12"]["answers"].values()), list(result["SP1"]["answers"].values())
-    result["right_and_wrong_against_TV-12"] = paired(labels, base, other)
-    result["differences"] = [{"id": i, "class": y, "TV-12": a, "SP1": b} for i, y, a, b in zip(ids, labels, base, other) if a != b]
+    result["conditions_on_all_photos"] = conditions(result["TV-12"]["all"], result[CANDIDATE]["all"])
+    base, other = list(result["TV-12"]["answers"].values()), list(result[CANDIDATE]["answers"].values())
+    result["right_and_wrong_against_TV-12"] = paired(pick(labels), pick(base), pick(other))
+    result["differences"] = [{"id": i, "class": y, "TV-12": a, CANDIDATE: b} for i, y, a, b in zip(ids, labels, base, other) if a != b]
     json.dump(result, open(out, "w", encoding="utf-8"), indent=1, ensure_ascii=False)
-    for name in ("TV-12", "SP1"):
-        print(name, {c: f"{v['right']}/{v['n']}" for c, v in result[name].items() if c not in ("_all", "answers")}, result[name]["_all"])
+    for name in ("TV-12", CANDIDATE):
+        r = result[name]["main"]
+        print(name, {c: f"{v['right']}/{v['n']}" for c, v in r.items() if c != "_all"}, r["_all"])
     print("conditions:", result["conditions"], "all met:", result["all_conditions_met"], "differences:", len(result["differences"]))
 
 

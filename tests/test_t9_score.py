@@ -27,12 +27,31 @@ def test_report_counts():
 
 
 def test_conditions_and_paired():
-    def system(sweet_right, potato_as_sweet, rotten_potato_right, called_fresh, total):
-        return {"sweetpotato_rotten": {"right": sweet_right}, "potato_rotten": {"right": rotten_potato_right},
-                "_all": {"potato_answered_sweet_potato": potato_as_sweet, "rotten_called_fresh": called_fresh, "right": total}}
-    base = system(10, 1, 25, 3, 60)
-    assert all(conditions(base, system(16, 3, 24, 3, 60)).values())
-    for worse in (system(15, 3, 24, 3, 60), system(16, 4, 24, 3, 60), system(16, 3, 23, 3, 60), system(16, 3, 24, 4, 60), system(16, 3, 24, 3, 59)):
+    def system(dirty_right, rotten_potato_right, called_fresh, called_fresh_shown, total):
+        return {"potato_fresh": {"right": dirty_right}, "potato_rotten": {"right": rotten_potato_right},
+                "_all": {"rotten_called_fresh": called_fresh, "rotten_called_fresh_shown": called_fresh_shown, "right": total}}
+    base = system(5, 25, 3, 1, 40)
+    assert all(conditions(base, system(11, 23, 5, 1, 43)).values())
+    for worse in (system(10, 23, 5, 1, 43), system(11, 22, 5, 1, 43), system(11, 23, 6, 1, 43), system(11, 23, 5, 2, 43), system(11, 23, 5, 1, 42)):
         assert not all(conditions(base, worse).values())
     assert paired(["potato_rotten", "sweetpotato_rotten"], ["potato_rotten", "potato_rotten"], ["sweetpotato_rotten", "sweetpotato_fresh"]) == {
         "potato_rotten": {"right_to_wrong": 1, "wrong_to_right": 0}, "sweetpotato_rotten": {"right_to_wrong": 0, "wrong_to_right": 1}}
+
+
+def test_potato_check_changes_only_confident_clip_fresh_potato_answers():
+    """decision.apply_potato_check: only "rotten potato" answers of the five-vegetable system, only when the CLIP head alone
+    gives fresh potato at least the threshold; TV-12 (no key) is untouched."""
+    import torch
+    from decision import Answers, apply_potato_check
+    from labels import CLASS_NAMES
+    fresh, rotten = CLASS_NAMES.index("potato_fresh"), CLASS_NAMES.index("potato_rotten")
+    n = 5
+    clip_logits = torch.zeros(n, 11)
+    clip_logits[:, fresh] = torch.tensor([3.0, -3.0, 3.0, 3.0, 3.0])            # the head says fresh, except photo 1
+    index = torch.tensor([rotten, rotten, rotten, rotten, 0])                  # photo 4 is another answer
+    unknown = torch.tensor([False, False, True, False, False])                 # photo 2 was turned away
+    switched = torch.tensor([False, False, False, True, False])                # photo 3 was answered by the new-vegetable head
+    a = Answers(torch.zeros(n, 16), index, torch.full((n,), 0.95), unknown, switched, torch.zeros(n, 10), unknown)
+    out = apply_potato_check(a, {"potato_check": {"threshold": 0.5}}, clip_logits)
+    assert out.index.tolist() == [fresh, rotten, rotten, rotten, 0]
+    assert abs(float(out.probability[0]) - float(torch.sigmoid(torch.tensor(3.0)))) < 1e-6 and torch.allclose(out.probability[1:], torch.full((4,), 0.95))
