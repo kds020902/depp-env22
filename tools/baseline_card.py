@@ -25,7 +25,7 @@ OUT = REPO / "results/baseline/tv12.json"
 DEV = REPO / "results/baseline/tv12_dev.json"
 FILES = ["model.pth", "dataset/manifest.csv", "experiments/new_vegetables/v7/head_data.npz",
          "experiments/sweetpotato_prompts/dev_features.npz", "requirements.txt"]
-BLIND = ["results/t3_test", "results/t4_test", "results/t5_test", "results/t6_test", "results/t7_test", "results/t8_test"]
+BLIND = ["results/t3_test", "results/t4_test", "results/t5_test", "results/t6_test", "results/t7_test", "results/t8_test", "results/t9_test"]
 METRICS = ("sample_count", "accuracy", "macro_f1", "species_accuracy", "condition_accuracy", "rotten_recall", "fresh_recall")
 
 
@@ -73,7 +73,7 @@ def build() -> dict:
                                  "all_labelled": {k: v for k, v in dev.items() if k != "classes"}},
         "blind_tests_scored_once": {path: {f.name: sha256(f"{path}/{f.name}") for f in sorted((REPO / path).glob("scores*.json"))}
                                     for path in BLIND},
-        "blind_tests_note": "T3-T8 are used up: never score a candidate on them again (their files are kept as the record).",
+        "blind_tests_note": "T3-T9 are used up: never score a candidate on them again (their files are kept as the record).",
     }
 
 

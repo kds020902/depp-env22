@@ -172,22 +172,28 @@ def test_each_run_writes_through_its_own_temporary_file(tmp_path):
     assert sorted(p.name for p in tmp_path.iterdir()) == ["scores_once.dev", "scores_once.partial"]
 
 
-def test_rehearsal_names_windows_would_read_as_reserved_are_refused_before_the_files_exist():
+def test_rehearsal_names_windows_would_read_as_reserved_are_refused_before_the_files_exist(tmp_path, monkeypatch):
     """Codex's Windows case: with a dot or a space at the end, "scores_once.json." is written to scores_once.json there.
-    None of the three reserved files exists yet; every spelling is refused with the usage text and nothing is created."""
+    In a folder where none of the three reserved files exists, every spelling is refused with the usage text and nothing
+    is created. (The repository's own folder holds scores_once.json since T9 was scored, so the "not yet there" case uses
+    a temporary folder; the command itself is then run against the real folder.)"""
     import os
     import subprocess
     reserved = ("scores_once.json", "scores_once.running", "scores_once.partial")
-    assert not any((score.HERE / name).exists() for name in reserved)
-    before = sorted(p.name for p in score.HERE.iterdir() if p.name != "__pycache__")
-    environment = {k: v for k, v in os.environ.items() if k != "DEPP_WORK"}
+    real_result = score.RESULT
+    monkeypatch.setattr(score, "RESULT", tmp_path / "scores_once.json")
     for name in reserved:
         for ending in (".", " ", ". .", "  "):
             with pytest.raises(SystemExit, match="usage") as stopped:
-                parse_command(["--rehearsal", str(score.HERE / (name + ending))])
+                parse_command(["--rehearsal", str(tmp_path / (name + ending))])
             assert "may not write" in str(stopped.value)
         with pytest.raises(SystemExit, match="may not write"):
-            parse_command(["--rehearsal", str(score.HERE / name.upper())])              # letter case (Windows, macOS)
+            parse_command(["--rehearsal", str(tmp_path / name.upper())])                # letter case (Windows, macOS)
+    assert list(tmp_path.iterdir()) == []
+    monkeypatch.setattr(score, "RESULT", real_result)
+    before = sorted(p.name for p in score.HERE.iterdir() if p.name != "__pycache__")
+    environment = {k: v for k, v in os.environ.items() if k != "DEPP_WORK"}
+    for name in reserved:
         for ending in (".", " "):                                                       # the command itself
             done = subprocess.run([sys.executable, str(score.HERE / "score.py"), "--rehearsal", str(score.HERE / (name + ending))],
                                   capture_output=True, text=True, env=environment)

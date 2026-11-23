@@ -118,7 +118,7 @@
  "commits": {
   "model.pth": "9ebb286e7cb267d5678955381459d662817c4a65",
   "dataset/manifest.csv": "4806be132c3fcf58f340f89f939d37d48733f90a",
-  "src/decision.py": "a4e5842bf9d32f0226ee53e91d647f2ecd9e0027"
+  "src/decision.py": "364770ac74b07e069c16f5c721f1f8a60772c34a"
  },
  "development_baseline": {
   "file": "results/baseline/tv12_dev.json",
@@ -154,7 +154,10 @@
   },
   "results/t8_test": {
    "scores_once.json": "eb65d7cec58bda670c350f83cb34acc6401e5919239449502c7617ac7541ca90"
+  },
+  "results/t9_test": {
+   "scores_once.json": "a151957f4b6db7f1819d23c4764c46fc91cddf37e19a1b927afba811ac9cee84"
   }
  },
- "blind_tests_note": "T3-T8 are used up: never score a candidate on them again (their files are kept as the record)."
+ "blind_tests_note": "T3-T9 are used up: never score a candidate on them again (their files are kept as the record)."
 }
