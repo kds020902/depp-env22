@@ -5,6 +5,42 @@ Claude와 Codex가 작업을 마칠 때마다 맨 위에 새 항목을 덧붙인
 
 ---
 
+## 2026-11-23 · Claude: T9 리허설 출력의 Windows 경로 보완 (끝의 점·공백, 대소문자)
+
+### 확인한 커밋 / 변경 파일
+- Codex의 재검수 `d9c9f92`(동시 실행·인자 통과, Windows 리허설 경로 1건)를 읽었다. 수정 커밋은 **`9dbbe48`**이다(이 노트는 그다음 커밋).
+- 변경: `results/t9_test/score.py`(`as_the_disk_may_read_it()` 추가, `parse_command()`의 예약 경로 비교), `tests/test_t9_score.py`, `results/t9_test/RULES.md`(덧붙임 5에 한 문장)
+- 판정, 봉인, 모델은 바꾸지 않았다. **T9는 채점하지 않았다.**
+
+### 수정 전 재현 → 수정 후
+- 전(`dc1397b`): 예약 파일이 아직 없을 때 `--rehearsal results/t9_test/scores_once.json.`과 `…/scores_once.running `(끝에 공백)이 `parse_command()`를 통과했다. Windows에서는 그 이름이 `scores_once.json`, `scores_once.running`으로 쓰인다(Codex가 6가지 재현).
+- 후(`9dbbe48`): 파일이 있든 없든 사용법 문구와 "a rehearsal may not write …"로 종료한다. 공식 파일은 생기지 않는다.
+
+### 고친 내용
+- 예약 경로 비교를 "가장 너그러운 파일 시스템이 읽는 방식"으로 한다: 경로를 풀고, **파일 이름 끝의 점과 공백을 떼고, 대소문자를 무시**한 뒤 비교한다. 운영체제를 가리지 않고 항상 적용하므로 Linux CI에서도 같은 테스트가 돈다.
+- 실제 쓰기는 사용자가 준 경로 그대로다. Windows가 그 경로를 예약 파일로 읽을 수 있는 경우는 위 비교에서 모두 걸리므로, 비교와 쓰기가 어긋나는 입력은 쓰기 단계까지 가지 않는다.
+- 대소문자만 다른 이름(`SCORES_ONCE.JSON`)도 함께 막았다. 요청에는 없었지만 Windows·macOS에서 같은 방식으로 예약 파일에 닿는다.
+
+### 실제 실행한 명령과 결과
+```bash
+python -m pytest -q                                                              # 58 통과, 1 건너뜀
+FULL_TESTS=1 python -m pytest -q                                                 # 59 통과
+DEPP_WORK=작업폴더 python results/t9_test/score.py --rehearsal <다른 폴더>/scores_once.dev   # 정상 종료
+```
+- **GitHub Actions:** `9dbbe48`의 빠른 테스트가 **성공**했다([실행 45196014049](https://github.com/kds020902/depp-env22/actions/runs/45196014049)).
+
+### 통과한 테스트 (새 테스트 1개)
+- 예약 파일 3개가 모두 없는 상태에서, 각 이름에 `.`, 공백, `. .`, 공백 두 개를 붙인 12가지와 대문자 이름 3가지가 사용법 오류로 거부된다.
+- 명령 자체(`score.py --rehearsal …`)로도 3개 × 2가지를 실행했다. 종료 코드가 0이 아니고 `results/t9_test`의 파일 목록이 그대로다.
+- `scores_once.dev`, `scores_once.json.bak`, `rehearsal.json`은 계속 받는다.
+
+### 남은 한계
+- **실제 Windows에서는 내가 돌려 보지 못했다.** Linux에서 이름 규칙으로만 확인했다. Codex가 Windows에서 6가지를 다시 확인해 주면 좋겠다.
+- Windows의 다른 별칭은 다루지 않았다: 8.3 짧은 이름(`SCORES~1.JSO`), 대체 데이터 스트림(`scores_once.json::$DATA`), 폴더 이름 끝의 점·공백, 다른 철자의 같은 폴더를 가리키는 링크·접합점. 링크는 `resolve()`가 풀어 주지만 나머지는 막지 않는다.
+- T9 본 채점은 사용자의 별도 지시가 있어야 한다.
+
+---
+
 ## 2026-11-23 · Codex 재검수 — 동시 실행·인자 통과, Windows 리허설 경로 보완 1건
 
 ### 한 것
