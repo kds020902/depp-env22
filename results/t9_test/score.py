@@ -123,6 +123,14 @@ def seals() -> dict:
 USAGE = "usage: score.py   (the one scoring, writes scores_once.json)   or   score.py --rehearsal OUT.json"
 
 
+def as_the_disk_may_read_it(path: Path) -> tuple[str, str]:
+    """A path as the most forgiving file system would read it: Windows drops dots and spaces at the end of a file name
+    ("scores_once.json." and "scores_once.json " are scores_once.json there) and, like macOS, ignores letter case. Used on
+    every system and whether or not the file exists, so a name that could land on a reserved file is refused everywhere."""
+    resolved = path.expanduser().resolve()
+    return str(resolved.parent).casefold(), resolved.name.rstrip(". ").casefold()
+
+
 def parse_command(arguments: list[str]) -> tuple[bool, Path]:
     """(rehearsal, output file) for the two accepted forms: no argument, or exactly `--rehearsal OUT.json`."""
     if not arguments:
@@ -131,8 +139,8 @@ def parse_command(arguments: list[str]) -> tuple[bool, Path]:
         raise SystemExit(USAGE)
     out = Path(arguments[1])
     reserved = [RESULT, RESULT.with_suffix(".running"), RESULT.with_suffix(".partial")]
-    if any(out.expanduser().resolve() == r.resolve() for r in reserved):
-        raise SystemExit(f"a rehearsal may not write {out.name}: that name belongs to the one scoring")
+    if any(as_the_disk_may_read_it(out) == as_the_disk_may_read_it(r) for r in reserved):
+        raise SystemExit(f"{USAGE}\na rehearsal may not write {out.name!r}: that name belongs to the one scoring")
     return True, out
 
 

@@ -170,3 +170,28 @@ def test_each_run_writes_through_its_own_temporary_file(tmp_path):
     with pytest.raises(TypeError):
         write_result({"not json": object()}, tmp_path / "broken.json")
     assert sorted(p.name for p in tmp_path.iterdir()) == ["scores_once.dev", "scores_once.partial"]
+
+
+def test_rehearsal_names_windows_would_read_as_reserved_are_refused_before_the_files_exist():
+    """Codex's Windows case: with a dot or a space at the end, "scores_once.json." is written to scores_once.json there.
+    None of the three reserved files exists yet; every spelling is refused with the usage text and nothing is created."""
+    import os
+    import subprocess
+    reserved = ("scores_once.json", "scores_once.running", "scores_once.partial")
+    assert not any((score.HERE / name).exists() for name in reserved)
+    before = sorted(p.name for p in score.HERE.iterdir() if p.name != "__pycache__")
+    environment = {k: v for k, v in os.environ.items() if k != "DEPP_WORK"}
+    for name in reserved:
+        for ending in (".", " ", ". .", "  "):
+            with pytest.raises(SystemExit, match="usage") as stopped:
+                parse_command(["--rehearsal", str(score.HERE / (name + ending))])
+            assert "may not write" in str(stopped.value)
+        with pytest.raises(SystemExit, match="may not write"):
+            parse_command(["--rehearsal", str(score.HERE / name.upper())])              # letter case (Windows, macOS)
+        for ending in (".", " "):                                                       # the command itself
+            done = subprocess.run([sys.executable, str(score.HERE / "score.py"), "--rehearsal", str(score.HERE / (name + ending))],
+                                  capture_output=True, text=True, env=environment)
+            assert done.returncode != 0 and "usage" in done.stderr and "may not write" in done.stderr, done.stderr
+    assert sorted(p.name for p in score.HERE.iterdir() if p.name != "__pycache__") == before
+    for fine in ("scores_once.dev", "scores_once.json.bak", "rehearsal.json"):
+        assert parse_command(["--rehearsal", str(score.HERE / fine)]) == (True, score.HERE / fine)
