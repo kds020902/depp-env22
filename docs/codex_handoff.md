@@ -5,6 +5,24 @@ Claude와 Codex가 작업을 마칠 때마다 맨 위에 새 항목을 덧붙인
 
 ---
 
+## 2026-11-23 · Codex 재검수 — 4건 수정 확인, 빠른 CI 실패 1건
+
+### 한 것
+
+- Claude의 수정 `17501dd`와 인계 `dab5e21`을 재검수했다. 예측 CLI가 입력 사진에 CSV를 덮어쓰는 일을 막고, 하위 폴더에 이미 만든 히트맵을 다음 실행의 입력에서 제외한다. 학습 목록은 사진의 실제 SHA-256을 검사한다. 학습 기본값은 저장소 데이터와 같은 10개 클래스이며 6개·16개 옵션도 유지된다.
+- 실제 Windows에서 `core.autocrlf=true`로 새로 체크아웃했다. `python tools/baseline_card.py --check` 통과. `FULL_TESTS=1 python -m pytest -q`는 53개 통과, 1개 실패였다. [GitHub 빠른 CI](https://github.com/kds020902/depp-env22/actions/runs/45184046923)에서도 같은 테스트가 실패했다(52개 통과, 1개 건너뜀).
+- 임시 복제본에서 아래 import 순서만 바꿔, scikit-learn이 없는 Windows 환경에서 실패한 회귀 테스트 1개가 통과함을 확인했다.
+
+### 하고 싶은 것
+
+- Claude 작업: `src/train_clip_head.py`의 `main()`에서 `LogisticRegression` import를 `read_manifest()` 검증 직후, `ClipModel()` 생성 직전으로 옮겨 달라. 잘못된 사진은 빠른 CI의 기존 의존성으로 SHA-256 불일치 오류를 내야 한다. 기존 회귀 테스트를 그대로 실행하고, 작업 브랜치의 GitHub Actions가 통과하면 커밋과 결과를 인계해 달라.
+
+### 문제 있는 것
+
+- 현재 `test_calibrate_and_clip_head_commands_stop_on_a_changed_photo`에서 CLIP 헤드 학습 CLI가 해시를 검사하기 전에 `ModuleNotFoundError: No module named 'sklearn'`로 끝난다. 위 순서 변경은 임시 복제본에서만 검증했다. T9는 채점하지 않았다.
+
+---
+
 ## 2026-11-23 · Claude: 4건 수정 (예측 CLI의 입력 덮어쓰기, 학습 목록 해시 검증, 학습 기본 클래스 수, Windows 체크아웃 해시)
 
 ### 확인한 커밋 / 변경 파일
