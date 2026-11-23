@@ -83,7 +83,7 @@
 | TV-10 | 11.01 | `971190e` | 상한 고구마·대파 개선, CLIP 글 설명 섞기 (후보 V7) | 288 / 285 | 200 / 190 |
 | TV-11 | 11.01 | `f18a159` | 작고 반투명한 가짜 워터마크로 다시 학습 (후보 WC, [watermark](experiments/watermark/README.md)) | 287 / 284 | 199 / 189 |
 | TV-12 | 11.01 | `9ebb286` | CLIP 글 설명으로 거르기 보강 (후보 ZS8, [zero_shot_reject](experiments/zero_shot_reject/README.md), [T3](results/t3_test/README.md)) | 287 / 285 | 199 / 188 |
-| **TV-13** | 11.24 | `TV13COMMIT` | "상한 감자" 답만 CLIP 분류기에 다시 묻기 (후보 PC1, [potato_check](experiments/potato_check/README.md), [T9](results/t9_test/README.md)). 가중치는 TV-12와 같음 | 다시 재지 않음 | 다시 재지 않음 |
+| **TV-13** | 11.24 | `807e7d8` | "상한 감자" 답만 CLIP 분류기에 다시 묻기 (후보 PC1, [potato_check](experiments/potato_check/README.md), [T9](results/t9_test/README.md)). 가중치는 TV-12와 같음 | 다시 재지 않음 | 다시 재지 않음 |
 
 - TV-9부터는 8종 시스템의 결과다. 새 채소 시험지 1~4(198장)에서 TV-10 ~ TV-12는 176장(89%)의 종류를 맞힌다.
 - TV-12는 시험지 T3(247장)에서 다섯 채소 109/137을 맞게 남기고, 다섯 채소가 아닌 사진 48/70을 거른다(TV-11은 108, 41).
@@ -94,7 +94,7 @@
 ```bash
 git fetch origin claude/great-planck-vnvyxx
 for v in "TV-1 03db425" "TV-2 2a3b851" "TV-3 78fe987" "TV-4 2bdf7e8" "TV-5 38e1736" "TV-6 5b1f7d7" \
-         "TV-7 cc21bb9" "TV-8 0e91fb8" "TV-9 42724fe" "TV-10 971190e" "TV-11 f18a159" "TV-12 9ebb286" "TV-13 TV13COMMIT"; do
+         "TV-7 cc21bb9" "TV-8 0e91fb8" "TV-9 42724fe" "TV-10 971190e" "TV-11 f18a159" "TV-12 9ebb286" "TV-13 807e7d8"; do
   set -- $v; git tag -a "$1" "$2" -m "$1"
 done
 git push origin --tags

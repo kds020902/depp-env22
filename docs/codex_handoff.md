@@ -5,6 +5,51 @@ Claude와 Codex가 작업을 마칠 때마다 맨 위에 새 항목을 덧붙인
 
 ---
 
+## 2026-11-24 · Claude: PC1 채택 반영 —  = TV-13 (TV-12의 가중치 + 감자 재확인)
+
+### 확인한 커밋 / 변경 파일
+- Codex의 검수 `f2964ab`(T9 주 판정·참고 집계 일치, 조건 5개 충족)를 읽었다. **사용자가 PC1을 채택했다.**
+- 채택 커밋은 **`807e7d8`**다(이 노트와 README의 커밋 번호는 그다음 커밋).
+- 바뀐 파일
+    - `model.pth`: 버전 `TV-13`, `potato_check: {threshold: 0.5, rule, notes}`, `metrics.t9_test` 추가. SHA-256 `969fbf7c…f9a2ad` → `d4bbed83…eda4b`
+    - `tools/baseline_card.py`, `tools/compare_on_dev.py`(기준 이름 TV-13), `results/baseline/tv13.json`·`tv13_dev.json`(새 파일), `results/baseline/README.md`(새 파일)
+    - `tests/test_project.py`, `tests/test_baseline_record.py`, `experiments/potato_check/evaluate.py`
+    - 문서: `README.md`, `docs/training_and_evaluation.md`, `docs/agent_prompts.md`, `experiments/potato_check/README.md`, `experiments/README.md`, `results/t9_test/README.md`
+- `src/`는 바꾸지 않았다(감자 재확인 코드는 `df3778b`·`364770a`에서 이미 들어갔고 Codex 검수를 받았다).
+
+### 무엇이 바뀌고 무엇이 그대로인가
+- **가중치는 TV-12와 같다.** 채소 모델의 상태 체크섬, 두 CLIP 분류기의 계수·절편이 TV-12 백업과 같은 것을 확인했다. 테스트가 TV-12의 체크섬을 고정해 둔다.
+- **바뀌는 답은 "상한 감자"로 답하던 사진뿐이다.** CLIP 분류기 혼자 본 정상 감자 비율이 0.5 이상이면 "정상 감자"가 되고, 보여 주는 확률은 그 비율이다(0.9 미만이면 판단 보류).
+- 개발 사진 969장: 859 → 869장 맞음(감자 정상 97 → 107, 나머지 클래스 같음). 상함 → 정상 17장 그대로.
+- T9(89장): 59 → 65장. 이 숫자는 채택 전 채점 결과이고, TV-13은 그때의 PC1과 같은 판정이다.
+- TV-12의 기록(`tv12.json`, `tv12_dev.json`)은 남겼다. `model.pth`에서 `potato_check`를 빼면 TV-12의 개발 답이 그대로 나오는 것을 새 테스트가 확인한다.
+
+### 실제 실행한 명령과 결과
+```bash
+python tools/compare_on_dev.py results/baseline/tv13_dev.json     # TV-13 기준선: 869/969
+python tools/baseline_card.py && python tools/baseline_card.py --check
+python experiments/potato_check/evaluate.py                       # dev_results.json 변화 없음 (TV-12 = model.pth에서 재확인을 뺀 것)
+python -m pytest -q                                               # 59 통과, 1 건너뜀
+FULL_TESTS=1 python -m pytest -q                                  # 60 통과 (전체 시스템의 골든 예측 그대로)
+python src/predict.py --model model.pth --input <사진 폴더> --output o.csv     # TV-13으로 정상 실행
+```
+- 기존 골든 예측(채소 모델 답, CLI 답과 확률)은 하나도 바뀌지 않았다. 골든 사진에는 감자 재확인이 걸리는 사진이 없다.
+- GitHub Actions 결과는 올린 뒤 확인해 아래에 적는다.
+
+### 하고 싶은 것
+- Codex 검수: `model.pth`의 변경이 키 추가와 버전뿐인지, TV-12 기록이 보존됐는지 봐 달라.
+- 다음은 고구마다. T9에서 TV-12(=TV-13)는 상한 고구마 29장 중 12장을 "정상"으로 답했다. 새 블라인드 사진이 필요하다.
+
+### 문제 있는 것 / 남은 한계
+- **TV-13의 화면상 개선은 작다.** T9에서 바뀐 6장은 모두 판단 보류로 보인다. "상한 감자"로 확정해 틀리던 사진이 8 → 6장으로 줄었다. 흙 묻은 정상 감자 9장은 여전히 "상한 감자"다.
+- T3~T8과 예전 시험지의 점수는 TV-12로 잰 것이다. TV-13으로 다시 채점하지 않았다(이미 본 시험지다). README에 그렇게 적었다.
+- 예전 실험 스크립트 중 `model.pth`를 "TV-12"로 읽는 것(`results/t6~t9_test/score.py`, `results/user_photos_2/score.py` 등)은 지금 다시 돌리면 TV-13의 답을 낸다. 한 번만 채점하는 기록용 스크립트라 고치지 않았다. `experiments/potato_check/evaluate.py`만 재확인을 빼고 읽도록 고쳤다.
+- 예측 리포트(HTML)의 안내 문구에는 감자 재확인 설명을 넣지 않았다.
+- 데모 아티팩트 페이지("3단계 신선도 판별기")는 여전히 TV-11로 적혀 있고 이번 변경이 반영되지 않았다.
+- main 브랜치는 그대로다(병합은 사용자 승인 사항).
+
+---
+
 ## 2026-11-24 · Codex 검수 — T9 주 판정·참고 집계 일치, PC1 조건 5개 충족
 
 ### 한 것
