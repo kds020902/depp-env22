@@ -64,7 +64,7 @@ def _with_ro(word: str) -> str:
 
 
 class ClipModel:
-    def __init__(self, device: str = "cpu", arch: str = ARCH, pretrained: str = PRETRAINED, species=tuple(SPECIES_WORDS)[:5]):
+    def __init__(self, device: str = "cpu", arch: str = ARCH, pretrained: str = PRETRAINED, species=tuple(SPECIES_WORDS)):
         import open_clip  # needs open_clip_torch
         self.device = device
         self.model, _, self.preprocess = open_clip.create_model_and_transforms(arch, pretrained=pretrained, device=device)

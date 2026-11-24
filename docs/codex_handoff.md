@@ -5,6 +5,50 @@ Claude와 Codex가 작업을 마칠 때마다 맨 위에 새 항목을 덧붙인
 
 ---
 
+## 2026-11-24 · Claude: "다섯 채소만 분류하는 쪽" 삭제 (사용자 지시) — `--five-only`, `--no-clip`, 관련 설명·기록
+
+### 사용자 결정
+- "다섯 채소만 분류하는 쪽을 아예 없앤다. 설명이든 코드든 남기지 않는다."
+- 범위를 물어 답을 받았다: **`--no-clip`까지 모두**, **예전 기록도 지운다.**
+
+### 변경 파일
+| 파일 | 내용 |
+|---|---|
+| `src/predict.py` | `--five-only`, `--no-clip` 삭제. `Classifier`의 `use_clip`·`new_vegetables` 매개변수 삭제. 체크포인트에 CLIP 분류기 두 개가 없으면 설명과 함께 종료. CSV의 `unknown_score` 열(채소 모델 혼자 거를 때의 점수) 삭제. 리포트 안내 문구를 8종 하나로 고정 |
+| `src/decision.py` | `decide(logits, checkpoint, features)`: `new_vegetables` 매개변수와 `features=None`(채소 모델 혼자) 경로 삭제. 첫 단계 계산을 `first_stage()`로 분리. 주석의 "five-vegetable system"을 "first stage"로 |
+| `src/train_new_veg_head.py` | `decide(..., new_vegetables=False)` 대신 `first_stage()` 사용 (계산 결과는 같음) |
+| `src/clip_model.py` | 가까운 것 안내의 기본 채소 목록을 8종으로 |
+| `tests/` | `--no-clip`으로 돌던 예측 CLI 테스트를 전체 시스템(CLIP) 테스트로 옮김. `golden.json`의 `no_clip` 절을 `vegetable_model_output`(부분 점검)으로 이름 변경. 옵션이 사라졌는지 보는 새 테스트 |
+| `README.md` | 두 옵션 설명, "다섯 채소만"·"채소 모델만" 비교 열·행·문장 삭제. 채소 모델 절은 "시스템의 한 부분" 학습 결과로 제목과 설명을 바꿈 |
+| `requirements.txt`, `docs/agent_prompts.md`, `docs/demo_page_text.md` | 옵션·빠른 분석 언급 삭제 |
+| 예전 기록 | `experiments/watermark/breakdown_round2.py`·`.json` 삭제(다섯 채소만 나눠 본 스크립트와 결과), 그 README의 표 삭제. `experiments/new_vegetables/README.md`의 "다섯 채소만" 열, `clip_only_reject`(README·PREREG)·`clip_classifier`·`results/10class/extra_features`·`model_comparison`·`results/16class/new_veg_test`의 옵션·빠른 분석 언급 삭제 |
+| `results/baseline/tv13.json` | `requirements.txt` 해시가 바뀌어 다시 만듦 |
+
+### 이전과 달라진 점
+- `predict.py --no-clip`, `--five-only` → 이제 "unrecognized arguments"로 종료한다(종료 코드 2).
+- `decide(logits, ck)`(CLIP 특징 없음)와 `decide(..., new_vegetables=False)` → `TypeError`. CLIP 분류기가 없는 체크포인트 → `ValueError`.
+- **시스템의 답은 바뀌지 않았다.** `golden.json`을 다시 만들어도 내용이 같고, 전체 테스트의 골든 예측이 그대로다. `model.pth`도 바꾸지 않았다.
+
+### 실제 실행한 명령과 결과
+```bash
+python -m pytest -q                  # 55 통과, 5 건너뜀
+FULL_TESTS=1 python -m pytest -q     # 60 통과
+python tests/make_golden.py          # 다시 만든 golden.json이 저장본과 같음
+python tools/baseline_card.py && python tools/baseline_card.py --check
+```
+- GitHub Actions 결과는 올린 뒤 확인해 아래에 적는다.
+
+### 문제 있는 것 / 남은 한계 (꼭 읽어 달라)
+- **빠른 CI가 예측 CLI를 더는 돌리지 못한다.** 예측은 이제 항상 CLIP이 필요한데 빠른 CI에는 CLIP이 없다. 그래서 예측 CLI를 실제로 돌리는 테스트 5개(히트맵 2, 전부 실패 시 종료 코드, 판단 보류 끄기, 골든 예측)는 `FULL_TESTS=1`일 때만 돈다. 빠른 CI에 남은 것은 데이터·체크포인트·판정 함수(만든 입력)·채소 모델 출력·출력 경로 거부·기준선 기록이다. CI에 CLIP 가중치를 캐시해 전체 테스트를 돌리는 작업은 하지 않았다.
+- **남겨 둔 것 1: 채소 모델이라는 부분 자체.** 시스템 구조상 첫 단계가 채소 모델(10클래스)이고 `train.py`가 이 모델의 Valid·Test 지표를 만든다. 이것은 없앨 수 없어서 남겼고, README에는 "혼자 답하는 설정은 없다"고 적었다. 빠른 테스트의 `vegetable_model_output`도 같은 부분 점검이다.
+- **남겨 둔 것 2: 예전 실험 기록 속의 "채소 모델만" 측정 22줄.** 워터마크 실험의 핵심 근거(채소 모델이 워터마크에 속는 정도), TTA, 세션 겹침, 합치는 비중 실험 등에서 부분을 따로 잰 숫자다. 사용자가 고른 범위("다섯 채소만 표·문장과 그 옵션을 쓰는 스크립트")에는 없어서 두었다. 파일: `experiments/watermark`(README 6, PREREG 3), `tta`(3), `session_overlap`(2), `fusion_weight`(2), `new_vegetables/v4/PREREG`(1), `results/10class/extra_features`(2), `system_checks`(2), `clip_gate/PREREG`(1). 지우라고 하면 지운다.
+- **남겨 둔 것 3: 버전 이력.** TV-1~TV-5는 채소 모델 하나뿐이던 때의 버전이고, `fruit_gate`·`more_data` 같은 그 시절 기록에는 "B만 (현재)"라는 열이 있다. 그때의 시스템을 가리키는 말이라 두었다.
+- **저장소 밖: 데모 아티팩트 페이지.** "3단계 신선도 판별기"에는 채소 모델만 쓰는 "빠른 분석" 기능이 그대로 있다. 이번에 고치지 않았다.
+- 예전 실험 스크립트 중 새 채소 분류기가 없는 옛 체크포인트로 `decide()`를 부르는 것은 이제 `ValueError`가 난다. 기록용 스크립트라 고치지 않았다.
+- `Answers.five`, `five_unknown`이라는 필드 이름은 실험 스크립트 여러 곳에서 써서 그대로 두었다(첫 단계의 값이다).
+
+---
+
 ## 2026-11-24 · Claude: README 정리 (사용자 요청) — 교수님 상담 반영 삭제, 채소 모델 절 한 줄 요약
 
 ### 변경 파일

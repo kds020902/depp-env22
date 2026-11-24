@@ -6,7 +6,7 @@
 |---|---|---|
 | 상한 곳 표시 (히트맵) | `--heatmap 폴더` | 결과가 나오면 사진 위에 자동으로 표시, 버튼으로 끄고 켜기 |
 | 판단 보류와 다시 찍기 안내 | 항상 (`answer`·`held_back`·`retake` 열, 기준은 `--hold-back-below`) | 확신이 낮을 때 답 대신 안내 |
-| 가장 가까운 것 알려주기 | CLIP을 함께 쓰는 기본 설정에서 자동 (`--no-clip`이면 없음) | 없음 (CLIP 모델이 커서 브라우저에서 돌리기 어렵다) |
+| 가장 가까운 것 알려주기 | 항상 (거른 사진에 자동으로 붙음) | 없음 (CLIP 모델이 커서 브라우저에서 돌리기 어렵다) |
 
 ## 1. 상한 곳 표시 (히트맵)
 
@@ -106,5 +106,4 @@
 
 ```bash
 python src/predict.py --model model.pth --input my_photos --output results.csv --heatmap heatmaps
-python src/predict.py --model model.pth --input my_photos --output results.csv --no-clip     # 채소 모델만 (가장 가까운 것 없음)
 ```

@@ -9,7 +9,7 @@ from dataclasses import dataclass
 
 import torch
 
-from calibration import calibrated_probabilities, is_unknown, unknown_score
+from calibration import is_unknown, unknown_score
 from labels import CONDITION_NAMES
 
 
@@ -110,14 +110,14 @@ def new_vegetable_logits(features: torch.Tensor, head: dict) -> torch.Tensor:
 
 def new_vegetable_decision(probabilities: torch.Tensor, unknown: torch.Tensor, features: torch.Tensor,
                            checkpoint: dict) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor]:
-    """The five-vegetable system answers first; the second CLIP head (16 classes + "not one of the eight vegetables")
+    """The first stage (vegetable model + its CLIP head) answers first; the second CLIP head (16 classes + "not one of the eight vegetables")
     may change the answer to onion, sweet potato or green onion:
-    - a photo the five-vegetable system turned away, when the head does not turn it away and its most likely kind
+    - a photo the first stage turned away, when the head does not turn it away and its most likely kind
       (sum of the fresh and rotten probabilities) is a new vegetable;
-    - a photo the five-vegetable system answered, only when the head gives the new vegetables together at least
+    - a photo the first stage answered, only when the head gives the new vegetables together at least
       `switch_probability` and its most likely kind is a new vegetable.
     Returns probabilities over the head's 16 classes (the head's, at its display temperature, for switched photos;
-    otherwise the five-vegetable probabilities padded with zeros), the chosen class per photo (for a switched photo the
+    otherwise the first-stage probabilities padded with zeros), the chosen class per photo (for a switched photo the
     head's most likely kind, then its more likely condition), the new unknown flags and which photos were switched."""
     head = checkpoint["new_vegetable_head"]
     z = new_vegetable_logits(features, head)
@@ -148,37 +148,40 @@ class Answers:
     probability: torch.Tensor     # probability of the chosen class
     unknown: torch.Tensor         # turned away ("학습된 데이터가 아닙니다")
     switched: torch.Tensor        # answered by the new-vegetable head (onion, sweet potato, green onion)
-    five: torch.Tensor            # five-vegetable probabilities (10 classes)
-    five_unknown: torch.Tensor    # turned away by the five-vegetable system, before the new-vegetable head
+    five: torch.Tensor            # first-stage probabilities (10 classes)
+    five_unknown: torch.Tensor    # turned away by the first stage, before the new-vegetable head
 
 
-def decide(logits: torch.Tensor, checkpoint: dict, features: torch.Tensor | None = None, new_vegetables: bool = True) -> Answers:
-    """The answer of the whole system for a batch: `logits` from the vegetable model, `features` the CLIP image features
-    (None = vegetable model alone, as predict.py --no-clip). The new-vegetable head is used when the checkpoint has it,
-    features are given and new_vegetables is True."""
-    if features is not None and "clip_head" in checkpoint:
-        clip_logits = clip_head_logits(features, checkpoint)
-        five = combined_probabilities(combined_logits(logits, clip_logits, checkpoint), checkpoint)
-        five_unknown = is_unknown_combined(logits, clip_logits, checkpoint, features)
-    else:
-        five = calibrated_probabilities(logits, checkpoint)
-        five_unknown = is_unknown(logits, checkpoint)
-    if new_vegetables and features is not None and "new_vegetable_head" in checkpoint and "clip_head" in checkpoint:
-        probabilities, index, unknown, switched = new_vegetable_decision(five, five_unknown, features, checkpoint)
-    else:
-        probabilities, index = five, five.argmax(1)
-        unknown, switched = five_unknown, torch.zeros_like(five_unknown)
+def first_stage(logits: torch.Tensor, checkpoint: dict, features: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
+    """The first stage of the system: the vegetable model combined with its CLIP head. Returns the combined probabilities
+    (10 classes), which photos this stage turns away, and the CLIP head's logits. Not an answer by itself: decide() passes
+    it on to the second CLIP head (train_new_veg_head.py uses it while that head is being fitted)."""
+    if "clip_head" not in checkpoint:
+        raise ValueError("this checkpoint has no CLIP head (clip_head): "
+                         "add the heads with src/train_clip_head.py and src/train_new_veg_head.py")
+    clip_logits = clip_head_logits(features, checkpoint)
+    five = combined_probabilities(combined_logits(logits, clip_logits, checkpoint), checkpoint)
+    return five, is_unknown_combined(logits, clip_logits, checkpoint, features), clip_logits
+
+
+def decide(logits: torch.Tensor, checkpoint: dict, features: torch.Tensor) -> Answers:
+    """The answer of the system for a batch: `logits` from the vegetable model, `features` the CLIP image features.
+    There is one system (eight vegetables): the checkpoint must hold both CLIP heads."""
+    if "new_vegetable_head" not in checkpoint:
+        raise ValueError("this checkpoint has no second CLIP head (new_vegetable_head): add it with src/train_new_veg_head.py")
+    five, five_unknown, clip_logits = first_stage(logits, checkpoint, features)
+    probabilities, index, unknown, switched = new_vegetable_decision(five, five_unknown, features, checkpoint)
     probability = probabilities[torch.arange(len(index)), index]
     answers = Answers(probabilities, index, probability, unknown, switched, five, five_unknown)
-    if "potato_check" in checkpoint and features is not None and "clip_head" in checkpoint:
+    if "potato_check" in checkpoint:
         answers = apply_potato_check(answers, checkpoint, clip_logits)
     return answers
 
 
 # ---------- dirty fresh potatoes answered "rotten potato": ask the CLIP head alone (experiments/potato_check) ----------
 def apply_potato_check(a: Answers, checkpoint: dict, clip_logits: torch.Tensor) -> Answers:
-    """Only when the checkpoint has "potato_check" (TV-12 has not). An answer "rotten potato" given by the five-vegetable
-    system becomes "fresh potato" when the five-vegetable CLIP head alone gives "fresh potato" at least `threshold` of the
+    """Only when the checkpoint has "potato_check" (TV-12 has not). An answer "rotten potato" given by the first
+    stage becomes "fresh potato" when the first-stage CLIP head alone gives "fresh potato" at least `threshold` of the
     two potato classes; its shown probability is that share (so below 0.9 it is still held back). The shown class
     probabilities of such a photo become that share for "fresh potato" and the rest for "rotten potato", so that the
     condition summary predict.py derives from them agrees with the answer. Other photos are not changed."""

@@ -3,7 +3,7 @@ torch==2.8.0
 torchvision==0.23.0
 Pillow==12.3.0
 numpy==2.4.6
-# 최종 판정에 쓰는 CLIP (predict.py --no-clip이면 필요 없음). 가중치는 처음 실행할 때 Hugging Face에서 받는다(약 600MB).
+# 최종 판정에 쓰는 CLIP (시스템의 일부라 꼭 필요하다). 가중치는 처음 실행할 때 Hugging Face에서 받는다(약 600MB).
 open_clip_torch==3.3.0
 timm==1.0.30
 huggingface_hub==2.2.0

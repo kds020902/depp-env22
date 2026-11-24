@@ -1,9 +1,8 @@
 """Classify a photo or a directory with the adopted system (vegetable kind x fresh/rotten).
 
 The vegetable model and the CLIP classifiers are combined by decision.decide(): a photo is turned away when it does not look
-like one of the vegetables, and the second CLIP head may answer onion, sweet potato or green onion. CLIP needs
-`pip install open_clip_torch` and downloads about 600 MB on first use; --no-clip uses the vegetable model alone (five
-vegetables only), --five-only skips the onion / sweet potato / green onion head.
+like one of the vegetables, and the second CLIP head may answer onion, sweet potato or green onion. There is one system
+(eight vegetables); CLIP is part of it: `pip install open_clip_torch`, about 600 MB are downloaded on first use.
 
 An answer whose probability is below --hold-back-below (0.9, decision.HOLD_BACK_BELOW) is held back: the photo is answered
 "판단 보류" with the closest answer and advice (check it yourself when the doubt is between fresh and rotten, else take the
@@ -23,7 +22,7 @@ from pathlib import Path
 
 import torch
 
-from calibration import marginal_probabilities, unknown_score
+from calibration import marginal_probabilities
 from decision import HOLD_BACK_BELOW, clip_head_logits, clip_unknown_score, decide, fresh_or_rotten_doubt, held_back
 from images import IMAGE_EXTENSIONS, make_transform, open_image
 from labels import CONDITION_NAMES, KOREAN, SPECIES_NAMES, UNKNOWN_MESSAGE, condition_of
@@ -36,7 +35,7 @@ HELD = "판단 보류"
 FIELDS = ["image", "answer", "held_back", "known", "message", "closest_guess", "retake", "predicted_class", "species",
           "condition", "probability",
           "uncertain", "species_marginal_prediction", "species_probability", "condition_marginal_prediction",
-          "condition_probability", "unknown_score", "clip_unknown_score", "rot_evidence", "heatmap", "error"]
+          "condition_probability", "clip_unknown_score", "rot_evidence", "heatmap", "error"]
 
 
 def parse_args() -> argparse.Namespace:
@@ -52,11 +51,6 @@ def parse_args() -> argparse.Namespace:
                         help="Answer '판단 보류' (with the closest answer and advice) when the answer's probability is below "
                              "this value; 0 always answers. Default 0.9, chosen on the development photos "
                              "(experiments/improve_without_photos).")
-    parser.add_argument("--no-clip", action="store_true",
-                        help="Use the vegetable model alone, without CLIP (faster, no 600 MB download; five vegetables only, "
-                             "and no closest-thing hint for photos turned away).")
-    parser.add_argument("--five-only", action="store_true",
-                        help="Do not use the onion / sweet potato / green onion head (answers are one of the five vegetables).")
     parser.add_argument("--report", type=Path,
                         help="Also write one HTML report (photos embedded, opens offline): counts, a table by vegetable, "
                              "filters and one card per photo with its heatmap.")
@@ -143,47 +137,43 @@ def heatmap_names(photos: list[Path], source: Path) -> dict[Path, Path]:
 class Classifier:
     """The adopted system, one photo at a time."""
 
-    def __init__(self, model_path: Path, device: torch.device, use_clip: bool = True, new_vegetables: bool = True):
+    def __init__(self, model_path: Path, device: torch.device):
         self.model, self.checkpoint = load_model(model_path, device)
+        missing = [key for key in ("clip_head", "new_vegetable_head") if key not in self.checkpoint]
+        if missing:
+            raise SystemExit(f"{model_path.name} has no {' / '.join(missing)}: it is not the whole system yet. Add the CLIP heads "
+                             "with src/train_clip_head.py and src/train_new_veg_head.py before predicting.")
         self.device = device
         self.transform = make_transform(input_size(self.checkpoint))
         self.calibrated = "calibration" in self.checkpoint
         self.rot_scale = self.checkpoint.get("rot_map", {}).get("scale")
-        self.clip = None
-        if use_clip and "clip_head" in self.checkpoint:
-            from clip_model import ClipModel
-            n_kinds = len(self.checkpoint["new_vegetable_head"]["class_names"] if new_vegetables and "new_vegetable_head" in self.checkpoint
-                          else self.checkpoint["class_names"]) // len(CONDITION_NAMES)
-            try:   # the closest-thing hint names the kinds this system answers
-                self.clip = ClipModel(device.type, **self.checkpoint["clip_head"]["clip"], species=SPECIES_NAMES[:n_kinds])
-            except ImportError:
-                raise SystemExit("This model also uses CLIP: python -m pip install open_clip_torch "
-                                 "(or add --no-clip to use the vegetable model alone)") from None
-        self.new_vegetables = new_vegetables and self.clip is not None and "new_vegetable_head" in self.checkpoint
-        self.class_names = self.checkpoint["new_vegetable_head"]["class_names"] if self.new_vegetables else self.checkpoint["class_names"]
+        from clip_model import ClipModel
+        try:
+            self.clip = ClipModel(device.type, **self.checkpoint["clip_head"]["clip"])
+        except ImportError:
+            raise SystemExit("The system uses CLIP: python -m pip install open_clip_torch") from None
+        self.class_names = self.checkpoint["new_vegetable_head"]["class_names"]
 
     def describe(self) -> str:
-        if self.new_vegetables:
-            return "채소 모델 + CLIP 분류기 2개 (8종: 다섯 채소 + 양파·고구마·대파)"
-        return "채소 모델 + CLIP 분류기 (다섯 채소)" if self.clip is not None else "채소 모델만 (다섯 채소)"
+        return "채소 모델 + CLIP 분류기 2개 (8종: 오이·감자·토마토·피망·당근·양파·고구마·대파)"
 
     def classify(self, photo, hold_back_below: float) -> dict:
         """Everything predict.py shows for one photo."""
         with torch.inference_mode():
             logits, rot_maps = forward_with_rot_maps(self.model, self.checkpoint, self.transform(photo).unsqueeze(0).to(self.device))
         logits, rot_maps = logits.cpu(), rot_maps[0].cpu()
-        features = self.clip.image_features([photo]).cpu() if self.clip is not None else None
-        a = decide(logits, self.checkpoint, features, self.new_vegetables)
+        features = self.clip.image_features([photo]).cpu()
+        a = decide(logits, self.checkpoint, features)
         index, unknown, probability = int(a.index[0]), bool(a.unknown[0]), float(a.probability[0])
         species_probs, condition_probs = marginal_probabilities(a.probabilities)
-        # the vegetable model's rot maps cover its own (five) vegetables only
+        # the vegetable model's rot maps cover cucumber, potato, tomato, bell pepper and carrot
         kind = index // len(CONDITION_NAMES)
         rot_map = rot_maps[min(kind, rot_maps.shape[0] - 1)]
         no_map = unknown or kind >= rot_maps.shape[0] or condition_of(index) == "not_judged"
         scale = self.rot_scale or float(rot_map.max()) or 1.0
         held = bool(held_back(a, hold_back_below)[0])
         message, closest = (UNKNOWN_MESSAGE if unknown else ""), ""
-        if unknown and self.clip is not None:
+        if unknown:
             closest, sentence = self.clip.message(features[0])
             message = f"{UNKNOWN_MESSAGE} ({sentence})"
         elif held:
@@ -195,9 +185,7 @@ class Classifier:
             "species_index": int(species_probs[0].argmax()), "species_probability": float(species_probs[0].max()),
             "condition_index": int(condition_probs[0].argmax()), "condition_probability": float(condition_probs[0].max()),
             "held": held, "retake": unknown or held, "message": message, "closest": closest,
-            "unknown_score": float(unknown_score(logits)[0]),
-            "clip_unknown_score": None if features is None else
-            float(clip_unknown_score(clip_head_logits(features, self.checkpoint), self.checkpoint, features)[0]),
+            "clip_unknown_score": float(clip_unknown_score(clip_head_logits(features, self.checkpoint), self.checkpoint, features)[0]),
             "rot_map": None if no_map else rot_map, "rot_evidence": None if no_map else float(rot_map.max()) / scale, "scale": scale,
         }
 
@@ -213,8 +201,8 @@ def csv_row(path: Path, r: dict, names: list[str], uncertain_below: float) -> di
         "probability": round(r["probability"], 4), "uncertain": "yes" if r["probability"] < uncertain_below else "no",
         "species_marginal_prediction": SPECIES_NAMES[r["species_index"]], "species_probability": round(r["species_probability"], 4),
         "condition_marginal_prediction": CONDITION_NAMES[r["condition_index"]],
-        "condition_probability": round(r["condition_probability"], 4), "unknown_score": round(r["unknown_score"], 4),
-        "clip_unknown_score": "" if r["clip_unknown_score"] is None else round(r["clip_unknown_score"], 4),
+        "condition_probability": round(r["condition_probability"], 4),
+        "clip_unknown_score": round(r["clip_unknown_score"], 4),
         "rot_evidence": "" if r["rot_evidence"] is None else round(r["rot_evidence"], 3), "heatmap": "", "error": "",
     }
     row.update({f"prob_{name}": round(float(r["probabilities"][i]), 4) for i, name in enumerate(names)})
@@ -246,19 +234,17 @@ def report_entry(path: Path, photo, r: dict) -> dict:
 
 def report_notes(system: Classifier, hold_back_below: float) -> list[str]:
     """The notes under the report: what the probabilities are and when an answer is held back, as this run was set."""
-    names = "오이·감자·토마토·피망·당근·양파·고구마·대파" if system.new_vegetables else "오이·감자·토마토·피망·당근"
     notes = [
         ("확률은 Valid 사진으로 보정한 값입니다." if system.calibrated else "이 가중치에는 보정 정보가 없어서 확률은 보정하지 않은 값입니다.")
         + (f" 확률이 {100 * hold_back_below:g}% 미만이면 답하지 않고 '판단 보류'로 가장 가까운 답과 안내를 보여 줍니다."
            if hold_back_below > 0 else " 이번 실행은 판단 보류를 쓰지 않아서(--hold-back-below 0) 확률이 낮아도 답을 보여 줍니다."),
         "상한 흔적은 모델이 '비정상' 쪽으로 본 정도입니다. 1이면 Valid 비정상 사진의 중간 수준입니다.",
         "'상한 곳 보기'의 빨간 부분은 모델이 상했다고 본 곳입니다. 7×7칸 단위라 대략적인 위치입니다.",
-        f"'학습된 데이터가 아닙니다'는 {names} 사진이 아닌 것 같다는 뜻입니다."
-        + (" 대파는 종류만 알아보고 상태는 판정하지 않습니다." if system.new_vegetables else ""),
+        "'학습된 데이터가 아닙니다'는 오이·감자·토마토·피망·당근·양파·고구마·대파 사진이 아닌 것 같다는 뜻입니다."
+        " 대파는 종류만 알아보고 상태는 판정하지 않습니다.",
         "인터넷 사진으로 학습해서, 직접 찍은 사진에서는 정확도가 다를 수 있습니다.",
+        "'상한 곳 보기'는 오이·감자·토마토·피망·당근에만 있습니다. 양파·고구마·대파는 CLIP 분류기가 답해서 상한 곳 지도가 없습니다.",
     ]
-    if system.new_vegetables:
-        notes.append("'상한 곳 보기'는 다섯 채소에만 있습니다. 양파·고구마·대파는 CLIP 분류기가 답해서 상한 곳 지도가 없습니다.")
     return notes
 
 
@@ -276,8 +262,7 @@ def main():
     if not photos:
         raise ValueError("No supported image files were found.")
     refuse_to_overwrite_input(photos, args)      # before the model is loaded and before any file is opened for writing
-    system = Classifier(args.model.expanduser().resolve(), resolve_device(args.device),
-                        use_clip=not args.no_clip, new_vegetables=not args.five_only)
+    system = Classifier(args.model.expanduser().resolve(), resolve_device(args.device))
     if not system.calibrated:
         print("Note: this checkpoint has no calibration; run src/calibrate.py to get calibrated probabilities.", file=sys.stderr)
     names = system.class_names

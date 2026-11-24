@@ -11,23 +11,7 @@
   "test/P_fresh/carrot_fresh_0001.png",
   "test/N_rotten/carrot_rotten_0010.jpg"
  ],
- "no_clip": {
-  "bellpepper_fresh_0001.jpeg": {
-   "predicted_class": "bellpepper_fresh",
-   "probability": 0.9953
-  },
-  "bellpepper_rotten_0002.jpg": {
-   "predicted_class": "tomato_rotten",
-   "probability": 0.9469
-  },
-  "carrot_fresh_0001.png": {
-   "predicted_class": "carrot_fresh",
-   "probability": 0.9971
-  },
-  "carrot_rotten_0010.jpg": {
-   "predicted_class": "potato_rotten",
-   "probability": 0.47
-  },
+ "vegetable_model_output": {
   "cucumber_fresh_0017.jpg": {
    "predicted_class": "cucumber_fresh",
    "probability": 0.9943
@@ -51,6 +35,22 @@
   "tomato_rotten_0514.jpg": {
    "predicted_class": "tomato_rotten",
    "probability": 0.9983
+  },
+  "bellpepper_fresh_0001.jpeg": {
+   "predicted_class": "bellpepper_fresh",
+   "probability": 0.9953
+  },
+  "bellpepper_rotten_0002.jpg": {
+   "predicted_class": "tomato_rotten",
+   "probability": 0.9469
+  },
+  "carrot_fresh_0001.png": {
+   "predicted_class": "carrot_fresh",
+   "probability": 0.9971
+  },
+  "carrot_rotten_0010.jpg": {
+   "predicted_class": "potato_rotten",
+   "probability": 0.47
   }
  },
  "full": {

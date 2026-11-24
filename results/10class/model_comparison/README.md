@@ -7,7 +7,7 @@
 | 이름 | 구성 | "학습된 데이터가 아닙니다" |
 |---|---|---|
 | **초기 모델** | ResNet18, 마지막 층만 학습(5,130개 파라미터), 데이터 증강 없음 | 없음 |
-| **개선 1** | EfficientNet-B0 전체 미세조정, 데이터 증강, 확률 보정 (데모의 빠른 분석) | 채소 모델 energy 점수 |
+| **개선 1** | EfficientNet-B0 전체 미세조정, 데이터 증강, 확률 보정 | 채소 모델 energy 점수 |
 | **개선 2** | 개선 1 + CLIP 분류기(10클래스) 접목 ([clip_classifier](../../../experiments/clip_classifier/README.md)) | 두 모델 중 하나라도 거르면 거름 |
 | **지금** | 개선 2 + "다섯 채소가 아님" 학습([not_five_class](../../../experiments/not_five_class/README.md)) + CLIP 기준으로만 거르기([clip_only_reject](../../../experiments/clip_only_reject/README.md)) | CLIP "다섯 채소가 아님" |
 | 후보 F1 | 지금 + 농가 토마토·상한 과일 학습([fruit_farm_tomato](../../../experiments/fruit_farm_tomato/README.md)), 채택 안 함 | CLIP "다섯 채소가 아님" |

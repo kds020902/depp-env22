@@ -1,7 +1,7 @@
 """Fast checks that run on every push (CI) and before any change to the decision code.
 
-    python -m pytest -q            # fast tests (vegetable model only, no download)
-    FULL_TESTS=1 python -m pytest  # also the full answer with CLIP (downloads about 600 MB once)
+    python -m pytest -q            # fast tests (no CLIP, no download): data, checkpoint, decision code on made-up inputs
+    FULL_TESTS=1 python -m pytest  # also the system's answers through predict.py (CLIP, downloads about 600 MB once)
 """
 
 import csv
@@ -100,14 +100,15 @@ def test_full_decision_shapes(checkpoint):
     assert fresh_or_rotten_doubt(a).shape == (len(f),)
 
 
-# ---------- the same answers as when the model was adopted ----------
-def test_vegetable_model_golden_answers(checkpoint):
+# ---------- the same outputs as when the model was adopted ----------
+def test_vegetable_model_outputs_are_unchanged(checkpoint):
+    """The vegetable model is one part of the system; this is its raw output for ten photos, not an answer of the system."""
     model, ck = load_model(REPO / "model.pth", torch.device("cpu")); tf = make_transform(input_size(ck))
     with torch.inference_mode():
         x = torch.stack([read_image(REPO / "dataset" / p, tf) for p in GOLDEN["photos"]])
         p = calibrated_probabilities(model(x), ck)
     for path, row in zip(GOLDEN["photos"], p):
-        want = GOLDEN["no_clip"][Path(path).name]
+        want = GOLDEN["vegetable_model_output"][Path(path).name]
         assert CLASS_NAMES[int(row.argmax())] == want["predicted_class"], path
         assert abs(float(row.max()) - want["probability"]) < 2e-3, path
 
@@ -132,20 +133,36 @@ def _check_hold_back(rows: dict, golden: dict):
         assert rows[name]["message"].startswith("판단 보류: 가장 가까운 답은") == held, name
 
 
-def test_predict_cli_without_clip():
-    rows = _predict(["--no-clip"])
-    for name, want in GOLDEN["no_clip"].items():
-        assert rows[name]["predicted_class"] == want["predicted_class"] and rows[name]["error"] == ""
-    _check_hold_back(rows, GOLDEN["no_clip"])
-    assert any(r["held_back"] == "yes" for r in rows.values())  # two of the ten photos are below 0.9 without CLIP
+NEEDS_CLIP = pytest.mark.skipif(not os.environ.get("FULL_TESTS"), reason="predict.py runs the whole system: needs open_clip "
+                                "and the CLIP weights (about 600 MB); set FULL_TESTS=1")
 
 
+@NEEDS_CLIP
 def test_hold_back_can_be_turned_off():
-    rows = _predict(["--no-clip", "--hold-back-below", "0"])
+    rows = _predict(["--hold-back-below", "0"])
     assert all(r["held_back"] == "no" and r["answer"] != "판단 보류" for r in rows.values())
 
 
-@pytest.mark.skipif(not os.environ.get("FULL_TESTS"), reason="needs open_clip and the CLIP weights (about 600 MB); set FULL_TESTS=1")
+def test_there_is_one_system_only():
+    """No way to ask for fewer vegetables or for the vegetable model alone: the options are gone and decide() needs both
+    CLIP heads and the CLIP features."""
+    for option in ("--no-clip", "--five-only"):
+        done = subprocess.run([sys.executable, str(REPO / "src/predict.py"), "--input", "x", "--model", "y", option],
+                              capture_output=True, text=True)
+        assert done.returncode == 2 and "unrecognized arguments" in done.stderr, done.stderr
+    ck = torch.load(REPO / "model.pth", map_location="cpu", weights_only=True)
+    logits = torch.zeros(2, 10)
+    with pytest.raises(TypeError):
+        decide(logits, ck)                                                  # CLIP features are required
+    with pytest.raises(TypeError):
+        decide(logits, ck, _features(2), new_vegetables=False)              # the switch no longer exists
+    for missing in ("clip_head", "new_vegetable_head"):
+        with pytest.raises(ValueError, match=missing):
+            decide(logits, {k: v for k, v in ck.items() if k != missing}, _features(2))
+    assert decide(logits, ck, _features(2)).probabilities.shape == (2, 16)
+
+
+@NEEDS_CLIP
 def test_predict_cli_full_system():
     rows = _predict([])
     for name, want in GOLDEN["full"].items():

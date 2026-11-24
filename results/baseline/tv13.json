@@ -5,7 +5,7 @@
   "dataset/manifest.csv": "3d5950247671e5e9051391983c291bb6e60f92034011597fcf644c9000aecf13",
   "experiments/new_vegetables/v7/head_data.npz": "144b697a8d9f1d4f2defe6743dd5d4178ba718d91add7ad735b8a64f15e590b5",
   "experiments/sweetpotato_prompts/dev_features.npz": "8e1959b5ded02b61f466f53152f32b7df1a1010bf0967c1132b7e88223cd40ed",
-  "requirements.txt": "ce4f3aca1f3a45f2d5ab64ca4af8fd022f83e2c7b71e94480c222d370eea6590"
+  "requirements.txt": "9901c3d9e3de91d759fdade6ac93815358e8e1a36ecc7b43141323c459e24362"
  },
  "data": {
   "manifest": "dataset/manifest.csv",
@@ -122,7 +122,7 @@
   "packages": "requirements.txt (exact versions)"
  },
  "commits": {
-  "model.pth": "9ebb286e7cb267d5678955381459d662817c4a65",
+  "model.pth": "807e7d877528b48c04dfccc55a6edad5579d368b",
   "dataset/manifest.csv": "4806be132c3fcf58f340f89f939d37d48733f90a",
   "src/decision.py": "364770ac74b07e069c16f5c721f1f8a60772c34a"
  },

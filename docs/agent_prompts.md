@@ -52,7 +52,7 @@ CLIP 판정에 들어가는 글 설명(영어 문장)과는 다른 것이다. �
 
 검증 명령
 - python -m pytest -q
-- FULL_TESTS=1 python -m pytest -q                      (판정 코드를 건드렸을 때)
+- FULL_TESTS=1 python -m pytest -q                      (판정·예측 코드를 건드렸을 때. 시스템의 답은 CLIP이 있어야 확인된다)
 - python tools/dataset_tools_equivalence.py OLD NEW     (dataset/tools를 건드렸을 때)
 - python tools/rebuild_and_compare.py --work W ...      (데이터셋 만들기를 건드렸을 때, 약 17분)
 - <옛 코드와 새 코드를 같은 입력으로 돌려 비교하는 명령>
@@ -115,7 +115,7 @@ CLIP 판정에 들어가는 글 설명(영어 문장)과는 다른 것이다. �
 - 결과물은 experiments/<이름>/ 에 둔다. 루트 model.pth는 바꾸지 않는다.
 
 유지할 동작
-- 기준 모델의 답은 그대로다(python -m pytest -q의 golden 답과 확률).
+- 기준 모델의 답은 그대로다(FULL_TESTS=1 python -m pytest -q의 golden 답과 확률).
 
 순서
 1. experiments/<이름>/PREREG.md를 결과보다 먼저 쓰고 커밋한다: 질문, 바꾸는 것, 개발 자료, 볼 숫자, 통과 조건, 예상.

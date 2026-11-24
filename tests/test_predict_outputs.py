@@ -1,6 +1,7 @@
 """predict.py outputs and the CLIP feature cache: the cases of the 2026-11-20 review (docs/codex_handoff.md)."""
 
 import csv
+import os
 import shutil
 import subprocess
 import sys
@@ -8,6 +9,7 @@ import types
 from pathlib import Path
 
 import numpy as np
+import pytest
 import torch
 
 REPO = Path(__file__).resolve().parents[1]
@@ -19,8 +21,12 @@ PHOTO = REPO / "dataset/test/N_rotten/tomato_rotten_1188.jpg"
 
 
 def _run(args: list[str]) -> subprocess.CompletedProcess:
-    return subprocess.run([sys.executable, str(REPO / "src/predict.py"), "--model", str(REPO / "model.pth"), "--no-clip",
+    return subprocess.run([sys.executable, str(REPO / "src/predict.py"), "--model", str(REPO / "model.pth"),
                            "--threads", "2", *args], capture_output=True, text=True)
+
+
+# a run of predict.py is the whole system: it needs open_clip and the CLIP weights (about 600 MB)
+NEEDS_CLIP = pytest.mark.skipif(not os.environ.get("FULL_TESTS"), reason="predict.py runs the whole system (CLIP); set FULL_TESTS=1")
 
 
 def test_heatmap_names_are_unique(tmp_path):
@@ -50,6 +56,7 @@ def test_heatmap_names_differ_by_more_than_letter_case(tmp_path):
     assert plain[tmp_path / "Photo.JPG"] == Path("Photo_heatmap.jpg")   # an ordinary name keeps its letters
 
 
+@NEEDS_CLIP
 def test_heatmaps_of_same_named_photos_do_not_overwrite(tmp_path):
     for sub, src in (("a", PHOTO), ("b", REPO / "dataset/test/N_rotten/tomato_rotten_1201.jpg")):
         (tmp_path / "in" / sub).mkdir(parents=True)
@@ -64,6 +71,7 @@ def test_heatmaps_of_same_named_photos_do_not_overwrite(tmp_path):
     assert (tmp_path / "heat/top_heatmap.jpg").is_file()   # a photo directly in the input folder keeps the old name
 
 
+@NEEDS_CLIP
 def test_all_photos_failing_is_an_error(tmp_path):
     (tmp_path / "in").mkdir()
     (tmp_path / "in/broken.jpg").write_bytes(b"not a photo")
@@ -76,13 +84,14 @@ def test_all_photos_failing_is_an_error(tmp_path):
 
 
 def test_report_notes_follow_the_options():
-    system = types.SimpleNamespace(calibrated=True, new_vegetables=False)
+    system = types.SimpleNamespace(calibrated=True)
     assert "90% 미만" in report_notes(system, 0.9)[0] and "보정한 값" in report_notes(system, 0.9)[0]
     assert "75% 미만" in report_notes(system, 0.75)[0]
     off = report_notes(system, 0)[0]
     assert "미만이면" not in off and "판단 보류를 쓰지 않아서" in off
-    raw = report_notes(types.SimpleNamespace(calibrated=False, new_vegetables=True), 0.9)
+    raw = report_notes(types.SimpleNamespace(calibrated=False), 0.9)
     assert "보정하지 않은 값" in raw[0] and "보정한 값입니다" not in raw[0]
+    assert any("양파·고구마·대파" in note for note in raw)        # the notes always describe the one eight-vegetable system
 
 
 class _FakeClip:
@@ -131,15 +140,16 @@ def test_output_or_report_on_an_input_photo_is_refused_and_the_photo_survives(tm
     (folder / "sub").mkdir()
     for option, target in (("--output", str(photo)), ("--output", str(relative)), ("--report", str(photo)), ("--report", str(relative))):
         extra = [option, target] + ([] if option == "--output" else ["--output", str(tmp_path / "ok.csv")])
-        done = subprocess.run([sys.executable, str(REPO / "src/predict.py"), "--model", str(REPO / "model.pth"), "--no-clip",
+        done = subprocess.run([sys.executable, str(REPO / "src/predict.py"), "--model", str(REPO / "model.pth"),
                                "--input", str(folder), *extra], capture_output=True, text=True, cwd=tmp_path)
         assert done.returncode != 0 and "is the input photo" in done.stderr and option in done.stderr, done.stderr
         assert _sha(photo) == before and not (tmp_path / "ok.csv").exists()
-    single = subprocess.run([sys.executable, str(REPO / "src/predict.py"), "--model", str(REPO / "model.pth"), "--no-clip",
+    single = subprocess.run([sys.executable, str(REPO / "src/predict.py"), "--model", str(REPO / "model.pth"),
                              "--input", str(photo), "--output", "in/a.jpg"], capture_output=True, text=True, cwd=tmp_path)
     assert single.returncode != 0 and _sha(photo) == before
 
 
+@NEEDS_CLIP
 def test_heatmap_folder_inside_the_input_folder_is_not_read_as_input(tmp_path):
     """The same command twice: the second run sees the same photos, not the heat maps the first one wrote."""
     folder = tmp_path / "in"

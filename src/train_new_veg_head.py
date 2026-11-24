@@ -9,9 +9,9 @@ vegetable classes and a 17th "not one of the eight vegetables" class. With --alp
 head_data.npz holds every training feature and label (so the photos are not needed) and the development sets used to set
 - the "not eight" threshold: 95% of Valid (old + new vegetables) and of 192 real-scene vegetable crops pass;
 - the switch probability tau: the smallest of 0.5 / 0.7 / 0.8 / 0.9 / 0.95 that moves at most one old-vegetable development photo
-  the five-vegetable system answered (Valid, internet 221, the 160 exam, Asian cucumbers, real-scene crops) to a new vegetable;
+  the first stage answered (Valid, internet 221, the 160 exam, Asian cucumbers, real-scene crops) to a new vegetable;
 - a display temperature (probabilities shown for switched photos only), fitted on Valid.
-The five-vegetable part of the checkpoint (vegetable model + CLIP head) is not changed.
+The first stage of the checkpoint (vegetable model + CLIP head) is not changed.
 """
 
 from __future__ import annotations
@@ -23,7 +23,7 @@ import numpy as np
 import torch
 
 from calibration import fit_temperature
-from decision import decide, new_vegetable_decision, new_vegetable_logits
+from decision import first_stage, new_vegetable_decision, new_vegetable_logits
 from labels import CLASS_NAMES, UNTRAINED_CLASSES
 
 TAU_GRID = (0.5, 0.7, 0.8, 0.9, 0.95)
@@ -38,14 +38,14 @@ def fit_head(x: np.ndarray, y: np.ndarray, k: int) -> tuple[np.ndarray, np.ndarr
     return coef, intercept
 
 
-def five_vegetable_answer(checkpoint: dict, b: np.ndarray, f: np.ndarray) -> tuple[torch.Tensor, torch.Tensor]:
-    a = decide(torch.tensor(b), checkpoint, torch.tensor(f), new_vegetables=False)
-    return a.five, a.five_unknown
+def first_stage_answer(checkpoint: dict, b: np.ndarray, f: np.ndarray) -> tuple[torch.Tensor, torch.Tensor]:
+    five, five_unknown, _ = first_stage(torch.tensor(b), checkpoint, torch.tensor(f))
+    return five, five_unknown
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("--model", type=Path, required=True, help="Checkpoint with the five-vegetable system (model.pth).")
+    parser.add_argument("--model", type=Path, required=True, help="Checkpoint with the first stage (model.pth).")
     parser.add_argument("--data", type=Path, required=True)
     parser.add_argument("--alpha", type=float, default=0.25, help="Weight of the CLIP zero-shot class scores (0 = V6-H, TV-9).")
     parser.add_argument("--out", type=Path, help="Where to write the checkpoint (default: overwrite --model).")
@@ -79,13 +79,13 @@ def main():
         return z[:, k] - torch.logsumexp(z[:, :k], 1)
     head["unknown_threshold"] = float(torch.quantile(torch.cat([not_eight(feats(n)) for n in ("valid", "newval", "lvis")]), 0.95))
 
-    # tau: old-vegetable development photos the five-vegetable system answered, moved to a new vegetable
+    # tau: old-vegetable development photos the first stage answered, moved to a new vegetable
     def moved(tau: float) -> int:
         head["switch_probability"] = tau
         trial = {**checkpoint, "new_vegetable_head": head}
         count = 0
         for name in OLD_DEV:
-            probabilities, unknown = five_vegetable_answer(checkpoint, data[f"dev_{name}_b"], data[f"dev_{name}_X"])
+            probabilities, unknown = first_stage_answer(checkpoint, data[f"dev_{name}_b"], data[f"dev_{name}_X"])
             _, index, still_unknown, switched = new_vegetable_decision(probabilities, unknown, feats(name), trial)
             count += int((~unknown & switched).sum())
         return count
