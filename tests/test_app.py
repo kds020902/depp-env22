@@ -71,7 +71,7 @@ def test_no_file_a_file_that_is_no_photo_and_an_oversized_photo_do_not_reach_the
 
 def test_the_space_folder_has_what_app_py_imports_and_refuses_a_folder_in_use(tmp_path):
     copied = build_space.build(tmp_path / "space")
-    assert {"app.py", "model.pth", "README.md", "requirements.txt", "src/predict.py", "src/clip_model.py"} <= set(copied)
+    assert {"app.py", "web.css", "model.pth", "README.md", "requirements.txt", "src/predict.py", "src/clip_model.py"} <= set(copied)
     imported = {line.split()[1] for name in build_space.SRC + ("../app.py",)
                 for line in (REPO / "src" / name).read_text(encoding="utf-8").splitlines()
                 if line.startswith(("from ", "import ")) or line.startswith("    from ")

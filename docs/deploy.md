@@ -1,6 +1,6 @@
 # 웹 배포 (Hugging Face Spaces)
 
-웹 페이지는 `app.py` 하나입니다. 사진을 `images.open_image()`로 열어 `predict.Classifier`에 넘기므로, 답은 `python src/predict.py`와 같습니다.
+웹 페이지는 `app.py`와 `web.css`로 구성됩니다. 사진을 올린 뒤 **판정하기**를 누르면 `images.open_image()`로 열어 `predict.Classifier`에 넘깁니다. 판정은 `python src/predict.py`와 같습니다.
 
 ## 내 컴퓨터에서 먼저 보기
 
@@ -21,7 +21,7 @@ python app.py          # http://127.0.0.1:7860
 
    | 들어가는 것 | 출처 |
    |---|---|
-   | `app.py`, `model.pth` | 저장소 그대로 |
+   | `app.py`, `web.css`, `model.pth` | 저장소 그대로 |
    | `src/`의 8개 파일 | 예측에 필요한 것만 |
    | `README.md` | `space/README.md` (Space 설정이 맨 위에 있음) |
    | `requirements.txt` | `space/requirements.txt` (기록된 결과를 만든 버전으로 고정) |

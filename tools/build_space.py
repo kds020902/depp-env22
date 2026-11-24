@@ -15,7 +15,7 @@ from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]
 SRC = ("calibration.py", "clip_model.py", "decision.py", "images.py", "labels.py", "networks.py", "predict.py", "report.py")
-FILES = {"app.py": "app.py", "model.pth": "model.pth", "space/README.md": "README.md",
+FILES = {"app.py": "app.py", "web.css": "web.css", "model.pth": "model.pth", "space/README.md": "README.md",
          "space/requirements.txt": "requirements.txt", **{f"src/{name}": f"src/{name}" for name in SRC}}
 
 

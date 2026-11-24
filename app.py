@@ -22,9 +22,22 @@ from labels import KOREAN, SPECIES_NAMES, UNKNOWN_MESSAGE, condition_of  # noqa:
 MODEL = HERE / "model.pth"
 MAX_PIXELS = 40_000_000          # a phone photo is 12-50 MP; larger files are refused before they are decoded in full
 MAX_FILE = "20mb"
-TITLE = "채소 종류 · 신선도 판정"
-INTRO = ("사진 한 장을 올리면 **오이 · 감자 · 토마토 · 피망 · 당근 · 양파 · 고구마 · 대파** 가운데 무엇인지와 "
-         "정상인지 상했는지를 알려 줍니다. 채소 하나만, 밝은 곳에서 가까이 찍은 사진이 가장 잘 맞습니다.")
+TITLE = "채소 상태 판별"
+HERO = """
+<header class="demo-hero">
+  <div class="demo-intro">
+    <h1>채소 상태 판별</h1>
+    <p>사진 한 장으로 채소의 종류와 상태를 확인하세요.</p>
+  </div>
+  <div class="demo-scope">
+    <p>판정 대상</p>
+    <ul><li>오이</li><li>감자</li><li>토마토</li><li>피망</li><li>당근</li><li>양파</li><li>고구마</li><li>대파</li></ul>
+  </div>
+</header>
+"""
+EMPTY = "### 아직 판정한 사진이 없어요\n사진을 올리고 **판정하기**를 누르면 결과가 여기에 표시됩니다."
+READY = "### 사진을 준비했어요\n미리보기를 확인한 뒤 **판정하기**를 눌러 주세요."
+WORKING = "### 사진을 판정하고 있어요\n잠시만 기다려 주세요."
 NOTES = f"""
 **읽는 법**
 - 확률이 {100 * HOLD_BACK_BELOW:g}% 미만이면 답을 확정하지 않고 **판단 보류**로 가장 가까운 답만 알려 줍니다.
@@ -101,20 +114,44 @@ def on_zero_gpu(fn):
 
 def build(system):
     import gradio as gr
+
+    def clear_details():
+        return {}, gr.update(value=None, visible=False), gr.update(visible=False, open=False)
+
+    def photo_changed(path):
+        return gr.update(interactive=bool(path)), READY if path else EMPTY, *clear_details()
+
+    def start():
+        return gr.update(interactive=False), gr.update(interactive=False), WORKING, *clear_details()
+
+    def run(path):
+        message, probabilities, overlay = answer(system, path)
+        return (gr.update(interactive=True), gr.update(interactive=bool(path)), message, probabilities,
+                gr.update(value=overlay, visible=overlay is not None), gr.update(visible=bool(probabilities), open=False))
+
     with gr.Blocks(title=TITLE, delete_cache=(600, 600)) as page:   # uploads are temporary files: removed after 10 minutes
-        gr.Markdown(f"# {TITLE}\n{INTRO}")
-        with gr.Row():
-            with gr.Column():
-                photo = gr.Image(type="filepath", label="사진", sources=["upload", "clipboard", "webcam"], height=360)
-                button = gr.Button("판정하기", variant="primary")
-            with gr.Column():
-                verdict = gr.Markdown("사진을 올려 주세요.")
-                bars = gr.Label(label="가까운 답", num_top_classes=5)
-                heat = gr.Image(label="상한 곳 보기", height=300, interactive=False)
-        gr.Markdown(NOTES)
-        run = on_zero_gpu(lambda path: answer(system, path))
-        button.click(run, photo, [verdict, bars, heat])
-        photo.upload(run, photo, [verdict, bars, heat])
+        gr.HTML(HERO, elem_id="demo-top")
+        with gr.Row(elem_id="demo-workspace", equal_height=True):
+            with gr.Column(elem_id="upload-panel", min_width=300):
+                gr.Markdown("## 사진 올리기\n채소 하나만 밝은 곳에서 가까이 찍어 주세요.")
+                photo = gr.Image(type="filepath", label="채소 사진", show_label=False, height=280,
+                                 sources=["upload", "clipboard", "webcam"], elem_id="photo-input")
+                gr.Markdown("JPG 또는 PNG · 최대 20MB", elem_id="file-hint")
+                button = gr.Button("판정하기", variant="primary", interactive=False, elem_id="analyse-photo")
+            with gr.Column(elem_id="result-panel", min_width=300):
+                gr.Markdown("## 판정 결과")
+                verdict = gr.Markdown(EMPTY, elem_id="photo-verdict")
+                with gr.Accordion("판정 상세 보기", open=False, visible=False, elem_id="result-details") as details:
+                    bars = gr.Label(label="가까운 답", num_top_classes=5)
+                    heat = gr.Image(label="상한 곳 보기", height=220, interactive=False, visible=False)
+        gr.Markdown("먹어도 되는지는 사진 판정만으로 알 수 없어요. 상태를 직접 확인하세요.", elem_id="food-note")
+        with gr.Accordion("판정 기준과 한계", open=False, elem_id="demo-guide"):
+            gr.Markdown(NOTES)
+
+        result_components = [button, verdict, bars, heat, details]
+        photo.change(photo_changed, photo, result_components, queue=False, show_progress="hidden", api_visibility="private")
+        button.click(start, outputs=[photo, *result_components], queue=False, show_progress="hidden",
+                     api_visibility="private").then(on_zero_gpu(run), photo, [photo, *result_components], show_progress="minimal")
     return page
 
 
@@ -123,7 +160,9 @@ def main():
     from predict import Classifier
     torch.set_num_threads(int(os.environ.get("THREADS", "2")))   # the free Space has 2 CPU cores
     system = Classifier(MODEL, torch.device("cpu"))
-    build(system).queue(max_size=20, default_concurrency_limit=1).launch(max_file_size=MAX_FILE)
+    build(system).queue(max_size=20, default_concurrency_limit=1).launch(
+        max_file_size=MAX_FILE, css=(HERE / "web.css").read_text(encoding="utf-8"), footer_links=["gradio"],
+    )
 
 
 if __name__ == "__main__":
