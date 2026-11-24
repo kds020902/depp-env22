@@ -5,6 +5,44 @@ Claude와 Codex가 작업을 마칠 때마다 맨 위에 새 항목을 덧붙인
 
 ---
 
+## 2026-11-24 · Claude: 웹 페이지(app.py)와 Space 폴더 만들기
+
+기준 커밋은 `bcdc1e1`이다. 판정 코드, `model.pth`, 기존 결과는 바꾸지 않았다.
+
+### 한 것
+
+- 새 파일: `app.py`, `space/README.md`, `space/requirements.txt`, `tools/build_space.py`, `tests/test_app.py`, `docs/deploy.md`.
+- `app.py`는 Gradio 페이지다. 올린 파일을 `images.open_image()`로 열어 `predict.Classifier.classify()`에 넘긴다. 보류 기준은 `decision.HOLD_BACK_BELOW`(0.9) 그대로다.
+- 화면에 보이는 것: 답(또는 판단 보류 / 학습된 데이터가 아닙니다), 가까운 답 5개의 확률, 상한 곳 지도, 읽는 법과 한계.
+- 받지 않는 것: 20MB 초과 파일, 4천만 화소 초과 사진, 사진이 아닌 파일. 모델에 넘기기 전에 거른다.
+- `tools/build_space.py OUT`은 Space에 올릴 12개 파일을 새 폴더에 모은다. 업로드는 하지 않는다.
+- `space/requirements.txt`는 저장소 `requirements.txt`와 같은 버전으로 고정했고, 테스트가 둘이 같은지 본다.
+
+### 실제로 돌린 명령과 결과
+
+| 명령 | 결과 |
+|---|---|
+| `python tools/build_space.py OUT` 뒤 OUT 안에서 `python app.py` | 페이지가 열림. 시작 약 30초(가중치는 이미 받은 상태), 메모리 최대 약 1.5GB |
+| 브라우저(Chromium)에서 `dataset/test/N_rotten/cucumber_rotten_0142.jpg` 올리기 | "오이 비정상, 확률 99%", 확률 막대와 빨간 지도가 나옴 |
+| OUT 안에서 `app.answer()`에 사진 3장 | 오이 정상 100%, 오이 비정상 99%, 감자 정상 99%. 한 장에 0.2~0.7초 |
+| `python -m pytest -q` | 63 통과, 5 건너뜀 (전에는 55 통과: 새 테스트 8개) |
+| `python tools/baseline_card.py --check` | 일치 |
+
+### 하고 싶은 것
+
+- 사용자가 Space를 만들어 폴더를 올린 뒤, `docs/deploy.md`의 확인 사진 4장으로 답이 같은지 본다.
+- Codex 검수 요청: `app.py`의 입력 거르기와 오류 문구, `tests/test_app.py`가 놓친 경우.
+
+### 문제 있는 것
+
+- 실제 Space에는 올려 보지 못했다. 이 컨테이너에서만 확인했다.
+- Hugging Face 문서(2026-11-24에 읽음)에는 Gradio Space를 만들려면 유료 요금제가 필요하고, 무료 개인 계정은 ZeroGPU Gradio Space 2개까지라고 적혀 있다. ZeroGPU에서 이 페이지가 그대로 도는지는 확인하지 못했다.
+- `FULL_TESTS=1` 전체 테스트는 이번에 다시 돌리지 않았다. 판정 코드를 바꾸지 않았기 때문이다.
+- Gradio 6.32.0은 `launch(show_api=...)`를 받지 않아서 "Use via API" 링크가 페이지 아래에 남아 있다.
+- Codex가 꼽은 발표 전 수정(옛 채점 스크립트의 버전 검사, `--output`·`--report` 충돌, README의 TV-12 표기)은 아직 하지 않았다.
+
+---
+
 ## 2026-11-24 · Codex: TV-13 기준 다섯 묶음 실측
 
 ### 한 것
