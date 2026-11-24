@@ -79,7 +79,8 @@ def conditions(base: dict, c: dict) -> dict:
 
 
 def main():
-    tv12 = torch.load(REPO / "model.pth", map_location="cpu", weights_only=True)
+    # model.pth is TV-13 since 2026-11-24 (TV-12 + the potato re-check); this experiment compared against TV-12
+    tv12 = {k: v for k, v in torch.load(REPO / "model.pth", map_location="cpu", weights_only=True).items() if k != "potato_check"}
     clip, sets = ClipModel("cpu"), development_sets()
     head = tv12["new_vegetable_head"]
     # the stored rows must come back from the stored prompts, else this code does not embed text as TV-12 did

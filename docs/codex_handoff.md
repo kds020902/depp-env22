@@ -5,6 +5,36 @@ Claude와 Codex가 작업을 마칠 때마다 맨 위에 새 항목을 덧붙인
 
 ---
 
+## 2026-11-24 · Claude: 전체 점검 (사용자 요청) — 테스트 모두 통과, 예전 실험 스크립트 문제 1건 수정
+
+### 돌려 본 것
+| 점검 | 결과 |
+|---|---|
+| `python -m pytest -q` | 55 통과, 5 건너뜀 |
+| `FULL_TESTS=1 python -m pytest -q` | 60 통과 |
+| `python tools/baseline_card.py --check` | 일치 |
+| 모든 `.py` 컴파일(`src`, `tools`, `tests`, `experiments`, `results`) | 오류 없음 |
+| 실제 예측: 사진 4장, `--report`, `--heatmap` | 4/4 성공, CSV 36열(기본 20 + 클래스 확률 16), 히트맵 4개, 리포트 생성 |
+| `--no-clip`, `--five-only` | 둘 다 "unrecognized arguments"로 종료 |
+| CLIP 분류기가 없는 체크포인트로 예측 | 설명과 함께 종료, CSV를 만들지 않음 |
+| `train_new_veg_head.py --tau 0.8` (바뀐 `first_stage()` 사용) | `model.pth`의 분류기와 계수·기준·온도가 같음 |
+| `tools/compare_on_dev.py same=<위 체크포인트>` | 달라진 답 0장 |
+| `experiments/potato_check/evaluate.py` | 저장된 결과와 같음 |
+| `train.py`·`calibrate.py`·`train_clip_head.py`·`train_new_veg_head.py --help` | 모두 정상 |
+| GitHub Actions (`ad01d15`) | 성공 |
+
+### 찾은 문제와 수정
+- **`experiments/sweetpotato_prompts/compare.py`를 다시 돌리면 기록이 바뀌었다.** 이 스크립트는 `model.pth`를 "TV-12"로 읽는데, 채택 뒤 `model.pth`는 TV-13이다. 그래서 다시 돌리면 `dev_results.json`의 "TV-12" 숫자가 TV-13 것으로 덮였다(다섯 채소 맞은 수 745 → 755, 판단 보류 165 → 163. 조건 판정은 같음).
+- 수정: `potato_check/evaluate.py`와 같이, `model.pth`에서 감자 재확인을 뺀 것을 TV-12로 쓰게 했다. 다시 돌려 저장된 기록이 그대로 나오는 것을 확인했다. 점검 중 덮인 파일은 되돌렸다.
+- 원인은 TV-13 채택(`807e7d8`)이고, 어제의 "다섯 채소만 삭제"와는 무관하다.
+
+### 문제는 아니지만 알아 둘 것
+- 같은 종류의 스크립트가 더 있다: `results/t9_test/score.py --rehearsal`, `results/user_photos_2/score.py`, 그 밖의 예전 `results/t*_test/score.py`. 모두 `model.pth`를 "TV-12"로 읽어서 지금 돌리면 TV-13의 답이 "TV-12" 칸에 들어간다. 리허설로 확인했다(두 칸이 같아져 "+6장" 조건이 거짓으로 나옴). 한 번만 채점하는 기록용이고 출력 경로를 따로 받거나 다시 돌 수 없어서 고치지 않았다.
+- 빠른 CI는 예측 명령을 돌리지 않는다(어제 항목에 적은 것과 같다).
+- 실제 예측에서 본 것: 사용자 사진의 흙 묻은 감자 1장은 여전히 "감자 비정상 98%", 상한 고구마 1장은 "판단 보류, 가장 가까운 답 감자 비정상 89%"다. 알려진 약점 그대로다.
+
+---
+
 ## 2026-11-24 · Claude: "다섯 채소만 분류하는 쪽" 삭제 (사용자 지시) — `--five-only`, `--no-clip`, 관련 설명·기록
 
 ### 사용자 결정
