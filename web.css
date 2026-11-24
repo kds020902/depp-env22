@@ -140,8 +140,13 @@ gradio-app {
 }
 
 #analyse-photo {
-    width: 100%;
+    flex: 0 0 48px;
+    width: 405px;
+    max-width: 100%;
+    height: 48px;
     min-height: 48px;
+    max-height: 48px;
+    align-self: flex-start;
     border: 0;
     border-radius: 12px;
     background: var(--demo-accent);
@@ -194,6 +199,48 @@ gradio-app {
     border-color: var(--demo-line);
     border-radius: 13px;
     background: var(--demo-white);
+}
+
+#result-details {
+    flex: 0 0 auto;
+    border: 1px solid var(--demo-line);
+    padding: 12px;
+    gap: 8px;
+}
+
+#result-details-title h3 {
+    margin: 0;
+    color: var(--demo-ink);
+    font-size: .95rem;
+}
+
+#result-placeholder .html-container {
+    padding: 0;
+}
+
+.result-placeholder-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    color: var(--demo-muted);
+    font-size: .9rem;
+}
+
+.result-placeholder-list li {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    padding: 8px 0;
+}
+
+.result-placeholder-line {
+    flex: 1 1 0;
+    border-bottom: 1px dashed var(--demo-line);
+}
+
+#result-placeholder .result-detail-message {
+    margin: 0;
+    font-size: .9rem;
 }
 
 #food-note {

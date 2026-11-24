@@ -35,9 +35,12 @@ HERO = """
   </div>
 </header>
 """
-EMPTY = "### 아직 판정한 사진이 없어요\n사진을 올리고 **판정하기**를 누르면 결과가 여기에 표시됩니다."
+EMPTY = "### 아직 판정 전이에요..."
 READY = "### 사진을 준비했어요\n미리보기를 확인한 뒤 **판정하기**를 눌러 주세요."
 WORKING = "### 사진을 판정하고 있어요\n잠시만 기다려 주세요."
+PENDING_ROW = '<li><span>야채 판정을 해주세요</span><span class="result-placeholder-line"></span><span>N%</span></li>'
+PENDING_DETAILS = f'<ul class="result-placeholder-list" role="list">{PENDING_ROW * 4}</ul>'
+NO_DETAILS = '<p class="result-detail-message">표시할 확률 정보가 없어요.</p>'
 NOTES = f"""
 **읽는 법**
 - 확률이 {100 * HOLD_BACK_BELOW:g}% 미만이면 답을 확정하지 않고 **판단 보류**로 가장 가까운 답만 알려 줍니다.
@@ -116,7 +119,8 @@ def build(system):
     import gradio as gr
 
     def clear_details():
-        return {}, gr.update(value=None, visible=False), gr.update(visible=False, open=False)
+        return (gr.update(value=PENDING_DETAILS, visible=True),
+                gr.update(value={}, visible=False), gr.update(value=None, visible=False))
 
     def photo_changed(path):
         return gr.update(interactive=bool(path)), READY if path else EMPTY, *clear_details()
@@ -126,8 +130,10 @@ def build(system):
 
     def run(path):
         message, probabilities, overlay = answer(system, path)
-        return (gr.update(interactive=True), gr.update(interactive=bool(path)), message, probabilities,
-                gr.update(value=overlay, visible=overlay is not None), gr.update(visible=bool(probabilities), open=False))
+        return (gr.update(interactive=True), gr.update(interactive=bool(path)), message,
+                gr.update(value=NO_DETAILS, visible=not probabilities),
+                gr.update(value=probabilities, visible=bool(probabilities)),
+                gr.update(value=overlay, visible=overlay is not None))
 
     with gr.Blocks(title=TITLE, delete_cache=(600, 600)) as page:   # uploads are temporary files: removed after 10 minutes
         gr.HTML(HERO, elem_id="demo-top")
@@ -141,14 +147,16 @@ def build(system):
             with gr.Column(elem_id="result-panel", min_width=300):
                 gr.Markdown("## 판정 결과")
                 verdict = gr.Markdown(EMPTY, elem_id="photo-verdict")
-                with gr.Accordion("판정 상세 보기", open=False, visible=False, elem_id="result-details") as details:
-                    bars = gr.Label(label="가까운 답", num_top_classes=5)
+                with gr.Column(elem_id="result-details"):
+                    gr.Markdown("### 판정 상세 보기", elem_id="result-details-title")
+                    empty_details = gr.HTML(PENDING_DETAILS, elem_id="result-placeholder")
+                    bars = gr.Label(label="가까운 답", num_top_classes=5, visible=False)
                     heat = gr.Image(label="상한 곳 보기", height=220, interactive=False, visible=False)
         gr.Markdown("먹어도 되는지는 사진 판정만으로 알 수 없어요. 상태를 직접 확인하세요.", elem_id="food-note")
         with gr.Accordion("판정 기준과 한계", open=False, elem_id="demo-guide"):
             gr.Markdown(NOTES)
 
-        result_components = [button, verdict, bars, heat, details]
+        result_components = [button, verdict, empty_details, bars, heat]
         photo.change(photo_changed, photo, result_components, queue=False, show_progress="hidden", api_visibility="private")
         button.click(start, outputs=[photo, *result_components], queue=False, show_progress="hidden",
                      api_visibility="private").then(on_zero_gpu(run), photo, [photo, *result_components], show_progress="minimal")
