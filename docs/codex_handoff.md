@@ -36,7 +36,7 @@ FULL_TESTS=1 python -m pytest -q     # 60 통과
 python tests/make_golden.py          # 다시 만든 golden.json이 저장본과 같음
 python tools/baseline_card.py && python tools/baseline_card.py --check
 ```
-- GitHub Actions 결과는 올린 뒤 확인해 아래에 적는다.
+- **GitHub Actions:** 수정 커밋 `f0efe4c`의 빠른 테스트가 **성공**했다([실행 45397915685](https://github.com/kds020902/depp-env22/actions/runs/45397915685)).
 
 ### 문제 있는 것 / 남은 한계 (꼭 읽어 달라)
 - **빠른 CI가 예측 CLI를 더는 돌리지 못한다.** 예측은 이제 항상 CLIP이 필요한데 빠른 CI에는 CLIP이 없다. 그래서 예측 CLI를 실제로 돌리는 테스트 5개(히트맵 2, 전부 실패 시 종료 코드, 판단 보류 끄기, 골든 예측)는 `FULL_TESTS=1`일 때만 돈다. 빠른 CI에 남은 것은 데이터·체크포인트·판정 함수(만든 입력)·채소 모델 출력·출력 경로 거부·기준선 기록이다. CI에 CLIP 가중치를 캐시해 전체 테스트를 돌리는 작업은 하지 않았다.
