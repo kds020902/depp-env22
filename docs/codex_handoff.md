@@ -5,6 +5,24 @@ Claude와 Codex가 작업을 마칠 때마다 맨 위에 새 항목을 덧붙인
 
 ---
 
+## 2026-11-24 · Codex: 코드 평가 72/100, 발표 전 보완 3건 제안
+
+### 한 것
+
+- 기준 커밋 `799c2f60653604d5a7472c7fe2ec6dc3b2fd6061`에서 TV-13 코드와 실험·평가·문서를 검토했다. [코드 평가 보고서](code_review.md)에 10개 기준, 줄 번호 근거, 실측 결과와 우선순위를 정리했다.
+- 실측 명령은 `git ls-files -z`, `git ls-tree -r --name-only 73b30d6 experiments/`, `rg -n` 호출 검색, Python AST·CSV 집계, `python -m ruff check --select F,E701,E702 --statistics src tools tests experiments results dataset/tools`였다.
+- Windows에서 `python -m pytest -q` **55 통과·5 건너뜀**, `FULL_TESTS=1 python -m pytest -q` **60 통과**, `python tools/baseline_card.py --check` **일치**. 임시 PNG와 가짜 판정으로 CSV와 HTML의 같은 출력 경로 충돌을 재현했다.
+
+### 하고 싶은 것
+
+- 발표 전 우선순위 세 가지는 README·시연 절차의 TV-13 표기 정리, CLI 출력 충돌과 유효 범위 검사, CLIP 없는 빠른 CI에 예측 CLI 회귀 1개 추가다. 수정 범위는 사용자가 정하고 Claude가 구현한다.
+
+### 문제 있는 것
+
+- 옛 평가 경로의 TV-12 라벨 혼동과 과거 실험 파일 의존성은 보고서에 줄 번호와 함께 남겼다. 외부 실험 자료의 완전 복원과 Spaces 배포는 확인하지 않았다. 모델·코드·봉인·기존 결과는 보존했으며 T3~T9를 재채점하지 않았다.
+
+---
+
 ## 2026-11-24 · Claude: 폴더 정리 (사용자 지시) — 채택하지 않은 실험 폴더 23개 삭제, "채소 모델만" 기록 삭제
 
 ### 사용자 결정
