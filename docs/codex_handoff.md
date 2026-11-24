@@ -29,7 +29,7 @@ python -m pytest -q                  # 55 통과, 5 건너뜀
 FULL_TESTS=1 python -m pytest -q     # 60 통과
 python tools/baseline_card.py --check
 ```
-- GitHub Actions 결과는 올린 뒤 확인해 아래에 적는다.
+- **GitHub Actions:** 정리 커밋 `d46439f`의 빠른 테스트가 **성공**했다([실행 45405337439](https://github.com/kds020902/depp-env22/actions/runs/45405337439)).
 
 ### 문제 있는 것 / 남은 한계
 - **사전 계획 문서(PREREG)를 나중에 고쳤다.** `watermark/PREREG.md`와 `new_vegetables/v4/PREREG.md`에서 문장을 지운 것은 사용자 지시에 따른 정리이고, 그 실험의 조건이나 판정은 건드리지 않았다. 원문은 커밋 `73b30d6`에 있다.
