@@ -35,6 +35,7 @@ Claude와 Codex가 작업을 마칠 때마다 맨 위에 새 항목을 덧붙인
 
 ### 문제 있는 것
 
+- 커밋 `7262a84`의 GitHub Actions 빠른 테스트가 성공했다. [Actions 실행 45421938477](https://github.com/kds020902/depp-env22/actions/runs/45421938477)
 - 실제 Space에는 올려 보지 못했다. 이 컨테이너에서만 확인했다.
 - Hugging Face 문서(2026-11-24에 읽음)에는 Gradio Space를 만들려면 유료 요금제가 필요하고, 무료 개인 계정은 ZeroGPU Gradio Space 2개까지라고 적혀 있다. ZeroGPU에서 이 페이지가 그대로 도는지는 확인하지 못했다.
 - `FULL_TESTS=1` 전체 테스트는 이번에 다시 돌리지 않았다. 판정 코드를 바꾸지 않았기 때문이다.
