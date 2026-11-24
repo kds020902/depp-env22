@@ -135,14 +135,14 @@ python -m coverage run --branch --source=src,tools -m pytest -q
 | C6 학습 자료 | Model Cards | R | 출처·분할·규모 기록. 첫 CLIP 원본 일부는 복원 불가 | **일부** | `data_sources.md:10–33`, `docs/training_and_evaluation.md:44–48` | 작음 |
 | C7 정량 분석 | Model Cards | R | 클래스별 표는 있음. 촬영 조건×클래스의 교차 성능 없음 | **일부** | `docs/training_and_evaluation.md:76–103` | 작음 |
 | C8 윤리 고려 | Model Cards | R | 데이터 라이선스 설명은 있음. 식품 안전에서의 오판·사진 프라이버시를 다룬 별도 항목 0 | **미충족** | `data_sources.md:3–8`, `README.md:373–385` | 작음 |
-| C9 한계와 권고 | Model Cards | R | 출처 편향, 약점, 시험지 사용 제한 기록 | **충족** | `README.md:18–27`, `results/t9_test/README.md:61–67` | 작음 |
+| C9 한계와 권고 | Model Cards | R | 출처 편향, 약점, 시험지 사용 제한 기록 | **충족** | `README.md:18–27`, `results/t9_test/README.md:61–65` | 작음 |
 | S1 수집 동기 | Datasheets | R | 5종·2상태 판정 목적. 담당·재원 항목 없음 | **일부** | `dataset/README.md:1–5` | 작음 |
 | S2 구성 | Datasheets | R | 1,860장, 분할, 균형, 라벨·메타데이터 명시 | **충족** | `dataset/README.md:28–52,123–128` | 작음 |
 | S3 수집 과정 | Datasheets | R | 두 출처·육안 검수·분할 규칙. 모든 외부 자료 수집자·시점 명세는 없음 | **일부** | `dataset/README.md:54–86`, `data_sources.md:16–34` | 작음 |
 | S4 처리·정제·라벨링 | Datasheets | R | 중복·유사 장면 규칙과 라벨 의미 기록. 이상 부위 주석은 0 | **일부** | `dataset/README.md:102–128` | 작음 |
 | S5 사용 범위 | Datasheets | R | 학습·검증·시험 정의와 한계. 제외 용도와 사용자 위험 별도 기준 없음 | **일부** | `dataset/README.md:46–52,123–130` | 작음 |
 | S6 배포 | Datasheets | R | 저장소/외부 자료 구분과 다운로드 도구. 외부 학습 자료 완전 복원 불가 | **일부** | `data_sources.md:3–14,35–48` | 작음 |
-| S7 관리 | Datasheets | R | 데이터 버전 이력은 있음. 담당·갱신·이의제기·삭제 운영 절차 0 | **미충족** | `dataset/README.md:133–166` | 작음 |
+| S7 관리 | Datasheets | R | 데이터 버전 이력은 있음. 담당·갱신·이의제기·삭제 운영 절차 0 | **미충족** | `dataset/README.md:132–163` | 작음 |
 | TD1 경계 침식·단계 결합 | Sculley | R,X | 결합 2종. 정규 CNN 체크포인트를 두 CLIP 헤드가 공유하고 판정은 순서에 의존 | **일부** | `src/decision.py:111–179`, `src/train_new_veg_head.py:41–44` | 중간 |
 | TD2 접착 코드·추상화 | Sculley | R,X | 실험/결과의 sys.path 삽입 또는 파일 경로 동적 import가 52파일. exec 기반 내보내기 1개 사례 | **일부** | `experiments/new_vegetables/v7/export_head_data.py:5–13`, `results/t4_test/score.py:33–39` | 중간 |
 | TD3 파이프라인 정글·데이터 의존 | Sculley | R,X | DEPP_WORK를 직접 참조하는 실험 Python 32파일. 삭제 자료를 직접 여는 4파일 | **일부** | `experiments/watermark/common.py:27–43`, `experiments/new_vegetables/v7/build_pool.py:19–22`, `docs/code_review.md:148–163` | 중간 |
@@ -163,7 +163,7 @@ python -m coverage run --branch --source=src,tools -m pytest -q
 | L2 사용 불가 대리특징 | Kapoor·Narayanan | P,R | 열려 있음 · 배경 대체 마스크 실측과 워터마크 과거 기록. 모델 입력에 정답 필드가 직접 들어가는 것은 확인되지 않음 | **일부** | `src/predict.py:160–165`, `experiments/watermark/README.md:5–15` | 중간 |
 | L3.1 시간 순서 누수 | Kapoor·Narayanan | R | 해당 없음 · 이 점검의 분류 과제는 미래 시점 결과를 예측하지 않음 | **충족** | `README.md:1–3`, `docs/training_and_evaluation.md:13–27` | 중간 |
 | L3.2 비독립 표본 | Kapoor·Narayanan | O,R | 열려 있음 · Train/Test 세션 13개, Test 17장 | **미충족** | `dataset/README.md:102–115`, `src/train.py:66–73` | 중간 |
-| L3.3 표본 편향 | Kapoor·Narayanan | O,R | 열려 있음 · 같은 Kaggle 출처가 기본 Train/Test 양쪽. 공개 웹과 실제 사용 분포 차이 | **미충족** | `data_sources.md:50–55`, `results/t9_test/README.md:61–67` | 중간 |
+| L3.3 표본 편향 | Kapoor·Narayanan | O,R | 열려 있음 · 같은 Kaggle 출처가 기본 Train/Test 양쪽. 공개 웹과 실제 사용 분포 차이 | **미충족** | `data_sources.md:50–55`, `results/t9_test/README.md:61–65` | 중간 |
 | O1 기본 파일·픽셀·지각 해시 | manifest | O | 실제 파일 1,860개 검증. 3분할 쌍에서 SHA·RGB픽셀·근접 해시·중복 그룹 모두 0 | **충족** | `dataset/tools/build_dataset_v2.py:112–131,193–199`, `tools/criteria/overlap.py:37–57` | 작음 |
 | O2 기본 출처·세션 교차 | manifest | O | 출처 2개 모두 교차. 세션 Train/Valid 17, Train/Test 13, Valid/Test 14 | **미충족** | `dataset/README.md:54–63,102–115`, `tools/criteria/overlap.py:75–98` | 중간 |
 | O3 두 CLIP 학습행·개발 전체 쌍 비교 | manifest·저장 특징 | O | 두 헤드 공통 Train 1,260과 둘째 6,271을 검사. 첫째 추가 4,623의 행별 원본이 없음 | **일부** | `tools/compare_on_dev.py:37–59`, `experiments/new_vegetables/v7/export_head_data.py:12–14` | 큼 |
@@ -340,14 +340,14 @@ xychart-beta
 | 0.95 | 702/969 · 72.45% (69.55%–75.17%) | 685/702 · 97.58% (96.16%–98.48%) | 2.42% (1.52%–3.84%) |
 | 0.99 | 504/969 · 52.01% (48.87%–55.14%) | 498/504 · 98.81% (97.43%–99.45%) | 1.19% (0.55%–2.57%) |
 
-위험–포괄 곡선의 가로축은 전체 969장 중 답한 비율, 세로축은 그 답의 오류율입니다. 표의 지점과 나머지 임계값 43개가 측정 JSON에 있습니다. 가까운 포괄률은 소수점 한 자리로 표시했습니다.
+위험–포괄 곡선의 가로축은 전체 969장 중 답한 비율, 세로축은 그 답의 오류율입니다. 표의 지점과 나머지 임계값 43개가 측정 JSON에 있습니다. 그림은 가로축을 일정한 간격으로 표시하기 위해 실측한 두 포괄률 사이를 선형 보간했습니다. 현재 기준 0.90의 실측값은 위 표에 있습니다.
 
 ```mermaid
 xychart-beta
     title "개발 자료 위험–포괄 곡선"
-    x-axis ["52.0%", "72.4%", "80.6%", "87.2%", "90.8%", "93.6%", "96.1%"]
+    x-axis "답한 비율 (%)" 53 --> 96
     y-axis "답의 오류율 (%)" 0 --> 10
-    line [1.19, 2.42, 3.97, 5.09, 6.02, 6.50, 7.20]
+    line [1.26, 1.33, 1.39, 1.46, 1.53, 1.60, 1.67, 1.73, 1.80, 1.89, 1.99, 2.10, 2.21, 2.32, 2.31, 2.28, 2.24, 2.24, 2.31, 2.39, 2.50, 2.63, 2.77, 3.02, 3.18, 3.29, 3.49, 3.78, 4.01, 4.11, 4.34, 4.64, 4.98, 5.04, 5.07, 5.36, 5.45, 5.68, 6.11, 6.37, 6.44, 6.59, 6.75, 7.16]
 ```
 
 거르기를 통과한 944장 안에서 확률 순서와 동률을 그대로 사용해 구한 오른쪽 계단 면적 AURC는 **0.01721** (95% 0.01165–0.02314)입니다. 969장 기준 답을 낼 수 있는 최대 포괄은 944/969 · 97.42% (96.22%–98.25%)입니다.
