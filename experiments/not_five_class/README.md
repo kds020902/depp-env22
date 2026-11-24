@@ -21,7 +21,7 @@ CLIP 분류기에 11번째 클래스 "다섯 채소가 아님"(과일, 일상 �
 
 ## 왜 했나
 
-- [weak_spots](../weak_spots/README.md)와 [clip_head_more_data](../clip_head_more_data/README.md)에서, CLIP 분류기 학습 사진을 늘리면 채소는 더 맞혔지만 과일·일상 사진을 덜 걸렀다.
+- weak_spots와 clip_head_more_data에서, CLIP 분류기 학습 사진을 늘리면 채소는 더 맞혔지만 과일·일상 사진을 덜 걸렀다.
 - 원인은 거르는 방식이었다. "얼마나 확신이 없는가"(energy)로 거르면, 다양한 사진으로 배울수록 기준이 느슨해진다.
 - 그래서 "다섯 채소가 아님"을 직접 가르치고, 그 가능성으로 거르기로 했다.
 
@@ -38,9 +38,9 @@ CLIP 분류기에 11번째 클래스 "다섯 채소가 아님"(과일, 일상 �
     - 확인용 사진과 같은 사진 5장도 뺐다.
 - **채소 쪽 추가 1,773장 (N3):**
     - 예전 검수 사진 1,168장
-    - 약점 사진 434장([weak_spots](../weak_spots/README.md))
+    - 약점 사진 434장(weak_spots)
     - 사용자가 제안한 검색어("rotten/fresh asian 채소" 등 52개)로 찾은 사진 31장. 832장 중 눈으로 골랐다.
-    - 동아시아 오이 140장([asian_cucumber](../asian_cucumber/README.md) J2의 Zenodo 사진)
+    - 동아시아 오이 140장(asian_cucumber J2의 Zenodo 사진)
 
 ## 진행 순서
 
@@ -76,4 +76,4 @@ python src/train_clip_head.py --model model.pth --extra-photos lvis_vegetables -
 
 이 명령으로 다시 만든 분류기를 확인했다. Valid 291장, 거르기 기준 −0.6039(채택본 −0.6042), 온도 1.3667(채택본 1.3670)로 거의 같았다. 새 인터넷 시험지에서도 똑같이 203장을 맞히고 169장을 맞게 남겼다.
 
-`PREREG.md`의 `../weak/PREREG.md`는 이 저장소의 [`../weak_spots/PREREG.md`](../weak_spots/PREREG.md)다. 사전등록 파일은 적은 그대로 두었다.
+`PREREG.md`의 `../weak/PREREG.md`는 이 저장소의 `../weak_spots/PREREG.md`다. 사전등록 파일은 적은 그대로 두었다.

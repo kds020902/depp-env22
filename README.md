@@ -203,22 +203,22 @@ Test에서 클래스별로 맞힌 수는 다음과 같다.
 - **거르기 기준을 실제 장면 채소로 다시 맞춤 (TV-5):** 잘못 거른 Test 채소가 10장에서 5장으로 줄었다([real_scene_threshold](experiments/real_scene_threshold/README.md)).
 - **CLIP 분류기 함께 쓰기 (TV-6):** Test 91.7% → 94.7%, 인터넷 사진 75.6% → 86.0%다([clip_classifier](experiments/clip_classifier/README.md)).
 
-**채택하지 않은 것**
-- **시드·증강·긴 학습:** Valid 기준을 넘지 못했다. 시드만 바꿔도 Valid가 2.3%p 달라진다([10class_tuning](experiments/10class_tuning/README.md)).
-- **CLIP 분류기를 더 다양한 사진으로 재학습:** 상한 토마토는 좋아졌지만 과일 거르기가 기준에 1장 모자랐다([clip_head_more_data](experiments/clip_head_more_data/README.md)).
-- **뒤집기 평균(TTA):** 채소 모델 부분의 Valid는 올랐지만 시스템 전체에서는 떨어졌다([tta](experiments/tta/README.md)).
+**채택하지 않은 것** (괄호 안 이름만 있는 것은 폴더를 지운 실험이다. 기록은 커밋 `73b30d6`에 있다)
+- **시드·증강·긴 학습:** Valid 기준을 넘지 못했다. 시드만 바꿔도 Valid가 2.3%p 달라진다(10class_tuning).
+- **CLIP 분류기를 더 다양한 사진으로 재학습:** 상한 토마토는 좋아졌지만 과일 거르기가 기준에 1장 모자랐다(clip_head_more_data).
+- **뒤집기 평균(TTA):** 채소 모델 부분의 Valid는 올랐지만 시스템 전체에서는 떨어졌다(tta).
 - **CLIP 문지기:** 과일은 94% 걸렀지만 상한 채소도 걸러 Test 기준을 넘지 못했다([clip_gate](experiments/clip_gate/README.md)).
-- **논문 방법을 재학습 없이 적용:** 채소 남기기와 과일 거르기 사이에서 저울만 옮겼다([posthoc_literature](experiments/posthoc_literature/README.md)).
-- **과일 판별 모델을 앞에 두기:** 과일은 더 걸렀지만 채소를 과일로 봐서 세 번 모두 기준에 못 미쳤다([fruit_gate](experiments/fruit_gate/README.md)).
-- **과일을 "기타" 클래스로 학습:** 둥근 토마토·감자를 과일로 보는 실수가 생겼다([fruit_other](experiments/fruit_other/README.md)).
-- **아시아 오이 학습:** 시드에 따라 결과가 갈렸고 160장 시험지가 기준에 못 미쳤다([asian_cucumber](experiments/asian_cucumber/README.md)).
-- **흙 묻은 당근·쪼그라든 오이 고치기:** 당근은 좋아졌지만 160장 시험지가 3장 모자랐다([fix_carrot_cucumber](experiments/fix_carrot_cucumber/README.md)).
-- **학습 데이터 크게 늘리기(886장):** 인터넷 사진은 올랐지만 160장 시험지와 Test가 떨어졌다([more_data](experiments/more_data/README.md)).
-- **약점 사진으로 CLIP 분류기 재학습:** 인터넷 사진은 올랐지만 과일·일상 사진을 덜 걸렀다([weak_spots](experiments/weak_spots/README.md)).
-- **휴대폰 사진 480장 추가:** 인터넷 사진 점수가 그대로였다([rotten_phone](experiments/rotten_phone/README.md)).
-- **피망 웹 사진 추가:** 정상 피망은 좋아졌지만 전체 Valid가 기준을 넘지 못했다([pepper_web](experiments/pepper_web/README.md)).
-- **두 모델의 비중 바꾸기:** 상한 토마토는 좋아졌지만 160장 시험지가 150장에서 130장으로 떨어졌다([fusion_weight](experiments/fusion_weight/README.md)).
-- **농가 토마토·상한 과일을 CLIP 분류기에 가르치기:** 진짜 상한 채소도 더 걸러 기준에 못 미쳤다([fruit_farm_tomato](experiments/fruit_farm_tomato/README.md)).
+- **논문 방법을 재학습 없이 적용:** 채소 남기기와 과일 거르기 사이에서 저울만 옮겼다(posthoc_literature).
+- **과일 판별 모델을 앞에 두기:** 과일은 더 걸렀지만 채소를 과일로 봐서 세 번 모두 기준에 못 미쳤다(fruit_gate).
+- **과일을 "기타" 클래스로 학습:** 둥근 토마토·감자를 과일로 보는 실수가 생겼다(fruit_other).
+- **아시아 오이 학습:** 시드에 따라 결과가 갈렸고 160장 시험지가 기준에 못 미쳤다(asian_cucumber).
+- **흙 묻은 당근·쪼그라든 오이 고치기:** 당근은 좋아졌지만 160장 시험지가 3장 모자랐다(fix_carrot_cucumber).
+- **학습 데이터 크게 늘리기(886장):** 인터넷 사진은 올랐지만 160장 시험지와 Test가 떨어졌다(more_data).
+- **약점 사진으로 CLIP 분류기 재학습:** 인터넷 사진은 올랐지만 과일·일상 사진을 덜 걸렀다(weak_spots).
+- **휴대폰 사진 480장 추가:** 인터넷 사진 점수가 그대로였다(rotten_phone).
+- **피망 웹 사진 추가:** 정상 피망은 좋아졌지만 전체 Valid가 기준을 넘지 못했다(pepper_web).
+- **두 모델의 비중 바꾸기:** 상한 토마토는 좋아졌지만 160장 시험지가 150장에서 130장으로 떨어졌다(fusion_weight).
+- **농가 토마토·상한 과일을 CLIP 분류기에 가르치기:** 진짜 상한 채소도 더 걸러 기준에 못 미쳤다(fruit_farm_tomato).
 
 ### 인터넷에 올라온 사진
 
@@ -358,7 +358,7 @@ depp-env22/
 │   ├── t3_test/ t4_test/    블라인드 테스트셋 목록과 채점 기록
 │   ├── 10class/ 16class/    지금 모델의 평가 기록 (인터넷 시험지, "아무 사진", 새 채소 시험지, 점검)
 │   └── 6class/              6개 클래스 때의 모델 비교와 1차 기록
-├── experiments/             실험 기록 36개 (목록: experiments/README.md, 공통 코드: experiments/watermark/common.py)
+├── experiments/             실험 기록 16개 (지운 23개는 한 줄 요약만 남김. 목록: experiments/README.md, 공통 코드: experiments/watermark/common.py)
 └── .github/workflows/       push마다 빠른 테스트
 ```
 
@@ -392,11 +392,11 @@ depp-env22/
 - 같은 사진의 복사본은 막았지만, **같은 채소를 배경·배치만 바꿔 다시 찍은 사진이 Test 300장 중 19장** 있었다.
     - 찾은 방법: CLIP 유사도 후보를 눈으로 확인했다.
     - TV-10 ~ TV-12 모두 이 19장을 다 맞혔다. 빼고 계산해도 맞게 남긴 비율은 95.0%에서 94.7%로, 거의 그대로다.
-    - 워터마크 사진까지 빼면 94.2%다([session_overlap](experiments/session_overlap/README.md)).
+    - 워터마크 사진까지 빼면 94.2%다(session_overlap).
 - 토마토 정상 Train 140장 중 83장이 두 촬영 세션에서 왔다.
 - 비정상의 세부 유형(부패·싹·상처)은 구분하지 않는다.
-- (6개 클래스 모델에서 확인) 꼭지 둘레만 곰팡이가 핀 토마토(몸통은 멀쩡함)를 정상으로 판단한다. 밭 토마토 사진 120장을 더해 다시 학습해 봤지만 이 유형은 고쳐지지 않았고, Test가 1장 떨어져 채택하지 않았다([experiments/field_tomato](experiments/field_tomato/README.md)).
-- (6개 클래스 모델에서) 일부만 상한 채소를 더 잘 잡으려고 입력 크기, 풀링, 부분 부패 사진 추가 등 10가지 후보를 시험했다. 어느 것도 미리 정한 기준을 넘지 못해 채택하지 않았다([experiments/partial_rot](experiments/partial_rot/README.md)).
+- (6개 클래스 모델에서 확인) 꼭지 둘레만 곰팡이가 핀 토마토(몸통은 멀쩡함)를 정상으로 판단한다. 밭 토마토 사진 120장을 더해 다시 학습해 봤지만 이 유형은 고쳐지지 않았고, Test가 1장 떨어져 채택하지 않았다(experiments/field_tomato).
+- (6개 클래스 모델에서) 일부만 상한 채소를 더 잘 잡으려고 입력 크기, 풀링, 부분 부패 사진 추가 등 10가지 후보를 시험했다. 어느 것도 미리 정한 기준을 넘지 못해 채택하지 않았다(experiments/partial_rot).
 
 ## 참고
 

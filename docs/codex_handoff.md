@@ -5,6 +5,41 @@ Claude와 Codex가 작업을 마칠 때마다 맨 위에 새 항목을 덧붙인
 
 ---
 
+## 2026-11-24 · Claude: 폴더 정리 (사용자 지시) — 채택하지 않은 실험 폴더 23개 삭제, "채소 모델만" 기록 삭제
+
+### 사용자 결정
+- 발표 준비로 폴더를 정리한다. "이걸 굳이 왜 남겨놨지" 싶은 예전 기록은 없앤다.
+- 줄 단위보다 폴더 단위로 빼자는 내 제안에 "없애고"라고 답했다. 어느 폴더를 지울지는 아래 기준으로 내가 정했다(사용자가 목록을 미리 보지는 않았다).
+
+### 지운 기준과 목록
+- **기준:** 채택되지 않았고, `src/`·`tools/`·`tests/`가 이름으로도 읽지 않는 실험 폴더.
+- **지운 23개:** `10class_tuning`, `asian_cucumber`, `balanced_clip_head`, `clip_head_more_data`, `dirty_potato`, `field_tomato`, `fix_carrot_cucumber`, `fruit_farm_tomato`, `fruit_gate`, `fruit_other`, `fusion_weight`, `more_data`, `partial_rot`, `pepper_web`, `posthoc_literature`, `reject_by_bigger_eye`, `rotten_phone`, `session_overlap`, `shape_and_parts`, `sharper_eye`, `t3_weak_spots`, `tta`, `weak_spots`
+- **남긴 16개:** 채택된 것(`real_scene_threshold`, `clip_classifier`, `not_five_class`, `clip_only_reject`, `new_vegetables`, `watermark`, `zero_shot_reject`, `improve_without_photos`, `potato_check`)과, 코드·테스트가 읽거나 이름을 가리키는 것(`sweetpotato_prompts`, `sweetpotato_photos`, `root_and_tomato`, `tomato_crops`, `no_greenonion`, `clip_gate`, `bigger_eye`)
+- **되살리는 법:** 지우기 직전 커밋은 `73b30d6`이다. `git checkout 73b30d6 -- experiments/폴더이름`
+
+### 함께 고친 것
+- 지운 폴더를 가리키던 마크다운 링크 55곳(11개 파일)을 글자만 남겼다. 예전부터 깨져 있던 링크 3곳(`../weak/PREREG.md`)도 글자로 바꿨다. 지금 깨진 링크는 0곳이다.
+- `experiments/README.md`: "남아 있는 폴더" 16줄과 "지운 기록" 23줄(무엇을 했고 결과가 어땠는지 한 줄씩)로 다시 짰다.
+- "채소 모델만" 측정: `experiments/watermark/README.md`의 표에서 7줄(채소 모델만·CLIP 분류기만 따로 잰 줄), `watermark/PREREG.md`의 한 구절, `new_vegetables/v4/PREREG.md`의 한 문장을 지웠다. `results/10class/extra_features`·`system_checks`의 문장 4개는 "CLIP 분류기를 붙이기 전(TV-5)에 잰 것" 식으로 고치거나 지웠다.
+- 저장소 전체에서 `--no-clip`, `--five-only`, "다섯 채소만", "채소 모델만"은 이제 테스트 코드(옵션이 사라졌는지 확인)와 이 노트의 예전 항목에만 남아 있다.
+
+### 실제 실행한 명령과 결과
+```bash
+python -m pytest -q                  # 55 통과, 5 건너뜀
+FULL_TESTS=1 python -m pytest -q     # 60 통과
+python tools/baseline_card.py --check
+```
+- GitHub Actions 결과는 올린 뒤 확인해 아래에 적는다.
+
+### 문제 있는 것 / 남은 한계
+- **사전 계획 문서(PREREG)를 나중에 고쳤다.** `watermark/PREREG.md`와 `new_vegetables/v4/PREREG.md`에서 문장을 지운 것은 사용자 지시에 따른 정리이고, 그 실험의 조건이나 판정은 건드리지 않았다. 원문은 커밋 `73b30d6`에 있다.
+- **워터마크 기록에서 근거 숫자가 빠졌다.** "채소 모델이 워터마크에 얼마나 속는지"를 따로 잰 줄이 없어져서, 그 README만 보면 시스템 전체 숫자만 남는다.
+- **남은 기록용 스크립트 중 지운 폴더의 파일을 읽는 것이 있다**(`watermark/common.py`, `results/t4_test/score.py`, `new_vegetables/v5~v7/build_pool.py`, `not_five_class/evaluate.py` 등 11개 파일). 테스트가 돌리는 것은 아니고, 원래도 저장소 밖 작업 폴더의 사진이 있어야 돌았다.
+- 채택하지 않은 기능의 코드는 `src/`에 남아 있다: 토마토 조각 검사(`apply_crop_check`, `five_crops`), `train_new_veg_head.py --untrained`, `train_clip_head.py --clip-arch`. 그래서 그 실험 폴더 4개를 남겼다. 이것도 정리 대상이면 코드와 폴더를 함께 지워야 한다.
+- `results/`(시험지 기록 T3~T9, 성적표 등)는 건드리지 않았다.
+
+---
+
 ## 2026-11-24 · Claude: 전체 점검 (사용자 요청) — 테스트 모두 통과, 예전 실험 스크립트 문제 1건 수정
 
 ### 돌려 본 것
