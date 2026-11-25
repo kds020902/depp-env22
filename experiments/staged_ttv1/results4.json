@@ -1,0 +1,909 @@
+{
+ "class_counts": {
+  "cucumber_fresh": 408,
+  "cucumber_rotten": 268,
+  "potato_fresh": 270,
+  "potato_rotten": 274,
+  "tomato_fresh": 429,
+  "tomato_rotten": 562,
+  "bellpepper_fresh": 184,
+  "bellpepper_rotten": 183,
+  "carrot_fresh": 232,
+  "carrot_rotten": 235,
+  "onion_fresh": 106,
+  "onion_rotten": 61,
+  "sweetpotato_fresh": 93,
+  "sweetpotato_rotten": 44,
+  "greenonion_fresh": 97,
+  "other": 2825
+ },
+ "near_training_rows_left_out": {
+  "Valid 300": 11,
+  "internet 221": 1,
+  "field 160": 0,
+  "Asian cucumbers 37": 0,
+  "new-vegetable Valid 89": 0,
+  "fruit 374": 0,
+  "everyday things 400": 0,
+  "real-scene vegetable crops 192": 0,
+  "potato / sweet potato web 162": 9
+ },
+ "systems": {
+  "TV-13": {
+   "dev": {
+    "right": 869,
+    "n": 969,
+    "rotten_called_fresh": 17,
+    "classes": {
+     "cucumber_fresh": [
+      89,
+      99
+     ],
+     "cucumber_rotten": [
+      33,
+      42
+     ],
+     "potato_fresh": [
+      107,
+      126
+     ],
+     "potato_rotten": [
+      126,
+      133
+     ],
+     "tomato_fresh": [
+      92,
+      99
+     ],
+     "tomato_rotten": [
+      79,
+      95
+     ],
+     "bellpepper_fresh": [
+      69,
+      70
+     ],
+     "bellpepper_rotten": [
+      42,
+      42
+     ],
+     "carrot_fresh": [
+      76,
+      78
+     ],
+     "carrot_rotten": [
+      42,
+      43
+     ],
+     "onion_rotten": [
+      5,
+      5
+     ],
+     "sweetpotato_rotten": [
+      18,
+      25
+     ],
+     "sweetpotato_fresh": [
+      51,
+      63
+     ],
+     "onion_fresh": [
+      26,
+      29
+     ],
+     "greenonion_fresh": [
+      14,
+      20
+     ]
+    },
+    "should_turn_away": 747,
+    "should_keep": 172
+   },
+   "dev_without_near_training_rows": {
+    "right": 849,
+    "n": 948,
+    "rotten_called_fresh": 17,
+    "classes": {
+     "cucumber_fresh": [
+      88,
+      98
+     ],
+     "cucumber_rotten": [
+      32,
+      41
+     ],
+     "potato_fresh": [
+      101,
+      120
+     ],
+     "potato_rotten": [
+      126,
+      133
+     ],
+     "tomato_fresh": [
+      90,
+      97
+     ],
+     "tomato_rotten": [
+      79,
+      95
+     ],
+     "bellpepper_fresh": [
+      69,
+      70
+     ],
+     "bellpepper_rotten": [
+      42,
+      42
+     ],
+     "carrot_fresh": [
+      74,
+      76
+     ],
+     "carrot_rotten": [
+      42,
+      43
+     ],
+     "onion_rotten": [
+      5,
+      5
+     ],
+     "sweetpotato_rotten": [
+      16,
+      22
+     ],
+     "sweetpotato_fresh": [
+      45,
+      57
+     ],
+     "onion_fresh": [
+      26,
+      29
+     ],
+     "greenonion_fresh": [
+      14,
+      20
+     ]
+    },
+    "should_turn_away": 747,
+    "should_keep": 172
+   },
+   "scratch": {
+    "right": 154,
+    "n": 227,
+    "rotten_called_fresh": 7,
+    "classes": {
+     "potato_fresh": [
+      62,
+      88
+     ],
+     "potato_rotten": [
+      50,
+      50
+     ],
+     "sweetpotato_fresh": [
+      30,
+      38
+     ],
+     "sweetpotato_rotten": [
+      12,
+      51
+     ]
+    },
+    "should_turn_away": 0,
+    "should_keep": 0
+   },
+   "rotten_sweet_potato_dev_and_scratch": [
+    30,
+    76
+   ],
+   "per_scratch_group": {
+    "scratch: root_and_tomato": {
+     "potato_fresh": [
+      48,
+      62
+     ],
+     "potato_rotten": [
+      50,
+      50
+     ],
+     "sweetpotato_fresh": [
+      30,
+      38
+     ],
+     "sweetpotato_rotten": [
+      12,
+      16
+     ]
+    },
+    "scratch: sweetpotato_photos train": {
+     "sweetpotato_rotten": [
+      0,
+      20
+     ]
+    },
+    "scratch: user photos 2": {
+     "potato_fresh": [
+      14,
+      26
+     ],
+     "sweetpotato_rotten": [
+      0,
+      15
+     ]
+    }
+   },
+   "dev_against_TV-13": {
+    "right_to_wrong": 0,
+    "wrong_to_right": 0
+   },
+   "scratch_against_TV-13": {
+    "right_to_wrong": 0,
+    "wrong_to_right": 0
+   },
+   "criteria": {
+    "1 rotten sweet potato +8": false,
+    "2 dev right->wrong <= wrong->right": true,
+    "3 turned away not down by more than 3": true,
+    "4 rotten called fresh not up": true
+   }
+  },
+  "LA tau=1": {
+   "dev": {
+    "right": 866,
+    "n": 969,
+    "rotten_called_fresh": 18,
+    "classes": {
+     "cucumber_fresh": [
+      89,
+      99
+     ],
+     "cucumber_rotten": [
+      33,
+      42
+     ],
+     "potato_fresh": [
+      106,
+      126
+     ],
+     "potato_rotten": [
+      117,
+      133
+     ],
+     "tomato_fresh": [
+      92,
+      99
+     ],
+     "tomato_rotten": [
+      78,
+      95
+     ],
+     "bellpepper_fresh": [
+      69,
+      70
+     ],
+     "bellpepper_rotten": [
+      42,
+      42
+     ],
+     "carrot_fresh": [
+      76,
+      78
+     ],
+     "carrot_rotten": [
+      41,
+      43
+     ],
+     "onion_rotten": [
+      5,
+      5
+     ],
+     "sweetpotato_rotten": [
+      22,
+      25
+     ],
+     "sweetpotato_fresh": [
+      55,
+      63
+     ],
+     "onion_fresh": [
+      26,
+      29
+     ],
+     "greenonion_fresh": [
+      15,
+      20
+     ]
+    },
+    "should_turn_away": 726,
+    "should_keep": 174
+   },
+   "dev_without_near_training_rows": {
+    "right": 845,
+    "n": 948,
+    "rotten_called_fresh": 18,
+    "classes": {
+     "cucumber_fresh": [
+      88,
+      98
+     ],
+     "cucumber_rotten": [
+      32,
+      41
+     ],
+     "potato_fresh": [
+      100,
+      120
+     ],
+     "potato_rotten": [
+      117,
+      133
+     ],
+     "tomato_fresh": [
+      90,
+      97
+     ],
+     "tomato_rotten": [
+      78,
+      95
+     ],
+     "bellpepper_fresh": [
+      69,
+      70
+     ],
+     "bellpepper_rotten": [
+      42,
+      42
+     ],
+     "carrot_fresh": [
+      74,
+      76
+     ],
+     "carrot_rotten": [
+      41,
+      43
+     ],
+     "onion_rotten": [
+      5,
+      5
+     ],
+     "sweetpotato_rotten": [
+      19,
+      22
+     ],
+     "sweetpotato_fresh": [
+      49,
+      57
+     ],
+     "onion_fresh": [
+      26,
+      29
+     ],
+     "greenonion_fresh": [
+      15,
+      20
+     ]
+    },
+    "should_turn_away": 726,
+    "should_keep": 174
+   },
+   "scratch": {
+    "right": 161,
+    "n": 227,
+    "rotten_called_fresh": 9,
+    "classes": {
+     "potato_fresh": [
+      62,
+      88
+     ],
+     "potato_rotten": [
+      45,
+      50
+     ],
+     "sweetpotato_fresh": [
+      33,
+      38
+     ],
+     "sweetpotato_rotten": [
+      21,
+      51
+     ]
+    },
+    "should_turn_away": 0,
+    "should_keep": 0
+   },
+   "rotten_sweet_potato_dev_and_scratch": [
+    43,
+    76
+   ],
+   "per_scratch_group": {
+    "scratch: root_and_tomato": {
+     "potato_fresh": [
+      48,
+      62
+     ],
+     "potato_rotten": [
+      45,
+      50
+     ],
+     "sweetpotato_fresh": [
+      33,
+      38
+     ],
+     "sweetpotato_rotten": [
+      15,
+      16
+     ]
+    },
+    "scratch: sweetpotato_photos train": {
+     "sweetpotato_rotten": [
+      5,
+      20
+     ]
+    },
+    "scratch: user photos 2": {
+     "potato_fresh": [
+      14,
+      26
+     ],
+     "sweetpotato_rotten": [
+      1,
+      15
+     ]
+    }
+   },
+   "dev_against_TV-13": {
+    "right_to_wrong": 14,
+    "wrong_to_right": 11
+   },
+   "scratch_against_TV-13": {
+    "right_to_wrong": 5,
+    "wrong_to_right": 12
+   },
+   "criteria": {
+    "1 rotten sweet potato +8": true,
+    "2 dev right->wrong <= wrong->right": false,
+    "3 turned away not down by more than 3": false,
+    "4 rotten called fresh not up": false
+   }
+  },
+  "LA tau=0.5": {
+   "dev": {
+    "right": 873,
+    "n": 969,
+    "rotten_called_fresh": 18,
+    "classes": {
+     "cucumber_fresh": [
+      89,
+      99
+     ],
+     "cucumber_rotten": [
+      33,
+      42
+     ],
+     "potato_fresh": [
+      107,
+      126
+     ],
+     "potato_rotten": [
+      125,
+      133
+     ],
+     "tomato_fresh": [
+      92,
+      99
+     ],
+     "tomato_rotten": [
+      79,
+      95
+     ],
+     "bellpepper_fresh": [
+      69,
+      70
+     ],
+     "bellpepper_rotten": [
+      42,
+      42
+     ],
+     "carrot_fresh": [
+      76,
+      78
+     ],
+     "carrot_rotten": [
+      42,
+      43
+     ],
+     "onion_rotten": [
+      5,
+      5
+     ],
+     "sweetpotato_rotten": [
+      20,
+      25
+     ],
+     "sweetpotato_fresh": [
+      53,
+      63
+     ],
+     "onion_fresh": [
+      26,
+      29
+     ],
+     "greenonion_fresh": [
+      15,
+      20
+     ]
+    },
+    "should_turn_away": 740,
+    "should_keep": 173
+   },
+   "dev_without_near_training_rows": {
+    "right": 853,
+    "n": 948,
+    "rotten_called_fresh": 18,
+    "classes": {
+     "cucumber_fresh": [
+      88,
+      98
+     ],
+     "cucumber_rotten": [
+      32,
+      41
+     ],
+     "potato_fresh": [
+      101,
+      120
+     ],
+     "potato_rotten": [
+      125,
+      133
+     ],
+     "tomato_fresh": [
+      90,
+      97
+     ],
+     "tomato_rotten": [
+      79,
+      95
+     ],
+     "bellpepper_fresh": [
+      69,
+      70
+     ],
+     "bellpepper_rotten": [
+      42,
+      42
+     ],
+     "carrot_fresh": [
+      74,
+      76
+     ],
+     "carrot_rotten": [
+      42,
+      43
+     ],
+     "onion_rotten": [
+      5,
+      5
+     ],
+     "sweetpotato_rotten": [
+      18,
+      22
+     ],
+     "sweetpotato_fresh": [
+      47,
+      57
+     ],
+     "onion_fresh": [
+      26,
+      29
+     ],
+     "greenonion_fresh": [
+      15,
+      20
+     ]
+    },
+    "should_turn_away": 740,
+    "should_keep": 173
+   },
+   "scratch": {
+    "right": 160,
+    "n": 227,
+    "rotten_called_fresh": 7,
+    "classes": {
+     "potato_fresh": [
+      62,
+      88
+     ],
+     "potato_rotten": [
+      50,
+      50
+     ],
+     "sweetpotato_fresh": [
+      32,
+      38
+     ],
+     "sweetpotato_rotten": [
+      16,
+      51
+     ]
+    },
+    "should_turn_away": 0,
+    "should_keep": 0
+   },
+   "rotten_sweet_potato_dev_and_scratch": [
+    36,
+    76
+   ],
+   "per_scratch_group": {
+    "scratch: root_and_tomato": {
+     "potato_fresh": [
+      48,
+      62
+     ],
+     "potato_rotten": [
+      50,
+      50
+     ],
+     "sweetpotato_fresh": [
+      32,
+      38
+     ],
+     "sweetpotato_rotten": [
+      13,
+      16
+     ]
+    },
+    "scratch: sweetpotato_photos train": {
+     "sweetpotato_rotten": [
+      2,
+      20
+     ]
+    },
+    "scratch: user photos 2": {
+     "potato_fresh": [
+      14,
+      26
+     ],
+     "sweetpotato_rotten": [
+      1,
+      15
+     ]
+    }
+   },
+   "dev_against_TV-13": {
+    "right_to_wrong": 2,
+    "wrong_to_right": 6
+   },
+   "scratch_against_TV-13": {
+    "right_to_wrong": 0,
+    "wrong_to_right": 6
+   },
+   "criteria": {
+    "1 rotten sweet potato +8": false,
+    "2 dev right->wrong <= wrong->right": true,
+    "3 turned away not down by more than 3": false,
+    "4 rotten called fresh not up": false
+   }
+  },
+  "TIP": {
+   "dev": {
+    "right": 869,
+    "n": 969,
+    "rotten_called_fresh": 17,
+    "classes": {
+     "cucumber_fresh": [
+      89,
+      99
+     ],
+     "cucumber_rotten": [
+      33,
+      42
+     ],
+     "potato_fresh": [
+      107,
+      126
+     ],
+     "potato_rotten": [
+      126,
+      133
+     ],
+     "tomato_fresh": [
+      92,
+      99
+     ],
+     "tomato_rotten": [
+      79,
+      95
+     ],
+     "bellpepper_fresh": [
+      69,
+      70
+     ],
+     "bellpepper_rotten": [
+      42,
+      42
+     ],
+     "carrot_fresh": [
+      76,
+      78
+     ],
+     "carrot_rotten": [
+      42,
+      43
+     ],
+     "onion_rotten": [
+      5,
+      5
+     ],
+     "sweetpotato_rotten": [
+      17,
+      25
+     ],
+     "sweetpotato_fresh": [
+      52,
+      63
+     ],
+     "onion_fresh": [
+      26,
+      29
+     ],
+     "greenonion_fresh": [
+      14,
+      20
+     ]
+    },
+    "should_turn_away": 746,
+    "should_keep": 172
+   },
+   "dev_without_near_training_rows": {
+    "right": 849,
+    "n": 948,
+    "rotten_called_fresh": 17,
+    "classes": {
+     "cucumber_fresh": [
+      88,
+      98
+     ],
+     "cucumber_rotten": [
+      32,
+      41
+     ],
+     "potato_fresh": [
+      101,
+      120
+     ],
+     "potato_rotten": [
+      126,
+      133
+     ],
+     "tomato_fresh": [
+      90,
+      97
+     ],
+     "tomato_rotten": [
+      79,
+      95
+     ],
+     "bellpepper_fresh": [
+      69,
+      70
+     ],
+     "bellpepper_rotten": [
+      42,
+      42
+     ],
+     "carrot_fresh": [
+      74,
+      76
+     ],
+     "carrot_rotten": [
+      42,
+      43
+     ],
+     "onion_rotten": [
+      5,
+      5
+     ],
+     "sweetpotato_rotten": [
+      15,
+      22
+     ],
+     "sweetpotato_fresh": [
+      46,
+      57
+     ],
+     "onion_fresh": [
+      26,
+      29
+     ],
+     "greenonion_fresh": [
+      14,
+      20
+     ]
+    },
+    "should_turn_away": 746,
+    "should_keep": 172
+   },
+   "scratch": {
+    "right": 153,
+    "n": 227,
+    "rotten_called_fresh": 7,
+    "classes": {
+     "potato_fresh": [
+      62,
+      88
+     ],
+     "potato_rotten": [
+      50,
+      50
+     ],
+     "sweetpotato_fresh": [
+      30,
+      38
+     ],
+     "sweetpotato_rotten": [
+      11,
+      51
+     ]
+    },
+    "should_turn_away": 0,
+    "should_keep": 0
+   },
+   "rotten_sweet_potato_dev_and_scratch": [
+    28,
+    76
+   ],
+   "per_scratch_group": {
+    "scratch: root_and_tomato": {
+     "potato_fresh": [
+      48,
+      62
+     ],
+     "potato_rotten": [
+      50,
+      50
+     ],
+     "sweetpotato_fresh": [
+      30,
+      38
+     ],
+     "sweetpotato_rotten": [
+      11,
+      16
+     ]
+    },
+    "scratch: sweetpotato_photos train": {
+     "sweetpotato_rotten": [
+      0,
+      20
+     ]
+    },
+    "scratch: user photos 2": {
+     "potato_fresh": [
+      14,
+      26
+     ],
+     "sweetpotato_rotten": [
+      0,
+      15
+     ]
+    }
+   },
+   "dev_against_TV-13": {
+    "right_to_wrong": 1,
+    "wrong_to_right": 1
+   },
+   "scratch_against_TV-13": {
+    "right_to_wrong": 1,
+    "wrong_to_right": 0
+   },
+   "criteria": {
+    "1 rotten sweet potato +8": false,
+    "2 dev right->wrong <= wrong->right": true,
+    "3 turned away not down by more than 3": true,
+    "4 rotten called fresh not up": true
+   }
+  }
+ }
+}
