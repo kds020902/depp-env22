@@ -5,6 +5,41 @@ Claude와 Codex가 작업을 마칠 때마다 맨 위에 새 항목을 덧붙인
 
 ---
 
+## 2026-11-25 · Claude: 로짓 보정·Tip-Adapter 방식·PatchCore 방식(고구마)
+
+계획 커밋은 `dfd1f9c`(덧붙임 3)와 `5a1957d`(덧붙임 4), 모두 결과를 보기 전이다. `model.pth`와 판정 코드는 바꾸지 않았다. 채택 후보는 없다.
+
+### 한 것
+
+- 사용자 지시: "3, 4 먼저 테스트해 보고 크게 개선이 안 되면 1번을 해 보자." (3 = Tip-Adapter, 4 = 로짓 보정, 1 = PatchCore)
+- 새 파일(`experiments/staged_ttv1/`): `features.py`, `scratch_features.npz`(임시 폴더 사진 227장의 모델 입력), `run4.py`, `results4.json`, `run5.py`, `results5.json`. `PREREG.md` 덧붙임 3·4, `README.md`에 두 절.
+- 실행한 명령: `python experiments/staged_ttv1/run4.py experiments/staged_ttv1/results4.json`, `python experiments/staged_ttv1/run5.py PHOTOS.csv experiments/staged_ttv1/results3.json experiments/staged_ttv1/results5.json --maps FOLDER`
+
+### 결과
+
+| | TV-13 | LA τ=1 | LA τ=0.5 | TIP |
+|---|---:|---:|---:|---:|
+| 상한 고구마 / 76 | 30 | 43 | 36 | 28 |
+| 개발 / 969 | 869 | 866 | 873 | 869 |
+| 걸러야 할 774장 중 거름 | 747 | 726 | 740 | 746 |
+
+- 미리 정한 "크게 개선" 기준 넷을 모두 채운 것은 없다. 로짓 보정은 상한 고구마를 올리지만 거르기가 느슨해진다.
+- PatchCore 방식: 같은 출처 AUROC 0.806(가운데만 0.885), 다른 출처 0.6 ~ 0.72. 판정으로는 약하고, 지도는 곰팡이·썩은 자리·싹에 모인다.
+
+### 하고 싶은 것
+
+- Codex 검수: `run4.py`의 `with_logit_adjustment()`(모든 칸에 보정을 넣은 것이 맞는지), `run5.py`의 겹 나누기(정상 사진이 자기 창고에 들어가지 않는지)와 `photo_score()`.
+- 사용자가 정하면: ① 로짓 보정을 채소 칸에만 적용하는 변형(결과를 본 뒤 떠올린 것이라 새 계획이 필요), ② PatchCore 지도를 고구마의 "상한 곳 보기"로 쓰는 실험(정상 사진을 늘리고 배경을 지우는 것부터).
+
+### 문제 있는 것
+
+- 고구마 사진 89장, 정상은 한 출처(iNaturalist)다. 같은 출처의 상한 사진은 대부분 싹 난 것이다.
+- 지도가 "대체로 맞다"는 것은 예시 몇 장을 눈으로 본 판단이다. 정답 표시(마스크)가 없어 숫자로 재지 않았다.
+- 지도 예시 그림은 저장소에 올리지 않았다.
+- 커밋 `f013ea1`, `3a90ac3`, `dfd1f9c`, `5a1957d`의 Actions 결과는 이 항목을 쓸 때 확인하지 않았다.
+
+---
+
 ## 2026-11-25 · Claude: 고구마용 상한 흔적(SPE)은 실패
 
 계획 커밋은 `3a90ac3`(결과를 보기 전), 결과는 이 항목의 커밋이다. `model.pth`와 판정 코드는 바꾸지 않았다.

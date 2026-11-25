@@ -1,0 +1,760 @@
+{
+ "photos": [
+  {
+   "id": "inat-5824927",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_fresh",
+   "score": 1.0031,
+   "score_centre": 0.9715
+  },
+  {
+   "id": "inat-2410682",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_fresh",
+   "score": 1.027,
+   "score_centre": 1.0208
+  },
+  {
+   "id": "inat-281171595",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_fresh",
+   "score": 1.0469,
+   "score_centre": 1.0211
+  },
+  {
+   "id": "inat-248251355",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_fresh",
+   "score": 1.0151,
+   "score_centre": 0.9412
+  },
+  {
+   "id": "inat-575297416",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_fresh",
+   "score": 1.0296,
+   "score_centre": 0.9773
+  },
+  {
+   "id": "inat-601688125",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_fresh",
+   "score": 1.0279,
+   "score_centre": 0.972
+  },
+  {
+   "id": "inat-5827466",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_fresh",
+   "score": 0.991,
+   "score_centre": 0.981
+  },
+  {
+   "id": "inat-390875383",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_fresh",
+   "score": 0.9655,
+   "score_centre": 0.9417
+  },
+  {
+   "id": "inat-2246152",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_fresh",
+   "score": 1.0066,
+   "score_centre": 0.9407
+  },
+  {
+   "id": "inat-471705028",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_fresh",
+   "score": 1.0054,
+   "score_centre": 0.9896
+  },
+  {
+   "id": "inat-409280699",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_fresh",
+   "score": 1.032,
+   "score_centre": 1.0126
+  },
+  {
+   "id": "inat-406213433",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_fresh",
+   "score": 1.0089,
+   "score_centre": 0.9583
+  },
+  {
+   "id": "inat-119711289",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "turned_away",
+   "score": 1.0523,
+   "score_centre": 1.0499
+  },
+  {
+   "id": "inat-583719422",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_fresh",
+   "score": 1.0189,
+   "score_centre": 1.009
+  },
+  {
+   "id": "inat-562312271",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_fresh",
+   "score": 0.9819,
+   "score_centre": 0.953
+  },
+  {
+   "id": "inat-410274898",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_fresh",
+   "score": 1.0225,
+   "score_centre": 1.0289
+  },
+  {
+   "id": "inat-177531635",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_fresh",
+   "score": 1.019,
+   "score_centre": 1.0132
+  },
+  {
+   "id": "inat-99896885",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_fresh",
+   "score": 1.0338,
+   "score_centre": 1.0089
+  },
+  {
+   "id": "inat-603687486",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_fresh",
+   "score": 0.9891,
+   "score_centre": 0.9399
+  },
+  {
+   "id": "inat-100018244",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_fresh",
+   "score": 1.0339,
+   "score_centre": 0.9808
+  },
+  {
+   "id": "inat-65555761",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_fresh",
+   "score": 1.0225,
+   "score_centre": 0.9884
+  },
+  {
+   "id": "inat-630215966",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_fresh",
+   "score": 1.0296,
+   "score_centre": 1.0304
+  },
+  {
+   "id": "inat-251207492",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_fresh",
+   "score": 1.0566,
+   "score_centre": 1.0296
+  },
+  {
+   "id": "inat-169639307",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_fresh",
+   "score": 0.9833,
+   "score_centre": 0.8866
+  },
+  {
+   "id": "inat-84268120",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_fresh",
+   "score": 1.0195,
+   "score_centre": 0.9312
+  },
+  {
+   "id": "inat-172076802",
+   "class_name": "sweetpotato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_rotten",
+   "score": 1.0232,
+   "score_centre": 1.0354
+  },
+  {
+   "id": "inat-659489821",
+   "class_name": "sweetpotato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_rotten",
+   "score": 1.062,
+   "score_centre": 1.0766
+  },
+  {
+   "id": "inat-271381646",
+   "class_name": "sweetpotato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "score": 1.0627,
+   "score_centre": 1.0769
+  },
+  {
+   "id": "inat-136767486",
+   "class_name": "sweetpotato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_rotten",
+   "score": 1.0172,
+   "score_centre": 0.9788
+  },
+  {
+   "id": "inat-476657301",
+   "class_name": "sweetpotato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_rotten",
+   "score": 1.0311,
+   "score_centre": 1.0419
+  },
+  {
+   "id": "inat-532495178",
+   "class_name": "sweetpotato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_rotten",
+   "score": 1.0107,
+   "score_centre": 1.0134
+  },
+  {
+   "id": "inat-251100472",
+   "class_name": "sweetpotato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "score": 1.0878,
+   "score_centre": 1.0877
+  },
+  {
+   "id": "inat-607032143",
+   "class_name": "sweetpotato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_rotten",
+   "score": 1.0222,
+   "score_centre": 1.0153
+  },
+  {
+   "id": "inat-616903205",
+   "class_name": "sweetpotato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_rotten",
+   "score": 1.0291,
+   "score_centre": 1.0527
+  },
+  {
+   "id": "inat-100036991",
+   "class_name": "sweetpotato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_rotten",
+   "score": 1.0539,
+   "score_centre": 1.0155
+  },
+  {
+   "id": "inat-147639731",
+   "class_name": "sweetpotato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_rotten",
+   "score": 1.0658,
+   "score_centre": 1.0719
+  },
+  {
+   "id": "inat-236632191",
+   "class_name": "sweetpotato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_rotten",
+   "score": 1.0662,
+   "score_centre": 1.0512
+  },
+  {
+   "id": "inat-714835268",
+   "class_name": "sweetpotato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_rotten",
+   "score": 1.0364,
+   "score_centre": 1.0118
+  },
+  {
+   "id": "inat-470028299",
+   "class_name": "sweetpotato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "score": 1.0516,
+   "score_centre": 1.0042
+  },
+  {
+   "id": "inat-90274632",
+   "class_name": "sweetpotato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_rotten",
+   "score": 1.0317,
+   "score_centre": 1.0371
+  },
+  {
+   "id": "inat-376018788",
+   "class_name": "sweetpotato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_fresh",
+   "score": 1.0439,
+   "score_centre": 1.0379
+  },
+  {
+   "id": "inat-508601913",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "score": 0.9334,
+   "score_centre": 0.9331
+  },
+  {
+   "id": "inat-479838632",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "score": 0.9463,
+   "score_centre": 0.9196
+  },
+  {
+   "id": "inat-508601768",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "score": 0.9667,
+   "score_centre": 0.8847
+  },
+  {
+   "id": "inat-151685697",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_fresh",
+   "score": 1.0659,
+   "score_centre": 0.9978
+  },
+  {
+   "id": "inat-62018679",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_fresh",
+   "score": 0.995,
+   "score_centre": 0.9762
+  },
+  {
+   "id": "inat-622307071",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_rotten",
+   "score": 1.0252,
+   "score_centre": 1.0113
+  },
+  {
+   "id": "inat-508603171",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_fresh",
+   "score": 0.9089,
+   "score_centre": 0.9005
+  },
+  {
+   "id": "inat-651773956",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_fresh",
+   "score": 0.7937,
+   "score_centre": 0.4104
+  },
+  {
+   "id": "inat-13247800",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_fresh",
+   "score": 1.0133,
+   "score_centre": 1.0173
+  },
+  {
+   "id": "inat-100062897",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "score": 1.0482,
+   "score_centre": 1.0356
+  },
+  {
+   "id": "inat-597210502",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_fresh",
+   "score": 1.0403,
+   "score_centre": 0.9703
+  },
+  {
+   "id": "inat-657939442",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_fresh",
+   "score": 0.6469,
+   "score_centre": 0.4043
+  },
+  {
+   "id": "inat-508602377",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_fresh",
+   "score": 0.9262,
+   "score_centre": 0.8919
+  },
+  {
+   "id": "4차/고구마_상함/고구마_상함_약간_4차_10.jpg",
+   "class_name": "sweetpotato_rotten",
+   "group": "sweetpotato_photos train",
+   "tv13": "sweetpotato_fresh",
+   "score": 1.0081,
+   "score_centre": 1.0007
+  },
+  {
+   "id": "4차/고구마_상함/고구마_상함_약간_4차_13.jpg",
+   "class_name": "sweetpotato_rotten",
+   "group": "sweetpotato_photos train",
+   "tv13": "potato_rotten",
+   "score": 1.0428,
+   "score_centre": 1.0145
+  },
+  {
+   "id": "4차/고구마_상함/고구마_상함_약간_4차_14.jpg",
+   "class_name": "sweetpotato_rotten",
+   "group": "sweetpotato_photos train",
+   "tv13": "potato_rotten",
+   "score": 1.0499,
+   "score_centre": 0.9663
+  },
+  {
+   "id": "4차/고구마_상함/고구마_상함_약간_4차_15.jpg",
+   "class_name": "sweetpotato_rotten",
+   "group": "sweetpotato_photos train",
+   "tv13": "potato_fresh",
+   "score": 1.0253,
+   "score_centre": 1.0229
+  },
+  {
+   "id": "4차/고구마_상함/고구마_상함_척봐도_4차_11.jpg",
+   "class_name": "sweetpotato_rotten",
+   "group": "sweetpotato_photos train",
+   "tv13": "potato_rotten",
+   "score": 1.0267,
+   "score_centre": 0.9977
+  },
+  {
+   "id": "4차/고구마_상함/고구마_상함_척봐도_4차_12.jpg",
+   "class_name": "sweetpotato_rotten",
+   "group": "sweetpotato_photos train",
+   "tv13": "potato_rotten",
+   "score": 1.063,
+   "score_centre": 0.9725
+  },
+  {
+   "id": "5차/학습용/고구마_상함/고구마_상함_약간_5차_12.jpg",
+   "class_name": "sweetpotato_rotten",
+   "group": "sweetpotato_photos train",
+   "tv13": "potato_rotten",
+   "score": 1.0596,
+   "score_centre": 1.0682
+  },
+  {
+   "id": "5차/학습용/고구마_상함/고구마_상함_약간_5차_13.jpg",
+   "class_name": "sweetpotato_rotten",
+   "group": "sweetpotato_photos train",
+   "tv13": "potato_rotten",
+   "score": 1.013,
+   "score_centre": 1.0291
+  },
+  {
+   "id": "고구마_상함/고구마_상함_약간_01.jpg",
+   "class_name": "sweetpotato_rotten",
+   "group": "sweetpotato_photos train",
+   "tv13": "turned_away",
+   "score": 1.0375,
+   "score_centre": 1.028
+  },
+  {
+   "id": "고구마_상함/고구마_상함_척봐도_02.jpg",
+   "class_name": "sweetpotato_rotten",
+   "group": "sweetpotato_photos train",
+   "tv13": "potato_rotten",
+   "score": 1.011,
+   "score_centre": 1.0015
+  },
+  {
+   "id": "5차/학습용/고구마_상함/고구마_상함_약간_5차_01.jpg",
+   "class_name": "sweetpotato_rotten",
+   "group": "sweetpotato_photos train",
+   "tv13": "potato_rotten",
+   "score": 1.0235,
+   "score_centre": 0.9962
+  },
+  {
+   "id": "5차/학습용/고구마_상함/고구마_상함_약간_5차_02.jpg",
+   "class_name": "sweetpotato_rotten",
+   "group": "sweetpotato_photos train",
+   "tv13": "potato_rotten",
+   "score": 0.9944,
+   "score_centre": 1.0059
+  },
+  {
+   "id": "5차/학습용/고구마_상함/고구마_상함_약간_5차_05.jpg",
+   "class_name": "sweetpotato_rotten",
+   "group": "sweetpotato_photos train",
+   "tv13": "sweetpotato_fresh",
+   "score": 1.0184,
+   "score_centre": 0.977
+  },
+  {
+   "id": "5차/학습용/고구마_상함/고구마_상함_척봐도_5차_03.jpg",
+   "class_name": "sweetpotato_rotten",
+   "group": "sweetpotato_photos train",
+   "tv13": "carrot_rotten",
+   "score": 1.0335,
+   "score_centre": 0.9958
+  },
+  {
+   "id": "5차/학습용/고구마_상함/고구마_상함_척봐도_5차_04.jpg",
+   "class_name": "sweetpotato_rotten",
+   "group": "sweetpotato_photos train",
+   "tv13": "sweetpotato_fresh",
+   "score": 1.0142,
+   "score_centre": 1.0083
+  },
+  {
+   "id": "5차/시험용/고구마_상함/고구마_상함_약간_5차_15.jpg",
+   "class_name": "sweetpotato_rotten",
+   "group": "sweetpotato_photos train",
+   "tv13": "potato_rotten",
+   "score": 1.0573,
+   "score_centre": 1.0072
+  },
+  {
+   "id": "5차/학습용/고구마_상함/고구마_상함_척봐도_5차_06.jpg",
+   "class_name": "sweetpotato_rotten",
+   "group": "sweetpotato_photos train",
+   "tv13": "potato_rotten",
+   "score": 1.0371,
+   "score_centre": 1.0568
+  },
+  {
+   "id": "5차/학습용/고구마_상함/고구마_상함_척봐도_5차_07.jpg",
+   "class_name": "sweetpotato_rotten",
+   "group": "sweetpotato_photos train",
+   "tv13": "sweetpotato_fresh",
+   "score": 1.0128,
+   "score_centre": 1.0044
+  },
+  {
+   "id": "5차/학습용/고구마_상함/고구마_상함_척봐도_5차_08.jpg",
+   "class_name": "sweetpotato_rotten",
+   "group": "sweetpotato_photos train",
+   "tv13": "cucumber_rotten",
+   "score": 1.0137,
+   "score_centre": 1.0259
+  },
+  {
+   "id": "5차/학습용/고구마_상함/고구마_상함_척봐도_5차_10.jpg",
+   "class_name": "sweetpotato_rotten",
+   "group": "sweetpotato_photos train",
+   "tv13": "sweetpotato_fresh",
+   "score": 1.0203,
+   "score_centre": 1.0211
+  },
+  {
+   "id": "u2-sp-001",
+   "class_name": "sweetpotato_rotten",
+   "group": "user photos 2",
+   "tv13": "potato_rotten",
+   "score": 1.0125,
+   "score_centre": 1.0178
+  },
+  {
+   "id": "u2-sp-003",
+   "class_name": "sweetpotato_rotten",
+   "group": "user photos 2",
+   "tv13": "potato_rotten",
+   "score": 1.0768,
+   "score_centre": 1.0163
+  },
+  {
+   "id": "u2-sp-004",
+   "class_name": "sweetpotato_rotten",
+   "group": "user photos 2",
+   "tv13": "potato_rotten",
+   "score": 0.9978,
+   "score_centre": 1.0041
+  },
+  {
+   "id": "u2-sp-007",
+   "class_name": "sweetpotato_rotten",
+   "group": "user photos 2",
+   "tv13": "potato_rotten",
+   "score": 1.0495,
+   "score_centre": 0.9767
+  },
+  {
+   "id": "u2-sp-008",
+   "class_name": "sweetpotato_rotten",
+   "group": "user photos 2",
+   "tv13": "potato_rotten",
+   "score": 1.0248,
+   "score_centre": 1.0265
+  },
+  {
+   "id": "u2-sp-010",
+   "class_name": "sweetpotato_rotten",
+   "group": "user photos 2",
+   "tv13": "potato_rotten",
+   "score": 1.0057,
+   "score_centre": 1.0064
+  },
+  {
+   "id": "u2-sp-011",
+   "class_name": "sweetpotato_rotten",
+   "group": "user photos 2",
+   "tv13": "carrot_rotten",
+   "score": 1.0156,
+   "score_centre": 1.0254
+  },
+  {
+   "id": "u2-sp-012",
+   "class_name": "sweetpotato_rotten",
+   "group": "user photos 2",
+   "tv13": "potato_rotten",
+   "score": 1.0069,
+   "score_centre": 0.9593
+  },
+  {
+   "id": "u2-sp-017",
+   "class_name": "sweetpotato_rotten",
+   "group": "user photos 2",
+   "tv13": "potato_rotten",
+   "score": 1.0923,
+   "score_centre": 1.099
+  },
+  {
+   "id": "u2-sp-018",
+   "class_name": "sweetpotato_rotten",
+   "group": "user photos 2",
+   "tv13": "potato_rotten",
+   "score": 1.0031,
+   "score_centre": 0.9037
+  },
+  {
+   "id": "u2-sp-019",
+   "class_name": "sweetpotato_rotten",
+   "group": "user photos 2",
+   "tv13": "potato_rotten",
+   "score": 1.0291,
+   "score_centre": 0.9965
+  },
+  {
+   "id": "u2-sp-020",
+   "class_name": "sweetpotato_rotten",
+   "group": "user photos 2",
+   "tv13": "carrot_rotten",
+   "score": 1.0214,
+   "score_centre": 1.0423
+  },
+  {
+   "id": "u2-sp-023",
+   "class_name": "sweetpotato_rotten",
+   "group": "user photos 2",
+   "tv13": "potato_rotten",
+   "score": 1.024,
+   "score_centre": 1.0309
+  },
+  {
+   "id": "u2-sp-027",
+   "class_name": "sweetpotato_rotten",
+   "group": "user photos 2",
+   "tv13": "potato_rotten",
+   "score": 0.9891,
+   "score_centre": 0.9797
+  },
+  {
+   "id": "u2-sp-028",
+   "class_name": "sweetpotato_rotten",
+   "group": "user photos 2",
+   "tv13": "potato_rotten",
+   "score": 1.046,
+   "score_centre": 1.0068
+  }
+ ],
+ "auroc": {
+  "score / all rotten": 0.69,
+  "score / same source (root_and_tomato = iNaturalist)": 0.806,
+  "score / sweetpotato_photos train": 0.662,
+  "score / user photos 2": 0.605,
+  "score_centre / all rotten": 0.764,
+  "score_centre / same source (root_and_tomato = iNaturalist)": 0.885,
+  "score_centre / sweetpotato_photos train": 0.718,
+  "score_centre / user photos 2": 0.696
+ },
+ "caught_at_90_percent_of_fresh_passing": {
+  "score / all rotten": [
+   14,
+   51
+  ],
+  "score / same source (root_and_tomato = iNaturalist)": [
+   7,
+   16
+  ],
+  "score / sweetpotato_photos train": [
+   4,
+   20
+  ],
+  "score / user photos 2": [
+   3,
+   15
+  ],
+  "score_centre / all rotten": [
+   15,
+   51
+  ],
+  "score_centre / same source (root_and_tomato = iNaturalist)": [
+   10,
+   16
+  ],
+  "score_centre / sweetpotato_photos train": [
+   2,
+   20
+  ],
+  "score_centre / user photos 2": [
+   3,
+   15
+  ]
+ }
+}
