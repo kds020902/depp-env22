@@ -25,6 +25,7 @@
 | [zero_shot_reject](zero_shot_reject/README.md) | CLIP 글 설명으로 거르기 보강 | 채택 TV-12 |
 | [clip_gate](clip_gate/README.md) | CLIP 문지기("다섯 채소인가?"만 묻기) | 채택 안 함 |
 | [improve_without_photos](improve_without_photos/README.md) | 글 설명 점수 섞기, 조각 보기, 판단 보류 | 2·3 채택 안 함, 판단 보류는 predict.py 기본값으로 반영 |
+| [staged_ttv1](staged_ttv1/README.md) | 교수님 피드백: 채소인가 → 종류 → 정상인가를 단계로 나눈 예시(TTV_1)를 한 번에 답하는 구조와 비교 | 채택 후보 아님 (개발 사진: 827 대 833/969, 상한 고구마 17 대 16/25. 단계만 나눠서는 달라지지 않음) |
 | [bigger_eye](bigger_eye/README.md) | CLIP 자리에 더 좋은 이미지 모델 넣기 (B급 2개, L급 1개) | 반영 안 함 (L1: 개발 +20, 블라인드 T5에서 다섯 채소 −3) |
 | [root_and_tomato](root_and_tomato/README.md) | 흙 묻은 감자·고구마·양파·대파 vs 썩은 것, 살짝 상한 토마토: 새 사진으로 분류기 다시 학습 (R1·R2) | 반영 안 함 (정상 감자 45% → 60%, 상한 토마토 +1장, 상한 과일 거름 −5·예전→새 채소 +2로 조건 실패, T6 안 엶) |
 | [no_greenonion](no_greenonion/README.md) | 대파 없애기(8종 → 7종, 사용자 결정) | 반영 안 함 (개발: 대파 94% 거름, T6: 거르기 −4) |
