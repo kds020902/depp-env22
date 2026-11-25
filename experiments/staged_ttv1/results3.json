@@ -1,0 +1,4480 @@
+{
+ "left_out_near_blind_or_dataset": [
+  {
+   "id": "spD-2c3924025c",
+   "cosine": 1.0
+  },
+  {
+   "id": "spS-17e6d61269",
+   "cosine": 1.0
+  },
+  {
+   "id": "spS-44c98b99ec",
+   "cosine": 1.0
+  },
+  {
+   "id": "spS-6618d31683",
+   "cosine": 1.0
+  },
+  {
+   "id": "inat-510180310",
+   "cosine": 0.962
+  },
+  {
+   "id": "inat-752468412",
+   "cosine": 0.954
+  },
+  {
+   "id": "inat-548911070",
+   "cosine": 0.95
+  },
+  {
+   "id": "inat-548911152",
+   "cosine": 0.96
+  },
+  {
+   "id": "5차/학습용/고구마_상함/고구마_상함_척봐도_5차_11.jpg",
+   "cosine": 0.969
+  }
+ ],
+ "groups": {
+  "root_and_tomato / potato_fresh": {
+   "n": 62,
+   "TV-13": 48,
+   "SPE": 48,
+   "SPE2": 48,
+   "answers_changed_SPE": 0,
+   "tv13_answers": {
+    "potato_rotten": 11,
+    "potato_fresh": 48,
+    "sweetpotato_fresh": 2,
+    "tomato_fresh": 1
+   }
+  },
+  "root_and_tomato / potato_rotten": {
+   "n": 50,
+   "TV-13": 50,
+   "SPE": 50,
+   "SPE2": 50,
+   "answers_changed_SPE": 0,
+   "tv13_answers": {
+    "potato_rotten": 50
+   }
+  },
+  "root_and_tomato / sweetpotato_fresh": {
+   "n": 38,
+   "TV-13": 30,
+   "SPE": 13,
+   "SPE2": 17,
+   "answers_changed_SPE": 17,
+   "tv13_answers": {
+    "sweetpotato_fresh": 30,
+    "turned_away": 1,
+    "potato_fresh": 2,
+    "potato_rotten": 4,
+    "sweetpotato_rotten": 1
+   }
+  },
+  "root_and_tomato / sweetpotato_rotten": {
+   "n": 16,
+   "TV-13": 12,
+   "SPE": 13,
+   "SPE2": 13,
+   "answers_changed_SPE": 1,
+   "tv13_answers": {
+    "sweetpotato_rotten": 12,
+    "potato_rotten": 3,
+    "sweetpotato_fresh": 1
+   }
+  },
+  "sweetpotato_photos train / sweetpotato_rotten": {
+   "n": 20,
+   "TV-13": 0,
+   "SPE": 4,
+   "SPE2": 4,
+   "answers_changed_SPE": 4,
+   "tv13_answers": {
+    "sweetpotato_fresh": 5,
+    "potato_rotten": 11,
+    "potato_fresh": 1,
+    "turned_away": 1,
+    "carrot_rotten": 1,
+    "cucumber_rotten": 1
+   }
+  },
+  "user photos 2 / potato_fresh": {
+   "n": 26,
+   "TV-13": 14,
+   "SPE": 14,
+   "SPE2": 14,
+   "answers_changed_SPE": 0,
+   "tv13_answers": {
+    "potato_fresh": 14,
+    "potato_rotten": 12
+   }
+  },
+  "user photos 2 / sweetpotato_rotten": {
+   "n": 15,
+   "TV-13": 0,
+   "SPE": 0,
+   "SPE2": 0,
+   "answers_changed_SPE": 0,
+   "tv13_answers": {
+    "potato_rotten": 13,
+    "carrot_rotten": 2
+   }
+  }
+ },
+ "curve_by_cut": {
+  "-2": {
+   "rotten_sweet_potato_caught": 6,
+   "fresh_sweet_potato_lost": 21,
+   "other_photos_changed": 1
+  },
+  "-1": {
+   "rotten_sweet_potato_caught": 5,
+   "fresh_sweet_potato_lost": 20,
+   "other_photos_changed": 0
+  },
+  "0": {
+   "rotten_sweet_potato_caught": 5,
+   "fresh_sweet_potato_lost": 17,
+   "other_photos_changed": 0
+  },
+  "1": {
+   "rotten_sweet_potato_caught": 5,
+   "fresh_sweet_potato_lost": 13,
+   "other_photos_changed": 0
+  },
+  "2": {
+   "rotten_sweet_potato_caught": 4,
+   "fresh_sweet_potato_lost": 8,
+   "other_photos_changed": 0
+  },
+  "3": {
+   "rotten_sweet_potato_caught": 3,
+   "fresh_sweet_potato_lost": 3,
+   "other_photos_changed": 0
+  },
+  "4": {
+   "rotten_sweet_potato_caught": 1,
+   "fresh_sweet_potato_lost": 1,
+   "other_photos_changed": 0
+  }
+ },
+ "photos": [
+  {
+   "id": "spH-23b7ded215",
+   "class_name": "potato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.7196,
+   "held": true,
+   "cells": [
+    2.916,
+    0.458,
+    1.246,
+    1.744,
+    0.403,
+    2.754,
+    2.341,
+    3.433,
+    3.06
+   ]
+  },
+  {
+   "id": "spH-276478e9d0",
+   "class_name": "potato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.9812,
+   "held": false,
+   "cells": [
+    1.079,
+    5.696,
+    2.078,
+    1.754,
+    2.752,
+    0.946,
+    1.471,
+    1.115,
+    0.184
+   ]
+  },
+  {
+   "id": "spH-27ff2268e4",
+   "class_name": "potato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_fresh",
+   "probability": 0.9728,
+   "held": false,
+   "cells": [
+    0.513,
+    0.423,
+    2.735,
+    0.218,
+    -0.52,
+    0.662,
+    1.318,
+    0.171,
+    0.903
+   ]
+  },
+  {
+   "id": "spH-35607c9608",
+   "class_name": "potato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_fresh",
+   "probability": 0.5816,
+   "held": true,
+   "cells": [
+    0.214,
+    -0.898,
+    0.765,
+    0.735,
+    0.578,
+    2.865,
+    0.844,
+    1.711,
+    2.603
+   ]
+  },
+  {
+   "id": "spH-41ed0146f6",
+   "class_name": "potato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.915,
+   "held": false,
+   "cells": [
+    0.397,
+    0.068,
+    0.167,
+    1.107,
+    0.805,
+    0.241,
+    2.228,
+    1.157,
+    0.213
+   ]
+  },
+  {
+   "id": "spH-7b349eaea1",
+   "class_name": "potato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_fresh",
+   "probability": 0.8014,
+   "held": true,
+   "cells": [
+    -0.834,
+    0.184,
+    2.598,
+    -2.184,
+    -0.294,
+    2.002,
+    0.048,
+    -2.133,
+    -0.348
+   ]
+  },
+  {
+   "id": "spH-86ac9ba531",
+   "class_name": "potato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_fresh",
+   "probability": 0.8075,
+   "held": true,
+   "cells": [
+    -0.592,
+    0.103,
+    0.832,
+    -0.494,
+    -0.998,
+    0.272,
+    -0.834,
+    -1.683,
+    -0.322
+   ]
+  },
+  {
+   "id": "spH-86c7638567",
+   "class_name": "potato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.5128,
+   "held": true,
+   "cells": [
+    -0.022,
+    -0.749,
+    -0.021,
+    0.889,
+    -0.625,
+    -0.452,
+    -0.434,
+    -0.621,
+    0.145
+   ]
+  },
+  {
+   "id": "spH-92562d1d9c",
+   "class_name": "potato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.8572,
+   "held": true,
+   "cells": [
+    2.951,
+    3.162,
+    0.309,
+    1.248,
+    0.65,
+    0.2,
+    0.438,
+    0.43,
+    0.774
+   ]
+  },
+  {
+   "id": "spH-aacb24826d",
+   "class_name": "potato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.5048,
+   "held": true,
+   "cells": [
+    3.169,
+    1.578,
+    1.904,
+    1.143,
+    1.805,
+    0.835,
+    1.321,
+    0.928,
+    1.502
+   ]
+  },
+  {
+   "id": "spD-0302a39bfe",
+   "class_name": "potato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.9883,
+   "held": false,
+   "cells": [
+    5.467,
+    4.745,
+    3.737,
+    4.579,
+    4.12,
+    4.871,
+    5.234,
+    5.135,
+    4.708
+   ]
+  },
+  {
+   "id": "spD-05c99e5ee6",
+   "class_name": "potato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.9781,
+   "held": false,
+   "cells": [
+    4.54,
+    2.626,
+    3.382,
+    5.826,
+    5.14,
+    5.297,
+    5.705,
+    6.966,
+    4.619
+   ]
+  },
+  {
+   "id": "spD-072c01aeb2",
+   "class_name": "potato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.9791,
+   "held": false,
+   "cells": [
+    4.795,
+    4.852,
+    5.151,
+    5.879,
+    3.763,
+    6.165,
+    4.853,
+    1.88,
+    5.139
+   ]
+  },
+  {
+   "id": "spD-0c25b6cf1d",
+   "class_name": "potato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.998,
+   "held": false,
+   "cells": [
+    2.362,
+    3.497,
+    5.658,
+    4.42,
+    4.234,
+    3.928,
+    6.246,
+    6.0,
+    2.934
+   ]
+  },
+  {
+   "id": "spD-1b5d047bb4",
+   "class_name": "potato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.9937,
+   "held": false,
+   "cells": [
+    2.027,
+    5.693,
+    6.758,
+    1.807,
+    5.752,
+    6.434,
+    4.575,
+    6.225,
+    6.168
+   ]
+  },
+  {
+   "id": "spD-1d82a5b746",
+   "class_name": "potato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.9823,
+   "held": false,
+   "cells": [
+    5.232,
+    5.001,
+    4.284,
+    3.769,
+    4.403,
+    3.919,
+    2.129,
+    3.317,
+    3.811
+   ]
+  },
+  {
+   "id": "spD-207f20b2c9",
+   "class_name": "potato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.9046,
+   "held": false,
+   "cells": [
+    2.782,
+    4.01,
+    3.292,
+    3.381,
+    6.081,
+    3.395,
+    2.475,
+    2.397,
+    1.23
+   ]
+  },
+  {
+   "id": "spD-2870660da2",
+   "class_name": "potato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.9819,
+   "held": false,
+   "cells": [
+    4.027,
+    5.992,
+    4.525,
+    4.368,
+    5.577,
+    5.864,
+    5.143,
+    5.959,
+    5.865
+   ]
+  },
+  {
+   "id": "spD-38aa78d20f",
+   "class_name": "potato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.9192,
+   "held": false,
+   "cells": [
+    3.266,
+    4.695,
+    2.567,
+    3.302,
+    3.821,
+    3.996,
+    3.782,
+    3.892,
+    4.383
+   ]
+  },
+  {
+   "id": "spS-11f800d4cc",
+   "class_name": "potato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.8843,
+   "held": true,
+   "cells": [
+    1.232,
+    2.002,
+    2.491,
+    0.86,
+    1.992,
+    3.747,
+    3.844,
+    4.138,
+    4.264
+   ]
+  },
+  {
+   "id": "spS-2a42dcea67",
+   "class_name": "potato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.9912,
+   "held": false,
+   "cells": [
+    2.59,
+    2.892,
+    3.652,
+    3.086,
+    2.646,
+    4.091,
+    4.288,
+    3.265,
+    4.108
+   ]
+  },
+  {
+   "id": "burb-0025e739b6",
+   "class_name": "potato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.9892,
+   "held": false,
+   "cells": [
+    4.422,
+    3.13,
+    2.113,
+    2.365,
+    2.751,
+    2.717,
+    1.348,
+    2.619,
+    3.703
+   ]
+  },
+  {
+   "id": "burb-015f29ad2c",
+   "class_name": "potato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.9567,
+   "held": false,
+   "cells": [
+    2.107,
+    2.021,
+    2.418,
+    2.462,
+    1.713,
+    2.032,
+    2.016,
+    0.421,
+    3.363
+   ]
+  },
+  {
+   "id": "burb-017fd42ec8",
+   "class_name": "potato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.8069,
+   "held": true,
+   "cells": [
+    3.029,
+    3.537,
+    3.034,
+    2.686,
+    4.143,
+    3.393,
+    2.365,
+    3.636,
+    3.509
+   ]
+  },
+  {
+   "id": "burb-01c34991b7",
+   "class_name": "potato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.9028,
+   "held": false,
+   "cells": [
+    -0.58,
+    0.559,
+    0.649,
+    -1.079,
+    0.6,
+    1.946,
+    0.318,
+    2.033,
+    4.519
+   ]
+  },
+  {
+   "id": "burb-0442dc91f9",
+   "class_name": "potato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.8294,
+   "held": true,
+   "cells": [
+    -0.51,
+    3.093,
+    2.38,
+    -0.023,
+    2.197,
+    2.785,
+    1.151,
+    2.085,
+    2.414
+   ]
+  },
+  {
+   "id": "burb-04c2ac2989",
+   "class_name": "potato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.9975,
+   "held": false,
+   "cells": [
+    2.691,
+    2.941,
+    3.048,
+    2.074,
+    0.547,
+    2.018,
+    0.83,
+    0.9,
+    2.541
+   ]
+  },
+  {
+   "id": "burb-092975fd6d",
+   "class_name": "potato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.9967,
+   "held": false,
+   "cells": [
+    2.699,
+    1.76,
+    1.4,
+    2.361,
+    0.711,
+    1.636,
+    0.704,
+    0.811,
+    2.525
+   ]
+  },
+  {
+   "id": "burb-0aa4860c92",
+   "class_name": "potato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.9677,
+   "held": false,
+   "cells": [
+    3.238,
+    4.243,
+    4.741,
+    3.99,
+    4.552,
+    5.48,
+    2.312,
+    2.15,
+    1.259
+   ]
+  },
+  {
+   "id": "burb-0b299894d2",
+   "class_name": "potato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.8079,
+   "held": true,
+   "cells": [
+    1.237,
+    2.143,
+    0.157,
+    0.409,
+    0.954,
+    0.034,
+    1.527,
+    0.57,
+    0.64
+   ]
+  },
+  {
+   "id": "bur-00bf9be28e",
+   "class_name": "potato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_fresh",
+   "probability": 0.9978,
+   "held": false,
+   "cells": [
+    -1.795,
+    -2.257,
+    -1.708,
+    -2.053,
+    -2.553,
+    -1.793,
+    -1.144,
+    -1.864,
+    -1.181
+   ]
+  },
+  {
+   "id": "bur-0287da0bf1",
+   "class_name": "potato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_fresh",
+   "probability": 0.9691,
+   "held": false,
+   "cells": [
+    -2.277,
+    -2.173,
+    -1.336,
+    -2.25,
+    -2.568,
+    -1.592,
+    0.027,
+    -0.694,
+    -0.647
+   ]
+  },
+  {
+   "id": "bur-04229b4dcd",
+   "class_name": "potato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_fresh",
+   "probability": 0.9039,
+   "held": false,
+   "cells": [
+    -2.196,
+    -2.343,
+    -1.332,
+    -2.011,
+    -2.723,
+    -2.657,
+    -1.131,
+    -1.384,
+    -2.765
+   ]
+  },
+  {
+   "id": "inat-22332802",
+   "class_name": "potato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_fresh",
+   "probability": 0.9992,
+   "held": false,
+   "cells": [
+    -2.465,
+    -4.082,
+    -3.177,
+    -2.832,
+    -2.429,
+    -3.224,
+    -1.306,
+    1.994,
+    -1.646
+   ]
+  },
+  {
+   "id": "inat-5838170",
+   "class_name": "potato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_fresh",
+   "probability": 0.9991,
+   "held": false,
+   "cells": [
+    -5.846,
+    -4.653,
+    -4.023,
+    -5.753,
+    -5.617,
+    -4.562,
+    -5.431,
+    -5.601,
+    -5.919
+   ]
+  },
+  {
+   "id": "inat-5857651",
+   "class_name": "potato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_fresh",
+   "probability": 0.9976,
+   "held": false,
+   "cells": [
+    -3.171,
+    -4.415,
+    -4.578,
+    -4.149,
+    -4.86,
+    -4.267,
+    -5.46,
+    -5.06,
+    -4.37
+   ]
+  },
+  {
+   "id": "inat-5838135",
+   "class_name": "potato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_fresh",
+   "probability": 0.9992,
+   "held": false,
+   "cells": [
+    -4.953,
+    -2.062,
+    -5.149,
+    -5.388,
+    -5.003,
+    -5.317,
+    -5.129,
+    -4.362,
+    -5.139
+   ]
+  },
+  {
+   "id": "inat-5857634",
+   "class_name": "potato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_fresh",
+   "probability": 0.9945,
+   "held": false,
+   "cells": [
+    -3.762,
+    -5.489,
+    -6.12,
+    -5.332,
+    -5.081,
+    -5.839,
+    -5.43,
+    -3.885,
+    -4.745
+   ]
+  },
+  {
+   "id": "inat-409149276",
+   "class_name": "potato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_fresh",
+   "probability": 0.9972,
+   "held": false,
+   "cells": [
+    -5.189,
+    -5.887,
+    -5.202,
+    -5.378,
+    -5.94,
+    -5.82,
+    -4.728,
+    -4.355,
+    -3.761
+   ]
+  },
+  {
+   "id": "inat-751709329",
+   "class_name": "potato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_fresh",
+   "probability": 0.8642,
+   "held": true,
+   "cells": [
+    -4.167,
+    -4.578,
+    -3.447,
+    -4.752,
+    -4.868,
+    -2.165,
+    -1.691,
+    -2.691,
+    -1.179
+   ]
+  },
+  {
+   "id": "inat-5826074",
+   "class_name": "potato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_fresh",
+   "probability": 0.9913,
+   "held": false,
+   "cells": [
+    -2.92,
+    -2.161,
+    -0.911,
+    -3.395,
+    -3.07,
+    -2.194,
+    -3.165,
+    -3.98,
+    -2.401
+   ]
+  },
+  {
+   "id": "inat-473808901",
+   "class_name": "potato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_fresh",
+   "probability": 0.7442,
+   "held": true,
+   "cells": [
+    -4.291,
+    -4.393,
+    -4.95,
+    -2.639,
+    -2.764,
+    -2.408,
+    -0.032,
+    -1.99,
+    -1.638
+   ]
+  },
+  {
+   "id": "inat-9700906",
+   "class_name": "potato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_fresh",
+   "probability": 0.9772,
+   "held": false,
+   "cells": [
+    -5.135,
+    -6.087,
+    -6.706,
+    -6.088,
+    -6.248,
+    -7.149,
+    -6.423,
+    -6.381,
+    -5.679
+   ]
+  },
+  {
+   "id": "inat-535439513",
+   "class_name": "potato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_fresh",
+   "probability": 0.9956,
+   "held": false,
+   "cells": [
+    -4.309,
+    -4.459,
+    -2.556,
+    -4.826,
+    -4.707,
+    -3.816,
+    -4.813,
+    -4.671,
+    -3.643
+   ]
+  },
+  {
+   "id": "inat-381601346",
+   "class_name": "potato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_fresh",
+   "probability": 0.9092,
+   "held": false,
+   "cells": [
+    -2.184,
+    -2.409,
+    -3.363,
+    -2.014,
+    -2.29,
+    -2.861,
+    -2.906,
+    -3.396,
+    -2.492
+   ]
+  },
+  {
+   "id": "inat-5857666",
+   "class_name": "potato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_fresh",
+   "probability": 0.9863,
+   "held": false,
+   "cells": [
+    -4.796,
+    -4.392,
+    -4.479,
+    -4.755,
+    -4.306,
+    -4.918,
+    -5.088,
+    -4.827,
+    -4.993
+   ]
+  },
+  {
+   "id": "inat-647358499",
+   "class_name": "potato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.6739,
+   "held": true,
+   "cells": [
+    -2.302,
+    -3.456,
+    0.412,
+    -3.023,
+    -3.539,
+    -3.834,
+    -4.944,
+    -4.446,
+    -2.354
+   ]
+  },
+  {
+   "id": "inat-496027923",
+   "class_name": "potato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.9046,
+   "held": false,
+   "cells": [
+    -1.279,
+    -2.293,
+    -2.884,
+    -2.007,
+    -2.434,
+    -2.154,
+    3.7,
+    4.11,
+    4.378
+   ]
+  },
+  {
+   "id": "inat-143649013",
+   "class_name": "potato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_fresh",
+   "probability": 0.895,
+   "held": true,
+   "cells": [
+    2.058,
+    2.494,
+    3.249,
+    2.073,
+    3.116,
+    2.641,
+    1.269,
+    2.215,
+    3.242
+   ]
+  },
+  {
+   "id": "inat-304491226",
+   "class_name": "potato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_fresh",
+   "probability": 0.9996,
+   "held": false,
+   "cells": [
+    -4.707,
+    -4.566,
+    -4.998,
+    -3.862,
+    -4.589,
+    -4.513,
+    -4.281,
+    -4.859,
+    -4.91
+   ]
+  },
+  {
+   "id": "inat-533409340",
+   "class_name": "potato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_fresh",
+   "probability": 0.9842,
+   "held": false,
+   "cells": [
+    3.591,
+    4.463,
+    3.12,
+    2.65,
+    1.367,
+    0.716,
+    2.784,
+    0.518,
+    -0.669
+   ]
+  },
+  {
+   "id": "inat-5857861",
+   "class_name": "potato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_fresh",
+   "probability": 0.9886,
+   "held": false,
+   "cells": [
+    -4.044,
+    -3.407,
+    -2.822,
+    -4.59,
+    -4.674,
+    -4.025,
+    -4.773,
+    -5.891,
+    -5.229
+   ]
+  },
+  {
+   "id": "inat-456723288",
+   "class_name": "potato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_fresh",
+   "probability": 0.9208,
+   "held": false,
+   "cells": [
+    -2.626,
+    -2.511,
+    -1.907,
+    -4.131,
+    -3.194,
+    -1.885,
+    -3.837,
+    -4.519,
+    -2.718
+   ]
+  },
+  {
+   "id": "inat-469292716",
+   "class_name": "potato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.9876,
+   "held": false,
+   "cells": [
+    -5.018,
+    -5.481,
+    -4.207,
+    -4.789,
+    -4.713,
+    -4.516,
+    -4.153,
+    -3.607,
+    -2.634
+   ]
+  },
+  {
+   "id": "inat-175388995",
+   "class_name": "potato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_fresh",
+   "probability": 0.9719,
+   "held": false,
+   "cells": [
+    -2.477,
+    -3.173,
+    -1.587,
+    -2.648,
+    -1.876,
+    -3.12,
+    -3.641,
+    -2.435,
+    -3.171
+   ]
+  },
+  {
+   "id": "inat-535435910",
+   "class_name": "potato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_fresh",
+   "probability": 0.9204,
+   "held": false,
+   "cells": [
+    -3.436,
+    -3.846,
+    -4.427,
+    -2.742,
+    -3.606,
+    -4.527,
+    -2.912,
+    -4.768,
+    -3.952
+   ]
+  },
+  {
+   "id": "inat-568510194",
+   "class_name": "potato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_fresh",
+   "probability": 0.9601,
+   "held": false,
+   "cells": [
+    -3.185,
+    -4.532,
+    -2.278,
+    -3.456,
+    -3.946,
+    -2.866,
+    -2.778,
+    -4.083,
+    2.237
+   ]
+  },
+  {
+   "id": "inat-349344192",
+   "class_name": "potato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_fresh",
+   "probability": 0.9586,
+   "held": false,
+   "cells": [
+    -4.714,
+    -5.102,
+    -5.226,
+    -5.101,
+    -3.674,
+    -3.612,
+    -4.271,
+    -3.643,
+    -3.612
+   ]
+  },
+  {
+   "id": "inat-494685507",
+   "class_name": "potato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_fresh",
+   "probability": 0.9449,
+   "held": false,
+   "cells": [
+    -4.163,
+    -4.046,
+    -0.526,
+    -3.776,
+    -4.765,
+    -4.938,
+    -4.356,
+    -4.849,
+    -4.854
+   ]
+  },
+  {
+   "id": "inat-165596961",
+   "class_name": "potato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_fresh",
+   "probability": 0.9972,
+   "held": false,
+   "cells": [
+    -0.242,
+    1.663,
+    1.875,
+    -0.103,
+    -1.413,
+    -0.95,
+    0.531,
+    0.066,
+    0.486
+   ]
+  },
+  {
+   "id": "inat-43979413",
+   "class_name": "potato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_fresh",
+   "probability": 0.9989,
+   "held": false,
+   "cells": [
+    -4.354,
+    -3.676,
+    -4.413,
+    -4.942,
+    -4.106,
+    -3.873,
+    -3.34,
+    -3.544,
+    -4.516
+   ]
+  },
+  {
+   "id": "inat-241774223",
+   "class_name": "potato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_fresh",
+   "probability": 0.965,
+   "held": false,
+   "cells": [
+    -3.903,
+    -2.942,
+    -4.323,
+    -5.354,
+    -4.354,
+    -4.782,
+    -3.801,
+    -3.824,
+    -4.794
+   ]
+  },
+  {
+   "id": "inat-182526213",
+   "class_name": "potato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_fresh",
+   "probability": 0.8537,
+   "held": true,
+   "cells": [
+    -4.168,
+    -3.529,
+    -4.055,
+    -4.594,
+    -3.942,
+    -4.191,
+    -4.491,
+    -3.665,
+    -4.412
+   ]
+  },
+  {
+   "id": "inat-257950182",
+   "class_name": "potato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_fresh",
+   "probability": 0.9991,
+   "held": false,
+   "cells": [
+    -3.678,
+    -3.966,
+    -4.593,
+    -3.45,
+    -3.017,
+    -3.661,
+    -2.947,
+    -3.289,
+    -2.887
+   ]
+  },
+  {
+   "id": "inat-569701648",
+   "class_name": "potato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_fresh",
+   "probability": 0.9899,
+   "held": false,
+   "cells": [
+    -2.033,
+    -1.419,
+    -1.248,
+    -3.179,
+    -3.535,
+    -3.417,
+    -2.915,
+    -2.353,
+    -1.395
+   ]
+  },
+  {
+   "id": "inat-654046017",
+   "class_name": "potato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.7945,
+   "held": true,
+   "cells": [
+    0.85,
+    0.436,
+    -0.036,
+    2.211,
+    2.082,
+    1.833,
+    4.7,
+    5.002,
+    4.25
+   ]
+  },
+  {
+   "id": "inat-58967397",
+   "class_name": "potato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.9863,
+   "held": false,
+   "cells": [
+    0.227,
+    4.859,
+    4.512,
+    4.18,
+    5.38,
+    2.973,
+    2.671,
+    4.999,
+    2.406
+   ]
+  },
+  {
+   "id": "inat-325100134",
+   "class_name": "potato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_fresh",
+   "probability": 0.5719,
+   "held": true,
+   "cells": [
+    1.105,
+    0.54,
+    1.09,
+    1.637,
+    -0.992,
+    1.782,
+    2.153,
+    2.271,
+    1.841
+   ]
+  },
+  {
+   "id": "inat-482824868",
+   "class_name": "potato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_fresh",
+   "probability": 0.9993,
+   "held": false,
+   "cells": [
+    -4.556,
+    -4.602,
+    -4.234,
+    -2.691,
+    -3.34,
+    -4.79,
+    -3.447,
+    -3.77,
+    -3.746
+   ]
+  },
+  {
+   "id": "inat-5812050",
+   "class_name": "potato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_fresh",
+   "probability": 0.9488,
+   "held": false,
+   "cells": [
+    -3.7,
+    -3.538,
+    -2.791,
+    -3.823,
+    -4.38,
+    -3.645,
+    -4.317,
+    -5.188,
+    -4.628
+   ]
+  },
+  {
+   "id": "inat-752066202",
+   "class_name": "potato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_fresh",
+   "probability": 0.9982,
+   "held": false,
+   "cells": [
+    -1.631,
+    -2.908,
+    -2.732,
+    -2.427,
+    -3.164,
+    -2.956,
+    -2.525,
+    -2.274,
+    -2.855
+   ]
+  },
+  {
+   "id": "inat-257950218",
+   "class_name": "potato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_fresh",
+   "probability": 0.9704,
+   "held": false,
+   "cells": [
+    -5.777,
+    -4.342,
+    -4.599,
+    -5.292,
+    -5.393,
+    -4.476,
+    -4.868,
+    -4.973,
+    -5.086
+   ]
+  },
+  {
+   "id": "inat-185348161",
+   "class_name": "potato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_fresh",
+   "probability": 0.9998,
+   "held": false,
+   "cells": [
+    -4.773,
+    -4.391,
+    -4.974,
+    -5.407,
+    -4.739,
+    -4.381,
+    -4.908,
+    -5.042,
+    -5.136
+   ]
+  },
+  {
+   "id": "inat-52234566",
+   "class_name": "potato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_fresh",
+   "probability": 0.9986,
+   "held": false,
+   "cells": [
+    -3.5,
+    -3.052,
+    -2.973,
+    -3.141,
+    -3.692,
+    -4.033,
+    -2.259,
+    -2.748,
+    -3.324
+   ]
+  },
+  {
+   "id": "inat-69761489",
+   "class_name": "potato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_fresh",
+   "probability": 0.9995,
+   "held": false,
+   "cells": [
+    -2.682,
+    -3.37,
+    -1.373,
+    -2.465,
+    -3.138,
+    -2.263,
+    -1.06,
+    -2.556,
+    -2.729
+   ]
+  },
+  {
+   "id": "inat-554183274",
+   "class_name": "potato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "tomato_fresh",
+   "probability": 0.2998,
+   "held": true,
+   "cells": [
+    1.214,
+    0.776,
+    2.312,
+    1.372,
+    0.223,
+    0.774,
+    1.485,
+    -0.49,
+    -0.488
+   ]
+  },
+  {
+   "id": "inat-292028306",
+   "class_name": "potato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_fresh",
+   "probability": 0.8193,
+   "held": true,
+   "cells": [
+    -2.009,
+    -1.593,
+    -1.385,
+    -0.446,
+    -2.252,
+    -3.093,
+    0.551,
+    -2.557,
+    -2.871
+   ]
+  },
+  {
+   "id": "inat-437753909",
+   "class_name": "potato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_fresh",
+   "probability": 0.5713,
+   "held": true,
+   "cells": [
+    2.426,
+    1.783,
+    4.156,
+    2.919,
+    2.607,
+    4.633,
+    3.123,
+    4.11,
+    4.953
+   ]
+  },
+  {
+   "id": "inat-466484514",
+   "class_name": "potato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_fresh",
+   "probability": 0.9862,
+   "held": false,
+   "cells": [
+    -1.724,
+    -1.736,
+    -3.065,
+    -3.813,
+    -3.655,
+    -4.856,
+    -4.314,
+    -4.143,
+    -4.259
+   ]
+  },
+  {
+   "id": "inat-43296710",
+   "class_name": "potato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_fresh",
+   "probability": 0.986,
+   "held": false,
+   "cells": [
+    -4.176,
+    -4.38,
+    -3.977,
+    -4.584,
+    -4.256,
+    -4.363,
+    -3.421,
+    -4.134,
+    -4.01
+   ]
+  },
+  {
+   "id": "inat-500599642",
+   "class_name": "potato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_fresh",
+   "probability": 0.9959,
+   "held": false,
+   "cells": [
+    2.503,
+    -1.093,
+    1.571,
+    -4.07,
+    -2.721,
+    -2.974,
+    -4.627,
+    -3.269,
+    -3.259
+   ]
+  },
+  {
+   "id": "inat-494575838",
+   "class_name": "potato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_fresh",
+   "probability": 0.9878,
+   "held": false,
+   "cells": [
+    0.254,
+    0.273,
+    0.431,
+    -0.597,
+    -0.767,
+    0.726,
+    1.42,
+    2.201,
+    1.543
+   ]
+  },
+  {
+   "id": "inat-305361819",
+   "class_name": "potato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.6997,
+   "held": true,
+   "cells": [
+    0.619,
+    0.721,
+    0.864,
+    4.303,
+    6.804,
+    4.991,
+    1.998,
+    2.604,
+    1.083
+   ]
+  },
+  {
+   "id": "inat-534138164",
+   "class_name": "potato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.8868,
+   "held": true,
+   "cells": [
+    -1.443,
+    2.655,
+    -0.091,
+    -1.971,
+    1.443,
+    1.352,
+    -0.41,
+    2.085,
+    1.136
+   ]
+  },
+  {
+   "id": "inat-640228962",
+   "class_name": "potato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.9962,
+   "held": false,
+   "cells": [
+    4.199,
+    3.155,
+    2.982,
+    2.425,
+    3.028,
+    4.557,
+    1.879,
+    2.679,
+    3.696
+   ]
+  },
+  {
+   "id": "inat-613084301",
+   "class_name": "potato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.9859,
+   "held": false,
+   "cells": [
+    2.992,
+    2.999,
+    3.482,
+    0.668,
+    -0.11,
+    1.601,
+    1.946,
+    1.806,
+    2.082
+   ]
+  },
+  {
+   "id": "inat-107126997",
+   "class_name": "potato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.9999,
+   "held": false,
+   "cells": [
+    5.819,
+    6.211,
+    5.556,
+    2.601,
+    2.834,
+    4.235,
+    1.971,
+    4.025,
+    4.322
+   ]
+  },
+  {
+   "id": "inat-169669280",
+   "class_name": "potato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.9994,
+   "held": false,
+   "cells": [
+    5.185,
+    6.192,
+    5.608,
+    5.44,
+    4.356,
+    5.483,
+    4.156,
+    5.797,
+    5.764
+   ]
+  },
+  {
+   "id": "inat-239766705",
+   "class_name": "potato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.9831,
+   "held": false,
+   "cells": [
+    2.129,
+    2.483,
+    1.17,
+    1.175,
+    5.864,
+    3.926,
+    2.897,
+    3.736,
+    4.389
+   ]
+  },
+  {
+   "id": "inat-674916428",
+   "class_name": "potato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.9903,
+   "held": false,
+   "cells": [
+    7.675,
+    6.514,
+    0.926,
+    2.331,
+    4.053,
+    4.055,
+    3.374,
+    5.029,
+    7.24
+   ]
+  },
+  {
+   "id": "inat-347075324",
+   "class_name": "potato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.3997,
+   "held": true,
+   "cells": [
+    5.926,
+    5.479,
+    6.615,
+    6.007,
+    4.788,
+    7.339,
+    7.222,
+    6.042,
+    4.599
+   ]
+  },
+  {
+   "id": "inat-714835327",
+   "class_name": "potato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.9992,
+   "held": false,
+   "cells": [
+    1.916,
+    1.417,
+    4.121,
+    3.748,
+    2.665,
+    2.275,
+    3.216,
+    3.021,
+    4.718
+   ]
+  },
+  {
+   "id": "inat-703283367",
+   "class_name": "potato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.9992,
+   "held": false,
+   "cells": [
+    7.499,
+    6.972,
+    6.706,
+    6.069,
+    6.71,
+    6.071,
+    5.156,
+    5.235,
+    3.438
+   ]
+  },
+  {
+   "id": "inat-113328616",
+   "class_name": "potato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.9907,
+   "held": false,
+   "cells": [
+    2.155,
+    5.749,
+    4.061,
+    6.622,
+    5.311,
+    2.5,
+    4.655,
+    3.569,
+    1.132
+   ]
+  },
+  {
+   "id": "inat-254404343",
+   "class_name": "potato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.9947,
+   "held": false,
+   "cells": [
+    3.842,
+    3.827,
+    4.192,
+    4.413,
+    3.268,
+    2.459,
+    4.733,
+    4.003,
+    2.063
+   ]
+  },
+  {
+   "id": "inat-528706637",
+   "class_name": "potato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.9976,
+   "held": false,
+   "cells": [
+    5.654,
+    6.162,
+    5.824,
+    5.411,
+    4.463,
+    4.405,
+    6.015,
+    5.139,
+    4.964
+   ]
+  },
+  {
+   "id": "inat-172917527",
+   "class_name": "potato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.9963,
+   "held": false,
+   "cells": [
+    1.864,
+    2.181,
+    1.497,
+    2.725,
+    5.994,
+    4.97,
+    1.248,
+    5.227,
+    4.742
+   ]
+  },
+  {
+   "id": "inat-5824927",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_fresh",
+   "probability": 0.9213,
+   "held": false,
+   "cells": [
+    -5.367,
+    -5.656,
+    -2.833,
+    -5.541,
+    -6.143,
+    -6.226,
+    -4.288,
+    -6.796,
+    -5.84
+   ]
+  },
+  {
+   "id": "inat-2410682",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_fresh",
+   "probability": 0.996,
+   "held": false,
+   "cells": [
+    1.622,
+    1.051,
+    -0.392,
+    -4.479,
+    -4.134,
+    -2.469,
+    -6.149,
+    -6.056,
+    -5.208
+   ]
+  },
+  {
+   "id": "inat-281171595",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_fresh",
+   "probability": 0.9949,
+   "held": false,
+   "cells": [
+    -4.449,
+    -5.926,
+    -6.65,
+    -5.152,
+    -6.465,
+    -5.939,
+    -5.373,
+    -6.093,
+    -6.115
+   ]
+  },
+  {
+   "id": "inat-248251355",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_fresh",
+   "probability": 0.997,
+   "held": false,
+   "cells": [
+    -5.748,
+    -6.486,
+    -5.591,
+    -6.029,
+    -5.961,
+    -5.618,
+    -1.906,
+    -1.462,
+    0.976
+   ]
+  },
+  {
+   "id": "inat-575297416",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_fresh",
+   "probability": 0.9991,
+   "held": false,
+   "cells": [
+    0.017,
+    0.237,
+    0.335,
+    -4.846,
+    -5.279,
+    -5.229,
+    -4.07,
+    -5.05,
+    -5.403
+   ]
+  },
+  {
+   "id": "inat-601688125",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_fresh",
+   "probability": 0.9995,
+   "held": false,
+   "cells": [
+    -5.233,
+    -5.005,
+    -3.891,
+    -4.153,
+    -5.108,
+    -5.02,
+    -4.4,
+    -5.734,
+    -5.797
+   ]
+  },
+  {
+   "id": "inat-5827466",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_fresh",
+   "probability": 0.9996,
+   "held": false,
+   "cells": [
+    0.969,
+    -3.099,
+    -3.959,
+    -4.427,
+    -5.067,
+    -5.491,
+    -5.758,
+    -5.94,
+    -5.974
+   ]
+  },
+  {
+   "id": "inat-390875383",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_fresh",
+   "probability": 0.998,
+   "held": false,
+   "cells": [
+    -5.671,
+    -4.58,
+    -2.886,
+    -5.949,
+    -6.029,
+    -5.08,
+    -4.292,
+    -3.05,
+    -3.493
+   ]
+  },
+  {
+   "id": "inat-2246152",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_fresh",
+   "probability": 0.9988,
+   "held": false,
+   "cells": [
+    -4.817,
+    -4.163,
+    -5.237,
+    -3.697,
+    -5.022,
+    -6.055,
+    -3.801,
+    -4.77,
+    -4.618
+   ]
+  },
+  {
+   "id": "inat-471705028",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_fresh",
+   "probability": 0.9971,
+   "held": false,
+   "cells": [
+    -2.016,
+    -3.482,
+    -3.053,
+    -3.171,
+    -2.822,
+    -3.053,
+    -2.61,
+    -3.331,
+    -2.953
+   ]
+  },
+  {
+   "id": "inat-409280699",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_fresh",
+   "probability": 0.991,
+   "held": false,
+   "cells": [
+    -4.156,
+    -0.347,
+    -2.256,
+    -3.675,
+    -3.795,
+    -3.686,
+    -3.518,
+    -2.215,
+    -2.314
+   ]
+  },
+  {
+   "id": "inat-406213433",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_fresh",
+   "probability": 0.998,
+   "held": false,
+   "cells": [
+    -3.574,
+    -4.934,
+    -2.789,
+    -5.695,
+    -5.893,
+    -4.69,
+    -5.96,
+    -5.159,
+    -3.523
+   ]
+  },
+  {
+   "id": "inat-119711289",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "turned_away",
+   "probability": 0.2192,
+   "held": false,
+   "cells": [
+    1.773,
+    3.497,
+    0.652,
+    -1.639,
+    -2.118,
+    -0.76,
+    -1.135,
+    -1.759,
+    -1.461
+   ]
+  },
+  {
+   "id": "inat-583719422",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_fresh",
+   "probability": 0.9951,
+   "held": false,
+   "cells": [
+    -2.881,
+    -3.227,
+    -2.544,
+    -3.984,
+    -4.872,
+    -3.734,
+    -1.782,
+    -1.854,
+    -2.848
+   ]
+  },
+  {
+   "id": "inat-562312271",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_fresh",
+   "probability": 0.9995,
+   "held": false,
+   "cells": [
+    -4.774,
+    -5.517,
+    -4.878,
+    -4.374,
+    -5.587,
+    -5.505,
+    -3.379,
+    -5.5,
+    -5.007
+   ]
+  },
+  {
+   "id": "inat-410274898",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_fresh",
+   "probability": 0.9073,
+   "held": false,
+   "cells": [
+    -1.339,
+    -1.459,
+    -0.908,
+    -3.816,
+    -0.341,
+    0.751,
+    -2.675,
+    2.077,
+    -0.117
+   ]
+  },
+  {
+   "id": "inat-177531635",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_fresh",
+   "probability": 0.9977,
+   "held": false,
+   "cells": [
+    -4.452,
+    -4.707,
+    -4.086,
+    -4.138,
+    -4.495,
+    -2.976,
+    -4.498,
+    -0.763,
+    3.174
+   ]
+  },
+  {
+   "id": "inat-99896885",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_fresh",
+   "probability": 0.9802,
+   "held": false,
+   "cells": [
+    2.747,
+    2.072,
+    1.889,
+    -0.127,
+    2.574,
+    2.039,
+    0.651,
+    2.176,
+    1.316
+   ]
+  },
+  {
+   "id": "inat-603687486",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_fresh",
+   "probability": 0.9961,
+   "held": false,
+   "cells": [
+    -4.595,
+    -4.86,
+    -5.168,
+    -4.612,
+    -4.542,
+    -1.702,
+    0.43,
+    -2.32,
+    -4.425
+   ]
+  },
+  {
+   "id": "inat-100018244",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_fresh",
+   "probability": 0.7848,
+   "held": true,
+   "cells": [
+    3.567,
+    1.545,
+    0.663,
+    2.449,
+    1.95,
+    3.221,
+    2.273,
+    2.117,
+    4.083
+   ]
+  },
+  {
+   "id": "inat-65555761",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_fresh",
+   "probability": 0.5124,
+   "held": true,
+   "cells": [
+    -3.189,
+    -3.426,
+    -4.004,
+    -4.031,
+    -3.615,
+    -0.903,
+    -2.681,
+    -3.433,
+    -3.026
+   ]
+  },
+  {
+   "id": "inat-630215966",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_fresh",
+   "probability": 0.985,
+   "held": false,
+   "cells": [
+    -0.758,
+    2.111,
+    1.538,
+    -1.23,
+    -0.996,
+    1.666,
+    -1.147,
+    -0.571,
+    1.025
+   ]
+  },
+  {
+   "id": "inat-251207492",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_fresh",
+   "probability": 0.9829,
+   "held": false,
+   "cells": [
+    -1.79,
+    -3.193,
+    -2.504,
+    -4.787,
+    -4.385,
+    -4.845,
+    0.075,
+    1.031,
+    1.24
+   ]
+  },
+  {
+   "id": "inat-169639307",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_fresh",
+   "probability": 0.9975,
+   "held": false,
+   "cells": [
+    -5.809,
+    -6.003,
+    -6.003,
+    -6.391,
+    -5.985,
+    -6.148,
+    -5.917,
+    -6.528,
+    -6.347
+   ]
+  },
+  {
+   "id": "inat-84268120",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_fresh",
+   "probability": 0.9965,
+   "held": false,
+   "cells": [
+    -0.503,
+    -4.606,
+    -4.025,
+    -0.431,
+    -5.074,
+    -4.412,
+    -0.601,
+    -4.04,
+    -4.077
+   ]
+  },
+  {
+   "id": "inat-172076802",
+   "class_name": "sweetpotato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_rotten",
+   "probability": 0.983,
+   "held": false,
+   "cells": [
+    7.467,
+    8.045,
+    2.842,
+    6.342,
+    5.323,
+    2.547,
+    4.401,
+    -0.208,
+    0.151
+   ]
+  },
+  {
+   "id": "inat-659489821",
+   "class_name": "sweetpotato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_rotten",
+   "probability": 0.8823,
+   "held": true,
+   "cells": [
+    1.076,
+    6.429,
+    6.391,
+    4.919,
+    7.323,
+    5.98,
+    4.182,
+    2.391,
+    0.511
+   ]
+  },
+  {
+   "id": "inat-271381646",
+   "class_name": "sweetpotato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.997,
+   "held": false,
+   "cells": [
+    4.073,
+    6.971,
+    7.351,
+    5.764,
+    4.426,
+    4.447,
+    5.494,
+    5.364,
+    3.796
+   ]
+  },
+  {
+   "id": "inat-136767486",
+   "class_name": "sweetpotato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_rotten",
+   "probability": 0.9871,
+   "held": false,
+   "cells": [
+    5.016,
+    6.238,
+    5.555,
+    5.397,
+    6.349,
+    6.527,
+    5.252,
+    5.517,
+    6.532
+   ]
+  },
+  {
+   "id": "inat-476657301",
+   "class_name": "sweetpotato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_rotten",
+   "probability": 0.9331,
+   "held": false,
+   "cells": [
+    0.725,
+    -0.238,
+    3.512,
+    2.048,
+    -0.19,
+    3.411,
+    0.646,
+    -0.466,
+    0.055
+   ]
+  },
+  {
+   "id": "inat-532495178",
+   "class_name": "sweetpotato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_rotten",
+   "probability": 0.7567,
+   "held": true,
+   "cells": [
+    3.334,
+    4.621,
+    5.135,
+    -0.763,
+    -0.636,
+    2.915,
+    0.714,
+    2.411,
+    0.719
+   ]
+  },
+  {
+   "id": "inat-251100472",
+   "class_name": "sweetpotato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.9567,
+   "held": false,
+   "cells": [
+    0.076,
+    3.587,
+    1.647,
+    1.275,
+    2.686,
+    2.221,
+    3.292,
+    3.441,
+    3.008
+   ]
+  },
+  {
+   "id": "inat-607032143",
+   "class_name": "sweetpotato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_rotten",
+   "probability": 0.3151,
+   "held": true,
+   "cells": [
+    1.469,
+    1.867,
+    2.413,
+    4.054,
+    1.854,
+    2.704,
+    3.545,
+    2.426,
+    2.481
+   ]
+  },
+  {
+   "id": "inat-616903205",
+   "class_name": "sweetpotato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_rotten",
+   "probability": 0.9894,
+   "held": false,
+   "cells": [
+    5.737,
+    6.726,
+    5.275,
+    5.111,
+    7.686,
+    7.214,
+    3.975,
+    2.266,
+    2.832
+   ]
+  },
+  {
+   "id": "inat-100036991",
+   "class_name": "sweetpotato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_rotten",
+   "probability": 0.9153,
+   "held": false,
+   "cells": [
+    0.882,
+    3.217,
+    6.762,
+    -0.085,
+    1.908,
+    5.691,
+    -1.284,
+    0.808,
+    3.238
+   ]
+  },
+  {
+   "id": "inat-147639731",
+   "class_name": "sweetpotato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_rotten",
+   "probability": 0.8972,
+   "held": true,
+   "cells": [
+    6.122,
+    6.566,
+    4.849,
+    4.287,
+    5.607,
+    4.035,
+    3.769,
+    5.943,
+    6.183
+   ]
+  },
+  {
+   "id": "inat-236632191",
+   "class_name": "sweetpotato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_rotten",
+   "probability": 0.8524,
+   "held": true,
+   "cells": [
+    1.206,
+    -2.35,
+    1.035,
+    3.412,
+    0.681,
+    3.466,
+    5.018,
+    3.501,
+    4.566
+   ]
+  },
+  {
+   "id": "inat-714835268",
+   "class_name": "sweetpotato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_rotten",
+   "probability": 0.9671,
+   "held": false,
+   "cells": [
+    3.608,
+    5.813,
+    3.307,
+    4.341,
+    3.129,
+    2.353,
+    3.88,
+    5.651,
+    5.903
+   ]
+  },
+  {
+   "id": "inat-470028299",
+   "class_name": "sweetpotato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.959,
+   "held": false,
+   "cells": [
+    2.126,
+    2.918,
+    4.856,
+    1.763,
+    -0.416,
+    0.655,
+    -0.259,
+    0.321,
+    1.071
+   ]
+  },
+  {
+   "id": "inat-90274632",
+   "class_name": "sweetpotato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_rotten",
+   "probability": 0.8008,
+   "held": true,
+   "cells": [
+    5.122,
+    7.286,
+    8.203,
+    0.455,
+    -0.488,
+    1.678,
+    2.518,
+    0.556,
+    -0.358
+   ]
+  },
+  {
+   "id": "inat-376018788",
+   "class_name": "sweetpotato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_fresh",
+   "probability": 0.8441,
+   "held": true,
+   "cells": [
+    -4.056,
+    -2.215,
+    0.158,
+    -2.572,
+    -3.548,
+    -0.972,
+    1.083,
+    2.07,
+    5.288
+   ]
+  },
+  {
+   "id": "inat-508601913",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.9925,
+   "held": false,
+   "cells": [
+    1.77,
+    3.846,
+    2.979,
+    0.011,
+    0.306,
+    0.721,
+    1.875,
+    2.924,
+    4.177
+   ]
+  },
+  {
+   "id": "inat-479838632",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.7336,
+   "held": true,
+   "cells": [
+    2.042,
+    0.943,
+    2.018,
+    1.16,
+    0.597,
+    0.41,
+    2.06,
+    2.113,
+    3.706
+   ]
+  },
+  {
+   "id": "inat-508601768",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.9903,
+   "held": false,
+   "cells": [
+    0.154,
+    2.165,
+    2.89,
+    4.059,
+    3.087,
+    3.378,
+    3.383,
+    3.653,
+    2.422
+   ]
+  },
+  {
+   "id": "inat-151685697",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_fresh",
+   "probability": 0.9336,
+   "held": false,
+   "cells": [
+    0.765,
+    0.799,
+    1.283,
+    -1.231,
+    -2.083,
+    -2.045,
+    0.583,
+    -0.994,
+    -0.635
+   ]
+  },
+  {
+   "id": "inat-62018679",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_fresh",
+   "probability": 0.9645,
+   "held": false,
+   "cells": [
+    1.982,
+    2.114,
+    -2.141,
+    -2.485,
+    -1.402,
+    -0.782,
+    1.88,
+    2.77,
+    3.232
+   ]
+  },
+  {
+   "id": "inat-622307071",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_rotten",
+   "probability": 0.8717,
+   "held": true,
+   "cells": [
+    2.261,
+    2.306,
+    0.216,
+    0.521,
+    3.956,
+    0.905,
+    0.955,
+    1.743,
+    1.62
+   ]
+  },
+  {
+   "id": "inat-508603171",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_fresh",
+   "probability": 0.909,
+   "held": false,
+   "cells": [
+    -0.166,
+    -0.682,
+    -0.269,
+    -0.053,
+    0.493,
+    1.755,
+    0.293,
+    0.774,
+    2.196
+   ]
+  },
+  {
+   "id": "inat-651773956",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_fresh",
+   "probability": 0.9704,
+   "held": false,
+   "cells": [
+    0.707,
+    -0.937,
+    0.968,
+    -2.017,
+    -1.79,
+    -0.598,
+    -0.2,
+    -2.329,
+    1.149
+   ]
+  },
+  {
+   "id": "inat-13247800",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_fresh",
+   "probability": 0.9934,
+   "held": false,
+   "cells": [
+    -0.977,
+    -3.295,
+    -4.121,
+    -2.953,
+    -2.388,
+    -2.716,
+    -2.38,
+    -0.944,
+    -1.639
+   ]
+  },
+  {
+   "id": "inat-100062897",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.4876,
+   "held": true,
+   "cells": [
+    3.29,
+    0.235,
+    0.36,
+    0.126,
+    -1.156,
+    -0.62,
+    0.818,
+    -1.246,
+    0.617
+   ]
+  },
+  {
+   "id": "inat-597210502",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_fresh",
+   "probability": 0.9543,
+   "held": false,
+   "cells": [
+    2.155,
+    2.637,
+    0.747,
+    -1.102,
+    2.587,
+    -0.776,
+    1.074,
+    2.961,
+    1.069
+   ]
+  },
+  {
+   "id": "inat-657939442",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "sweetpotato_fresh",
+   "probability": 0.9566,
+   "held": false,
+   "cells": [
+    0.79,
+    -0.954,
+    1.735,
+    -0.401,
+    -1.154,
+    0.033,
+    0.204,
+    -1.826,
+    1.219
+   ]
+  },
+  {
+   "id": "inat-508602377",
+   "class_name": "sweetpotato_fresh",
+   "group": "root_and_tomato",
+   "tv13": "potato_fresh",
+   "probability": 0.3635,
+   "held": true,
+   "cells": [
+    0.665,
+    -0.527,
+    0.373,
+    2.049,
+    0.266,
+    0.542,
+    1.933,
+    0.798,
+    1.44
+   ]
+  },
+  {
+   "id": "inat-544014659",
+   "class_name": "potato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.6802,
+   "held": true,
+   "cells": [
+    4.191,
+    2.658,
+    3.702,
+    3.258,
+    2.494,
+    5.12,
+    3.619,
+    4.024,
+    2.041
+   ]
+  },
+  {
+   "id": "inat-451211250",
+   "class_name": "potato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.7009,
+   "held": true,
+   "cells": [
+    1.411,
+    1.849,
+    1.882,
+    3.936,
+    3.432,
+    1.451,
+    2.427,
+    3.254,
+    2.59
+   ]
+  },
+  {
+   "id": "inat-268772911",
+   "class_name": "potato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.9982,
+   "held": false,
+   "cells": [
+    1.93,
+    2.25,
+    0.803,
+    4.265,
+    4.239,
+    4.574,
+    3.015,
+    5.635,
+    4.843
+   ]
+  },
+  {
+   "id": "inat-277598028",
+   "class_name": "potato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.9941,
+   "held": false,
+   "cells": [
+    2.775,
+    3.436,
+    3.111,
+    3.661,
+    3.785,
+    5.65,
+    2.824,
+    2.589,
+    1.536
+   ]
+  },
+  {
+   "id": "inat-276249613",
+   "class_name": "potato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.9977,
+   "held": false,
+   "cells": [
+    0.652,
+    2.544,
+    3.634,
+    3.362,
+    2.683,
+    2.935,
+    3.305,
+    2.756,
+    2.254
+   ]
+  },
+  {
+   "id": "inat-16609827",
+   "class_name": "potato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.9995,
+   "held": false,
+   "cells": [
+    3.675,
+    4.082,
+    4.206,
+    4.528,
+    4.592,
+    4.669,
+    2.201,
+    6.33,
+    5.939
+   ]
+  },
+  {
+   "id": "inat-454870968",
+   "class_name": "potato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.902,
+   "held": false,
+   "cells": [
+    3.21,
+    4.232,
+    5.056,
+    5.106,
+    4.019,
+    4.962,
+    5.242,
+    4.684,
+    1.199
+   ]
+  },
+  {
+   "id": "inat-307051200",
+   "class_name": "potato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.9848,
+   "held": false,
+   "cells": [
+    3.686,
+    5.143,
+    1.867,
+    3.765,
+    3.75,
+    3.543,
+    2.982,
+    3.403,
+    2.096
+   ]
+  },
+  {
+   "id": "inat-611676784",
+   "class_name": "potato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.9932,
+   "held": false,
+   "cells": [
+    5.151,
+    6.435,
+    4.859,
+    4.781,
+    5.373,
+    2.718,
+    4.27,
+    3.062,
+    2.611
+   ]
+  },
+  {
+   "id": "inat-284836341",
+   "class_name": "potato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.992,
+   "held": false,
+   "cells": [
+    5.264,
+    5.007,
+    2.938,
+    0.861,
+    0.797,
+    1.913,
+    0.805,
+    -0.037,
+    4.108
+   ]
+  },
+  {
+   "id": "inat-406572393",
+   "class_name": "potato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.8665,
+   "held": true,
+   "cells": [
+    6.198,
+    7.655,
+    8.075,
+    7.129,
+    7.062,
+    7.549,
+    6.889,
+    5.642,
+    6.506
+   ]
+  },
+  {
+   "id": "inat-424083505",
+   "class_name": "potato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.9916,
+   "held": false,
+   "cells": [
+    2.834,
+    8.137,
+    7.511,
+    7.702,
+    7.545,
+    7.126,
+    4.818,
+    6.204,
+    5.678
+   ]
+  },
+  {
+   "id": "inat-511493",
+   "class_name": "potato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.6783,
+   "held": true,
+   "cells": [
+    1.519,
+    3.239,
+    2.734,
+    3.487,
+    3.76,
+    3.773,
+    0.275,
+    1.236,
+    0.097
+   ]
+  },
+  {
+   "id": "inat-45228926",
+   "class_name": "potato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.9995,
+   "held": false,
+   "cells": [
+    7.443,
+    7.306,
+    7.524,
+    5.608,
+    3.458,
+    4.745,
+    1.477,
+    2.324,
+    2.903
+   ]
+  },
+  {
+   "id": "inat-20799701",
+   "class_name": "potato_rotten",
+   "group": "root_and_tomato",
+   "tv13": "potato_rotten",
+   "probability": 0.9644,
+   "held": false,
+   "cells": [
+    3.234,
+    2.927,
+    1.663,
+    4.983,
+    5.874,
+    5.682,
+    7.233,
+    6.22,
+    5.754
+   ]
+  },
+  {
+   "id": "4차/고구마_상함/고구마_상함_약간_4차_10.jpg",
+   "class_name": "sweetpotato_rotten",
+   "group": "sweetpotato_photos train",
+   "tv13": "sweetpotato_fresh",
+   "probability": 0.7568,
+   "held": true,
+   "cells": [
+    3.288,
+    1.083,
+    0.705,
+    1.609,
+    -2.273,
+    -0.95,
+    -1.821,
+    -0.261,
+    -0.846
+   ]
+  },
+  {
+   "id": "4차/고구마_상함/고구마_상함_약간_4차_13.jpg",
+   "class_name": "sweetpotato_rotten",
+   "group": "sweetpotato_photos train",
+   "tv13": "potato_rotten",
+   "probability": 0.9672,
+   "held": false,
+   "cells": [
+    -0.085,
+    -0.113,
+    2.759,
+    1.251,
+    -1.221,
+    1.51,
+    1.284,
+    -0.131,
+    4.683
+   ]
+  },
+  {
+   "id": "4차/고구마_상함/고구마_상함_약간_4차_14.jpg",
+   "class_name": "sweetpotato_rotten",
+   "group": "sweetpotato_photos train",
+   "tv13": "potato_rotten",
+   "probability": 0.9978,
+   "held": false,
+   "cells": [
+    1.277,
+    0.722,
+    -0.269,
+    0.743,
+    3.354,
+    0.12,
+    1.095,
+    2.223,
+    2.208
+   ]
+  },
+  {
+   "id": "4차/고구마_상함/고구마_상함_약간_4차_15.jpg",
+   "class_name": "sweetpotato_rotten",
+   "group": "sweetpotato_photos train",
+   "tv13": "potato_fresh",
+   "probability": 0.5729,
+   "held": true,
+   "cells": [
+    0.843,
+    -0.609,
+    -3.164,
+    -3.196,
+    -3.56,
+    -4.126,
+    -1.468,
+    -3.293,
+    -4.588
+   ]
+  },
+  {
+   "id": "4차/고구마_상함/고구마_상함_척봐도_4차_11.jpg",
+   "class_name": "sweetpotato_rotten",
+   "group": "sweetpotato_photos train",
+   "tv13": "potato_rotten",
+   "probability": 0.9852,
+   "held": false,
+   "cells": [
+    3.555,
+    1.974,
+    4.858,
+    4.468,
+    1.898,
+    3.471,
+    3.557,
+    3.454,
+    3.466
+   ]
+  },
+  {
+   "id": "4차/고구마_상함/고구마_상함_척봐도_4차_12.jpg",
+   "class_name": "sweetpotato_rotten",
+   "group": "sweetpotato_photos train",
+   "tv13": "potato_rotten",
+   "probability": 0.9848,
+   "held": false,
+   "cells": [
+    3.084,
+    5.512,
+    5.308,
+    3.669,
+    4.587,
+    3.98,
+    3.411,
+    3.35,
+    3.612
+   ]
+  },
+  {
+   "id": "5차/학습용/고구마_상함/고구마_상함_약간_5차_12.jpg",
+   "class_name": "sweetpotato_rotten",
+   "group": "sweetpotato_photos train",
+   "tv13": "potato_rotten",
+   "probability": 0.9932,
+   "held": false,
+   "cells": [
+    5.07,
+    3.859,
+    4.6,
+    3.098,
+    4.621,
+    5.995,
+    2.033,
+    3.99,
+    5.176
+   ]
+  },
+  {
+   "id": "5차/학습용/고구마_상함/고구마_상함_약간_5차_13.jpg",
+   "class_name": "sweetpotato_rotten",
+   "group": "sweetpotato_photos train",
+   "tv13": "potato_rotten",
+   "probability": 0.636,
+   "held": true,
+   "cells": [
+    4.093,
+    0.418,
+    1.212,
+    4.277,
+    3.539,
+    4.269,
+    1.523,
+    4.423,
+    2.655
+   ]
+  },
+  {
+   "id": "고구마_상함/고구마_상함_약간_01.jpg",
+   "class_name": "sweetpotato_rotten",
+   "group": "sweetpotato_photos train",
+   "tv13": "turned_away",
+   "probability": 0.8521,
+   "held": false,
+   "cells": [
+    -2.062,
+    2.939,
+    4.318,
+    1.452,
+    5.142,
+    -0.297,
+    2.314,
+    4.888,
+    -2.518
+   ]
+  },
+  {
+   "id": "고구마_상함/고구마_상함_척봐도_02.jpg",
+   "class_name": "sweetpotato_rotten",
+   "group": "sweetpotato_photos train",
+   "tv13": "potato_rotten",
+   "probability": 0.9283,
+   "held": false,
+   "cells": [
+    0.795,
+    0.682,
+    0.0,
+    1.876,
+    2.419,
+    2.988,
+    1.03,
+    0.397,
+    0.129
+   ]
+  },
+  {
+   "id": "5차/학습용/고구마_상함/고구마_상함_약간_5차_01.jpg",
+   "class_name": "sweetpotato_rotten",
+   "group": "sweetpotato_photos train",
+   "tv13": "potato_rotten",
+   "probability": 0.9971,
+   "held": false,
+   "cells": [
+    1.19,
+    1.404,
+    0.131,
+    2.241,
+    2.169,
+    -2.442,
+    2.439,
+    1.249,
+    -0.543
+   ]
+  },
+  {
+   "id": "5차/학습용/고구마_상함/고구마_상함_약간_5차_02.jpg",
+   "class_name": "sweetpotato_rotten",
+   "group": "sweetpotato_photos train",
+   "tv13": "potato_rotten",
+   "probability": 0.99,
+   "held": false,
+   "cells": [
+    2.821,
+    1.443,
+    1.208,
+    3.957,
+    1.772,
+    1.916,
+    2.9,
+    2.327,
+    4.342
+   ]
+  },
+  {
+   "id": "5차/학습용/고구마_상함/고구마_상함_약간_5차_05.jpg",
+   "class_name": "sweetpotato_rotten",
+   "group": "sweetpotato_photos train",
+   "tv13": "sweetpotato_fresh",
+   "probability": 0.67,
+   "held": true,
+   "cells": [
+    3.726,
+    1.09,
+    -0.17,
+    0.615,
+    1.096,
+    1.378,
+    2.675,
+    -0.719,
+    -0.28
+   ]
+  },
+  {
+   "id": "5차/학습용/고구마_상함/고구마_상함_척봐도_5차_03.jpg",
+   "class_name": "sweetpotato_rotten",
+   "group": "sweetpotato_photos train",
+   "tv13": "carrot_rotten",
+   "probability": 0.8432,
+   "held": true,
+   "cells": [
+    2.913,
+    1.98,
+    0.497,
+    1.087,
+    -0.13,
+    0.244,
+    -1.164,
+    -1.127,
+    3.513
+   ]
+  },
+  {
+   "id": "5차/학습용/고구마_상함/고구마_상함_척봐도_5차_04.jpg",
+   "class_name": "sweetpotato_rotten",
+   "group": "sweetpotato_photos train",
+   "tv13": "sweetpotato_fresh",
+   "probability": 0.9231,
+   "held": false,
+   "cells": [
+    -1.305,
+    -2.091,
+    -4.018,
+    -0.305,
+    1.846,
+    -2.328,
+    1.111,
+    1.325,
+    0.608
+   ]
+  },
+  {
+   "id": "5차/시험용/고구마_상함/고구마_상함_약간_5차_15.jpg",
+   "class_name": "sweetpotato_rotten",
+   "group": "sweetpotato_photos train",
+   "tv13": "potato_rotten",
+   "probability": 0.876,
+   "held": true,
+   "cells": [
+    0.717,
+    1.826,
+    1.271,
+    0.802,
+    1.243,
+    2.433,
+    0.698,
+    1.897,
+    1.789
+   ]
+  },
+  {
+   "id": "5차/학습용/고구마_상함/고구마_상함_척봐도_5차_06.jpg",
+   "class_name": "sweetpotato_rotten",
+   "group": "sweetpotato_photos train",
+   "tv13": "potato_rotten",
+   "probability": 0.9757,
+   "held": false,
+   "cells": [
+    2.675,
+    2.15,
+    3.77,
+    1.782,
+    1.823,
+    1.205,
+    1.141,
+    1.278,
+    -0.131
+   ]
+  },
+  {
+   "id": "5차/학습용/고구마_상함/고구마_상함_척봐도_5차_07.jpg",
+   "class_name": "sweetpotato_rotten",
+   "group": "sweetpotato_photos train",
+   "tv13": "sweetpotato_fresh",
+   "probability": 0.7052,
+   "held": true,
+   "cells": [
+    -0.701,
+    -0.11,
+    0.964,
+    -1.842,
+    -0.494,
+    -0.897,
+    0.39,
+    2.166,
+    1.37
+   ]
+  },
+  {
+   "id": "5차/학습용/고구마_상함/고구마_상함_척봐도_5차_08.jpg",
+   "class_name": "sweetpotato_rotten",
+   "group": "sweetpotato_photos train",
+   "tv13": "cucumber_rotten",
+   "probability": 0.5571,
+   "held": true,
+   "cells": [
+    3.473,
+    3.115,
+    4.674,
+    5.036,
+    4.476,
+    3.003,
+    2.941,
+    3.053,
+    4.914
+   ]
+  },
+  {
+   "id": "5차/학습용/고구마_상함/고구마_상함_척봐도_5차_10.jpg",
+   "class_name": "sweetpotato_rotten",
+   "group": "sweetpotato_photos train",
+   "tv13": "sweetpotato_fresh",
+   "probability": 0.9824,
+   "held": false,
+   "cells": [
+    -1.72,
+    -2.012,
+    -1.747,
+    -1.953,
+    -3.06,
+    -2.395,
+    -1.44,
+    -3.883,
+    -1.813
+   ]
+  },
+  {
+   "id": "u2-pf-002",
+   "class_name": "potato_fresh",
+   "group": "user photos 2",
+   "tv13": "potato_fresh",
+   "probability": 0.8205,
+   "held": true,
+   "cells": [
+    -2.695,
+    -1.856,
+    -3.541,
+    -3.332,
+    -2.679,
+    -3.284,
+    -1.929,
+    -1.226,
+    -2.017
+   ]
+  },
+  {
+   "id": "u2-pf-003",
+   "class_name": "potato_fresh",
+   "group": "user photos 2",
+   "tv13": "potato_rotten",
+   "probability": 0.9813,
+   "held": false,
+   "cells": [
+    -1.103,
+    -0.748,
+    1.118,
+    -0.851,
+    -2.006,
+    -0.242,
+    -2.02,
+    -1.681,
+    -1.922
+   ]
+  },
+  {
+   "id": "u2-pf-004",
+   "class_name": "potato_fresh",
+   "group": "user photos 2",
+   "tv13": "potato_rotten",
+   "probability": 0.9191,
+   "held": false,
+   "cells": [
+    -2.849,
+    0.085,
+    0.535,
+    -1.888,
+    0.333,
+    -0.274,
+    -0.783,
+    -0.67,
+    0.579
+   ]
+  },
+  {
+   "id": "u2-pf-005",
+   "class_name": "potato_fresh",
+   "group": "user photos 2",
+   "tv13": "potato_fresh",
+   "probability": 0.7353,
+   "held": true,
+   "cells": [
+    0.153,
+    -0.22,
+    -0.269,
+    1.629,
+    0.054,
+    -2.432,
+    -0.819,
+    -0.51,
+    -1.085
+   ]
+  },
+  {
+   "id": "u2-pf-006",
+   "class_name": "potato_fresh",
+   "group": "user photos 2",
+   "tv13": "potato_rotten",
+   "probability": 0.9992,
+   "held": false,
+   "cells": [
+    -0.602,
+    1.77,
+    2.116,
+    0.86,
+    1.215,
+    2.881,
+    1.556,
+    2.742,
+    3.124
+   ]
+  },
+  {
+   "id": "u2-pf-007",
+   "class_name": "potato_fresh",
+   "group": "user photos 2",
+   "tv13": "potato_fresh",
+   "probability": 0.8491,
+   "held": true,
+   "cells": [
+    -1.786,
+    -1.402,
+    -0.053,
+    -1.839,
+    -2.836,
+    -2.431,
+    -1.974,
+    -2.251,
+    -2.868
+   ]
+  },
+  {
+   "id": "u2-pf-008",
+   "class_name": "potato_fresh",
+   "group": "user photos 2",
+   "tv13": "potato_rotten",
+   "probability": 0.9988,
+   "held": false,
+   "cells": [
+    -0.793,
+    0.481,
+    0.104,
+    -0.731,
+    -0.078,
+    0.28,
+    -0.555,
+    -2.016,
+    -1.115
+   ]
+  },
+  {
+   "id": "u2-pf-009",
+   "class_name": "potato_fresh",
+   "group": "user photos 2",
+   "tv13": "potato_fresh",
+   "probability": 0.5597,
+   "held": true,
+   "cells": [
+    -1.239,
+    -1.027,
+    -0.54,
+    -1.954,
+    -1.157,
+    -0.983,
+    -0.186,
+    -0.873,
+    -1.594
+   ]
+  },
+  {
+   "id": "u2-pf-010",
+   "class_name": "potato_fresh",
+   "group": "user photos 2",
+   "tv13": "potato_rotten",
+   "probability": 0.9952,
+   "held": false,
+   "cells": [
+    -2.315,
+    -2.505,
+    -0.9,
+    -0.577,
+    -0.301,
+    -0.997,
+    1.468,
+    1.219,
+    0.307
+   ]
+  },
+  {
+   "id": "u2-pf-011",
+   "class_name": "potato_fresh",
+   "group": "user photos 2",
+   "tv13": "potato_fresh",
+   "probability": 0.8407,
+   "held": true,
+   "cells": [
+    -2.451,
+    -1.993,
+    -3.438,
+    -1.8,
+    0.639,
+    -2.308,
+    -1.773,
+    -1.687,
+    -2.303
+   ]
+  },
+  {
+   "id": "u2-pf-012",
+   "class_name": "potato_fresh",
+   "group": "user photos 2",
+   "tv13": "potato_fresh",
+   "probability": 0.5159,
+   "held": true,
+   "cells": [
+    -2.028,
+    -1.176,
+    0.593,
+    -2.427,
+    -1.632,
+    -1.168,
+    -0.234,
+    -1.809,
+    -1.994
+   ]
+  },
+  {
+   "id": "u2-pf-013",
+   "class_name": "potato_fresh",
+   "group": "user photos 2",
+   "tv13": "potato_rotten",
+   "probability": 0.9993,
+   "held": false,
+   "cells": [
+    -0.948,
+    -0.999,
+    0.203,
+    -0.997,
+    0.048,
+    0.4,
+    -0.423,
+    0.093,
+    0.763
+   ]
+  },
+  {
+   "id": "u2-pf-014",
+   "class_name": "potato_fresh",
+   "group": "user photos 2",
+   "tv13": "potato_rotten",
+   "probability": 0.9596,
+   "held": false,
+   "cells": [
+    -2.543,
+    -2.854,
+    -1.435,
+    -2.092,
+    -4.543,
+    -2.467,
+    0.43,
+    -1.716,
+    0.089
+   ]
+  },
+  {
+   "id": "u2-pf-015",
+   "class_name": "potato_fresh",
+   "group": "user photos 2",
+   "tv13": "potato_fresh",
+   "probability": 0.8742,
+   "held": true,
+   "cells": [
+    1.063,
+    -0.516,
+    0.156,
+    -2.334,
+    -1.941,
+    -1.403,
+    -1.123,
+    -0.595,
+    0.215
+   ]
+  },
+  {
+   "id": "u2-pf-016",
+   "class_name": "potato_fresh",
+   "group": "user photos 2",
+   "tv13": "potato_fresh",
+   "probability": 0.7472,
+   "held": true,
+   "cells": [
+    -2.597,
+    -1.843,
+    -0.195,
+    -4.09,
+    -1.996,
+    -3.342,
+    -2.821,
+    -2.899,
+    -4.013
+   ]
+  },
+  {
+   "id": "u2-pf-017",
+   "class_name": "potato_fresh",
+   "group": "user photos 2",
+   "tv13": "potato_fresh",
+   "probability": 0.558,
+   "held": true,
+   "cells": [
+    -2.277,
+    -2.454,
+    -2.091,
+    -3.644,
+    -2.441,
+    -2.533,
+    -2.055,
+    -1.938,
+    -2.97
+   ]
+  },
+  {
+   "id": "u2-pf-018",
+   "class_name": "potato_fresh",
+   "group": "user photos 2",
+   "tv13": "potato_fresh",
+   "probability": 0.9822,
+   "held": false,
+   "cells": [
+    -0.917,
+    -0.457,
+    -0.923,
+    -2.226,
+    -0.866,
+    -1.388,
+    -1.421,
+    -1.54,
+    -1.805
+   ]
+  },
+  {
+   "id": "u2-pf-021",
+   "class_name": "potato_fresh",
+   "group": "user photos 2",
+   "tv13": "potato_fresh",
+   "probability": 0.8194,
+   "held": true,
+   "cells": [
+    -1.624,
+    -1.871,
+    -0.903,
+    -2.159,
+    -1.926,
+    -1.992,
+    -3.216,
+    -3.09,
+    -2.495
+   ]
+  },
+  {
+   "id": "u2-pf-022",
+   "class_name": "potato_fresh",
+   "group": "user photos 2",
+   "tv13": "potato_fresh",
+   "probability": 0.9169,
+   "held": false,
+   "cells": [
+    -3.803,
+    -4.493,
+    -4.067,
+    -3.141,
+    -2.674,
+    -2.098,
+    -2.026,
+    -2.473,
+    -1.363
+   ]
+  },
+  {
+   "id": "u2-pf-023",
+   "class_name": "potato_fresh",
+   "group": "user photos 2",
+   "tv13": "potato_rotten",
+   "probability": 0.998,
+   "held": false,
+   "cells": [
+    0.798,
+    0.487,
+    1.107,
+    -1.258,
+    -0.885,
+    -1.48,
+    -2.975,
+    -3.108,
+    -1.319
+   ]
+  },
+  {
+   "id": "u2-pf-024",
+   "class_name": "potato_fresh",
+   "group": "user photos 2",
+   "tv13": "potato_rotten",
+   "probability": 0.9989,
+   "held": false,
+   "cells": [
+    -0.16,
+    0.277,
+    0.435,
+    -0.953,
+    -1.272,
+    -0.393,
+    -1.147,
+    -0.558,
+    -1.103
+   ]
+  },
+  {
+   "id": "u2-pf-025",
+   "class_name": "potato_fresh",
+   "group": "user photos 2",
+   "tv13": "potato_rotten",
+   "probability": 0.9992,
+   "held": false,
+   "cells": [
+    0.244,
+    1.855,
+    2.173,
+    1.834,
+    1.941,
+    1.648,
+    -0.188,
+    1.343,
+    0.307
+   ]
+  },
+  {
+   "id": "u2-pf-026",
+   "class_name": "potato_fresh",
+   "group": "user photos 2",
+   "tv13": "potato_rotten",
+   "probability": 0.9963,
+   "held": false,
+   "cells": [
+    -0.839,
+    -1.715,
+    -2.061,
+    -0.615,
+    -0.995,
+    -2.718,
+    -2.569,
+    -1.422,
+    -1.273
+   ]
+  },
+  {
+   "id": "u2-pf-027",
+   "class_name": "potato_fresh",
+   "group": "user photos 2",
+   "tv13": "potato_fresh",
+   "probability": 0.9662,
+   "held": false,
+   "cells": [
+    -3.499,
+    -2.795,
+    -1.823,
+    -2.513,
+    -0.202,
+    -2.704,
+    -3.84,
+    -2.514,
+    -2.198
+   ]
+  },
+  {
+   "id": "u2-pf-029",
+   "class_name": "potato_fresh",
+   "group": "user photos 2",
+   "tv13": "potato_fresh",
+   "probability": 0.8032,
+   "held": true,
+   "cells": [
+    -1.5,
+    -1.608,
+    -1.159,
+    -3.427,
+    -1.888,
+    -2.127,
+    -3.012,
+    -2.922,
+    -1.279
+   ]
+  },
+  {
+   "id": "u2-pf-030",
+   "class_name": "potato_fresh",
+   "group": "user photos 2",
+   "tv13": "potato_rotten",
+   "probability": 0.9985,
+   "held": false,
+   "cells": [
+    0.524,
+    0.151,
+    0.655,
+    1.065,
+    0.979,
+    2.21,
+    -0.026,
+    0.321,
+    0.484
+   ]
+  },
+  {
+   "id": "u2-sp-001",
+   "class_name": "sweetpotato_rotten",
+   "group": "user photos 2",
+   "tv13": "potato_rotten",
+   "probability": 0.8928,
+   "held": true,
+   "cells": [
+    3.119,
+    1.112,
+    2.782,
+    4.227,
+    3.377,
+    3.291,
+    3.836,
+    3.879,
+    2.166
+   ]
+  },
+  {
+   "id": "u2-sp-003",
+   "class_name": "sweetpotato_rotten",
+   "group": "user photos 2",
+   "tv13": "potato_rotten",
+   "probability": 0.9213,
+   "held": false,
+   "cells": [
+    2.679,
+    2.552,
+    1.675,
+    4.682,
+    4.433,
+    4.787,
+    3.828,
+    3.506,
+    4.379
+   ]
+  },
+  {
+   "id": "u2-sp-004",
+   "class_name": "sweetpotato_rotten",
+   "group": "user photos 2",
+   "tv13": "potato_rotten",
+   "probability": 0.9993,
+   "held": false,
+   "cells": [
+    2.848,
+    3.937,
+    3.098,
+    4.311,
+    6.305,
+    3.596,
+    2.248,
+    4.635,
+    2.694
+   ]
+  },
+  {
+   "id": "u2-sp-007",
+   "class_name": "sweetpotato_rotten",
+   "group": "user photos 2",
+   "tv13": "potato_rotten",
+   "probability": 0.996,
+   "held": false,
+   "cells": [
+    -0.271,
+    1.993,
+    0.741,
+    0.646,
+    1.752,
+    3.648,
+    0.877,
+    2.188,
+    3.314
+   ]
+  },
+  {
+   "id": "u2-sp-008",
+   "class_name": "sweetpotato_rotten",
+   "group": "user photos 2",
+   "tv13": "potato_rotten",
+   "probability": 0.7834,
+   "held": true,
+   "cells": [
+    1.183,
+    0.508,
+    -1.864,
+    0.12,
+    1.515,
+    -0.3,
+    0.177,
+    0.609,
+    -0.603
+   ]
+  },
+  {
+   "id": "u2-sp-010",
+   "class_name": "sweetpotato_rotten",
+   "group": "user photos 2",
+   "tv13": "potato_rotten",
+   "probability": 0.9851,
+   "held": false,
+   "cells": [
+    1.127,
+    1.066,
+    3.146,
+    0.265,
+    3.1,
+    4.168,
+    1.907,
+    2.228,
+    3.28
+   ]
+  },
+  {
+   "id": "u2-sp-011",
+   "class_name": "sweetpotato_rotten",
+   "group": "user photos 2",
+   "tv13": "carrot_rotten",
+   "probability": 0.6952,
+   "held": true,
+   "cells": [
+    1.603,
+    3.595,
+    1.866,
+    -0.751,
+    3.879,
+    1.211,
+    -1.417,
+    1.91,
+    -1.986
+   ]
+  },
+  {
+   "id": "u2-sp-012",
+   "class_name": "sweetpotato_rotten",
+   "group": "user photos 2",
+   "tv13": "potato_rotten",
+   "probability": 0.9698,
+   "held": false,
+   "cells": [
+    4.37,
+    1.674,
+    2.361,
+    2.708,
+    2.452,
+    2.794,
+    -0.735,
+    6.227,
+    7.063
+   ]
+  },
+  {
+   "id": "u2-sp-017",
+   "class_name": "sweetpotato_rotten",
+   "group": "user photos 2",
+   "tv13": "potato_rotten",
+   "probability": 0.9941,
+   "held": false,
+   "cells": [
+    1.9,
+    4.824,
+    3.099,
+    2.966,
+    2.404,
+    3.589,
+    2.752,
+    4.335,
+    3.604
+   ]
+  },
+  {
+   "id": "u2-sp-018",
+   "class_name": "sweetpotato_rotten",
+   "group": "user photos 2",
+   "tv13": "potato_rotten",
+   "probability": 0.9182,
+   "held": false,
+   "cells": [
+    0.688,
+    -0.593,
+    -0.527,
+    0.911,
+    -0.844,
+    -0.285,
+    0.924,
+    1.333,
+    0.155
+   ]
+  },
+  {
+   "id": "u2-sp-019",
+   "class_name": "sweetpotato_rotten",
+   "group": "user photos 2",
+   "tv13": "potato_rotten",
+   "probability": 0.7693,
+   "held": true,
+   "cells": [
+    -0.375,
+    1.762,
+    1.67,
+    1.193,
+    3.22,
+    0.893,
+    1.531,
+    2.601,
+    0.846
+   ]
+  },
+  {
+   "id": "u2-sp-020",
+   "class_name": "sweetpotato_rotten",
+   "group": "user photos 2",
+   "tv13": "carrot_rotten",
+   "probability": 0.8204,
+   "held": true,
+   "cells": [
+    3.203,
+    2.007,
+    -0.566,
+    4.356,
+    0.877,
+    -0.808,
+    -0.169,
+    0.095,
+    -2.062
+   ]
+  },
+  {
+   "id": "u2-sp-023",
+   "class_name": "sweetpotato_rotten",
+   "group": "user photos 2",
+   "tv13": "potato_rotten",
+   "probability": 0.9772,
+   "held": false,
+   "cells": [
+    -0.927,
+    2.367,
+    1.316,
+    -1.181,
+    2.712,
+    -1.901,
+    -1.896,
+    -1.877,
+    -2.927
+   ]
+  },
+  {
+   "id": "u2-sp-027",
+   "class_name": "sweetpotato_rotten",
+   "group": "user photos 2",
+   "tv13": "potato_rotten",
+   "probability": 0.9788,
+   "held": false,
+   "cells": [
+    0.692,
+    3.514,
+    3.472,
+    0.079,
+    -0.155,
+    0.814,
+    -0.403,
+    -1.385,
+    0.153
+   ]
+  },
+  {
+   "id": "u2-sp-028",
+   "class_name": "sweetpotato_rotten",
+   "group": "user photos 2",
+   "tv13": "potato_rotten",
+   "probability": 0.9824,
+   "held": false,
+   "cells": [
+    2.252,
+    2.849,
+    2.57,
+    3.828,
+    2.328,
+    3.241,
+    3.227,
+    3.259,
+    3.426
+   ]
+  }
+ ]
+}
