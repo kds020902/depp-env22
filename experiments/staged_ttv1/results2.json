@@ -1,0 +1,998 @@
+{
+ "kind_variants": {
+  "TTV_1": [
+   {
+    "step": "+ weak_spots",
+    "right": 684,
+    "n": 827,
+    "rotten_called_fresh": 6,
+    "potato_fresh": [
+     99,
+     126
+    ],
+    "potato_rotten": [
+     120,
+     133
+    ],
+    "sweetpotato_fresh": null,
+    "sweetpotato_rotten": null,
+    "greenonion_fresh": null,
+    "turned_away_should": {
+     "fruit 374": [
+      342,
+      374
+     ],
+     "everyday things 400": [
+      400,
+      400
+     ]
+    },
+    "kept_should": {
+     "real-scene vegetable crops 192": [
+      173,
+      192
+     ]
+    },
+    "against_previous_step": null
+   },
+   {
+    "step": "+ onion",
+    "right": 734,
+    "n": 861,
+    "rotten_called_fresh": 8,
+    "potato_fresh": [
+     105,
+     126
+    ],
+    "potato_rotten": [
+     122,
+     133
+    ],
+    "sweetpotato_fresh": null,
+    "sweetpotato_rotten": null,
+    "greenonion_fresh": null,
+    "turned_away_should": {
+     "fruit 374": [
+      329,
+      374
+     ],
+     "everyday things 400": [
+      400,
+      400
+     ]
+    },
+    "kept_should": {
+     "real-scene vegetable crops 192": [
+      180,
+      192
+     ]
+    },
+    "against_previous_step": {
+     "classes_that_fell": {
+      "bellpepper_fresh": 1,
+      "bellpepper_rotten": 1
+     },
+     "photos_lost_in_them": 2,
+     "right_to_wrong": 7,
+     "wrong_to_right": 29
+    }
+   },
+   {
+    "step": "+ sweetpotato",
+    "right": 810,
+    "n": 949,
+    "rotten_called_fresh": 15,
+    "potato_fresh": [
+     100,
+     126
+    ],
+    "potato_rotten": [
+     122,
+     133
+    ],
+    "sweetpotato_fresh": [
+     55,
+     63
+    ],
+    "sweetpotato_rotten": [
+     17,
+     25
+    ],
+    "greenonion_fresh": null,
+    "turned_away_should": {
+     "fruit 374": [
+      317,
+      374
+     ],
+     "everyday things 400": [
+      400,
+      400
+     ]
+    },
+    "kept_should": {
+     "real-scene vegetable crops 192": [
+      183,
+      192
+     ]
+    },
+    "against_previous_step": {
+     "classes_that_fell": {
+      "potato_fresh": 5,
+      "carrot_rotten": 2,
+      "onion_fresh": 2
+     },
+     "photos_lost_in_them": 9,
+     "right_to_wrong": 15,
+     "wrong_to_right": 19
+    }
+   },
+   {
+    "step": "+ greenonion",
+    "right": 827,
+    "n": 969,
+    "rotten_called_fresh": 15,
+    "potato_fresh": [
+     101,
+     126
+    ],
+    "potato_rotten": [
+     120,
+     133
+    ],
+    "sweetpotato_fresh": [
+     55,
+     63
+    ],
+    "sweetpotato_rotten": [
+     17,
+     25
+    ],
+    "greenonion_fresh": [
+     16,
+     20
+    ],
+    "turned_away_should": {
+     "fruit 374": [
+      318,
+      374
+     ],
+     "everyday things 400": [
+      399,
+      400
+     ]
+    },
+    "kept_should": {
+     "real-scene vegetable crops 192": [
+      185,
+      192
+     ]
+    },
+    "against_previous_step": {
+     "classes_that_fell": {
+      "potato_rotten": 2
+     },
+     "photos_lost_in_them": 2,
+     "right_to_wrong": 5,
+     "wrong_to_right": 6
+    }
+   }
+  ],
+  "K-OVR": [
+   {
+    "step": "+ weak_spots",
+    "right": 681,
+    "n": 827,
+    "rotten_called_fresh": 6,
+    "potato_fresh": [
+     99,
+     126
+    ],
+    "potato_rotten": [
+     119,
+     133
+    ],
+    "sweetpotato_fresh": null,
+    "sweetpotato_rotten": null,
+    "greenonion_fresh": null,
+    "turned_away_should": {
+     "fruit 374": [
+      342,
+      374
+     ],
+     "everyday things 400": [
+      400,
+      400
+     ]
+    },
+    "kept_should": {
+     "real-scene vegetable crops 192": [
+      173,
+      192
+     ]
+    },
+    "against_previous_step": null
+   },
+   {
+    "step": "+ onion",
+    "right": 732,
+    "n": 861,
+    "rotten_called_fresh": 8,
+    "potato_fresh": [
+     105,
+     126
+    ],
+    "potato_rotten": [
+     122,
+     133
+    ],
+    "sweetpotato_fresh": null,
+    "sweetpotato_rotten": null,
+    "greenonion_fresh": null,
+    "turned_away_should": {
+     "fruit 374": [
+      329,
+      374
+     ],
+     "everyday things 400": [
+      400,
+      400
+     ]
+    },
+    "kept_should": {
+     "real-scene vegetable crops 192": [
+      180,
+      192
+     ]
+    },
+    "against_previous_step": {
+     "classes_that_fell": {
+      "bellpepper_fresh": 1,
+      "bellpepper_rotten": 1
+     },
+     "photos_lost_in_them": 2,
+     "right_to_wrong": 6,
+     "wrong_to_right": 29
+    }
+   },
+   {
+    "step": "+ sweetpotato",
+    "right": 804,
+    "n": 949,
+    "rotten_called_fresh": 15,
+    "potato_fresh": [
+     101,
+     126
+    ],
+    "potato_rotten": [
+     117,
+     133
+    ],
+    "sweetpotato_fresh": [
+     54,
+     63
+    ],
+    "sweetpotato_rotten": [
+     16,
+     25
+    ],
+    "greenonion_fresh": null,
+    "turned_away_should": {
+     "fruit 374": [
+      317,
+      374
+     ],
+     "everyday things 400": [
+      400,
+      400
+     ]
+    },
+    "kept_should": {
+     "real-scene vegetable crops 192": [
+      183,
+      192
+     ]
+    },
+    "against_previous_step": {
+     "classes_that_fell": {
+      "potato_fresh": 4,
+      "potato_rotten": 5,
+      "onion_fresh": 2
+     },
+     "photos_lost_in_them": 11,
+     "right_to_wrong": 15,
+     "wrong_to_right": 17
+    }
+   },
+   {
+    "step": "+ greenonion",
+    "right": 822,
+    "n": 969,
+    "rotten_called_fresh": 14,
+    "potato_fresh": [
+     102,
+     126
+    ],
+    "potato_rotten": [
+     116,
+     133
+    ],
+    "sweetpotato_fresh": [
+     54,
+     63
+    ],
+    "sweetpotato_rotten": [
+     16,
+     25
+    ],
+    "greenonion_fresh": [
+     15,
+     20
+    ],
+    "turned_away_should": {
+     "fruit 374": [
+      318,
+      374
+     ],
+     "everyday things 400": [
+      399,
+      400
+     ]
+    },
+    "kept_should": {
+     "real-scene vegetable crops 192": [
+      185,
+      192
+     ]
+    },
+    "against_previous_step": {
+     "classes_that_fell": {
+      "potato_rotten": 1
+     },
+     "photos_lost_in_them": 1,
+     "right_to_wrong": 3,
+     "wrong_to_right": 6
+    }
+   }
+  ],
+  "K-PAIR": [
+   {
+    "step": "+ weak_spots",
+    "right": 684,
+    "n": 827,
+    "rotten_called_fresh": 6,
+    "potato_fresh": [
+     99,
+     126
+    ],
+    "potato_rotten": [
+     120,
+     133
+    ],
+    "sweetpotato_fresh": null,
+    "sweetpotato_rotten": null,
+    "greenonion_fresh": null,
+    "turned_away_should": {
+     "fruit 374": [
+      342,
+      374
+     ],
+     "everyday things 400": [
+      400,
+      400
+     ]
+    },
+    "kept_should": {
+     "real-scene vegetable crops 192": [
+      173,
+      192
+     ]
+    },
+    "against_previous_step": null
+   },
+   {
+    "step": "+ onion",
+    "right": 734,
+    "n": 861,
+    "rotten_called_fresh": 8,
+    "potato_fresh": [
+     105,
+     126
+    ],
+    "potato_rotten": [
+     122,
+     133
+    ],
+    "sweetpotato_fresh": null,
+    "sweetpotato_rotten": null,
+    "greenonion_fresh": null,
+    "turned_away_should": {
+     "fruit 374": [
+      329,
+      374
+     ],
+     "everyday things 400": [
+      400,
+      400
+     ]
+    },
+    "kept_should": {
+     "real-scene vegetable crops 192": [
+      180,
+      192
+     ]
+    },
+    "against_previous_step": {
+     "classes_that_fell": {
+      "bellpepper_fresh": 1,
+      "bellpepper_rotten": 1
+     },
+     "photos_lost_in_them": 2,
+     "right_to_wrong": 7,
+     "wrong_to_right": 29
+    }
+   },
+   {
+    "step": "+ sweetpotato",
+    "right": 807,
+    "n": 949,
+    "rotten_called_fresh": 15,
+    "potato_fresh": [
+     99,
+     126
+    ],
+    "potato_rotten": [
+     121,
+     133
+    ],
+    "sweetpotato_fresh": [
+     54,
+     63
+    ],
+    "sweetpotato_rotten": [
+     17,
+     25
+    ],
+    "greenonion_fresh": null,
+    "turned_away_should": {
+     "fruit 374": [
+      317,
+      374
+     ],
+     "everyday things 400": [
+      400,
+      400
+     ]
+    },
+    "kept_should": {
+     "real-scene vegetable crops 192": [
+      183,
+      192
+     ]
+    },
+    "against_previous_step": {
+     "classes_that_fell": {
+      "potato_fresh": 6,
+      "potato_rotten": 1,
+      "carrot_rotten": 2,
+      "onion_fresh": 2
+     },
+     "photos_lost_in_them": 11,
+     "right_to_wrong": 17,
+     "wrong_to_right": 19
+    }
+   },
+   {
+    "step": "+ greenonion",
+    "right": 823,
+    "n": 969,
+    "rotten_called_fresh": 15,
+    "potato_fresh": [
+     99,
+     126
+    ],
+    "potato_rotten": [
+     119,
+     133
+    ],
+    "sweetpotato_fresh": [
+     54,
+     63
+    ],
+    "sweetpotato_rotten": [
+     17,
+     25
+    ],
+    "greenonion_fresh": [
+     16,
+     20
+    ],
+    "turned_away_should": {
+     "fruit 374": [
+      318,
+      374
+     ],
+     "everyday things 400": [
+      399,
+      400
+     ]
+    },
+    "kept_should": {
+     "real-scene vegetable crops 192": [
+      185,
+      192
+     ]
+    },
+    "against_previous_step": {
+     "classes_that_fell": {
+      "potato_rotten": 2
+     },
+     "photos_lost_in_them": 2,
+     "right_to_wrong": 5,
+     "wrong_to_right": 5
+    }
+   }
+  ],
+  "K-FROZEN": [
+   {
+    "step": "+ weak_spots",
+    "right": 684,
+    "n": 827,
+    "rotten_called_fresh": 6,
+    "potato_fresh": [
+     99,
+     126
+    ],
+    "potato_rotten": [
+     120,
+     133
+    ],
+    "sweetpotato_fresh": null,
+    "sweetpotato_rotten": null,
+    "greenonion_fresh": null,
+    "turned_away_should": {
+     "fruit 374": [
+      342,
+      374
+     ],
+     "everyday things 400": [
+      400,
+      400
+     ]
+    },
+    "kept_should": {
+     "real-scene vegetable crops 192": [
+      173,
+      192
+     ]
+    },
+    "against_previous_step": null
+   },
+   {
+    "step": "+ onion",
+    "right": 734,
+    "n": 861,
+    "rotten_called_fresh": 8,
+    "potato_fresh": [
+     105,
+     126
+    ],
+    "potato_rotten": [
+     123,
+     133
+    ],
+    "sweetpotato_fresh": null,
+    "sweetpotato_rotten": null,
+    "greenonion_fresh": null,
+    "turned_away_should": {
+     "fruit 374": [
+      329,
+      374
+     ],
+     "everyday things 400": [
+      400,
+      400
+     ]
+    },
+    "kept_should": {
+     "real-scene vegetable crops 192": [
+      180,
+      192
+     ]
+    },
+    "against_previous_step": {
+     "classes_that_fell": {
+      "bellpepper_fresh": 1,
+      "bellpepper_rotten": 1
+     },
+     "photos_lost_in_them": 2,
+     "right_to_wrong": 4,
+     "wrong_to_right": 27
+    }
+   },
+   {
+    "step": "+ sweetpotato",
+    "right": 798,
+    "n": 949,
+    "rotten_called_fresh": 14,
+    "potato_fresh": [
+     106,
+     126
+    ],
+    "potato_rotten": [
+     128,
+     133
+    ],
+    "sweetpotato_fresh": [
+     37,
+     63
+    ],
+    "sweetpotato_rotten": [
+     10,
+     25
+    ],
+    "greenonion_fresh": null,
+    "turned_away_should": {
+     "fruit 374": [
+      317,
+      374
+     ],
+     "everyday things 400": [
+      400,
+      400
+     ]
+    },
+    "kept_should": {
+     "real-scene vegetable crops 192": [
+      183,
+      192
+     ]
+    },
+    "against_previous_step": {
+     "classes_that_fell": {
+      "onion_fresh": 2
+     },
+     "photos_lost_in_them": 2,
+     "right_to_wrong": 2,
+     "wrong_to_right": 19
+    }
+   },
+   {
+    "step": "+ greenonion",
+    "right": 810,
+    "n": 969,
+    "rotten_called_fresh": 14,
+    "potato_fresh": [
+     106,
+     126
+    ],
+    "potato_rotten": [
+     127,
+     133
+    ],
+    "sweetpotato_fresh": [
+     37,
+     63
+    ],
+    "sweetpotato_rotten": [
+     10,
+     25
+    ],
+    "greenonion_fresh": [
+     10,
+     20
+    ],
+    "turned_away_should": {
+     "fruit 374": [
+      318,
+      374
+     ],
+     "everyday things 400": [
+      399,
+      400
+     ]
+    },
+    "kept_should": {
+     "real-scene vegetable crops 192": [
+      185,
+      192
+     ]
+    },
+    "against_previous_step": {
+     "classes_that_fell": {
+      "potato_rotten": 1
+     },
+     "photos_lost_in_them": 1,
+     "right_to_wrong": 2,
+     "wrong_to_right": 4
+    }
+   }
+  ]
+ },
+ "second_stage": {
+  "condition_right_on_valid_by_w": {
+   "0": [
+    286,
+    295
+   ],
+   "0.5": [
+    287,
+    295
+   ],
+   "1": [
+    286,
+    295
+   ],
+   "2": [
+    285,
+    295
+   ],
+   "4": [
+    284,
+    295
+   ]
+  },
+  "w": 0.5,
+  "TTV_1 (w=0)": {
+   "right": 827,
+   "n": 969,
+   "rotten_called_fresh": 15,
+   "potato_fresh": [
+    101,
+    126
+   ],
+   "potato_rotten": [
+    120,
+    133
+   ],
+   "sweetpotato_fresh": [
+    55,
+    63
+   ],
+   "sweetpotato_rotten": [
+    17,
+    25
+   ],
+   "greenonion_fresh": [
+    16,
+    20
+   ],
+   "turned_away_should": {
+    "fruit 374": [
+     318,
+     374
+    ],
+    "everyday things 400": [
+     399,
+     400
+    ]
+   },
+   "kept_should": {
+    "real-scene vegetable crops 192": [
+     185,
+     192
+    ]
+   },
+   "against_previous_step": null,
+   "classes": {
+    "cucumber_fresh": [
+     87,
+     99
+    ],
+    "cucumber_rotten": [
+     35,
+     42
+    ],
+    "potato_fresh": [
+     101,
+     126
+    ],
+    "potato_rotten": [
+     120,
+     133
+    ],
+    "tomato_fresh": [
+     81,
+     99
+    ],
+    "tomato_rotten": [
+     87,
+     95
+    ],
+    "bellpepper_fresh": [
+     48,
+     70
+    ],
+    "bellpepper_rotten": [
+     41,
+     42
+    ],
+    "carrot_fresh": [
+     71,
+     78
+    ],
+    "carrot_rotten": [
+     40,
+     43
+    ],
+    "onion_rotten": [
+     5,
+     5
+    ],
+    "sweetpotato_rotten": [
+     17,
+     25
+    ],
+    "sweetpotato_fresh": [
+     55,
+     63
+    ],
+    "onion_fresh": [
+     23,
+     29
+    ],
+    "greenonion_fresh": [
+     16,
+     20
+    ]
+   },
+   "per_set": {
+    "Valid 300": [
+     277,
+     300
+    ],
+    "internet 221": [
+     195,
+     221
+    ],
+    "field 160": [
+     119,
+     160
+    ],
+    "Asian cucumbers 37": [
+     33,
+     37
+    ],
+    "new-vegetable Valid 89": [
+     72,
+     89
+    ],
+    "potato / sweet potato web 162": [
+     131,
+     162
+    ]
+   },
+   "fresh_called_rotten_same_kind": 63
+  },
+  "S2+E (w=0.5)": {
+   "right": 846,
+   "n": 969,
+   "rotten_called_fresh": 18,
+   "potato_fresh": [
+    100,
+    126
+   ],
+   "potato_rotten": [
+    118,
+    133
+   ],
+   "sweetpotato_fresh": [
+    55,
+    63
+   ],
+   "sweetpotato_rotten": [
+    17,
+    25
+   ],
+   "greenonion_fresh": [
+    16,
+    20
+   ],
+   "turned_away_should": {
+    "fruit 374": [
+     318,
+     374
+    ],
+    "everyday things 400": [
+     399,
+     400
+    ]
+   },
+   "kept_should": {
+    "real-scene vegetable crops 192": [
+     185,
+     192
+    ]
+   },
+   "against_previous_step": null,
+   "classes": {
+    "cucumber_fresh": [
+     87,
+     99
+    ],
+    "cucumber_rotten": [
+     36,
+     42
+    ],
+    "potato_fresh": [
+     100,
+     126
+    ],
+    "potato_rotten": [
+     118,
+     133
+    ],
+    "tomato_fresh": [
+     88,
+     99
+    ],
+    "tomato_rotten": [
+     85,
+     95
+    ],
+    "bellpepper_fresh": [
+     60,
+     70
+    ],
+    "bellpepper_rotten": [
+     41,
+     42
+    ],
+    "carrot_fresh": [
+     75,
+     78
+    ],
+    "carrot_rotten": [
+     40,
+     43
+    ],
+    "onion_rotten": [
+     5,
+     5
+    ],
+    "sweetpotato_rotten": [
+     17,
+     25
+    ],
+    "sweetpotato_fresh": [
+     55,
+     63
+    ],
+    "onion_fresh": [
+     23,
+     29
+    ],
+    "greenonion_fresh": [
+     16,
+     20
+    ]
+   },
+   "per_set": {
+    "Valid 300": [
+     278,
+     300
+    ],
+    "internet 221": [
+     192,
+     221
+    ],
+    "field 160": [
+     141,
+     160
+    ],
+    "Asian cucumbers 37": [
+     33,
+     37
+    ],
+    "new-vegetable Valid 89": [
+     72,
+     89
+    ],
+    "potato / sweet potato web 162": [
+     130,
+     162
+    ]
+   },
+   "fresh_called_rotten_same_kind": 41
+  }
+ }
+}
