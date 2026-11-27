@@ -1,0 +1,8 @@
+{
+ "T11/sweetpotato_fresh": 33,
+ "T11/sweetpotato_rotten/other": 22,
+ "T11/sweetpotato_rotten/sprout": 16,
+ "train/sweetpotato_fresh": 31,
+ "train/sweetpotato_rotten/other": 25,
+ "train/sweetpotato_rotten/sprout": 28
+}
