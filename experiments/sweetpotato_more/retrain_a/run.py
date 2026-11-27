@@ -1,4 +1,4 @@
-"""Candidate A, development gates only (PREREG.md). T10 is not touched here.
+﻿"""Candidate A, development gates only (PREREG.md). T10 is not touched here.
 
     python experiments/sweetpotato_more/retrain_a/run.py
 
@@ -53,7 +53,7 @@ def build_data(path, X, y):
 
 
 def train(data_path, out_path):
-    r = subprocess.run([sys.executable, "-I", str(REPO / "src/train_new_veg_head.py"), "--model", str(REPO / "model.pth"),
+    r = subprocess.run([sys.executable, str(REPO / "src/train_new_veg_head.py"), "--model", str(REPO / "model.pth"),
                         "--data", str(data_path), "--out", str(out_path)], capture_output=True, text=True, cwd=REPO / "src")
     if r.returncode:
         raise SystemExit(r.stderr)

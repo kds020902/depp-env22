@@ -1,0 +1,62 @@
+{
+ "train_log": "saved D:\\AI\\depp-env22\\experiments\\sweetpotato_more\\retrain_a\\work\\candidate.pth: not-eight threshold -3.0145, tau 0.9 {0.5: 17, 0.7: 6, 0.8: 2, 0.9: 0, 0.95: 0}, display temperature 0.7456",
+ "tv13_tau": 0.8,
+ "cand_tau": 0.9,
+ "D1": {
+  "valid": {
+   "TV-13": 289,
+   "A": 289
+  },
+  "odev": {
+   "TV-13": 191,
+   "A": 191
+  },
+  "o160": {
+   "TV-13": 146,
+   "A": 146
+  },
+  "asian37": {
+   "TV-13": 33,
+   "A": 33
+  },
+  "fruit374": {
+   "TV-13": 347,
+   "A": 347
+  },
+  "coco400": {
+   "TV-13": 400,
+   "A": 400
+  },
+  "lvis": {
+   "TV-13": 20,
+   "A": 20
+  },
+  "pass": true
+ },
+ "D2": {
+  "TV-13": 78,
+  "A": 76,
+  "of": 89,
+  "pass": false
+ },
+ "D3": {
+  "TV-13": {
+   "kind_kept": 126,
+   "rotten_kind_kept": 27,
+   "fresh_kind_kept": 99,
+   "class_right_kept": 115,
+   "rejected": 5
+  },
+  "A": {
+   "kind_kept": 145,
+   "rotten_kind_kept": 38,
+   "fresh_kind_kept": 107,
+   "class_right_kept": 138,
+   "rejected": 4
+  },
+  "of": 168,
+  "rotten_of": 53,
+  "pass": true
+ },
+ "open_T10": false
+}
