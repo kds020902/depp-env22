@@ -1,0 +1,44 @@
+{
+ "n": 120,
+ "fresh": 93,
+ "rotten": 27,
+ "rotten_sprout": 21,
+ "rotten_mold_or_rot": 6,
+ "TV-13": {
+  "kind_kept": 101,
+  "rotten_kind_kept": 19,
+  "fresh_kind_kept": 82,
+  "class_right_kept": 94,
+  "rotten_class_right": 17,
+  "sprout_kind_kept": 17,
+  "mold_rot_kind_kept": 2,
+  "rejected": 1,
+  "wrong_answers": {
+   "sweetpotato_fresh->potato_rotten": 6,
+   "sweetpotato_rotten->potato_rotten": 4,
+   "sweetpotato_fresh->potato_fresh": 3,
+   "sweetpotato_fresh->carrot_fresh": 2,
+   "sweetpotato_rotten->carrot_rotten": 1,
+   "sweetpotato_rotten->tomato_rotten": 1,
+   "sweetpotato_rotten->REJ": 1,
+   "sweetpotato_rotten->onion_rotten": 1
+  }
+ },
+ "A2": {
+  "kind_kept": 115,
+  "rotten_kind_kept": 25,
+  "fresh_kind_kept": 90,
+  "class_right_kept": 108,
+  "rotten_class_right": 23,
+  "sprout_kind_kept": 19,
+  "mold_rot_kind_kept": 6,
+  "rejected": 0,
+  "wrong_answers": {
+   "sweetpotato_rotten->potato_rotten": 2,
+   "sweetpotato_fresh->potato_fresh": 1,
+   "sweetpotato_fresh->carrot_fresh": 1,
+   "sweetpotato_fresh->potato_rotten": 1
+  }
+ },
+ "adopt_A2": true
+}
