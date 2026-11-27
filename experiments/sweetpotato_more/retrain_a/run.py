@@ -52,9 +52,14 @@ def build_data(path, X, y):
     np.savez(path, **d)
 
 
+TAU = sys.argv[1] if len(sys.argv) > 1 else None   # candidate A2 (PREREG_A2.md): "0.8" = TV-13's tau, given
+TAG = "A2" if TAU else "A"
+
+
 def train(data_path, out_path):
     r = subprocess.run([sys.executable, str(REPO / "src/train_new_veg_head.py"), "--model", str(REPO / "model.pth"),
-                        "--data", str(data_path), "--out", str(out_path)], capture_output=True, text=True, cwd=REPO / "src")
+                        "--data", str(data_path), "--out", str(out_path)] + (["--tau", TAU] if TAU else []),
+                       capture_output=True, text=True, cwd=REPO / "src")
     if r.returncode:
         raise SystemExit(r.stderr)
     return r.stdout.strip().splitlines()[-1]
@@ -77,8 +82,8 @@ def main():
     tv13 = torch.load(REPO / "model.pth", map_location="cpu", weights_only=True)
 
     build_data(WORK / "head_data_a.npz", X, y)
-    log = train(WORK / "head_data_a.npz", WORK / "candidate.pth")
-    cand = torch.load(WORK / "candidate.pth", map_location="cpu", weights_only=True)
+    log = train(WORK / "head_data_a.npz", WORK / f"candidate_{TAG}.pth")
+    cand = torch.load(WORK / f"candidate_{TAG}.pth", map_location="cpu", weights_only=True)
     out = {"train_log": log, "tv13_tau": tv13["new_vegetable_head"]["switch_probability"],
            "cand_tau": cand["new_vegetable_head"]["switch_probability"]}
 
@@ -113,8 +118,8 @@ def main():
     for k in range(5):
         m = fold != k
         build_data(WORK / f"head_data_cv{k}.npz", X[m], y[m])
-        train(WORK / f"head_data_cv{k}.npz", WORK / f"cv{k}.pth")
-        ckk = torch.load(WORK / f"cv{k}.pth", map_location="cpu", weights_only=True)
+        train(WORK / f"head_data_cv{k}.npz", WORK / f"cv{k}_{TAG}.pth")
+        ckk = torch.load(WORK / f"cv{k}_{TAG}.pth", map_location="cpu", weights_only=True)
         pa[~m], ra[~m] = answer(ckk, b[~m], X[~m])
     rot = y == 13
     d3 = {}
@@ -125,7 +130,7 @@ def main():
     out["D3"] = {**d3, "of": len(y), "rotten_of": int(rot.sum()),
                  "pass": d3["A"]["kind_kept"] > d3["TV-13"]["kind_kept"] and d3["A"]["rotten_kind_kept"] > d3["TV-13"]["rotten_kind_kept"]}
     out["open_T10"] = bool(out["D1"]["pass"] and out["D2"]["pass"] and out["D3"]["pass"])
-    (HERE / "dev_result.json").write_text(json.dumps(out, indent=1, ensure_ascii=False), encoding="utf-8")
+    (HERE / ("dev_result.json" if TAG == "A" else "dev_result_A2.json")).write_text(json.dumps(out, indent=1, ensure_ascii=False), encoding="utf-8")
     print(json.dumps(out, indent=1, ensure_ascii=False))
 
 
