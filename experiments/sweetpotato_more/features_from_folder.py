@@ -50,9 +50,10 @@ def main():
             small.save(target, quality=85)
     # provenance, so a later run can check the cache was made from these exact photos with this model.pth
     sha = [hashlib.sha256((args.root / i).read_bytes()).hexdigest() for i in ids]
-    model_sha = hashlib.sha256((REPO / "model.pth").read_bytes()).hexdigest()
+    digest = lambda p: hashlib.sha256(Path(p).read_bytes()).hexdigest()  # noqa: E731
     np.savez_compressed(args.out, ids=np.array(ids), X=np.array(X, np.float32), b=np.array(b, np.float32),
-                        sha256=np.array(sha), model_sha256=np.array(model_sha))
+                        sha256=np.array(sha), model_sha256=np.array(digest(REPO / "model.pth")),
+                        list_sha256=np.array(digest(args.list)), extractor_sha256=np.array(digest(__file__)))
     print(f"stored {len(ids)} photos; missing {len(missing)}; sha256 differs {len(changed)}")
     for name in missing + changed:
         print("  not stored:", name)
