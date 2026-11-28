@@ -2,7 +2,7 @@
 
     python experiments/greenonion_condition/build_user_lists.py DATASET_DIR
 
-DATASET_DIR = ...\green_onion_dataset\final_dataset. A photo is listed when its file exists and it is not in
+DATASET_DIR = .../green_onion_dataset/final_dataset. A photo is listed when its file exists and it is not in
 user_dataset_review.csv with action 'exclude' or 'review' (fixed criteria set by eye before any model output).
 Photos the user deleted are therefore never listed again, even though the manifest still names them.
 Writes user_lists.csv (image_id, split, condition, file, sha256, source_id, environment) next to this file.
