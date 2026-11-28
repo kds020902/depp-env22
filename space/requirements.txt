@@ -1,5 +1,5 @@
-# The versions the recorded results and tests/golden.json were made with (CPU). Gradio comes from sdk_version in README.md.
---extra-index-url https://download.pytorch.org/whl/cpu
+# The versions the recorded results and tests/golden.json were made with. Gradio comes from sdk_version in README.md.
+# ZeroGPU Space: Python 3.12 and the default (CUDA) torch wheel; the model still runs on the CPU (app.py on_zero_gpu).
 torch==2.8.0
 torchvision==0.23.0
 Pillow==12.3.0

@@ -89,6 +89,16 @@ def answer(system, path: str | Path | None, hold_back_below: float = HOLD_BACK_B
     return headline(r), shown_probabilities(r), heat
 
 
+def on_zero_gpu(fn):
+    """A ZeroGPU Space (free accounts can host up to 2) runs the functions marked @spaces.GPU. The model stays on the CPU,
+    so the answer is the same as predict.py. Where the `spaces` package is absent (this PC, CPU Spaces) fn is unchanged."""
+    try:
+        import spaces
+    except ImportError:
+        return fn
+    return spaces.GPU(duration=20)(fn)
+
+
 def build(system):
     import gradio as gr
     with gr.Blocks(title=TITLE, delete_cache=(600, 600)) as page:   # uploads are temporary files: removed after 10 minutes
@@ -102,7 +112,7 @@ def build(system):
                 bars = gr.Label(label="가까운 답", num_top_classes=5)
                 heat = gr.Image(label="상한 곳 보기", height=300, interactive=False)
         gr.Markdown(NOTES)
-        run = lambda path: answer(system, path)  # noqa: E731
+        run = on_zero_gpu(lambda path: answer(system, path))
         button.click(run, photo, [verdict, bars, heat])
         photo.upload(run, photo, [verdict, bars, heat])
     return page
