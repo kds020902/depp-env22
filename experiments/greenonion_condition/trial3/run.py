@@ -1,4 +1,4 @@
-﻿"""Trial 3, development only (PREREG.md; same as trial 2 but with more photos and integrity checks first): green onion condition learned by the second head. The final test is not read.
+﻿"""Trial 3, development only (PREREG.md; trial 2 photos and settings, rotten rows weighted to balance fresh, integrity checks first): green onion condition learned by the second head. The final test is not read.
 
     python experiments/greenonion_condition/trial3/run.py
 Uses trial3/photos.csv and trial3/features.npz, made by
@@ -39,7 +39,7 @@ def build_data(path, X, y):
 
 
 def train(data_path, out_path):
-    r = subprocess.run([sys.executable, str(HERE.parent / "trial2" / "train15.py"), "--model", str(REPO / "model.pth"),
+    r = subprocess.run([sys.executable, str(HERE / "train15w.py"), "--model", str(REPO / "model.pth"),
                         "--data", str(data_path), "--out", str(out_path), "--tau", "0.8"], capture_output=True, text=True, cwd=REPO / "src")
     if r.returncode:
         raise SystemExit(r.stderr)
