@@ -104,3 +104,20 @@ def test_unexpected_error_unlocks_photo_and_button():
     photo, button, message, *_ = failure[0].fn("photo.jpg")
     assert photo["interactive"] is True and button["interactive"] is True
     assert message.startswith("### 판정하지 못했어요")
+
+
+def test_greenonion_hint_never_says_fresh_and_marks_experimental():
+    """Experimental green onion condition: only 'sign to check' or 'held', always labelled as not validated."""
+    import numpy as np
+    import app
+
+    hint = np.load(app.GREENONION_HINT)
+    spoiled = hint["spoiled"].mean(0)
+    fresh = hint["fresh"].mean(0)
+    unit = lambda v: v / np.linalg.norm(v)  # noqa: E731
+    near_spoiled = app.greenonion_hint(unit(spoiled - fresh))
+    near_fresh = app.greenonion_hint(unit(fresh - spoiled))
+    assert "이상 징후 후보" in near_spoiled
+    assert "판단 보류" in near_fresh
+    for text in (near_spoiled, near_fresh):
+        assert "실험 기능" in text and "정상" not in text

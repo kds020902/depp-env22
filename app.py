@@ -46,7 +46,7 @@ NOTES = f"""
 **읽는 법**
 - 확률이 {100 * HOLD_BACK_BELOW:g}% 미만이면 답을 확정하지 않고 **판단 보류**로 가장 가까운 답만 알려 줍니다.
 - **{UNKNOWN_MESSAGE}** 는 위 여덟 채소의 사진이 아닌 것 같다는 뜻입니다.
-- 대파는 종류만 알아보고 상태는 판정하지 않습니다.
+- 대파의 상태는 실험 기능입니다. 상한 대파 사진으로 정확도를 확인하지 못해, **이상 징후 후보** 또는 **판단 보류**만 알려 줍니다.
 - 빨간 부분은 모델이 상했다고 본 곳입니다(7×7칸 단위의 대략적인 위치). 오이 · 감자 · 토마토 · 피망 · 당근에만 나옵니다.
 
 **한계**
@@ -88,6 +88,23 @@ def check_size(path: str | Path) -> None:
             raise ValueError(f"사진이 너무 큽니다({image.width}×{image.height}). 더 작은 사진을 올려 주세요.")
 
 
+GREENONION_HINT = HERE / "greenonion_hint.npz"   # experiments/greenonion_condition: prompts + threshold from fresh photos only
+
+
+def greenonion_hint(features) -> str:
+    """Experimental green onion condition (not validated: no spoiled green onion photo exists to test it). Never says
+    "fresh": above the threshold set on 117 fresh green onions it is a 'sign to check', otherwise the condition is held."""
+    import numpy as np
+    hint = np.load(GREENONION_HINT)
+    f = np.asarray(features, dtype=np.float32).reshape(-1)
+    score = float((hint["spoiled"] @ f).mean() - (hint["fresh"] @ f).mean())
+    if score >= float(hint["threshold"]):
+        text = "⚠️ **이상 징후 후보**: 시들거나 상한 대파와 닮은 점이 보여요. 직접 확인해 주세요."
+    else:
+        text = "**상태 판단 보류**: 상한 대파를 알아보는 기능은 아직 확인 중이에요."
+    return f"\n\n{text}\n\n<sub>대파 상태는 실험 기능이에요. 상한 대파 사진으로 정확도를 확인하지 못했어요.</sub>"
+
+
 def answer(system, path: str | Path | None, hold_back_below: float = HOLD_BACK_BELOW):
     """(headline, probabilities, heat map or None) for one uploaded file."""
     if not path:
@@ -103,7 +120,10 @@ def answer(system, path: str | Path | None, hold_back_below: float = HOLD_BACK_B
     if r["rot_map"] is not None:
         from networks import rot_map_overlay
         heat = rot_map_overlay(photo, r["rot_map"], r["scale"], side_by_side=False)
-    return headline(r), shown_probabilities(r), heat
+    text = headline(r)
+    if not r["unknown"] and SPECIES_NAMES[r["index"] // 2] == "greenonion" and GREENONION_HINT.exists():
+        text += greenonion_hint(system.clip.image_features([photo]).cpu().numpy())
+    return text, shown_probabilities(r), heat
 
 
 def on_zero_gpu(fn):
