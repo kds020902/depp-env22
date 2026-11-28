@@ -1,0 +1,22 @@
+image_id,split,label,file,action,reason
+GO_TRAIN_SPOILED_054,train,상한 대파,train/spoiled/GO_TRAIN_SPOILED_054.jpg,exclude,text overlay (blog watermark) on the photo
+GO_TRAIN_SPOILED_076,train,상한 대파,train/spoiled/GO_TRAIN_SPOILED_076.jpg,exclude,text overlay ('Photo by' watermark)
+GO_TRAIN_SPOILED_094,train,상한 대파,train/spoiled/GO_TRAIN_SPOILED_094.jpg,exclude,caption text over the photo
+GO_TRAIN_NORMAL_108,train,정상 대파(동일출처),train/normal/GO_TRAIN_NORMAL_108.jpg,exclude,product package with large printed text
+GO_DEV_NORMAL_160,dev,정상 대파(동일출처),dev/normal/GO_DEV_NORMAL_160.jpg,exclude,newspaper text fills the background
+GO_DEV_SPOILED_174,dev,상한 대파,dev/spoiled/GO_DEV_SPOILED_174.jpg,exclude,watermark text ('jenny')
+GO_DEV_NORMAL_175,dev,정상 대파(동일출처),dev/normal/GO_DEV_NORMAL_175.jpg,exclude,watermark text ('jenny')
+GO_TEST_SPOILED_208,test,상한 대파,test_holdout_open_once/spoiled/GO_TEST_SPOILED_208.jpg,exclude,handwritten label card in the photo
+GO_TEST_SPOILED_209,test,상한 대파,test_holdout_open_once/spoiled/GO_TEST_SPOILED_209.jpg,exclude,handwritten label card in the photo
+GO_TEST_SPOILED_233,test,상한 대파,test_holdout_open_once/spoiled/GO_TEST_SPOILED_233.jpg,exclude,URL watermark
+GO_TEST_SPOILED_234,test,상한 대파,test_holdout_open_once/spoiled/GO_TEST_SPOILED_234.jpg,exclude,URL watermark
+GO_TRAIN_SPOILED_003,train,상한 대파,train/spoiled/GO_TRAIN_SPOILED_003.jpg,review,"flat broad leaves: may be leek, not green onion"
+GO_TRAIN_SPOILED_004,train,상한 대파,train/spoiled/GO_TRAIN_SPOILED_004.jpg,review,flat broad leaves: may be leek
+GO_TRAIN_SPOILED_005,train,상한 대파,train/spoiled/GO_TRAIN_SPOILED_005.jpg,review,flat broad leaves: may be leek
+GO_DEV_SPOILED_161,dev,상한 대파,dev/spoiled/GO_DEV_SPOILED_161.jpg,review,flat leaves: may be leek or garlic
+GO_DEV_SPOILED_162,dev,상한 대파,dev/spoiled/GO_DEV_SPOILED_162.jpg,review,flat leaves: may be leek or garlic
+GO_DEV_SPOILED_164,dev,상한 대파,dev/spoiled/GO_DEV_SPOILED_164.jpg,review,flat leaf with rust: may be leek or garlic
+GO_DEV_SPOILED_165,dev,상한 대파,dev/spoiled/GO_DEV_SPOILED_165.jpg,review,flat leaf with rust: may be leek or garlic
+GO_DEV_SPOILED_166,dev,상한 대파,dev/spoiled/GO_DEV_SPOILED_166.jpg,review,flat leaves in a pot: may be leek or garlic
+GO_TEST_SPOILED_210,test,상한 대파,test_holdout_open_once/spoiled/GO_TEST_SPOILED_210.jpg,review,flat leaves: may be leek or garlic
+GO_TEST_SPOILED_211,test,상한 대파,test_holdout_open_once/spoiled/GO_TEST_SPOILED_211.jpg,review,flat leaves: may be leek or garlic
