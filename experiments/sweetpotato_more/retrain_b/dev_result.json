@@ -1,0 +1,506 @@
+{
+ "new_train": {
+  "n": 259,
+  "fresh": 151,
+  "rotten": 108
+ },
+ "train_log": "saved D:\\AI\\depp-env22\\experiments\\sweetpotato_more\\retrain_b\\work\\candidate_B.pth: not-eight threshold -3.1027, tau 0.8 {0.5: 19, 0.7: 6, 0.8: 3, 0.9: 0, 0.95: 0}, display temperature 0.7508",
+ "G1_raw_tail": [
+  "|---|---:|---:|---:|---:|---:|",
+  "| cucumber_fresh | 99 | 89/99 (89.9%) | 89/99 (89.9%) | - | - |",
+  "| cucumber_rotten | 42 | 33/42 (78.6%) | 33/42 (78.6%) | 1 / 1 | 1 / 1 |",
+  "| potato_fresh | 126 | 107/126 (84.9%) | 107/126 (84.9%) | - | - |",
+  "| potato_rotten | 133 | 126/133 (94.7%) | 121/133 (91.0%) | 4 / 4 | 4 / 4 |",
+  "| tomato_fresh | 99 | 92/99 (92.9%) | 92/99 (92.9%) | - | - |",
+  "| tomato_rotten | 95 | 79/95 (83.2%) | 79/95 (83.2%) | 8 / 8 | 8 / 8 |",
+  "| bellpepper_fresh | 70 | 69/70 (98.6%) | 69/70 (98.6%) | - | - |",
+  "| bellpepper_rotten | 42 | 42/42 (100.0%) | 42/42 (100.0%) | 0 / 0 | 0 / 0 |",
+  "| carrot_fresh | 78 | 76/78 (97.4%) | 76/78 (97.4%) | - | - |",
+  "| carrot_rotten | 43 | 42/43 (97.7%) | 42/43 (97.7%) | 1 / 1 | 1 / 1 |",
+  "| onion_fresh | 29 | 26/29 (89.7%) | 26/29 (89.7%) | - | - |",
+  "| onion_rotten | 5 | 5/5 (100.0%) | 5/5 (100.0%) | 0 / 0 | 0 / 0 |",
+  "| sweetpotato_fresh | 63 | 51/63 (81.0%) | 52/63 (82.5%) | - | - |",
+  "| sweetpotato_rotten | 25 | 18/25 (72.0%) | 21/25 (84.0%) | 3 / 3 | 4 / 4 |",
+  "| greenonion_fresh | 20 | 14/20 (70.0%) | 14/20 (70.0%) | - | - |",
+  "| all labelled | 969 | 869/969 (89.7%) | 868/969 (89.6%) | 17 / 17 | 18 / 18 |",
+  "",
+  "| system | held back (below 0.9) | turned away | shown answers right | rotten->fresh among shown answers |",
+  "|---|---:|---:|---:|---:|",
+  "| TV-13 | 163/969 (16.8%) | 25/969 (2.6%) | 750/781 (96.0%) | 8 |",
+  "| B | 160/969 (16.5%) | 25/969 (2.6%) | 751/784 (95.8%) | 9 |",
+  "",
+  "B: answers changed from TV-13: {'Valid 300': 0, 'internet 221': 1, 'field 160': 0, 'Asian cucumbers 37': 1, 'new-vegetable Valid 89': 6, 'fruit 374': 1, 'everyday things 400': 0, 'real-scene vegetable crops 192': 2, 'potato / sweet potato web 162': 12}",
+  "B: right -> wrong / wrong -> right on the same photos: {'right_to_wrong': 7, 'wrong_to_right': 6}"
+ ],
+ "G1_changes": {
+  "B": {
+   "cucumber_fresh": {
+    "right_to_wrong": 0,
+    "wrong_to_right": 0
+   },
+   "cucumber_rotten": {
+    "right_to_wrong": 0,
+    "wrong_to_right": 0
+   },
+   "potato_fresh": {
+    "right_to_wrong": 0,
+    "wrong_to_right": 0
+   },
+   "potato_rotten": {
+    "right_to_wrong": 5,
+    "wrong_to_right": 0
+   },
+   "tomato_fresh": {
+    "right_to_wrong": 0,
+    "wrong_to_right": 0
+   },
+   "tomato_rotten": {
+    "right_to_wrong": 0,
+    "wrong_to_right": 0
+   },
+   "bellpepper_fresh": {
+    "right_to_wrong": 0,
+    "wrong_to_right": 0
+   },
+   "bellpepper_rotten": {
+    "right_to_wrong": 0,
+    "wrong_to_right": 0
+   },
+   "carrot_fresh": {
+    "right_to_wrong": 0,
+    "wrong_to_right": 0
+   },
+   "carrot_rotten": {
+    "right_to_wrong": 0,
+    "wrong_to_right": 0
+   },
+   "onion_rotten": {
+    "right_to_wrong": 0,
+    "wrong_to_right": 0
+   },
+   "sweetpotato_rotten": {
+    "right_to_wrong": 1,
+    "wrong_to_right": 4
+   },
+   "sweetpotato_fresh": {
+    "right_to_wrong": 1,
+    "wrong_to_right": 2
+   },
+   "onion_fresh": {
+    "right_to_wrong": 0,
+    "wrong_to_right": 0
+   },
+   "greenonion_fresh": {
+    "right_to_wrong": 0,
+    "wrong_to_right": 0
+   },
+   "_all_labelled": {
+    "right_to_wrong": 7,
+    "wrong_to_right": 6
+   }
+  }
+ },
+ "G1_summary_systems": {
+  "TV-13": {
+   "n": 969,
+   "right": 869,
+   "rotten_n": 385,
+   "rotten_called_fresh": 17,
+   "rotten_called_fresh_same_kind": 17,
+   "rotten_called_fresh_shown": 8,
+   "turned_away": 25,
+   "held_back": 163,
+   "shown": 781,
+   "shown_right": 750,
+   "classes": {
+    "cucumber_fresh": {
+     "n": 99,
+     "right": 89,
+     "rotten_n": 0,
+     "rotten_called_fresh": 0,
+     "rotten_called_fresh_same_kind": 0,
+     "rotten_called_fresh_shown": 0,
+     "turned_away": 8,
+     "held_back": 6,
+     "shown": 85,
+     "shown_right": 85
+    },
+    "cucumber_rotten": {
+     "n": 42,
+     "right": 33,
+     "rotten_n": 42,
+     "rotten_called_fresh": 1,
+     "rotten_called_fresh_same_kind": 1,
+     "rotten_called_fresh_shown": 0,
+     "turned_away": 0,
+     "held_back": 12,
+     "shown": 30,
+     "shown_right": 27
+    },
+    "potato_fresh": {
+     "n": 126,
+     "right": 107,
+     "rotten_n": 0,
+     "rotten_called_fresh": 0,
+     "rotten_called_fresh_same_kind": 0,
+     "rotten_called_fresh_shown": 0,
+     "turned_away": 0,
+     "held_back": 29,
+     "shown": 97,
+     "shown_right": 86
+    },
+    "potato_rotten": {
+     "n": 133,
+     "right": 126,
+     "rotten_n": 133,
+     "rotten_called_fresh": 4,
+     "rotten_called_fresh_same_kind": 4,
+     "rotten_called_fresh_shown": 1,
+     "turned_away": 3,
+     "held_back": 18,
+     "shown": 112,
+     "shown_right": 111
+    },
+    "tomato_fresh": {
+     "n": 99,
+     "right": 92,
+     "rotten_n": 0,
+     "rotten_called_fresh": 0,
+     "rotten_called_fresh_same_kind": 0,
+     "rotten_called_fresh_shown": 0,
+     "turned_away": 2,
+     "held_back": 14,
+     "shown": 83,
+     "shown_right": 83
+    },
+    "tomato_rotten": {
+     "n": 95,
+     "right": 79,
+     "rotten_n": 95,
+     "rotten_called_fresh": 8,
+     "rotten_called_fresh_same_kind": 8,
+     "rotten_called_fresh_shown": 6,
+     "turned_away": 6,
+     "held_back": 22,
+     "shown": 67,
+     "shown_right": 61
+    },
+    "bellpepper_fresh": {
+     "n": 70,
+     "right": 69,
+     "rotten_n": 0,
+     "rotten_called_fresh": 0,
+     "rotten_called_fresh_same_kind": 0,
+     "rotten_called_fresh_shown": 0,
+     "turned_away": 0,
+     "held_back": 13,
+     "shown": 57,
+     "shown_right": 56
+    },
+    "bellpepper_rotten": {
+     "n": 42,
+     "right": 42,
+     "rotten_n": 42,
+     "rotten_called_fresh": 0,
+     "rotten_called_fresh_same_kind": 0,
+     "rotten_called_fresh_shown": 0,
+     "turned_away": 0,
+     "held_back": 6,
+     "shown": 36,
+     "shown_right": 36
+    },
+    "carrot_fresh": {
+     "n": 78,
+     "right": 76,
+     "rotten_n": 0,
+     "rotten_called_fresh": 0,
+     "rotten_called_fresh_same_kind": 0,
+     "rotten_called_fresh_shown": 0,
+     "turned_away": 0,
+     "held_back": 1,
+     "shown": 77,
+     "shown_right": 76
+    },
+    "carrot_rotten": {
+     "n": 43,
+     "right": 42,
+     "rotten_n": 43,
+     "rotten_called_fresh": 1,
+     "rotten_called_fresh_same_kind": 1,
+     "rotten_called_fresh_shown": 0,
+     "turned_away": 0,
+     "held_back": 8,
+     "shown": 35,
+     "shown_right": 35
+    },
+    "onion_fresh": {
+     "n": 29,
+     "right": 26,
+     "rotten_n": 0,
+     "rotten_called_fresh": 0,
+     "rotten_called_fresh_same_kind": 0,
+     "rotten_called_fresh_shown": 0,
+     "turned_away": 1,
+     "held_back": 6,
+     "shown": 22,
+     "shown_right": 21
+    },
+    "onion_rotten": {
+     "n": 5,
+     "right": 5,
+     "rotten_n": 5,
+     "rotten_called_fresh": 0,
+     "rotten_called_fresh_same_kind": 0,
+     "rotten_called_fresh_shown": 0,
+     "turned_away": 0,
+     "held_back": 1,
+     "shown": 4,
+     "shown_right": 4
+    },
+    "sweetpotato_fresh": {
+     "n": 63,
+     "right": 51,
+     "rotten_n": 0,
+     "rotten_called_fresh": 0,
+     "rotten_called_fresh_same_kind": 0,
+     "rotten_called_fresh_shown": 0,
+     "turned_away": 2,
+     "held_back": 10,
+     "shown": 51,
+     "shown_right": 48
+    },
+    "sweetpotato_rotten": {
+     "n": 25,
+     "right": 18,
+     "rotten_n": 25,
+     "rotten_called_fresh": 3,
+     "rotten_called_fresh_same_kind": 3,
+     "rotten_called_fresh_shown": 1,
+     "turned_away": 1,
+     "held_back": 11,
+     "shown": 13,
+     "shown_right": 9
+    },
+    "greenonion_fresh": {
+     "n": 20,
+     "right": 14,
+     "rotten_n": 0,
+     "rotten_called_fresh": 0,
+     "rotten_called_fresh_same_kind": 0,
+     "rotten_called_fresh_shown": 0,
+     "turned_away": 2,
+     "held_back": 6,
+     "shown": 12,
+     "shown_right": 12
+    }
+   }
+  },
+  "B": {
+   "n": 969,
+   "right": 868,
+   "rotten_n": 385,
+   "rotten_called_fresh": 18,
+   "rotten_called_fresh_same_kind": 18,
+   "rotten_called_fresh_shown": 9,
+   "turned_away": 25,
+   "held_back": 160,
+   "shown": 784,
+   "shown_right": 751,
+   "classes": {
+    "cucumber_fresh": {
+     "n": 99,
+     "right": 89,
+     "rotten_n": 0,
+     "rotten_called_fresh": 0,
+     "rotten_called_fresh_same_kind": 0,
+     "rotten_called_fresh_shown": 0,
+     "turned_away": 7,
+     "held_back": 6,
+     "shown": 86,
+     "shown_right": 85
+    },
+    "cucumber_rotten": {
+     "n": 42,
+     "right": 33,
+     "rotten_n": 42,
+     "rotten_called_fresh": 1,
+     "rotten_called_fresh_same_kind": 1,
+     "rotten_called_fresh_shown": 0,
+     "turned_away": 0,
+     "held_back": 12,
+     "shown": 30,
+     "shown_right": 27
+    },
+    "potato_fresh": {
+     "n": 126,
+     "right": 107,
+     "rotten_n": 0,
+     "rotten_called_fresh": 0,
+     "rotten_called_fresh_same_kind": 0,
+     "rotten_called_fresh_shown": 0,
+     "turned_away": 0,
+     "held_back": 29,
+     "shown": 97,
+     "shown_right": 86
+    },
+    "potato_rotten": {
+     "n": 133,
+     "right": 121,
+     "rotten_n": 133,
+     "rotten_called_fresh": 4,
+     "rotten_called_fresh_same_kind": 4,
+     "rotten_called_fresh_shown": 1,
+     "turned_away": 3,
+     "held_back": 20,
+     "shown": 110,
+     "shown_right": 107
+    },
+    "tomato_fresh": {
+     "n": 99,
+     "right": 92,
+     "rotten_n": 0,
+     "rotten_called_fresh": 0,
+     "rotten_called_fresh_same_kind": 0,
+     "rotten_called_fresh_shown": 0,
+     "turned_away": 2,
+     "held_back": 14,
+     "shown": 83,
+     "shown_right": 83
+    },
+    "tomato_rotten": {
+     "n": 95,
+     "right": 79,
+     "rotten_n": 95,
+     "rotten_called_fresh": 8,
+     "rotten_called_fresh_same_kind": 8,
+     "rotten_called_fresh_shown": 6,
+     "turned_away": 6,
+     "held_back": 22,
+     "shown": 67,
+     "shown_right": 61
+    },
+    "bellpepper_fresh": {
+     "n": 70,
+     "right": 69,
+     "rotten_n": 0,
+     "rotten_called_fresh": 0,
+     "rotten_called_fresh_same_kind": 0,
+     "rotten_called_fresh_shown": 0,
+     "turned_away": 0,
+     "held_back": 13,
+     "shown": 57,
+     "shown_right": 56
+    },
+    "bellpepper_rotten": {
+     "n": 42,
+     "right": 42,
+     "rotten_n": 42,
+     "rotten_called_fresh": 0,
+     "rotten_called_fresh_same_kind": 0,
+     "rotten_called_fresh_shown": 0,
+     "turned_away": 0,
+     "held_back": 6,
+     "shown": 36,
+     "shown_right": 36
+    },
+    "carrot_fresh": {
+     "n": 78,
+     "right": 76,
+     "rotten_n": 0,
+     "rotten_called_fresh": 0,
+     "rotten_called_fresh_same_kind": 0,
+     "rotten_called_fresh_shown": 0,
+     "turned_away": 0,
+     "held_back": 1,
+     "shown": 77,
+     "shown_right": 76
+    },
+    "carrot_rotten": {
+     "n": 43,
+     "right": 42,
+     "rotten_n": 43,
+     "rotten_called_fresh": 1,
+     "rotten_called_fresh_same_kind": 1,
+     "rotten_called_fresh_shown": 0,
+     "turned_away": 0,
+     "held_back": 8,
+     "shown": 35,
+     "shown_right": 35
+    },
+    "onion_fresh": {
+     "n": 29,
+     "right": 26,
+     "rotten_n": 0,
+     "rotten_called_fresh": 0,
+     "rotten_called_fresh_same_kind": 0,
+     "rotten_called_fresh_shown": 0,
+     "turned_away": 2,
+     "held_back": 5,
+     "shown": 22,
+     "shown_right": 21
+    },
+    "onion_rotten": {
+     "n": 5,
+     "right": 5,
+     "rotten_n": 5,
+     "rotten_called_fresh": 0,
+     "rotten_called_fresh_same_kind": 0,
+     "rotten_called_fresh_shown": 0,
+     "turned_away": 0,
+     "held_back": 1,
+     "shown": 4,
+     "shown_right": 4
+    },
+    "sweetpotato_fresh": {
+     "n": 63,
+     "right": 52,
+     "rotten_n": 0,
+     "rotten_called_fresh": 0,
+     "rotten_called_fresh_same_kind": 0,
+     "rotten_called_fresh_shown": 0,
+     "turned_away": 2,
+     "held_back": 11,
+     "shown": 50,
+     "shown_right": 46
+    },
+    "sweetpotato_rotten": {
+     "n": 25,
+     "right": 21,
+     "rotten_n": 25,
+     "rotten_called_fresh": 4,
+     "rotten_called_fresh_same_kind": 4,
+     "rotten_called_fresh_shown": 2,
+     "turned_away": 0,
+     "held_back": 7,
+     "shown": 18,
+     "shown_right": 16
+    },
+    "greenonion_fresh": {
+     "n": 20,
+     "right": 14,
+     "rotten_n": 0,
+     "rotten_called_fresh": 0,
+     "rotten_called_fresh_same_kind": 0,
+     "rotten_called_fresh_shown": 0,
+     "turned_away": 3,
+     "held_back": 5,
+     "shown": 12,
+     "shown_right": 12
+    }
+   }
+  }
+ },
+ "G2": {
+  "TV-13": {
+   "kind_kept": 187,
+   "rotten_kind_kept": 58,
+   "class_right_kept": 170
+  },
+  "B": {
+   "kind_kept": 233,
+   "rotten_kind_kept": 89,
+   "class_right_kept": 214
+  },
+  "pass": true
+ }
+}
