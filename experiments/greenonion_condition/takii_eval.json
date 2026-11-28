@@ -1,0 +1,696 @@
+{
+ "threshold": 0.02024708315730095,
+ "summary": {
+  "diseased": {
+   "n": 27,
+   "score_flagged": 21,
+   "page_flagged": 1,
+   "answered_green_onion_not_held": 2
+  },
+  "normal_looking": {
+   "n": 6,
+   "score_flagged": 2,
+   "page_flagged": 0,
+   "answered_green_onion_not_held": 2
+  }
+ },
+ "photos": [
+  {
+   "index": 0,
+   "file": "beniironegusare_1.jpg",
+   "disease_page": "beniironegusare",
+   "sha256": "81923cee52d8327f2860f37cff2dce60c6e640be2eeef527e2e95f7f60a1bd03",
+   "group": "diseased",
+   "score": 0.0283,
+   "score_flag": true,
+   "answer_species": null,
+   "unknown": true,
+   "held": false,
+   "page_flag": false
+  },
+  {
+   "index": 1,
+   "file": "beniironegusare_2.jpg",
+   "disease_page": "beniironegusare",
+   "sha256": "22a83092bf12018e14e64d3358c40e4f36bbd610d9169c63b2232873557eaf0a",
+   "group": null,
+   "excluded": "not opened as an image (GIF or not a photo) or not used"
+  },
+  {
+   "index": 2,
+   "file": "beniironegusare_3.jpg",
+   "disease_page": "beniironegusare",
+   "sha256": "22a83092bf12018e14e64d3358c40e4f36bbd610d9169c63b2232873557eaf0a",
+   "group": null,
+   "excluded": "not opened as an image (GIF or not a photo) or not used"
+  },
+  {
+   "index": 3,
+   "file": "beniironegusare_4.jpg",
+   "disease_page": "beniironegusare",
+   "sha256": "22a83092bf12018e14e64d3358c40e4f36bbd610d9169c63b2232873557eaf0a",
+   "group": null,
+   "excluded": "not opened as an image (GIF or not a photo) or not used"
+  },
+  {
+   "index": 4,
+   "file": "beto_1.jpg",
+   "disease_page": "beto",
+   "sha256": "cc927ec1337d744d3eda139b5feae8bad33427ac1c1559bb0b515936b687861d",
+   "group": "normal_looking",
+   "score": -0.004,
+   "score_flag": false,
+   "answer_species": "greenonion",
+   "unknown": false,
+   "held": false,
+   "page_flag": false
+  },
+  {
+   "index": 5,
+   "file": "beto_2.jpg",
+   "disease_page": "beto",
+   "sha256": "11abb528e7f380ea3f0608f6f0d84cb6057fbb464050b6dc40a18c03e68379ff",
+   "group": "diseased",
+   "score": 0.0146,
+   "score_flag": false,
+   "answer_species": null,
+   "unknown": true,
+   "held": false,
+   "page_flag": false
+  },
+  {
+   "index": 6,
+   "file": "beto_3.jpg",
+   "disease_page": "beto",
+   "sha256": "27f0ae8b336205f1bd1e9cef9a535d49210fc4b024beddce7df711eadd32ada4",
+   "group": "diseased",
+   "score": 0.0102,
+   "score_flag": false,
+   "answer_species": "greenonion",
+   "unknown": false,
+   "held": false,
+   "page_flag": false
+  },
+  {
+   "index": 7,
+   "file": "beto_4.jpg",
+   "disease_page": "beto",
+   "sha256": "22a83092bf12018e14e64d3358c40e4f36bbd610d9169c63b2232873557eaf0a",
+   "group": null,
+   "excluded": "not opened as an image (GIF or not a photo) or not used"
+  },
+  {
+   "index": 8,
+   "file": "hakusyokueki_1.jpg",
+   "disease_page": "hakusyokueki",
+   "sha256": "b52f9daffe01359c1e62eac4df300f7056c200f6399f7f433331fc796c93c1d7",
+   "group": "diseased",
+   "score": 0.0286,
+   "score_flag": true,
+   "answer_species": "greenonion",
+   "unknown": false,
+   "held": true,
+   "page_flag": false
+  },
+  {
+   "index": 9,
+   "file": "hakusyokueki_2.jpg",
+   "disease_page": "hakusyokueki",
+   "sha256": "9d2fac7d78d6af1676ac2a8b848a8f19ca2a96573c0cdb4b99bad89e68aa86a3",
+   "group": "diseased",
+   "score": 0.0412,
+   "score_flag": true,
+   "answer_species": null,
+   "unknown": true,
+   "held": false,
+   "page_flag": false
+  },
+  {
+   "index": 10,
+   "file": "hakusyokueki_3.jpg",
+   "disease_page": "hakusyokueki",
+   "sha256": "ca6ad568c0268f7e990ae5709819265cab977cbfd643d6e79329cac4579bd826",
+   "group": "normal_looking",
+   "score": -0.0011,
+   "score_flag": false,
+   "answer_species": "greenonion",
+   "unknown": false,
+   "held": false,
+   "page_flag": false
+  },
+  {
+   "index": 11,
+   "file": "hakusyokueki_4.jpg",
+   "disease_page": "hakusyokueki",
+   "sha256": "067f34e287b00dca360fa2a29c53fcd6bcd6190455957e67f82fad8418265e1a",
+   "group": "diseased",
+   "score": 0.0244,
+   "score_flag": true,
+   "answer_species": null,
+   "unknown": true,
+   "held": false,
+   "page_flag": false
+  },
+  {
+   "index": 12,
+   "file": "iou_1.jpg",
+   "disease_page": "iou",
+   "sha256": "22dede6b521ea1ccd6422ce30ebe9ca33995384c589f1ee6d030c0dc3cc5a840",
+   "group": "diseased",
+   "score": 0.0095,
+   "score_flag": false,
+   "answer_species": "greenonion",
+   "unknown": false,
+   "held": true,
+   "page_flag": false
+  },
+  {
+   "index": 13,
+   "file": "iou_2.jpg",
+   "disease_page": "iou",
+   "sha256": "22a83092bf12018e14e64d3358c40e4f36bbd610d9169c63b2232873557eaf0a",
+   "group": null,
+   "excluded": "not opened as an image (GIF or not a photo) or not used"
+  },
+  {
+   "index": 14,
+   "file": "iou_3.jpg",
+   "disease_page": "iou",
+   "sha256": "22a83092bf12018e14e64d3358c40e4f36bbd610d9169c63b2232873557eaf0a",
+   "group": null,
+   "excluded": "not opened as an image (GIF or not a photo) or not used"
+  },
+  {
+   "index": 15,
+   "file": "iou_4.jpg",
+   "disease_page": "iou",
+   "sha256": "22a83092bf12018e14e64d3358c40e4f36bbd610d9169c63b2232873557eaf0a",
+   "group": null,
+   "excluded": "not opened as an image (GIF or not a photo) or not used"
+  },
+  {
+   "index": 16,
+   "file": "isyuku_1.jpg",
+   "disease_page": "isyuku",
+   "sha256": "70ef8268464b87d04a957d09a8170409b7c70cc7868d3e5907b5db721ae2e014",
+   "group": "normal_looking",
+   "score": 0.0158,
+   "score_flag": false,
+   "answer_species": "greenonion",
+   "unknown": false,
+   "held": true,
+   "page_flag": false
+  },
+  {
+   "index": 17,
+   "file": "isyuku_2.jpg",
+   "disease_page": "isyuku",
+   "sha256": "22a83092bf12018e14e64d3358c40e4f36bbd610d9169c63b2232873557eaf0a",
+   "group": null,
+   "excluded": "not opened as an image (GIF or not a photo) or not used"
+  },
+  {
+   "index": 18,
+   "file": "isyuku_3.jpg",
+   "disease_page": "isyuku",
+   "sha256": "22a83092bf12018e14e64d3358c40e4f36bbd610d9169c63b2232873557eaf0a",
+   "group": null,
+   "excluded": "not opened as an image (GIF or not a photo) or not used"
+  },
+  {
+   "index": 19,
+   "file": "isyuku_4.jpg",
+   "disease_page": "isyuku",
+   "sha256": "22a83092bf12018e14e64d3358c40e4f36bbd610d9169c63b2232873557eaf0a",
+   "group": null,
+   "excluded": "not opened as an image (GIF or not a photo) or not used"
+  },
+  {
+   "index": 20,
+   "file": "ityou_1.jpg",
+   "disease_page": "ityou",
+   "sha256": "310547a407bafdc422363693d13326d4b2a7fcb1c9bbe6c9200d03cbdc5671df",
+   "group": "normal_looking",
+   "score": 0.0244,
+   "score_flag": true,
+   "answer_species": null,
+   "unknown": true,
+   "held": false,
+   "page_flag": false
+  },
+  {
+   "index": 21,
+   "file": "ityou_2.jpg",
+   "disease_page": "ityou",
+   "sha256": "589cff8162e867da9542f850dbe3cc3f8ecfbebdf4bae1da507d69279469d84a",
+   "group": "diseased",
+   "score": 0.0338,
+   "score_flag": true,
+   "answer_species": null,
+   "unknown": true,
+   "held": false,
+   "page_flag": false
+  },
+  {
+   "index": 22,
+   "file": "ityou_3.jpg",
+   "disease_page": "ityou",
+   "sha256": "2f140ef037b8fb2cf1b665bded0c71f477fd4e5821d1aa50e38972d1d16eaaed",
+   "group": "normal_looking",
+   "score": 0.0005,
+   "score_flag": false,
+   "answer_species": "greenonion",
+   "unknown": false,
+   "held": true,
+   "page_flag": false
+  },
+  {
+   "index": 23,
+   "file": "ityou_4.jpg",
+   "disease_page": "ityou",
+   "sha256": "7386cf9ecf09992ccb85cec3fc9a9f3ddf9c6fa2f763f4721c382989472f13e8",
+   "group": "diseased",
+   "score": 0.0553,
+   "score_flag": true,
+   "answer_species": "greenonion",
+   "unknown": false,
+   "held": true,
+   "page_flag": false
+  },
+  {
+   "index": 24,
+   "file": "kokuhan_1.jpg",
+   "disease_page": "kokuhan",
+   "sha256": "03872e36063db415caa781146f82c00cfa6e5b5ebf887006f023ebe846bb66b6",
+   "group": "diseased",
+   "score": 0.0196,
+   "score_flag": false,
+   "answer_species": null,
+   "unknown": true,
+   "held": false,
+   "page_flag": false
+  },
+  {
+   "index": 25,
+   "file": "kokuhan_2.jpg",
+   "disease_page": "kokuhan",
+   "sha256": "a93086b7162630325918ae7ad1f15ecc9a5d3ed5de2c2df836e9b2674ab6d88e",
+   "group": "diseased",
+   "score": 0.032,
+   "score_flag": true,
+   "answer_species": null,
+   "unknown": true,
+   "held": false,
+   "page_flag": false
+  },
+  {
+   "index": 26,
+   "file": "kokuhan_3.jpg",
+   "disease_page": "kokuhan",
+   "sha256": "22a83092bf12018e14e64d3358c40e4f36bbd610d9169c63b2232873557eaf0a",
+   "group": null,
+   "excluded": "not opened as an image (GIF or not a photo) or not used"
+  },
+  {
+   "index": 27,
+   "file": "kokuhan_4.jpg",
+   "disease_page": "kokuhan",
+   "sha256": "22a83092bf12018e14e64d3358c40e4f36bbd610d9169c63b2232873557eaf0a",
+   "group": null,
+   "excluded": "not opened as an image (GIF or not a photo) or not used"
+  },
+  {
+   "index": 28,
+   "file": "kokuhukinkaku_1.jpg",
+   "disease_page": "kokuhukinkaku",
+   "sha256": "56de5d9d324ea9a81a86903afb1e963eebdeaf55f2c937d85ae9282a5669f34d",
+   "group": "diseased",
+   "score": 0.0302,
+   "score_flag": true,
+   "answer_species": "greenonion",
+   "unknown": false,
+   "held": false,
+   "page_flag": true
+  },
+  {
+   "index": 29,
+   "file": "kokuhukinkaku_2.jpg",
+   "disease_page": "kokuhukinkaku",
+   "sha256": "89b052787785869406851101e0baaad27604ea9154c7f7f7e7a2e70aab7ade64",
+   "group": "diseased",
+   "score": 0.029,
+   "score_flag": true,
+   "answer_species": null,
+   "unknown": true,
+   "held": false,
+   "page_flag": false
+  },
+  {
+   "index": 30,
+   "file": "kokuhukinkaku_3.jpg",
+   "disease_page": "kokuhukinkaku",
+   "sha256": "cdd165d6d679fdb7c39c2532cbcc4b0e92efe8b93c314acdfe1781d221a56dc4",
+   "group": "diseased",
+   "score": 0.0533,
+   "score_flag": true,
+   "answer_species": null,
+   "unknown": true,
+   "held": false,
+   "page_flag": false
+  },
+  {
+   "index": 31,
+   "file": "kokuhukinkaku_4.jpg",
+   "disease_page": "kokuhukinkaku",
+   "sha256": "22a83092bf12018e14e64d3358c40e4f36bbd610d9169c63b2232873557eaf0a",
+   "group": null,
+   "excluded": "not opened as an image (GIF or not a photo) or not used"
+  },
+  {
+   "index": 32,
+   "file": "kokusyuu_1.jpg",
+   "disease_page": "kokusyuu",
+   "sha256": "40c937f2bc8ee48d6c1357238e4f1d7a421bd5657614401a808ea33dd77ebb8d",
+   "group": "diseased",
+   "score": 0.0521,
+   "score_flag": true,
+   "answer_species": null,
+   "unknown": true,
+   "held": false,
+   "page_flag": false
+  },
+  {
+   "index": 33,
+   "file": "kokusyuu_2.jpg",
+   "disease_page": "kokusyuu",
+   "sha256": "42aa5fe81cd28871e7c5523f59f162f099bf13cca6373772a553446af1a51e6f",
+   "group": "diseased",
+   "score": 0.0182,
+   "score_flag": false,
+   "answer_species": null,
+   "unknown": true,
+   "held": false,
+   "page_flag": false
+  },
+  {
+   "index": 34,
+   "file": "kokusyuu_3.jpg",
+   "disease_page": "kokusyuu",
+   "sha256": "2d7617da6f35d650fec0ea16912bce0122d4705f4d314eb027f48342e15a48a9",
+   "group": "diseased",
+   "score": 0.0279,
+   "score_flag": true,
+   "answer_species": null,
+   "unknown": true,
+   "held": false,
+   "page_flag": false
+  },
+  {
+   "index": 35,
+   "file": "kokusyuu_4.jpg",
+   "disease_page": "kokusyuu",
+   "sha256": "22a83092bf12018e14e64d3358c40e4f36bbd610d9169c63b2232873557eaf0a",
+   "group": null,
+   "excluded": "not opened as an image (GIF or not a photo) or not used"
+  },
+  {
+   "index": 36,
+   "file": "kuroho_1.jpg",
+   "disease_page": "kuroho",
+   "sha256": "ca292eb4a53052919463002c10bb2d26a0391a625d13d591fb65474b21d68108",
+   "group": "diseased",
+   "score": 0.0215,
+   "score_flag": true,
+   "answer_species": null,
+   "unknown": true,
+   "held": false,
+   "page_flag": false
+  },
+  {
+   "index": 37,
+   "file": "kuroho_2.jpg",
+   "disease_page": "kuroho",
+   "sha256": "a759472b7406ecbede9452f43fbd982ce74d5c49260b54d6a756a7fa0e282c39",
+   "group": "diseased",
+   "score": 0.023,
+   "score_flag": true,
+   "answer_species": null,
+   "unknown": true,
+   "held": false,
+   "page_flag": false
+  },
+  {
+   "index": 38,
+   "file": "kuroho_3.jpg",
+   "disease_page": "kuroho",
+   "sha256": "22a83092bf12018e14e64d3358c40e4f36bbd610d9169c63b2232873557eaf0a",
+   "group": null,
+   "excluded": "not opened as an image (GIF or not a photo) or not used"
+  },
+  {
+   "index": 39,
+   "file": "kuroho_4.jpg",
+   "disease_page": "kuroho",
+   "sha256": "22a83092bf12018e14e64d3358c40e4f36bbd610d9169c63b2232873557eaf0a",
+   "group": null,
+   "excluded": "not opened as an image (GIF or not a photo) or not used"
+  },
+  {
+   "index": 40,
+   "file": "naetatigare_1.jpg",
+   "disease_page": "naetatigare",
+   "sha256": "95f534ea5d08b1042044f6db36bdb20c2aa341c1bfd4439a2d89ed44ba77d4c6",
+   "group": "normal_looking",
+   "score": 0.0249,
+   "score_flag": true,
+   "answer_species": null,
+   "unknown": true,
+   "held": false,
+   "page_flag": false
+  },
+  {
+   "index": 41,
+   "file": "naetatigare_2.jpg",
+   "disease_page": "naetatigare",
+   "sha256": "22a83092bf12018e14e64d3358c40e4f36bbd610d9169c63b2232873557eaf0a",
+   "group": null,
+   "excluded": "not opened as an image (GIF or not a photo) or not used"
+  },
+  {
+   "index": 42,
+   "file": "naetatigare_3.jpg",
+   "disease_page": "naetatigare",
+   "sha256": "22a83092bf12018e14e64d3358c40e4f36bbd610d9169c63b2232873557eaf0a",
+   "group": null,
+   "excluded": "not opened as an image (GIF or not a photo) or not used"
+  },
+  {
+   "index": 43,
+   "file": "naetatigare_4.jpg",
+   "disease_page": "naetatigare",
+   "sha256": "22a83092bf12018e14e64d3358c40e4f36bbd610d9169c63b2232873557eaf0a",
+   "group": null,
+   "excluded": "not opened as an image (GIF or not a photo) or not used"
+  },
+  {
+   "index": 44,
+   "file": "nanpu_1.jpg",
+   "disease_page": "nanpu",
+   "sha256": "7627317944831780ad6a3688dc0fff9d5a0ac156dfc1ff2c75d58eb9b9b9c331",
+   "group": "diseased",
+   "score": 0.0642,
+   "score_flag": true,
+   "answer_species": "greenonion",
+   "unknown": false,
+   "held": true,
+   "page_flag": false
+  },
+  {
+   "index": 45,
+   "file": "nanpu_2.jpg",
+   "disease_page": "nanpu",
+   "sha256": "22a83092bf12018e14e64d3358c40e4f36bbd610d9169c63b2232873557eaf0a",
+   "group": null,
+   "excluded": "not opened as an image (GIF or not a photo) or not used"
+  },
+  {
+   "index": 46,
+   "file": "nanpu_3.jpg",
+   "disease_page": "nanpu",
+   "sha256": "22a83092bf12018e14e64d3358c40e4f36bbd610d9169c63b2232873557eaf0a",
+   "group": null,
+   "excluded": "not opened as an image (GIF or not a photo) or not used"
+  },
+  {
+   "index": 47,
+   "file": "nanpu_4.jpg",
+   "disease_page": "nanpu",
+   "sha256": "22a83092bf12018e14e64d3358c40e4f36bbd610d9169c63b2232873557eaf0a",
+   "group": null,
+   "excluded": "not opened as an image (GIF or not a photo) or not used"
+  },
+  {
+   "index": 48,
+   "file": "ouhan_1.jpg",
+   "disease_page": "ouhan",
+   "sha256": "de1d1fb2f6af9c76bae26db2a6b4100f34e3f7bf5f78086294613a983dd8493c",
+   "group": "diseased",
+   "score": 0.0071,
+   "score_flag": false,
+   "answer_species": null,
+   "unknown": true,
+   "held": false,
+   "page_flag": false
+  },
+  {
+   "index": 49,
+   "file": "ouhan_2.jpg",
+   "disease_page": "ouhan",
+   "sha256": "dab62c9016c72f712a871180b97774efd7742cc9eadb65f5349264f08bbab782",
+   "group": "diseased",
+   "score": 0.0311,
+   "score_flag": true,
+   "answer_species": null,
+   "unknown": true,
+   "held": false,
+   "page_flag": false
+  },
+  {
+   "index": 50,
+   "file": "ouhan_3.jpg",
+   "disease_page": "ouhan",
+   "sha256": "5507c23e4d2e6a543633eada2f7d05f01dae99206a09ae707f203bfd0d477242",
+   "group": "diseased",
+   "score": 0.0334,
+   "score_flag": true,
+   "answer_species": null,
+   "unknown": true,
+   "held": false,
+   "page_flag": false
+  },
+  {
+   "index": 51,
+   "file": "ouhan_4.jpg",
+   "disease_page": "ouhan",
+   "sha256": "22a83092bf12018e14e64d3358c40e4f36bbd610d9169c63b2232873557eaf0a",
+   "group": null,
+   "excluded": "not opened as an image (GIF or not a photo) or not used"
+  },
+  {
+   "index": 52,
+   "file": "sabi_1.jpg",
+   "disease_page": "sabi",
+   "sha256": "7227c88463a16fc38b2d0644bed244d7252245f7c4dd2325c14608313581d7c9",
+   "group": "diseased",
+   "score": 0.0303,
+   "score_flag": true,
+   "answer_species": null,
+   "unknown": true,
+   "held": false,
+   "page_flag": false
+  },
+  {
+   "index": 53,
+   "file": "sabi_2.jpg",
+   "disease_page": "sabi",
+   "sha256": "8e45b429f3bf316ab46b124d0601dc573d2af51bd7b46fb289c572eeb2593302",
+   "group": "diseased",
+   "score": 0.0332,
+   "score_flag": true,
+   "answer_species": null,
+   "unknown": true,
+   "held": false,
+   "page_flag": false
+  },
+  {
+   "index": 54,
+   "file": "sabi_3.jpg",
+   "disease_page": "sabi",
+   "sha256": "22a83092bf12018e14e64d3358c40e4f36bbd610d9169c63b2232873557eaf0a",
+   "group": null,
+   "excluded": "not opened as an image (GIF or not a photo) or not used"
+  },
+  {
+   "index": 55,
+   "file": "sabi_4.jpg",
+   "disease_page": "sabi",
+   "sha256": "22a83092bf12018e14e64d3358c40e4f36bbd610d9169c63b2232873557eaf0a",
+   "group": null,
+   "excluded": "not opened as an image (GIF or not a photo) or not used"
+  },
+  {
+   "index": 56,
+   "file": "sirokinu_1.jpg",
+   "disease_page": "sirokinu",
+   "sha256": "b52f9daffe01359c1e62eac4df300f7056c200f6399f7f433331fc796c93c1d7",
+   "group": "diseased",
+   "excluded": "same file as an earlier photo (sha256)"
+  },
+  {
+   "index": 57,
+   "file": "sirokinu_2.jpg",
+   "disease_page": "sirokinu",
+   "sha256": "9d2fac7d78d6af1676ac2a8b848a8f19ca2a96573c0cdb4b99bad89e68aa86a3",
+   "group": "diseased",
+   "excluded": "same file as an earlier photo (sha256)"
+  },
+  {
+   "index": 58,
+   "file": "sirokinu_3.jpg",
+   "disease_page": "sirokinu",
+   "sha256": "22a83092bf12018e14e64d3358c40e4f36bbd610d9169c63b2232873557eaf0a",
+   "group": null,
+   "excluded": "not opened as an image (GIF or not a photo) or not used"
+  },
+  {
+   "index": 59,
+   "file": "sirokinu_4.jpg",
+   "disease_page": "sirokinu",
+   "sha256": "22a83092bf12018e14e64d3358c40e4f36bbd610d9169c63b2232873557eaf0a",
+   "group": null,
+   "excluded": "not opened as an image (GIF or not a photo) or not used"
+  },
+  {
+   "index": 60,
+   "file": "syoukinnkaku_1.jpg",
+   "disease_page": "syoukinnkaku",
+   "sha256": "1656072b83743fdec027531b39f8417e269880669230cbb975eb334752f2f0cf",
+   "group": "diseased",
+   "score": 0.046,
+   "score_flag": true,
+   "answer_species": null,
+   "unknown": true,
+   "held": false,
+   "page_flag": false
+  },
+  {
+   "index": 61,
+   "file": "syoukinnkaku_2.jpg",
+   "disease_page": "syoukinnkaku",
+   "sha256": "587fcab849027dcc719c8d2408f1e2bdf498d5954848e7ac5ca02e0e29f609b0",
+   "group": "diseased",
+   "score": 0.0352,
+   "score_flag": true,
+   "answer_species": null,
+   "unknown": true,
+   "held": false,
+   "page_flag": false
+  },
+  {
+   "index": 62,
+   "file": "syoukinnkaku_3.jpg",
+   "disease_page": "syoukinnkaku",
+   "sha256": "22a83092bf12018e14e64d3358c40e4f36bbd610d9169c63b2232873557eaf0a",
+   "group": null,
+   "excluded": "not opened as an image (GIF or not a photo) or not used"
+  },
+  {
+   "index": 63,
+   "file": "syoukinnkaku_4.jpg",
+   "disease_page": "syoukinnkaku",
+   "sha256": "22a83092bf12018e14e64d3358c40e4f36bbd610d9169c63b2232873557eaf0a",
+   "group": null,
+   "excluded": "not opened as an image (GIF or not a photo) or not used"
+  }
+ ]
+}
