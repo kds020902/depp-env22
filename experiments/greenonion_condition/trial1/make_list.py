@@ -9,6 +9,7 @@ Writes photos.csv (path, sha256, condition, group, origin) next to this file.
 from __future__ import annotations
 
 import csv
+import hashlib
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -28,7 +29,10 @@ def main():
         if r["claude_label"] not in ("spoiled", "fresh"):
             continue
         folder = "images_batch2" if r["candidate_id"].startswith("batch2") else "images"
-        rows.append({"path": f"{CODEX.as_posix()}/{folder}/{r['file']}", "sha256": r["sha256"],
+        rel = f"{CODEX.as_posix()}/{folder}/{r['file']}"
+        # fetch_pages.py saved page photos re-encoded as JPEG, so their recorded hash is of the downloaded bytes: hash the file itself
+        sha = hashlib.sha256((Path("D:/AI") / rel).read_bytes()).hexdigest() if folder == "images_batch2" else r["sha256"]
+        rows.append({"path": rel, "sha256": sha,
                      "condition": "spoiled" if r["claude_label"] == "spoiled" else "fresh", "group": "c:" + r["source_group"], "origin": "codex"})
     with open(HERE / "photos.csv", "w", encoding="utf-8", newline="") as f:
         w = csv.DictWriter(f, fieldnames=list(rows[0])); w.writeheader(); w.writerows(rows)
