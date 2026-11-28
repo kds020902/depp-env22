@@ -48,7 +48,11 @@ def main():
             target = (args.small / row["path"]).with_suffix(".jpg")
             target.parent.mkdir(parents=True, exist_ok=True)
             small.save(target, quality=85)
-    np.savez_compressed(args.out, ids=np.array(ids), X=np.array(X, np.float32), b=np.array(b, np.float32))
+    # provenance, so a later run can check the cache was made from these exact photos with this model.pth
+    sha = [hashlib.sha256((args.root / i).read_bytes()).hexdigest() for i in ids]
+    model_sha = hashlib.sha256((REPO / "model.pth").read_bytes()).hexdigest()
+    np.savez_compressed(args.out, ids=np.array(ids), X=np.array(X, np.float32), b=np.array(b, np.float32),
+                        sha256=np.array(sha), model_sha256=np.array(model_sha))
     print(f"stored {len(ids)} photos; missing {len(missing)}; sha256 differs {len(changed)}")
     for name in missing + changed:
         print("  not stored:", name)
