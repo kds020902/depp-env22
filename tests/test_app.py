@@ -121,3 +121,33 @@ def test_greenonion_hint_never_says_fresh_and_marks_experimental():
     assert "판단 보류" in near_fresh
     for text in (near_spoiled, near_fresh):
         assert "실험 기능" in text and "정상" not in text
+
+
+def test_greenonion_hint_only_for_confident_green_onion_answers(monkeypatch, tmp_path):
+    """No condition guess for a held answer, a turned-away photo or another vegetable (Codex review)."""
+    import numpy as np
+    import app
+    from labels import SPECIES_NAMES
+
+    green = SPECIES_NAMES.index("greenonion") * 2
+    calls = []
+    monkeypatch.setattr(app, "check_size", lambda path: None)
+    monkeypatch.setattr(app, "open_image", lambda path: object())
+    monkeypatch.setattr(app, "greenonion_hint", lambda f: calls.append(1) or "\n\nHINT")
+
+    class Clip:
+        def image_features(self, photos):
+            import torch
+            return torch.zeros(1, 512)
+
+    def system(**r):
+        base = {"index": green, "unknown": False, "held": False, "probability": 0.95, "probabilities": np.zeros(16),
+                "message": "", "rot_map": None, "scale": 1.0}
+        base.update(r)
+        return type("S", (), {"clip": Clip(), "classify": lambda self, photo, hold: base})()
+
+    assert app.answer(system(), "p.jpg")[0].endswith("HINT")
+    assert not app.answer(system(held=True, message="판단 보류: 가장 가까운 답"), "p.jpg")[0].endswith("HINT")
+    assert not app.answer(system(unknown=True, message="학습된 데이터가 아닙니다 (x)"), "p.jpg")[0].endswith("HINT")
+    assert not app.answer(system(index=0), "p.jpg")[0].endswith("HINT")
+    assert len(calls) == 1

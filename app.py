@@ -121,7 +121,8 @@ def answer(system, path: str | Path | None, hold_back_below: float = HOLD_BACK_B
         from networks import rot_map_overlay
         heat = rot_map_overlay(photo, r["rot_map"], r["scale"], side_by_side=False)
     text = headline(r)
-    if not r["unknown"] and SPECIES_NAMES[r["index"] // 2] == "greenonion" and GREENONION_HINT.exists():
+    # only for a confident green onion answer: a photo whose kind itself is held back gets no condition guess (Codex review)
+    if not r["unknown"] and not r["held"] and SPECIES_NAMES[r["index"] // 2] == "greenonion" and GREENONION_HINT.exists():
         text += greenonion_hint(system.clip.image_features([photo]).cpu().numpy())
     return text, shown_probabilities(r), heat
 
