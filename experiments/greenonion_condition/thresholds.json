@@ -1,0 +1,16 @@
+{
+ "n_fresh": 117,
+ "zs": {
+  "threshold_95": 0.02024708315730095,
+  "min": -0.033739373087882996,
+  "median": -0.004949688911437988,
+  "max": 0.026111841201782227
+ },
+ "knn": {
+  "threshold_95": 0.29163825511932373,
+  "min": 0.09363728761672974,
+  "median": 0.17437618970870972,
+  "max": 0.373163104057312
+ },
+ "note": "thresholds from fresh photos only; detection of rotten green onions not measured yet (no labelled rotten photos)"
+}
