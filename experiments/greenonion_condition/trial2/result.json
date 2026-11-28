@@ -1,0 +1,62 @@
+{
+ "n_photos": 130,
+ "n_groups": 74,
+ "tv13": {
+  "spoiled": {
+   "n": 68,
+   "recognised": 53,
+   "turned_away": 6,
+   "condition_right": 0
+  },
+  "fresh": {
+   "n": 62,
+   "recognised": 56,
+   "turned_away": 5,
+   "condition_right": 56
+  }
+ },
+ "candidate_cv": {
+  "spoiled": {
+   "n": 68,
+   "recognised": 63,
+   "turned_away": 2,
+   "condition_right": 37
+  },
+  "fresh": {
+   "n": 62,
+   "recognised": 59,
+   "turned_away": 2,
+   "condition_right": 49
+  }
+ },
+ "train_log": "saved D:\\AI\\depp-env22\\experiments\\greenonion_condition\\trial2\\work\\candidate.pth: not-eight threshold -3.1714, tau 0.8 {0.5: 10, 0.7: 1, 0.8: 0, 0.9: 0, 0.95: 0}, display temperature 0.7415",
+ "G1": {
+  "right": {
+   "TV-13": 869,
+   "C": 871
+  },
+  "rotten_called_fresh": {
+   "TV-13": 17,
+   "C": 17
+  },
+  "potato_rotten": {
+   "TV-13": 126,
+   "C": 126
+  },
+  "potato_fresh": {
+   "TV-13": 107,
+   "C": 107
+  },
+  "pass": true
+ },
+ "G2": {
+  "TV-13": 53,
+  "C": 63,
+  "pass": true
+ },
+ "G3": {
+  "spoiled": 0.587,
+  "fresh": 0.831,
+  "pass": false
+ }
+}
