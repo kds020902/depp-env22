@@ -22,12 +22,17 @@ SEEDS = [0, 1, 2]
 
 def load():
     d = np.load(DATA)
-    X = np.concatenate([d[f"{s}_X"] for s in SETS]).astype(np.float32)
-    y = np.concatenate([d[f"{s}_y"] for s in SETS]).astype(int)
-    X /= np.linalg.norm(X, axis=1, keepdims=True)
+    by_set = {}
+    for s in SETS:
+        Xs = d[f"{s}_X"].astype(np.float32)
+        Xs /= np.linalg.norm(Xs, axis=1, keepdims=True)
+        ys = d[f"{s}_y"].astype(int)
+        by_set[s] = (Xs, ys)
+    X = np.concatenate([by_set[s][0] for s in SETS])
+    y = np.concatenate([by_set[s][1] for s in SETS])
     T = d["text16"].astype(np.float32)
     T /= np.linalg.norm(T, axis=1, keepdims=True)
-    return X, y, T
+    return X, y, T, by_set
 
 
 def dup_groups(X):
@@ -96,13 +101,48 @@ def knn(Xtr, ytr, Xte, k=10):
 
 
 def metrics(y, p):
-    r1 = float((p[y == 1] == 1).mean())
-    r0 = float((p[y == 0] == 0).mean())
-    return {"bal_acc": round((r0 + r1) / 2, 4), "recall_B": round(r1, 4), "recall_A": round(r0, 4)}
+    has_a, has_b = bool((y == 0).any()), bool((y == 1).any())
+    r0 = round(float((p[y == 0] == 0).mean()), 4) if has_a else None
+    r1 = round(float((p[y == 1] == 1).mean()), 4) if has_b else None
+    bal = round((r0 + r1) / 2, 4) if (has_a and has_b) else None
+    return {"bal_acc": bal, "recall_B": r1, "recall_A": r0}
+
+
+def eval_cross_domain(by_set, T, A, B):
+    """Train on `train` split only; evaluate separately on each dev split and their outside union."""
+    Xtr_all, ytr_all = by_set["train"]
+    mtr = np.isin(ytr_all, A + B)
+    Xtr, ytr = Xtr_all[mtr], np.isin(ytr_all[mtr], B).astype(int)
+    if not ((ytr == 0).any() and (ytr == 1).any()):
+        return {}
+
+    eval_sets = {s: by_set[s] for s in ("dev_valid", "dev_odev", "dev_o160", "dev_newval")}
+    eval_sets["outside_all"] = (
+        np.concatenate([by_set[s][0] for s in ("dev_odev", "dev_o160", "dev_newval")]),
+        np.concatenate([by_set[s][1] for s in ("dev_odev", "dev_o160", "dev_newval")]),
+    )
+
+    out = {"train_n_A": int((ytr == 0).sum()), "train_n_B": int((ytr == 1).sum()), "splits": {}}
+    for split_name, (Xev_all, yev_all) in eval_sets.items():
+        mev = np.isin(yev_all, A + B)
+        if not mev.any():
+            continue
+        Xev, yev = Xev_all[mev], np.isin(yev_all[mev], B).astype(int)
+        dup_n = int(((Xev @ Xtr.T).max(axis=1) >= DUP).sum())
+        S = Xev @ T.T
+        out["splits"][split_name] = {
+            "n_A": int((yev == 0).sum()),
+            "n_B": int((yev == 1).sum()),
+            "dup_with_train": dup_n,
+            "zeroshot": metrics(yev, (S[:, B].max(1) > S[:, A].max(1)).astype(int)),
+            "linear": metrics(yev, logreg(Xtr, ytr, Xev)),
+            "knn10": metrics(yev, knn(Xtr, ytr, Xev)),
+        }
+    return out
 
 
 def main():
-    X, y, T = load()
+    X, y, T, by_set = load()
     out = {}
     for name, (A, B) in PAIRS.items():
         m = np.isin(y, A + B)
@@ -123,6 +163,7 @@ def main():
                 runs.append(metrics(ys, p))
             res[clf_name] = {k: round(float(np.mean([r[k] for r in runs])), 4) for k in runs[0]}
             res[clf_name]["bal_acc_runs"] = [r["bal_acc"] for r in runs]
+        res["cross_domain"] = eval_cross_domain(by_set, T, A, B)
         out[name] = res
         print(name, json.dumps(res, ensure_ascii=False))
     (HERE / "result.json").write_text(json.dumps(out, indent=1, ensure_ascii=False), encoding="utf-8")
