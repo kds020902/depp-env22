@@ -38,6 +38,7 @@ HERO = """
 EMPTY = "### 아직 판정 전이에요..."
 READY = "### 사진을 준비했어요\n미리보기를 확인한 뒤 **판정하기**를 눌러 주세요."
 WORKING = "### 사진을 판정하고 있어요\n잠시만 기다려 주세요."
+FAILED = "### 판정하지 못했어요\n잠시 뒤 **판정하기**를 다시 눌러 주세요."
 PENDING_ROW = '<li><span>야채 판정을 해주세요</span><span class="result-placeholder-line"></span><span>N%</span></li>'
 PENDING_DETAILS = f'<ul class="result-placeholder-list" role="list">{PENDING_ROW * 4}</ul>'
 NO_DETAILS = '<p class="result-detail-message">표시할 확률 정보가 없어요.</p>'
@@ -135,6 +136,10 @@ def build(system):
                 gr.update(value=probabilities, visible=bool(probabilities)),
                 gr.update(value=overlay, visible=overlay is not None))
 
+    def recover(path):
+        """An unexpected error (also a failed ZeroGPU call) must not leave the photo input and the button locked."""
+        return gr.update(interactive=True), gr.update(interactive=bool(path)), FAILED, *clear_details()
+
     with gr.Blocks(title=TITLE, delete_cache=(600, 600)) as page:   # uploads are temporary files: removed after 10 minutes
         gr.HTML(HERO, elem_id="demo-top")
         with gr.Row(elem_id="demo-workspace", equal_height=True):
@@ -159,7 +164,8 @@ def build(system):
         result_components = [button, verdict, empty_details, bars, heat]
         photo.change(photo_changed, photo, result_components, queue=False, show_progress="hidden", api_visibility="private")
         button.click(start, outputs=[photo, *result_components], queue=False, show_progress="hidden",
-                     api_visibility="private").then(on_zero_gpu(run), photo, [photo, *result_components], show_progress="minimal")
+                     api_visibility="private").then(on_zero_gpu(run), photo, [photo, *result_components], show_progress="minimal"
+                     ).failure(recover, photo, [photo, *result_components], queue=False, show_progress="hidden", api_visibility="private")
     return page
 
 

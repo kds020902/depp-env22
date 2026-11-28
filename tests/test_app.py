@@ -87,3 +87,20 @@ def test_the_space_installs_the_versions_the_recorded_results_were_made_with():
     space, project = pins(REPO / "space/requirements.txt"), pins(REPO / "requirements.txt")
     assert space and all(project[name] == version for name, version in space.items())
     assert {"torch", "torchvision", "Pillow", "numpy", "open_clip_torch"} <= set(space)
+
+
+def test_unexpected_error_unlocks_photo_and_button():
+    """A failed run (also a failed ZeroGPU call) must not leave the page locked: a failure handler re-enables both."""
+    import app
+
+    class Broken:
+        def classify(self, *args, **kwargs):
+            raise KeyError("unexpected")
+
+    page = app.build(Broken())
+    fns = page.fns.values() if hasattr(page.fns, "values") else page.fns
+    failure = [f for f in fns if getattr(f, "trigger_only_on_failure", False)]
+    assert len(failure) == 1
+    photo, button, message, *_ = failure[0].fn("photo.jpg")
+    assert photo["interactive"] is True and button["interactive"] is True
+    assert message.startswith("### 판정하지 못했어요")
